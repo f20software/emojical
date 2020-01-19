@@ -10,7 +10,7 @@ import UIKit
 
 class CalendarViewController: UITableViewController {
 
-    var data = StampsData.init()
+    var data = CalenderHelper.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +19,11 @@ class CalendarViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return data.numberOfMonth
+        return data.numberOfMonths
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.numberOfWeeks(month: section)
+        return data.numberOfWeeksIn(month: section)
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -19,13 +19,11 @@ class WeekCell: UITableViewCell {
     @IBOutlet weak var sun: UILabel!
     
     func loadData(_ data: [String]) {
-        mon.text = data[0]
-        tue.text = data[1]
-        wed.text = data[2]
-        thu.text = data[3]
-        fri.text = data[4]
-        sat.text = data[5]
-        sun.text = data[6]
+        var idx = 0
+        for label in [mon, tue, wed, thu, fri, sat, sun] {
+            label!.text = data[idx]
+            idx += 1
+        }
     }
     
     override func prepareForReuse() {

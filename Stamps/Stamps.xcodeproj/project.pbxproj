@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2A5255B23D3D67E00C3E0F3 /* StmapsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* StmapsData.swift */; };
+		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
+		F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */; };
 		F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */; };
 		F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */; };
-		F2C4943D23D2CBC800EAF9CC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943C23D2CBC800EAF9CC /* FirstViewController.swift */; };
+		F2C4943D23D2CBC800EAF9CC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */; };
 		F2C4943F23D2CBC800EAF9CC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943E23D2CBC800EAF9CC /* SecondViewController.swift */; };
 		F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944023D2CBC800EAF9CC /* Main.storyboard */; };
 		F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */; };
@@ -17,10 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F2A5255A23D3D67E00C3E0F3 /* StmapsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StmapsData.swift; sourceTree = "<group>"; };
+		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
 		F2C4943523D2CBC800EAF9CC /* Stamps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stamps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F2C4943C23D2CBC800EAF9CC /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		F2C4943E23D2CBC800EAF9CC /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F2C4944123D2CBC800EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,12 +66,15 @@
 			children = (
 				F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */,
 				F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */,
-				F2C4943C23D2CBC800EAF9CC /* FirstViewController.swift */,
+				F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */,
 				F2C4943E23D2CBC800EAF9CC /* SecondViewController.swift */,
 				F2C4944023D2CBC800EAF9CC /* Main.storyboard */,
 				F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */,
 				F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */,
 				F2C4944823D2CBCA00EAF9CC /* Info.plist */,
+				F2A5255A23D3D67E00C3E0F3 /* StmapsData.swift */,
+				F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */,
+				F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */,
 			);
 			path = Stamps;
 			sourceTree = "<group>";
@@ -141,10 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2A5255B23D3D67E00C3E0F3 /* StmapsData.swift in Sources */,
 				F2C4943F23D2CBC800EAF9CC /* SecondViewController.swift in Sources */,
-				F2C4943D23D2CBC800EAF9CC /* FirstViewController.swift in Sources */,
+				F2C4943D23D2CBC800EAF9CC /* CalendarViewController.swift in Sources */,
+				F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */,
 				F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
+				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

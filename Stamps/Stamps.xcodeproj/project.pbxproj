@@ -18,6 +18,7 @@
 		F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */; };
 		F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */; };
 		F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */; };
+		F2FF7EA123D659490033D9DC /* DayBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA023D659490033D9DC /* DayBadgeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F2C4944623D2CBCA00EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2C4944823D2CBCA00EAF9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
+		F2FF7EA023D659490033D9DC /* DayBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBadgeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */,
 				F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */,
 				F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */,
+				F2FF7EA023D659490033D9DC /* DayBadgeView.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				F2C4943F23D2CBC800EAF9CC /* SecondViewController.swift in Sources */,
 				F2C4943D23D2CBC800EAF9CC /* CalendarViewController.swift in Sources */,
 				F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */,
+				F2FF7EA123D659490033D9DC /* DayBadgeView.swift in Sources */,
 				F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,

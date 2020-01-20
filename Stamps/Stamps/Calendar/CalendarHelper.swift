@@ -1,5 +1,5 @@
 //
-//  StampsData.swift
+//  CalendarHelper.swift
 //  Stamps
 //
 //  Created by Vladimir Svidersky on 1/18/20.
@@ -34,6 +34,17 @@ class CalenderHelper {
     func textForMonth(_ month: Int) -> String {
         return months[month].textForMonth
     }
+    
+    // Return selected month day based on index of week and index of selected day
+    // or nil if selected number is not within month range
+    func dayInMonth(month: Int, week: Int, day: Int) -> Int? {
+        let dayNum = week * 7 + day - months[month].firstIndex + 1
+        if dayNum > 0 && dayNum <= months[month].numberOfDays {
+            return dayNum
+        }
+        return nil
+    }
+    
 }
 
 extension CalenderHelper {

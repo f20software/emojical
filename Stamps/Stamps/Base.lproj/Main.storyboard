@@ -66,43 +66,43 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="aDi-Jq-a84"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3L-7r-sEe">
                                                     <rect key="frame" x="53.5" y="0.5" width="53.5" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="co8-E7-57H">
                                                     <rect key="frame" x="107" y="0.5" width="53.5" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBf-wb-OfU">
                                                     <rect key="frame" x="160.5" y="0.5" width="53" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llu-Wt-A1L">
                                                     <rect key="frame" x="213.5" y="0.5" width="53.5" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zub-9M-PsB">
                                                     <rect key="frame" x="267" y="0.5" width="53.5" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvx-EB-RPG">
                                                     <rect key="frame" x="320.5" y="0.5" width="53.5" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -134,6 +134,7 @@
                                     <outlet property="fri" destination="Llu-Wt-A1L" id="O6l-b3-LCM"/>
                                     <outlet property="mon" destination="z1i-1t-ocp" id="xEI-m7-GDK"/>
                                     <outlet property="sat" destination="Zub-9M-PsB" id="scU-pk-ydb"/>
+                                    <outlet property="stackView" destination="z0x-s7-coQ" id="Bb2-gZ-kyv"/>
                                     <outlet property="sun" destination="cvx-EB-RPG" id="jdL-LY-01e"/>
                                     <outlet property="thu" destination="fBf-wb-OfU" id="9Td-FV-azl"/>
                                     <outlet property="tue" destination="z3L-7r-sEe" id="4by-lM-L00"/>
@@ -151,6 +152,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93p-tg-vZL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1677" y="-333"/>
+        </scene>
+        <!--Day View Controller-->
+        <scene sceneID="ddG-r0-qut">
+            <objects>
+                <viewController storyboardIdentifier="dayDetail" id="eso-ga-u48" customClass="DayViewController" customModule="Stamps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RO3-R0-VNk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWK-2d-Ta6">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l31-LP-Fae">
+                                        <rect key="frame" x="10" y="40" width="36.5" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m84-jA-dg4">
+                                        <rect key="frame" x="89.5" y="10" width="61" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="l31-LP-Fae" firstAttribute="top" secondItem="TWK-2d-Ta6" secondAttribute="top" constant="40" id="2sy-Xw-VpC"/>
+                                    <constraint firstAttribute="width" constant="240" id="3Ph-wc-Oqd"/>
+                                    <constraint firstItem="l31-LP-Fae" firstAttribute="leading" secondItem="TWK-2d-Ta6" secondAttribute="leading" constant="10" id="8Rt-Th-dDQ"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="l31-LP-Fae" secondAttribute="trailing" constant="20" symbolic="YES" id="IZY-wu-eqk"/>
+                                    <constraint firstAttribute="height" constant="240" id="MKp-Sr-YAM"/>
+                                    <constraint firstItem="m84-jA-dg4" firstAttribute="top" secondItem="TWK-2d-Ta6" secondAttribute="top" constant="10" id="fcd-3r-doe"/>
+                                    <constraint firstItem="m84-jA-dg4" firstAttribute="centerX" secondItem="TWK-2d-Ta6" secondAttribute="centerX" id="jYL-Ep-tEC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TWK-2d-Ta6" firstAttribute="centerY" secondItem="RO3-R0-VNk" secondAttribute="centerY" id="vSy-tT-hkb"/>
+                            <constraint firstItem="TWK-2d-Ta6" firstAttribute="centerX" secondItem="RO3-R0-VNk" secondAttribute="centerX" id="xS4-gL-qyM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zje-Cp-5I8"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dayTitle" destination="l31-LP-Fae" id="iie-73-DIv"/>
+                        <outlet property="dayView" destination="TWK-2d-Ta6" id="ZCr-w8-VEi"/>
+                        <outlet property="monthTitle" destination="m84-jA-dg4" id="8Uw-Xn-uFu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WuI-SY-f8T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2504" y="-333"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="Nhp-AX-zr1">

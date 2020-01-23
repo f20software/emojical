@@ -10,7 +10,7 @@ import UIKit
 
 protocol WeekCellDelegate {
     // Index of the day tapped - from 0 to 6
-    func dayTapped(_ day: Int, indexPath: IndexPath)
+    func dayTapped(_ dayIdx: Int, indexPath: IndexPath)
 }
 
 
@@ -55,30 +55,11 @@ class WeekCell: UITableViewCell {
         ]
     }
     
-    func loadData(_ data: [String], indexPath: IndexPath) {
+    func loadData(_ labels: [String], data: [[UIColor]], indexPath: IndexPath) {
         var idx = 0
         for (label, badgeView) in allLabelsBadges {
-            label.text = data[idx]
-            if data[idx] == "" {
-                badgeView.badges = nil
-                badgeView.setNeedsDisplay()
-            }
-            else if data[idx] == "13" {
-                badgeView.badges = [UIColor.red, UIColor.green]
-                badgeView.setNeedsDisplay()
-            }
-            else if data[idx] == "8" {
-                badgeView.badges = [UIColor.green, UIColor.blue, UIColor.orange]
-                badgeView.setNeedsDisplay()
-            }
-            else if data[idx] == "21" {
-                badgeView.badges = [UIColor.red, UIColor.brown]
-                badgeView.setNeedsDisplay()
-            }
-            else {
-                badgeView.badges = [UIColor.lightGray]
-                badgeView.setNeedsDisplay()
-            }
+            label.text = labels[idx]
+            badgeView.badges = data[idx]
             idx += 1
         }
         self.cellIndexPath = indexPath

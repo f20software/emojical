@@ -8,11 +8,21 @@
 
 import Foundation
 
+// Simple date structure
+struct DateYMD {
+    let year: Int
+    let month: Int
+    let day: Int
+}
+
 class CalenderHelper {
+
+    // Singleton instance
+    static let shared = CalenderHelper()
 
     var months = [Month]()
     
-    init() {
+    private init() {
         // TODO: For now, just create all month for current year
         for i in 1...12 {
             months.append(Month(i, year: 2020))
@@ -35,16 +45,17 @@ class CalenderHelper {
         return months[month].textForMonth
     }
     
-    // Return selected month day based on index of week and index of selected day
-    // or nil if selected number is not within month range
-    func dayInMonth(month: Int, week: Int, day: Int) -> Int? {
-        let dayNum = week * 7 + day - months[month].firstIndex + 1
-        if dayNum > 0 && dayNum <= months[month].numberOfDays {
-            return dayNum
+    // Convert index representation of the date into actual simple date structure
+    // Handles cases where certain days in a week falls out of the current month and return nil for them
+    // For example: if January 1 is Tuesday, calling it for January with week index == 0 and day index == 0
+    // will return nil
+    func indexToDate(monthIdx: Int, weekIdx: Int, dayIdx: Int) -> DateYMD? {
+        let dayNum = weekIdx * 7 + dayIdx - months[monthIdx].firstIndex + 1
+        if dayNum > 0 && dayNum <= months[monthIdx].numberOfDays {
+            return DateYMD(year: months[monthIdx].year, month: months[monthIdx].month, day: dayNum)
         }
         return nil
     }
-    
 }
 
 extension CalenderHelper {

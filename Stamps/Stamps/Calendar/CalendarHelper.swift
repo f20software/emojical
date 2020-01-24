@@ -20,7 +20,7 @@ class CalenderHelper {
     // Singleton instance
     static let shared = CalenderHelper()
 
-    var months = [Month]()
+    private var months = [Month]()
     
     private init() {
         // TODO: For now, just create all month for current year
@@ -33,21 +33,13 @@ class CalenderHelper {
         return months.count
     }
     
-    func numberOfWeeksIn(month: Int) -> Int {
-        return months[month].numberOfWeeks
-    }
-    
-    func textForWeek(month: Int, week: Int) -> [String] {
-        return months[month].textForWeek(week)
-    }
-    
-    func textForMonth(_ month: Int) -> String {
-        return months[month].textForMonth
+    func monthAt(_ index: Int) -> Month {
+        return months[index]
     }
     
     // Convert index representation of the date into actual simple date structure
     // Handles cases where certain days in a week falls out of the current month and return nil for them
-    // For example: if January 1 is Tuesday, calling it for January with week index == 0 and day index == 0
+    // For example: if January 1 is Tuesday, calling it for January with week index == 0 and day index == 0 (Monday)
     // will return nil
     func indexToDate(monthIdx: Int, weekIdx: Int, dayIdx: Int) -> DateYMD? {
         let dayNum = weekIdx * 7 + dayIdx - months[monthIdx].firstIndex + 1
@@ -56,6 +48,21 @@ class CalenderHelper {
         }
         return nil
     }
+    
+    func labelForDay(_ date: DateYMD) -> String {
+        let calendar = Calendar.sharedCalendarWithSystemTimezone()
+
+        var comps = DateComponents()
+        comps.year = date.year
+        comps.month = date.month
+        comps.day = date.day
+        
+        let df = DateFormatter()
+        df.dateFormat = "MMMM, d"
+        
+        return df.string(from: calendar.date(from: comps)!)
+    }
+
 }
 
 extension CalenderHelper {
@@ -79,7 +86,7 @@ extension CalenderHelper {
             recalculateWeeks()
         }
         
-        var textForMonth: String {
+        var label: String {
             let calendar = Calendar.sharedCalendarWithSystemTimezone()
 
             var comps = DateComponents()
@@ -93,10 +100,10 @@ extension CalenderHelper {
             return df.string(from: calendar.date(from: comps)!)
         }
         
-        func textForWeek(_ week: Int) -> [String] {
+        func labelsForDaysInWeek(_ weekIdx: Int) -> [String] {
             var res = [String]()
             for i in 0...6 {
-                let num = i + (week*7) - firstIndex + 1
+                let num = i + (weekIdx*7) - firstIndex + 1
                 if num > 0 && num <= numberOfDays {
                     res.append("\(num)")
                 }

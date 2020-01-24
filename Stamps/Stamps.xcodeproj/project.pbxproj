@@ -86,8 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */,
-				F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */,
 				F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */,
+				F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */,
 				F2FF7EA023D659490033D9DC /* DayBadgeView.swift */,
 			);
 			path = CalendarView;

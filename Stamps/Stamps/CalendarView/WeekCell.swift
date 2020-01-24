@@ -13,7 +13,6 @@ protocol WeekCellDelegate {
     func dayTapped(_ dayIdx: Int, indexPath: IndexPath)
 }
 
-
 class WeekCell: UITableViewCell {
     
     @IBOutlet weak var stackView: UIStackView!
@@ -77,8 +76,8 @@ class WeekCell: UITableViewCell {
         let loc = sender.location(in: self.stackView)
         let index = Int(ceil(loc.x / (self.stackView.frame.width / 7))) - 1
         
-        if delegate != nil && index >= 0 && index < 7 {
-            delegate!.dayTapped(index, indexPath: cellIndexPath!)
+        if index >= 0 && index < 7 {
+            delegate?.dayTapped(index, indexPath: cellIndexPath!)
         }
     }
 }

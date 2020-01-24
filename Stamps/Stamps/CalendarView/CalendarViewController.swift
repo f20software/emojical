@@ -20,77 +20,86 @@ class CalendarViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
+    
+    // MARK: UITableView
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return calendar.numberOfMonths
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return calendar.numberOfWeeksIn(month: section)
+        return calendar.monthAt(section).numberOfWeeks
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return calendar.textForMonth(section)
+        return calendar.monthAt(section).label
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "weekCell") as! WeekCell
         
-        let weekLabels = calendar.textForWeek(month: indexPath.section, week: indexPath.row)
-        var weekData = [[UIColor]]()
-        
-        for i in 0..<7 {
-            let date = calendar.indexToDate(monthIdx: indexPath.section, weekIdx: indexPath.row, dayIdx: i)
-            if date != nil {
-                let stamps = db.stampsForDay(date!)
-                var colors = [UIColor]()
-                
-                if stamps != nil {
-                    for stamp in stamps! {
-                        colors.append(db.stampById(stamp)!.color)
-                    }
-                }
-                
-                weekData.append(colors)
-            }
-            else {
-                weekData.append([UIColor]())
-            }
-        }
-        
+        let weekLabels = calendar.monthAt(indexPath.section).labelsForDaysInWeek(indexPath.row)
+        let weekData = weekColorData(monthIdx: indexPath.section, weekIdx: indexPath.row)
         
         cell.loadData(weekLabels, data: weekData, indexPath: indexPath)
         cell.delegate = self
         return cell
     }
+
+    // Helper method to go through seven days (some could be empty) and gather just
+    // color data from stamps selected for these days
+    func weekColorData(monthIdx: Int, weekIdx: Int) -> [[UIColor]] {
+        var res = [[UIColor]]()
+        for i in 0..<7 {
+            let date = calendar.indexToDate(monthIdx: monthIdx, weekIdx: weekIdx, dayIdx: i)
+            // Invalid date? Bail our early
+            if date == nil {
+                res.append([])
+                continue
+            }
+
+            var colors = [UIColor]()
+            for stamp in db.stampsForDay(date!) {
+                colors.append(db.stampById(stamp)!.color)
+            }
+            
+            res.append(colors)
+        }
+        
+        return res
+    }
+    
 }
 
+// MARK: WeekCellDelegate - handling tap on the week day
 extension CalendarViewController : WeekCellDelegate {
     
     func dayTapped(_ dayIdx: Int, indexPath: IndexPath) {
-        let date = calendar.indexToDate(monthIdx: indexPath.section, weekIdx: indexPath.row, dayIdx: dayIdx)
-        if date != nil {
+        
+        // If tapped outside actual month date - bail out
+        guard let date = calendar.indexToDate(monthIdx: indexPath.section, weekIdx: indexPath.row, dayIdx: dayIdx) else {
+            return
+        }
 
-            // Load and configure day detail view controller
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let dayDetail = storyboard.instantiateViewController(
-                      withIdentifier: "dayDetail") as! DayViewController
-            dayDetail.date = date
-            
-            // Use the popover presentation style for your view controller.
-            dayDetail.modalPresentationStyle = .overFullScreen
-            dayDetail.modalTransitionStyle = .coverVertical
-            dayDetail.onDismiss = { (Bool) in
-                self.tableView.reloadData()
+        // Load and configure day detail view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let dayDetail = storyboard.instantiateViewController(
+                  withIdentifier: "dayDetail") as! DayViewController
+        dayDetail.date = date
+        
+        // Use the popover presentation style for your view controller.
+        dayDetail.modalPresentationStyle = .overFullScreen
+        dayDetail.modalTransitionStyle = .coverVertical
+        dayDetail.onDismiss = { (refresh) in
+            if refresh {
+                self.tableView.reloadRows(at: [indexPath], with: .none)
             }
-            
-            // Present the view controller (in a popover).
-            self.present(dayDetail, animated: true) {
-              // The popover is visible.
-            }
+        }
+        
+        // Present the view controller (in a popover).
+        self.present(dayDetail, animated: true) {
+          // The popover is visible.
         }
     }
 }

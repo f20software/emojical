@@ -44,8 +44,8 @@ class DataSource {
         return "\(date.year)-\(date.month)-\(date.day)"
     }
     
-    func stampsForDay(_ day: DateYMD) -> [Int]? {
-        return diary[keyForDate(day)]
+    func stampsForDay(_ day: DateYMD) -> [Int] {
+        return diary[keyForDate(day)] ?? []
     }
     
     func setStampsForDay(_ day: DateYMD, stamps: [Int]) {

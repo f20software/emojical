@@ -36,7 +36,7 @@ class DayViewController : UIViewController {
             
             for i in 0..<stampLabels.count {
                 stampLabels[i].textColor = i < favs.count ?
-                    (currentStamps.contains(favs[i].id) ? favs[i].color : UIColor.lightGray) : UIColor.clear
+                    (currentStamps.contains(favs[i].id!) ? UIColor(hex: favs[i].color) : UIColor.lightGray) : UIColor.clear
             }
         }
     }
@@ -44,7 +44,7 @@ class DayViewController : UIViewController {
     var onDismiss:(Bool) -> Void = { _ in }
     
     // Current stamps selected for the day
-    var currentStamps = [Int]()
+    var currentStamps = [Int64]()
     // Flag indicating whether we need to refresh table underneath when dismissing day view
     var dataChanged = false
 
@@ -82,7 +82,7 @@ class DayViewController : UIViewController {
     func toggleStamp(_ i: Int) {
         guard i < favs.count else { return }
         
-        let stampId = favs[i].id
+        let stampId = favs[i].id!
         
         if currentStamps.contains(stampId) {
             currentStamps.removeAll { $0 == stampId }
@@ -90,7 +90,7 @@ class DayViewController : UIViewController {
         }
         else {
             currentStamps.append(stampId)
-            stampLabels[i].textColor = favs[i].color
+            stampLabels[i].textColor = UIColor(hex: favs[i].color)
         }
         dataChanged = true
         stampLabels[i].setNeedsDisplay()
@@ -101,10 +101,10 @@ class DayViewController : UIViewController {
             // Order of items in currentStamps will reflect order in
             // which items were tapped. To ensure same order for all
             // days representation - let's order them before saving to the DB
-            var cleanResult = [Int]()
+            var cleanResult = [Int64]()
             for st in favs {
-                if currentStamps.contains(st.id) {
-                    cleanResult.append(st.id)
+                if currentStamps.contains(st.id!) {
+                    cleanResult.append(st.id!)
                 }
             }
             

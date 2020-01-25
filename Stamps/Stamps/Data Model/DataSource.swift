@@ -8,48 +8,90 @@
 
 import Foundation
 import UIKit
+import GRDB
 
 class DataSource {
 
     // Singleton instance
     static let shared = DataSource()
     
-    // Private data storage - right now only local
-    var stamps: [Stamp]
+    // Database
+    var dbQueue: DatabaseQueue!
     
-    // Simplest storage for stamps for given day. Dicrionary in the following format:
-    // YYYYMMDD: ABCDE
-    var diary: [String: [Int]]
-    
-    private init() {
-        self.stamps = [
-            Stamp(id: 1, label: "run", name: "Exercise", color: UIColor(hex: "8cba51"), favorite: true),
-            Stamp(id: 2, label: "wineglass", name: "Drink", color: UIColor(hex: "0f4c75"), favorite: true),
-            Stamp(id: 3, label: "steak", name: "Red meat", color: UIColor(hex: "c9485b"), favorite: true),
-            Stamp(id: 4, label: "cupcake", name: "Sweets", color: UIColor(hex: "4d4646"), favorite: true),
-            Stamp(id: 5, label: "frown", name: "Not feeling good", color: UIColor(hex: "3282b8"), favorite: true)
-        ]
-        self.diary = [String: [Int]]()
-    }
-
-    func stampById(_ identifier: Int) -> Stamp? {
-        return stamps.first { $0.id == identifier }
+    func stampById(_ identifier: Int64) -> Stamp? {
+        var result: Stamp? = nil
+        do {
+            try dbQueue.read { db in
+                let request = Stamp.filter(Stamp.Columns.id == identifier)
+                result = try request.fetchOne(db)
+            }
+        }
+        catch {
+            
+        }
+        
+        return result
     }
     
     func favoriteStamps() -> [Stamp] {
-        return stamps.filter { $0.favorite == true }
+        var result = [Stamp]()
+        do {
+            try dbQueue.read { db in
+                let request = Stamp.filter(Stamp.Columns.favorite == true).order(Stamp.Columns.id)
+                result = try request.fetchAll(db)
+            }
+        }
+        catch {
+            
+        }
+        
+        return result
     }
     
     private func keyForDate(_ date: DateYMD) -> String {
         return "\(date.year)-\(date.month)-\(date.day)"
     }
     
-    func stampsForDay(_ day: DateYMD) -> [Int] {
-        return diary[keyForDate(day)] ?? []
+    func stampsForDay(_ day: DateYMD) -> [Int64] {
+        var result = [Int64]()
+        do {
+            try dbQueue.read { db in
+                let request = Diary.filter(Diary.Columns.date == keyForDate(day)).order(Stamp.Columns.id)
+                let diary = try request.fetchOne(db)
+                
+                if diary != nil {
+                    result.append(contentsOf: diary!.stamps.split(separator: ",").map{ Int64($0)! })
+                }
+            }
+        }
+        catch {
+            
+        }
+        
+        return result
     }
     
-    func setStampsForDay(_ day: DateYMD, stamps: [Int]) {
-        diary[keyForDate(day)] = stamps
+    func setStampsForDay(_ day: DateYMD, stamps: [Int64]) {
+        do {
+            try dbQueue.write { db in
+                let ids = stamps.map { String($0) }
+                var diary = Diary(date: keyForDate(day), stamps: ids.joined(separator: ","))
+                try diary.insert(db)
+            }
+        }
+        catch {
+            
+        }
     }
-    
+ 
+    func setupDatabase(_ application: UIApplication) throws {
+        let databaseURL = try FileManager.default
+            .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            .appendingPathComponent("db.sqlite")
+        dbQueue = try AppDatabase.openDatabase(atPath: databaseURL.path)
+        
+        // Be a nice iOS citizen, and don't consume too much memory
+        // See https://github.com/groue/GRDB.swift/blob/master/README.md#memory-management
+        dbQueue.setupMemoryManagement(in: application)
+    }
 }

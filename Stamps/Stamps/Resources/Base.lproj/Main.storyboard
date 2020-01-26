@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BGe-M5-KsK" kind="relationship" relationship="viewControllers" id="0pU-OF-owc"/>
+                        <segue destination="uXQ-0Z-U2U" kind="relationship" relationship="viewControllers" id="FXF-cz-WyX"/>
+                        <segue destination="lPk-B2-hge" kind="relationship" relationship="viewControllers" id="kJK-JN-TPe"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-125" y="-20"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="s1R-kM-j9L">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Calendar" id="BGe-M5-KsK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="EV3-uy-p6r"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g9d-CD-tDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="-344"/>
+        </scene>
+        <!--Stamps-->
+        <scene sceneID="U2Q-Ox-Ezk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Stamps" id="uXQ-0Z-U2U" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="wLk-FZ-EQZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aTe-Q0-Jge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="-196"/>
+        </scene>
+        <!--Goals-->
+        <scene sceneID="spg-cO-tmA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Goals" id="lPk-B2-hge" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Xda-pO-Tyr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ULA-qZ-KUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="864" y="162"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  StampsViewController.swift
 //  Stamps
 //
 //  Created by Vladimir Svidersky on 1/17/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class StampsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,10 +15,14 @@
 		F2B4762B23DBDFEF0076BFDC /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F2B4762A23DBDFEF0076BFDC /* GRDB */; };
 		F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762C23DC1B440076BFDC /* AppDatabase.swift */; };
 		F2B4763023DCF9DE0076BFDC /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762F23DCF9DE0076BFDC /* Diary.swift */; };
+		F2B4763223DDF6CD0076BFDC /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B4763123DDF6CD0076BFDC /* Calendar.storyboard */; };
+		F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B4763523DE3CE00076BFDC /* Stamps.storyboard */; };
+		F2B4763B23DE3E390076BFDC /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4763A23DE3E390076BFDC /* GoalsViewController.swift */; };
+		F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */; };
 		F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */; };
 		F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */; };
 		F2C4943D23D2CBC800EAF9CC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */; };
-		F2C4943F23D2CBC800EAF9CC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943E23D2CBC800EAF9CC /* SecondViewController.swift */; };
+		F2C4943F23D2CBC800EAF9CC /* StampsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943E23D2CBC800EAF9CC /* StampsViewController.swift */; };
 		F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944023D2CBC800EAF9CC /* Main.storyboard */; };
 		F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */; };
 		F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */; };
@@ -36,11 +40,15 @@
 		F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
 		F2B4762C23DC1B440076BFDC /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		F2B4762F23DCF9DE0076BFDC /* Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
+		F2B4763123DDF6CD0076BFDC /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		F2B4763523DE3CE00076BFDC /* Stamps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stamps.storyboard; sourceTree = "<group>"; };
+		F2B4763A23DE3E390076BFDC /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
+		F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Goals.storyboard; sourceTree = "<group>"; };
 		F2C4943523D2CBC800EAF9CC /* Stamps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stamps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		F2C4943E23D2CBC800EAF9CC /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F2C4943E23D2CBC800EAF9CC /* StampsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsViewController.swift; sourceTree = "<group>"; };
 		F2C4944123D2CBC800EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2C4944623D2CBCA00EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,6 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				F26B273923D80CB700B8D0F9 /* Fonts */,
+				F2C4944023D2CBC800EAF9CC /* Main.storyboard */,
+				F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */,
+				F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -88,15 +99,44 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		F2A5256123D4CEEC00C3E0F3 /* CalendarView */ = {
+		F2A5256123D4CEEC00C3E0F3 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				F2B4763123DDF6CD0076BFDC /* Calendar.storyboard */,
 				F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */,
 				F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */,
 				F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */,
 				F2FF7EA023D659490033D9DC /* DayBadgeView.swift */,
 			);
-			path = CalendarView;
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		F2B4763323DE3C120076BFDC /* Stamps */ = {
+			isa = PBXGroup;
+			children = (
+				F2B4763523DE3CE00076BFDC /* Stamps.storyboard */,
+				F2C4943E23D2CBC800EAF9CC /* StampsViewController.swift */,
+			);
+			path = Stamps;
+			sourceTree = "<group>";
+		};
+		F2B4763423DE3C300076BFDC /* Application Pages */ = {
+			isa = PBXGroup;
+			children = (
+				F2A5256123D4CEEC00C3E0F3 /* Calendar */,
+				F2B4763323DE3C120076BFDC /* Stamps */,
+				F2B4763923DE3DBE0076BFDC /* Goals */,
+			);
+			path = "Application Pages";
+			sourceTree = "<group>";
+		};
+		F2B4763923DE3DBE0076BFDC /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */,
+				F2B4763A23DE3E390076BFDC /* GoalsViewController.swift */,
+			);
+			path = Goals;
 			sourceTree = "<group>";
 		};
 		F2C4942C23D2CBC700EAF9CC = {
@@ -120,15 +160,11 @@
 			children = (
 				F26B273823D80CB000B8D0F9 /* Resources */,
 				F2A5256023D4CED000C3E0F3 /* Calendar */,
-				F2A5256123D4CEEC00C3E0F3 /* CalendarView */,
+				F2B4763423DE3C300076BFDC /* Application Pages */,
 				F2FF7EAB23D671050033D9DC /* Colors */,
 				F2FF7EA423D66F0B0033D9DC /* Data Model */,
 				F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */,
 				F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */,
-				F2C4943E23D2CBC800EAF9CC /* SecondViewController.swift */,
-				F2C4944023D2CBC800EAF9CC /* Main.storyboard */,
-				F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */,
-				F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */,
 				F2C4944823D2CBCA00EAF9CC /* Info.plist */,
 			);
 			path = Stamps;
@@ -217,9 +253,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */,
 				F26B273B23D80D5100B8D0F9 /* ss-symbolicons-block.otf in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
+				F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
+				F2B4763223DDF6CD0076BFDC /* Calendar.storyboard in Resources */,
 				F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,7 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */,
-				F2C4943F23D2CBC800EAF9CC /* SecondViewController.swift in Sources */,
+				F2C4943F23D2CBC800EAF9CC /* StampsViewController.swift in Sources */,
 				F2C4943D23D2CBC800EAF9CC /* CalendarViewController.swift in Sources */,
 				F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */,
 				F2FF7EA123D659490033D9DC /* DayBadgeView.swift in Sources */,
@@ -245,6 +284,7 @@
 				F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
 				F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */,
+				F2B4763B23DE3E390076BFDC /* GoalsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

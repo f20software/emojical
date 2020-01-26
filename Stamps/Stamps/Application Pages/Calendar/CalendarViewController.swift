@@ -83,7 +83,7 @@ extension CalendarViewController : WeekCellDelegate {
         }
 
         // Load and configure day detail view controller
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
         let dayDetail = storyboard.instantiateViewController(
                   withIdentifier: "dayDetail") as! DayViewController
         dayDetail.date = date

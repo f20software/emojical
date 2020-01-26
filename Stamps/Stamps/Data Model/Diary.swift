@@ -10,7 +10,8 @@ import GRDB
 
 struct Diary {
     let date: String // YYYY-MM-DD format
-    let stamps: String // id1,id2...
+    let count: Int
+    let stampId: Int64 
 }
 
 extension Diary : Hashable { }
@@ -24,7 +25,8 @@ extension Diary: Codable, FetchableRecord, MutablePersistableRecord {
     // Define database columns
     enum Columns: String, ColumnExpression {
         case date
-        case stamps
+        case count
+        case stampId
     }
 
     // Update a player id after it has been inserted in the database.

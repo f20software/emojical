@@ -46,8 +46,9 @@ struct AppDatabase {
 
             // Create a table for diary
             try db.create(table: "diary") { t in
-                t.column("date", .text).notNull().unique(onConflict: .replace) // YYYY-MM-DD format
-                t.column("stamps", .text).notNull().collate(.nocase) // id1,id2,id3 etc
+                t.column("date", .text).notNull().collate(.nocase) // YYYY-MM-DD format
+                t.column("count", .integer).notNull()
+                t.column("stampId", .integer).notNull() 
             }
         }
         

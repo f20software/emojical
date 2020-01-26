@@ -57,10 +57,10 @@ class DataSource {
         do {
             try dbQueue.read { db in
                 let request = Diary.filter(Diary.Columns.date == keyForDate(day)).order(Stamp.Columns.id)
-                let diary = try request.fetchOne(db)
+                let allrecs = try request.fetchAll(db)
                 
-                if diary != nil {
-                    result.append(contentsOf: diary!.stamps.split(separator: ",").map{ Int64($0)! })
+                for rec in allrecs {
+                    result.append(rec.stampId)
                 }
             }
         }
@@ -74,9 +74,16 @@ class DataSource {
     func setStampsForDay(_ day: DateYMD, stamps: [Int64]) {
         do {
             try dbQueue.write { db in
-                let ids = stamps.map { String($0) }
-                var diary = Diary(date: keyForDate(day), stamps: ids.joined(separator: ","))
-                try diary.insert(db)
+                // Delete all records for that day so we can replace them with new ones
+                // TODO: Potentially can optimize it by calculating the diff
+                try Diary
+                    .filter(Diary.Columns.date == keyForDate(day))
+                    .deleteAll(db)
+
+                for stampId in stamps {
+                    var diary = Diary(date: keyForDate(day), count: 1, stampId: stampId)
+                    try diary.insert(db)
+                }
             }
         }
         catch {

@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Stamps-->
         <scene sceneID="K77-wr-yZo">
             <objects>
                 <tableViewController id="2Pq-do-wLT" customClass="StampsViewController" customModule="Stamps" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,13 +15,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fGJ-k6-Rbj">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stampCell" rowHeight="64" id="fGJ-k6-Rbj" customClass="StampCell" customModule="Stamps" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fGJ-k6-Rbj" id="scU-Nk-XDk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="run" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls1-59-FOq">
+                                            <rect key="frame" x="20" y="16" width="47" height="32"/>
+                                            <fontDescription key="fontDescription" name="SSSymboliconsBlock" family="SS Symbolicons" pointSize="32"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4B-pC-Kzv">
+                                            <rect key="frame" x="77" y="21.5" width="63" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="p4B-pC-Kzv" firstAttribute="leading" secondItem="ls1-59-FOq" secondAttribute="trailing" constant="10" id="5Dk-yR-tYE"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ls1-59-FOq" secondAttribute="bottom" constant="5" id="EE7-k3-IwC"/>
+                                        <constraint firstItem="p4B-pC-Kzv" firstAttribute="centerY" secondItem="scU-Nk-XDk" secondAttribute="centerY" id="N2Q-TK-gNp"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="p4B-pC-Kzv" secondAttribute="trailing" constant="10" id="OQi-aC-A8I"/>
+                                        <constraint firstItem="ls1-59-FOq" firstAttribute="centerY" secondItem="scU-Nk-XDk" secondAttribute="centerY" id="W88-wJ-Qn3"/>
+                                        <constraint firstItem="ls1-59-FOq" firstAttribute="top" secondItem="scU-Nk-XDk" secondAttribute="topMargin" constant="5" id="ZaD-yS-lDn"/>
+                                        <constraint firstItem="ls1-59-FOq" firstAttribute="leading" secondItem="scU-Nk-XDk" secondAttribute="leadingMargin" id="fMV-9W-csn"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="ls1-59-FOq" id="KA9-Ry-NrQ"/>
+                                    <outlet property="name" destination="p4B-pC-Kzv" id="4xF-g3-IaE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -29,11 +56,11 @@
                             <outlet property="delegate" destination="2Pq-do-wLT" id="lVw-zq-pr7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="ybJ-N4-cbn"/>
+                    <navigationItem key="navigationItem" title="Stamps" id="ybJ-N4-cbn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rsm-jU-93P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1864" y="234"/>
+            <point key="canvasLocation" x="1863.7681159420292" y="233.70535714285714"/>
         </scene>
         <!--Stamps-->
         <scene sceneID="CFT-uY-mvt">

@@ -51,15 +51,30 @@ struct AppDatabase {
                 t.column("stampId", .integer).notNull() 
             }
         }
-        
+//
+//        "B8B09b", "Gold",
+//        "7B92A3", "Grey",
+//        "6AB1D8", "Sky Blue",
+//        "0060A7", "Blue",
+//        "00BBB3", "Green",
+//        "57D3A3", "Mint",
+//        "FF6A00", "Orange",
+//        "BC83C9", "Purple",
+//        "F6323E", "Red",
+//        "ED8C6B", "Peach",
+//        "FFFFFF", "White",
+//        "F9BE00", "Yellow",
+//
         migrator.registerMigration("db-content0") { db in
             // Fill in default stamps
             for stamp in [
-                Stamp(id: nil, name: "Exercise", label: "run", color: "8cba51", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Drink", label: "wineglass", color: "0f4c75", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Red meat", label: "steak", color: "c9485b", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Sweets", label: "cupcake", color: "4d4646", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Not feeling good", label: "frown", color: "3282b8", favorite: true, deleted: false)
+                Stamp(id: nil, name: "Star", label: "star", color: "B8B09b", favorite: true, deleted: false),
+                Stamp(id: nil, name: "Run", label: "run", color: "00BBB3", favorite: true, deleted: false),
+                Stamp(id: nil, name: "Excersize", label: "exercise", color: "57D3A3", favorite: true, deleted: false),
+                Stamp(id: nil, name: "Drink", label: "wineglass", color: "BC83C9", favorite: true, deleted: false),
+                Stamp(id: nil, name: "Red meat", label: "steak", color: "BC83C9", favorite: true, deleted: false),
+                Stamp(id: nil, name: "Sweets", label: "cupcake", color: "ED8C6B", favorite: true, deleted: false)
+                // Stamp(id: nil, name: "Not feeling good", label: "frown", color: "3282b8", favorite: true, deleted: false)
             ] {
                 var s = stamp
                 try s.insert(db)

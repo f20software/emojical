@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F247541423DFC706006A13C3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541323DFC706006A13C3 /* Goal.swift */; };
 		F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColor+Hex.swift */; };
 		F26B273B23D80D5100B8D0F9 /* ss-symbolicons-block.otf in Resources */ = {isa = PBXBuildFile; fileRef = F26B273A23D80CC700B8D0F9 /* ss-symbolicons-block.otf */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F247541323DFC706006A13C3 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		F26B273623D6772400B8D0F9 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		F26B273A23D80CC700B8D0F9 /* ss-symbolicons-block.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ss-symbolicons-block.otf"; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				F2FF7EA223D66F030033D9DC /* DataSource.swift */,
 				F2B4762F23DCF9DE0076BFDC /* Diary.swift */,
+				F247541323DFC706006A13C3 /* Goal.swift */,
 				F2FF7EA523D66F3A0033D9DC /* Stamp.swift */,
 				F2B4762C23DC1B440076BFDC /* AppDatabase.swift */,
 			);
@@ -283,6 +286,7 @@
 				F2B4763023DCF9DE0076BFDC /* Diary.swift in Sources */,
 				F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
+				F247541423DFC706006A13C3 /* Goal.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
 				F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,

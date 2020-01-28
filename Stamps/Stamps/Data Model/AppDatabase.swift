@@ -34,7 +34,6 @@ struct AppDatabase {
         
         migrator.registerMigration("db-v0") { db in
             // Create a table for stamps
-            // See https://github.com/groue/GRDB.swift#create-tables
             try db.create(table: "stamp") { t in
                 t.autoIncrementedPrimaryKey("id")
                 t.column("name", .text).collate(.localizedCaseInsensitiveCompare)
@@ -51,6 +50,20 @@ struct AppDatabase {
                 t.column("stampId", .integer).notNull() 
             }
         }
+        
+        migrator.registerMigration("db-v1") { db in
+            // Create a table for goals
+            try db.create(table: "goal") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("name", .text).collate(.localizedCaseInsensitiveCompare)
+                t.column("period", .integer).notNull()
+                t.column("direction", .integer).notNull()
+                t.column("limit", .integer).notNull()
+                t.column("stamps", .text).notNull()
+                t.column("deleted", .boolean).notNull()
+            }
+        }
+        
 //
 //        "B8B09b", "Gold",
 //        "7B92A3", "Grey",
@@ -81,6 +94,17 @@ struct AppDatabase {
             }
         }
         
+        migrator.registerMigration("db-content1") { db in
+            // Fill in default stamps
+            for goal in [
+                Goal(id: nil, name: "Excersize", period: .week, direction: .positive, limit: 5, stamps: "2,3", deleted: false),
+                Goal(id: nil, name: "Don't drink", period: .week, direction: .negative, limit: 3, stamps: "4", deleted: false)
+            ] {
+                var g = goal
+                try g.insert(db)
+            }
+        }
+
         return migrator
     }
 }

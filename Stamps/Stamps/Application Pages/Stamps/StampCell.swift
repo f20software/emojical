@@ -15,6 +15,9 @@ class StampCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        label.layer.cornerRadius = 23.0
+        label.layer.borderWidth = 2.0
+        label.clipsToBounds = true
     }
     
     override func prepareForReuse() {

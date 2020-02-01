@@ -16,6 +16,7 @@ class StampsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
     
@@ -72,6 +73,37 @@ class StampsViewController: UITableViewController {
 
 }
 
+// MARK: - Navigation
+
+extension StampsViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "edit" {
+            let stamp = stamps[tableView.indexPathForSelectedRow!.row]
+            let controller = segue.destination as! StampEditViewController
+            controller.title = stamp.name
+            controller.stamp = stamp
+            controller.presentation = .push
+        }
+        else if segue.identifier == "new" {
+            setEditing(false, animated: true)
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.viewControllers.first as! StampEditViewController
+            controller.title = "New Stamp"
+            controller.stamp = Stamp(id: nil, name: "", label: "star", color: UIColor.colorByName("Gold"), favorite: false, deleted: false)
+            controller.presentation = .modal
+        }
+    }
+    
+    @IBAction func cancelStampEdition(_ segue: UIStoryboardSegue) {
+        // Stamp creation cancelled
+    }
+    
+    @IBAction func commitStampEdition(_ segue: UIStoryboardSegue) {
+        // Stamp creation committed
+    }
+}
+
 
 // MARK: - UITableViewDataSource
 
@@ -88,8 +120,13 @@ extension StampsViewController {
         
     private func configure(_ cell: StampCell, at indexPath: IndexPath) {
         let stamp = stamps[indexPath.row]
+        
+        cell.label.attributedText = NSAttributedString(string: stamp.label, attributes: [
+            NSAttributedString.Key.baselineOffset: -1.5,
+            NSAttributedString.Key.font: UIFont(name: "SS Symbolicons", size: 28.0)!,
+            NSAttributedString.Key.foregroundColor: UIColor(hex: stamp.color)
+        ])
         cell.name.text = stamp.name.isEmpty ? "-" : stamp.name
-        cell.label.text = stamp.label
-        cell.label.textColor = UIColor(hex: stamp.color)
+        cell.label.layer.borderColor = UIColor(hex: stamp.color).cgColor
     }
 }

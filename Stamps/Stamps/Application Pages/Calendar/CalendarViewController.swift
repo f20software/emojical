@@ -52,7 +52,7 @@ class CalendarViewController: UITableViewController {
     func weekColorData(monthIdx: Int, weekIdx: Int) -> [[UIColor]] {
         var res = [[UIColor]]()
         for i in 0..<7 {
-            let date = calendar.indexToDate(monthIdx: monthIdx, weekIdx: weekIdx, dayIdx: i)
+            let date = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: i)
             // Invalid date? Bail our early
             if date == nil {
                 res.append([])
@@ -78,7 +78,7 @@ extension CalendarViewController : WeekCellDelegate {
     func dayTapped(_ dayIdx: Int, indexPath: IndexPath) {
         
         // If tapped outside actual month date - bail out
-        guard let date = calendar.indexToDate(monthIdx: indexPath.section, weekIdx: indexPath.row, dayIdx: dayIdx) else {
+        guard let date = calendar.dateFromIndex(month: indexPath.section, week: indexPath.row, day: dayIdx) else {
             return
         }
 

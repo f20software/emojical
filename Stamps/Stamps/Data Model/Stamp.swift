@@ -11,10 +11,10 @@ import GRDB
 struct Stamp {
     // Prefer Int64 for auto-incremented database ids
     var id: Int64?
-    let name: String
-    let label: String
-    let color: String // Hex represenatation like 01cd12
-    let favorite: Bool
+    var name: String
+    var label: String
+    var color: String // Hex represenatation like 01cd12
+    var favorite: Bool
     let deleted: Bool
 }
 

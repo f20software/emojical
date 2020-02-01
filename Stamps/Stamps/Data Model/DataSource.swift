@@ -48,15 +48,11 @@ class DataSource {
         return result
     }
     
-    private func keyForDate(_ date: DateYMD) -> String {
-        return "\(date.year)-\(date.month)-\(date.day)"
-    }
-    
     func stampsForDay(_ day: DateYMD) -> [Int64] {
         var result = [Int64]()
         do {
             try dbQueue.read { db in
-                let request = Diary.filter(Diary.Columns.date == keyForDate(day)).order(Stamp.Columns.id)
+                let request = Diary.filter(Diary.Columns.date == day.toString()).order(Stamp.Columns.id)
                 let allrecs = try request.fetchAll(db)
                 
                 for rec in allrecs {
@@ -77,11 +73,11 @@ class DataSource {
                 // Delete all records for that day so we can replace them with new ones
                 // TODO: Potentially can optimize it by calculating the diff
                 try Diary
-                    .filter(Diary.Columns.date == keyForDate(day))
+                    .filter(Diary.Columns.date == day.toString())
                     .deleteAll(db)
 
                 for stampId in stamps {
-                    var diary = Diary(date: keyForDate(day), count: 1, stampId: stampId)
+                    var diary = Diary(date: day.toString(), count: 1, stampId: stampId)
                     try diary.insert(db)
                 }
             }

@@ -13,6 +13,11 @@ struct DateYMD {
     let year: Int
     let month: Int
     let day: Int
+    
+    // Will use this as database key
+    func toString() -> String {
+        return "\(year)-\(month)-\(day)"
+    }
 }
 
 class CalenderHelper {
@@ -41,10 +46,10 @@ class CalenderHelper {
     // Handles cases where certain days in a week falls out of the current month and return nil for them
     // For example: if January 1 is Tuesday, calling it for January with week index == 0 and day index == 0 (Monday)
     // will return nil
-    func indexToDate(monthIdx: Int, weekIdx: Int, dayIdx: Int) -> DateYMD? {
-        let dayNum = weekIdx * 7 + dayIdx - months[monthIdx].firstIndex + 1
-        if dayNum > 0 && dayNum <= months[monthIdx].numberOfDays {
-            return DateYMD(year: months[monthIdx].year, month: months[monthIdx].month, day: dayNum)
+    func dateFromIndex(month: Int, week: Int, day: Int) -> DateYMD? {
+        let dayNum = week * 7 + day - months[month].firstIndex + 1
+        if dayNum > 0 && dayNum <= months[month].numberOfDays {
+            return DateYMD(year: months[month].year, month: months[month].month, day: dayNum)
         }
         return nil
     }

@@ -10,6 +10,8 @@ import UIKit
 
 class DayViewController : UIViewController {
     
+    let notSelectedStampColor = UIColor(hex: "DDDDDD")
+    
     @IBOutlet weak var dayView: UIView!
     @IBOutlet weak var dayTitle: UILabel!
     @IBOutlet weak var stamp1: UILabel!
@@ -36,7 +38,7 @@ class DayViewController : UIViewController {
             
             for i in 0..<stampLabels.count {
                 stampLabels[i].textColor = i < favs.count ?
-                    (currentStamps.contains(favs[i].id!) ? UIColor(hex: favs[i].color) : UIColor.lightGray) : UIColor.clear
+                    (currentStamps.contains(favs[i].id!) ? UIColor(hex: favs[i].color) : notSelectedStampColor) : UIColor.clear
             }
         }
     }
@@ -86,7 +88,7 @@ class DayViewController : UIViewController {
         
         if currentStamps.contains(stampId) {
             currentStamps.removeAll { $0 == stampId }
-            stampLabels[i].textColor = UIColor.lightGray
+            stampLabels[i].textColor = notSelectedStampColor
         }
         else {
             currentStamps.append(stampId)

@@ -32,6 +32,21 @@ class DataSource {
         
         return result
     }
+
+    func goalById(_ identifier: Int64) -> Goal? {
+        var result: Goal? = nil
+        do {
+            try dbQueue.read { db in
+                let request = Goal.filter(Goal.Columns.id == identifier)
+                result = try request.fetchOne(db)
+            }
+        }
+        catch {
+            
+        }
+        
+        return result
+    }
     
     func favoriteStamps() -> [Stamp] {
         var result = [Stamp]()
@@ -48,11 +63,11 @@ class DataSource {
         return result
     }
     
-    func stampsForDay(_ day: DateYMD) -> [Int64] {
+    func stampsForDay(_ day: Date) -> [Int64] {
         var result = [Int64]()
         do {
             try dbQueue.read { db in
-                let request = Diary.filter(Diary.Columns.date == day.toString()).order(Stamp.Columns.id)
+                let request = Diary.filter(Diary.Columns.date == day.yyyyMmDd).order(Stamp.Columns.id)
                 let allrecs = try request.fetchAll(db)
                 
                 for rec in allrecs {
@@ -66,18 +81,80 @@ class DataSource {
         
         return result
     }
+
+    func stampsForDateInterval(from: Date, to: Date) -> [Diary] {
+        var result = [Diary]()
+        do {
+            try dbQueue.read { db in
+                let request = Diary
+                    .filter(Diary.Columns.date >= from.yyyyMmDd && Diary.Columns.date <= to.yyyyMmDd)
+                    .order(Diary.Columns.date)
+                let allrecs = try request.fetchAll(db)
+
+                for rec in allrecs {
+                    result.append(rec)
+                }
+            }
+        }
+        catch {
+            
+        }
+        
+        return result
+    }
     
-    func setStampsForDay(_ day: DateYMD, stamps: [Int64]) {
+    func awardsForDateInterval(from: Date, to: Date) -> [Award] {
+        var result = [Award]()
+        do {
+            try dbQueue.read { db in
+                let request = Award
+                    .filter(Award.Columns.date >= from.yyyyMmDd && Award.Columns.date <= to.yyyyMmDd)
+                    .order(Diary.Columns.date)
+                let allrecs = try request.fetchAll(db)
+
+                for rec in allrecs {
+                    result.append(rec)
+                }
+            }
+        }
+        catch {
+            
+        }
+        
+        return result
+    }
+
+    func weeklyGoals() -> [Goal] {
+        var result = [Goal]()
+        do {
+            try dbQueue.read { db in
+                let request = Goal
+                    .filter(Goal.Columns.period == Goal.Period.week)
+                let allrecs = try request.fetchAll(db)
+
+                for rec in allrecs {
+                    result.append(rec)
+                }
+            }
+        }
+        catch {
+            
+        }
+        
+        return result
+    }
+
+    func setStampsForDay(_ day: Date, stamps: [Int64]) {
         do {
             try dbQueue.write { db in
                 // Delete all records for that day so we can replace them with new ones
                 // TODO: Potentially can optimize it by calculating the diff
                 try Diary
-                    .filter(Diary.Columns.date == day.toString())
+                    .filter(Diary.Columns.date == day.yyyyMmDd)
                     .deleteAll(db)
 
                 for stampId in stamps {
-                    var diary = Diary(date: day.toString(), count: 1, stampId: stampId)
+                    var diary = Diary(date: day.yyyyMmDd, count: 1, stampId: stampId)
                     try diary.insert(db)
                 }
             }
@@ -86,6 +163,7 @@ class DataSource {
             
         }
     }
+    
  
     func setupDatabase(_ application: UIApplication) throws {
         let databaseURL = try FileManager.default

@@ -13,6 +13,8 @@
 		F247541B23E5D2CB006A13C3 /* IconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541923E5D2CB006A13C3 /* IconsViewController.swift */; };
 		F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541C23E5DF6B006A13C3 /* Palette.swift */; };
 		F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542223E5E3B5006A13C3 /* ColorsViewController.swift */; };
+		F247542523E734CE006A13C3 /* AwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542423E734CE006A13C3 /* AwardManager.swift */; };
+		F247542723E74C49006A13C3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542623E74C49006A13C3 /* Award.swift */; };
 		F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColor+Hex.swift */; };
 		F26B273B23D80D5100B8D0F9 /* ss-symbolicons-block.otf in Resources */ = {isa = PBXBuildFile; fileRef = F26B273A23D80CC700B8D0F9 /* ss-symbolicons-block.otf */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
@@ -26,6 +28,7 @@
 		F2B4763B23DE3E390076BFDC /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4763A23DE3E390076BFDC /* GoalsViewController.swift */; };
 		F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */; };
 		F2B4763F23DE4B540076BFDC /* StampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4763E23DE4B540076BFDC /* StampCell.swift */; };
+		F2C190D22401BD50003F5ABA /* AwardBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D12401BD50003F5ABA /* AwardBadgeView.swift */; };
 		F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */; };
 		F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */; };
 		F2C4943D23D2CBC800EAF9CC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */; };
@@ -46,6 +49,8 @@
 		F247541923E5D2CB006A13C3 /* IconsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsViewController.swift; sourceTree = "<group>"; };
 		F247541C23E5DF6B006A13C3 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		F247542223E5E3B5006A13C3 /* ColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
+		F247542423E734CE006A13C3 /* AwardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardManager.swift; sourceTree = "<group>"; };
+		F247542623E74C49006A13C3 /* Award.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		F26B273623D6772400B8D0F9 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		F26B273A23D80CC700B8D0F9 /* ss-symbolicons-block.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ss-symbolicons-block.otf"; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 		F2B4763A23DE3E390076BFDC /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
 		F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Goals.storyboard; sourceTree = "<group>"; };
 		F2B4763E23DE4B540076BFDC /* StampCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampCell.swift; sourceTree = "<group>"; };
+		F2C190D12401BD50003F5ABA /* AwardBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardBadgeView.swift; sourceTree = "<group>"; };
 		F2C4943523D2CBC800EAF9CC /* Stamps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stamps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 				F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */,
 				F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */,
 				F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */,
+				F2C190D12401BD50003F5ABA /* AwardBadgeView.swift */,
 				F2FF7EA023D659490033D9DC /* DayBadgeView.swift */,
 			);
 			path = Calendar;
@@ -192,11 +199,13 @@
 		F2FF7EA423D66F0B0033D9DC /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				F2B4762C23DC1B440076BFDC /* AppDatabase.swift */,
 				F2FF7EA223D66F030033D9DC /* DataSource.swift */,
+				F247542423E734CE006A13C3 /* AwardManager.swift */,
 				F2B4762F23DCF9DE0076BFDC /* Diary.swift */,
+				F247542623E74C49006A13C3 /* Award.swift */,
 				F247541323DFC706006A13C3 /* Goal.swift */,
 				F2FF7EA523D66F3A0033D9DC /* Stamp.swift */,
-				F2B4762C23DC1B440076BFDC /* AppDatabase.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -300,13 +309,16 @@
 				F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* Stamp.swift in Sources */,
 				F247541B23E5D2CB006A13C3 /* IconsViewController.swift in Sources */,
+				F2C190D22401BD50003F5ABA /* AwardBadgeView.swift in Sources */,
 				F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */,
 				F2B4763023DCF9DE0076BFDC /* Diary.swift in Sources */,
 				F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
+				F247542723E74C49006A13C3 /* Award.swift in Sources */,
 				F247541423DFC706006A13C3 /* Goal.swift in Sources */,
 				F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
+				F247542523E734CE006A13C3 /* AwardManager.swift in Sources */,
 				F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
 				F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */,
@@ -457,6 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -475,6 +488,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

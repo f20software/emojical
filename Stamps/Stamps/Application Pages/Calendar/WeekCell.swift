@@ -32,6 +32,8 @@ class WeekCell: UITableViewCell {
     @IBOutlet weak var satBadge: DayBadgeView!
     @IBOutlet weak var sunBadge: DayBadgeView!
     
+    @IBOutlet weak var awardBadge: AwardBadgeView!
+    
     var delegate: WeekCellDelegate?
     var cellIndexPath: IndexPath?
     var allLabelsBadges: [(UILabel, DayBadgeView)]!
@@ -52,15 +54,25 @@ class WeekCell: UITableViewCell {
             (sat, satBadge),
             (sun, sunBadge)
         ]
+        
+        if CalenderHelper.weekStartMonday {
+            sat.textColor = UIColor.secondaryLabel
+            sun.textColor = UIColor.secondaryLabel
+        }
+        else {
+            mon.textColor = UIColor.secondaryLabel
+            sun.textColor = UIColor.secondaryLabel
+        }
     }
     
-    func loadData(_ labels: [String], data: [[UIColor]], indexPath: IndexPath) {
+    func loadData(_ labels: [String], data: [[UIColor]], awards: [UIColor], indexPath: IndexPath) {
         var idx = 0
         for (label, badgeView) in allLabelsBadges {
             label.text = labels[idx]
             badgeView.badges = data[idx]
             idx += 1
         }
+        awardBadge.badges = awards
         self.cellIndexPath = indexPath
     }
     
@@ -70,6 +82,8 @@ class WeekCell: UITableViewCell {
             badgeView.badges = nil
             badgeView.setNeedsDisplay()
         }
+        awardBadge.badges = nil
+        awardBadge.setNeedsDisplay()
     }
     
     @objc func cellTapped(sender: UITapGestureRecognizer) {

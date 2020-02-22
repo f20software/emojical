@@ -41,8 +41,9 @@ class CalendarViewController: UITableViewController {
         
         let weekLabels = calendar.monthAt(indexPath.section).labelsForDaysInWeek(indexPath.row)
         let weekData = weekColorData(monthIdx: indexPath.section, weekIdx: indexPath.row)
+        let awardData = awardColorData(monthIdx: indexPath.section, weekIdx: indexPath.row)
         
-        cell.loadData(weekLabels, data: weekData, indexPath: indexPath)
+        cell.loadData(weekLabels, data: weekData, awards: awardData, indexPath: indexPath)
         cell.delegate = self
         return cell
     }
@@ -70,6 +71,25 @@ class CalendarViewController: UITableViewController {
         return res
     }
     
+    // Helper method to go through seven days (some could be empty) and gather just
+    // color data from stamps selected for these days
+    func awardColorData(monthIdx: Int, weekIdx: Int) -> [UIColor] {
+        var res = [UIColor]()
+        
+        let dateEnd = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: 6)
+        if dateEnd != nil {
+            // Update awards for Sunday
+            AwardManager.shared.recalculateAwardsForWeek(dateEnd!)
+            // Load them
+            let awards = db.awardsForDateInterval(from: dateEnd!.byAddingDays(-6), to: dateEnd!)
+            for award in awards {
+                let goal = db.goalById(award.goalId)
+                res.append(UIColor(hex: db.stampById(goal!.stampIds![0])!.color))
+            }
+        }
+        
+        return res
+    }
 }
 
 // MARK: WeekCellDelegate - handling tap on the week day

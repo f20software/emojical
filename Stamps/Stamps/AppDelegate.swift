@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // 
         try! DataSource.shared.setupDatabase(application)
-
         return true
     }
 

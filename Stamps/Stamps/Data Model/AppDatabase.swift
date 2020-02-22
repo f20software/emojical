@@ -49,9 +49,7 @@ struct AppDatabase {
                 t.column("count", .integer).notNull()
                 t.column("stampId", .integer).notNull() 
             }
-        }
-        
-        migrator.registerMigration("db-v1") { db in
+
             // Create a table for goals
             try db.create(table: "goal") { t in
                 t.autoIncrementedPrimaryKey("id")
@@ -62,9 +60,19 @@ struct AppDatabase {
                 t.column("stamps", .text).notNull()
                 t.column("deleted", .boolean).notNull()
             }
+
+            // Create a table for awards
+            try db.create(table: "award") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("goalId", .integer).notNull()
+                t.column("date", .text).notNull()
+            }
         }
         
-//
+        migrator.registerMigration("update-awards") { db in
+            try db.execute(sql: "delete from award where goalId = 2;")
+        }
+
 //        "B8B09b", "Gold",
 //        "7B92A3", "Grey",
 //        "6AB1D8", "Sky Blue",
@@ -83,7 +91,7 @@ struct AppDatabase {
             for stamp in [
                 Stamp(id: nil, name: "Star", label: "star", color: "B8B09b", favorite: true, deleted: false),
                 Stamp(id: nil, name: "Run", label: "run", color: "00BBB3", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Excersize", label: "exercise", color: "57D3A3", favorite: true, deleted: false),
+                Stamp(id: nil, name: "Exercise", label: "exercise", color: "57D3A3", favorite: true, deleted: false),
                 Stamp(id: nil, name: "Drink", label: "wineglass", color: "BC83C9", favorite: true, deleted: false),
                 Stamp(id: nil, name: "Red meat", label: "steak", color: "BC83C9", favorite: true, deleted: false),
                 Stamp(id: nil, name: "Sweets", label: "cupcake", color: "ED8C6B", favorite: true, deleted: false)

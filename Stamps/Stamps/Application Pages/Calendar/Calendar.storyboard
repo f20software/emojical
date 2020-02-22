@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ss-symbolicons-block.otf">
+            <string>SSSymboliconsBlock</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Calendar-->
         <scene sceneID="Nhp-AX-zr1">
@@ -41,48 +46,48 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XV3-So-Bx8">
-                                            <rect key="frame" x="20" y="11" width="374" height="24"/>
+                                            <rect key="frame" x="20" y="11" width="364" height="24"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kz-JA-XTN">
-                                                    <rect key="frame" x="0.0" y="2" width="53.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="2" width="52" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uv7-r4-Kbz">
-                                                    <rect key="frame" x="53.5" y="2" width="53.5" height="20.5"/>
+                                                    <rect key="frame" x="52" y="2" width="52" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBA-kS-hGh">
-                                                    <rect key="frame" x="107" y="2" width="53.5" height="20.5"/>
+                                                    <rect key="frame" x="104" y="2" width="52" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSh-Lt-14C">
-                                                    <rect key="frame" x="160.5" y="2" width="53" height="20.5"/>
+                                                    <rect key="frame" x="156" y="2" width="52" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAN-qa-EGW">
-                                                    <rect key="frame" x="213.5" y="2" width="53.5" height="20.5"/>
+                                                    <rect key="frame" x="208" y="2" width="52" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0J3-gh-zgV">
-                                                    <rect key="frame" x="267" y="2" width="53.5" height="20.5"/>
+                                                    <rect key="frame" x="260" y="2" width="52" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00m-bN-AzX">
-                                                    <rect key="frame" x="320.5" y="2" width="53.5" height="20.5"/>
+                                                    <rect key="frame" x="312" y="2" width="52" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -102,37 +107,37 @@
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jNk-G2-U2B">
-                                            <rect key="frame" x="20" y="43" width="374" height="8"/>
+                                            <rect key="frame" x="20" y="43" width="364" height="8"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ixh-qK-E9G" customClass="DayBadgeView" customModule="Stamps" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="53.5" height="8"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="8"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="8" id="i7T-eh-ESf"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJB-Ws-or9" customClass="DayBadgeView" customModule="Stamps" customModuleProvider="target">
-                                                    <rect key="frame" x="53.5" y="0.0" width="53.5" height="8"/>
+                                                    <rect key="frame" x="52" y="0.0" width="52" height="8"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XX0-Nf-EwB" customClass="DayBadgeView" customModule="Stamps" customModuleProvider="target">
-                                                    <rect key="frame" x="107" y="0.0" width="53.5" height="8"/>
+                                                    <rect key="frame" x="104" y="0.0" width="52" height="8"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ri-KZ-APl" customClass="DayBadgeView" customModule="Stamps" customModuleProvider="target">
-                                                    <rect key="frame" x="160.5" y="0.0" width="53" height="8"/>
+                                                    <rect key="frame" x="156" y="0.0" width="52" height="8"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yb4-AQ-mQl" customClass="DayBadgeView" customModule="Stamps" customModuleProvider="target">
-                                                    <rect key="frame" x="213.5" y="0.0" width="53.5" height="8"/>
+                                                    <rect key="frame" x="208" y="0.0" width="52" height="8"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ln-qj-vZG" customClass="DayBadgeView" customModule="Stamps" customModuleProvider="target">
-                                                    <rect key="frame" x="267" y="0.0" width="53.5" height="8"/>
+                                                    <rect key="frame" x="260" y="0.0" width="52" height="8"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fLA-IV-XJF" customClass="DayBadgeView" customModule="Stamps" customModuleProvider="target">
-                                                    <rect key="frame" x="320.5" y="0.0" width="53.5" height="8"/>
+                                                    <rect key="frame" x="312" y="0.0" width="52" height="8"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                             </subviews>
@@ -151,18 +156,29 @@
                                                 <constraint firstItem="XX0-Nf-EwB" firstAttribute="width" secondItem="ixh-qK-E9G" secondAttribute="width" id="v8Z-Wp-BA0"/>
                                             </constraints>
                                         </stackView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lii-ug-gow" customClass="AwardBadgeView" customModule="Stamps" customModuleProvider="target">
+                                            <rect key="frame" x="386" y="11" width="8" height="40"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="8" id="y0m-YJ-Q8y"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="jNk-G2-U2B" secondAttribute="bottom" id="1xJ-7i-SId"/>
                                         <constraint firstItem="jNk-G2-U2B" firstAttribute="top" secondItem="XV3-So-Bx8" secondAttribute="bottom" constant="8" id="Bse-RT-K4A"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="XV3-So-Bx8" secondAttribute="trailing" id="CrX-gf-GWf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XV3-So-Bx8" secondAttribute="trailing" constant="10" id="CrX-gf-GWf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Lii-ug-gow" secondAttribute="trailing" id="Knk-dr-vb2"/>
                                         <constraint firstItem="XV3-So-Bx8" firstAttribute="top" secondItem="hSx-qb-RrD" secondAttribute="topMargin" id="M5C-fc-mm2"/>
                                         <constraint firstItem="jNk-G2-U2B" firstAttribute="leading" secondItem="hSx-qb-RrD" secondAttribute="leadingMargin" id="WQb-l8-zqS"/>
                                         <constraint firstItem="XV3-So-Bx8" firstAttribute="leading" secondItem="hSx-qb-RrD" secondAttribute="leadingMargin" id="h1d-lj-vDJ"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="jNk-G2-U2B" secondAttribute="trailing" id="qrI-Ua-aRt"/>
+                                        <constraint firstItem="Lii-ug-gow" firstAttribute="top" secondItem="hSx-qb-RrD" secondAttribute="topMargin" id="lTA-o8-VAw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="jNk-G2-U2B" secondAttribute="trailing" constant="10" id="qrI-Ua-aRt"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Lii-ug-gow" secondAttribute="bottom" id="sFE-iQ-ib9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="awardBadge" destination="Lii-ug-gow" id="tyN-QQ-4NY"/>
                                     <outlet property="fri" destination="PAN-qa-EGW" id="Gth-dS-O2V"/>
                                     <outlet property="friBadge" destination="yb4-AQ-mQl" id="ld2-UZ-zBO"/>
                                     <outlet property="mon" destination="4Kz-JA-XTN" id="dc6-Y3-IPo"/>
@@ -190,7 +206,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Df4-aN-kKr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="-333"/>
+            <point key="canvasLocation" x="1734.7826086956522" y="-333.48214285714283"/>
         </scene>
         <!--Day View Controller-->
         <scene sceneID="uwd-aT-XRD">

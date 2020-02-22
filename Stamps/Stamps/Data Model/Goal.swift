@@ -30,6 +30,10 @@ struct Goal {
     let limit: Int
     let stamps: String // Ids of Stamps that should be checked for this goal
     let deleted: Bool
+    
+    var stampIds: [Int64]? {
+        return stamps.split(separator: ",").map{ Int64($0)! }
+    }
 }
 
 extension Goal : Hashable { }

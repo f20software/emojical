@@ -28,7 +28,7 @@ class DayViewController : UIViewController {
         return DataSource.shared
     }
 
-    var date: DateYMD? {
+    var date: Date? {
         didSet {
             guard let date = date else { return }
             

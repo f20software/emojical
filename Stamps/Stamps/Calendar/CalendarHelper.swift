@@ -2,26 +2,17 @@
 //  CalendarHelper.swift
 //  Stamps
 //
-//  Created by Vladimir Svidersky on 1/18/20.
+//  Created by Vladimir Svidersky on 2/8/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 
 import Foundation
 
-// Simple date structure
-struct DateYMD {
-    let year: Int
-    let month: Int
-    let day: Int
-    
-    // Will use this as database key
-    func toString() -> String {
-        return "\(year)-\(month)-\(day)"
-    }
-}
-
 class CalenderHelper {
 
+    // We will add configuration later where user can choose whether to have Mon...Sun weeks of Sun...Sat
+    static let weekStartMonday = true
+    
     // Singleton instance
     static let shared = CalenderHelper()
 
@@ -30,7 +21,7 @@ class CalenderHelper {
     private init() {
         // TODO: For now, just create all month for current year
         for i in 1...12 {
-            months.append(Month(i, year: 2020))
+            months.append(Month(Date(year: 2020, month: i)))
         }
     }
     
@@ -46,26 +37,19 @@ class CalenderHelper {
     // Handles cases where certain days in a week falls out of the current month and return nil for them
     // For example: if January 1 is Tuesday, calling it for January with week index == 0 and day index == 0 (Monday)
     // will return nil
-    func dateFromIndex(month: Int, week: Int, day: Int) -> DateYMD? {
+    func dateFromIndex(month: Int, week: Int, day: Int) -> Date? {
         let dayNum = week * 7 + day - months[month].firstIndex + 1
         if dayNum > 0 && dayNum <= months[month].numberOfDays {
-            return DateYMD(year: months[month].year, month: months[month].month, day: dayNum)
+            return Date(year: months[month].year, month: months[month].month, day: dayNum)
         }
         return nil
     }
     
-    func labelForDay(_ date: DateYMD) -> String {
-        let calendar = Calendar.sharedCalendarWithSystemTimezone()
-
-        var comps = DateComponents()
-        comps.year = date.year
-        comps.month = date.month
-        comps.day = date.day
-        
+    func labelForDay(_ date: Date) -> String {
         let df = DateFormatter()
         df.dateFormat = "MMMM, d"
         
-        return df.string(from: calendar.date(from: comps)!)
+        return df.string(from: date)
     }
 
 }
@@ -79,15 +63,19 @@ extension CalenderHelper {
         // Most of month will have 5 weeks, edge cases will be identified in recalculateWeeks() method
         var numberOfWeeks: Int = 5
 
-        // Which day of the week 1st of the month fall into - 0 - Monday, 1 - Tuesday ... 6 - Sunday
+        // Which day of the week 1st of the month fall into on the calendar view:
+        // when Monday is first day if the week: 0 - Monday, 1 - Tuesday ... 6 - Sunday
+        // when Sunday is first day if the week: 0 - Sunday, 1 - Monday ... 6 - Saturday
         var firstIndex: Int = 0
 
         // Number of days in a month, duh
         var numberOfDays = 31
         
-        init(_ month: Int, year: Int) {
-            self.month = month
-            self.year = year
+        init(_ date: Date) {
+            let comps = Calendar.current.dateComponents([.year, .month], from: date)
+            self.month = comps.month!
+            self.year = comps.year!
+            
             recalculateWeeks()
         }
         
@@ -104,7 +92,12 @@ extension CalenderHelper {
             
             return df.string(from: calendar.date(from: comps)!)
         }
-        
+
+        // Returns index specific month days fall into (used in AwardManager to detect week that day falls into)
+        func indexForDay(_ day: Int) -> Int {
+            return (day % 7 + firstIndex - 1) % 7
+        }
+
         func labelsForDaysInWeek(_ weekIdx: Int) -> [String] {
             var res = [String]()
             for i in 0...6 {
@@ -131,9 +124,16 @@ extension CalenderHelper {
             let first = calendar.date(from: comps)!
             // Get weekday for the 1st of the month
             let firstWeekDay = calendar.component(.weekday, from: first)
+
             // Calendar week day defined starting with Sunday as 1 - we need to transform it to our index,
             // so Monday can be first
-            firstIndex = firstWeekDay == 1 ? 6 : firstWeekDay - 2
+
+            if weekStartMonday == true {
+                firstIndex = firstWeekDay == 1 ? 6 : firstWeekDay - 2
+            }
+            else {
+                firstIndex = firstWeekDay - 1
+            }
             
             // Get how many days in month we have
             numberOfDays = calendar.range(of: .day, in: .month, for: first)!.count

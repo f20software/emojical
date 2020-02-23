@@ -8,28 +8,17 @@
 
 import Foundation
 
-extension Calendar {
-    static var _instance: Calendar?
-    static func sharedCalendarWithSystemTimezone() -> Calendar {
-        if _instance == nil {
-            _instance = Calendar.init(identifier: .gregorian)
-            _instance!.timeZone = TimeZone.current
-            _instance!.locale = Locale(identifier: Locale.preferredLanguages.first!)
-        }
-        
-        return _instance!
-    }
-}
-
 extension Date {
     
     // This date format is used to store date into database and sort records
-    var yyyyMmDd: String {
+    // YYYY-MM-DD with leading zeros for month and day
+    var databaseKey: String {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         return df.string(from: self)
     }
     
+    // Convinience constructor when we have only date components
     init(year: Int, month: Int, day: Int = 1) {
         var comps = DateComponents.init()
         comps.month = month
@@ -42,6 +31,7 @@ extension Date {
         self = Calendar.current.date(from: comps) ?? Date()
     }
     
+    // Shift date by number of days
     func byAddingDays(_ days: Int) -> Date {
         return self.advanced(by: TimeInterval(days * 24 * 60 * 60))
     }

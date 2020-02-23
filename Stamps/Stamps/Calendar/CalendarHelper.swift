@@ -72,25 +72,15 @@ extension CalenderHelper {
         var numberOfDays = 31
         
         init(_ date: Date) {
-            let comps = Calendar.current.dateComponents([.year, .month], from: date)
-            self.month = comps.month!
-            self.year = comps.year!
-            
+            self.month = Calendar.current.component(.month, from: date)
+            self.year = Calendar.current.component(.year, from: date)
             recalculateWeeks()
         }
         
         var label: String {
-            let calendar = Calendar.sharedCalendarWithSystemTimezone()
-
-            var comps = DateComponents()
-            comps.year = year
-            comps.month = month
-            comps.day = 1
-            
             let df = DateFormatter()
             df.dateFormat = "MMMM"
-            
-            return df.string(from: calendar.date(from: comps)!)
+            return df.string(from: Date(year: year, month: month))
         }
 
         // Returns index specific month days fall into (used in AwardManager to detect week that day falls into)
@@ -114,16 +104,12 @@ extension CalenderHelper {
 
         
         func recalculateWeeks() {
-            let calendar = Calendar.sharedCalendarWithSystemTimezone()
-            var comps = DateComponents.init()
-            comps.month = month
-            comps.year = year
-            comps.day = 1
+            let calendar = Calendar.current
             
             // Get 1st of the month
-            let first = calendar.date(from: comps)!
+            let first = Date(year: year, month: month, day: 1)
             // Get weekday for the 1st of the month
-            let firstWeekDay = calendar.component(.weekday, from: first)
+            let firstWeekDay = Calendar.current.component(.weekday, from: first)
 
             // Calendar week day defined starting with Sunday as 1 - we need to transform it to our index,
             // so Monday can be first

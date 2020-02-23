@@ -62,12 +62,27 @@ class DataSource {
         
         return result
     }
-    
+
+    func allStamps() -> [Stamp] {
+        var result = [Stamp]()
+        do {
+            try dbQueue.read { db in
+                let request = Stamp.filter(Stamp.Columns.deleted == false).order(Stamp.Columns.id)
+                result = try request.fetchAll(db)
+            }
+        }
+        catch {
+            
+        }
+        
+        return result
+    }
+
     func stampsForDay(_ day: Date) -> [Int64] {
         var result = [Int64]()
         do {
             try dbQueue.read { db in
-                let request = Diary.filter(Diary.Columns.date == day.yyyyMmDd).order(Stamp.Columns.id)
+                let request = Diary.filter(Diary.Columns.date == day.databaseKey).order(Stamp.Columns.id)
                 let allrecs = try request.fetchAll(db)
                 
                 for rec in allrecs {
@@ -87,7 +102,7 @@ class DataSource {
         do {
             try dbQueue.read { db in
                 let request = Diary
-                    .filter(Diary.Columns.date >= from.yyyyMmDd && Diary.Columns.date <= to.yyyyMmDd)
+                    .filter(Diary.Columns.date >= from.databaseKey && Diary.Columns.date <= to.databaseKey)
                     .order(Diary.Columns.date)
                 let allrecs = try request.fetchAll(db)
 
@@ -108,7 +123,7 @@ class DataSource {
         do {
             try dbQueue.read { db in
                 let request = Award
-                    .filter(Award.Columns.date >= from.yyyyMmDd && Award.Columns.date <= to.yyyyMmDd)
+                    .filter(Award.Columns.date >= from.databaseKey && Award.Columns.date <= to.databaseKey)
                     .order(Diary.Columns.date)
                 let allrecs = try request.fetchAll(db)
 
@@ -150,11 +165,11 @@ class DataSource {
                 // Delete all records for that day so we can replace them with new ones
                 // TODO: Potentially can optimize it by calculating the diff
                 try Diary
-                    .filter(Diary.Columns.date == day.yyyyMmDd)
+                    .filter(Diary.Columns.date == day.databaseKey)
                     .deleteAll(db)
 
                 for stampId in stamps {
-                    var diary = Diary(date: day.yyyyMmDd, count: 1, stampId: stampId)
+                    var diary = Diary(date: day.databaseKey, count: 1, stampId: stampId)
                     try diary.insert(db)
                 }
             }
@@ -163,7 +178,6 @@ class DataSource {
             
         }
     }
-    
  
     func setupDatabase(_ application: UIApplication) throws {
         let databaseURL = try FileManager.default

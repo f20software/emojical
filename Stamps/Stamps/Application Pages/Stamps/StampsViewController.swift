@@ -17,7 +17,6 @@ class StampsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,17 +77,17 @@ class StampsViewController: UITableViewController {
 extension StampsViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "edit" {
+        if segue.identifier == "editStamp" {
             let stamp = stamps[tableView.indexPathForSelectedRow!.row]
-            let controller = segue.destination as! StampEditViewController
+            let controller = segue.destination as! StampViewController
             controller.title = stamp.name
             controller.stamp = stamp
             controller.presentation = .push
         }
-        else if segue.identifier == "new" {
+        else if segue.identifier == "newStamp" {
             setEditing(false, animated: true)
             let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.viewControllers.first as! StampEditViewController
+            let controller = navigationController.viewControllers.first as! StampViewController
             controller.title = "New Stamp"
             controller.stamp = Stamp(id: nil, name: "", label: "star", color: UIColor.colorByName("Gold"), favorite: false, deleted: false)
             controller.presentation = .modal

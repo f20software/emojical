@@ -37,7 +37,7 @@ class AwardManager {
                     allAwards.append(Award(id: nil, goalId: goal.id!, date: dateReached))
                 }
                 else if past && goal.direction == .negative && isNegativeGoalReached(goal, diary: stampsLog) {
-                    allAwards.append(Award(id: nil, goalId: goal.id!, date: weekEnd.yyyyMmDd))
+                    allAwards.append(Award(id: nil, goalId: goal.id!, date: weekEnd.databaseKey))
                 }
             }
         }

@@ -13,7 +13,7 @@ class AwardBadgeView : UIView {
     // Array of colors for badges to be drawn
     var badges: [UIColor]?
     
-    let padding = 3.0
+    let padding = 5.0
     let margin = 8.0
     
     // initWithFrame to init view from code
@@ -45,11 +45,28 @@ class AwardBadgeView : UIView {
         }
         
         for i in 0..<badges.count {
-            let badgeRect = CGRect(x: 0, y: topMargin + (size + currentPadding) * Double(i), width: size, height: size)
-            let bpath = UIBezierPath(ovalIn: badgeRect)
+            let starPath = getStar(size: CGFloat(size), offset: CGFloat(topMargin + (size + currentPadding) * Double(i)))
             UIColor.clear.setFill()
             badges[i].set()
-            bpath.fill()
+            starPath.fill()
         }
+    }
+    
+    func getStar(size: CGFloat, offset: CGFloat) -> UIBezierPath {
+        
+        let starPath = UIBezierPath()
+        starPath.move(to: CGPoint(x: 0.51 * size, y: offset))
+        starPath.addLine(to: CGPoint(x: 0.66 * size, y: 0.30 * size + offset))
+        starPath.addLine(to: CGPoint(x: 0.99 * size, y: 0.35 * size + offset))
+        starPath.addLine(to: CGPoint(x: 0.75 * size, y: 0.58 * size + offset))
+        starPath.addLine(to: CGPoint(x: 0.80 * size, y: 0.90 * size + offset))
+        starPath.addLine(to: CGPoint(x: 0.51 * size, y: 0.75 * size + offset))
+        starPath.addLine(to: CGPoint(x: 0.22 * size, y: 0.90 * size + offset))
+        starPath.addLine(to: CGPoint(x: 0.27 * size, y: 0.58 * size + offset))
+        starPath.addLine(to: CGPoint(x: 0.03 * size, y: 0.35 * size + offset))
+        starPath.addLine(to: CGPoint(x: 0.36 * size, y: 0.30 * size + offset))
+        starPath.close()
+
+        return starPath
     }
 }

@@ -24,15 +24,38 @@ struct Goal {
 
     // Prefer Int64 for auto-incremented database ids
     var id: Int64?
-    let name: String
-    let period: Period
-    let direction: Direction
-    let limit: Int
-    let stamps: String // Ids of Stamps that should be checked for this goal
-    let deleted: Bool
+    var name: String
+    var period: Period
+    var direction: Direction
+    var limit: Int
+    var stamps: String // Ids of Stamps that should be checked for this goal
+    var deleted: Bool
     
     var stampIds: [Int64]? {
         return stamps.split(separator: ",").map{ Int64($0)! }
+    }
+    
+    var details: String {
+        var result = ""
+        switch period {
+        case .week:
+            result += "Weekly goal"
+        case .month:
+            result += "Monthly goal"
+        case .year:
+            result += "Annumal goal"
+        case .total:
+            result += "Overall goal"
+        }
+
+        switch direction {
+        case .positive:
+            result += ", collect \(limit) or more stamps"
+        case .negative:
+            result += ", collect \(limit) or fewer stamps"
+        }
+        
+        return result
     }
 }
 

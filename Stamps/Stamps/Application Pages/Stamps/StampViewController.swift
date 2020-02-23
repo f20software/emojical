@@ -1,6 +1,14 @@
+//
+//  StampViewController.swift
+//  Stamps
+//
+//  Created by Vladimir Svidersky on 1/17/20.
+//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//
+
 import UIKit
 
-class StampEditViewController: UITableViewController {
+class StampViewController: UITableViewController {
     
     enum Presentation {
         // Modal presentation: edition ends with the "Commit" segue.
@@ -76,7 +84,7 @@ class StampEditViewController: UITableViewController {
 
 // MARK: - Navigation
 
-extension StampEditViewController {
+extension StampViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         // Force keyboard to dismiss early
@@ -85,7 +93,7 @@ extension StampEditViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "commit" {
+        if segue.identifier == "commitStamp" {
             saveChanges()
         }
         else if segue.identifier == "selectStamp" {
@@ -119,7 +127,7 @@ extension StampEditViewController {
 }
 
 // MARK: - Updating stamp label from IconsViewController
-extension StampEditViewController: IconsViewControllerDelegate {
+extension StampViewController: IconsViewControllerDelegate {
     
     func iconSelected(_ icon: String) {
         stamp.label = icon
@@ -127,7 +135,7 @@ extension StampEditViewController: IconsViewControllerDelegate {
 }
 
 // MARK: - Updating stamp color from ColorViewController
-extension StampEditViewController: ColorsViewControllerDelegate {
+extension StampViewController: ColorsViewControllerDelegate {
     
     func colorSelected(_ colorName: String) {
         stamp.color = UIColor.colorByName(colorName)
@@ -136,8 +144,7 @@ extension StampEditViewController: ColorsViewControllerDelegate {
 
 
 // MARK: - Form
-
-extension StampEditViewController: UITextFieldDelegate {
+extension StampViewController: UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

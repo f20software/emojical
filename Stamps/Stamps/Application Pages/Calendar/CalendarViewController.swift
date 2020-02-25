@@ -84,7 +84,7 @@ class CalendarViewController: UITableViewController {
             let awards = db.awardsForDateInterval(from: dateEnd!.byAddingDays(-6), to: dateEnd!)
             for award in awards {
                 let goal = db.goalById(award.goalId)
-                res.append(UIColor(hex: db.stampById(goal!.stampIds![0])!.color))
+                res.append(UIColor(hex: db.stampById(goal!.stampIds[0])!.color))
             }
         }
         

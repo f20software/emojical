@@ -31,28 +31,49 @@ struct Goal {
     var stamps: String // Ids of Stamps that should be checked for this goal
     var deleted: Bool
     
-    var stampIds: [Int64]? {
-        return stamps.split(separator: ",").map{ Int64($0)! }
+    // Convinience property to get and set stamp Ids by array of Ints
+    var stampIds: [Int64] {
+        get {
+            return stamps.split(separator: ",").map{ Int64($0)! }
+        }
+        set {
+            stamps = newValue.map({ String($0) }).joined(separator: ",")
+        }
+    }
+    
+    // How do we call goal limit based on direction (used in configuration screen)
+    var limitName: String {
+        switch direction {
+        case .negative:
+            return "Maximum"
+        case .positive:
+            return "Minimum"
+        }
     }
     
     var details: String {
         var result = ""
         switch period {
         case .week:
-            result += "Weekly goal"
+            result += "Weekly"
         case .month:
-            result += "Monthly goal"
+            result += "Monthly"
         case .year:
-            result += "Annumal goal"
+            result += "Annumal"
         case .total:
-            result += "Overall goal"
+            result += "Overall"
         }
 
-        switch direction {
-        case .positive:
-            result += ", collect \(limit) or more stamps"
-        case .negative:
-            result += ", collect \(limit) or fewer stamps"
+        if limit > 0 {
+            switch direction {
+            case .positive:
+                result += ", \(limit) or more"
+            case .negative:
+                result += ", \(limit) or fewer"
+            }
+        }
+        else {
+            result += ", no limit"
         }
         
         return result

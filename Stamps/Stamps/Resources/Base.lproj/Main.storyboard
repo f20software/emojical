@@ -29,7 +29,7 @@
         <scene sceneID="s1R-kM-j9L">
             <objects>
                 <viewControllerPlaceholder storyboardName="Calendar" id="BGe-M5-KsK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="EV3-uy-p6r"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="dots" selectedImage="dots" id="EV3-uy-p6r"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9d-CD-tDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,21 +39,26 @@
         <scene sceneID="U2Q-Ox-Ezk">
             <objects>
                 <viewControllerPlaceholder storyboardName="Stamps" id="uXQ-0Z-U2U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="wLk-FZ-EQZ"/>
+                    <tabBarItem key="tabBarItem" title="Stamps" image="smile" selectedImage="smile" id="wLk-FZ-EQZ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTe-Q0-Jge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="-196"/>
+            <point key="canvasLocation" x="599" y="-218"/>
         </scene>
         <!--Goals-->
         <scene sceneID="spg-cO-tmA">
             <objects>
                 <viewControllerPlaceholder storyboardName="Goals" id="lPk-B2-hge" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Xda-pO-Tyr"/>
+                    <tabBarItem key="tabBarItem" title="Goals" image="star" selectedImage="star" id="Xda-pO-Tyr"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULA-qZ-KUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864" y="162"/>
+            <point key="canvasLocation" x="590" y="-101"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dots" width="30" height="30"/>
+        <image name="smile" width="30" height="30"/>
+        <image name="star" width="30" height="30"/>
+    </resources>
 </document>

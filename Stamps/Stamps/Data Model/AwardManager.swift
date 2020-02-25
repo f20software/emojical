@@ -72,10 +72,9 @@ class AwardManager {
     
     // Return the date goal is reached or nil of goals is not reached
     func isPositiveGoalReached(_ goal: Goal, diary: [Diary]) -> String? {
-        guard let stampIds = goal.stampIds else { return nil }
         var count = 0
         for stamp in diary {
-            if stampIds.contains(stamp.stampId) {
+            if goal.stampIds.contains(stamp.stampId) {
                 count += 1
                 if count == goal.limit {
                     return stamp.date
@@ -88,10 +87,9 @@ class AwardManager {
 
     // Returns true if negative goal is reached or false if it's not
     func isNegativeGoalReached(_ goal: Goal, diary: [Diary]) -> Bool {
-        guard let stampIds = goal.stampIds else { return false }
         var count = 0
         for stamp in diary {
-            if stampIds.contains(stamp.stampId) {
+            if goal.stampIds.contains(stamp.stampId) {
                 count += 1
                 if count > goal.limit {
                     return false

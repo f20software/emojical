@@ -122,7 +122,7 @@ extension StampsViewController {
         
         cell.label.attributedText = NSAttributedString(string: stamp.label, attributes: [
             NSAttributedString.Key.baselineOffset: -1.5,
-            NSAttributedString.Key.font: UIFont(name: "SS Symbolicons", size: 28.0)!,
+            NSAttributedString.Key.font: UIFont(name: "SS Symbolicons", size: 25.0)!,
             NSAttributedString.Key.foregroundColor: UIColor(hex: stamp.color)
         ])
         cell.name.text = stamp.name.isEmpty ? "-" : stamp.name

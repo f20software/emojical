@@ -32,6 +32,7 @@ class StampViewController: UITableViewController {
     @IBOutlet weak var labelLabel: UILabel!
     @IBOutlet weak var colorBadge: UIView!
     @IBOutlet weak var favoriteSwitch: UISwitch!
+    @IBOutlet weak var stats: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -159,6 +160,7 @@ extension StampViewController: UITextFieldDelegate {
         labelLabel.layer.borderColor = UIColor(hex: stamp.color).cgColor
         colorBadge.backgroundColor = UIColor(hex: stamp.color)
         favoriteSwitch.isOn = stamp.favorite
+        stats.text = stamp.statsDescription
     }
     
     

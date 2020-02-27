@@ -31,6 +31,16 @@ extension Date {
         self = Calendar.current.date(from: comps) ?? Date()
     }
     
+    init(yyyyMmDd: String) {
+        let comps = yyyyMmDd.split(separator: "-").map({ Int(String($0))! })
+        if comps.count == 3 {
+            self = Date(year: comps[0], month: comps[1], day: comps[2])
+        }
+        else {
+            self = Date()
+        }
+    }
+    
     // Shift date by number of days
     func byAddingDays(_ days: Int) -> Date {
         return self.advanced(by: TimeInterval(days * 24 * 60 * 60))

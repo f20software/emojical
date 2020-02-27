@@ -156,9 +156,7 @@ extension GoalViewController: UITextFieldDelegate {
             NSAttributedString.Key.baselineOffset: -1.5,
             NSAttributedString.Key.font: UIFont(name: "SS Symbolicons", size: 20.0)!
         ])
-        
-        // TODO: Add real stats
-        statsLabel.text = "Has been reached 14 time,\nlast time - yesterday"
+        statsLabel.text = goal.statsDescription
     }
     
     // Auto-selecting text fields when cell is selected

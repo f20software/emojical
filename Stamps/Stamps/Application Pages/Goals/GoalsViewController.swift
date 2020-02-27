@@ -78,7 +78,8 @@ extension GoalsViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editGoal" {
-            let goal = goals[tableView.indexPathForSelectedRow!.row]
+            var goal = goals[tableView.indexPathForSelectedRow!.row]
+            DataSource.shared.updateStatsForGoal(&goal)
             let controller = segue.destination as! GoalViewController
             controller.title = goal.name
             controller.goal = goal
@@ -118,9 +119,19 @@ extension GoalsViewController {
     }
         
     private func configure(_ cell: GoalCell, at indexPath: IndexPath) {
-        let goal = goals[indexPath.row]
+        var goal = goals[indexPath.row]
         cell.name.text = goal.name.isEmpty ? "-" : goal.name
         cell.subtitle.text = goal.details
+        
+        // Recalculate goal stats
+        DataSource.shared.updateStatsForGoal(&goal)
+        if (goal.awardCount ?? 0) > 0 {
+            cell.count.text = "  \(goal.awardCount!)  "
+            cell.count.isHidden = false
+        }
+        else {
+            cell.count.isHidden = true
+        }
     }
 }
 

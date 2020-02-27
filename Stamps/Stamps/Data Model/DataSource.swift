@@ -32,6 +32,66 @@ class DataSource {
         
         return result
     }
+    
+    func stampCountById(_ identifier: Int64) -> Int {
+        do {
+            return try dbQueue.read { db -> Int in
+                let request = Diary.filter(Diary.Columns.stampId == identifier)
+                return try request.fetchCount(db)
+            }
+        }
+        catch {}
+        
+        return 0
+    }
+
+    func stampLastUsed(_ identifier: Int64) -> String? {
+        do {
+            return try dbQueue.read { db -> String? in
+                let request = Diary.filter(Diary.Columns.stampId == identifier).order(Diary.Columns.date.desc)
+                return try request.fetchOne(db)?.date
+            }
+        }
+        catch {}
+        
+        return nil
+    }
+
+    func goalCountById(_ identifier: Int64) -> Int {
+        do {
+            return try dbQueue.read { db -> Int in
+                let request = Award.filter(Award.Columns.goalId == identifier)
+                return try request.fetchCount(db)
+            }
+        }
+        catch {}
+        
+        return 0
+    }
+
+    func goalLastUsed(_ identifier: Int64) -> String? {
+        do {
+            return try dbQueue.read { db -> String? in
+                let request = Award.filter(Award.Columns.goalId == identifier).order(Award.Columns.date.desc)
+                return try request.fetchOne(db)?.date
+            }
+        }
+        catch {}
+        
+        return nil
+    }
+
+    func updateStatsForStamp(_ stamp: inout Stamp) {
+        guard stamp.id != nil else { return }
+        stamp.useCount = stampCountById(stamp.id!)
+        stamp.lastUsedDate = stampLastUsed(stamp.id!)
+    }
+
+    func updateStatsForGoal(_ goal: inout Goal) {
+        guard goal.id != nil else { return }
+        goal.awardCount = goalCountById(goal.id!)
+        goal.lastUsedDate = goalLastUsed(goal.id!)
+    }
 
     func goalById(_ identifier: Int64) -> Goal? {
         var result: Goal? = nil

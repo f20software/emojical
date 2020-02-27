@@ -6,6 +6,7 @@
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 
+import Foundation
 import GRDB
 
 struct Stamp {
@@ -15,7 +16,36 @@ struct Stamp {
     var label: String
     var color: String // Hex represenatation like 01cd12
     var favorite: Bool
-    let deleted: Bool
+    var deleted: Bool
+    
+    // Right now these two fields are auto-calculatable - we will load them when necessary
+    // Later we might decide to add them to persistent storage 
+    var useCount: Int?
+    var lastUsedDate: String?
+    
+    var statsDescription: String {
+        if useCount ?? 0 == 0 {
+            return "Stamp hasn't been used yet."
+        }
+        
+        var result = "Stamp has been used "
+        if useCount! > 1 {
+            result += "\(useCount!) times"
+        }
+        else {
+            result += "1 time"
+        }
+        
+        
+        if let dateStr = lastUsedDate {
+            let date = Date(yyyyMmDd: dateStr)
+            let df = DateFormatter()
+            df.dateStyle = .medium
+            result += ", last time - \(df.string(from: date))"
+        }
+        
+        return result
+    }
 }
 
 extension Stamp : Hashable { }

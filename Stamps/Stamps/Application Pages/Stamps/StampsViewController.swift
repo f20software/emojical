@@ -78,7 +78,8 @@ extension StampsViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editStamp" {
-            let stamp = stamps[tableView.indexPathForSelectedRow!.row]
+            var stamp = stamps[tableView.indexPathForSelectedRow!.row]
+            DataSource.shared.updateStatsForStamp(&stamp)
             let controller = segue.destination as! StampViewController
             controller.title = stamp.name
             controller.stamp = stamp
@@ -118,7 +119,7 @@ extension StampsViewController {
     }
         
     private func configure(_ cell: StampCell, at indexPath: IndexPath) {
-        let stamp = stamps[indexPath.row]
+        var stamp = stamps[indexPath.row]
         
         cell.label.attributedText = NSAttributedString(string: stamp.label, attributes: [
             NSAttributedString.Key.baselineOffset: -1.5,
@@ -127,5 +128,14 @@ extension StampsViewController {
         ])
         cell.name.text = stamp.name.isEmpty ? "-" : stamp.name
         cell.label.layer.borderColor = UIColor(hex: stamp.color).cgColor
+        // Recalculate stamp stats
+        DataSource.shared.updateStatsForStamp(&stamp)
+        if (stamp.useCount ?? 0) > 0 {
+            cell.count.text = "  \(stamp.useCount!)  "
+            cell.count.isHidden = false
+        }
+        else {
+            cell.count.isHidden = true
+        }
     }
 }

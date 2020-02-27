@@ -21,14 +21,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="stampCell" id="fGJ-k6-Rbj" customClass="StampCell" customModule="Stamps" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="374" height="53.5"/>
+                                <rect key="frame" x="20" y="55.5" width="374" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fGJ-k6-Rbj" id="scU-Nk-XDk">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="53.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="53"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="run" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls1-59-FOq">
-                                            <rect key="frame" x="20" y="7" width="40" height="40"/>
+                                            <rect key="frame" x="20" y="6.5" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="9cI-kZ-Nv0"/>
                                                 <constraint firstAttribute="width" constant="40" id="YmK-OU-Lyw"/>
@@ -38,22 +38,32 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4B-pC-Kzv">
-                                            <rect key="frame" x="70" y="16" width="63" height="21.5"/>
+                                            <rect key="frame" x="70" y="16" width="63" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFq-fI-buh">
+                                            <rect key="frame" x="302" y="18.5" width="33" height="16"/>
+                                            <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="p4B-pC-Kzv" firstAttribute="leading" secondItem="ls1-59-FOq" secondAttribute="trailing" constant="10" id="5Dk-yR-tYE"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="p4B-pC-Kzv" secondAttribute="bottom" constant="5" id="7TH-0P-EN7"/>
+                                        <constraint firstItem="VFq-fI-buh" firstAttribute="centerY" secondItem="scU-Nk-XDk" secondAttribute="centerY" id="MoK-Yl-3B9"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="p4B-pC-Kzv" secondAttribute="trailing" constant="10" id="OQi-aC-A8I"/>
                                         <constraint firstItem="ls1-59-FOq" firstAttribute="centerY" secondItem="scU-Nk-XDk" secondAttribute="centerY" id="PmZ-DR-adP"/>
+                                        <constraint firstItem="VFq-fI-buh" firstAttribute="trailing" secondItem="scU-Nk-XDk" secondAttribute="trailingMargin" id="SSg-1f-a95"/>
                                         <constraint firstItem="ls1-59-FOq" firstAttribute="leading" secondItem="scU-Nk-XDk" secondAttribute="leadingMargin" id="fMV-9W-csn"/>
                                         <constraint firstItem="p4B-pC-Kzv" firstAttribute="top" secondItem="scU-Nk-XDk" secondAttribute="topMargin" constant="5" id="gpm-Oq-SMv"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="count" destination="VFq-fI-buh" id="R9G-t2-PJc"/>
                                     <outlet property="label" destination="ls1-59-FOq" id="KA9-Ry-NrQ"/>
                                     <outlet property="name" destination="p4B-pC-Kzv" id="4xF-g3-IaE"/>
                                     <segue destination="0LW-yV-YW5" kind="show" identifier="editStamp" id="0C7-QJ-zr2"/>
@@ -240,6 +250,34 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="M3V-DK-whQ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wjw-v7-tIH">
+                                        <rect key="frame" x="20" y="278" width="374" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wjw-v7-tIH" id="baX-QU-Yf8">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZa-yj-KJL" userLabel="Has been reached 14 times Last time on Jan 17">
+                                                    <rect key="frame" x="20" y="20" width="334" height="4"/>
+                                                    <string key="text">Has been reached 14 times
+Last time on Jan 17</string>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="eZa-yj-KJL" secondAttribute="trailing" constant="20" symbolic="YES" id="3SG-Vx-SRh"/>
+                                                <constraint firstAttribute="bottom" secondItem="eZa-yj-KJL" secondAttribute="bottom" constant="20" symbolic="YES" id="8MU-bh-iHX"/>
+                                                <constraint firstItem="eZa-yj-KJL" firstAttribute="top" secondItem="baX-QU-Yf8" secondAttribute="top" constant="20" symbolic="YES" id="Las-Ox-oDh"/>
+                                                <constraint firstItem="eZa-yj-KJL" firstAttribute="leading" secondItem="baX-QU-Yf8" secondAttribute="leading" constant="20" symbolic="YES" id="aZD-qu-mfr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="0LW-yV-YW5" id="plK-UG-Emc"/>
@@ -268,6 +306,7 @@
                         <outlet property="labelLabel" destination="eLT-do-gDg" id="I3g-51-dg7"/>
                         <outlet property="nameCell" destination="g8c-7V-Fef" id="PFF-Cp-zGc"/>
                         <outlet property="nameTextField" destination="Tgc-eS-Vrd" id="WLQ-ES-eff"/>
+                        <outlet property="stats" destination="eZa-yj-KJL" id="GZO-CA-5aG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNY-Bv-gpa" userLabel="First Responder" sceneMemberID="firstResponder"/>

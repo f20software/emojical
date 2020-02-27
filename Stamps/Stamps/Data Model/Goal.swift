@@ -6,6 +6,7 @@
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 
+import Foundation
 import GRDB
 
 struct Goal {
@@ -31,6 +32,11 @@ struct Goal {
     var stamps: String // Ids of Stamps that should be checked for this goal
     var deleted: Bool
     
+    // Right now these two fields are auto-calculatable - we will load them when necessary
+    // Later we might decide to add them to persistent storage
+    var awardCount: Int?
+    var lastUsedDate: String?
+
     // Convinience property to get and set stamp Ids by array of Ints
     var stampIds: [Int64] {
         get {
@@ -74,6 +80,30 @@ struct Goal {
         }
         else {
             result += ", no limit"
+        }
+        
+        return result
+    }
+    
+    var statsDescription: String {
+        if awardCount ?? 0 == 0 {
+            return "Goal hasn't been reached yet."
+        }
+        
+        var result = "Goal has been reached "
+        if awardCount! > 1 {
+            result += "\(awardCount!) times"
+        }
+        else {
+            result += "1 time"
+        }
+        
+        
+        if let dateStr = lastUsedDate {
+            let date = Date(yyyyMmDd: dateStr)
+            let df = DateFormatter()
+            df.dateStyle = .medium
+            result += ", last time - \(df.string(from: date))"
         }
         
         return result

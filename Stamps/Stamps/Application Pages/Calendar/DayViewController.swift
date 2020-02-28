@@ -33,7 +33,7 @@ class DayViewController : UIViewController {
             guard let date = date else { return }
             
             dayTitle.text = "\(calendar.labelForDay(date))"
-            currentStamps = db.stampsForDay(date)
+            currentStamps = db.stampsIdsForDay(date)
             dataChanged = false
             
             for i in 0..<stampLabels.count {

@@ -61,7 +61,7 @@ class CalendarViewController: UITableViewController {
             }
 
             var colors = [UIColor]()
-            for stamp in db.stampsForDay(date!) {
+            for stamp in db.stampsIdsForDay(date!) {
                 colors.append(UIColor(hex: db.stampById(stamp)!.color))
             }
             

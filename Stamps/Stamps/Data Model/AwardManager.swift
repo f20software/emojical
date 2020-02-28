@@ -26,8 +26,8 @@ class AwardManager {
         let weekEnd = date.byAddingDays(6-dayIndex)
         let past = weekEnd < Date()
 
-        let stampsLog = db.stampsForDateInterval(from: weekStart, to: weekEnd)
-        let weeklyGoals = db.weeklyGoals()
+        let stampsLog = db.diaryForDateInterval(from: weekStart, to: weekEnd)
+        let weeklyGoals = db.goalsByPeriod(.week)
         var allAwards = [Award]()
 
         // Only add awards if we actually had any stamps for this week

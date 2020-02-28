@@ -39,6 +39,10 @@
 		F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944023D2CBC800EAF9CC /* Main.storyboard */; };
 		F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */; };
 		F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */; };
+		F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260EC2408BB4400F5CCB9 /* DataSource+Stamp.swift */; };
+		F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */; };
+		F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */; };
+		F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */; };
 		F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */; };
 		F2FF7EA123D659490033D9DC /* DayBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA023D659490033D9DC /* DayBadgeView.swift */; };
 		F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA223D66F030033D9DC /* DataSource.swift */; };
@@ -79,6 +83,10 @@
 		F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2C4944623D2CBCA00EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2C4944823D2CBCA00EAF9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2F260EC2408BB4400F5CCB9 /* DataSource+Stamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Stamp.swift"; sourceTree = "<group>"; };
+		F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Goal.swift"; sourceTree = "<group>"; };
+		F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Diary.swift"; sourceTree = "<group>"; };
+		F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Award.swift"; sourceTree = "<group>"; };
 		F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		F2FF7EA023D659490033D9DC /* DayBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBadgeView.swift; sourceTree = "<group>"; };
 		F2FF7EA223D66F030033D9DC /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -198,6 +206,7 @@
 				F2B4763423DE3C300076BFDC /* Application Pages */,
 				F2FF7EAB23D671050033D9DC /* Colors */,
 				F2FF7EA423D66F0B0033D9DC /* Data Model */,
+				F2F260F42408D96700F5CCB9 /* Database */,
 				F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */,
 				F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */,
 				F2C4944823D2CBCA00EAF9CC /* Info.plist */,
@@ -205,11 +214,22 @@
 			path = Stamps;
 			sourceTree = "<group>";
 		};
-		F2FF7EA423D66F0B0033D9DC /* Data Model */ = {
+		F2F260F42408D96700F5CCB9 /* Database */ = {
 			isa = PBXGroup;
 			children = (
 				F2B4762C23DC1B440076BFDC /* AppDatabase.swift */,
 				F2FF7EA223D66F030033D9DC /* DataSource.swift */,
+				F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */,
+				F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */,
+				F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */,
+				F2F260EC2408BB4400F5CCB9 /* DataSource+Stamp.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		F2FF7EA423D66F0B0033D9DC /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
 				F247542423E734CE006A13C3 /* AwardManager.swift */,
 				F2B4762F23DCF9DE0076BFDC /* Diary.swift */,
 				F247542623E74C49006A13C3 /* Award.swift */,
@@ -312,6 +332,7 @@
 				F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */,
 				F2C4943F23D2CBC800EAF9CC /* StampsViewController.swift in Sources */,
 				F2C4943D23D2CBC800EAF9CC /* CalendarViewController.swift in Sources */,
+				F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */,
 				F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */,
 				F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */,
 				F2FF7EA123D659490033D9DC /* DayBadgeView.swift in Sources */,
@@ -327,7 +348,10 @@
 				F247542723E74C49006A13C3 /* Award.swift in Sources */,
 				F247541423DFC706006A13C3 /* Goal.swift in Sources */,
 				F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */,
+				F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
+				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
+				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
 				F247542523E734CE006A13C3 /* AwardManager.swift in Sources */,
 				F2C190D824030701003F5ABA /* SelectStampsViewController.swift in Sources */,
 				F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */,

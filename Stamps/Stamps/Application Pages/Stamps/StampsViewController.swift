@@ -16,6 +16,8 @@ class StampsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // initial load - since we should not have that many individual stamps - it should not take long time
+        stamps = DataSource.shared.allStamps()
         tableView.tableFooterView = UIView()
     }
     

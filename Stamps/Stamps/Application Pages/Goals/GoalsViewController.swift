@@ -16,6 +16,7 @@ class GoalsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        goals = DataSource.shared.allGoals()
         tableView.tableFooterView = UIView()
     }
 

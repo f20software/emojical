@@ -54,7 +54,19 @@ class WeekCell: UITableViewCell {
             (sat, satBadge),
             (sun, sunBadge)
         ]
-        
+
+        configureLabels()
+    }
+    
+    func configureLabels() {
+        // Round corners will not be visible anywhere but on today's day
+        for (label, _) in allLabelsBadges {
+            label.layer.cornerRadius = 6
+            label.clipsToBounds = true
+            label.textColor = UIColor.label
+            label.backgroundColor = UIColor.systemBackground
+        }
+
         if CalenderHelper.weekStartMonday {
             sat.textColor = UIColor.secondaryLabel
             sun.textColor = UIColor.secondaryLabel
@@ -65,10 +77,21 @@ class WeekCell: UITableViewCell {
         }
     }
     
+    func setTodayLabelStyle(label: UILabel) {
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.red
+    }
+    
     func loadData(_ labels: [String], data: [[UIColor]], awards: [UIColor], indexPath: IndexPath) {
         var idx = 0
         for (label, badgeView) in allLabelsBadges {
-            label.text = labels[idx]
+            if labels[idx].starts(with: "*") {
+                label.text = labels[idx].trimmingCharacters(in: CharacterSet(charactersIn: "*"))
+                setTodayLabelStyle(label: label)
+            }
+            else {
+                label.text = labels[idx]
+            }
             badgeView.badges = data[idx]
             idx += 1
         }
@@ -84,6 +107,7 @@ class WeekCell: UITableViewCell {
         }
         awardBadge.badges = nil
         awardBadge.setNeedsDisplay()
+        configureLabels()
     }
     
     @objc func cellTapped(sender: UITapGestureRecognizer) {

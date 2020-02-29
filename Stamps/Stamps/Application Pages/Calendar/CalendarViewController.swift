@@ -22,6 +22,14 @@ class CalendarViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let currentSection = calendar.currentMonthIndex
+        DispatchQueue.main.async {
+            self.tableView.scrollToRow(at: IndexPath(row: 2, section: currentSection), at: .middle, animated: true)
+        }
+    }
+    
     // MARK: UITableView
     
     override func numberOfSections(in tableView: UITableView) -> Int {

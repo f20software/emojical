@@ -69,10 +69,6 @@ struct AppDatabase {
             }
         }
         
-        migrator.registerMigration("update-awards") { db in
-            try db.execute(sql: "delete from award where goalId = 2;")
-        }
-
 //        "B8B09b", "Gold",
 //        "7B92A3", "Grey",
 //        "6AB1D8", "Sky Blue",
@@ -89,12 +85,12 @@ struct AppDatabase {
         migrator.registerMigration("db-content0") { db in
             // Fill in default stamps
             for stamp in [
-                Stamp(id: nil, name: "Star", label: "star", color: "B8B09b", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Run", label: "run", color: "00BBB3", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Exercise", label: "exercise", color: "57D3A3", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Drink", label: "wineglass", color: "BC83C9", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Red meat", label: "steak", color: "BC83C9", favorite: true, deleted: false),
-                Stamp(id: nil, name: "Sweets", label: "cupcake", color: "ED8C6B", favorite: true, deleted: false)
+                Stamp(id: nil, name: "Star", label: "star", color: "B8B09b", favorite: true),
+                Stamp(id: nil, name: "Run", label: "run", color: "00BBB3", favorite: true),
+                Stamp(id: nil, name: "Exercise", label: "exercise", color: "57D3A3", favorite: true),
+                Stamp(id: nil, name: "Drink", label: "wineglass", color: "BC83C9", favorite: true),
+                Stamp(id: nil, name: "Red meat", label: "steak", color: "BC83C9", favorite: true),
+                Stamp(id: nil, name: "Sweets", label: "cupcake", color: "ED8C6B", favorite: true)
                 // Stamp(id: nil, name: "Not feeling good", label: "frown", color: "3282b8", favorite: true, deleted: false)
             ] {
                 var s = stamp
@@ -111,6 +107,18 @@ struct AppDatabase {
                 var g = goal
                 try g.insert(db)
             }
+        }
+        
+        migrator.registerMigration("new-fields") { db in
+            try db.alter(table: "stamp", body: { t in
+                t.add(column: "count", .integer).notNull().defaults(to: 0)
+                t.add(column: "lastUsed", .text).notNull().defaults(to: "")
+            })
+            
+            try db.alter(table: "goal", body: { t in
+                t.add(column: "count", .integer).notNull().defaults(to: 0)
+                t.add(column: "lastUsed", .text).notNull().defaults(to: "")
+            })
         }
 
         return migrator

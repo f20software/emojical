@@ -95,6 +95,16 @@ class CalendarViewController: UITableViewController {
 // MARK: WeekCellDelegate - handling tap on the week day
 extension CalendarViewController : WeekCellDelegate {
     
+    func rowsToBeRefreshed(_ row: IndexPath) -> [IndexPath] {
+        let dateEnd = calendar.dateFromIndex(month: row.section, week: row.row, day: 6)
+        if dateEnd == nil {
+            let row2 = IndexPath(row: 0, section: row.section+1)
+            return [row, row2]
+        }
+        return [row]
+    }
+    
+    
     func dayTapped(_ dayIdx: Int, indexPath: IndexPath) {
         
         // If tapped outside actual month date - bail out
@@ -113,7 +123,7 @@ extension CalendarViewController : WeekCellDelegate {
         dayDetail.modalTransitionStyle = .coverVertical
         dayDetail.onDismiss = { (refresh) in
             if refresh {
-                self.tableView.reloadRows(at: [indexPath], with: .none)
+                self.tableView.reloadRows(at: self.rowsToBeRefreshed(indexPath), with: .fade)
             }
         }
         

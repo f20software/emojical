@@ -28,9 +28,4 @@ extension Diary: Codable, FetchableRecord, MutablePersistableRecord {
         case count
         case stampId
     }
-
-    // Update a player id after it has been inserted in the database.
-//    mutating func didInsert(with rowID: Int64, for column: String?) {
-//        id = rowID
-//    }
 }

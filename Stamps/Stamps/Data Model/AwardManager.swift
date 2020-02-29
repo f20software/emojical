@@ -56,18 +56,7 @@ class AwardManager {
             } == false
         }
 
-        for award in addAwards {
-            try! DataSource.shared.dbQueue.inDatabase { db in
-                var a = award
-                try a.save(db)
-            }
-        }
-        
-        for award in deleteAwards {
-            _ = try! DataSource.shared.dbQueue.inDatabase { db in
-                try award.delete(db)
-            }
-        }
+        DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
     }
     
     // Return the date goal is reached or nil of goals is not reached

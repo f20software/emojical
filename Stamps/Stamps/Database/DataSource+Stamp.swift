@@ -84,10 +84,26 @@ extension DataSource {
         return []
     }
 
-    // Recalculate useCound and lastUsedDate in stamp object
-    func updateStatsForStamp(_ stamp: inout Stamp) {
-        guard stamp.id != nil else { return }
-        stamp.useCount = stampCountById(stamp.id!)
-        stamp.lastUsedDate = stampLastUsed(stamp.id!)
+    // Recalculate count and lastUsed in Stamp object
+    func updateStatsForStamps(_ stampIds: [Int64]) {
+        for id in stampIds {
+            if var stamp = stampById(id) {
+                stamp.count = stampCountById(id)
+                stamp.lastUsed = stampLastUsed(id) ?? ""
+                do {
+                    try dbQueue.write { db in
+                        try stamp.update(db)
+                    }
+                }
+                catch { }
+            }
+        }
     }
- }
+    
+    // Recalculate all Stamps
+    func recalculateAllStamps() {
+        let stamps = allStamps()
+        updateStatsForStamps(stamps.map({ $0.id! }))
+    }
+
+}

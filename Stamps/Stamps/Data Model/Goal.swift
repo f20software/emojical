@@ -30,12 +30,9 @@ struct Goal {
     var direction: Direction
     var limit: Int
     var stamps: String // Ids of Stamps that should be checked for this goal
-    var deleted: Bool
-    
-    // Right now these two fields are auto-calculatable - we will load them when necessary
-    // Later we might decide to add them to persistent storage
-    var awardCount: Int?
-    var lastUsedDate: String?
+    var deleted: Bool = false
+    var count: Int = 0
+    var lastUsed: String = ""
 
     // Convinience property to get and set stamp Ids by array of Ints
     var stampIds: [Int64] {
@@ -86,21 +83,21 @@ struct Goal {
     }
     
     var statsDescription: String {
-        if awardCount ?? 0 == 0 {
-            return "Goal hasn't been reached yet."
+        if count <= 0 {
+            return "Goal hasn't been reached yet"
         }
         
         var result = "Goal has been reached "
-        if awardCount! > 1 {
-            result += "\(awardCount!) times"
+        if count > 1 {
+            result += "\(count) times"
         }
         else {
             result += "1 time"
         }
         
         
-        if let dateStr = lastUsedDate {
-            let date = Date(yyyyMmDd: dateStr)
+        if lastUsed.lengthOfBytes(using: .utf8) > 0 {
+            let date = Date(yyyyMmDd: lastUsed)
             let df = DateFormatter()
             df.dateStyle = .medium
             result += ", last time - \(df.string(from: date))"
@@ -127,6 +124,8 @@ extension Goal: Codable, FetchableRecord, MutablePersistableRecord {
         case limit
         case stamps
         case deleted
+        case count
+        case lastUsed
     }
 
     // Update a player id after it has been inserted in the database.

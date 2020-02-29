@@ -60,11 +60,26 @@ extension DataSource {
         return []
     }
 
-    // Recalculate useCound and lastUsedDate in goal object
-    func updateStatsForGoal(_ goal: inout Goal) {
-        guard goal.id != nil else { return }
-        goal.awardCount = goalCountById(goal.id!)
-        goal.lastUsedDate = goalLastUsed(goal.id!)
+    // Recalculate count and lastUsed in Goal object
+    func updateStatsForGoals(_ ids: [Int64]) {
+        for id in ids {
+            if var goal = goalById(id) {
+                goal.count = goalCountById(id)
+                goal.lastUsed = goalLastUsed(id) ?? ""
+                do {
+                    try dbQueue.write { db in
+                        try goal.update(db)
+                    }
+                }
+                catch { }
+            }
+        }
+    }
+
+    // Recalculate all Goals
+    func recalculateAllGoals() {
+        let goals = allGoals()
+        updateStatsForGoals(goals.map({ $0.id! }))
     }
 
     // Goals by period

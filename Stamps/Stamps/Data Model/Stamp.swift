@@ -16,29 +16,25 @@ struct Stamp {
     var label: String
     var color: String // Hex represenatation like 01cd12
     var favorite: Bool
-    var deleted: Bool
-    
-    // Right now these two fields are auto-calculatable - we will load them when necessary
-    // Later we might decide to add them to persistent storage 
-    var useCount: Int?
-    var lastUsedDate: String?
+    var deleted: Bool = false
+    var count: Int = 0
+    var lastUsed: String = "" // YYYY-MM-DD format if stamp was used
     
     var statsDescription: String {
-        if useCount ?? 0 == 0 {
-            return "Stamp hasn't been used yet."
+        if count <= 0 {
+            return "Stamp hasn't been used yet"
         }
         
         var result = "Stamp has been used "
-        if useCount! > 1 {
-            result += "\(useCount!) times"
+        if count > 1 {
+            result += "\(count) times"
         }
         else {
             result += "1 time"
         }
         
-        
-        if let dateStr = lastUsedDate {
-            let date = Date(yyyyMmDd: dateStr)
+        if lastUsed.lengthOfBytes(using: .utf8) > 0 {
+            let date = Date(yyyyMmDd: lastUsed)
             let df = DateFormatter()
             df.dateStyle = .medium
             result += ", last time - \(df.string(from: date))"
@@ -64,6 +60,8 @@ extension Stamp: Codable, FetchableRecord, MutablePersistableRecord {
         case color
         case favorite
         case deleted
+        case count
+        case lastUsed
     }
 
     // Update a player id after it has been inserted in the database.

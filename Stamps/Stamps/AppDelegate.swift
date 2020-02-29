@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // 
         try! DataSource.shared.setupDatabase(application)
+        
+        // TODO: Remove and call only when necessary
+        DataSource.shared.recalculateAllStamps()
+        DataSource.shared.recalculateAllGoals()
+
         return true
     }
 

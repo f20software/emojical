@@ -27,6 +27,12 @@ extension DataSource {
 
     // Update array of stamps for a given day
     func setStampsForDay(_ day: Date, stamps: [Int64]) {
+        // Combine list of old stamps for the day and new stamps
+        // Then we will relaculate all of them
+        // TODO: Can be optimized
+        var allIds = diaryForDateInterval(from: day, to: day).map({ $0.stampId }) + stamps
+        allIds = Array(Set(allIds))
+        
         do {
             try dbQueue.write { db in
                 // Delete all records for that day so we can replace them with new ones
@@ -42,5 +48,7 @@ extension DataSource {
             }
         }
         catch { }
+        
+        updateStatsForStamps(allIds)
     }
  }

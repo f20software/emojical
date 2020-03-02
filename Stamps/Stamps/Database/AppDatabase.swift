@@ -69,7 +69,27 @@ struct AppDatabase {
             }
         }
         
-//        "B8B09b", "Gold",
+        migrator.registerMigration("new-fields") { db in
+            try db.alter(table: "stamp", body: { t in
+                t.add(column: "count", .integer).notNull().defaults(to: 0)
+                t.add(column: "lastUsed", .text).notNull().defaults(to: "")
+            })
+            
+            try db.alter(table: "goal", body: { t in
+                t.add(column: "count", .integer).notNull().defaults(to: 0)
+                t.add(column: "lastUsed", .text).notNull().defaults(to: "")
+            })
+        }
+
+        migrator.registerMigration("db-state") { db in
+            // Create a table for various app params
+            try db.create(table: "params") { t in
+                t.column("name", .text).notNull()
+                t.column("value", .text).notNull()
+            }
+        }
+
+//        "B8B09B", "Gold",
 //        "7B92A3", "Grey",
 //        "6AB1D8", "Sky Blue",
 //        "0060A7", "Blue",
@@ -85,42 +105,24 @@ struct AppDatabase {
         migrator.registerMigration("db-content0") { db in
             // Fill in default stamps
             for stamp in [
-                Stamp(id: nil, name: "Star", label: "star", color: "B8B09b", favorite: true),
-                Stamp(id: nil, name: "Run", label: "run", color: "00BBB3", favorite: true),
+                Stamp(id: nil, name: "Star", label: "star", color: "B8B09B", favorite: true),
                 Stamp(id: nil, name: "Exercise", label: "exercise", color: "57D3A3", favorite: true),
-                Stamp(id: nil, name: "Drink", label: "wineglass", color: "BC83C9", favorite: true),
-                Stamp(id: nil, name: "Red meat", label: "steak", color: "BC83C9", favorite: true),
-                Stamp(id: nil, name: "Sweets", label: "cupcake", color: "ED8C6B", favorite: true)
-                // Stamp(id: nil, name: "Not feeling good", label: "frown", color: "3282b8", favorite: true, deleted: false)
+                Stamp(id: nil, name: "Read Book", label: "openbook", color: "6AB1D8", favorite: true),
+                Stamp(id: nil, name: "Good Day", label: "smile", color: "F9BE00", favorite: true),
             ] {
                 var s = stamp
                 try s.insert(db)
             }
-        }
-        
-        migrator.registerMigration("db-content1") { db in
+
             // Fill in default stamps
             for goal in [
-                Goal(id: nil, name: "Excersize", period: .week, direction: .positive, limit: 5, stamps: "2,3", deleted: false),
-                Goal(id: nil, name: "Don't drink", period: .week, direction: .negative, limit: 3, stamps: "4", deleted: false)
+                Goal(id: nil, name: "Excersize", period: .week, direction: .positive, limit: 5, stamps: "2", deleted: false)
             ] {
                 var g = goal
                 try g.insert(db)
             }
         }
         
-        migrator.registerMigration("new-fields") { db in
-            try db.alter(table: "stamp", body: { t in
-                t.add(column: "count", .integer).notNull().defaults(to: 0)
-                t.add(column: "lastUsed", .text).notNull().defaults(to: "")
-            })
-            
-            try db.alter(table: "goal", body: { t in
-                t.add(column: "count", .integer).notNull().defaults(to: 0)
-                t.add(column: "lastUsed", .text).notNull().defaults(to: "")
-            })
-        }
-
         return migrator
     }
 }

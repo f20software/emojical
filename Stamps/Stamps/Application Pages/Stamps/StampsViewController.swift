@@ -91,8 +91,8 @@ extension StampsViewController {
             setEditing(false, animated: true)
             let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.viewControllers.first as! StampViewController
-            controller.title = "New Stamp"
-            controller.stamp = Stamp(id: nil, name: "", label: "star", color: UIColor.colorByName("Gold"), favorite: false, deleted: false)
+            controller.title = "New Sticker"
+            controller.stamp = Stamp.defaultStamp
             controller.presentation = .modal
         }
     }

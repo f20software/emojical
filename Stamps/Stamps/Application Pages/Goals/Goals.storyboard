@@ -283,6 +283,33 @@ Last time on Jan 17</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection footerTitle="" id="SkM-jt-3WF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="lAF-dI-6sr">
+                                        <rect key="frame" x="20" y="463" width="374" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lAF-dI-6sr" id="DUa-Q2-TGq">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Goal" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ii3-9f-RgS" userLabel="Has been reached 14 times Last time on Jan 17">
+                                                    <rect key="frame" x="20" y="11" width="334" height="38"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="ii3-9f-RgS" firstAttribute="top" secondItem="DUa-Q2-TGq" secondAttribute="topMargin" id="9EA-Cx-GfZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ii3-9f-RgS" secondAttribute="bottom" id="Auo-dF-SSr"/>
+                                                <constraint firstItem="ii3-9f-RgS" firstAttribute="leading" secondItem="DUa-Q2-TGq" secondAttribute="leadingMargin" id="hN4-nh-zNS"/>
+                                                <constraint firstItem="ii3-9f-RgS" firstAttribute="trailing" secondItem="DUa-Q2-TGq" secondAttribute="trailingMargin" id="tLK-dq-fTh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="ihZ-OL-k2B" id="5T7-fZ-L9F"/>
@@ -304,6 +331,7 @@ Last time on Jan 17</string>
                     <connections>
                         <outlet property="cancelBarButtonItem" destination="7Cj-cf-uAP" id="O4T-nP-Em2"/>
                         <outlet property="commitBarButtonItem" destination="9BX-qp-J9Y" id="8Hv-35-frP"/>
+                        <outlet property="deleteCell" destination="lAF-dI-6sr" id="YtE-Ja-JvD"/>
                         <outlet property="direction" destination="VHQ-F9-ReL" id="hW4-kI-hbO"/>
                         <outlet property="limitCell" destination="e7S-Xo-ZQp" id="f4w-JG-PbM"/>
                         <outlet property="limitLabel" destination="qGi-eo-vgg" id="rHU-ue-wbd"/>

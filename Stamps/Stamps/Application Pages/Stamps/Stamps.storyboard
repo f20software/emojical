@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Stamps-->
+        <!--Stickers-->
         <scene sceneID="K77-wr-yZo">
             <objects>
                 <tableViewController id="2Pq-do-wLT" customClass="StampsViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,14 +15,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="stampCell" id="fGJ-k6-Rbj" customClass="StampCell" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="374" height="53.5"/>
+                                <rect key="frame" x="20" y="55.5" width="374" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fGJ-k6-Rbj" id="scU-Nk-XDk">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="53.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="53"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nh0-tm-36e" customClass="EmojiView" customModule="Emojical" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="7" width="40" height="40"/>
+                                            <rect key="frame" x="20" y="6.5" width="40" height="40"/>
                                             <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="jhX-Co-EIO"/>
@@ -30,13 +30,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4B-pC-Kzv">
-                                            <rect key="frame" x="70" y="16" width="63" height="21.5"/>
+                                            <rect key="frame" x="70" y="16" width="63" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFq-fI-buh">
-                                            <rect key="frame" x="302" y="19" width="33" height="16"/>
+                                            <rect key="frame" x="302" y="18.5" width="33" height="16"/>
                                             <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,7 +67,7 @@
                             <outlet property="delegate" destination="2Pq-do-wLT" id="lVw-zq-pr7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Stamps" id="ybJ-N4-cbn">
+                    <navigationItem key="navigationItem" title="Stickers" id="ybJ-N4-cbn">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="Hp4-m0-r6f">
                             <connections>
                                 <segue destination="ORL-Lg-Vod" kind="presentation" identifier="newStamp" id="GQn-Az-Qxp"/>
@@ -161,6 +161,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="formValueChanged:" destination="0LW-yV-YW5" eventType="editingChanged" id="tA9-22-nd3"/>
+                                                        <outlet property="delegate" destination="0LW-yV-YW5" id="6R1-G3-rhB"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -184,7 +185,7 @@
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEI-Cd-n5n">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEI-Cd-n5n" customClass="EmojiView" customModule="Emojical" customModuleProvider="target">
                                                     <rect key="frame" x="295" y="2" width="40" height="40"/>
                                                     <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
@@ -264,6 +265,33 @@ Last time on Jan 17</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="jLK-V9-5WP">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="SYT-AV-w9m">
+                                        <rect key="frame" x="20" y="403" width="374" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SYT-AV-w9m" id="Bqp-r8-hFj">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Sticker" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiL-LA-DlI" userLabel="Has been reached 14 times Last time on Jan 17">
+                                                    <rect key="frame" x="20" y="11" width="334" height="38"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="fiL-LA-DlI" firstAttribute="trailing" secondItem="Bqp-r8-hFj" secondAttribute="trailingMargin" id="CpE-nc-i5L"/>
+                                                <constraint firstItem="fiL-LA-DlI" firstAttribute="top" secondItem="Bqp-r8-hFj" secondAttribute="topMargin" id="U9c-Eb-g6f"/>
+                                                <constraint firstItem="fiL-LA-DlI" firstAttribute="leading" secondItem="Bqp-r8-hFj" secondAttribute="leadingMargin" id="o6O-40-HVh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fiL-LA-DlI" secondAttribute="bottom" id="vFg-9u-7YD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="0LW-yV-YW5" id="plK-UG-Emc"/>
@@ -288,9 +316,10 @@ Last time on Jan 17</string>
                         <outlet property="cancelBarButtonItem" destination="8aj-6s-may" id="YUU-sj-RJs"/>
                         <outlet property="colorBadge" destination="mEI-Cd-n5n" id="Gxh-8P-qBQ"/>
                         <outlet property="commitBarButtonItem" destination="sHt-me-M3Y" id="FAl-0F-SbC"/>
+                        <outlet property="deleteCell" destination="SYT-AV-w9m" id="QY9-I7-1AF"/>
+                        <outlet property="emojiCell" destination="fzY-xc-S7o" id="sDM-Gm-RMv"/>
+                        <outlet property="emojiTextField" destination="wlX-xt-nWP" id="77W-nC-5ON"/>
                         <outlet property="favoriteSwitch" destination="563-ny-N0R" id="Bzl-KH-5rZ"/>
-                        <outlet property="labelCell" destination="fzY-xc-S7o" id="sDM-Gm-RMv"/>
-                        <outlet property="labelTextField" destination="wlX-xt-nWP" id="77W-nC-5ON"/>
                         <outlet property="nameCell" destination="g8c-7V-Fef" id="PFF-Cp-zGc"/>
                         <outlet property="nameTextField" destination="Tgc-eS-Vrd" id="WLQ-ES-eff"/>
                         <outlet property="stats" destination="eZa-yj-KJL" id="GZO-CA-5aG"/>

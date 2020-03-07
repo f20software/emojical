@@ -51,7 +51,7 @@ extension DataSource {
     func favoriteStamps() -> [Stamp] {
         do {
             return try dbQueue.read { db -> [Stamp] in
-                let request = Stamp.filter(Stamp.Columns.favorite == true).order(Stamp.Columns.name)
+                let request = Stamp.filter(Stamp.Columns.favorite == true && Stamp.Columns.deleted == false).order(Stamp.Columns.name)
                 return try request.fetchAll(db)
             }
         }

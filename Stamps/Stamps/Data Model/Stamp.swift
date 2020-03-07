@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import GRDB
 
 struct Stamp {
@@ -22,10 +23,10 @@ struct Stamp {
     
     var statsDescription: String {
         if count <= 0 {
-            return "Stamp hasn't been used yet"
+            return "Sticker hasn't been used yet"
         }
         
-        var result = "Stamp has been used "
+        var result = "Sticker has been used "
         if count > 1 {
             result += "\(count) times"
         }
@@ -41,6 +42,10 @@ struct Stamp {
         }
         
         return result
+    }
+    
+    static var defaultStamp: Stamp {
+        return Stamp(id: nil, name: "", label: "⭐️", color: UIColor.colorByName("Yellow"), favorite: false)
     }
 }
 
@@ -76,6 +81,6 @@ extension Stamp: Codable, FetchableRecord, MutablePersistableRecord {
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#requests
 extension Stamp {
     static func orderedByName() -> QueryInterfaceRequest<Stamp> {
-        return Stamp.order(Columns.name)
+        return Stamp.filter(Columns.deleted == false).order(Columns.name)
     }
 }

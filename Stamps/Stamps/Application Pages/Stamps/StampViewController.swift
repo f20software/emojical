@@ -28,12 +28,13 @@ class StampViewController: UITableViewController {
     @IBOutlet weak var commitBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var nameCell: UITableViewCell!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var labelCell: UITableViewCell!
-    @IBOutlet weak var labelTextField: EmojiTextField!
-    @IBOutlet weak var colorBadge: UIView!
+    @IBOutlet weak var emojiCell: UITableViewCell!
+    @IBOutlet weak var emojiTextField: EmojiTextField!
+    @IBOutlet weak var colorBadge: EmojiView!
     @IBOutlet weak var favoriteSwitch: UISwitch!
     @IBOutlet weak var stats: UILabel!
-    
+    @IBOutlet weak var deleteCell: UITableViewCell!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -47,11 +48,6 @@ class StampViewController: UITableViewController {
     fileprivate func configureView() {
         guard isViewLoaded else { return }
         
-        colorBadge.layer.cornerRadius = 5.0
-        colorBadge.layer.borderColor = UIColor.gray.cgColor
-        colorBadge.layer.borderWidth = 1.0
-        colorBadge.clipsToBounds = true
-        
         tableView.tableFooterView = UIView()
         
         switch presentation! {
@@ -61,6 +57,35 @@ class StampViewController: UITableViewController {
         case .push:
             navigationItem.leftBarButtonItem = nil
             navigationItem.rightBarButtonItem = nil
+        }
+    }
+}
+
+// MARK: - TableView handling
+
+extension StampViewController {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        switch presentation! {
+        case .modal:
+            return 1
+        case .push:
+            return 3
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell === nameCell {
+            nameTextField.becomeFirstResponder()
+        } else if cell === emojiCell {
+            emojiTextField.becomeFirstResponder()
+        } else if cell == deleteCell {
+            confirmStampDelete()
+        } else {
+            nameTextField.resignFirstResponder()
+            emojiTextField.resignFirstResponder()
         }
     }
 }
@@ -112,9 +137,37 @@ extension StampViewController: ColorsViewControllerDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
+extension StampViewController: UITextFieldDelegate {
+    
+    // Helping navigate from one text field to another
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField === nameTextField {
+            emojiTextField.becomeFirstResponder()
+        }
+        else if textField === emojiTextField {
+            nameTextField.becomeFirstResponder()
+        }
+        return false
+    }
+    
+    // Limit emoji text field to a single character
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField === emojiTextField {
+            textField.text = String(string.first ?? " ")
+            updateStamp()
+            DispatchQueue.main.async {
+                self.colorBadge.text = self.stamp.label
+            }
+            return false
+        }
+        
+        return true
+    }
+}
 
 // MARK: - Form
-extension StampViewController: UITextFieldDelegate {
+extension StampViewController {
     
     @IBAction func formValueChanged(_ sender: Any) {
         updateStamp()
@@ -128,38 +181,42 @@ extension StampViewController: UITextFieldDelegate {
     }
 
     func updateStamp() {
-        stamp.label = labelTextField.text ?? ""
+        stamp.label = emojiTextField.text ?? ""
         stamp.name = nameTextField.text ?? ""
         stamp.favorite = favoriteSwitch.isOn
     }
     
     func loadStamp() {
         nameTextField.text = stamp.name
-        labelTextField.text = stamp.label
-        colorBadge.backgroundColor = UIColor(hex: stamp.color)
+        emojiTextField.text = stamp.label
+        
+        colorBadge.color = UIColor(hex: stamp.color)
+        colorBadge.text = stamp.label
+        
         favoriteSwitch.isOn = stamp.favorite
         stats.text = stamp.statsDescription
     }
     
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        let cell = tableView.cellForRow(at: indexPath)
-        if cell === nameCell {
-            nameTextField.becomeFirstResponder()
-        } else if cell === labelCell {
-            labelTextField.becomeFirstResponder()
-        } else {
-            nameTextField.resignFirstResponder()
-            labelTextField.resignFirstResponder()
-        }
+    func deleteAndDismiss() {
+        stamp.deleted = true
+        saveChanges()
+        navigationController?.popViewController(animated: true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField === nameTextField {
-            nameTextField.resignFirstResponder()
+    func confirmStampDelete() {
+        if stamp.count > 0 {
+            let confirm = UIAlertController(title: "\(stamp.statsDescription). Are you sure you want to delete it?", message: nil, preferredStyle: .actionSheet)
+            confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+                self.deleteAndDismiss()
+            }))
+            confirm.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+                confirm.dismiss(animated: true, completion: nil)
+            }))
+            present(confirm, animated: true, completion: nil)
         }
-        return false
+        else {
+            deleteAndDismiss()
+        }
     }
     
     private func saveChanges() {

@@ -151,11 +151,8 @@ extension GoalViewController: UITextFieldDelegate {
                 stampLabels.append(label)
             }
         }
-        
-        stampsLabel.attributedText = NSAttributedString(string: stampLabels.joined(separator: ", "), attributes: [
-            NSAttributedString.Key.baselineOffset: -1.5,
-            NSAttributedString.Key.font: UIFont(name: "SS Symbolicons", size: 20.0)!
-        ])
+
+        stampsLabel.text = stampLabels.joined(separator: ", ")
         statsLabel.text = goal.statsDescription
     }
     

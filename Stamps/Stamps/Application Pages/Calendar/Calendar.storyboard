@@ -6,11 +6,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="ss-symbolicons-block.otf">
-            <string>SSSymboliconsBlock</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Calendar-->
         <scene sceneID="Nhp-AX-zr1">
@@ -219,61 +214,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYr-hs-NwF">
-                                <rect key="frame" x="62" y="576" width="290" height="136"/>
+                                <rect key="frame" x="47" y="566" width="320" height="146"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan, 14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f95-ty-vaR">
-                                        <rect key="frame" x="93" y="20" width="104.5" height="41"/>
+                                        <rect key="frame" x="108" y="20" width="104.5" height="41"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="S7R-qO-3X9">
-                                        <rect key="frame" x="15" y="81" width="260" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="S7R-qO-3X9">
+                                        <rect key="frame" x="15" y="81" width="290" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="run" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ2-3d-QNo">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiC-k6-gJ0" customClass="EmojiView" customModule="Stamps" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="Y8C-QY-Kb6"/>
-                                                    <constraint firstAttribute="height" constant="40" id="uIF-5F-3yi"/>
+                                                    <constraint firstAttribute="height" constant="50" id="FB7-KQ-CDk"/>
+                                                    <constraint firstAttribute="width" constant="50" id="tTl-Nv-zZ5"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="SSSymboliconsBlock" family="SS Symbolicons" pointSize="31"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="run" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfB-H1-AOx">
-                                                <rect key="frame" x="55" y="0.0" width="40" height="40"/>
-                                                <fontDescription key="fontDescription" name="SSSymboliconsBlock" family="SS Symbolicons" pointSize="31"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="run" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDQ-KR-tuC">
-                                                <rect key="frame" x="110" y="0.0" width="40" height="40"/>
-                                                <fontDescription key="fontDescription" name="SSSymboliconsBlock" family="SS Symbolicons" pointSize="31"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="run" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tU-gk-MiC">
-                                                <rect key="frame" x="165" y="0.0" width="40" height="40"/>
-                                                <fontDescription key="fontDescription" name="SSSymboliconsBlock" family="SS Symbolicons" pointSize="31"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="run" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="158-DY-p6U">
-                                                <rect key="frame" x="220" y="0.0" width="40" height="40"/>
-                                                <fontDescription key="fontDescription" name="SSSymboliconsBlock" family="SS Symbolicons" pointSize="31"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4GI-h3-GZT" customClass="EmojiView" customModule="Stamps" customModuleProvider="target">
+                                                <rect key="frame" x="60" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yF1-Z5-Ljf" customClass="EmojiView" customModule="Stamps" customModuleProvider="target">
+                                                <rect key="frame" x="120" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRg-cH-mZu" customClass="EmojiView" customModule="Stamps" customModuleProvider="target">
+                                                <rect key="frame" x="180" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0C-qO-OnH" customClass="EmojiView" customModule="Stamps" customModuleProvider="target">
+                                                <rect key="frame" x="240" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="iDQ-KR-tuC" firstAttribute="height" secondItem="kJ2-3d-QNo" secondAttribute="height" id="23m-Kh-kHE"/>
-                                            <constraint firstItem="rfB-H1-AOx" firstAttribute="height" secondItem="kJ2-3d-QNo" secondAttribute="height" id="95K-ye-FtY"/>
-                                            <constraint firstItem="158-DY-p6U" firstAttribute="height" secondItem="kJ2-3d-QNo" secondAttribute="height" id="E6g-OT-QH2"/>
-                                            <constraint firstItem="158-DY-p6U" firstAttribute="width" secondItem="kJ2-3d-QNo" secondAttribute="width" id="P3i-7f-Iwb"/>
-                                            <constraint firstItem="1tU-gk-MiC" firstAttribute="width" secondItem="kJ2-3d-QNo" secondAttribute="width" id="Ru8-nD-rSk"/>
-                                            <constraint firstItem="iDQ-KR-tuC" firstAttribute="width" secondItem="kJ2-3d-QNo" secondAttribute="width" id="jcP-1a-0UB"/>
-                                            <constraint firstItem="rfB-H1-AOx" firstAttribute="width" secondItem="kJ2-3d-QNo" secondAttribute="width" id="reD-6j-DYf"/>
-                                            <constraint firstItem="1tU-gk-MiC" firstAttribute="height" secondItem="kJ2-3d-QNo" secondAttribute="height" id="sos-OG-bsX"/>
+                                            <constraint firstItem="yF1-Z5-Ljf" firstAttribute="width" secondItem="YiC-k6-gJ0" secondAttribute="width" id="9yq-3y-crN"/>
+                                            <constraint firstItem="sRg-cH-mZu" firstAttribute="height" secondItem="YiC-k6-gJ0" secondAttribute="height" id="PuM-2e-own"/>
+                                            <constraint firstItem="a0C-qO-OnH" firstAttribute="width" secondItem="YiC-k6-gJ0" secondAttribute="width" id="V05-WF-Udo"/>
+                                            <constraint firstItem="yF1-Z5-Ljf" firstAttribute="height" secondItem="YiC-k6-gJ0" secondAttribute="height" id="dwB-fA-C2b"/>
+                                            <constraint firstItem="a0C-qO-OnH" firstAttribute="height" secondItem="YiC-k6-gJ0" secondAttribute="height" id="h8S-6H-mgh"/>
+                                            <constraint firstItem="4GI-h3-GZT" firstAttribute="width" secondItem="YiC-k6-gJ0" secondAttribute="width" id="ivK-X6-qzd"/>
+                                            <constraint firstItem="4GI-h3-GZT" firstAttribute="height" secondItem="YiC-k6-gJ0" secondAttribute="height" id="p3h-NG-BgG"/>
+                                            <constraint firstItem="sRg-cH-mZu" firstAttribute="width" secondItem="YiC-k6-gJ0" secondAttribute="width" id="xNY-3A-4AR"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -300,11 +285,11 @@
                     <connections>
                         <outlet property="dayTitle" destination="f95-ty-vaR" id="CpG-l5-YiV"/>
                         <outlet property="dayView" destination="cYr-hs-NwF" id="uuo-Iz-hgB"/>
-                        <outlet property="stamp1" destination="kJ2-3d-QNo" id="S3e-wv-XAD"/>
-                        <outlet property="stamp2" destination="rfB-H1-AOx" id="8Iu-6f-28m"/>
-                        <outlet property="stamp3" destination="iDQ-KR-tuC" id="Ydc-Tk-ml9"/>
-                        <outlet property="stamp4" destination="1tU-gk-MiC" id="g9O-Tr-Cn9"/>
-                        <outlet property="stamp5" destination="158-DY-p6U" id="i9v-l9-YIq"/>
+                        <outlet property="stamp1" destination="YiC-k6-gJ0" id="g8i-Xa-XKr"/>
+                        <outlet property="stamp2" destination="4GI-h3-GZT" id="3NJ-Ks-bJs"/>
+                        <outlet property="stamp3" destination="yF1-Z5-Ljf" id="FtI-Qq-gLL"/>
+                        <outlet property="stamp4" destination="sRg-cH-mZu" id="TNQ-nU-PaS"/>
+                        <outlet property="stamp5" destination="a0C-qO-OnH" id="nbz-nV-voK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLj-Av-s2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

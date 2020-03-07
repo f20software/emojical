@@ -9,12 +9,12 @@
         <!--Goals-->
         <scene sceneID="BQt-Ng-sDv">
             <objects>
-                <tableViewController id="Q9E-Co-peE" customClass="GoalsViewController" customModule="Stamps" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Q9E-Co-peE" customClass="GoalsViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="USs-QS-3Nf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="goalCell" id="sl2-a2-uQe" customClass="GoalCell" customModule="Stamps" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="goalCell" id="sl2-a2-uQe" customClass="GoalCell" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="20" y="55.5" width="374" height="58.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sl2-a2-uQe" id="Bar-Ic-Poc">
@@ -78,7 +78,7 @@
         <!--Goal-->
         <scene sceneID="JuO-Ny-8oY">
             <objects>
-                <tableViewController id="ihZ-OL-k2B" customClass="GoalViewController" customModule="Stamps" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ihZ-OL-k2B" customClass="GoalViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="SNb-fQ-Chw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,8 +235,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="run, drink" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ar-fO-Cz5">
-                                                    <rect key="frame" x="262" y="11.5" width="73" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="254" y="10" width="81" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -323,7 +323,7 @@ Last time on Jan 17</string>
         <!--Select Stamps-->
         <scene sceneID="U0g-KA-rxz">
             <objects>
-                <tableViewController id="giD-P1-u5W" customClass="SelectStampsViewController" customModule="Stamps" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="giD-P1-u5W" customClass="SelectStampsViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="8dp-Z2-zMq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

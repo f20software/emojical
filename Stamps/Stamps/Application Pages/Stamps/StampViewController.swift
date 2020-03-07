@@ -11,7 +11,6 @@ import UIKit
 class StampViewController: UITableViewController {
     
     let segueCommit = "commitStamp"
-    let segueSelectStamp = "selectStamp"
     let segueSelectColor = "selectColor"
 
     enum Presentation {
@@ -24,12 +23,13 @@ class StampViewController: UITableViewController {
     
     var stamp: Stamp!
     var presentation: Presentation! { didSet { configureView() } }
-
+    
     @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var commitBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var nameCell: UITableViewCell!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var labelLabel: UILabel!
+    @IBOutlet weak var labelCell: UITableViewCell!
+    @IBOutlet weak var labelTextField: EmojiTextField!
     @IBOutlet weak var colorBadge: UIView!
     @IBOutlet weak var favoriteSwitch: UISwitch!
     @IBOutlet weak var stats: UILabel!
@@ -47,10 +47,6 @@ class StampViewController: UITableViewController {
     fileprivate func configureView() {
         guard isViewLoaded else { return }
         
-        labelLabel.layer.cornerRadius = 20.0
-        labelLabel.layer.borderWidth = 2.0
-        labelLabel.clipsToBounds = true
-
         colorBadge.layer.cornerRadius = 5.0
         colorBadge.layer.borderColor = UIColor.gray.cgColor
         colorBadge.layer.borderWidth = 1.0
@@ -84,12 +80,6 @@ extension StampViewController {
         if segue.identifier == segueCommit {
             saveChanges()
         }
-        else if segue.identifier == segueSelectStamp {
-            if let iconsVC = (segue.destination as? IconsViewController) {
-                iconsVC.selectedStamp = stamp.label
-                iconsVC.delegate = self
-            }
-        }
         else if segue.identifier == segueSelectColor {
             if let colorsVC = (segue.destination as? ColorsViewController) {
                 colorsVC.selectedColor = stamp.color
@@ -112,14 +102,6 @@ extension StampViewController {
         }
     }
     
-}
-
-// MARK: - Updating stamp label from IconsViewController
-extension StampViewController: IconsViewControllerDelegate {
-    
-    func iconSelected(_ icon: String) {
-        stamp.label = icon
-    }
 }
 
 // MARK: - Updating stamp color from ColorViewController
@@ -146,18 +128,14 @@ extension StampViewController: UITextFieldDelegate {
     }
 
     func updateStamp() {
+        stamp.label = labelTextField.text ?? ""
         stamp.name = nameTextField.text ?? ""
         stamp.favorite = favoriteSwitch.isOn
     }
     
     func loadStamp() {
         nameTextField.text = stamp.name
-        labelLabel.attributedText = NSAttributedString(string: stamp.label, attributes: [
-            NSAttributedString.Key.baselineOffset: -1.5,
-            NSAttributedString.Key.font: UIFont(name: "SS Symbolicons", size: 25.0)!,
-            NSAttributedString.Key.foregroundColor: UIColor(hex: stamp.color)
-        ])
-        labelLabel.layer.borderColor = UIColor(hex: stamp.color).cgColor
+        labelTextField.text = stamp.label
         colorBadge.backgroundColor = UIColor(hex: stamp.color)
         favoriteSwitch.isOn = stamp.favorite
         stats.text = stamp.statsDescription
@@ -169,8 +147,11 @@ extension StampViewController: UITextFieldDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         if cell === nameCell {
             nameTextField.becomeFirstResponder()
+        } else if cell === labelCell {
+            labelTextField.becomeFirstResponder()
         } else {
             nameTextField.resignFirstResponder()
+            labelTextField.resignFirstResponder()
         }
     }
     

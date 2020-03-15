@@ -41,10 +41,13 @@ extension SelectStampsViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stampCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "selectStampCell", for: indexPath) as! SelectStampCell
         
         let stamp = dataSource[indexPath.row]
-        cell.textLabel?.text = stamp.name
+        cell.name!.text = stamp.name
+        cell.label!.color = UIColor(hex: stamp.color)
+        cell.label!.text = stamp.label
+        
         if selectedStamps.contains(stamp.id!) {
             cell.accessoryType = .checkmark
         }

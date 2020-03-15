@@ -356,21 +356,41 @@ Last time on Jan 17</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stampCell" textLabel="Yya-66-YMC" style="IBUITableViewCellStyleDefault" id="rpx-mO-bZN">
-                                <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectStampCell" id="wuF-6e-RYG" customClass="SelectStampCell" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.5" width="374" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rpx-mO-bZN" id="eFY-pe-jqg">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wuF-6e-RYG" id="hq9-Il-cQK">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="53"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Yya-66-YMC">
-                                            <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Q2-OH-59u" customClass="EmojiView" customModule="Emojical" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="6.5" width="40" height="40"/>
+                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="X2c-nI-EnX"/>
+                                                <constraint firstAttribute="height" constant="40" id="aiv-WG-Acc"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRc-vJ-uld">
+                                            <rect key="frame" x="70" y="16" width="63" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="RRc-vJ-uld" firstAttribute="top" secondItem="hq9-Il-cQK" secondAttribute="topMargin" constant="5" id="6hH-aq-S9j"/>
+                                        <constraint firstItem="9Q2-OH-59u" firstAttribute="centerY" secondItem="hq9-Il-cQK" secondAttribute="centerY" id="7GX-W8-DKJ"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="RRc-vJ-uld" secondAttribute="trailing" constant="10" id="TXn-Y9-SD3"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="RRc-vJ-uld" secondAttribute="bottom" constant="5" id="Z33-Td-P7L"/>
+                                        <constraint firstItem="9Q2-OH-59u" firstAttribute="leading" secondItem="hq9-Il-cQK" secondAttribute="leadingMargin" id="cFs-sR-fL2"/>
+                                        <constraint firstItem="RRc-vJ-uld" firstAttribute="leading" secondItem="9Q2-OH-59u" secondAttribute="trailing" constant="10" id="pdH-cG-FeD"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="9Q2-OH-59u" id="DmK-LZ-fnS"/>
+                                    <outlet property="name" destination="RRc-vJ-uld" id="hzV-2a-2oC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -382,7 +402,7 @@ Last time on Jan 17</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTA-Q8-MgH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3771" y="694"/>
+            <point key="canvasLocation" x="3769.5652173913045" y="693.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4dl-is-PCl">

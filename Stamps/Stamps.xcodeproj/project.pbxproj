@@ -22,6 +22,7 @@
 		F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B0450241EBD7A006E5175 /* EmojicalTests.swift */; };
 		F27B0458241EBDA0006E5175 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F27B0459241EBDA3006E5175 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
+		F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045A241EEB48006E5175 /* SelectStampCell.swift */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
 		F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */; };
@@ -80,6 +81,7 @@
 		F27B044E241EBD7A006E5175 /* EmojicalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojicalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27B0450241EBD7A006E5175 /* EmojicalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojicalTests.swift; sourceTree = "<group>"; };
 		F27B0452241EBD7A006E5175 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F27B045A241EEB48006E5175 /* SelectStampCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStampCell.swift; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */,
+				F27B045A241EEB48006E5175 /* SelectStampCell.swift */,
 				F2C190D52402E243003F5ABA /* GoalCell.swift */,
 				F2C190D724030701003F5ABA /* SelectStampsViewController.swift */,
 				F2C190D32402E17A003F5ABA /* GoalViewController.swift */,
@@ -421,6 +424,7 @@
 				F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */,
 				F2B4763023DCF9DE0076BFDC /* Diary.swift in Sources */,
 				F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */,
+				F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
 				F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */,
 				F247542723E74C49006A13C3 /* Award.swift in Sources */,

@@ -81,9 +81,9 @@ struct AppDatabase {
             })
         }
 
-        migrator.registerMigration("db-state") { db in
+        migrator.registerMigration("db-state-1") { db in
             // Create a table for various app params
-            try db.create(table: "params") { t in
+            try db.create(table: "param") { t in
                 t.column("name", .text).notNull()
                 t.column("value", .text).notNull()
             }

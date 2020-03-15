@@ -24,7 +24,7 @@ extension Date {
         comps.month = month
         comps.year = year
         comps.day = day
-        comps.hour = 12
+        comps.hour = 22
         comps.minute = 0
         comps.second = 0
         
@@ -44,5 +44,12 @@ extension Date {
     // Shift date by number of days
     func byAddingDays(_ days: Int) -> Date {
         return self.advanced(by: TimeInterval(days * 24 * 60 * 60))
+    }
+
+    // Shift date by number of month
+    func byAddingMonth(_ months: Int) -> Date {
+        var comp = DateComponents()
+        comp.month = months
+        return Calendar.current.date(byAdding: comp, to: self)!
     }
 }

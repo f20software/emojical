@@ -86,10 +86,9 @@ class CalendarViewController: UITableViewController {
         
         let dateEnd = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: 6)
         if dateEnd != nil {
-            // Update awards for Sunday
-            AwardManager.shared.recalculateAwardsForWeek(dateEnd!)
-            // Load them
-            let awards = db.awardsForDateInterval(from: dateEnd!.byAddingDays(-6), to: dateEnd!)
+            // Load weekly awards for this week
+            let weeklyGoalIds = db.goalsByPeriod(.week).map({ $0.id! })
+            let awards = db.awardsForDateInterval(from: dateEnd!.byAddingDays(-6), to: dateEnd!).filter({ weeklyGoalIds.contains( $0.goalId )})
             for award in awards {
                 let goal = db.goalById(award.goalId)
                 res.append(UIColor(hex: db.stampById(goal!.stampIds[0])!.color))

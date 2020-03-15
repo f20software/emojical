@@ -11,6 +11,20 @@ import GRDB
 // MARK: - Diary Helper Methods
 extension DataSource {
 
+    func getFirstDiaryDate() -> Date? {
+        do {
+            let diary = try dbQueue.read { db -> Diary? in
+                let request = Diary.order(Diary.Columns.date)
+                return try request.fetchOne(db)
+            }
+            if diary != nil {
+                return Date(yyyyMmDd: diary!.date)
+            }
+        }
+        catch { }
+        return nil
+    }
+    
     // Diary records filtered for specific date interval
     func diaryForDateInterval(from: Date, to: Date) -> [Diary] {
         do {

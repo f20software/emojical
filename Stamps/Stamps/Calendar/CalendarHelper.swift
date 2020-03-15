@@ -11,7 +11,7 @@ import Foundation
 class CalenderHelper {
 
     // We will add configuration later where user can choose whether to have Mon...Sun weeks of Sun...Sat
-    static let weekStartMonday = true
+    static var weekStartMonday = true
     
     // Singleton instance
     static let shared = CalenderHelper()
@@ -56,6 +56,20 @@ class CalenderHelper {
         df.dateFormat = "MMMM, d"
         
         return df.string(from: date)
+    }
+
+    // Returns date of the end of week (Sunday or Saturday) based on
+    // CalendarHelper setting and selected month
+    func endOfWeek(date: Date) -> Date {
+        let month = Month(date)
+        let dayIndex = month.indexForDay(Calendar.current.component(.day, from: date))
+        return date.byAddingDays(6-dayIndex)
+    }
+    
+    // Returns date of the end of the month
+    func endOfMonth(date: Date) -> Date {
+        let month = Month(date)
+        return Date(year: month.year, month: month.month, day: month.numberOfDays)
     }
 
 }

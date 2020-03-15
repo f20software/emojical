@@ -91,8 +91,8 @@ extension StampsViewController {
             setEditing(false, animated: true)
             let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.viewControllers.first as! StampViewController
-            controller.title = "New Stamp"
-            controller.stamp = Stamp(id: nil, name: "", label: "star", color: UIColor.colorByName("Gold"), favorite: false, deleted: false)
+            controller.title = "New Sticker"
+            controller.stamp = Stamp.defaultStamp
             controller.presentation = .modal
         }
     }
@@ -123,13 +123,9 @@ extension StampsViewController {
     private func configure(_ cell: StampCell, at indexPath: IndexPath) {
         let stamp = stamps[indexPath.row]
         
-        cell.label.attributedText = NSAttributedString(string: stamp.label, attributes: [
-            NSAttributedString.Key.baselineOffset: -1.5,
-            NSAttributedString.Key.font: UIFont(name: "SS Symbolicons", size: 25.0)!,
-            NSAttributedString.Key.foregroundColor: UIColor(hex: stamp.color)
-        ])
+        cell.label.text = stamp.label
+        cell.label.color = UIColor(hex: stamp.color)
         cell.name.text = stamp.name.isEmpty ? "-" : stamp.name
-        cell.label.layer.borderColor = UIColor(hex: stamp.color).cgColor
         if stamp.count > 0 {
             cell.count.text = "  \(stamp.count)  "
             cell.count.isHidden = false

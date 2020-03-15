@@ -35,7 +35,8 @@ class GoalViewController: UITableViewController {
     @IBOutlet weak var period: UISegmentedControl!
     @IBOutlet weak var stampsLabel: UILabel!
     @IBOutlet weak var statsLabel: UILabel!
-    
+    @IBOutlet weak var deleteCell: UITableViewCell!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -61,6 +62,52 @@ class GoalViewController: UITableViewController {
         }
     }
 }
+
+// MARK: - TableView handling
+
+extension GoalViewController {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        switch presentation! {
+        case .modal:
+            return 1
+        case .push:
+            return 3
+        }
+    }
+    
+    // Auto-selecting text fields when cell is selected
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let cell = tableView.cellForRow(at: indexPath)
+
+        if cell === nameCell {
+            nameTextField.becomeFirstResponder()
+        } else if cell === limitCell {
+            limitTextField.becomeFirstResponder()
+        } else if cell === deleteCell {
+            confirmGoalDelete()
+        } else {
+            nameTextField.resignFirstResponder()
+            limitTextField.resignFirstResponder()
+        }
+    }
+
+    // We want to be able to dynamically update footer for the first section with
+    // human readable goal description
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section == 0 {
+            return goal.details
+        }
+        else if section == 1 {
+            return "If you update the goal, all previously scored awards would remain untouched"
+        }
+        
+        return nil
+    }
+}
+
+
 
 // MARK: - Updating list of stamps from SelectStampsViewController
 extension GoalViewController: SelectStampsViewControllerDelegate {
@@ -151,42 +198,33 @@ extension GoalViewController: UITextFieldDelegate {
                 stampLabels.append(label)
             }
         }
-        
-        stampsLabel.attributedText = NSAttributedString(string: stampLabels.joined(separator: ", "), attributes: [
-            NSAttributedString.Key.baselineOffset: -1.5,
-            NSAttributedString.Key.font: UIFont(name: "SS Symbolicons", size: 20.0)!
-        ])
+
+        stampsLabel.text = stampLabels.joined(separator: ", ")
         statsLabel.text = goal.statsDescription
     }
     
-    // Auto-selecting text fields when cell is selected
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        let cell = tableView.cellForRow(at: indexPath)
+    func deleteAndDismiss() {
+        goal.deleted = true
+        saveChanges()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func confirmGoalDelete() {
+        if goal.count > 0 {
+            let confirm = UIAlertController(title: "\(goal.statsDescription). Are you sure you want to delete it?", message: nil, preferredStyle: .actionSheet)
+            confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+                self.deleteAndDismiss()
+            }))
+            confirm.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+                confirm.dismiss(animated: true, completion: nil)
+            }))
+            present(confirm, animated: true, completion: nil)
+        }
+        else {
+            deleteAndDismiss()
+        }
+    }
 
-        if cell === nameCell {
-            nameTextField.becomeFirstResponder()
-        } else if cell === limitCell {
-            limitTextField.becomeFirstResponder()
-        } else {
-            nameTextField.resignFirstResponder()
-            limitTextField.resignFirstResponder()
-        }
-    }
-    
-    // We want to be able to dynamically update footer for the first section with
-    // human readable goal description
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if section == 0 {
-            return goal.details
-        }
-        else if section == 1 {
-            return "If you update the goal, all previously scored awards would remain untouched"
-        }
-        
-        return nil
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField === nameTextField {
             limitTextField.becomeFirstResponder()

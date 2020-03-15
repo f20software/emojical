@@ -18,32 +18,94 @@ class AwardManager {
     private init(dataSource: DataSource) {
         self.db = dataSource
     }
-    
-    func recalculateAwardsForWeek(_ date: Date) {
-        let month = CalenderHelper.Month(date)
-        let dayIndex = month.indexForDay(Calendar.current.component(.day, from: date))
-        let weekStart = date.byAddingDays(-dayIndex)
-        let weekEnd = date.byAddingDays(6-dayIndex)
-        let past = weekEnd < Date()
 
-        let stampsLog = db.diaryForDateInterval(from: weekStart, to: weekEnd)
-        let weeklyGoals = db.goalsByPeriod(.week)
+    // For weekly goals we will do the following:
+    // We will in the database last Sunday (end of week) that we recalculated
+    // When app resumes we read that value and recalculate weeks for all weeks after that date until
+    // we reach Sunday
+    
+    func recalculateOnAppResume() {
+        recalculateWeeklyGoals()
+        recalculateMonthlyGoals()
+    }
+
+    // Recalculate weekly goals and update last-week-update parameter in the database
+    func recalculateWeeklyGoals() {
+        // When was the last weekly goals recalculated?
+        var lastUpdated = DataSource.shared.lastWeekUpdate
+        if lastUpdated == nil {
+            var firstEntryDate = DataSource.shared.getFirstDiaryDate()
+            if firstEntryDate == nil {
+                firstEntryDate = Date()
+            }
+
+            // This wil be either last Sunday before first entry or last Sunday before today
+            lastUpdated = CalenderHelper.shared.endOfWeek(date: firstEntryDate!).byAddingDays(-7)
+        }
+        
+        // TODO: Date comparision! - review how it works with only date components
+        while (lastUpdated! < Date()) {
+            DataSource.shared.lastWeekUpdate = lastUpdated
+            lastUpdated = lastUpdated!.byAddingDays(7)
+            recalculateAwardsForWeek(lastUpdated!)
+        }
+    }
+    
+    // Recalculate monthly goals and update last-month-update parameter in the database
+    func recalculateMonthlyGoals() {
+        // When was the last weekly goals recalculated?
+        var lastUpdated = DataSource.shared.lastMonthUpdate
+        if lastUpdated == nil {
+            var firstEntryDate = DataSource.shared.getFirstDiaryDate()
+            if firstEntryDate == nil {
+                firstEntryDate = Date()
+            }
+
+            // This wil be last day of the previous month or last day of month just before first diary entry
+            lastUpdated = CalenderHelper.shared.endOfMonth(date: firstEntryDate!.byAddingMonth(-1))
+        }
+        
+        // TODO: Date comparision! - review how it works with only date components
+        while (lastUpdated! < Date()) {
+            DataSource.shared.lastMonthUpdate = lastUpdated
+            lastUpdated = lastUpdated!.byAddingMonth(1)
+            recalculateAwardsForMonth(lastUpdated!)
+        }
+    }
+
+    func recalculateAwardsForMonth(_ date: Date) {
+        let goals = db.goalsByPeriod(.month)
+        // If we don't have goals - there is not point of recalculating anything
+        guard goals.count > 0 else { return }
+        
+        print("Recalculating monthly awards for \(date.databaseKey)")
+
+        let end = CalenderHelper.shared.endOfMonth(date: date)
+        let start = CalenderHelper.shared.endOfMonth(date: date.byAddingMonth(-1)).byAddingDays(1)
+        let past = end < Date()
+
+        // Save off array of Ids so we can easily filter existing awards by only looking at ones that
+        // correspond to our goals
+        let goalIds = goals.map { $0.id! }
+        let stampsLog = db.diaryForDateInterval(from: start, to: end)
         var allAwards = [Award]()
 
         // Only add awards if we actually had any stamps for this week
         if stampsLog.count > 0 {
-            for goal in weeklyGoals {
+            for goal in goals {
                 if goal.direction == .positive, let dateReached = isPositiveGoalReached(goal, diary: stampsLog) {
                     allAwards.append(Award(id: nil, goalId: goal.id!, date: dateReached))
                 }
                 else if past && goal.direction == .negative && isNegativeGoalReached(goal, diary: stampsLog) {
-                    allAwards.append(Award(id: nil, goalId: goal.id!, date: weekEnd.databaseKey))
+                    allAwards.append(Award(id: nil, goalId: goal.id!, date: end.databaseKey))
                 }
             }
         }
             
         // Load existing awards from the database
-        let existingAwards = db.awardsForDateInterval(from: weekStart, to: weekEnd)
+        let existingAwards = db.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
+            return goalIds.contains(a.goalId)
+        }
         // And calculate difference - separate set of awards to be added and set of awards to be deleted
         let addAwards = allAwards.filter { (a1) -> Bool in
             return existingAwards.contains { (a2) -> Bool in
@@ -56,7 +118,59 @@ class AwardManager {
             } == false
         }
 
-        DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
+        if addAwards.count > 0 || deleteAwards.count > 0 {
+            DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
+        }
+    }
+
+    func recalculateAwardsForWeek(_ date: Date) {
+        let goals = db.goalsByPeriod(.week)
+        // If we don't have goals - there is not point of recalculating anything
+        guard goals.count > 0 else { return }
+
+        print("Recalculating weekly awards for \(date.databaseKey)")
+
+        let end = CalenderHelper.shared.endOfWeek(date: date)
+        let start = end.byAddingDays(-6)
+        let past = end < Date()
+
+        // Save off array of Ids so we can easily filter existing awards by only looking at ones that
+        // correspond to our goals
+        let goalIds = goals.map { $0.id! }
+        let stampsLog = db.diaryForDateInterval(from: start, to: end)
+        var allAwards = [Award]()
+
+        // Only add awards if we actually had any stamps for this week
+        if stampsLog.count > 0 {
+            for goal in goals {
+                if goal.direction == .positive, let dateReached = isPositiveGoalReached(goal, diary: stampsLog) {
+                    allAwards.append(Award(id: nil, goalId: goal.id!, date: dateReached))
+                }
+                else if past && goal.direction == .negative && isNegativeGoalReached(goal, diary: stampsLog) {
+                    allAwards.append(Award(id: nil, goalId: goal.id!, date: end.databaseKey))
+                }
+            }
+        }
+            
+        // Load existing awards from the database
+        let existingAwards = db.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
+            return goalIds.contains(a.goalId)
+        }
+        // And calculate difference - separate set of awards to be added and set of awards to be deleted
+        let addAwards = allAwards.filter { (a1) -> Bool in
+            return existingAwards.contains { (a2) -> Bool in
+                a2.goalId == a1.goalId && a2.date == a1.date
+            } == false
+        }
+        let deleteAwards = existingAwards.filter { (a1) -> Bool in
+            return allAwards.contains { (a2) -> Bool in
+                a2.goalId == a1.goalId && a2.date == a1.date
+            } == false
+        }
+
+        if addAwards.count > 0 || deleteAwards.count > 0 {
+            DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
+        }
     }
     
     // Return the date goal is reached or nil of goals is not reached

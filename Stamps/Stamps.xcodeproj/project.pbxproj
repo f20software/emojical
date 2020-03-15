@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
+		F20D1F9624142A1700FB5000 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* EmojiView.swift */; };
 		F247541423DFC706006A13C3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541323DFC706006A13C3 /* Goal.swift */; };
 		F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541623DFEADB006A13C3 /* StampViewController.swift */; };
 		F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541823E5D2CB006A13C3 /* IconCell.swift */; };
-		F247541B23E5D2CB006A13C3 /* IconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541923E5D2CB006A13C3 /* IconsViewController.swift */; };
 		F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541C23E5DF6B006A13C3 /* Palette.swift */; };
 		F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542223E5E3B5006A13C3 /* ColorsViewController.swift */; };
 		F247542523E734CE006A13C3 /* AwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542423E734CE006A13C3 /* AwardManager.swift */; };
 		F247542723E74C49006A13C3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542623E74C49006A13C3 /* Award.swift */; };
 		F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColor+Hex.swift */; };
-		F26B273B23D80D5100B8D0F9 /* ss-symbolicons-block.otf in Resources */ = {isa = PBXBuildFile; fileRef = F26B273A23D80CC700B8D0F9 /* ss-symbolicons-block.otf */; };
+		F27968F1240C127900EA9436 /* Param.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F0240C127900EA9436 /* Param.swift */; };
+		F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F2240C12C700EA9436 /* DataSource+Param.swift */; };
+		F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B0450241EBD7A006E5175 /* EmojicalTests.swift */; };
+		F27B0458241EBDA0006E5175 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
+		F27B0459241EBDA3006E5175 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
 		F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */; };
@@ -49,17 +54,32 @@
 		F2FF7EA623D66F3A0033D9DC /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA523D66F3A0033D9DC /* Stamp.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F27B0453241EBD7A006E5175 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2C4942D23D2CBC700EAF9CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2C4943423D2CBC800EAF9CC;
+			remoteInfo = Stamps;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
+		F20D1F9424142A1700FB5000 /* EmojiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		F247541323DFC706006A13C3 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		F247541623DFEADB006A13C3 /* StampViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampViewController.swift; sourceTree = "<group>"; };
 		F247541823E5D2CB006A13C3 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
-		F247541923E5D2CB006A13C3 /* IconsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsViewController.swift; sourceTree = "<group>"; };
 		F247541C23E5DF6B006A13C3 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		F247542223E5E3B5006A13C3 /* ColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
 		F247542423E734CE006A13C3 /* AwardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardManager.swift; sourceTree = "<group>"; };
 		F247542623E74C49006A13C3 /* Award.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		F26B273623D6772400B8D0F9 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
-		F26B273A23D80CC700B8D0F9 /* ss-symbolicons-block.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ss-symbolicons-block.otf"; sourceTree = "<group>"; };
+		F27968F0240C127900EA9436 /* Param.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Param.swift; sourceTree = "<group>"; };
+		F27968F2240C12C700EA9436 /* DataSource+Param.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Param.swift"; sourceTree = "<group>"; };
+		F27B044E241EBD7A006E5175 /* EmojicalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojicalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F27B0450241EBD7A006E5175 /* EmojicalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojicalTests.swift; sourceTree = "<group>"; };
+		F27B0452241EBD7A006E5175 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
@@ -74,7 +94,7 @@
 		F2C190D32402E17A003F5ABA /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		F2C190D52402E243003F5ABA /* GoalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		F2C190D724030701003F5ABA /* SelectStampsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStampsViewController.swift; sourceTree = "<group>"; };
-		F2C4943523D2CBC800EAF9CC /* Stamps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stamps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2C4943523D2CBC800EAF9CC /* Emojical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +114,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F27B044B241EBD7A006E5175 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2C4943223D2CBC800EAF9CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,10 +132,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F20D1F9724142A1D00FB5000 /* Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				F20D1F9324142A1700FB5000 /* EmojiTextField.swift */,
+				F20D1F9424142A1700FB5000 /* EmojiView.swift */,
+			);
+			path = Emoji;
+			sourceTree = "<group>";
+		};
 		F26B273823D80CB000B8D0F9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F26B273923D80CB700B8D0F9 /* Fonts */,
 				F2C4944023D2CBC800EAF9CC /* Main.storyboard */,
 				F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */,
 				F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */,
@@ -116,12 +151,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		F26B273923D80CB700B8D0F9 /* Fonts */ = {
+		F27B044F241EBD7A006E5175 /* EmojicalTests */ = {
 			isa = PBXGroup;
 			children = (
-				F26B273A23D80CC700B8D0F9 /* ss-symbolicons-block.otf */,
+				F27B0450241EBD7A006E5175 /* EmojicalTests.swift */,
+				F27B0452241EBD7A006E5175 /* Info.plist */,
 			);
-			path = Fonts;
+			path = EmojicalTests;
 			sourceTree = "<group>";
 		};
 		F2A5256023D4CED000C3E0F3 /* Calendar */ = {
@@ -153,7 +189,6 @@
 				F247541823E5D2CB006A13C3 /* IconCell.swift */,
 				F2B4763E23DE4B540076BFDC /* StampCell.swift */,
 				F247542223E5E3B5006A13C3 /* ColorsViewController.swift */,
-				F247541923E5D2CB006A13C3 /* IconsViewController.swift */,
 				F247541623DFEADB006A13C3 /* StampViewController.swift */,
 				F2C4943E23D2CBC800EAF9CC /* StampsViewController.swift */,
 			);
@@ -186,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				F2C4943723D2CBC800EAF9CC /* Stamps */,
+				F27B044F241EBD7A006E5175 /* EmojicalTests */,
 				F2C4943623D2CBC800EAF9CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -193,7 +229,8 @@
 		F2C4943623D2CBC800EAF9CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F2C4943523D2CBC800EAF9CC /* Stamps.app */,
+				F2C4943523D2CBC800EAF9CC /* Emojical.app */,
+				F27B044E241EBD7A006E5175 /* EmojicalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,6 +240,7 @@
 			children = (
 				F26B273823D80CB000B8D0F9 /* Resources */,
 				F2A5256023D4CED000C3E0F3 /* Calendar */,
+				F20D1F9724142A1D00FB5000 /* Emoji */,
 				F2B4763423DE3C300076BFDC /* Application Pages */,
 				F2FF7EAB23D671050033D9DC /* Colors */,
 				F2FF7EA423D66F0B0033D9DC /* Data Model */,
@@ -219,6 +257,7 @@
 			children = (
 				F2B4762C23DC1B440076BFDC /* AppDatabase.swift */,
 				F2FF7EA223D66F030033D9DC /* DataSource.swift */,
+				F27968F2240C12C700EA9436 /* DataSource+Param.swift */,
 				F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */,
 				F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */,
 				F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */,
@@ -231,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				F247542423E734CE006A13C3 /* AwardManager.swift */,
+				F27968F0240C127900EA9436 /* Param.swift */,
 				F2B4762F23DCF9DE0076BFDC /* Diary.swift */,
 				F247542623E74C49006A13C3 /* Award.swift */,
 				F247541323DFC706006A13C3 /* Goal.swift */,
@@ -251,6 +291,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F27B044D241EBD7A006E5175 /* EmojicalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F27B0457241EBD7A006E5175 /* Build configuration list for PBXNativeTarget "EmojicalTests" */;
+			buildPhases = (
+				F27B044A241EBD7A006E5175 /* Sources */,
+				F27B044B241EBD7A006E5175 /* Frameworks */,
+				F27B044C241EBD7A006E5175 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F27B0454241EBD7A006E5175 /* PBXTargetDependency */,
+			);
+			name = EmojicalTests;
+			productName = EmojicalTests;
+			productReference = F27B044E241EBD7A006E5175 /* EmojicalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F2C4943423D2CBC800EAF9CC /* Stamps */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2C4944B23D2CBCA00EAF9CC /* Build configuration list for PBXNativeTarget "Stamps" */;
@@ -268,7 +326,7 @@
 				F2B4762A23DBDFEF0076BFDC /* GRDB */,
 			);
 			productName = Stamps;
-			productReference = F2C4943523D2CBC800EAF9CC /* Stamps.app */;
+			productReference = F2C4943523D2CBC800EAF9CC /* Emojical.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -281,6 +339,10 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Vladimir Svidersky";
 				TargetAttributes = {
+					F27B044D241EBD7A006E5175 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = F2C4943423D2CBC800EAF9CC;
+					};
 					F2C4943423D2CBC800EAF9CC = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -303,17 +365,24 @@
 			projectRoot = "";
 			targets = (
 				F2C4943423D2CBC800EAF9CC /* Stamps */,
+				F27B044D241EBD7A006E5175 /* EmojicalTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F27B044C241EBD7A006E5175 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2C4943323D2CBC800EAF9CC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */,
-				F26B273B23D80D5100B8D0F9 /* ss-symbolicons-block.otf in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
 				F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
@@ -325,6 +394,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F27B044A241EBD7A006E5175 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */,
+				F27B0458241EBDA0006E5175 /* CalendarHelper.swift in Sources */,
+				F27B0459241EBDA3006E5175 /* DateExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2C4943123D2CBC800EAF9CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,7 +417,6 @@
 				F2FF7EA123D659490033D9DC /* DayBadgeView.swift in Sources */,
 				F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* Stamp.swift in Sources */,
-				F247541B23E5D2CB006A13C3 /* IconsViewController.swift in Sources */,
 				F2C190D22401BD50003F5ABA /* AwardBadgeView.swift in Sources */,
 				F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */,
 				F2B4763023DCF9DE0076BFDC /* Diary.swift in Sources */,
@@ -347,15 +425,19 @@
 				F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */,
 				F247542723E74C49006A13C3 /* Award.swift in Sources */,
 				F247541423DFC706006A13C3 /* Goal.swift in Sources */,
+				F27968F1240C127900EA9436 /* Param.swift in Sources */,
 				F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */,
 				F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
+				F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */,
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
 				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
 				F247542523E734CE006A13C3 /* AwardManager.swift in Sources */,
 				F2C190D824030701003F5ABA /* SelectStampsViewController.swift in Sources */,
 				F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
+				F20D1F9624142A1700FB5000 /* EmojiView.swift in Sources */,
+				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */,
 				F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */,
 				F2B4763B23DE3E390076BFDC /* GoalsViewController.swift in Sources */,
@@ -365,6 +447,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F27B0454241EBD7A006E5175 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2C4943423D2CBC800EAF9CC /* Stamps */;
+			targetProxy = F27B0453241EBD7A006E5175 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F2C4944023D2CBC800EAF9CC /* Main.storyboard */ = {
@@ -386,6 +476,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F27B0455241EBD7A006E5175 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KAC999QFLP;
+				INFOPLIST_FILE = EmojicalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.svidersky.EmojicalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emojical.app/Emojical";
+			};
+			name = Debug;
+		};
+		F27B0456241EBD7A006E5175 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KAC999QFLP;
+				INFOPLIST_FILE = EmojicalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.svidersky.EmojicalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emojical.app/Emojical";
+			};
+			name = Release;
+		};
 		F2C4944923D2CBCA00EAF9CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -505,7 +635,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -513,7 +643,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -524,7 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -532,7 +662,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -541,6 +671,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F27B0457241EBD7A006E5175 /* Build configuration list for PBXNativeTarget "EmojicalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F27B0455241EBD7A006E5175 /* Debug */,
+				F27B0456241EBD7A006E5175 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F2C4943023D2CBC700EAF9CC /* Build configuration list for PBXProject "Stamps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

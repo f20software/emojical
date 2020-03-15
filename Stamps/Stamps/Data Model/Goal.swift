@@ -140,6 +140,6 @@ extension Goal: Codable, FetchableRecord, MutablePersistableRecord {
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#requests
 extension Goal {
     static func orderedByName() -> QueryInterfaceRequest<Goal> {
-        return Goal.order(Columns.name)
+        return Goal.filter(Columns.deleted == false).order(Columns.name)
     }
 }

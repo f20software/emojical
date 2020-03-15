@@ -14,11 +14,11 @@ class DayViewController : UIViewController {
     
     @IBOutlet weak var dayView: UIView!
     @IBOutlet weak var dayTitle: UILabel!
-    @IBOutlet weak var stamp1: UILabel!
-    @IBOutlet weak var stamp2: UILabel!
-    @IBOutlet weak var stamp3: UILabel!
-    @IBOutlet weak var stamp4: UILabel!
-    @IBOutlet weak var stamp5: UILabel!
+    @IBOutlet weak var stamp1: EmojiView!
+    @IBOutlet weak var stamp2: EmojiView!
+    @IBOutlet weak var stamp3: EmojiView!
+    @IBOutlet weak var stamp4: EmojiView!
+    @IBOutlet weak var stamp5: EmojiView!
     
     var calendar: CalenderHelper {
         return CalenderHelper.shared
@@ -37,8 +37,10 @@ class DayViewController : UIViewController {
             dataChanged = false
             
             for i in 0..<stampLabels.count {
-                stampLabels[i].textColor = i < favs.count ?
-                    (currentStamps.contains(favs[i].id!) ? UIColor(hex: favs[i].color) : notSelectedStampColor) : UIColor.clear
+                stampLabels[i].isHidden = (i >= favs.count)
+                if i < favs.count {
+                    stampLabels[i].isEnabled = currentStamps.contains(favs[i].id!)
+                }
             }
         }
     }
@@ -53,8 +55,8 @@ class DayViewController : UIViewController {
     // List of favorites stamps loaded from the DB
     var favs = [Stamp]()
 
-    // Combine all UILabels into single array for easy access
-    var stampLabels = [UILabel]()
+    // Combine all EmojiViews into single array for easy access
+    var stampLabels = [EmojiView]()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -78,6 +80,7 @@ class DayViewController : UIViewController {
 
         for i in 0..<stampLabels.count  {
             stampLabels[i].text = i < favs.count ? favs[i].label : ""
+            stampLabels[i].color = i < favs.count ? UIColor(hex: favs[i].color) : nil
         }
     }
     
@@ -88,11 +91,11 @@ class DayViewController : UIViewController {
         
         if currentStamps.contains(stampId) {
             currentStamps.removeAll { $0 == stampId }
-            stampLabels[i].textColor = notSelectedStampColor
+            stampLabels[i].isEnabled = false
         }
         else {
             currentStamps.append(stampId)
-            stampLabels[i].textColor = UIColor(hex: favs[i].color)
+            stampLabels[i].isEnabled = true
         }
         dataChanged = true
         stampLabels[i].setNeedsDisplay()

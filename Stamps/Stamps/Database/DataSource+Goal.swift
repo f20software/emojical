@@ -86,7 +86,7 @@ extension DataSource {
     func goalsByPeriod(_ period: Goal.Period) -> [Goal] {
         do {
             return try dbQueue.read { db -> [Goal] in
-                let request = Goal.filter(Goal.Columns.period == period)
+                let request = Goal.filter(Goal.Columns.deleted == false && Goal.Columns.period == period)
                 return try request.fetchAll(db)
             }
         }

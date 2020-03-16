@@ -1,5 +1,5 @@
 //
-//  EmojiView.swift
+//  StickerView.swift
 //  Stamps
 //
 //  Created by Vladimir Svidersky on 3/7/20.
@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Extension to UIImage class to render label as image
 extension UIImage {
     class func imageWithLabel(label: UILabel) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0.0)
@@ -20,30 +21,43 @@ extension UIImage {
 
 // Sublcass of UIView to provide easy functionality to render complete sticker
 // with enabled/disabled state, emoji in the middle and shadow if necessary
-class EmojiView: UIView {
+//
+// -- main view - will use background property, and configure border + shadow on a view layer
+//  -- label view - will render sticker emoji symbol (only visible if sticker is enabled)
+//  -- overlay view - monochromatic version of label view (only visible is sticker is disabled)
+class StickerView: UIView {
 
+    // Default sticker color
+    static private let defaultColor = UIColor.gray
+    
+    // Text to be used as a sticker
+    // We might extend it back to use SS Symbol font for example
     var text: String? {
         didSet {
             labelView?.text = String(text?.first ?? " ")
-            updateEnableState()
+            updateState()
+        }
+    }
+    
+    // Color for the sticker background and border
+    var color: UIColor? = StickerView.defaultColor {
+        didSet {
+            if color == nil {
+                color = StickerView.defaultColor
+            }
+            updateState()
+        }
+    }
+    
+    // Enabled/disabled state for the sticker
+    var isEnabled: Bool = true {
+        didSet {
+            updateState()
         }
     }
 
-    var labelView: UILabel!
-    var overlay: UIImageView!
-    var color: UIColor? = UIColor.gray {
-        didSet {
-            if color == nil {
-                color = UIColor.gray
-            }
-            updateEnableState()
-        }
-    }
-    var isEnabled: Bool = true {
-        didSet {
-            updateEnableState()
-        }
-    }
+    private var labelView: UILabel!
+    private var overlayView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,37 +69,40 @@ class EmojiView: UIView {
         setupView()
     }
     
-    func updateOverlay() {
+    private func updateOverlayView() {
         labelView.isHidden = false
+        // Render label and apply monochromatic effect to it
         let image = UIImage.imageWithLabel(label: labelView)
         let tonalFilter = CIFilter(name: "CIPhotoEffectTonal")
         let imageToBlur = CIImage(cgImage: image.cgImage!)
         tonalFilter?.setValue(imageToBlur, forKey: kCIInputImageKey)
+        // Use the result as an overlay image view
         let outputImage: CIImage? = tonalFilter?.outputImage
-        overlay.image = UIImage(ciImage: outputImage ?? CIImage())
+        overlayView.image = UIImage(ciImage: outputImage ?? CIImage())
     }
     
-    func updateEnableState() {
+    // Configure all subviews and colors based on whether sticker is enabled or disabled
+    private func updateState() {
         if isEnabled {
             backgroundColor = color!.lighter(by: 50)
             labelView.isHidden = false
-            overlay.removeFromSuperview()
+            overlayView.removeFromSuperview()
             layer.borderColor = color!.cgColor
             layer.borderWidth = 2.0
             layer.shadowOpacity = 0.5
         }
         else {
             backgroundColor = UIColor.systemBackground
-            addSubview(overlay)
+            addSubview(overlayView)
             layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
             layer.borderWidth = 1.0
             layer.shadowOpacity = 0
-            updateOverlay()
+            updateOverlayView()
             labelView.isHidden = true
         }
     }
     
-    func setupView() {
+    private func setupView() {
         layer.cornerRadius = 10
         layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -97,10 +114,10 @@ class EmojiView: UIView {
         labelView.backgroundColor = UIColor.clear
         addSubview(labelView)
         
-        overlay = UIImageView(frame: bounds)
-        overlay.layer.opacity = 0.3
+        overlayView = UIImageView(frame: bounds)
+        overlayView.layer.opacity = 0.3
         
-        updateEnableState()
+        updateState()
         
         // let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         // addGestureRecognizer(tap)

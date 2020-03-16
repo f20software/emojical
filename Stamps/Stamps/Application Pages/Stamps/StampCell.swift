@@ -10,7 +10,7 @@ import UIKit
 
 class StampCell: UITableViewCell {
     
-    @IBOutlet weak var label: EmojiView!
+    @IBOutlet weak var label: StickerView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var count: UILabel!
     

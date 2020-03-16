@@ -30,7 +30,7 @@ class StampViewController: UITableViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emojiCell: UITableViewCell!
     @IBOutlet weak var emojiTextField: EmojiTextField!
-    @IBOutlet weak var colorBadge: EmojiView!
+    @IBOutlet weak var colorBadge: StickerView!
     @IBOutlet weak var favoriteSwitch: UISwitch!
     @IBOutlet weak var stats: UILabel!
     @IBOutlet weak var deleteCell: UITableViewCell!

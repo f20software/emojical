@@ -14,11 +14,11 @@ class DayViewController : UIViewController {
     
     @IBOutlet weak var dayView: UIView!
     @IBOutlet weak var dayTitle: UILabel!
-    @IBOutlet weak var stamp1: EmojiView!
-    @IBOutlet weak var stamp2: EmojiView!
-    @IBOutlet weak var stamp3: EmojiView!
-    @IBOutlet weak var stamp4: EmojiView!
-    @IBOutlet weak var stamp5: EmojiView!
+    @IBOutlet weak var stamp1: StickerView!
+    @IBOutlet weak var stamp2: StickerView!
+    @IBOutlet weak var stamp3: StickerView!
+    @IBOutlet weak var stamp4: StickerView!
+    @IBOutlet weak var stamp5: StickerView!
     
     var calendar: CalenderHelper {
         return CalenderHelper.shared
@@ -56,7 +56,7 @@ class DayViewController : UIViewController {
     var favs = [Stamp]()
 
     // Combine all EmojiViews into single array for easy access
-    var stampLabels = [EmojiView]()
+    var stampLabels = [StickerView]()
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,7 +10,7 @@ import UIKit
 
 class SelectStampCell: UITableViewCell {
     
-    @IBOutlet weak var label: EmojiView!
+    @IBOutlet weak var label: StickerView!
     @IBOutlet weak var name: UILabel!
     
     override func awakeFromNib() {

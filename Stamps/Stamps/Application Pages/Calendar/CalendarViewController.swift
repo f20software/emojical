@@ -40,25 +40,21 @@ class CalendarViewController: UITableViewController {
         return calendar.monthAt(section).numberOfWeeks
     }
     
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return calendar.monthAt(section).label
-//    }
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableCell(withIdentifier: "monthHeader")
-        return header
+        // let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "monthHeader") as! MonthHeaderView
+        let header = tableView.dequeueReusableCell(withIdentifier: "monthHeader") as! MonthHeaderView
+        header.title.text = calendar.monthAt(section).label
+        header.badges.badges = monthAwardColors(monthIdx: section)
+        return header.contentView
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 120
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "weekCell") as! WeekCell
         
         let weekLabels = calendar.monthAt(indexPath.section).labelsForDaysInWeek(indexPath.row)
         let weekData = weekColorData(monthIdx: indexPath.section, weekIdx: indexPath.row)
-        let awardData = awardColorData(monthIdx: indexPath.section, weekIdx: indexPath.row)
+        let awardData = weekAwardColors(monthIdx: indexPath.section, weekIdx: indexPath.row)
         
         cell.loadData(weekLabels, data: weekData, awards: awardData, indexPath: indexPath)
         cell.delegate = self
@@ -88,22 +84,34 @@ class CalendarViewController: UITableViewController {
         return res
     }
     
-    // Helper method to go through seven days (some could be empty) and gather just
-    // color data from stamps selected for these days
-    func awardColorData(monthIdx: Int, weekIdx: Int) -> [UIColor] {
+    // Helper method to go through a week of awards and gather just colors
+    func weekAwardColors(monthIdx: Int, weekIdx: Int) -> [UIColor] {
         var res = [UIColor]()
-        
         let dateEnd = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: 6)
-        if dateEnd != nil {
-            // Load weekly awards for this week
-            let weeklyGoalIds = db.goalsByPeriod(.week).map({ $0.id! })
-            let awards = db.awardsForDateInterval(from: dateEnd!.byAddingDays(-6), to: dateEnd!).filter({ weeklyGoalIds.contains( $0.goalId )})
-            for award in awards {
-                let goal = db.goalById(award.goalId)
-                res.append(UIColor(hex: db.stampById(goal!.stampIds[0])!.color))
+
+        let awards = db.weeklyAwardsForWeek(endingOn: dateEnd)
+        for award in awards {
+            if let color = db.colorForAward(award) {
+                res.append(color)
             }
         }
         
+        return res
+    }
+
+    // Helper method to go through a monthly awards and gather just colors
+    func monthAwardColors(monthIdx: Int) -> [UIColor] {
+        var res = [UIColor]()
+        let month = calendar.monthAt(monthIdx)
+        let date = Date(year: month.year, month: month.month)
+
+        let awards = db.monthlyAwardsForMonth(date: date)
+        for award in awards {
+            if let color = db.colorForAward(award) {
+                res.append(color)
+            }
+        }
+
         return res
     }
 }
@@ -139,7 +147,15 @@ extension CalendarViewController : WeekCellDelegate {
         dayDetail.modalTransitionStyle = .coverVertical
         dayDetail.onDismiss = { (refresh) in
             if refresh {
-                self.tableView.reloadRows(at: self.rowsToBeRefreshed(indexPath), with: .fade)
+                AwardManager.shared.recalculateAwardsForWeek(date)
+                let monthNeedUpdate = AwardManager.shared.recalculateAwardsForMonth(date)
+                
+                if monthNeedUpdate {
+                    self.tableView.reloadSections(IndexSet(arrayLiteral: indexPath.section, indexPath.section+1), with: .fade)
+                }
+                else {
+                    self.tableView.reloadRows(at: self.rowsToBeRefreshed(indexPath), with: .fade)
+                }
             }
         }
         

@@ -24,7 +24,6 @@ class SelectStampsViewController: UITableViewController {
         
         title = "Select Stamps"
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = 52.0
     }
 }
 
@@ -44,7 +43,7 @@ extension SelectStampsViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectStampCell", for: indexPath) as! SelectStampCell
         
         let stamp = dataSource[indexPath.row]
-        cell.name!.text = stamp.name
+        cell.name!.text = stamp.name.isEmpty ? " " : stamp.name
         cell.label!.color = UIColor(hex: stamp.color)
         cell.label!.text = stamp.label
         

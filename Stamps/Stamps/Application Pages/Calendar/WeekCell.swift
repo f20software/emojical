@@ -32,7 +32,7 @@ class WeekCell: UITableViewCell {
     @IBOutlet weak var satBadge: DayBadgeView!
     @IBOutlet weak var sunBadge: DayBadgeView!
     
-    @IBOutlet weak var awardBadge: AwardBadgeView!
+    @IBOutlet weak var awardBadge: WeekBadgeView!
     
     var delegate: WeekCellDelegate?
     var cellIndexPath: IndexPath?

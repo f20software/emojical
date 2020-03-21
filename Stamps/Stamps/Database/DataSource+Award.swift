@@ -6,6 +6,7 @@
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 import Foundation
+import UIKit
 import GRDB
 
 // MARK: - Award Helper Methods
@@ -44,5 +45,41 @@ extension DataSource {
         }
         catch { }
         updateStatsForGoals(ids)
+    }
+    
+    // Retrieve list of monthly awards given for the month of input date
+    func monthlyAwardsForMonth(date: Date) -> [Award] {
+        let endOfMonth = CalenderHelper.shared.endOfMonth(date: date)
+        let startOfMonth = CalenderHelper.shared.endOfMonth(date: endOfMonth.byAddingMonth(-1)).byAddingDays(1)
+        
+        // Load monthly goals so we can filter awards by their Ids
+        let monthlyGoalIds = goalsByPeriod(.month).map({ $0.id! })
+        let awards = awardsForDateInterval(from: startOfMonth, to: endOfMonth)
+            .filter({ monthlyGoalIds .contains( $0.goalId )})
+
+        return awards
+    }
+    
+    // Retrieve list of weekly awards given for the week with specific end date
+    func weeklyAwardsForWeek(endingOn: Date?) -> [Award] {
+        guard let date = endingOn else { return [] }
+        
+        // Load weekly goals so we can filter awards by their Ids
+        let weeklyGoalIds = goalsByPeriod(.week).map({ $0.id! })
+        let awards = awardsForDateInterval(from: date.byAddingDays(-6), to: date)
+            .filter({ weeklyGoalIds.contains( $0.goalId )})
+        return awards
+    }
+    
+    // Get color for an award. Currently we just check the goal this award was given for
+    // and get color of the first stamp on that goal
+    func colorForAward(_ award: Award) -> UIColor? {
+        if let goal = goalById(award.goalId),
+            let stampId = goal.stampIds.first,
+            let stamp = stampById(stampId) {
+            return UIColor(hex: stamp.color)
+        }
+        
+        return nil
     }
 }

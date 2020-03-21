@@ -19,6 +19,12 @@ class DayViewController : UIViewController {
     @IBOutlet weak var stamp3: StickerView!
     @IBOutlet weak var stamp4: StickerView!
     @IBOutlet weak var stamp5: StickerView!
+    @IBOutlet weak var stamp6: StickerView!
+    @IBOutlet weak var stamp7: StickerView!
+    @IBOutlet weak var stamp8: StickerView!
+    @IBOutlet weak var stamp9: StickerView!
+    @IBOutlet weak var stamp10: StickerView!
+    @IBOutlet weak var bottomDistance: NSLayoutConstraint!
     
     var calendar: CalenderHelper {
         return CalenderHelper.shared
@@ -35,9 +41,14 @@ class DayViewController : UIViewController {
             dayTitle.text = "\(calendar.labelForDay(date))"
             currentStamps = db.stampsIdsForDay(date)
             dataChanged = false
-            
+
+            // Based on whether we have 1 or 2 rows of stickers -
+            // adjust bottom constraint to hide/show second one
+            bottomDistance.constant = favs.count > 5 ? 15.0 : -45.0
+
             for i in 0..<stampLabels.count {
-                stampLabels[i].isHidden = (i >= favs.count)
+                stampLabels[i].alpha = (i >= favs.count) ? 0.0 : 1.0
+                // stampLabels[i].isHidden = (i >= favs.count)
                 if i < favs.count {
                     stampLabels[i].isEnabled = currentStamps.contains(favs[i].id!)
                 }
@@ -75,8 +86,9 @@ class DayViewController : UIViewController {
         self.dayView.layer.borderColor = UIColor.darkGray.cgColor
         self.dayView.layer.borderWidth = 0.5
 
-        favs = db.favoriteStamps()
-        stampLabels = [stamp1, stamp2, stamp3, stamp4, stamp5]
+        // Disabling showing only favorite stamps for now
+        favs = db.allStamps() // db.favoriteStamps()
+        stampLabels = [stamp1, stamp2, stamp3, stamp4, stamp5, stamp6, stamp7, stamp8, stamp9, stamp10]
 
         for i in 0..<stampLabels.count  {
             stampLabels[i].text = i < favs.count ? favs[i].label : ""

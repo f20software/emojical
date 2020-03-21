@@ -1,5 +1,5 @@
 //
-//  AwardBadgeView.swift
+//  WeekBadgeView.swift
 //  Stamps
 //
 //  Created by Vladimir Svidersky on 1/20/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AwardBadgeView : UIView {
+class WeekBadgeView : UIView {
     
     // Array of colors for badges to be drawn
     var badges: [UIColor]?

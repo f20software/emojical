@@ -68,15 +68,15 @@ class AwardManager {
         // TODO: Date comparision! - review how it works with only date components
         while (lastUpdated! < Date()) {
             DataSource.shared.lastMonthUpdate = lastUpdated
-            lastUpdated = lastUpdated!.byAddingMonth(1)
-            recalculateAwardsForMonth(lastUpdated!)
+            lastUpdated = CalenderHelper.shared.endOfMonth(date: lastUpdated!.byAddingMonth(1))
+            _ = recalculateAwardsForMonth(lastUpdated!)
         }
     }
 
-    func recalculateAwardsForMonth(_ date: Date) {
+    func recalculateAwardsForMonth(_ date: Date) -> Bool {
         let goals = db.goalsByPeriod(.month)
         // If we don't have goals - there is not point of recalculating anything
-        guard goals.count > 0 else { return }
+        guard goals.count > 0 else { return false }
         
         print("Recalculating monthly awards for \(date.databaseKey)")
 
@@ -120,7 +120,10 @@ class AwardManager {
 
         if addAwards.count > 0 || deleteAwards.count > 0 {
             DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
+            return true
         }
+        
+        return false
     }
 
     func recalculateAwardsForWeek(_ date: Date) {

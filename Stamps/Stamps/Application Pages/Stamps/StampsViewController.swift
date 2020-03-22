@@ -11,6 +11,11 @@ import GRDB
 
 class StampsViewController: UITableViewController {
 
+    @IBOutlet var addSticker: UIBarButtonItem!
+    
+    // Let's limit number of stickers user can create to 10
+    let stickerLimit = 10
+
     private var stamps: [Stamp] = []
     private var stampsObserver: TransactionObserver?
 
@@ -18,12 +23,17 @@ class StampsViewController: UITableViewController {
         super.viewDidLoad()
         // initial load - since we should not have that many individual stamps - it should not take long time
         stamps = DataSource.shared.allStamps()
+        updateAddButton()
         tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureTableView()
+    }
+
+    private func updateAddButton() {
+        navigationItem.leftBarButtonItem = (stamps.count < stickerLimit) ? addSticker : nil
     }
 
     private func configureTableView() {
@@ -48,6 +58,7 @@ class StampsViewController: UITableViewController {
                 // Apply those changes to the table view
                 self.tableView.performBatchUpdates({
                     self.stamps = stamps
+                    self.updateAddButton()
                     for change in difference {
                         switch change {
                         case let .remove(offset, _, associatedWith):

@@ -31,7 +31,6 @@ class StampViewController: UITableViewController {
     @IBOutlet weak var emojiCell: UITableViewCell!
     @IBOutlet weak var emojiTextField: EmojiTextField!
     @IBOutlet weak var colorBadge: StickerView!
-    @IBOutlet weak var favoriteSwitch: UISwitch!
     @IBOutlet weak var stats: UILabel!
     @IBOutlet weak var deleteCell: UITableViewCell!
 
@@ -183,7 +182,6 @@ extension StampViewController {
     func updateStamp() {
         stamp.label = emojiTextField.text ?? ""
         stamp.name = nameTextField.text ?? ""
-        stamp.favorite = favoriteSwitch.isOn
     }
     
     func loadStamp() {
@@ -193,7 +191,6 @@ extension StampViewController {
         colorBadge.color = UIColor(hex: stamp.color)
         colorBadge.text = stamp.label
         
-        favoriteSwitch.isOn = stamp.favorite
         stats.text = stamp.statsDescription
     }
     

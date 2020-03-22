@@ -10,7 +10,7 @@ import Foundation
 import GRDB
 
 struct Goal {
-    
+
     enum Period: Int, DatabaseValueConvertible, Decodable, Encodable {
         case week
         case month
@@ -84,7 +84,7 @@ struct Goal {
     
     var statsDescription: String {
         if count <= 0 {
-            return "Goal hasn't been reached yet"
+            return "Goal hasn't been reached yet."
         }
         
         var result = "Goal has been reached "
@@ -100,10 +100,44 @@ struct Goal {
             let date = Date(yyyyMmDd: lastUsed)
             let df = DateFormatter()
             df.dateStyle = .medium
-            result += ", last time - \(df.string(from: date))"
+            result += ", last time - \(df.string(from: date))."
         }
         
         return result
+    }
+    
+    //
+    func descriptionForCurrentProgress(_ progress: Int) -> String {
+        var periodText = ""
+        
+        if period == .week {
+            periodText = "this week"
+        }
+        else if period == .month {
+            periodText = "this month"
+        }
+        
+        if direction == .positive {
+            if progress < limit {
+                return "You've got \(progress) stickers \(periodText). \(limit - progress) to go."
+            }
+            else {
+                return "You've reached the goal \(periodText) by getting \(progress) stickers. Great job!"
+            }
+        }
+        else if direction == .negative {
+            if progress < limit {
+                return "You've got \(progress) stickers \(periodText). You still can get \(limit - progress) more."
+            }
+            else if progress == limit {
+                return "You've got \(progress) stickers \(periodText). You will break this goal if you get one more."
+            }
+            else {
+                return "You've broken the goal by getting \(progress) stickers \(periodText)."
+            }
+        }
+        
+        return ""
     }
 }
 
@@ -139,7 +173,7 @@ extension Goal: Codable, FetchableRecord, MutablePersistableRecord {
 // Define some useful player requests.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#requests
 extension Goal {
-    static func orderedByName() -> QueryInterfaceRequest<Goal> {
-        return Goal.filter(Columns.deleted == false).order(Columns.name)
+    static func orderedByPeriodName() -> QueryInterfaceRequest<Goal> {
+        return Goal.filter(Columns.deleted == false).order([Columns.period, Columns.name])
     }
 }

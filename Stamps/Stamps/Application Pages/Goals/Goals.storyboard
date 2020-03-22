@@ -14,35 +14,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="goalCell" id="sl2-a2-uQe" customClass="GoalCell" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="374" height="58.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="goalCell" rowHeight="77" id="sl2-a2-uQe" customClass="GoalCell" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.5" width="374" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sl2-a2-uQe" id="Bar-Ic-Poc">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="58.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="77"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAH-F9-Ppu">
-                                            <rect key="frame" x="302" y="21.5" width="33" height="16"/>
+                                            <rect key="frame" x="302" y="30.5" width="33" height="16"/>
                                             <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Goal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGz-kH-SWq">
-                                            <rect key="frame" x="20" y="15" width="85" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="85" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncO-Bh-kZ8">
-                                            <rect key="frame" x="20" y="38" width="44" height="15"/>
+                                            <rect key="frame" x="20" y="32" width="44" height="15"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7GP-Sa-wlK">
+                                            <rect key="frame" x="20" y="52" width="315" height="5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="5" id="UQA-Jf-wZ7"/>
+                                            </constraints>
+                                        </progressView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ncO-Bh-kZ8" secondAttribute="bottom" id="36c-QX-eyg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="7GP-Sa-wlK" secondAttribute="bottom" constant="9" id="64O-8f-GzF"/>
                                         <constraint firstItem="ncO-Bh-kZ8" firstAttribute="leading" secondItem="Bar-Ic-Poc" secondAttribute="leadingMargin" id="CCa-ZZ-9xi"/>
+                                        <constraint firstItem="7GP-Sa-wlK" firstAttribute="leading" secondItem="ncO-Bh-kZ8" secondAttribute="leading" id="Fhv-cV-tdA"/>
+                                        <constraint firstItem="RAH-F9-Ppu" firstAttribute="trailing" secondItem="7GP-Sa-wlK" secondAttribute="trailing" id="KWW-w0-VCS"/>
+                                        <constraint firstItem="7GP-Sa-wlK" firstAttribute="top" secondItem="ncO-Bh-kZ8" secondAttribute="bottom" constant="8" symbolic="YES" id="QWi-Vj-BNq"/>
                                         <constraint firstItem="RAH-F9-Ppu" firstAttribute="centerY" secondItem="Bar-Ic-Poc" secondAttribute="centerY" id="RFP-TI-mfd"/>
                                         <constraint firstItem="kGz-kH-SWq" firstAttribute="leading" secondItem="Bar-Ic-Poc" secondAttribute="leadingMargin" id="VJn-Dc-7oN"/>
                                         <constraint firstItem="ncO-Bh-kZ8" firstAttribute="top" secondItem="kGz-kH-SWq" secondAttribute="bottom" id="pZe-g1-T0B"/>
@@ -53,6 +62,7 @@
                                 <connections>
                                     <outlet property="count" destination="RAH-F9-Ppu" id="bNi-8f-tLB"/>
                                     <outlet property="name" destination="kGz-kH-SWq" id="Qq0-CP-x7l"/>
+                                    <outlet property="progress" destination="7GP-Sa-wlK" id="g2c-f3-jFt"/>
                                     <outlet property="subtitle" destination="ncO-Bh-kZ8" id="aej-d4-9EF"/>
                                     <segue destination="ihZ-OL-k2B" kind="show" identifier="editGoal" id="hF0-5N-UgC"/>
                                 </connections>
@@ -264,7 +274,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTu-AD-JLG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTu-AD-JLG">
                                                     <rect key="frame" x="20" y="20" width="334" height="4"/>
                                                     <string key="text">Has been reached 14 times
 Last time on Jan 17</string>

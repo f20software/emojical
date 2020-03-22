@@ -9,7 +9,12 @@
 import UIKit
 
 extension UIColor {
-    
+
+    static let positiveGoalReached = UIColor(hex: UIColor.colorByName("Green"))
+    static let negativeGoalReached = UIColor(hex: UIColor.colorByName("Red"))
+    static let positiveGoalNotReached = UIColor(hex: UIColor.colorByName("Mint"))
+    static let negativeGoalNotReached = UIColor(hex: UIColor.colorByName("Mint"))
+
     class func stampsPalette() -> [String: String] {
         return [
             "Gold": "B8B09b",
@@ -33,5 +38,4 @@ extension UIColor {
     class func colorByName(_ name: String) -> String {
         return stampsPalette()[name] ?? "000000"
     }
-    
 }

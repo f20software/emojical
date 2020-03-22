@@ -176,6 +176,33 @@ class AwardManager {
         }
     }
     
+    func currentProgressFor(_ goal: Goal) -> Int {
+        guard goal.period == .week || goal.period == .month else { return 0 }
+
+        var start, end: Date?
+        if goal.period == .week {
+            end = CalenderHelper.shared.endOfWeek(date: Date())
+            start = end!.byAddingDays(-6)
+        }
+        else { /* if goal.period == .month */
+            let today = Date()
+            end = CalenderHelper.shared.endOfMonth(date: today)
+            start = CalenderHelper.shared.endOfMonth(date: today.byAddingMonth(-1)).byAddingDays(1)
+
+        }
+        
+        let stampsLog = db.diaryForDateInterval(from: start!, to: end!)
+        var count = 0
+
+        for stamp in stampsLog {
+            if goal.stampIds.contains(stamp.stampId) {
+                count += 1
+            }
+        }
+        
+        return count
+    }
+    
     // Return the date goal is reached or nil of goals is not reached
     func isPositiveGoalReached(_ goal: Goal, diary: [Diary]) -> String? {
         var count = 0

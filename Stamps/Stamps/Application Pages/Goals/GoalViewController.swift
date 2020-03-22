@@ -22,6 +22,7 @@ class GoalViewController: UITableViewController {
     }
     
     var goal: Goal!
+    var currentProgress: Int?
     var presentation: Presentation! { didSet { configureView() } }
 
     @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
@@ -201,6 +202,10 @@ extension GoalViewController: UITextFieldDelegate {
 
         stampsLabel.text = stampLabels.joined(separator: ", ")
         statsLabel.text = goal.statsDescription
+        if currentProgress != nil {
+            statsLabel.text! += "\n\n\(goal.descriptionForCurrentProgress(currentProgress!))"
+        }
+        
     }
     
     func deleteAndDismiss() {

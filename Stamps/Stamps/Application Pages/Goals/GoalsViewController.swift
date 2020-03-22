@@ -27,7 +27,7 @@ class GoalsViewController: UITableViewController {
 
     private func configureTableView() {
         // Track changes in the list of players
-        let request = Goal.orderedByName()
+        let request = Goal.orderedByPeriodName()
         let observation = ValueObservation.tracking { db in
             try request.fetchAll(db)
         }
@@ -84,6 +84,7 @@ extension GoalsViewController {
             let controller = segue.destination as! GoalViewController
             controller.title = goal.name
             controller.goal = goal
+            controller.currentProgress = AwardManager.shared.currentProgressFor(goal)
             controller.presentation = .push
         }
         else if segue.identifier == "newGoal" {
@@ -115,22 +116,9 @@ extension GoalsViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as! GoalCell
-        configure(cell, at: indexPath)
-        return cell
-    }
-        
-    private func configure(_ cell: GoalCell, at indexPath: IndexPath) {
         let goal = goals[indexPath.row]
-        cell.name.text = goal.name.isEmpty ? "-" : goal.name
-        cell.subtitle.text = goal.details
-        
-        if goal.count > 0 {
-            cell.count.text = "  \(goal.count)  "
-            cell.count.isHidden = false
-        }
-        else {
-            cell.count.isHidden = true
-        }
+        cell.configureWith(goal, currentProgress: AwardManager.shared.currentProgressFor(goal))
+        return cell
     }
 }
 

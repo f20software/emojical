@@ -52,7 +52,7 @@ extension DataSource {
     func allGoals() -> [Goal] {
         do {
             return try dbQueue.read { db -> [Goal] in
-                let request = Goal.filter(Goal.Columns.deleted == false).order(Goal.Columns.name)
+                let request = Goal.filter(Goal.Columns.deleted == false).order([Goal.Columns.period, Goal.Columns.name])
                 return try request.fetchAll(db)
             }
         }

@@ -20,8 +20,6 @@ class GoalCell: UITableViewCell {
 
         count.layer.cornerRadius = count.font.pointSize * 0.6
         count.clipsToBounds = true
-        progress.layer.cornerRadius = progress.bounds.height / 2.0
-        progress.clipsToBounds = true
     }
     
     func configureWith(_ goal: Goal, currentProgress: Int) {
@@ -47,7 +45,7 @@ class GoalCell: UITableViewCell {
             }
         }
         else /* goal.direction == .negative */ {
-            if currentProgress >= goal.limit {
+            if currentProgress > goal.limit {
                 progress.progress = 1.0
                 progress.tintColor = UIColor.negativeGoalReached
             }

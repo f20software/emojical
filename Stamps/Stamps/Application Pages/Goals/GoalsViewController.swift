@@ -23,6 +23,7 @@ class GoalsViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureTableView()
+        tableView.reloadData()
     }
 
     private func configureTableView() {

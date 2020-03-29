@@ -41,6 +41,8 @@
 		F2C190D42402E17A003F5ABA /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D32402E17A003F5ABA /* GoalViewController.swift */; };
 		F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D52402E243003F5ABA /* GoalCell.swift */; };
 		F2C190D824030701003F5ABA /* SelectStampsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D724030701003F5ABA /* SelectStampsViewController.swift */; };
+		F2C493242430172D00E997BD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493232430172D00E997BD /* NotificationManager.swift */; };
+		F2C493262430179500E997BD /* LocalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493252430179500E997BD /* LocalSettings.swift */; };
 		F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */; };
 		F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */; };
 		F2C4943D23D2CBC800EAF9CC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */; };
@@ -52,6 +54,7 @@
 		F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */; };
 		F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */; };
 		F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */; };
+		F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F449232430291B005AD6B9 /* MainViewController.swift */; };
 		F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */; };
 		F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA223D66F030033D9DC /* DataSource.swift */; };
 		F2FF7EA623D66F3A0033D9DC /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA523D66F3A0033D9DC /* Stamp.swift */; };
@@ -101,6 +104,8 @@
 		F2C190D32402E17A003F5ABA /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		F2C190D52402E243003F5ABA /* GoalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		F2C190D724030701003F5ABA /* SelectStampsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStampsViewController.swift; sourceTree = "<group>"; };
+		F2C493232430172D00E997BD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		F2C493252430179500E997BD /* LocalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
 		F2C4943523D2CBC800EAF9CC /* Emojical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +119,7 @@
 		F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Goal.swift"; sourceTree = "<group>"; };
 		F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Diary.swift"; sourceTree = "<group>"; };
 		F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Award.swift"; sourceTree = "<group>"; };
+		F2F449232430291B005AD6B9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		F2FF7EA223D66F030033D9DC /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		F2FF7EA523D66F3A0033D9DC /* Stamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
@@ -226,6 +232,14 @@
 			path = Goals;
 			sourceTree = "<group>";
 		};
+		F2C493222430171000E997BD /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				F2C493232430172D00E997BD /* NotificationManager.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		F2C4942C23D2CBC700EAF9CC = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +261,7 @@
 		F2C4943723D2CBC800EAF9CC /* Stamps */ = {
 			isa = PBXGroup;
 			children = (
+				F2C493222430171000E997BD /* Notifications */,
 				F26B273823D80CB000B8D0F9 /* Resources */,
 				F2A5256023D4CED000C3E0F3 /* Calendar */,
 				F20D1F9724142A1D00FB5000 /* Emoji */,
@@ -255,6 +270,8 @@
 				F2FF7EA423D66F0B0033D9DC /* Data Model */,
 				F2F260F42408D96700F5CCB9 /* Database */,
 				F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */,
+				F2F449232430291B005AD6B9 /* MainViewController.swift */,
+				F2C493252430179500E997BD /* LocalSettings.swift */,
 				F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */,
 				F2C4944823D2CBCA00EAF9CC /* Info.plist */,
 			);
@@ -423,12 +440,14 @@
 				F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */,
 				F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */,
 				F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */,
+				F2C493242430172D00E997BD /* NotificationManager.swift in Sources */,
 				F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* Stamp.swift in Sources */,
 				F2C190D22401BD50003F5ABA /* WeekBadgeView.swift in Sources */,
 				F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */,
 				F2B4763023DCF9DE0076BFDC /* Diary.swift in Sources */,
 				F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */,
+				F2C493262430179500E997BD /* LocalSettings.swift in Sources */,
 				F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
 				F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */,
@@ -449,6 +468,7 @@
 				F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */,
+				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */,
 				F27B04632426BBBA006E5175 /* MonthBadgeView.swift in Sources */,
 				F2B4763B23DE3E390076BFDC /* GoalsViewController.swift in Sources */,
@@ -647,7 +667,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.6;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -666,7 +686,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.6;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

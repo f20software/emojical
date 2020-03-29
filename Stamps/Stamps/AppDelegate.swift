@@ -8,8 +8,14 @@
 
 import UIKit
 
+extension NSNotification.Name {
+    static let navigateToToday = NSNotification.Name("NavigateToToday")
+    static let todayStickersUpdated = NSNotification.Name("TodayStickersUpdated")
+}
+
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -18,9 +24,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         try! DataSource.shared.setupDatabase(application)
         AwardManager.shared.recalculateOnAppResume()
 
+        // Initiate notification engine
+        NotificationManager.shared.requestAuthorization()
+        
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
 
+    // MARK: Notification handling
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        // Post application notification to navigate to today's date
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            NotificationCenter.default.post(name: .navigateToToday, object: nil)
+        })
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     

@@ -33,13 +33,7 @@ class CalenderHelper {
         return months[index]
     }
     
-    // TODO: Add some error checking here
-    var currentMonthIndex: Int {
-        let comps = Calendar.current.dateComponents([.year, .month], from: Date())
-        return months.firstIndex { $0.year == comps.year && $0.month == comps.month }!
-    }
-    
-    // Convert index representation of the date into actual simple date structure
+    // Converts index representation of the date into actual simple date structure
     // Handles cases where certain days in a week falls out of the current month and return nil for them
     // For example: if January 1 is Tuesday, calling it for January with week index == 0 and day index == 0 (Monday)
     // will return nil
@@ -49,6 +43,18 @@ class CalenderHelper {
             return Date(year: months[month].year, month: months[month].month, day: dayNum)
         }
         return nil
+    }
+
+    // Converts date into section, row and day index representing
+    // position for this date in the calendar representation
+    func indexForDay(date: Date) -> (IndexPath, Int)? {
+        let comps = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        // Month was not found in the calendar
+        guard let section = months.firstIndex(where: { $0.year == comps.year && $0.month == comps.month }) else { return nil }
+
+        let month = months[section]
+        let row = ((comps.day! + month.firstIndex - 1) / 7)
+        return (IndexPath(row: row, section: section), month.indexForDay(comps.day!))
     }
     
     func labelForDay(_ date: Date) -> String {
@@ -107,7 +113,7 @@ extension CalenderHelper {
         func indexForDay(_ day: Int) -> Int {
             return (day % 7 + firstIndex - 1) % 7
         }
-
+        
         func labelsForDaysInWeek(_ weekIdx: Int) -> [String] {
             var res = [String]()
             let today = Date().databaseKey

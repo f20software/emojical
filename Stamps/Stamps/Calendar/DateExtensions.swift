@@ -18,6 +18,12 @@ extension Date {
         return df.string(from: self)
     }
     
+    var databaseKeyWithTime: String {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm"
+        return df.string(from: self)
+    }
+
     // Convinience constructor when we have only date components
     init(year: Int, month: Int, day: Int = 1) {
         var comps = DateComponents.init()
@@ -51,5 +57,10 @@ extension Date {
         var comp = DateComponents()
         comp.month = months
         return Calendar.current.date(byAdding: comp, to: self)!
+    }
+    
+    // Simple helper property to recognize that date is today
+    var isToday: Bool {
+        return self.databaseKey == Date().databaseKey
     }
 }

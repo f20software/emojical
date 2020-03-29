@@ -71,6 +71,27 @@ class EmojicalTests: XCTestCase {
             XCTAssertEqual(CalenderHelper.shared.endOfMonth(date: date).databaseKey, testData[date]![2])
         }
     }
+    
+    func testIndexFromDay() {
+        
+        let testData: [Date: (IndexPath, Int)] = [
+            Date(year: 2020, month: 2, day: 12): (IndexPath(row: 2, section: 1), 2),
+            Date(year: 2020, month: 2, day: 1): (IndexPath(row: 0, section: 1), 5),
+            Date(year: 2020, month: 2, day: 29): (IndexPath(row: 4, section: 1), 5),
+            Date(year: 2020, month: 3, day: 1): (IndexPath(row: 0, section: 2), 6),
+            Date(year: 2020, month: 3, day: 15): (IndexPath(row: 2, section: 2), 6),
+            Date(year: 2020, month: 3, day: 30): (IndexPath(row: 5, section: 2), 0),
+        ]
+        
+        for date in testData.keys {
+            print(date.databaseKey)
+            let result = CalenderHelper.shared.indexForDay(date: date)
+            XCTAssertEqual(result!.0.section, testData[date]!.0.section)
+            XCTAssertEqual(result!.0.row, testData[date]!.0.row)
+            XCTAssertEqual(result!.1, testData[date]!.1)
+        }
+
+    }
 
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.

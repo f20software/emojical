@@ -84,6 +84,20 @@ extension DataSource {
         return []
     }
 
+    // Stamp names for a day
+    func stampsNamesForDay(_ day: Date) -> [String] {
+        let ids = stampsIdsForDay(day)
+        var result = [String]()
+        
+        for id in ids {
+            if let name = stampById(id)?.name {
+                result.append(name)
+            }
+        }
+        
+        return result
+    }
+
     // Recalculate count and lastUsed in Stamp object
     func updateStatsForStamps(_ stampIds: [Int64]) {
         for id in stampIds {

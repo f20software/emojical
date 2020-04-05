@@ -49,15 +49,27 @@ extension DataSource {
     }
 
     // All goals
-    func allGoals() -> [Goal] {
+    func allGoals(includeDeleted: Bool = false) -> [Goal] {
         do {
             return try dbQueue.read { db -> [Goal] in
-                let request = Goal.filter(Goal.Columns.deleted == false).order([Goal.Columns.period, Goal.Columns.name])
+                let request = includeDeleted ?
+                    Goal.order([Goal.Columns.period, Goal.Columns.name]) :
+                    Goal.filter(Goal.Columns.deleted == false).order([Goal.Columns.period, Goal.Columns.name])
                 return try request.fetchAll(db)
             }
         }
         catch { }
         return []
+    }
+
+    // Delete all goals from the database
+    func deleteAllGoals() {
+        do {
+            _ = try dbQueue.write { db in
+                try Goal.deleteAll(db)
+            }
+        }
+        catch { }
     }
 
     // Recalculate count and lastUsed in Goal object

@@ -21,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
 
         // Setup persistent database
-        try! DataSource.shared.setupDatabase(application)
+        let db = DataSource.shared
+        try! db.setupDatabase(application)
+        // WARNING! - Will override database from a json backup file 
+        // db.importDatabase(from: db.localBackupFileName)
+        
         AwardManager.shared.recalculateOnAppResume()
 
         // Initiate notification engine

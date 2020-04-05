@@ -60,15 +60,27 @@ extension DataSource {
     }
 
     // All stamps
-    func allStamps() -> [Stamp] {
+    func allStamps(includeDeleted: Bool = false) -> [Stamp] {
         do {
             return try dbQueue.read { db -> [Stamp] in
-                let request = Stamp.filter(Stamp.Columns.deleted == false).order(Stamp.Columns.name)
+                let request = includeDeleted ?
+                    Stamp.order(Stamp.Columns.name) :
+                    Stamp.filter(Stamp.Columns.deleted == false).order(Stamp.Columns.name)
                 return try request.fetchAll(db)
             }
         }
         catch { }
         return []
+    }
+    
+    // Delete all stamps from the database
+    func deleteAllStamps() {
+        do {
+            _ = try dbQueue.write { db in
+                try Stamp.deleteAll(db)
+            }
+        }
+        catch { }
     }
 
     // Stamp Ids for a day (will be stored in Diary table)

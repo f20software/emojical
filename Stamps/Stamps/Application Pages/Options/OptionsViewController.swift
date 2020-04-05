@@ -16,9 +16,12 @@ class OptionsViewController: UITableViewController {
     }
 
     @IBAction func exportTapped(_ sender: Any) {
+        let db = DataSource.shared
         
-        let fileName = DataSource.shared.backupDatabase()
-        sendEmail(attachment: fileName)
+        let backupFileName = db.deviceBackupFileName
+        if db.backupDatabase(to: backupFileName) {
+            sendEmail(attachment: backupFileName)
+        }
     }
     
     func sendEmail(attachment: URL) {

@@ -24,6 +24,16 @@ extension DataSource {
         return []
     }
 
+    // Delete all awards from the database
+    func deleteAllAwards() {
+        do {
+            _ = try dbQueue.write { db in
+                try Award.deleteAll(db)
+            }
+        }
+        catch { }
+    }
+
     // Recent awards
     func recentAwards() -> [Award] {
         do {

@@ -60,6 +60,7 @@
 		F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */; };
 		F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */; };
 		F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F449232430291B005AD6B9 /* MainViewController.swift */; };
+		F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */; };
 		F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */; };
 		F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA223D66F030033D9DC /* DataSource.swift */; };
 		F2FF7EA623D66F3A0033D9DC /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA523D66F3A0033D9DC /* Stamp.swift */; };
@@ -130,6 +131,7 @@
 		F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Diary.swift"; sourceTree = "<group>"; };
 		F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Award.swift"; sourceTree = "<group>"; };
 		F2F449232430291B005AD6B9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+ImportExport.swift"; sourceTree = "<group>"; };
 		F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		F2FF7EA223D66F030033D9DC /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		F2FF7EA523D66F3A0033D9DC /* Stamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			children = (
 				F2B4762C23DC1B440076BFDC /* AppDatabase.swift */,
 				F2FF7EA223D66F030033D9DC /* DataSource.swift */,
+				F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */,
 				F27968F2240C12C700EA9436 /* DataSource+Param.swift */,
 				F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */,
 				F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */,
@@ -487,6 +490,7 @@
 				F247541423DFC706006A13C3 /* Goal.swift in Sources */,
 				F27B045D2426B31E006E5175 /* MonthHeaderView.swift in Sources */,
 				F27968F1240C127900EA9436 /* Param.swift in Sources */,
+				F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */,
 				F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */,
 				F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,

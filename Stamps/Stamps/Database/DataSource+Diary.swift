@@ -37,6 +37,16 @@ extension DataSource {
         return []
     }
 
+    // Delete all diary records from the database
+    func deleteAllDiary() {
+        do {
+            _ = try dbQueue.write { db in
+                try Diary.deleteAll(db)
+            }
+        }
+        catch { }
+    }
+
     // Diary records filtered for specific date interval
     func diaryForDateInterval(from: Date, to: Date) -> [Diary] {
         do {

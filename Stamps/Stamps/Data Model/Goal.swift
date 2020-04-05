@@ -54,18 +54,21 @@ struct Goal {
         }
     }
     
-    var details: String {
-        var result = ""
+    var periodText: String {
         switch period {
         case .week:
-            result += "Weekly"
+            return "Weekly"
         case .month:
-            result += "Monthly"
+            return "Monthly"
         case .year:
-            result += "Annumal"
+            return "Annual"
         case .total:
-            result += "Overall"
+            return "Overall"
         }
+    }
+    
+    var details: String {
+        var result = periodText
 
         if limit > 0 {
             switch direction {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -114,28 +114,28 @@
                                                 <constraint firstItem="bLw-Sp-Fc9" firstAttribute="width" secondItem="uFv-eO-zbI" secondAttribute="width" id="yqh-CH-boy"/>
                                             </constraints>
                                         </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKV-7n-OBx" customClass="MonthBadgeView" customModule="Emojical" customModuleProvider="target">
-                                            <rect key="frame" x="114.5" y="23" width="279.5" height="20"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZP-hQ-8PM">
+                                            <rect key="frame" x="109.5" y="22" width="294.5" height="22"/>
+                                            <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="4XR-M8-gbE"/>
+                                                <constraint firstAttribute="height" constant="22" id="v0C-8Y-HWz"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="NKV-7n-OBx" firstAttribute="trailing" secondItem="AB3-jB-TVd" secondAttribute="trailingMargin" id="8d8-YT-LXf"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Mvf-9t-6rR" secondAttribute="trailing" constant="20" id="9hE-gm-0wG"/>
                                         <constraint firstItem="Mvf-9t-6rR" firstAttribute="leading" secondItem="AB3-jB-TVd" secondAttribute="leadingMargin" constant="10" id="B7l-jd-32y"/>
+                                        <constraint firstItem="hZP-hQ-8PM" firstAttribute="centerY" secondItem="NJe-9s-3mn" secondAttribute="centerY" id="EWE-qH-c3P"/>
+                                        <constraint firstItem="hZP-hQ-8PM" firstAttribute="trailing" secondItem="AB3-jB-TVd" secondAttribute="trailingMargin" constant="10" id="FLy-2t-nuQ"/>
                                         <constraint firstItem="NJe-9s-3mn" firstAttribute="leading" secondItem="AB3-jB-TVd" secondAttribute="leadingMargin" constant="10" id="UnM-pH-6gZ"/>
-                                        <constraint firstItem="NKV-7n-OBx" firstAttribute="centerY" secondItem="NJe-9s-3mn" secondAttribute="centerY" id="V1X-qf-ZlB"/>
                                         <constraint firstItem="NJe-9s-3mn" firstAttribute="top" secondItem="AB3-jB-TVd" secondAttribute="topMargin" constant="10" id="Vnt-of-WFf"/>
-                                        <constraint firstItem="NKV-7n-OBx" firstAttribute="leading" secondItem="NJe-9s-3mn" secondAttribute="trailing" constant="15" id="Xfv-h6-KOi"/>
                                         <constraint firstAttribute="bottom" secondItem="Mvf-9t-6rR" secondAttribute="bottom" constant="5" id="bm3-7X-U97"/>
                                         <constraint firstItem="Mvf-9t-6rR" firstAttribute="top" secondItem="NJe-9s-3mn" secondAttribute="bottom" constant="10" id="czK-e6-Gwi"/>
+                                        <constraint firstItem="hZP-hQ-8PM" firstAttribute="leading" secondItem="NJe-9s-3mn" secondAttribute="trailing" constant="10" id="e3e-ix-Bdy"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="badges" destination="NKV-7n-OBx" id="hdj-Nz-AWQ"/>
+                                    <outlet property="awards" destination="hZP-hQ-8PM" id="I42-MC-GY4"/>
                                     <outlet property="title" destination="NJe-9s-3mn" id="5pd-0t-xnv"/>
                                 </connections>
                             </tableViewCell>

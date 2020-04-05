@@ -12,6 +12,30 @@ import GRDB
 // MARK: - Award Helper Methods
 extension DataSource {
 
+    // All awards
+    func allAwards() -> [Award] {
+        do {
+            return try dbQueue.read { db -> [Award] in
+                let request = Award.order(Award.Columns.date)
+                return try request.fetchAll(db)
+            }
+        }
+        catch { }
+        return []
+    }
+
+    // Recent awards
+    func recentAwards() -> [Award] {
+        do {
+            return try dbQueue.read { db -> [Award] in
+                let request = Award.order(Award.Columns.date.desc).limit(10)
+                return try request.fetchAll(db)
+            }
+        }
+        catch { }
+        return []
+    }
+
     // Awards for date interval
     func awardsForDateInterval(from: Date, to: Date) -> [Award] {
         do {
@@ -59,7 +83,20 @@ extension DataSource {
 
         return awards
     }
-    
+
+    // Retrieve list of weekly awards given for the month of input date
+    func weeklyAwardsForMonth(date: Date) -> [Award] {
+        let endOfMonth = CalenderHelper.shared.endOfMonth(date: date)
+        let startOfMonth = CalenderHelper.shared.endOfMonth(date: endOfMonth.byAddingMonth(-1)).byAddingDays(1)
+        
+        // Load monthly goals so we can filter awards by their Ids
+        let weeklyGoalIds = goalsByPeriod(.week).map({ $0.id! })
+        let awards = awardsForDateInterval(from: startOfMonth, to: endOfMonth)
+            .filter({ weeklyGoalIds .contains( $0.goalId )})
+
+        return awards
+    }
+
     // Retrieve list of weekly awards given for the week with specific end date
     func weeklyAwardsForWeek(endingOn: Date?) -> [Award] {
         guard let date = endingOn else { return [] }

@@ -47,8 +47,7 @@ class CalendarViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "monthHeader") as! MonthHeaderView
         let header = tableView.dequeueReusableCell(withIdentifier: "monthHeader") as! MonthHeaderView
-        header.title.text = calendar.monthAt(section).label
-        header.badges.badges = monthAwardColors(monthIdx: section)
+        header.configure(title: calendar.monthAt(section).label, monthlyAwards: monthAwardColors(monthIdx: section, period: .month), weeklyAwards: monthAwardColors(monthIdx: section, period: .week))
         return header.contentView
     }
     
@@ -103,12 +102,12 @@ class CalendarViewController: UITableViewController {
     }
 
     // Helper method to go through a monthly awards and gather just colors
-    func monthAwardColors(monthIdx: Int) -> [UIColor] {
+    func monthAwardColors(monthIdx: Int, period: Goal.Period) -> [UIColor] {
         var res = [UIColor]()
         let month = calendar.monthAt(monthIdx)
         let date = Date(year: month.year, month: month.month)
 
-        let awards = db.monthlyAwardsForMonth(date: date)
+        let awards = period == .month ? db.monthlyAwardsForMonth(date: date) : db.weeklyAwardsForMonth(date: date)
         for award in awards {
             if let color = db.colorForAward(award) {
                 res.append(color)

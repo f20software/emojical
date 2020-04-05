@@ -24,7 +24,19 @@ extension DataSource {
         catch { }
         return nil
     }
-    
+
+    // All diary records
+    func allDiary() -> [Diary] {
+        do {
+            return try dbQueue.read { db -> [Diary] in
+                let request = Diary.order(Diary.Columns.date)
+                return try request.fetchAll(db)
+            }
+        }
+        catch { }
+        return []
+    }
+
     // Diary records filtered for specific date interval
     func diaryForDateInterval(from: Date, to: Date) -> [Diary] {
         do {

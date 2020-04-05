@@ -17,8 +17,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="BGe-M5-KsK" kind="relationship" relationship="viewControllers" id="0pU-OF-owc"/>
+                        <segue destination="fGg-yw-MHe" kind="relationship" relationship="viewControllers" id="PJm-gH-6cK"/>
                         <segue destination="uXQ-0Z-U2U" kind="relationship" relationship="viewControllers" id="FXF-cz-WyX"/>
                         <segue destination="lPk-B2-hge" kind="relationship" relationship="viewControllers" id="kJK-JN-TPe"/>
+                        <segue destination="WFy-OT-yXN" kind="relationship" relationship="viewControllers" id="UzF-LL-Jax"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -55,9 +57,116 @@
             </objects>
             <point key="canvasLocation" x="590" y="-101"/>
         </scene>
+        <!--Options-->
+        <scene sceneID="UDL-NG-REr">
+            <objects>
+                <tableViewController id="8Y1-v5-Mb4" customClass="OptionsViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="GsV-B4-RwM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <sections>
+                            <tableViewSection id="bGC-Kt-kWu">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ChT-hg-GYD">
+                                        <rect key="frame" x="20" y="18" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ChT-hg-GYD" id="Rfh-yk-G8U">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lV6-tO-iL3">
+                                        <rect key="frame" x="20" y="61.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lV6-tO-iL3" id="CmH-3T-xAn">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4T7-mu-2pV">
+                                        <rect key="frame" x="20" y="105" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4T7-mu-2pV" id="TMW-Kw-HaF">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Developer" id="dIz-wW-xim">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ejW-4b-VAs">
+                                        <rect key="frame" x="20" y="204.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ejW-4b-VAs" id="e95-9O-P6z">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efg-lM-cIg">
+                                                    <rect key="frame" x="134.5" y="5" width="105" height="34"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <state key="normal" title="Export Data..."/>
+                                                    <connections>
+                                                        <action selector="exportTapped:" destination="8Y1-v5-Mb4" eventType="touchUpInside" id="Bxq-kV-Y9Y"/>
+                                                        <action selector="exportTapped:" destination="fYq-K4-P9w" eventType="touchUpInside" id="FY0-UI-3Rr"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Efg-lM-cIg" secondAttribute="bottom" constant="5" id="8nt-bC-1XH"/>
+                                                <constraint firstItem="Efg-lM-cIg" firstAttribute="centerY" secondItem="e95-9O-P6z" secondAttribute="centerY" id="MAV-VO-9to"/>
+                                                <constraint firstItem="Efg-lM-cIg" firstAttribute="top" secondItem="e95-9O-P6z" secondAttribute="top" constant="5" id="trQ-kf-qdg"/>
+                                                <constraint firstItem="Efg-lM-cIg" firstAttribute="centerX" secondItem="e95-9O-P6z" secondAttribute="centerX" id="ucd-IL-8Db"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="8Y1-v5-Mb4" id="lif-re-wV2"/>
+                            <outlet property="delegate" destination="8Y1-v5-Mb4" id="Ifh-ns-xMP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Options" id="HEI-Hx-fAJ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hya-Xv-EM5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="fYq-K4-P9w" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1883" y="428"/>
+        </scene>
+        <!--Options-->
+        <scene sceneID="yvk-80-mnz">
+            <objects>
+                <navigationController id="WFy-OT-yXN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Options" image="gear" selectedImage="gear" id="Zjf-zI-32P"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vx6-Fe-HE0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8Y1-v5-Mb4" kind="relationship" relationship="rootViewController" id="ZnO-Qa-Sdd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DFH-4K-bUe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="428"/>
+        </scene>
+        <!--Awards-->
+        <scene sceneID="iWU-kK-hxs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Awards" id="fGg-yw-MHe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Awards" image="award" selectedImage="award" id="wPz-5o-eut"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O39-Dj-2vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585" y="13"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="award" width="30" height="30"/>
         <image name="dots" width="30" height="30"/>
+        <image name="gear" width="30" height="30"/>
         <image name="smile" width="30" height="30"/>
         <image name="star" width="30" height="30"/>
     </resources>

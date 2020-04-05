@@ -45,6 +45,7 @@ class NotificationManager {
         let content = UNMutableNotificationContent()
         content.title = "Aren't you forgetting something?"
         content.body = "Do you want to put some stickers for today?"
+        content.sound = .default
         
         return content
     }
@@ -52,6 +53,7 @@ class NotificationManager {
     private func todayReminderContent(todayStamps: [String]) -> UNNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = "Review today entry?"
+        content.sound = .default
         if todayStamps.count == 0 {
             return defaultReminderContent
         }

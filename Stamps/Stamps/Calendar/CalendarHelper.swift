@@ -54,7 +54,11 @@ class CalenderHelper {
 
         let month = months[section]
         let row = ((comps.day! + month.firstIndex - 1) / 7)
-        return (IndexPath(row: row, section: section), month.indexForDay(comps.day!))
+
+        // TODO: CalendarHelper should not know about specifics of CalendarViewController.
+        // now we add +1 to week index to accomodate the fact that CalendarViewController displays
+        // month header on the first row in each section
+        return (IndexPath(row: row+1, section: section), month.indexForDay(comps.day!))
     }
     
     func labelForDay(_ date: Date) -> String {

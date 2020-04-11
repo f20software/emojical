@@ -82,7 +82,7 @@ class WeekCell: UITableViewCell {
         label.backgroundColor = UIColor.red
     }
     
-    func loadData(_ labels: [String], data: [[UIColor]], awards: [UIColor], indexPath: IndexPath) {
+    func configure(_ labels: [String], data: [[UIColor]], awards: [UIColor], indexPath: IndexPath) {
         var idx = 0
         for (label, badgeView) in allLabelsBadges {
             if labels[idx].starts(with: "*") {

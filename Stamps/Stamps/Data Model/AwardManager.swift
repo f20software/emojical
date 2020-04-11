@@ -9,6 +9,12 @@
 import Foundation
 
 class AwardManager {
+
+    //
+    struct AwardUpdate {
+        let add: [Award]
+        let delete: [Award]
+    }
     
     let db: DataSource
     
@@ -73,10 +79,15 @@ class AwardManager {
         }
     }
 
-    func recalculateAwardsForMonth(_ date: Date) -> Bool {
+    func recalculateAwards(_ date: Date) {
+        recalculateAwardsForWeek(date)
+        recalculateAwardsForMonth(date)
+    }
+    
+    private func recalculateAwardsForMonth(_ date: Date) {
         let goals = db.goalsByPeriod(.month)
         // If we don't have goals - there is not point of recalculating anything
-        guard goals.count > 0 else { return false }
+        guard goals.count > 0 else { return }
         
         print("Recalculating monthly awards for \(date.databaseKey)")
 
@@ -118,15 +129,19 @@ class AwardManager {
             } == false
         }
 
+        // Update data source and post notification about new or deleted awards
         if addAwards.count > 0 || deleteAwards.count > 0 {
             DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
-            return true
+            if addAwards.count > 0 {
+                NotificationCenter.default.post(name: .awardsAdded, object: addAwards)
+            }
+            if deleteAwards.count > 0 {
+                NotificationCenter.default.post(name: .awardsDeleted, object: deleteAwards)
+            }
         }
-        
-        return false
     }
 
-    func recalculateAwardsForWeek(_ date: Date) {
+    private func recalculateAwardsForWeek(_ date: Date) {
         let goals = db.goalsByPeriod(.week)
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
@@ -171,8 +186,15 @@ class AwardManager {
             } == false
         }
 
+        // Update data source and post notification about new or deleted awards
         if addAwards.count > 0 || deleteAwards.count > 0 {
             DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
+            if addAwards.count > 0 {
+                NotificationCenter.default.post(name: .awardsAdded, object: addAwards)
+            }
+            if deleteAwards.count > 0 {
+                NotificationCenter.default.post(name: .awardsDeleted, object: deleteAwards)
+            }
         }
     }
     

@@ -66,9 +66,9 @@ class CalendarViewController: UITableViewController {
         // Is this month header?
         if week < 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "monthHeader") as! MonthHeaderView
-            let monthlyAwardColors = monthAwardColors(monthIdx: month, period: .month)
-            let weeklyAwardColors = monthAwardColors(monthIdx: month, period: .week)
-            cell.configure(title: calendar.monthAt(month).label, monthlyAwards: monthlyAwardColors, weeklyAwards: weeklyAwardColors)
+            let monthlyAwards = monthAwardColors(monthIdx: month, period: .month)
+            let weeklyAwards = monthAwardColors(monthIdx: month, period: .week)
+            cell.configure(title: calendar.monthAt(month).label, monthlyAwards: monthlyAwards, weeklyAwards: weeklyAwards)
             return cell
         
         // Everything else is regular weekly cells
@@ -110,7 +110,7 @@ class CalendarViewController: UITableViewController {
             
             // Update cell (or cells) in which edited day was shown
             guard let (indexPath, _) = self.calendar.indexForDay(date: date) else { return }
-            self.tableView.reloadRows(at: self.rowsToBeRefreshed(indexPath), with: .left)
+            self.tableView.reloadRows(at: self.rowsToBeRefreshed(indexPath), with: .fade)
         }
         
         // Present the view controller (in a popover).
@@ -144,7 +144,7 @@ extension CalendarViewController {
         // Refresh cells with a short delay and play a sound
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            self.tableView.reloadRows(at: cellsToRefresh, with: .right)
+            self.tableView.reloadRows(at: cellsToRefresh, with: .fade)
         })
     }
 }
@@ -185,28 +185,23 @@ extension CalendarViewController {
 
         let awards = db.weeklyAwardsForWeek(endingOn: dateEnd)
         for award in awards {
-            if let color = db.colorForAward(award) {
-                res.append(color)
-            }
+            res.append(db.colorForAward(award))
         }
         
         return res
     }
 
     // Helper method to go through a monthly awards and gather just colors
-    func monthAwardColors(monthIdx: Int, period: Goal.Period) -> [UIColor] {
-        var res = [UIColor]()
+    func monthAwardColors(monthIdx: Int, period: Goal.Period) -> [Award] {
         let month = calendar.monthAt(monthIdx)
         let date = Date(year: month.year, month: month.month)
 
         let awards = period == .month ? db.monthlyAwardsForMonth(date: date) : db.weeklyAwardsForMonth(date: date)
-        for award in awards {
-            if let color = db.colorForAward(award) {
-                res.append(color)
-            }
+        let sorted = awards.sorted { (a1, a2) -> Bool in
+            return a1.goalId < a2.goalId
         }
 
-        return res
+        return sorted
     }
 
 }

@@ -29,14 +29,20 @@ class AwardManager {
     // We will in the database last Sunday (end of week) that we recalculated
     // When app resumes we read that value and recalculate weeks for all weeks after that date until
     // we reach Sunday
-    
     func recalculateOnAppResume() {
         recalculateWeeklyGoals()
         recalculateMonthlyGoals()
     }
+    
+    // When stickers are updated manually for a certain date, we will recalculate
+    // all awards that could be potentially affected
+    func recalculateAwards(_ date: Date) {
+        recalculateAwardsForWeek(date)
+        recalculateAwardsForMonth(date)
+    }
 
     // Recalculate weekly goals and update last-week-update parameter in the database
-    func recalculateWeeklyGoals() {
+    private func recalculateWeeklyGoals() {
         // When was the last weekly goals recalculated?
         var lastUpdated = DataSource.shared.lastWeekUpdate
         if lastUpdated == nil {
@@ -58,7 +64,7 @@ class AwardManager {
     }
     
     // Recalculate monthly goals and update last-month-update parameter in the database
-    func recalculateMonthlyGoals() {
+    private func recalculateMonthlyGoals() {
         // When was the last weekly goals recalculated?
         var lastUpdated = DataSource.shared.lastMonthUpdate
         if lastUpdated == nil {
@@ -79,11 +85,6 @@ class AwardManager {
         }
     }
 
-    func recalculateAwards(_ date: Date) {
-        recalculateAwardsForWeek(date)
-        recalculateAwardsForMonth(date)
-    }
-    
     private func recalculateAwardsForMonth(_ date: Date) {
         let goals = db.goalsByPeriod(.month)
         // If we don't have goals - there is not point of recalculating anything

@@ -120,13 +120,13 @@ extension DataSource {
     
     // Get color for an award. Currently we just check the goal this award was given for
     // and get color of the first stamp on that goal
-    func colorForAward(_ award: Award) -> UIColor? {
+    func colorForAward(_ award: Award) -> UIColor {
         if let goal = goalById(award.goalId),
             let stampId = goal.stampIds.first,
             let stamp = stampById(stampId) {
             return UIColor(hex: stamp.color)
         }
         
-        return nil
+        return Award.defaultColor
     }
 }

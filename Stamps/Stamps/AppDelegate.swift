@@ -13,6 +13,7 @@ extension NSNotification.Name {
     static let todayStickersUpdated = NSNotification.Name("TodayStickersUpdated")
     static let awardsAdded = NSNotification.Name("AwardsAdded")
     static let awardsDeleted = NSNotification.Name("AwardsDeleted")
+    static let newAwardsSeen = NSNotification.Name("NewAwardsSeen")
 }
 
 

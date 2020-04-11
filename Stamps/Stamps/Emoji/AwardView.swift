@@ -15,7 +15,7 @@ class AwardView : UIView {
     private var spacing: Double = 0.7
     
     private let borderThickness: CGFloat = 0.07
-    private let starRatio: CGFloat = 0.82
+    private let starRatio: CGFloat = 0.78
     
     // initWithFrame to init view from code
     override init(frame: CGRect) {
@@ -32,15 +32,17 @@ class AwardView : UIView {
         self.dashes = dashes
         setupView()
     }
-    
+
     private func setupView() {
         let size = bounds.width
         layer.sublayers?.removeAll()
-        backgroundColor = UIColor.clear
-
+        layer.cornerRadius = size / 2.0
+        clipsToBounds = true
+        
         let border = CAShapeLayer()
         border.strokeColor = color.cgColor
-        border.lineWidth = size * borderThickness
+        border.lineWidth = size * borderThickness * 2.0
+        
         if dashes > 0 {
             let dashLength = Double(bounds.width) * Double.pi / Double(dashes)
             border.lineDashPattern = [NSNumber(value: dashLength * spacing), NSNumber(value: dashLength * (1 - spacing))]
@@ -48,7 +50,7 @@ class AwardView : UIView {
         }
         
         border.frame = bounds
-        border.fillColor = nil
+        border.fillColor = backgroundColor?.cgColor
         border.path = UIBezierPath(roundedRect: bounds, cornerRadius: size / 2.0).cgPath
         layer.addSublayer(border)
         

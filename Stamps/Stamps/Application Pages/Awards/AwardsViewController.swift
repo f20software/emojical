@@ -13,10 +13,11 @@ class AwardsViewController: UITableViewController {
 
     private var awards: [Award] = []
     private var awardsObserver: TransactionObserver?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         awards = DataSource.shared.recentAwards()
+
         tableView.tableFooterView = UIView()
     }
 
@@ -24,6 +25,10 @@ class AwardsViewController: UITableViewController {
         super.viewDidAppear(animated)
         configureTableView()
         tableView.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            NotificationCenter.default.post(name: .newAwardsSeen, object: nil)
+        }
     }
 
     private func configureTableView() {
@@ -89,4 +94,3 @@ extension AwardsViewController {
         return cell
     }
 }
-

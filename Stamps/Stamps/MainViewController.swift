@@ -16,6 +16,8 @@ class MainViewController: UITabBarController {
     var goalsTab: UIViewController!
     var optionsTab: UIViewController!
 
+    private var newAwardCounter = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,9 +31,38 @@ class MainViewController: UITabBarController {
 
         // Subscribe to app notifications on when user sign in/out
         NotificationCenter.default.addObserver(self, selector: #selector(navigateToCalendar), name: .navigateToToday, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(awardsAdded), name: .awardsAdded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(awardsDeleted), name: .awardsDeleted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(newAwardsSeen), name: .newAwardsSeen, object: nil)
     }
-    
+}
+
+// MARK: - Notification handling
+extension MainViewController {
+
     @objc func navigateToCalendar() {
         selectedIndex = 0
+    }
+
+    @objc func awardsAdded(notification: Notification) {
+        guard let awards = notification.object as? [Award] else { return }
+        newAwardCounter += awards.count
+        tabBar.items?[1].badgeValue = "\(newAwardCounter)"
+    }
+
+    @objc func awardsDeleted(notification: Notification) {
+        guard let awards = notification.object as? [Award] else { return }
+
+        newAwardCounter -= awards.count
+        if newAwardCounter < 0 {
+            newAwardCounter = 0
+        }
+        tabBar.items?[1].badgeValue = newAwardCounter > 0 ? "\(newAwardCounter)" : nil
+    }
+
+    @objc func newAwardsSeen(notification: Notification) {
+        newAwardCounter = 0
+        tabBar.items?[1].badgeValue = nil
     }
 }

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class DayViewController : UIViewController {
     
     let notSelectedStampColor = UIColor(hex: "DDDDDD")
     
+    @IBOutlet weak var lockButton: UIButton!
     @IBOutlet weak var dayView: UIView!
     @IBOutlet weak var dayTitle: UILabel!
     @IBOutlet weak var stamp1: StickerView!
@@ -26,6 +28,8 @@ class DayViewController : UIViewController {
     @IBOutlet weak var stamp10: StickerView!
     @IBOutlet weak var bottomDistance: NSLayoutConstraint!
     
+    var locked: Bool = false
+    
     var calendar: CalenderHelper {
         return CalenderHelper.shared
     }
@@ -39,6 +43,12 @@ class DayViewController : UIViewController {
             guard let date = date else { return }
             
             dayTitle.text = "\(calendar.labelForDay(date))"
+
+            let untilToday = Int(date.timeIntervalSince(Date()) / (60*60*24))
+            // Disable editing for dates more than 1 week in the past and 1 day in the future
+            locked = untilToday < -6 || untilToday > 1
+            lockButton.isHidden = !locked
+            
             currentStamps = db.stampsIdsForDay(date)
             dataChanged = false
 
@@ -134,13 +144,17 @@ class DayViewController : UIViewController {
     }
     
     @objc func dayViewTapped(sender: UITapGestureRecognizer) {
-        
         // Tapped outside?
         if dayView.bounds.contains(sender.location(in: dayView)) == false {
             dismissDayView()
             return
         }
         
+        if locked {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            return
+        }
+
         // Check if we tapped on one of the stamps
         for i in 0..<stampLabels.count {
             if stampLabels[i].bounds.contains(sender.location(in: stampLabels[i])) {

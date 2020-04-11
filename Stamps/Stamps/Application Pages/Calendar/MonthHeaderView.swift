@@ -13,27 +13,38 @@ class MonthHeaderView: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var awards: UIView!
     
+    let db = DataSource.shared
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        contentView.backgroundColor = UIColor.systemBackground
     }
     
-    func configure(title: String, monthlyAwards: [UIColor], weeklyAwards: [UIColor]) {
+    func configure(title: String, monthlyAwards: [Award], weeklyAwards: [Award]) {
 
         self.title.text = title
         self.awards.backgroundColor = UIColor.clear
         
         var x: CGFloat = 0
         let size = awards.bounds.height
-        for color in monthlyAwards {
-            let award = AwardView(frame: CGRect(x: x, y: 0, width: size, height: size))
-            award.configure(color: color, dashes: 0)
-            awards.addSubview(award)
+        for award in monthlyAwards {
+            let badge = AwardView(frame: CGRect(x: x, y: 0, width: size, height: size))
+            badge.configure(color: db.colorForAward(award), dashes: 0)
+            awards.addSubview(badge)
             x += (size + 5)
         }
-        for color in weeklyAwards {
-            let award = AwardView(frame: CGRect(x: x, y: 0, width: size, height: size))
-            award.configure(color: color, dashes: 7)
-            awards.addSubview(award)
+        
+        var lastGoalId: Int64 = -1
+        for award in weeklyAwards {
+            if award.goalId == lastGoalId {
+                x -= (size / 1.5)
+            }
+            
+            let badge = AwardView(frame: CGRect(x: x, y: 0, width: size, height: size))
+            badge.configure(color: db.colorForAward(award), dashes: 7)
+            badge.backgroundColor = UIColor.systemBackground // override background color since we will be overlapping them
+            awards.addSubview(badge)
+            lastGoalId = award.goalId
             x += (size + 5)
         }
     }
@@ -45,6 +56,5 @@ class MonthHeaderView: UITableViewCell {
             view.removeFromSuperview()
         }
     }
-    
 }
 

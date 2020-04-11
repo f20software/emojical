@@ -8,9 +8,13 @@
 
 import Foundation
 import GRDB
+import UIKit
 
 struct Award {
-    
+
+    // Default award badge color - should not really happen ever
+    static let defaultColor = UIColor.red
+
     // Prefer Int64 for auto-incremented database ids
     var id: Int64?
     let goalId: Int64 // FK to Goals table
@@ -23,6 +27,7 @@ struct Award {
         
         return "Earned on \(df.string(from: d))"
     }
+    
 }
 
 extension Award : Hashable { }

@@ -44,7 +44,9 @@ class WeekCell: UITableViewCell {
         let tap = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
         addGestureRecognizer(tap)
         
-        self.selectionStyle = .none
+        selectionStyle = .none
+        contentView.backgroundColor = UIColor.systemBackground
+        
         allLabelsBadges = [
             (mon, monBadge),
             (tue, tueBadge),

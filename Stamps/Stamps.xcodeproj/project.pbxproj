@@ -26,6 +26,7 @@
 		F27B045D2426B31E006E5175 /* MonthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045C2426B31E006E5175 /* MonthHeaderView.swift */; };
 		F27B04612426B8FA006E5175 /* DayBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B04602426B8FA006E5175 /* DayBadgeView.swift */; };
 		F27B04632426BBBA006E5175 /* MonthBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B04622426BBBA006E5175 /* MonthBadgeView.swift */; };
+		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
 		F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */; };
@@ -96,6 +97,7 @@
 		F27B045C2426B31E006E5175 /* MonthHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthHeaderView.swift; sourceTree = "<group>"; };
 		F27B04602426B8FA006E5175 /* DayBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayBadgeView.swift; sourceTree = "<group>"; };
 		F27B04622426BBBA006E5175 /* MonthBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBadgeView.swift; sourceTree = "<group>"; };
+		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		F2A99D2A2439346C00D3CF1D /* Options */ = {
 			isa = PBXGroup;
 			children = (
+				F2A21C11244271130030A117 /* Options.storyboard */,
 				F2A99D282439346900D3CF1D /* OptionsViewController.swift */,
 			);
 			path = Options;
@@ -447,6 +450,7 @@
 				F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
 				F2A99D2D243A790600D3CF1D /* Awards.storyboard in Resources */,
+				F2A21C12244271130030A117 /* Options.storyboard in Resources */,
 				F2B4763223DDF6CD0076BFDC /* Calendar.storyboard in Resources */,
 				F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */,
 			);
@@ -707,7 +711,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.6;
+				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -726,7 +730,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.6;
+				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

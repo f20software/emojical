@@ -11,10 +11,19 @@ import MessageUI
 
 class OptionsViewController: UITableViewController {
 
+    @IBOutlet weak var exportCell: UITableViewCell!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell === exportCell {
+            exportTapped(self)
+        }
+    }
+    
     @IBAction func exportTapped(_ sender: Any) {
         let db = DataSource.shared
         
@@ -23,6 +32,8 @@ class OptionsViewController: UITableViewController {
             sendEmail(attachment: backupFileName)
         }
     }
+    
+    
     
     func sendEmail(attachment: URL) {
         if MFMailComposeViewController.canSendMail() {

@@ -1,1 +1,1 @@
-![Calendar](calendar.png =250px)
+![Calendar](calendar.png  | width=250)

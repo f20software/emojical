@@ -27,7 +27,6 @@
 		F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045A241EEB48006E5175 /* SelectStampCell.swift */; };
 		F27B045D2426B31E006E5175 /* MonthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045C2426B31E006E5175 /* MonthHeaderView.swift */; };
 		F27B04612426B8FA006E5175 /* DayBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B04602426B8FA006E5175 /* DayBadgeView.swift */; };
-		F27B04632426BBBA006E5175 /* MonthBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B04622426BBBA006E5175 /* MonthBadgeView.swift */; };
 		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
@@ -98,7 +97,6 @@
 		F27B045A241EEB48006E5175 /* SelectStampCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStampCell.swift; sourceTree = "<group>"; };
 		F27B045C2426B31E006E5175 /* MonthHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthHeaderView.swift; sourceTree = "<group>"; };
 		F27B04602426B8FA006E5175 /* DayBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayBadgeView.swift; sourceTree = "<group>"; };
-		F27B04622426BBBA006E5175 /* MonthBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBadgeView.swift; sourceTree = "<group>"; };
 		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				F27B04602426B8FA006E5175 /* DayBadgeView.swift */,
-				F27B04622426BBBA006E5175 /* MonthBadgeView.swift */,
 				F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */,
 				F20D1F9424142A1700FB5000 /* StickerView.swift */,
 				F2B67430243919D500610D86 /* AwardView.swift */,
@@ -533,7 +530,6 @@
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */,
 				F2B67431243919D500610D86 /* AwardView.swift in Sources */,
-				F27B04632426BBBA006E5175 /* MonthBadgeView.swift in Sources */,
 				F2B4763B23DE3E390076BFDC /* GoalsViewController.swift in Sources */,
 				F27B04612426B8FA006E5175 /* DayBadgeView.swift in Sources */,
 				F2B4763F23DE4B540076BFDC /* StampCell.swift in Sources */,

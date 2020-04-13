@@ -1,5 +1,5 @@
 //
-//  MonthBadgeView.swift
+//  AwardView.swift
 //  Stamps
 //
 //  Created by Vladimir Svidersky on 1/20/20.
@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Custom view that draws a star with circle around it. Cirle optionally can be broken
+// into several arcs - for monthly awards we use full circle, for weekly - 7-arches circle. 
 class AwardView : UIView {
     
     private var color: UIColor = UIColor.blue

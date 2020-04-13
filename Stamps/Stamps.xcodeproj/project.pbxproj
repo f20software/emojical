@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView.swift */; };
+		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
+		F20E403A2443E5BC008759D1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
 		F247541423DFC706006A13C3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541323DFC706006A13C3 /* Goal.swift */; };
 		F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541623DFEADB006A13C3 /* StampViewController.swift */; };
 		F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541823E5D2CB006A13C3 /* IconCell.swift */; };
@@ -16,7 +18,7 @@
 		F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542223E5E3B5006A13C3 /* ColorsViewController.swift */; };
 		F247542523E734CE006A13C3 /* AwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542423E734CE006A13C3 /* AwardManager.swift */; };
 		F247542723E74C49006A13C3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542623E74C49006A13C3 /* Award.swift */; };
-		F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColor+Hex.swift */; };
+		F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
 		F27968F1240C127900EA9436 /* Param.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F0240C127900EA9436 /* Param.swift */; };
 		F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F2240C12C700EA9436 /* DataSource+Param.swift */; };
 		F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B0450241EBD7A006E5175 /* EmojicalTests.swift */; };
@@ -87,7 +89,7 @@
 		F247542223E5E3B5006A13C3 /* ColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
 		F247542423E734CE006A13C3 /* AwardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardManager.swift; sourceTree = "<group>"; };
 		F247542623E74C49006A13C3 /* Award.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
-		F26B273623D6772400B8D0F9 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		F27968F0240C127900EA9436 /* Param.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Param.swift; sourceTree = "<group>"; };
 		F27968F2240C12C700EA9436 /* DataSource+Param.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Param.swift"; sourceTree = "<group>"; };
 		F27B044E241EBD7A006E5175 /* EmojicalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojicalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,14 +160,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F20D1F9724142A1D00FB5000 /* Emoji */ = {
+		F20D1F9724142A1D00FB5000 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F20D1F9324142A1700FB5000 /* EmojiTextField.swift */,
+				F27B04602426B8FA006E5175 /* DayBadgeView.swift */,
+				F27B04622426BBBA006E5175 /* MonthBadgeView.swift */,
+				F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */,
 				F20D1F9424142A1700FB5000 /* StickerView.swift */,
 				F2B67430243919D500610D86 /* AwardView.swift */,
 			);
-			path = Emoji;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F20E40382443E598008759D1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F20D1F9324142A1700FB5000 /* EmojiTextField.swift */,
+				F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */,
+				F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F20E403B2443E681008759D1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F2F449232430291B005AD6B9 /* MainViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		F26B273823D80CB000B8D0F9 /* Resources */ = {
@@ -191,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */,
-				F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -200,9 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				F2B4763123DDF6CD0076BFDC /* Calendar.storyboard */,
-				F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */,
-				F27B04622426BBBA006E5175 /* MonthBadgeView.swift */,
-				F27B04602426B8FA006E5175 /* DayBadgeView.swift */,
 				F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */,
 				F27B045C2426B31E006E5175 /* MonthHeaderView.swift */,
 				F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */,
@@ -246,6 +264,7 @@
 		F2B4763423DE3C300076BFDC /* Application Pages */ = {
 			isa = PBXGroup;
 			children = (
+				F20E403B2443E681008759D1 /* Main */,
 				F2A5256123D4CEEC00C3E0F3 /* Calendar */,
 				F2A99D2B243A78ED00D3CF1D /* Awards */,
 				F2B4763323DE3C120076BFDC /* Stamps */,
@@ -297,16 +316,16 @@
 		F2C4943723D2CBC800EAF9CC /* Stamps */ = {
 			isa = PBXGroup;
 			children = (
+				F20E40382443E598008759D1 /* Extensions */,
 				F2C493222430171000E997BD /* Notifications */,
 				F26B273823D80CB000B8D0F9 /* Resources */,
 				F2A5256023D4CED000C3E0F3 /* Calendar */,
-				F20D1F9724142A1D00FB5000 /* Emoji */,
+				F20D1F9724142A1D00FB5000 /* Views */,
 				F2B4763423DE3C300076BFDC /* Application Pages */,
 				F2FF7EAB23D671050033D9DC /* Colors */,
 				F2FF7EA423D66F0B0033D9DC /* Data Model */,
 				F2F260F42408D96700F5CCB9 /* Database */,
 				F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */,
-				F2F449232430291B005AD6B9 /* MainViewController.swift */,
 				F2C493252430179500E997BD /* LocalSettings.swift */,
 				F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */,
 				F2C4944823D2CBCA00EAF9CC /* Info.plist */,
@@ -345,7 +364,6 @@
 		F2FF7EAB23D671050033D9DC /* Colors */ = {
 			isa = PBXGroup;
 			children = (
-				F26B273623D6772400B8D0F9 /* UIColor+Hex.swift */,
 				F247541C23E5DF6B006A13C3 /* Palette.swift */,
 			);
 			path = Colors;
@@ -463,9 +481,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */,
 				F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */,
 				F27B0458241EBDA0006E5175 /* CalendarHelper.swift in Sources */,
 				F27B0459241EBDA3006E5175 /* DateExtensions.swift in Sources */,
+				F20E403A2443E5BC008759D1 /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +525,7 @@
 				F247542523E734CE006A13C3 /* AwardManager.swift in Sources */,
 				F2A99D30243A793000D3CF1D /* AwardCell.swift in Sources */,
 				F2C190D824030701003F5ABA /* SelectStampsViewController.swift in Sources */,
-				F26B273723D6772400B8D0F9 /* UIColor+Hex.swift in Sources */,
+				F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
 				F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,

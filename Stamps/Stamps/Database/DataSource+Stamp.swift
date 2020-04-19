@@ -132,4 +132,9 @@ extension DataSource {
         updateStatsForStamps(stamps.map({ $0.id! }))
     }
 
+    // List of goals particular stamp is used in
+    func goalsUsedStamp(_ stampId: Int64) -> [Goal] {
+        return self.allGoals().filter { $0.stampIds.contains(stampId) }
+    }
+
 }

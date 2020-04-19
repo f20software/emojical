@@ -8,6 +8,7 @@
 
 import Foundation
 import GRDB
+import UIKit
 
 // MARK: - Goals Helper Methods
 extension DataSource {
@@ -105,4 +106,30 @@ extension DataSource {
         catch { }
         return []
     }
+    
+    // Collect all stamp labels by iterating through Ids stored in the goal object
+    func stampLabelsFor(_ goal: Goal) -> [String] {
+        let stampIds = goal.stampIds
+        var result = [String]()
+        for i in stampIds {
+            if let label = stampById(i)?.label {
+                result.append(label)
+            }
+        }
+        
+        return result
+    }
+    
+    // Get color for a goal. Currently we just check the goal this award was given for
+    // and get color of the first stamp on that goal
+    func colorForGoal(_ goalId: Int64) -> UIColor {
+        if let goal = goalById(goalId),
+            let stampId = goal.stampIds.first,
+            let stamp = stampById(stampId) {
+            return UIColor(hex: stamp.color)
+        }
+        
+        return Award.defaultColor
+    }
+
 }

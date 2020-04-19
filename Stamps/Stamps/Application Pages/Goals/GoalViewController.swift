@@ -8,124 +8,166 @@
 
 import UIKit
 
-class GoalViewController: UITableViewController {
+// In order to dymanically pass references to Goal properties to DynamicTables
+// and being able to update them - we need to wrap `struct Goal` to a class object
+// using only properties that we are actually going to expose for editing
+class GoalRef : NSObject {
+    @objc var name: String
+    @objc var direction: Int
+    @objc var period: Int
+    @objc var limit: Int
+
+    init(from: Goal) {
+        name = from.name
+        direction = from.direction.rawValue
+        period = from.period.rawValue
+        limit = from.limit
+    }
+    
+    func update(to: inout Goal) {
+        to.name = name
+        to.period = Goal.Period(rawValue: period) ?? .week
+        to.direction = Goal.Direction(rawValue: direction) ?? .positive
+        to.limit = limit
+    }
+}
+
+
+class GoalViewController: DTTableViewController {
     
     let segueCommit = "commitGoal"
     let segueSelectStamps = "selectStamps"
     
+    @IBOutlet var doneBarButton: UIBarButtonItem!
+    @IBOutlet var cancelBarButton: UIBarButtonItem!
+    @IBOutlet var editBarButton: UIBarButtonItem!
+    
     enum Presentation {
         // Modal presentation: edition ends with the "Commit" segue.
         case modal
-        
         // Push presentation: edition ends when user hits the back button.
         case push
     }
     
-    var goal: Goal!
-    var currentProgress: Int?
-    var presentation: Presentation! { didSet { configureView() } }
+    // Reference to Goal object
+    var goal: Goal! { didSet { goalRef = GoalRef(from: goal) }}
+    // Goal class reference - only used to be properly pass references to the object
+    // to DynamicTables
+    var goalRef: GoalRef?
 
-    @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var commitBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var nameCell: UITableViewCell!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var limitCell: UITableViewCell!
-    @IBOutlet weak var limitLabel: UILabel!
-    @IBOutlet weak var limitTextField: UITextField!
-    @IBOutlet weak var direction: UISegmentedControl!
-    @IBOutlet weak var period: UISegmentedControl!
-    @IBOutlet weak var stampsLabel: UILabel!
-    @IBOutlet weak var statsLabel: UILabel!
-    @IBOutlet weak var deleteCell: UITableViewCell!
+    var currentProgress: Int?
+    var presentationMode: Presentation! { didSet { configureView() } }
+    var editMode: Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        createTableModel()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadGoal()
-    }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        editMode = editing
+        // Update navigation title and re-create table view model
+        configureBarButtons()
+        createTableModel()
+        
+        guard animated == true else { return }
 
+        // This is to properly animate table view transition from view mode to edit mode
+        // in view mode we have just 1 section, in edit mode could have 2 (when delete button is shown)
+        tableView.beginUpdates()
+        tableView.reloadSections([0], with: .fade)
+        if editMode {
+            tableView.insertSections([1], with: .fade)
+        }
+        else {
+            tableView.deleteSections([1], with: .fade)
+        }
+        tableView.endUpdates()
+    }
+    
+    fileprivate func configureBarButtons() {
+        title = goal.name
+        if editMode {
+            navigationItem.leftBarButtonItem = cancelBarButton
+            navigationItem.setRightBarButtonItems([doneBarButton], animated: false)
+        }
+        else {
+            navigationItem.leftBarButtonItem = nil
+            navigationItem.setRightBarButtonItems([editBarButton], animated: false)
+        }
+    }
+    
     fileprivate func configureView() {
         guard isViewLoaded else { return }
-        
-        tableView.tableFooterView = UIView()
-        
-        switch presentation! {
-        case .modal:
-            navigationItem.leftBarButtonItem = cancelBarButtonItem
-            navigationItem.rightBarButtonItem = commitBarButtonItem
-        case .push:
-            navigationItem.leftBarButtonItem = nil
-            navigationItem.rightBarButtonItem = nil
+        setEditing((presentationMode == .modal), animated: false)
+    }
+    
+    fileprivate func createTableModel() {
+        guard let goalRef = goalRef else { return }
+        model.clear()
+        let stickers = DataSource.shared.stampLabelsFor(goal)
+
+        if editMode {
+            let mainSection = model.add(DTTableViewSection())
+
+            let nameCell = DTTextFieldCell(text: "Name", boundObject: goalRef, boundProperty: "name")
+            nameCell.valueChanged = { (_cell) -> Void in
+                // Update form title with new value
+                self.title = self.goal.name
+            }
+
+            let directionCell = DTSegmentedControlCell(text: "Direction", boundObject: goalRef, boundProperty: "direction", items: ["Positive", "Negative"])
+
+            let limitCell = DTNumericTextFieldCell(text: "Limit", boundObject: goalRef, boundProperty: "limit")
+
+            let periodCell = DTSegmentedControlCell(text: "Period", boundObject: goalRef, boundProperty: "period", items: ["Week", "Month"])
+
+            let stickersCell = DTLabelCell(text: "Stickers", value: stickers.joined(separator: ", "))
+            stickersCell.disclosureIndicator = true
+            stickersCell.didSelect = { (_, _) -> Void in
+                self.performSegue(withIdentifier: self.segueSelectStamps, sender: self)
+            }
+            
+            mainSection.add(contentOf: [nameCell, directionCell, limitCell, periodCell, stickersCell])
+            
+            // Delete option is visible only when we're in the edit mode from editing existing entry and
+            // not creating new one
+            if presentationMode == .push {
+                let deleteSection = model.add(DTTableViewSection(headerTitle: nil, footerTitle: "If you update or delete the goal, all previously earned awards would remain unchanged."))
+                let deleteCell = deleteSection.add(DTButtonCell(text: "Delete Goal"))
+                deleteCell.didSelect = { (_, _) -> Void in
+                    self.confirmGoalDelete()
+                }
+            }
+        }
+        else {
+            let mainSection = model.add(DTTableViewSection(headerTitle: nil))
+            mainSection.add(contentOf: [
+                DTTextViewCell(text: "\(goal.details).\n\nStickers: \(stickers.joined(separator: ", "))"),
+                DTTextViewCell(text: goal.statsDescription)
+            ])
+            
+            if currentProgress != nil {
+                mainSection.add(
+                    DTTextViewCell(text: goal.descriptionForCurrentProgress(currentProgress!)))
+            }
         }
     }
 }
-
-// MARK: - TableView handling
-
-extension GoalViewController {
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        switch presentation! {
-        case .modal:
-            return 1
-        case .push:
-            return 3
-        }
-    }
-    
-    // Auto-selecting text fields when cell is selected
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        let cell = tableView.cellForRow(at: indexPath)
-
-        if cell === nameCell {
-            nameTextField.becomeFirstResponder()
-        } else if cell === limitCell {
-            limitTextField.becomeFirstResponder()
-        } else if cell === deleteCell {
-            confirmGoalDelete()
-        } else {
-            nameTextField.resignFirstResponder()
-            limitTextField.resignFirstResponder()
-        }
-    }
-
-    // We want to be able to dynamically update footer for the first section with
-    // human readable goal description
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if section == 0 {
-            return goal.details
-        }
-        else if section == 1 {
-            return "If you update the goal, all previously scored awards would remain untouched"
-        }
-        
-        return nil
-    }
-}
-
-
 
 // MARK: - Updating list of stamps from SelectStampsViewController
 extension GoalViewController: SelectStampsViewControllerDelegate {
 
     func stampSelectionUpdated(_ selection: [Int64]) {
         goal.stampIds = selection
+        createTableModel()
+        tableView.reloadData()
     }
 }
 
 // MARK: - Navigation
 extension GoalViewController {
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        // Force keyboard to dismiss early
-        view.endEditing(true)
-        return true
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueCommit {
@@ -139,75 +181,26 @@ extension GoalViewController {
             }
         }
     }
-    
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        
-        switch presentation! {
-        case .modal:
-            break
-        case .push:
-            if parent == nil {
-                // Self is popping from its navigation controller
-                saveChanges()
-            }
-        }
-    }
 }
 
 // MARK: - Form
 extension GoalViewController: UITextFieldDelegate {
     
-    @IBAction func formValueChanged(_ sender: Any) {
-        updateGoal()
-        
-        // There are few UI elements we want to update in real-time as user changes their values
-        // We don't want to call loadGoal() to refresh everything, since it will dismiss the keyboard
-        // instead we manually update title, description label and footer text
-        DispatchQueue.main.async {
-            self.title = self.goal.name
-            // Little hacky - we want to update first sectino footer, but don't want to reload whole section because of it
-            self.limitLabel.text = self.goal.limitName
-            if let footer = self.tableView.footerView(forSection: 0) {
-                footer.textLabel?.text = self.goal.details
-                footer.setNeedsLayout() // in case new text is longer then the old one
-            }
+    @IBAction func editTapped(_ sender: Any) {
+        setEditing(true, animated: true)
+    }
+
+    @IBAction func cancelTapped(_ sender: Any) {
+        if presentationMode == .push {
+            // Reload goal from the datasource and going back to view mode
+            goalRef = GoalRef(from: goal)
+            setEditing(false, animated: true)
+        }
+        else {
+            dismiss(animated: true)
         }
     }
 
-    // Updated stored property with values from UI
-    func updateGoal() {
-        goal.name = nameTextField.text ?? ""
-        goal.limit = Int(limitTextField.text ?? "") ?? 0
-        goal.direction = Goal.Direction(rawValue: direction.selectedSegmentIndex) ?? .positive
-        goal.period = Goal.Period(rawValue: period.selectedSegmentIndex) ?? .week
-    }
-    
-    // Load values from goal property to UI
-    func loadGoal() {
-        nameTextField.text = goal.name
-        limitTextField.text = "\(goal.limit)"
-        limitLabel.text = goal.limitName
-        direction.selectedSegmentIndex = goal.direction.rawValue
-        period.selectedSegmentIndex = goal.period.rawValue
-
-        // Get all labels from Ids that are part of Goal object
-        let stampIds = goal.stampIds
-        var stampLabels = [String]()
-        for i in stampIds {
-            if let label = DataSource.shared.stampById(i)?.label {
-                stampLabels.append(label)
-            }
-        }
-
-        stampsLabel.text = stampLabels.joined(separator: ", ")
-        statsLabel.text = goal.statsDescription
-        if currentProgress != nil {
-            statsLabel.text! += "\n\n\(goal.descriptionForCurrentProgress(currentProgress!))"
-        }
-        
-    }
-    
     func deleteAndDismiss() {
         goal.deleted = true
         saveChanges()
@@ -216,7 +209,7 @@ extension GoalViewController: UITextFieldDelegate {
     
     func confirmGoalDelete() {
         if goal.count > 0 {
-            let confirm = UIAlertController(title: "\(goal.statsDescription). Are you sure you want to delete it?", message: nil, preferredStyle: .actionSheet)
+            let confirm = UIAlertController(title: "\(goal.statsDescription) Are you sure you want to delete it?", message: nil, preferredStyle: .actionSheet)
             confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
                 self.deleteAndDismiss()
             }))
@@ -230,15 +223,10 @@ extension GoalViewController: UITextFieldDelegate {
         }
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField === nameTextField {
-            limitTextField.becomeFirstResponder()
-        }
-        return false
-    }
-    
     private func saveChanges() {
-        updateGoal()
+        guard let goalRef = goalRef else { return }
+        goalRef.update(to: &goal)
+
         try! DataSource.shared.dbQueue.inDatabase { db in
             try goal.save(db)
         }

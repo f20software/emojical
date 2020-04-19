@@ -73,13 +73,13 @@ struct Goal {
         if limit > 0 {
             switch direction {
             case .positive:
-                result += ", \(limit) or more"
+                result += " goal, get \(limit) or more"
             case .negative:
-                result += ", \(limit) or fewer"
+                result += " goal, get \(limit) or fewer"
             }
         }
         else {
-            result += ", no limit"
+            result += " goal, no limit"
         }
         
         return result

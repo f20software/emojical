@@ -11,6 +11,14 @@
 		F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20E403A2443E5BC008759D1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
+		F20E40442443ED25008759D1 /* DTTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E403D2443ED25008759D1 /* DTTableViewModel.swift */; };
+		F20E40462443ED25008759D1 /* DTTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E403F2443ED25008759D1 /* DTTableCell.swift */; };
+		F20E40472443ED25008759D1 /* DTTableSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E40402443ED25008759D1 /* DTTableSelectionViewController.swift */; };
+		F20E40482443ED25008759D1 /* DTLinkedSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E40412443ED25008759D1 /* DTLinkedSelectionCell.swift */; };
+		F20E40492443ED25008759D1 /* DTTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E40422443ED25008759D1 /* DTTableViewController.swift */; };
+		F20E404A2443ED25008759D1 /* DTLinkedSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E40432443ED25008759D1 /* DTLinkedSwitchCell.swift */; };
+		F20E404C2443EDC9008759D1 /* DTTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E404B2443EDC9008759D1 /* DTTableViewSection.swift */; };
+		F20E404E2443F4C6008759D1 /* DTStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E404D2443F4C5008759D1 /* DTStyle.swift */; };
 		F247541423DFC706006A13C3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541323DFC706006A13C3 /* Goal.swift */; };
 		F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541623DFEADB006A13C3 /* StampViewController.swift */; };
 		F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541823E5D2CB006A13C3 /* IconCell.swift */; };
@@ -44,6 +52,9 @@
 		F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */; };
 		F2B4763F23DE4B540076BFDC /* StampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4763E23DE4B540076BFDC /* StampCell.swift */; };
 		F2B67431243919D500610D86 /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B67430243919D500610D86 /* AwardView.swift */; };
+		F2B7D35B244B47FE00C94E63 /* DTTableViewCell-Emoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B7D35A244B47FE00C94E63 /* DTTableViewCell-Emoji.xib */; };
+		F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */; };
+		F2B7D35F244C9B3A00C94E63 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D35E244C9B3A00C94E63 /* StringExtensions.swift */; };
 		F2C190D22401BD50003F5ABA /* WeekBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */; };
 		F2C190D42402E17A003F5ABA /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D32402E17A003F5ABA /* GoalViewController.swift */; };
 		F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D52402E243003F5ABA /* GoalCell.swift */; };
@@ -63,6 +74,13 @@
 		F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */; };
 		F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F449232430291B005AD6B9 /* MainViewController.swift */; };
 		F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */; };
+		F2FC632E2446B4F000EF41AD /* DTTableViewCell-Segmented.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FC632D2446B4F000EF41AD /* DTTableViewCell-Segmented.xib */; };
+		F2FC63312446B50A00EF41AD /* DTTableViewCell-TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FC632F2446B50A00EF41AD /* DTTableViewCell-TextView.xib */; };
+		F2FC63322446B50A00EF41AD /* DTTableViewCell-TextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FC63302446B50A00EF41AD /* DTTableViewCell-TextField.xib */; };
+		F2FC63352446B70E00EF41AD /* DTTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FC63342446B70E00EF41AD /* DTTextViewCell.swift */; };
+		F2FC63372446D17000EF41AD /* DTControlCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FC63362446D17000EF41AD /* DTControlCells.swift */; };
+		F2FC63392446D45000EF41AD /* DTFieldCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FC63382446D44F00EF41AD /* DTFieldCells.swift */; };
+		F2FC633B2447FF4F00EF41AD /* DTTableViewCell-Label.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FC633A2447FF4F00EF41AD /* DTTableViewCell-Label.xib */; };
 		F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */; };
 		F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA223D66F030033D9DC /* DataSource.swift */; };
 		F2FF7EA623D66F3A0033D9DC /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF7EA523D66F3A0033D9DC /* Stamp.swift */; };
@@ -81,6 +99,14 @@
 /* Begin PBXFileReference section */
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
+		F20E403D2443ED25008759D1 /* DTTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableViewModel.swift; sourceTree = "<group>"; };
+		F20E403F2443ED25008759D1 /* DTTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableCell.swift; sourceTree = "<group>"; };
+		F20E40402443ED25008759D1 /* DTTableSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableSelectionViewController.swift; sourceTree = "<group>"; };
+		F20E40412443ED25008759D1 /* DTLinkedSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTLinkedSelectionCell.swift; sourceTree = "<group>"; };
+		F20E40422443ED25008759D1 /* DTTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableViewController.swift; sourceTree = "<group>"; };
+		F20E40432443ED25008759D1 /* DTLinkedSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTLinkedSwitchCell.swift; sourceTree = "<group>"; };
+		F20E404B2443EDC9008759D1 /* DTTableViewSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableViewSection.swift; sourceTree = "<group>"; };
+		F20E404D2443F4C5008759D1 /* DTStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTStyle.swift; sourceTree = "<group>"; };
 		F247541323DFC706006A13C3 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		F247541623DFEADB006A13C3 /* StampViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampViewController.swift; sourceTree = "<group>"; };
 		F247541823E5D2CB006A13C3 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
@@ -113,6 +139,9 @@
 		F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Goals.storyboard; sourceTree = "<group>"; };
 		F2B4763E23DE4B540076BFDC /* StampCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampCell.swift; sourceTree = "<group>"; };
 		F2B67430243919D500610D86 /* AwardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
+		F2B7D35A244B47FE00C94E63 /* DTTableViewCell-Emoji.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Emoji.xib"; sourceTree = "<group>"; };
+		F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomStickerCell.xib; sourceTree = "<group>"; };
+		F2B7D35E244C9B3A00C94E63 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekBadgeView.swift; sourceTree = "<group>"; };
 		F2C190D32402E17A003F5ABA /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		F2C190D52402E243003F5ABA /* GoalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
@@ -134,6 +163,13 @@
 		F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Award.swift"; sourceTree = "<group>"; };
 		F2F449232430291B005AD6B9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+ImportExport.swift"; sourceTree = "<group>"; };
+		F2FC632D2446B4F000EF41AD /* DTTableViewCell-Segmented.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Segmented.xib"; sourceTree = "<group>"; };
+		F2FC632F2446B50A00EF41AD /* DTTableViewCell-TextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-TextView.xib"; sourceTree = "<group>"; };
+		F2FC63302446B50A00EF41AD /* DTTableViewCell-TextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-TextField.xib"; sourceTree = "<group>"; };
+		F2FC63342446B70E00EF41AD /* DTTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTextViewCell.swift; sourceTree = "<group>"; };
+		F2FC63362446D17000EF41AD /* DTControlCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTControlCells.swift; sourceTree = "<group>"; };
+		F2FC63382446D44F00EF41AD /* DTFieldCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTFieldCells.swift; sourceTree = "<group>"; };
+		F2FC633A2447FF4F00EF41AD /* DTTableViewCell-Label.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Label.xib"; sourceTree = "<group>"; };
 		F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		F2FF7EA223D66F030033D9DC /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		F2FF7EA523D66F3A0033D9DC /* Stamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
@@ -174,6 +210,7 @@
 			children = (
 				F20D1F9324142A1700FB5000 /* EmojiTextField.swift */,
 				F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */,
+				F2B7D35E244C9B3A00C94E63 /* StringExtensions.swift */,
 				F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
@@ -185,6 +222,23 @@
 				F2F449232430291B005AD6B9 /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		F20E403C2443ED25008759D1 /* DynamicTables */ = {
+			isa = PBXGroup;
+			children = (
+				F2FC632C2446959E00EF41AD /* Xibs */,
+				F2FC63332446B6D700EF41AD /* Cells */,
+				F20E404D2443F4C5008759D1 /* DTStyle.swift */,
+				F20E404B2443EDC9008759D1 /* DTTableViewSection.swift */,
+				F20E403D2443ED25008759D1 /* DTTableViewModel.swift */,
+				F20E40402443ED25008759D1 /* DTTableSelectionViewController.swift */,
+				F20E40412443ED25008759D1 /* DTLinkedSelectionCell.swift */,
+				F20E40422443ED25008759D1 /* DTTableViewController.swift */,
+				F20E40432443ED25008759D1 /* DTLinkedSwitchCell.swift */,
+			);
+			name = DynamicTables;
+			path = ../../DynamicTables;
 			sourceTree = "<group>";
 		};
 		F26B273823D80CB000B8D0F9 /* Resources */ = {
@@ -248,6 +302,7 @@
 		F2B4763323DE3C120076BFDC /* Stamps */ = {
 			isa = PBXGroup;
 			children = (
+				F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */,
 				F2B4763523DE3CE00076BFDC /* Stamps.storyboard */,
 				F247541823E5D2CB006A13C3 /* IconCell.swift */,
 				F2B4763E23DE4B540076BFDC /* StampCell.swift */,
@@ -313,6 +368,7 @@
 		F2C4943723D2CBC800EAF9CC /* Stamps */ = {
 			isa = PBXGroup;
 			children = (
+				F20E403C2443ED25008759D1 /* DynamicTables */,
 				F20E40382443E598008759D1 /* Extensions */,
 				F2C493222430171000E997BD /* Notifications */,
 				F26B273823D80CB000B8D0F9 /* Resources */,
@@ -343,6 +399,29 @@
 				F2F260EC2408BB4400F5CCB9 /* DataSource+Stamp.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		F2FC632C2446959E00EF41AD /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				F2FC633A2447FF4F00EF41AD /* DTTableViewCell-Label.xib */,
+				F2FC632D2446B4F000EF41AD /* DTTableViewCell-Segmented.xib */,
+				F2B7D35A244B47FE00C94E63 /* DTTableViewCell-Emoji.xib */,
+				F2FC63302446B50A00EF41AD /* DTTableViewCell-TextField.xib */,
+				F2FC632F2446B50A00EF41AD /* DTTableViewCell-TextView.xib */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		F2FC63332446B6D700EF41AD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F20E403F2443ED25008759D1 /* DTTableCell.swift */,
+				F2FC63382446D44F00EF41AD /* DTFieldCells.swift */,
+				F2FC63362446D17000EF41AD /* DTControlCells.swift */,
+				F2FC63342446B70E00EF41AD /* DTTextViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F2FF7EA423D66F0B0033D9DC /* Data Model */ = {
@@ -464,9 +543,15 @@
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
 				F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
+				F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */,
 				F2A99D2D243A790600D3CF1D /* Awards.storyboard in Resources */,
+				F2B7D35B244B47FE00C94E63 /* DTTableViewCell-Emoji.xib in Resources */,
 				F2A21C12244271130030A117 /* Options.storyboard in Resources */,
+				F2FC633B2447FF4F00EF41AD /* DTTableViewCell-Label.xib in Resources */,
+				F2FC632E2446B4F000EF41AD /* DTTableViewCell-Segmented.xib in Resources */,
+				F2FC63322446B50A00EF41AD /* DTTableViewCell-TextField.xib in Resources */,
 				F2B4763223DDF6CD0076BFDC /* Calendar.storyboard in Resources */,
+				F2FC63312446B50A00EF41AD /* DTTableViewCell-TextView.xib in Resources */,
 				F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,21 +591,30 @@
 				F2C493262430179500E997BD /* LocalSettings.swift in Sources */,
 				F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
+				F20E40492443ED25008759D1 /* DTTableViewController.swift in Sources */,
+				F20E404E2443F4C6008759D1 /* DTStyle.swift in Sources */,
+				F2B7D35F244C9B3A00C94E63 /* StringExtensions.swift in Sources */,
 				F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */,
 				F247542723E74C49006A13C3 /* Award.swift in Sources */,
+				F2FC63392446D45000EF41AD /* DTFieldCells.swift in Sources */,
 				F247541423DFC706006A13C3 /* Goal.swift in Sources */,
 				F27B045D2426B31E006E5175 /* MonthHeaderView.swift in Sources */,
+				F20E40482443ED25008759D1 /* DTLinkedSelectionCell.swift in Sources */,
 				F27968F1240C127900EA9436 /* Param.swift in Sources */,
 				F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */,
+				F20E404C2443EDC9008759D1 /* DTTableViewSection.swift in Sources */,
 				F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */,
 				F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
 				F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */,
 				F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */,
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
+				F20E40462443ED25008759D1 /* DTTableCell.swift in Sources */,
+				F20E404A2443ED25008759D1 /* DTLinkedSwitchCell.swift in Sources */,
 				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
 				F247542523E734CE006A13C3 /* AwardManager.swift in Sources */,
 				F2A99D30243A793000D3CF1D /* AwardCell.swift in Sources */,
+				F2FC63352446B70E00EF41AD /* DTTextViewCell.swift in Sources */,
 				F2C190D824030701003F5ABA /* SelectStampsViewController.swift in Sources */,
 				F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
@@ -532,7 +626,10 @@
 				F2B67431243919D500610D86 /* AwardView.swift in Sources */,
 				F2B4763B23DE3E390076BFDC /* GoalsViewController.swift in Sources */,
 				F27B04612426B8FA006E5175 /* DayBadgeView.swift in Sources */,
+				F20E40442443ED25008759D1 /* DTTableViewModel.swift in Sources */,
 				F2B4763F23DE4B540076BFDC /* StampCell.swift in Sources */,
+				F20E40472443ED25008759D1 /* DTTableSelectionViewController.swift in Sources */,
+				F2FC63372446D17000EF41AD /* DTControlCells.swift in Sources */,
 				F2C190D42402E17A003F5ABA /* GoalViewController.swift in Sources */,
 				F2A99D31243A793000D3CF1D /* AwardsViewController.swift in Sources */,
 			);

@@ -15,15 +15,15 @@ struct Stamp {
     var id: Int64?
     var name: String
     var label: String
-    var color: String // Hex represenatation like 01cd12
-    var favorite: Bool
+    var color: String // Hex representation like 01cd12
+    var favorite: Bool = true
     var deleted: Bool = false
     var count: Int = 0
     var lastUsed: String = "" // YYYY-MM-DD format if stamp was used
-    
+
     var statsDescription: String {
         if count <= 0 {
-            return "Sticker hasn't been used yet"
+            return "Sticker hasn't been used yet."
         }
         
         var result = "Sticker has been used "
@@ -38,19 +38,22 @@ struct Stamp {
             let date = Date(yyyyMmDd: lastUsed)
             let df = DateFormatter()
             df.dateStyle = .medium
-            result += ", last time - \(df.string(from: date))"
+            result += ", last time - \(df.string(from: date))."
+        }
+        else {
+            result += "."
         }
         
         return result
     }
     
     static var defaultStamp: Stamp {
-        return Stamp(id: nil, name: "", label: "⭐️", color: UIColor.colorByName("Yellow"), favorite: false)
+        return Stamp(id: nil, name: "Gold Star", label: "⭐️", color: UIColor.colorByName("Yellow"))
     }
 }
 
 extension Stamp : Hashable { }
-    
+
 // MARK: - Persistence
 
 // Turn Player into a Codable Record.

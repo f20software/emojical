@@ -8,14 +8,6 @@
 
 import UIKit
 
-extension BidirectionalCollection where Element: StringProtocol {
-    var sentence: String {
-        guard let last = last else { return "" }
-        return count <= 2 ? joined(separator: " and ") :
-            dropLast().joined(separator: ", ") + ", and " + last
-    }
-}
-
 class NotificationManager {
 
     let settings: LocalSettings

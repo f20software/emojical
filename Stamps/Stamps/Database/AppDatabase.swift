@@ -105,10 +105,10 @@ struct AppDatabase {
         migrator.registerMigration("db-content0") { db in
             // Fill in default stamps
             for stamp in [
-                Stamp(id: nil, name: "Star", label: "⭐️", color: "B8B09B", favorite: true),
-                Stamp(id: nil, name: "Exercise", label: "🏐", color: "57D3A3", favorite: true),
-                Stamp(id: nil, name: "Read Book", label: "📖", color: "6AB1D8", favorite: true),
-                Stamp(id: nil, name: "Good Day", label: "🤩", color: "F9BE00", favorite: true),
+                Stamp(id: nil, name: "Star", label: "⭐️", color: "B8B09B"),
+                Stamp(id: nil, name: "Exercise", label: "🏐", color: "57D3A3"),
+                Stamp(id: nil, name: "Read Book", label: "📖", color: "6AB1D8"),
+                Stamp(id: nil, name: "Good Day", label: "🤩", color: "F9BE00"),
             ] {
                 var s = stamp
                 try s.insert(db)
@@ -116,7 +116,7 @@ struct AppDatabase {
 
             // Fill in default stamps
             for goal in [
-                Goal(id: nil, name: "Excersize", period: .week, direction: .positive, limit: 5, stamps: "2", deleted: false)
+                Goal(id: nil, name: "Excersize", period: .week, direction: .positive, limit: 5, stamps: "2")
             ] {
                 var g = goal
                 try g.insert(db)

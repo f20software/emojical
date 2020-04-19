@@ -45,6 +45,28 @@ extension DataSource {
         catch { }
         return []
     }
+    
+    func awardsGroupedByMonth(_ awards: [Award]) -> [[Award]] {
+        var result = [[Award]]()
+        var month = [Award]()
+        
+        for i in 0..<awards.count {
+            if month.count == 0 {
+                month.append(awards[i])
+            }
+            else if month[0].monthKey == awards[i].monthKey {
+                month.append(awards[i])
+            }
+            else {
+                result.append(month)
+                month = [Award]()
+                month.append(awards[i])
+            }
+        }
+        
+        result.append(month)
+        return result
+    }
 
     // Awards for date interval
     func awardsForDateInterval(from: Date, to: Date) -> [Award] {
@@ -78,6 +100,19 @@ extension DataSource {
             }
         }
         catch { }
+
+        if add.count > 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                NotificationCenter.default.post(name: .awardsAdded, object: add)
+                print("Awards added: \(add.count)")
+            })
+        }
+        if remove.count > 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                NotificationCenter.default.post(name: .awardsDeleted, object: remove)
+                print("Awards removed: \(add.count)")
+            })
+        }
         updateStatsForGoals(ids)
     }
     

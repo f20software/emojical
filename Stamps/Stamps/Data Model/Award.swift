@@ -28,6 +28,10 @@ struct Award {
         return "Earned on \(df.string(from: d))"
     }
     
+    var monthKey: String {
+        return String(date.prefix(7))
+    }
+    
 }
 
 extension Award : Hashable { }

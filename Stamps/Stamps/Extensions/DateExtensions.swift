@@ -63,4 +63,10 @@ extension Date {
     var isToday: Bool {
         return self.databaseKey == Date().databaseKey
     }
+    
+    var isWeekend: Bool {
+        let weekday = Calendar.current.component(.weekday, from: self)
+        return weekday == 1 || weekday == 7
+    }
+
 }

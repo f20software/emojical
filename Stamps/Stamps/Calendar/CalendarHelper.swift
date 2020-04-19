@@ -81,7 +81,6 @@ class CalenderHelper {
         let month = Month(date)
         return Date(year: month.year, month: month.month, day: month.numberOfDays)
     }
-
 }
 
 extension CalenderHelper {

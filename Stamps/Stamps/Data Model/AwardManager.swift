@@ -133,12 +133,6 @@ class AwardManager {
         // Update data source and post notification about new or deleted awards
         if addAwards.count > 0 || deleteAwards.count > 0 {
             DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
-            if addAwards.count > 0 {
-                NotificationCenter.default.post(name: .awardsAdded, object: addAwards)
-            }
-            if deleteAwards.count > 0 {
-                NotificationCenter.default.post(name: .awardsDeleted, object: deleteAwards)
-            }
         }
     }
 
@@ -190,12 +184,6 @@ class AwardManager {
         // Update data source and post notification about new or deleted awards
         if addAwards.count > 0 || deleteAwards.count > 0 {
             DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
-            if addAwards.count > 0 {
-                NotificationCenter.default.post(name: .awardsAdded, object: addAwards)
-            }
-            if deleteAwards.count > 0 {
-                NotificationCenter.default.post(name: .awardsDeleted, object: deleteAwards)
-            }
         }
     }
     

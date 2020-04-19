@@ -1,2 +1,2 @@
-<img src="./calendar.png" width="250">  <img src="./calendar-day.png" width="250">  <img src="./awards.png" width="250">  <img src="./stickers.png" width="250">  <img src="./stickers-edit.png" width="250">  <img src="./goals.png" width="250">  <img src="./goals-edit.png" width="250">  <img src="./options.png" width="250">
+<img src="./calendar.png" width="250">  <img src="./calendar-day.png" width="250">  <img src="./awards.png" width="250">  <img src="./stickers.png" width="250">  <img src="./sticker-view.png" width="250">  <img src="./sticker-edit.png" width="250">  <img src="./goals.png" width="250">  <img src="./goal-view.png" width="250">  <img src="./goal-edit.png" width="250">  <img src="./options.png" width="250">
 

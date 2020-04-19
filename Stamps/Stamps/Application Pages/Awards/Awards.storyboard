@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eaW-8R-0nx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +22,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Goal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGz-kH-SWq">
-                                            <rect key="frame" x="75" y="16" width="85" height="21"/>
+                                            <rect key="frame" x="75" y="16" width="84.5" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -46,6 +46,7 @@
                                         <constraint firstItem="BvO-T9-4Ge" firstAttribute="centerY" secondItem="Bar-Ic-Poc" secondAttribute="centerY" id="7FR-kU-cte"/>
                                         <constraint firstItem="ncO-Bh-kZ8" firstAttribute="leading" secondItem="kGz-kH-SWq" secondAttribute="leading" id="D0G-as-DcT"/>
                                         <constraint firstItem="BvO-T9-4Ge" firstAttribute="leading" secondItem="Bar-Ic-Poc" secondAttribute="leadingMargin" id="IHB-7v-b4h"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="kGz-kH-SWq" secondAttribute="trailing" id="RBK-en-Nbf"/>
                                         <constraint firstItem="ncO-Bh-kZ8" firstAttribute="top" secondItem="kGz-kH-SWq" secondAttribute="bottom" id="pZe-g1-T0B"/>
                                         <constraint firstItem="kGz-kH-SWq" firstAttribute="top" secondItem="Bar-Ic-Poc" secondAttribute="topMargin" constant="5" id="qSa-IH-cpa"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="ncO-Bh-kZ8" secondAttribute="bottom" constant="5" id="xOR-C9-zRz"/>

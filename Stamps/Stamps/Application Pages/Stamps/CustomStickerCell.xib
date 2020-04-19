@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textfieldcell" rowHeight="93" id="Eze-lk-oES" userLabel="CustomStickerCell">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eze-lk-oES" id="jN0-uE-WcU">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KgW-Y8-PJX" customClass="StickerView" customModule="Emojical" customModuleProvider="target">
+                        <rect key="frame" x="20" y="16" width="60" height="60"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="CDv-Yz-1EK"/>
+                            <constraint firstAttribute="height" constant="60" id="syC-g4-5sz"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sticker Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPR-fS-utS">
+                        <rect key="frame" x="95" y="31" width="299" height="29"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KgW-Y8-PJX" firstAttribute="leading" secondItem="jN0-uE-WcU" secondAttribute="leadingMargin" id="Cec-Pb-thx"/>
+                    <constraint firstItem="KgW-Y8-PJX" firstAttribute="top" secondItem="jN0-uE-WcU" secondAttribute="topMargin" constant="5" id="Ldy-6i-Wyz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="KgW-Y8-PJX" secondAttribute="bottom" constant="5" id="PP3-mb-v6k"/>
+                    <constraint firstItem="qPR-fS-utS" firstAttribute="centerY" secondItem="KgW-Y8-PJX" secondAttribute="centerY" id="XkV-KX-8PI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="qPR-fS-utS" secondAttribute="trailing" id="b4U-Mv-wm0"/>
+                    <constraint firstItem="qPR-fS-utS" firstAttribute="leading" secondItem="KgW-Y8-PJX" secondAttribute="trailing" constant="15" id="qhY-Cs-zod"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-178.2608695652174" y="-174.44196428571428"/>
+        </tableViewCell>
+    </objects>
+</document>

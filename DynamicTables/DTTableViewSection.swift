@@ -23,7 +23,7 @@ class DTTableViewSection: NSObject {
         }
     }
 
-    init(headerTitle: String?, footerTitle: String? = nil) {
+    init(headerTitle: String? = nil, footerTitle: String? = nil) {
         self.header = headerTitle
         self.footer = footerTitle
         self.cells = []

@@ -15,6 +15,8 @@ class DTTableViewController : UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         model.tableView = self.tableView
+        // self.tableView.rowHeight = 52
+        
         return model.numberOfSections
     }
     

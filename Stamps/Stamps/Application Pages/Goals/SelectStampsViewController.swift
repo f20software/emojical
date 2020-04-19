@@ -22,8 +22,7 @@ class SelectStampsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Select Stamps"
-        tableView.tableFooterView = UIView()
+        title = "Select Stickers"
     }
 }
 

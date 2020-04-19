@@ -22,9 +22,8 @@ class StampsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // initial load - since we should not have that many individual stamps - it should not take long time
-        stamps = DataSource.shared.allStamps()
+        stamps = DataSource.shared.allStamps(includeDeleted: false)
         updateAddButton()
-        tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,7 +81,6 @@ class StampsViewController: UITableViewController {
                 }, completion: nil)
         })
     }
-
 }
 
 // MARK: - Navigation
@@ -94,17 +92,15 @@ extension StampsViewController {
             let stamp = stamps[tableView.indexPathForSelectedRow!.row]
             // DataSource.shared.updateStatsForStamp(stamp)
             let controller = segue.destination as! StampViewController
-            controller.title = stamp.name
             controller.stamp = stamp
-            controller.presentation = .push
+            controller.presentationMode = .push
         }
         else if segue.identifier == "newStamp" {
             setEditing(false, animated: true)
             let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.viewControllers.first as! StampViewController
-            controller.title = "New Sticker"
             controller.stamp = Stamp.defaultStamp
-            controller.presentation = .modal
+            controller.presentationMode = .modal
         }
     }
     

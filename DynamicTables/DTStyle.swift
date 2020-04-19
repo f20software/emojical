@@ -17,94 +17,18 @@ public extension UIColor {
 
 enum ColorKey {
     case backgroundColor
-    case tableSeparatorColor
-    case kioskBackgroundColor
-    case redOfflineColor
+    case redColor
     case tintColor
     case textColor
-    case contranstTextColor
     case alternateTextColor
-    case fieldBackgroundColor
-    case selectedItemColor
-
-    case pastEventColor
-    case runningEventColor
-    case lowInventoryEventColor
-    case veryLowInventoryEventColor
-
-    case emptyTableColor
-    case paidTableColor
-    case resumedTableColor
-    case suspendedTableColor
-
-    case disabledButtonColor
-    case nextButtonColor
-    case signInButtonColor
-    case runReportButtonColor
-
-    // Jobs colors
-    case jobSuccessfullColor
-    case jobFailedColor
-    
-    // List of items colors
-    case itemBackgroundColor
-    case itemOutOfStockBackgroundColor
-    
-    // Hangry locations and orders colors
-    case locationOnlineBackgroundColor
-    case locationBusyBackgroundColor
-    case locationOfflineBackgroundColor
-    case locationTestBackgroundColor
-    
-    case orderLateColor
-    case orderNormalColor
 }
 
 let defaultDarkTheme: [ColorKey: UIColor] = [
-    
+    .backgroundColor: UIColor.secondarySystemGroupedBackground,
+    .textColor: UIColor.label,
+    .alternateTextColor: UIColor.secondaryLabel,
     .tintColor: UIColor.rgbColor(0, green: 96, blue: 167), // Main blue color
-    .backgroundColor: UIColor.rgbColor(19, green: 39, blue: 51),
-
-    .tableSeparatorColor: UIColor.darkGray,
-    .selectedItemColor: UIColor.darkGray,
-    
-    .kioskBackgroundColor: UIColor.rgbColor(0, green: 96, blue: 167), // Main blue color
-    .redOfflineColor: UIColor.rgbColor(246, green: 50, blue: 62),
-    
-    .textColor: UIColor.white,
-    .alternateTextColor: UIColor.lightGray,
-    .contranstTextColor: UIColor.rgbColor(19, green: 39, blue: 51), // Same as background
-    
-    .pastEventColor: UIColor.rgbColor(123, green: 146, blue: 163), // Grey color from iValidate
-    .runningEventColor: UIColor.rgbColor(0, green: 187, blue: 179), // Green color from iValidate
-    .veryLowInventoryEventColor: UIColor.rgbColor(246, green: 50, blue: 62), // Red color from iValidate
-    .lowInventoryEventColor: UIColor.rgbColor(255, green: 97, blue: 0), // Organge color from iValidate
-    
-    .fieldBackgroundColor: UIColor.rgbColor(38, green: 52, blue: 61),
-    
-    .emptyTableColor: UIColor.rgbColor(123, green: 146, blue: 163), // Grey color from iValidate
-    .paidTableColor: UIColor.rgbColor(0, green: 187, blue: 179), // Green color from iValidate
-    .resumedTableColor: UIColor.rgbColor(0, green: 187, blue: 179), // Green color from iValidate
-    .suspendedTableColor: UIColor.rgbColor(255, green: 97, blue: 0), // Organge color from iValidate
-    
-    .disabledButtonColor: UIColor.rgbColor(38, green: 52, blue: 61), // Same as field background color
-    .nextButtonColor: UIColor.rgbColor(0, green: 187, blue: 179), // Green color from iValidate
-    .runReportButtonColor: UIColor.rgbColor(0, green: 187, blue: 179), // Green color from iValidate
-    .signInButtonColor: UIColor.rgbColor(0, green: 96, blue: 167), // Main blue color
-    
-    .jobFailedColor: UIColor.rgbColor(243, green: 63, blue: 58), // Red failed color from iValidate
-    .jobSuccessfullColor: UIColor.rgbColor(0, green: 187, blue: 179), // Green success color from iValidate
-    
-    .itemBackgroundColor: UIColor.rgbColor(123, green: 146, blue: 163), // Grey color from iValidate
-    .itemOutOfStockBackgroundColor: UIColor.rgbColor(246, green: 50, blue: 62), // Red color from iValidate
-    
-    .locationOnlineBackgroundColor: UIColor.rgbColor(0, green: 96, blue: 167), // Main blue color
-    .locationBusyBackgroundColor: UIColor.rgbColor(255, green: 97, blue: 0), // Organge color from iValidate
-    .locationOfflineBackgroundColor: UIColor.rgbColor(246, green: 50, blue: 62), // Red color from iValidate
-    .locationTestBackgroundColor: UIColor.rgbColor(123, green: 146, blue: 163), // Grey color from iValidate
-
-    .orderLateColor: UIColor.rgbColor(246, green: 50, blue: 62), // Red color from iValidate
-    .orderNormalColor: UIColor.rgbColor(123, green: 146, blue: 163), // Grey color from iValidate
+    .redColor: UIColor.systemRed,
 ]
 
 
@@ -121,90 +45,5 @@ class DTStyle: NSObject {
         }
         
         return defaultDarkTheme[key]!
-    }
-    
-    static func createSeparatorView(_ view: UIView, color: UIColor) {
-        
-        // view.backgroundColor = UIColor.clearColor()
-        // return
-         
-        let path = UIBezierPath()
-        let width = view.frame.size.width
-        let height = view.frame.size.height
-        
-        path.move(to: CGPoint(x: 0, y: height / 2))
-        path.addLine(to: CGPoint(x: width, y: height / 2))
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.strokeStart = 0.0
-        shapeLayer.strokeColor = color.cgColor
-        shapeLayer.lineWidth = height
-        shapeLayer.lineJoin = CAShapeLayerLineJoin.miter
-        shapeLayer.lineDashPattern = [NSNumber(value: Float(height+1)), NSNumber(value: Float(height))]
-        shapeLayer.lineDashPhase = 1
-        shapeLayer.path = path.cgPath
-        
-        view.backgroundColor = UIColor.clear
-        view.layer.addSublayer(shapeLayer)
-        view.clipsToBounds = true
-    }
-    
-    static func setNavigationBarShadow(_ view: UIView?) {
-
-        guard let view = view else { return }
-        
-        let shadowSize = 2 / UIScreen.main.scale
-        view.layer.shadowOffset = CGSize(width: 0, height: shadowSize)
-        view.layer.shadowRadius = shadowSize
-        view.layer.shadowOpacity = 0.9
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.clipsToBounds = false
-    }
-
-    static func setTabBarShadow(_ view: UIView?) {
-        
-        guard let view = view else { return }
-        
-        let shadowSize = 6 / UIScreen.main.scale
-        view.layer.shadowOffset = CGSize(width: 0, height: -shadowSize)
-        view.layer.shadowRadius = shadowSize
-        view.layer.shadowOpacity = 0.9
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.clipsToBounds = false
-    }
-    
-    static func setTableCellStyle(_ cell: UITableViewCell?) {
-
-        guard let cell = cell else { return }
-        
-        cell.backgroundColor = themeColor(.backgroundColor)
-        cell.contentView.backgroundColor = themeColor(.backgroundColor)
-        cell.textLabel?.textColor = themeColor(.alternateTextColor)
-        cell.textLabel?.backgroundColor = themeColor(.backgroundColor)
-        cell.detailTextLabel?.textColor = themeColor(.textColor)
-        cell.detailTextLabel?.backgroundColor = themeColor(.backgroundColor)
-    }
-    
-    static func updateAppearanceProxy() {
-        
-        // Table view
-        UITableView.appearance().backgroundColor = DTStyle.themeColor(.backgroundColor)
-        
-        // Tabbar
-        UITabBar.appearance().tintColor = DTStyle.themeColor(.tintColor)
-        UITabBar.appearance().barStyle = .default
-        
-        // Navigation
-        UINavigationBar.appearance().barTintColor = themeColor(.backgroundColor)
-        UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: themeColor(.textColor)
-        ]
-        UINavigationBar.appearance().tintColor = themeColor(.alternateTextColor)
-        UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: themeColor(.textColor),
-            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size:18.0)!
-        ]
-        UIButton.appearance().tintColor = DTStyle.themeColor(.alternateTextColor)
-        UISwitch.appearance().onTintColor = DTStyle.sequoiaBlueColor()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  UIColor+Hex.swift
+//  UIColorExtensions.swift
 //  Stamps
 //
 //  Created by Vladimir Svidersky on 1/20/20.

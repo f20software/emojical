@@ -14,6 +14,7 @@ class GoalCell: UITableViewCell {
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var count: UILabel!
     @IBOutlet weak var progress: UIProgressView!
+    @IBOutlet weak var awardIcon: AwardView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +27,11 @@ class GoalCell: UITableViewCell {
         name.text = goal.name.isEmpty ? "-" : goal.name
         subtitle.text = goal.details
         
+        let color = DataSource.shared.colorForGoal(goal.id!)
+        let style = (goal.period == .week) ? 7 : 0
+        awardIcon.backgroundColor = UIColor.clear
+        awardIcon.configure(color: color, dashes: style)
+
         if goal.count > 0 {
             count.text = "  \(goal.count)  "
             count.isHidden = false

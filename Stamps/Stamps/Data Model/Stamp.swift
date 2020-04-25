@@ -48,7 +48,7 @@ struct Stamp {
     }
     
     static var defaultStamp: Stamp {
-        return Stamp(id: nil, name: "Gold Star", label: "⭐️", color: UIColor.colorByName("Yellow"))
+        return Stamp(id: nil, name: "Gold Star", label: "⭐️", color: UIColor.defaultStickerColor)
     }
 }
 

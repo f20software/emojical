@@ -10,32 +10,23 @@ import UIKit
 
 extension UIColor {
 
-    static let positiveGoalReached = UIColor(hex: UIColor.colorByName("Green"))
-    static let negativeGoalReached = UIColor(hex: UIColor.colorByName("Red"))
-    static let positiveGoalNotReached = UIColor(hex: UIColor.colorByName("Mint"))
-    static let negativeGoalNotReached = UIColor(hex: UIColor.colorByName("Mint"))
+    // Palette for configuring colors
+    static let colorPalette = [
+        "EF476F", // red
+        "D671DB", // violet
+        "FFE175", // yellow
+        "83D483", // light green
+        "049F70", // green
+        "118AB2", // light blue
+        "202674"  // blue
+    ]
 
-    class func stampsPalette() -> [String: String] {
-        return [
-            "Gold": "B8B09b",
-            "Grey": "7B92A3",
-            "Sky Blue": "6AB1D8",
-            "Blue": "0060A7",
-            "Green": "00bd56",
-            "Mint": "57D3A3",
-            "Orange": "FF6A00",
-            "Purple": "BC83C9",
-            "Red": "F6323E",
-            "Peach": "ED8C6B",
-            "Yellow": "F9BE00"
-        ]
-    }
+    // Goals progress colors
+    static let positiveGoalReached = UIColor(hex: "049F70") // green
+    static let negativeGoalReached = UIColor(hex: "202674") // blue
+    static let positiveGoalNotReached = UIColor(hex: "83D483") // light green
+    static let negativeGoalNotReached = UIColor(hex: "118AB2") // light blue
     
-    class func nameByColor(_ color: String) -> String {
-        return stampsPalette().first{ $0.value == color }?.key ?? "Unknown Color"
-    }
-    
-    class func colorByName(_ name: String) -> String {
-        return stampsPalette()[name] ?? "000000"
-    }
+    // When creating new sticker
+    static let defaultStickerColor = "FFE175" // yellow
 }

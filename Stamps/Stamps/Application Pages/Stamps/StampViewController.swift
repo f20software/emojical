@@ -76,11 +76,17 @@ class StampViewController: DTTableViewController {
         // Preview section (0) remains unchanged across two modes
         tableView.beginUpdates()
         tableView.reloadSections([1], with: .fade)
-        if editMode {
-            tableView.insertSections([2], with: .fade)
+        let goals = DataSource.shared.goalsUsedStamp(stamp.id!)
+        if goals.count <= 0 {
+            tableView.reloadSections([2], with: .fade)
         }
         else {
-            tableView.deleteSections([2], with: .fade)
+            if editMode {
+                tableView.insertSections([2], with: .fade)
+            }
+            else {
+                tableView.deleteSections([2], with: .fade)
+            }
         }
         tableView.endUpdates()
     }
@@ -140,12 +146,12 @@ class StampViewController: DTTableViewController {
                 self.loadStickerPreview()
             }
 
-            let colorCell = DTLabelCell(text: "Color", value: UIColor.nameByColor(stampRef.color))
-            colorCell.disclosureIndicator = true
-            colorCell.didSelect = { (_, _) -> Void in
-                self.performSegue(withIdentifier: self.segueSelectColor, sender: self)
+            // let colorCell = DTLabelCell(text: "Color", value: UIColor.nameByColor(stampRef.color))
+            let colorCell = DTColorCell(text: nil, boundObject: stampRef, boundProperty: "color", colorValues: UIColor.colorPalette)
+            colorCell.valueChanged = { (_cell) -> Void in
+                self.loadStickerPreview()
             }
-            
+             
             mainSection.add(contentOf: [nameCell, labelCell, colorCell])
             
             // Delete option is visible only when we're in the edit mode from editing existing entry and
@@ -192,28 +198,12 @@ class StampViewController: DTTableViewController {
     }
 }
 
-// MARK: - Updating stamp color from ColorViewController
-extension StampViewController: ColorsViewControllerDelegate {
-    
-    func colorSelected(_ colorName: String) {
-        stamp.color = UIColor.colorByName(colorName)
-        createTableModel()
-        tableView.reloadData()
-    }
-}
-
 // MARK: - Navigation
 extension StampViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueCommit {
             saveChanges()
-        }
-        else if segue.identifier == segueSelectColor {
-            if let colorsVC = (segue.destination as? ColorsViewController) {
-                colorsVC.selectedColor = stamp.color
-                colorsVC.delegate = self
-            }
         }
         else if segue.identifier == "newGoal" {
             let navigationController = segue.destination as! UINavigationController
@@ -243,6 +233,7 @@ extension StampViewController {
             // Reload goal from the datasource and going back to view mode
             stampRef = StampRef(from: stamp)
             setEditing(false, animated: true)
+            loadStickerPreview()
         }
         else {
             dismiss(animated: true)

@@ -23,7 +23,6 @@
 		F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541623DFEADB006A13C3 /* StampViewController.swift */; };
 		F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541823E5D2CB006A13C3 /* IconCell.swift */; };
 		F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541C23E5DF6B006A13C3 /* Palette.swift */; };
-		F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542223E5E3B5006A13C3 /* ColorsViewController.swift */; };
 		F247542523E734CE006A13C3 /* AwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542423E734CE006A13C3 /* AwardManager.swift */; };
 		F247542723E74C49006A13C3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542623E74C49006A13C3 /* Award.swift */; };
 		F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
@@ -55,6 +54,9 @@
 		F2B7D35B244B47FE00C94E63 /* DTTableViewCell-Emoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B7D35A244B47FE00C94E63 /* DTTableViewCell-Emoji.xib */; };
 		F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */; };
 		F2B7D35F244C9B3A00C94E63 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D35E244C9B3A00C94E63 /* StringExtensions.swift */; };
+		F2B7D3612454B27F00C94E63 /* DTTableViewCell-Color.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B7D3602454B27F00C94E63 /* DTTableViewCell-Color.xib */; };
+		F2B7D3632454B3DE00C94E63 /* DTColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D3622454B3DE00C94E63 /* DTColorCell.swift */; };
+		F2B7D3652454DB0C00C94E63 /* DTTableViewColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D3642454DB0C00C94E63 /* DTTableViewColorCell.swift */; };
 		F2C190D22401BD50003F5ABA /* WeekBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */; };
 		F2C190D42402E17A003F5ABA /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D32402E17A003F5ABA /* GoalViewController.swift */; };
 		F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D52402E243003F5ABA /* GoalCell.swift */; };
@@ -111,7 +113,6 @@
 		F247541623DFEADB006A13C3 /* StampViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampViewController.swift; sourceTree = "<group>"; };
 		F247541823E5D2CB006A13C3 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		F247541C23E5DF6B006A13C3 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
-		F247542223E5E3B5006A13C3 /* ColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
 		F247542423E734CE006A13C3 /* AwardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardManager.swift; sourceTree = "<group>"; };
 		F247542623E74C49006A13C3 /* Award.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -142,6 +143,9 @@
 		F2B7D35A244B47FE00C94E63 /* DTTableViewCell-Emoji.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Emoji.xib"; sourceTree = "<group>"; };
 		F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomStickerCell.xib; sourceTree = "<group>"; };
 		F2B7D35E244C9B3A00C94E63 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		F2B7D3602454B27F00C94E63 /* DTTableViewCell-Color.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Color.xib"; sourceTree = "<group>"; };
+		F2B7D3622454B3DE00C94E63 /* DTColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTColorCell.swift; sourceTree = "<group>"; };
+		F2B7D3642454DB0C00C94E63 /* DTTableViewColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableViewColorCell.swift; sourceTree = "<group>"; };
 		F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekBadgeView.swift; sourceTree = "<group>"; };
 		F2C190D32402E17A003F5ABA /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		F2C190D52402E243003F5ABA /* GoalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
@@ -306,7 +310,6 @@
 				F2B4763523DE3CE00076BFDC /* Stamps.storyboard */,
 				F247541823E5D2CB006A13C3 /* IconCell.swift */,
 				F2B4763E23DE4B540076BFDC /* StampCell.swift */,
-				F247542223E5E3B5006A13C3 /* ColorsViewController.swift */,
 				F247541623DFEADB006A13C3 /* StampViewController.swift */,
 				F2C4943E23D2CBC800EAF9CC /* StampsViewController.swift */,
 			);
@@ -405,6 +408,8 @@
 			isa = PBXGroup;
 			children = (
 				F2FC633A2447FF4F00EF41AD /* DTTableViewCell-Label.xib */,
+				F2B7D3602454B27F00C94E63 /* DTTableViewCell-Color.xib */,
+				F2B7D3642454DB0C00C94E63 /* DTTableViewColorCell.swift */,
 				F2FC632D2446B4F000EF41AD /* DTTableViewCell-Segmented.xib */,
 				F2B7D35A244B47FE00C94E63 /* DTTableViewCell-Emoji.xib */,
 				F2FC63302446B50A00EF41AD /* DTTableViewCell-TextField.xib */,
@@ -416,6 +421,7 @@
 		F2FC63332446B6D700EF41AD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F2B7D3622454B3DE00C94E63 /* DTColorCell.swift */,
 				F20E403F2443ED25008759D1 /* DTTableCell.swift */,
 				F2FC63382446D44F00EF41AD /* DTFieldCells.swift */,
 				F2FC63362446D17000EF41AD /* DTControlCells.swift */,
@@ -542,6 +548,7 @@
 				F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
 				F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */,
+				F2B7D3612454B27F00C94E63 /* DTTableViewCell-Color.xib in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
 				F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */,
 				F2A99D2D243A790600D3CF1D /* Awards.storyboard in Resources */,
@@ -603,7 +610,7 @@
 				F27968F1240C127900EA9436 /* Param.swift in Sources */,
 				F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */,
 				F20E404C2443EDC9008759D1 /* DTTableViewSection.swift in Sources */,
-				F247542323E5E3B5006A13C3 /* ColorsViewController.swift in Sources */,
+				F2B7D3652454DB0C00C94E63 /* DTTableViewColorCell.swift in Sources */,
 				F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
 				F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */,
@@ -630,6 +637,7 @@
 				F2B4763F23DE4B540076BFDC /* StampCell.swift in Sources */,
 				F20E40472443ED25008759D1 /* DTTableSelectionViewController.swift in Sources */,
 				F2FC63372446D17000EF41AD /* DTControlCells.swift in Sources */,
+				F2B7D3632454B3DE00C94E63 /* DTColorCell.swift in Sources */,
 				F2C190D42402E17A003F5ABA /* GoalViewController.swift in Sources */,
 				F2A99D31243A793000D3CF1D /* AwardsViewController.swift in Sources */,
 			);
@@ -824,7 +832,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.7;
+				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -843,7 +851,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.7;
+				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

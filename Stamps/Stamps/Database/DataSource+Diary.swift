@@ -25,6 +25,20 @@ extension DataSource {
         return nil
     }
 
+    func getLastDiaryDate() -> Date? {
+        do {
+            let diary = try dbQueue.read { db -> Diary? in
+                let request = Diary.order(Diary.Columns.date.desc)
+                return try request.fetchOne(db)
+            }
+            if diary != nil {
+                return Date(yyyyMmDd: diary!.date)
+            }
+        }
+        catch { }
+        return nil
+    }
+
     // All diary records
     func allDiary() -> [Diary] {
         do {

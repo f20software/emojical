@@ -19,12 +19,47 @@ class CalenderHelper {
     private var months = [Month]()
     
     private init() {
-        // TODO: For now, just create all month for current year
-        for i in 1...12 {
-            months.append(Month(Date(year: 2020, month: i)))
+        var firstDate = DataSource.shared.getFirstDiaryDate()?.beginningOfMonth
+        let lastDate = DataSource.shared.getLastDiaryDate()?.beginningOfMonth
+        
+        if firstDate == nil {
+            let today = Date()
+            months.append(Month(today.byAddingMonth(-1)))
+            months.append(Month(today))
+            months.append(Month(today.byAddingMonth(1)))
+        }
+        else {
+            // months.append(Month(firstDate!.byAddingMonth(-1)))
+            while firstDate! <= lastDate! {
+                months.append(Month(firstDate!))
+                firstDate = firstDate!.byAddingMonth(1)
+            }
+            months.append(Month(firstDate!))
         }
     }
     
+    func insertFirstMonth() {
+        var year = months[0].year
+        var month = months[0].month - 1
+        
+        if month == 0 {
+            year -= 1
+            month = 12
+        }
+        months.insert(Month(Date(year: year, month: month)), at: 0)
+    }
+
+    func insertLastMonth() {
+        var year = months[0].year
+        var month = months[0].month + 1
+        
+        if month == 13 {
+            year += 1
+            month = 1
+        }
+        months.append(Month(Date(year: year, month: month)))
+    }
+
     var numberOfMonths: Int {
         return months.count
     }

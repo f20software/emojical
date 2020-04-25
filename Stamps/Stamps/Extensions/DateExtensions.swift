@@ -68,5 +68,10 @@ extension Date {
         let weekday = Calendar.current.component(.weekday, from: self)
         return weekday == 1 || weekday == 7
     }
+    
+    var beginningOfMonth: Date {
+        let comps = Calendar.current.dateComponents([.year, .month], from: self)
+        return Date(year: comps.year!, month: comps.month!)
+    }
 
 }

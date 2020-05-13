@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIColor {
-    
     public convenience init(hex: String) {
         let r, g, b: CGFloat
 
@@ -31,6 +30,18 @@ extension UIColor {
         }
         else {
             self.init(red: 0, green: 0, blue: 0, alpha: 1.0)
+        }
+    }
+    
+    public var hex: String {
+        if let componets = cgColor.components {
+            return String(
+                format: "%02lX%02lX%02lX",
+                lroundf(Float(componets[0]) * 255),
+                lroundf(Float(componets[1]) * 255),
+                lroundf(Float(componets[2]) * 255))
+        } else {
+            return "000000"
         }
     }
 }

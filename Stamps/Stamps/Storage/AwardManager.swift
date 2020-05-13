@@ -9,20 +9,18 @@
 import Foundation
 
 class AwardManager {
-
-    //
     struct AwardUpdate {
         let add: [Award]
         let delete: [Award]
     }
     
-    let db: DataSource
+    let repository: DataRepository
     
     // Singleton instance
-    static let shared = AwardManager(dataSource: DataSource.shared)
+    static let shared = AwardManager(repository: Storage.shared.repository)
 
-    private init(dataSource: DataSource) {
-        self.db = dataSource
+    private init(repository: DataRepository) {
+        self.repository = repository
     }
 
     // For weekly goals we will do the following:
@@ -44,9 +42,9 @@ class AwardManager {
     // Recalculate weekly goals and update last-week-update parameter in the database
     private func recalculateWeeklyGoals() {
         // When was the last weekly goals recalculated?
-        var lastUpdated = DataSource.shared.lastWeekUpdate
+        var lastUpdated = repository.lastWeekUpdate
         if lastUpdated == nil {
-            var firstEntryDate = DataSource.shared.getFirstDiaryDate()
+            var firstEntryDate = repository.getFirstDiaryDate()
             if firstEntryDate == nil {
                 firstEntryDate = Date()
             }
@@ -57,7 +55,7 @@ class AwardManager {
         
         // TODO: Date comparision! - review how it works with only date components
         while (lastUpdated! < Date()) {
-            DataSource.shared.lastWeekUpdate = lastUpdated
+            repository.lastWeekUpdate = lastUpdated
             lastUpdated = lastUpdated!.byAddingDays(7)
             recalculateAwardsForWeek(lastUpdated!)
         }
@@ -66,9 +64,9 @@ class AwardManager {
     // Recalculate monthly goals and update last-month-update parameter in the database
     private func recalculateMonthlyGoals() {
         // When was the last weekly goals recalculated?
-        var lastUpdated = DataSource.shared.lastMonthUpdate
+        var lastUpdated = repository.lastMonthUpdate
         if lastUpdated == nil {
-            var firstEntryDate = DataSource.shared.getFirstDiaryDate()
+            var firstEntryDate = repository.getFirstDiaryDate()
             if firstEntryDate == nil {
                 firstEntryDate = Date()
             }
@@ -79,14 +77,14 @@ class AwardManager {
         
         // TODO: Date comparision! - review how it works with only date components
         while (lastUpdated! < Date()) {
-            DataSource.shared.lastMonthUpdate = lastUpdated
+            repository.lastMonthUpdate = lastUpdated
             lastUpdated = CalenderHelper.shared.endOfMonth(date: lastUpdated!.byAddingMonth(1))
             _ = recalculateAwardsForMonth(lastUpdated!)
         }
     }
 
     private func recalculateAwardsForMonth(_ date: Date) {
-        let goals = db.goalsByPeriod(.month)
+        let goals = repository.goalsByPeriod(.month)
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
         
@@ -99,23 +97,23 @@ class AwardManager {
         // Save off array of Ids so we can easily filter existing awards by only looking at ones that
         // correspond to our goals
         let goalIds = goals.map { $0.id! }
-        let stampsLog = db.diaryForDateInterval(from: start, to: end)
+        let stampsLog = repository.diaryForDateInterval(from: start, to: end)
         var allAwards = [Award]()
 
         // Only add awards if we actually had any stamps for this week
         if stampsLog.count > 0 {
             for goal in goals {
-                if goal.direction == .positive, let dateReached = isPositiveGoalReached(goal, diary: stampsLog) {
+                if goal.direction == .positive, let dateReached = positiveGoalReachedDate(goal, diary: stampsLog) {
                     allAwards.append(Award(id: nil, goalId: goal.id!, date: dateReached))
                 }
                 else if past && goal.direction == .negative && isNegativeGoalReached(goal, diary: stampsLog) {
-                    allAwards.append(Award(id: nil, goalId: goal.id!, date: end.databaseKey))
+                    allAwards.append(Award(id: nil, goalId: goal.id!, date: end))
                 }
             }
         }
             
         // Load existing awards from the database
-        let existingAwards = db.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
+        let existingAwards = repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
         // And calculate difference - separate set of awards to be added and set of awards to be deleted
@@ -132,12 +130,12 @@ class AwardManager {
 
         // Update data source and post notification about new or deleted awards
         if addAwards.count > 0 || deleteAwards.count > 0 {
-            DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
+            repository.updateAwards(add: addAwards, remove: deleteAwards)
         }
     }
 
     private func recalculateAwardsForWeek(_ date: Date) {
-        let goals = db.goalsByPeriod(.week)
+        let goals = repository.goalsByPeriod(.week)
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
 
@@ -150,23 +148,23 @@ class AwardManager {
         // Save off array of Ids so we can easily filter existing awards by only looking at ones that
         // correspond to our goals
         let goalIds = goals.map { $0.id! }
-        let stampsLog = db.diaryForDateInterval(from: start, to: end)
+        let stampsLog = repository.diaryForDateInterval(from: start, to: end)
         var allAwards = [Award]()
 
         // Only add awards if we actually had any stamps for this week
         if stampsLog.count > 0 {
             for goal in goals {
-                if goal.direction == .positive, let dateReached = isPositiveGoalReached(goal, diary: stampsLog) {
+                if goal.direction == .positive, let dateReached = positiveGoalReachedDate(goal, diary: stampsLog) {
                     allAwards.append(Award(id: nil, goalId: goal.id!, date: dateReached))
                 }
                 else if past && goal.direction == .negative && isNegativeGoalReached(goal, diary: stampsLog) {
-                    allAwards.append(Award(id: nil, goalId: goal.id!, date: end.databaseKey))
+                    allAwards.append(Award(id: nil, goalId: goal.id!, date: end))
                 }
             }
         }
             
         // Load existing awards from the database
-        let existingAwards = db.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
+        let existingAwards = repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
         // And calculate difference - separate set of awards to be added and set of awards to be deleted
@@ -183,7 +181,7 @@ class AwardManager {
 
         // Update data source and post notification about new or deleted awards
         if addAwards.count > 0 || deleteAwards.count > 0 {
-            DataSource.shared.updateAwards(add: addAwards, remove: deleteAwards)
+            repository.updateAwards(add: addAwards, remove: deleteAwards)
         }
     }
     
@@ -202,11 +200,11 @@ class AwardManager {
 
         }
         
-        let stampsLog = db.diaryForDateInterval(from: start!, to: end!)
+        let stampsLog = repository.diaryForDateInterval(from: start!, to: end!)
         var count = 0
 
         for stamp in stampsLog {
-            if goal.stampIds.contains(stamp.stampId) {
+            if goal.stamps.contains(stamp.stampId) {
                 count += 1
             }
         }
@@ -215,10 +213,10 @@ class AwardManager {
     }
     
     // Return the date goal is reached or nil of goals is not reached
-    func isPositiveGoalReached(_ goal: Goal, diary: [Diary]) -> String? {
+    func positiveGoalReachedDate(_ goal: Goal, diary: [Diary]) -> Date? {
         var count = 0
         for stamp in diary {
-            if goal.stampIds.contains(stamp.stampId) {
+            if goal.stamps.contains(stamp.stampId) {
                 count += 1
                 if count == goal.limit {
                     return stamp.date
@@ -233,7 +231,7 @@ class AwardManager {
     func isNegativeGoalReached(_ goal: Goal, diary: [Diary]) -> Bool {
         var count = 0
         for stamp in diary {
-            if goal.stampIds.contains(stamp.stampId) {
+            if goal.stamps.contains(stamp.stampId) {
                 count += 1
                 if count > goal.limit {
                     return false

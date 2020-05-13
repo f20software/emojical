@@ -26,8 +26,8 @@ class GoalRef : NSObject {
     
     func update(to: inout Goal) {
         to.name = name
-        to.period = Goal.Period(rawValue: period) ?? .week
-        to.direction = Goal.Direction(rawValue: direction) ?? .positive
+        to.period = Period(rawValue: period) ?? .week
+        to.direction = Direction(rawValue: direction) ?? .positive
         to.limit = limit
     }
 }
@@ -58,6 +58,10 @@ class GoalViewController: DTTableViewController {
     var currentProgress: Int?
     var presentationMode: Presentation! { didSet { configureView() } }
     var editMode: Bool!
+    
+    var repository: DataRepository {
+        return Storage.shared.repository
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,7 +110,7 @@ class GoalViewController: DTTableViewController {
     fileprivate func createTableModel() {
         guard let goalRef = goalRef else { return }
         model.clear()
-        let stickers = DataSource.shared.stampLabelsFor(goal)
+        let stickers = repository.stampLabelsFor(goal)
 
         if editMode {
             let mainSection = model.add(DTTableViewSection())
@@ -160,7 +164,7 @@ class GoalViewController: DTTableViewController {
 extension GoalViewController: SelectStampsViewControllerDelegate {
 
     func stampSelectionUpdated(_ selection: [Int64]) {
-        goal.stampIds = selection
+        goal.stamps = selection
         createTableModel()
         tableView.reloadData()
     }
@@ -175,8 +179,8 @@ extension GoalViewController {
         }
         else if segue.identifier == segueSelectStamps {
             if let stampsVC = (segue.destination as? SelectStampsViewController) {
-                stampsVC.dataSource = DataSource.shared.allStamps()
-                stampsVC.selectedStamps = goal.stampIds
+                stampsVC.dataSource = repository.allStamps()
+                stampsVC.selectedStamps = goal.stamps
                 stampsVC.delegate = self
             }
         }
@@ -227,8 +231,6 @@ extension GoalViewController: UITextFieldDelegate {
         guard let goalRef = goalRef else { return }
         goalRef.update(to: &goal)
 
-        try! DataSource.shared.dbQueue.inDatabase { db in
-            try goal.save(db)
-        }
+        try! repository.save(goal: goal)
     }
 }

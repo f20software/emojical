@@ -19,13 +19,13 @@ class StampRef : NSObject {
     init(from: Stamp) {
         name = from.name
         label = from.label
-        color = from.color
+        color = from.color.hex
     }
     
     func update(to: inout Stamp) {
         to.name = name
         to.label = label
-        to.color = color
+        to.color = UIColor(hex: color)
     }
 }
 
@@ -76,7 +76,7 @@ class StampViewController: DTTableViewController {
         // Preview section (0) remains unchanged across two modes
         tableView.beginUpdates()
         tableView.reloadSections([1], with: .fade)
-        let goals = DataSource.shared.goalsUsedStamp(stamp.id!)
+        let goals = Storage.shared.repository.goalsUsedStamp(stamp.id!)
         if goals.count <= 0 {
             tableView.reloadSections([2], with: .fade)
         }
@@ -169,7 +169,7 @@ class StampViewController: DTTableViewController {
             mainSection.add(
                 DTTextViewCell(text: stamp.statsDescription))
 
-            let goals = DataSource.shared.goalsUsedStamp(stamp.id!)
+            let goals = Storage.shared.repository.goalsUsedStamp(stamp.id!)
             if goals.count == 0 {
                 let linkSection = model.add(DTTableViewSection())
                 linkSection.add(
@@ -209,7 +209,7 @@ extension StampViewController {
             let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.viewControllers.first as! GoalViewController
             controller.title = "New Goal"
-            controller.goal = Goal(id: nil, name: "New Goal", period: .week, direction: .positive, limit: 5, stamps: "\(stamp.id!)")
+            controller.goal = Goal(id: nil, name: "New Goal", period: .week, direction: .positive, limit: 5, stamps: [stamp.id!])
             controller.presentationMode = .modal
         }
     }
@@ -265,9 +265,6 @@ extension StampViewController {
     private func saveChanges() {
         guard let stampRef = stampRef else { return }
         stampRef.update(to: &stamp)
-        
-        try! DataSource.shared.dbQueue.inDatabase { db in
-            try stamp.save(db)
-        }
+        try! Storage.shared.repository.save(stamp: stamp)
     }
 }

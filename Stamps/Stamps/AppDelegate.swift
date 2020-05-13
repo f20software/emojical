@@ -23,11 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        // Setup persistent database
-        let db = DataSource.shared
-        try! db.setupDatabase(application)
-        // WARNING! - Will override database from a json backup file 
-        // db.importDatabase(from: db.localBackupFileName)
+        // Setup data storage. Change this line to swap to another data storage mechanism.
+        Storage.shared = GRDBDataProvider(app: application)
         
         AwardManager.shared.recalculateOnAppResume()
 

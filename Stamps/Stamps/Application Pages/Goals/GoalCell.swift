@@ -27,7 +27,7 @@ class GoalCell: UITableViewCell {
         name.text = goal.name.isEmpty ? "-" : goal.name
         subtitle.text = goal.details
         
-        let color = DataSource.shared.colorForGoal(goal.id!)
+        let color = Storage.shared.repository.colorForGoal(goal.id!)
         let style = (goal.period == .week) ? 7 : 0
         awardIcon.backgroundColor = UIColor.clear
         awardIcon.configure(color: color, dashes: style)

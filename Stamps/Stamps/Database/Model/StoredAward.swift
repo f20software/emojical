@@ -10,7 +10,7 @@ import Foundation
 import GRDB
 import UIKit
 
-struct Award {
+struct StoredAward {
 
     // Default award badge color - should not really happen ever
     static let defaultColor = UIColor.red
@@ -19,29 +19,18 @@ struct Award {
     var id: Int64?
     let goalId: Int64 // FK to Goals table
     let date: String // YYYY-MM-DD
-    
-    var earnedOnText: String {
-        let d = Date(yyyyMmDd: date)
-        let df = DateFormatter()
-        df.dateStyle = .long
-        
-        return "Earned on \(df.string(from: d))"
-    }
-    
-    var monthKey: String {
-        return String(date.prefix(7))
-    }
-    
 }
 
-extension Award : Hashable { }
+extension StoredAward : Hashable { }
     
 // MARK: - Persistence
 
 // Turn Player into a Codable Record.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#records
-extension Award: Codable, FetchableRecord, MutablePersistableRecord {
+extension StoredAward: Codable, FetchableRecord, MutablePersistableRecord {
 
+    static var databaseTableName = "award"
+    
     // Define database columns
     enum Columns: String, ColumnExpression {
         case id
@@ -59,8 +48,18 @@ extension Award: Codable, FetchableRecord, MutablePersistableRecord {
 
 // Define some useful player requests.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#requests
-extension Award {
-    static func orderedByDateDesc() -> QueryInterfaceRequest<Award> {
-        return Award.order([Columns.date.desc])
+extension StoredAward {
+    static func orderedByDateDesc() -> QueryInterfaceRequest<StoredAward> {
+        return StoredAward.order([Columns.date.desc])
+    }
+}
+
+extension StoredAward {
+    func toModel() -> Award {
+        Award(
+            id: id,
+            goalId: goalId,
+            date: Date(yyyyMmDd: date)
+        )
     }
 }

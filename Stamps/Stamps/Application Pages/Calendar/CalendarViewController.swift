@@ -15,8 +15,8 @@ class CalendarViewController: UITableViewController {
         return CalenderHelper.shared
     }
     
-    var db: DataSource {
-        return DataSource.shared
+    var repository: DataRepository {
+        return Storage.shared.repository
     }
 
     override func viewDidLoad() {
@@ -136,8 +136,7 @@ extension CalendarViewController {
 
         var cellsToRefresh = [IndexPath]()
         for award in awards {
-            let date = Date(yyyyMmDd: award.date)
-            guard let (indexPath, _) = self.calendar.indexForDay(date: date) else { return }
+            guard let (indexPath, _) = self.calendar.indexForDay(date: award.date) else { return }
             cellsToRefresh.append(IndexPath(row: 0, section: indexPath.section))
         }
 
@@ -168,8 +167,8 @@ extension CalendarViewController {
             }
 
             var colors = [UIColor]()
-            for stamp in db.stampsIdsForDay(date!) {
-                colors.append(UIColor(hex: db.stampById(stamp)!.color))
+            for stamp in repository.stampsIdsForDay(date!) {
+                colors.append(repository.stampById(stamp)!.color)
             }
             
             res.append(colors)
@@ -183,20 +182,22 @@ extension CalendarViewController {
         var res = [UIColor]()
         let dateEnd = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: 6)
 
-        let awards = db.weeklyAwardsForWeek(endingOn: dateEnd)
+        let awards = repository.weeklyAwardsForWeek(endingOn: dateEnd)
         for award in awards {
-            res.append(db.colorForAward(award))
+            res.append(repository.colorForAward(award))
         }
         
         return res
     }
 
     // Helper method to go through a monthly awards and gather just colors
-    func monthAwardColors(monthIdx: Int, period: Goal.Period) -> [Award] {
+    func monthAwardColors(monthIdx: Int, period: Period) -> [Award] {
         let month = calendar.monthAt(monthIdx)
         let date = Date(year: month.year, month: month.month)
 
-        let awards = period == .month ? db.monthlyAwardsForMonth(date: date) : db.weeklyAwardsForMonth(date: date)
+        let awards = period == .month
+            ? repository.monthlyAwardsForMonth(date: date)
+            : repository.weeklyAwardsForMonth(date: date)
         let sorted = awards.sorted { (a1, a2) -> Bool in
             return a1.goalId < a2.goalId
         }

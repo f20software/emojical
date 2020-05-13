@@ -18,6 +18,12 @@ extension Date {
         return df.string(from: self)
     }
     
+    var monthKey: String {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        return String(df.string(from: self).prefix(7))
+    }
+    
     var databaseKeyWithTime: String {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm"

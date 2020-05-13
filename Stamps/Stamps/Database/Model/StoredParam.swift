@@ -8,19 +8,21 @@
 
 import GRDB
 
-struct Param {
+struct StoredParam {
     let name: String
     let value: String
 }
 
-extension Param : Hashable { }
+extension StoredParam : Hashable { }
     
 // MARK: - Persistence
 
 // Turn Player into a Codable Record.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#records
-extension Param: Codable, FetchableRecord, MutablePersistableRecord {
+extension StoredParam: Codable, FetchableRecord, MutablePersistableRecord {
 
+    static var databaseTableName = "param"
+    
     // Define database columns
     enum Columns: String, ColumnExpression {
         case name

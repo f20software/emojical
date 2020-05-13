@@ -43,7 +43,7 @@ extension SelectStampsViewController {
         
         let stamp = dataSource[indexPath.row]
         cell.name!.text = stamp.name.isEmpty ? " " : stamp.name
-        cell.label!.color = UIColor(hex: stamp.color)
+        cell.label!.color = stamp.color
         cell.label!.text = stamp.label
         
         if selectedStamps.contains(stamp.id!) {

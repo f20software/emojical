@@ -12,11 +12,12 @@ import GRDB
 class GoalsViewController: UITableViewController {
 
     private var goals: [Goal] = []
-    private var goalsObserver: TransactionObserver?
+    private var goalsListener = Storage.shared.goalsListener()
+    private var repository = Storage.shared.repository
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        goals = DataSource.shared.allGoals()
+        goals = repository.allGoals()
         tableView.tableFooterView = UIView()
     }
 
@@ -27,17 +28,11 @@ class GoalsViewController: UITableViewController {
     }
 
     private func configureTableView() {
-        // Track changes in the list of players
-        let request = Goal.orderedByPeriodName()
-        let observation = ValueObservation.tracking { db in
-            try request.fetchAll(db)
-        }
-        goalsObserver = observation.start(
-            in: DataSource.shared.dbQueue,
+        // Track changes in the list of goals
+        goalsListener.startListening(
             onError: { error in
                 fatalError("Unexpected error: \(error)")
-        },
-            onChange: { [weak self] goals in
+            }, onChange: { [weak self] goals in
                 guard let self = self else { return }
                 
                 // Compute difference between current and new list of players
@@ -69,7 +64,8 @@ class GoalsViewController: UITableViewController {
                         }
                     }
                 }, completion: nil)
-        })
+            }
+        )
     }
 }
 
@@ -93,7 +89,7 @@ extension GoalsViewController {
             let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.viewControllers.first as! GoalViewController
             controller.title = "New Goal"
-            controller.goal = Goal(id: nil, name: "New Goal", period: .week, direction: .positive, limit: 5, stamps: "")
+            controller.goal = Goal(id: nil, name: "New Goal", period: .week, direction: .positive, limit: 5, stamps: [])
             controller.presentationMode = .modal
         }
     }

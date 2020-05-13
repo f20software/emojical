@@ -87,11 +87,11 @@ extension DataSource {
                     var stored = StoredAward(id: $0.id, goalId: $0.goalId, date: $0.date.databaseKey)
                     try stored.save(db)
                 })
-                try remove.forEach({
-                    if let id = $0.id, let stored = storedAward(withId: id) {
-                        try stored.delete(db)
-                    }
-                })
+                
+                let idsToDelete = remove.compactMap { $0.id }
+                try StoredAward
+                    .filter(idsToDelete.contains(StoredAward.Columns.id))
+                    .deleteAll(db)
             }
         }
         catch { }

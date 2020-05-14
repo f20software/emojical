@@ -12,11 +12,12 @@ import GRDB
 class AwardsViewController: UITableViewController {
 
     private var awards = [[Award]]()
-    private var awardsObserver: TransactionObserver?
+    private var awardsListener = Storage.shared.awardsListener()
+    private var repository = Storage.shared.repository
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        awards = DataSource.shared.awardsGroupedByMonth(DataSource.shared.recentAwards())
+        awards = repository.awardsGroupedByMonth(repository.recentAwards())
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -30,28 +31,19 @@ class AwardsViewController: UITableViewController {
     }
 
     private func configureTableView() {
-        // Track changes in the list of players
-        let request = Award.orderedByDateDesc()
-        let observation = ValueObservation.tracking { db in
-            try request.fetchAll(db)
-        }
-        awardsObserver = observation.start(
-            in: DataSource.shared.dbQueue,
+        awardsListener.startListening(
             onError: { error in
                 fatalError("Unexpected error: \(error)")
-        },
-            onChange: { [weak self] awards in
+            }, onChange: { [weak self] awards in
                 guard let self = self else { return }
-                
                 // Compute difference between current and new list of players
-                
 //                let difference = awards
 //                    .difference(from: self.awards)
 //                    .inferringMoves()
-                
-                self.awards = DataSource.shared.awardsGroupedByMonth(awards)
+
+                self.awards = self.repository.awardsGroupedByMonth(awards)
                 self.tableView.reloadData()
-                
+                                
                 // Apply those changes to the table view
 //                self.tableView.performBatchUpdates({
 //                    self.awards = awards
@@ -76,7 +68,8 @@ class AwardsViewController: UITableViewController {
 //                        }
 //                    }
 //                }, completion: nil)
-        })
+            }
+        )
     }
 }
 
@@ -92,7 +85,7 @@ extension AwardsViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let date = Date(yyyyMmDd: awards[section][0].date)
+        let date = awards[section][0].date
         let df = DateFormatter()
         df.dateFormat = "MMMM yyyy"
         return df.string(from: date)
@@ -101,7 +94,7 @@ extension AwardsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "awardCell", for: indexPath) as! AwardCell
         let award = awards[indexPath.section][indexPath.row]
-        let goal = DataSource.shared.goalById(award.goalId)!
+        let goal = repository.goalById(award.goalId)!
         cell.configureWith(award, goal: goal)
         return cell
     }

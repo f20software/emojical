@@ -13,21 +13,14 @@ extension DataSource {
 
     // Single stamp object
     func stampById(_ identifier: Int64) -> Stamp? {
-        do {
-            return try dbQueue.read { db -> Stamp? in
-                let request = Stamp.filter(Stamp.Columns.id == identifier)
-                return try request.fetchOne(db)
-            }
-        }
-        catch { }
-        return nil
+        return storedStamp(withId: identifier)?.toModel()
     }
     
     // Count for specific stamp in Diary table
     func stampCountById(_ identifier: Int64) -> Int {
         do {
             return try dbQueue.read { db -> Int in
-                let request = Diary.filter(Diary.Columns.stampId == identifier)
+                let request = StoredDiary.filter(StoredDiary.Columns.stampId == identifier)
                 return try request.fetchCount(db)
             }
         }
@@ -39,7 +32,9 @@ extension DataSource {
     func stampLastUsed(_ identifier: Int64) -> String? {
         do {
             return try dbQueue.read { db -> String? in
-                let request = Diary.filter(Diary.Columns.stampId == identifier).order(Diary.Columns.date.desc)
+                let request = StoredDiary
+                    .filter(StoredDiary.Columns.stampId == identifier)
+                    .order(StoredDiary.Columns.date.desc)
                 return try request.fetchOne(db)?.date
             }
         }
@@ -50,10 +45,12 @@ extension DataSource {
     // Only favorites stamps - used in day view
     func favoriteStamps() -> [Stamp] {
         do {
-            return try dbQueue.read { db -> [Stamp] in
-                let request = Stamp.filter(Stamp.Columns.favorite == true && Stamp.Columns.deleted == false).order(Stamp.Columns.name)
+            return try dbQueue.read { db -> [StoredStamp] in
+                let request = StoredStamp
+                    .filter(StoredStamp.Columns.favorite == true && StoredStamp.Columns.deleted == false)
+                    .order(StoredStamp.Columns.name)
                 return try request.fetchAll(db)
-            }
+            }.map { $0.toModel() }
         }
         catch { }
         return []
@@ -61,23 +58,14 @@ extension DataSource {
 
     // All stamps
     func allStamps(includeDeleted: Bool = false) -> [Stamp] {
-        do {
-            return try dbQueue.read { db -> [Stamp] in
-                let request = includeDeleted ?
-                    Stamp.order(Stamp.Columns.name) :
-                    Stamp.filter(Stamp.Columns.deleted == false).order(Stamp.Columns.name)
-                return try request.fetchAll(db)
-            }
-        }
-        catch { }
-        return []
+        allStoredStamps(includeDeleted: includeDeleted).map { $0.toModel() }
     }
     
     // Delete all stamps from the database
     func deleteAllStamps() {
         do {
             _ = try dbQueue.write { db in
-                try Stamp.deleteAll(db)
+                try StoredStamp.deleteAll(db)
             }
         }
         catch { }
@@ -87,7 +75,9 @@ extension DataSource {
     func stampsIdsForDay(_ day: Date) -> [Int64] {
         do {
             return try dbQueue.read { db in
-                let request = Diary.filter(Diary.Columns.date == day.databaseKey).order(Stamp.Columns.id)
+                let request = StoredDiary
+                    .filter(StoredDiary.Columns.date == day.databaseKey)
+                    .order(StoredDiary.Columns.stampId)
                 let allrecs = try request.fetchAll(db)
                 return allrecs.map({ $0.stampId })
             }
@@ -113,7 +103,7 @@ extension DataSource {
     // Recalculate count and lastUsed in Stamp object
     func updateStatsForStamps(_ stampIds: [Int64]) {
         for id in stampIds {
-            if var stamp = stampById(id) {
+            if var stamp = storedStamp(withId: id) {
                 stamp.count = stampCountById(id)
                 stamp.lastUsed = stampLastUsed(id) ?? ""
                 do {
@@ -134,7 +124,44 @@ extension DataSource {
 
     // List of goals particular stamp is used in
     func goalsUsedStamp(_ stampId: Int64) -> [Goal] {
-        return self.allGoals().filter { $0.stampIds.contains(stampId) }
+        return self.allGoals().filter { $0.stamps.contains(stampId) }
     }
-
+    
+    // MARK: - Saving
+    
+    @discardableResult func save(stamp: Stamp) throws -> Stamp {
+        try dbQueue.inDatabase { db in
+            var stored = StoredStamp(stamp: stamp)
+            try stored.save(db)
+            return stored.toModel()
+        }
+    }
+    
+    // MARK: - Private helpers
+    
+    func storedStamp(withId id: Int64) -> StoredStamp? {
+        do {
+            return try dbQueue.read { db -> StoredStamp? in
+                let request = StoredStamp.filter(StoredStamp.Columns.id == id)
+                return try request.fetchOne(db)
+            }
+        }
+        catch { }
+        return nil
+    }
+    
+    func allStoredStamps(includeDeleted: Bool = false) -> [StoredStamp] {
+        do {
+            return try dbQueue.read { db -> [StoredStamp] in
+                let request = includeDeleted
+                    ? StoredStamp.order(StoredStamp.Columns.name)
+                    : StoredStamp
+                        .filter(StoredStamp.Columns.deleted == false)
+                        .order(StoredStamp.Columns.name)
+                return try request.fetchAll(db)
+            }
+        }
+        catch { }
+        return []
+    }
 }

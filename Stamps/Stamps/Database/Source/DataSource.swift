@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 import GRDB
 
+/// GRDB data storage wrapper.
 class DataSource {
 
-    // Singleton instance
-    static let shared = DataSource()
+    /// Database queue.
+    internal var dbQueue: DatabaseQueue!
     
-    // Database
-    var dbQueue: DatabaseQueue!
-    
+    /// Initializes database.
     func setupDatabase(_ application: UIApplication) throws {
         let databaseURL = try FileManager.default
             .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)

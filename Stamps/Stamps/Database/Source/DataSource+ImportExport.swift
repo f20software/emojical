@@ -24,50 +24,15 @@ import GRDB
 extension DataSource {
 
     // Combining all database objects into single structure for easy json decode/encode
-    struct DatabaseDump: Codable {
-        var stamps: [Stamp]
-        var goals: [Goal]
-        var awards: [Award]
-        var diary: [Diary]
+    private struct DatabaseDump: Codable {
+        var stamps: [StoredStamp]
+        var goals: [StoredGoal]
+        var awards: [StoredAward]
+        var diary: [StoredDiary]
     }
 
-    // Remove everything from the database
-    func clearDatabase() {
-        deleteAllStamps()
-        deleteAllGoals()
-        deleteAllAwards()
-        deleteAllDiary()
-    }
+    private static let backupFile = "backup.json"
     
-    // Recreate database from the DatabaseDump structure
-    func recreateDatabase(data: DatabaseDump) {
-        for item in data.stamps {
-            try! dbQueue.inDatabase { db in
-                var stamp = item
-                try stamp.save(db)
-            }
-        }
-        for item in data.goals {
-            try! dbQueue.inDatabase { db in
-                var goal = item
-                try goal.save(db)
-            }
-        }
-        for item in data.diary {
-            try! dbQueue.inDatabase { db in
-                var diary = item
-                try diary.save(db)
-            }
-        }
-        for item in data.awards {
-            try! dbQueue.inDatabase { db in
-                var award = item
-                try award.save(db)
-            }
-        }
-    }
-    
-    static let backupFile = "backup.json"
     var deviceBackupFileName: URL {
         let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         return URL(fileURLWithPath: "\(documents)/\(DataSource.backupFile)")
@@ -79,10 +44,12 @@ extension DataSource {
 
     // Backup whole database into URL
     func backupDatabase(to file: URL) -> Bool {
-        let dump = DatabaseDump(stamps: allStamps(includeDeleted: true),
-            goals: allGoals(includeDeleted: true),
-            awards: allAwards(),
-            diary: allDiary())
+        let dump = DatabaseDump(
+            stamps: allStoredStamps(includeDeleted: true),
+            goals: allStoredGoals(includeDeleted: true),
+            awards: allStoredAwards(),
+            diary: allStoredDiary()
+        )
         var result = true
         
         let encoder = JSONEncoder()
@@ -114,5 +81,43 @@ extension DataSource {
         
         clearDatabase()
         recreateDatabase(data: dump!)
+    }
+    
+    // MARK: - Private helpers
+    
+    // Remove everything from the database
+    private func clearDatabase() {
+        deleteAllStamps()
+        deleteAllGoals()
+        deleteAllAwards()
+        deleteAllDiary()
+    }
+    
+    // Recreate database from the DatabaseDump structure
+    private func recreateDatabase(data: DatabaseDump) {
+        for item in data.stamps {
+            try! dbQueue.inDatabase { db in
+                var stamp = item
+                try stamp.save(db)
+            }
+        }
+        for item in data.goals {
+            try! dbQueue.inDatabase { db in
+                var goal = item
+                try goal.save(db)
+            }
+        }
+        for item in data.diary {
+            try! dbQueue.inDatabase { db in
+                var diary = item
+                try diary.save(db)
+            }
+        }
+        for item in data.awards {
+            try! dbQueue.inDatabase { db in
+                var award = item
+                try award.save(db)
+            }
+        }
     }
 }

@@ -24,12 +24,12 @@ class AwardCell: UITableViewCell {
         name.text = "\'\(goal.name)\' goal is reached."
         // subtitle.text = "\(goal.periodText). \(award.earnedOnText)"
         
-        let color = DataSource.shared.colorForAward(award)
+        let color = Storage.shared.repository.colorForAward(award)
         let style = (goal.period == .week) ? 7 : 0
         awardIcon.backgroundColor = UIColor.clear
         awardIcon.configure(color: color, dashes: style)
         
-        let date = Date(yyyyMmDd: award.date)
+        let date = award.date
         let df = DateFormatter()
         
         df.dateFormat = "d"

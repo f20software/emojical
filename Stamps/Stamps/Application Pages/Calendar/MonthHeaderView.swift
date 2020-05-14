@@ -13,7 +13,7 @@ class MonthHeaderView: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var awards: UIView!
     
-    let db = DataSource.shared
+    let repository = Storage.shared.repository
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +29,7 @@ class MonthHeaderView: UITableViewCell {
         let size = awards.bounds.height
         for award in monthlyAwards {
             let badge = AwardView(frame: CGRect(x: x, y: 0, width: size, height: size))
-            badge.configure(color: db.colorForAward(award), dashes: 0)
+            badge.configure(color: repository.colorForAward(award), dashes: 0)
             awards.addSubview(badge)
             x += (size + 5)
         }
@@ -41,7 +41,7 @@ class MonthHeaderView: UITableViewCell {
             }
             
             let badge = AwardView(frame: CGRect(x: x, y: 0, width: size, height: size))
-            badge.configure(color: db.colorForAward(award), dashes: 7)
+            badge.configure(color: repository.colorForAward(award), dashes: 7)
             badge.backgroundColor = UIColor.systemBackground // override background color since we will be overlapping them
             awards.addSubview(badge)
             lastGoalId = award.goalId

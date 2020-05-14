@@ -11,10 +11,9 @@ import GRDB
 // MARK: - Diary Helper Methods
 extension DataSource {
 
-    static let lastWeekUpdateParam = "week-last-update"
-    static let lastMonthUpdateParam = "month-last-update"
+    private static let lastWeekUpdateParam = "week-last-update"
+    private static let lastMonthUpdateParam = "month-last-update"
     
-    // Last date when weekly goals has been updated
     var lastWeekUpdate: Date? {
         get {
             return readDateParam(DataSource.lastWeekUpdateParam)
@@ -24,7 +23,6 @@ extension DataSource {
         }
     }
 
-    // Last date when monthly goals has been updated
     var lastMonthUpdate: Date? {
         get {
             return readDateParam(DataSource.lastMonthUpdateParam)
@@ -38,8 +36,8 @@ extension DataSource {
     private func readDateParam(_ name: String) -> Date? {
         do {
             let dateStr = try dbQueue.read { db -> String? in
-                let request = Param
-                    .filter(Param.Columns.name == name)
+                let request = StoredParam
+                    .filter(StoredParam.Columns.name == name)
                 let param = try request.fetchOne(db)
                 return param?.value
             }
@@ -54,11 +52,11 @@ extension DataSource {
     // Helper method to read data parameter by name
     private func saveDateParam(_ name: String, value: Date?) {
         guard value != nil else { return }
-        var param = Param(name: name, value: value!.databaseKey)
+        var param = StoredParam(name: name, value: value!.databaseKey)
         
         do {
             try dbQueue.write { db in
-                try Param.filter(Param.Columns.name == name).deleteAll(db)
+                try StoredParam.filter(StoredParam.Columns.name == name).deleteAll(db)
                 try param.insert(db)
             }
         }

@@ -14,21 +14,14 @@ extension DataSource {
 
     // All awards
     func allAwards() -> [Award] {
-        do {
-            return try dbQueue.read { db -> [Award] in
-                let request = Award.order(Award.Columns.date)
-                return try request.fetchAll(db)
-            }
-        }
-        catch { }
-        return []
+        allStoredAwards().map { $0.toModel() }
     }
 
     // Delete all awards from the database
     func deleteAllAwards() {
         do {
             _ = try dbQueue.write { db in
-                try Award.deleteAll(db)
+                try StoredAward.deleteAll(db)
             }
         }
         catch { }
@@ -37,10 +30,10 @@ extension DataSource {
     // Recent awards
     func recentAwards() -> [Award] {
         do {
-            return try dbQueue.read { db -> [Award] in
-                let request = Award.order(Award.Columns.date.desc).limit(10)
+            return try dbQueue.read { db -> [StoredAward] in
+                let request = StoredAward.order(StoredAward.Columns.date.desc).limit(10)
                 return try request.fetchAll(db)
-            }
+            }.map { $0.toModel() }
         }
         catch { }
         return []
@@ -54,7 +47,7 @@ extension DataSource {
             if month.count == 0 {
                 month.append(awards[i])
             }
-            else if month[0].monthKey == awards[i].monthKey {
+            else if month[0].date.monthKey == awards[i].date.monthKey {
                 month.append(awards[i])
             }
             else {
@@ -71,12 +64,12 @@ extension DataSource {
     // Awards for date interval
     func awardsForDateInterval(from: Date, to: Date) -> [Award] {
         do {
-            return try dbQueue.read { db -> [Award] in
-                let request = Award
-                    .filter(Award.Columns.date >= from.databaseKey && Award.Columns.date <= to.databaseKey)
-                    .order(Diary.Columns.date)
+            return try dbQueue.read { db -> [StoredAward] in
+                let request = StoredAward
+                    .filter(StoredAward.Columns.date >= from.databaseKey && StoredAward.Columns.date <= to.databaseKey)
+                    .order(StoredDiary.Columns.date)
                 return try request.fetchAll(db)
-            }
+            }.map { $0.toModel() }
         }
         catch { }
         return []
@@ -91,12 +84,14 @@ extension DataSource {
         do {
             try dbQueue.inDatabase { db in
                 try add.forEach({
-                    var a = $0
-                    try a.save(db)
+                    var stored = StoredAward(id: $0.id, goalId: $0.goalId, date: $0.date.databaseKey)
+                    try stored.save(db)
                 })
-                try remove.forEach({
-                    try $0.delete(db)
-                })
+                
+                let idsToDelete = remove.compactMap { $0.id }
+                try StoredAward
+                    .filter(idsToDelete.contains(StoredAward.Columns.id))
+                    .deleteAll(db)
             }
         }
         catch { }
@@ -157,11 +152,35 @@ extension DataSource {
     // and get color of the first stamp on that goal
     func colorForAward(_ award: Award) -> UIColor {
         if let goal = goalById(award.goalId),
-            let stampId = goal.stampIds.first,
+            let stampId = goal.stamps.first,
             let stamp = stampById(stampId) {
-            return UIColor(hex: stamp.color)
+            return stamp.color
         }
         
         return Award.defaultColor
+    }
+    
+    // MARK: - Private helpers
+    
+    func storedAward(withId id: Int64) -> StoredAward? {
+        do {
+            return try dbQueue.read { db -> StoredAward? in
+                let request = StoredAward.filter(StoredAward.Columns.id == id)
+                return try request.fetchOne(db)
+            }
+        }
+        catch { }
+        return nil
+    }
+    
+    func allStoredAwards() -> [StoredAward] {
+        do {
+            return try dbQueue.read { db -> [StoredAward] in
+                let request = StoredAward.order(StoredAward.Columns.date)
+                return try request.fetchAll(db)
+            }
+        }
+        catch { }
+        return []
     }
 }

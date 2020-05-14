@@ -9,20 +9,7 @@
 import Foundation
 import GRDB
 
-struct Goal {
-
-    enum Period: Int, DatabaseValueConvertible, Decodable, Encodable {
-        case week
-        case month
-        case year // not used
-        case total // not used
-    }
-
-    enum Direction: Int, DatabaseValueConvertible, Decodable, Encodable {
-        case positive
-        case negative
-    }
-
+struct StoredGoal {
     // Prefer Int64 for auto-incremented database ids
     var id: Int64?
     var name: String
@@ -144,14 +131,16 @@ struct Goal {
     }
 }
 
-extension Goal : Hashable { }
+extension StoredGoal : Hashable { }
     
 // MARK: - Persistence
 
 // Turn Player into a Codable Record.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#records
-extension Goal: Codable, FetchableRecord, MutablePersistableRecord {
+extension StoredGoal: Codable, FetchableRecord, MutablePersistableRecord {
 
+    static var databaseTableName = "goal"
+    
     // Define database columns
     enum Columns: String, ColumnExpression {
         case id
@@ -175,8 +164,37 @@ extension Goal: Codable, FetchableRecord, MutablePersistableRecord {
 
 // Define some useful player requests.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#requests
-extension Goal {
-    static func orderedByPeriodName() -> QueryInterfaceRequest<Goal> {
-        return Goal.filter(Columns.deleted == false).order([Columns.period, Columns.name])
+extension StoredGoal {
+    static func orderedByPeriodName() -> QueryInterfaceRequest<StoredGoal> {
+        return StoredGoal.filter(Columns.deleted == false).order([Columns.period, Columns.name])
+    }
+}
+
+// MARK: - Model conersion
+
+extension StoredGoal {
+    func toModel() -> Goal {
+        Goal(
+            id: id,
+            name: name,
+            period: period,
+            direction: direction,
+            limit: limit,
+            stamps: stamps.split(separator: ",").map{ Int64($0)! },
+            deleted: deleted,
+            count: count,
+            lastUsed: lastUsed.count > 0 ? Date(yyyyMmDd: lastUsed) : nil)
+    }
+    
+    init(goal: Goal) {
+        self.id = goal.id
+        self.name = goal.name
+        self.period = goal.period
+        self.direction = goal.direction
+        self.limit = goal.limit
+        self.stamps = goal.stamps.map({ "\($0)" }).joined(separator: ",")
+        self.deleted = goal.deleted
+        self.count = goal.count
+        self.lastUsed = goal.lastUsed?.databaseKey ?? ""
     }
 }

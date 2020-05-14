@@ -17,10 +17,11 @@ class CalenderHelper {
     static let shared = CalenderHelper()
 
     private var months = [Month]()
+    private var repository = Storage.shared.repository
     
     private init() {
-        var firstDate = DataSource.shared.getFirstDiaryDate()?.beginningOfMonth
-        let lastDate = DataSource.shared.getLastDiaryDate()?.beginningOfMonth
+        var firstDate = repository.getFirstDiaryDate()?.beginningOfMonth
+        let lastDate = repository.getLastDiaryDate()?.beginningOfMonth
         
         if firstDate == nil {
             let today = Date()

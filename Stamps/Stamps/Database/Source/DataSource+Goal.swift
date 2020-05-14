@@ -15,21 +15,14 @@ extension DataSource {
 
     // Single Goal object by Id
     func goalById(_ identifier: Int64) -> Goal? {
-        do {
-            return try dbQueue.read { db -> Goal? in
-                let request = Goal.filter(Goal.Columns.id == identifier)
-                return try request.fetchOne(db)
-            }
-        }
-        catch { }
-        return nil
+        return storedGoal(withId: identifier)?.toModel()
     }
 
     // Count for specific goal/award in Diary table
     func goalCountById(_ identifier: Int64) -> Int {
         do {
             return try dbQueue.read { db -> Int in
-                let request = Award.filter(Award.Columns.goalId == identifier)
+                let request = StoredAward.filter(StoredAward.Columns.goalId == identifier)
                 return try request.fetchCount(db)
             }
         }
@@ -41,7 +34,7 @@ extension DataSource {
     func goalLastUsed(_ identifier: Int64) -> String? {
         do {
             return try dbQueue.read { db -> String? in
-                let request = Award.filter(Award.Columns.goalId == identifier).order(Award.Columns.date.desc)
+                let request = StoredAward.filter(StoredAward.Columns.goalId == identifier).order(StoredAward.Columns.date.desc)
                 return try request.fetchOne(db)?.date
             }
         }
@@ -50,24 +43,15 @@ extension DataSource {
     }
 
     // All goals
-    func allGoals(includeDeleted: Bool = false) -> [Goal] {
-        do {
-            return try dbQueue.read { db -> [Goal] in
-                let request = includeDeleted ?
-                    Goal.order([Goal.Columns.period, Goal.Columns.name]) :
-                    Goal.filter(Goal.Columns.deleted == false).order([Goal.Columns.period, Goal.Columns.name])
-                return try request.fetchAll(db)
-            }
-        }
-        catch { }
-        return []
+    func allGoals(includeDeleted: Bool) -> [Goal] {
+        allStoredGoals(includeDeleted: includeDeleted).map { $0.toModel() }
     }
 
     // Delete all goals from the database
     func deleteAllGoals() {
         do {
             _ = try dbQueue.write { db in
-                try Goal.deleteAll(db)
+                try StoredGoal.deleteAll(db)
             }
         }
         catch { }
@@ -76,7 +60,7 @@ extension DataSource {
     // Recalculate count and lastUsed in Goal object
     func updateStatsForGoals(_ ids: [Int64]) {
         for id in ids {
-            if var goal = goalById(id) {
+            if var goal = storedGoal(withId: id) {
                 goal.count = goalCountById(id)
                 goal.lastUsed = goalLastUsed(id) ?? ""
                 do {
@@ -96,12 +80,12 @@ extension DataSource {
     }
 
     // Goals by period
-    func goalsByPeriod(_ period: Goal.Period) -> [Goal] {
+    func goalsByPeriod(_ period: Period) -> [Goal] {
         do {
-            return try dbQueue.read { db -> [Goal] in
-                let request = Goal.filter(Goal.Columns.deleted == false && Goal.Columns.period == period)
+            return try dbQueue.read { db -> [StoredGoal] in
+                let request = StoredGoal.filter(StoredGoal.Columns.deleted == false && StoredGoal.Columns.period == period)
                 return try request.fetchAll(db)
-            }
+            }.map { $0.toModel() }
         }
         catch { }
         return []
@@ -109,7 +93,7 @@ extension DataSource {
     
     // Collect all stamp labels by iterating through Ids stored in the goal object
     func stampLabelsFor(_ goal: Goal) -> [String] {
-        let stampIds = goal.stampIds
+        let stampIds = goal.stamps
         var result = [String]()
         for i in stampIds {
             if let label = stampById(i)?.label {
@@ -124,12 +108,49 @@ extension DataSource {
     // and get color of the first stamp on that goal
     func colorForGoal(_ goalId: Int64) -> UIColor {
         if let goal = goalById(goalId),
-            let stampId = goal.stampIds.first,
+            let stampId = goal.stamps.first,
             let stamp = stampById(stampId) {
-            return UIColor(hex: stamp.color)
+            return stamp.color
         }
         
         return Award.defaultColor
     }
 
+    // MARK: - Saving
+    
+    @discardableResult func save(goal: Goal) throws -> Goal {
+        try dbQueue.inDatabase { db in
+            var stored = StoredGoal(goal: goal)
+            try stored.save(db)
+            return stored.toModel()
+        }
+    }
+    
+    // MARK: - Private helpers
+    
+    func storedGoal(withId id: Int64) -> StoredGoal? {
+        do {
+            return try dbQueue.read { db -> StoredGoal? in
+                let request = StoredGoal.filter(StoredGoal.Columns.id == id)
+                return try request.fetchOne(db)
+            }
+        }
+        catch { }
+        return nil
+    }
+    
+    func allStoredGoals(includeDeleted: Bool = false) -> [StoredGoal] {
+        do {
+            return try dbQueue.read { db -> [StoredGoal] in
+                let request = includeDeleted
+                    ? StoredGoal.order([StoredGoal.Columns.period, StoredGoal.Columns.name])
+                    : StoredGoal
+                        .filter(StoredGoal.Columns.deleted == false)
+                        .order([StoredGoal.Columns.period, StoredGoal.Columns.name])
+                return try request.fetchAll(db)
+            }
+        }
+        catch { }
+        return []
+    }
 }

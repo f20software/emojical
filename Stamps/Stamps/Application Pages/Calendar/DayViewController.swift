@@ -34,8 +34,8 @@ class DayViewController : UIViewController {
         return CalenderHelper.shared
     }
     
-    var db: DataSource {
-        return DataSource.shared
+    var repository: DataRepository {
+        return Storage.shared.repository
     }
 
     var date: Date? {
@@ -49,7 +49,7 @@ class DayViewController : UIViewController {
             locked = untilToday < -6 || untilToday > 1
             lockButton.isHidden = !locked
             
-            currentStamps = db.stampsIdsForDay(date)
+            currentStamps = repository.stampsIdsForDay(date)
             dataChanged = false
 
             // Based on whether we have 1 or 2 rows of stickers -
@@ -97,12 +97,12 @@ class DayViewController : UIViewController {
         self.dayView.layer.borderWidth = 0.5
 
         // Disabling showing only favorite stamps for now
-        favs = db.allStamps() // db.favoriteStamps()
+        favs = repository.allStamps() // db.favoriteStamps()
         stampLabels = [stamp1, stamp2, stamp3, stamp4, stamp5, stamp6, stamp7, stamp8, stamp9, stamp10]
 
         for i in 0..<stampLabels.count  {
             stampLabels[i].text = i < favs.count ? favs[i].label : ""
-            stampLabels[i].color = i < favs.count ? UIColor(hex: favs[i].color) : nil
+            stampLabels[i].color = i < favs.count ? favs[i].color : nil
         }
     }
     
@@ -135,7 +135,7 @@ class DayViewController : UIViewController {
                 }
             }
             
-            db.setStampsForDay(date!, stamps: cleanResult)
+            repository.setStampsForDay(date!, stamps: cleanResult)
         }
         
         dismiss(animated: true) {

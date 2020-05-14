@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import GRDB
 
-struct Stamp {
+struct StoredStamp {
     // Prefer Int64 for auto-incremented database ids
     var id: Int64?
     var name: String
@@ -20,46 +20,18 @@ struct Stamp {
     var deleted: Bool = false
     var count: Int = 0
     var lastUsed: String = "" // YYYY-MM-DD format if stamp was used
-
-    var statsDescription: String {
-        if count <= 0 {
-            return "Sticker hasn't been used yet."
-        }
-        
-        var result = "Sticker has been used "
-        if count > 1 {
-            result += "\(count) times"
-        }
-        else {
-            result += "1 time"
-        }
-        
-        if lastUsed.lengthOfBytes(using: .utf8) > 0 {
-            let date = Date(yyyyMmDd: lastUsed)
-            let df = DateFormatter()
-            df.dateStyle = .medium
-            result += ", last time - \(df.string(from: date))."
-        }
-        else {
-            result += "."
-        }
-        
-        return result
-    }
-    
-    static var defaultStamp: Stamp {
-        return Stamp(id: nil, name: "Gold Star", label: "⭐️", color: UIColor.defaultStickerColor)
-    }
 }
 
-extension Stamp : Hashable { }
+extension StoredStamp : Hashable { }
 
 // MARK: - Persistence
 
 // Turn Player into a Codable Record.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#records
-extension Stamp: Codable, FetchableRecord, MutablePersistableRecord {
+extension StoredStamp: Codable, FetchableRecord, MutablePersistableRecord {
 
+    static var databaseTableName = "stamp"
+    
     // Define database columns
     enum Columns: String, ColumnExpression {
         case id
@@ -82,8 +54,32 @@ extension Stamp: Codable, FetchableRecord, MutablePersistableRecord {
 
 // Define some useful player requests.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#requests
-extension Stamp {
-    static func orderedByName() -> QueryInterfaceRequest<Stamp> {
-        return Stamp.filter(Columns.deleted == false).order(Columns.name)
+extension StoredStamp {
+    static func orderedByName() -> QueryInterfaceRequest<StoredStamp> {
+        return StoredStamp.filter(Columns.deleted == false).order(Columns.name)
+    }
+}
+
+// MARK: - Model conversion
+
+extension StoredStamp {
+    func toModel() -> Stamp {
+        return Stamp(
+            id: id,
+            name: name,
+            label: label,
+            color: UIColor(hex: color),
+            favorite: favorite,
+            deleted: deleted,
+            count: count,
+            lastUsed: ((lastUsed.count > 0) ? Date(yyyyMmDd: lastUsed) : nil)
+        )
+    }
+    
+    init(stamp: Stamp) {
+        self.id = stamp.id
+        self.name = stamp.name
+        self.label = stamp.label
+        self.color = stamp.color.hex
     }
 }

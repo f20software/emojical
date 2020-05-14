@@ -13,8 +13,8 @@ extension DataSource {
 
     func getFirstDiaryDate() -> Date? {
         do {
-            let diary = try dbQueue.read { db -> Diary? in
-                let request = Diary.order(Diary.Columns.date)
+            let diary = try dbQueue.read { db -> StoredDiary? in
+                let request = StoredDiary.order(StoredDiary.Columns.date)
                 return try request.fetchOne(db)
             }
             if diary != nil {
@@ -27,8 +27,8 @@ extension DataSource {
 
     func getLastDiaryDate() -> Date? {
         do {
-            let diary = try dbQueue.read { db -> Diary? in
-                let request = Diary.order(Diary.Columns.date.desc)
+            let diary = try dbQueue.read { db -> StoredDiary? in
+                let request = StoredDiary.order(StoredDiary.Columns.date.desc)
                 return try request.fetchOne(db)
             }
             if diary != nil {
@@ -41,21 +41,14 @@ extension DataSource {
 
     // All diary records
     func allDiary() -> [Diary] {
-        do {
-            return try dbQueue.read { db -> [Diary] in
-                let request = Diary.order(Diary.Columns.date)
-                return try request.fetchAll(db)
-            }
-        }
-        catch { }
-        return []
+        allStoredDiary().map { $0.toModel() }
     }
 
     // Delete all diary records from the database
     func deleteAllDiary() {
         do {
             _ = try dbQueue.write { db in
-                try Diary.deleteAll(db)
+                try StoredDiary.deleteAll(db)
             }
         }
         catch { }
@@ -64,12 +57,12 @@ extension DataSource {
     // Diary records filtered for specific date interval
     func diaryForDateInterval(from: Date, to: Date) -> [Diary] {
         do {
-            return try dbQueue.read { db -> [Diary] in
-                let request = Diary
-                    .filter(Diary.Columns.date >= from.databaseKey && Diary.Columns.date <= to.databaseKey)
-                    .order(Diary.Columns.date)
+            return try dbQueue.read { db -> [StoredDiary] in
+                let request = StoredDiary
+                    .filter(StoredDiary.Columns.date >= from.databaseKey && StoredDiary.Columns.date <= to.databaseKey)
+                    .order(StoredDiary.Columns.date)
                 return try request.fetchAll(db)
-            }
+            }.map { $0.toModel() }
         }
         catch { }
         return []
@@ -87,12 +80,12 @@ extension DataSource {
             try dbQueue.write { db in
                 // Delete all records for that day so we can replace them with new ones
                 // TODO: Potentially can optimize it by calculating the diff
-                try Diary
-                    .filter(Diary.Columns.date == day.databaseKey)
+                try StoredDiary
+                    .filter(StoredDiary.Columns.date == day.databaseKey)
                     .deleteAll(db)
 
                 for stampId in stamps {
-                    var diary = Diary(date: day.databaseKey, count: 1, stampId: stampId)
+                    var diary = StoredDiary(date: day.databaseKey, count: 1, stampId: stampId)
                     try diary.insert(db)
                 }
             }
@@ -100,5 +93,16 @@ extension DataSource {
         catch { }
         
         updateStatsForStamps(allIds)
+    }
+    
+    func allStoredDiary() -> [StoredDiary] {
+        do {
+            return try dbQueue.read { db -> [StoredDiary] in
+                let request = StoredDiary.order(StoredDiary.Columns.date)
+                return try request.fetchAll(db)
+            }
+        }
+        catch { }
+        return []
     }
  }

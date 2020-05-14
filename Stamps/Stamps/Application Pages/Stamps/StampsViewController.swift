@@ -17,12 +17,15 @@ class StampsViewController: UITableViewController {
     let stickerLimit = 10
 
     private var stamps: [Stamp] = []
-    private var stampsObserver: TransactionObserver?
+    private var stampsListener = Storage.shared.stampsListener()    
+    private var repository: DataRepository {
+        Storage.shared.repository
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // initial load - since we should not have that many individual stamps - it should not take long time
-        stamps = DataSource.shared.allStamps(includeDeleted: false)
+        stamps = repository.allStamps(includeDeleted: false)
         updateAddButton()
     }
     
@@ -36,16 +39,11 @@ class StampsViewController: UITableViewController {
     }
 
     private func configureTableView() {
-        // Track changes in the list of players
-        let request = Stamp.orderedByName()
-        let observation = ValueObservation.tracking { db in
-            try request.fetchAll(db)
-        }
-        stampsObserver = observation.start(
-            in: DataSource.shared.dbQueue,
+        // Track changes in the list of stamps
+        stampsListener.startListening(
             onError: { error in
                 fatalError("Unexpected error: \(error)")
-        },
+            },
             onChange: { [weak self] stamps in
                 guard let self = self else { return }
                 
@@ -79,7 +77,8 @@ class StampsViewController: UITableViewController {
                         }
                     }
                 }, completion: nil)
-        })
+            }
+        )
     }
 }
 
@@ -131,7 +130,7 @@ extension StampsViewController {
         let stamp = stamps[indexPath.row]
         
         cell.label.text = stamp.label
-        cell.label.color = UIColor(hex: stamp.color)
+        cell.label.color = stamp.color
         cell.name.text = stamp.name.isEmpty ? "-" : stamp.name
         if stamp.count > 0 {
             cell.count.text = "  \(stamp.count)  "

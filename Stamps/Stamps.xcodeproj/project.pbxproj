@@ -26,6 +26,8 @@
 		BC56440B246B2F5D00942066 /* GoalsDataSourceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56440A246B2F5D00942066 /* GoalsDataSourceListener.swift */; };
 		BC56440D246B309700942066 /* StampsListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56440C246B309700942066 /* StampsListener.swift */; };
 		BC56440F246B30BF00942066 /* StampsDataSourceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56440E246B30BF00942066 /* StampsDataSourceListener.swift */; };
+		BCF23002246FD6F2001E8844 /* CalendarDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF23001246FD6F2001E8844 /* CalendarDataBuilder.swift */; };
+		BCF23005246FD718001E8844 /* CalendarCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF23004246FD718001E8844 /* CalendarCellData.swift */; };
 		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
@@ -137,6 +139,8 @@
 		BC56440A246B2F5D00942066 /* GoalsDataSourceListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsDataSourceListener.swift; sourceTree = "<group>"; };
 		BC56440C246B309700942066 /* StampsListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsListener.swift; sourceTree = "<group>"; };
 		BC56440E246B30BF00942066 /* StampsDataSourceListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsDataSourceListener.swift; sourceTree = "<group>"; };
+		BCF23001246FD6F2001E8844 /* CalendarDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataBuilder.swift; sourceTree = "<group>"; };
+		BCF23004246FD718001E8844 /* CalendarCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCellData.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		F20E403D2443ED25008759D1 /* DTTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableViewModel.swift; sourceTree = "<group>"; };
@@ -314,6 +318,15 @@
 			path = Listeners;
 			sourceTree = "<group>";
 		};
+		BCF23003246FD6F6001E8844 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				BCF23001246FD6F2001E8844 /* CalendarDataBuilder.swift */,
+				BCF23004246FD718001E8844 /* CalendarCellData.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		F20D1F9724142A1D00FB5000 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +404,7 @@
 		F2A5256123D4CEEC00C3E0F3 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				BCF23003246FD6F6001E8844 /* DataSource */,
 				F2B4763123DDF6CD0076BFDC /* Calendar.storyboard */,
 				F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */,
 				F27B045C2426B31E006E5175 /* MonthHeaderView.swift */,
@@ -703,6 +717,7 @@
 				F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */,
 				F2C493242430172D00E997BD /* NotificationManager.swift in Sources */,
 				F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */,
+				BCF23002246FD6F2001E8844 /* CalendarDataBuilder.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* StoredStamp.swift in Sources */,
 				F2C190D22401BD50003F5ABA /* WeekBadgeView.swift in Sources */,
 				BC5643F9246B1C6200942066 /* Period.swift in Sources */,
@@ -718,6 +733,7 @@
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
 				F20E40492443ED25008759D1 /* DTTableViewController.swift in Sources */,
 				F20E404E2443F4C6008759D1 /* DTStyle.swift in Sources */,
+				BCF23005246FD718001E8844 /* CalendarCellData.swift in Sources */,
 				BC564407246B2D0E00942066 /* AwardsDataSourceListener.swift in Sources */,
 				F2B7D35F244C9B3A00C94E63 /* StringExtensions.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,

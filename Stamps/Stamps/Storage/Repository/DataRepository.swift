@@ -49,6 +49,9 @@ protocol DataRepository: class {
     /// Retrieve list of weekly awards given for the week with specific end date
     func weeklyAwardsForWeek(endingOn: Date?) -> [Award]
     
+    /// Retrieve list of monthly awards given for the week with specific end date
+    func monthlyAwardsForWeek(endingOn: Date?) -> [Award]
+    
     /// Retrieve list of monthly awards given for the month of input date
     func monthlyAwardsForMonth(date: Date) -> [Award]
     

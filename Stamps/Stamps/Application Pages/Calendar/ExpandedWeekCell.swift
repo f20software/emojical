@@ -15,28 +15,22 @@ protocol ExpandedWeekCellDelegate {
 
 class ExpandedWeekCell: UITableViewCell {
     
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var mon: UILabel!
-    @IBOutlet weak var tue: UILabel!
-    @IBOutlet weak var wed: UILabel!
-    @IBOutlet weak var thu: UILabel!
-    @IBOutlet weak var fri: UILabel!
-    @IBOutlet weak var sat: UILabel!
-    @IBOutlet weak var sun: UILabel!
-
-    @IBOutlet weak var monStickersView: UIStackView!
-    @IBOutlet weak var tueStickersView: UIStackView!
-    @IBOutlet weak var wedStickersView: UIStackView!
-    @IBOutlet weak var thuStickersView: UIStackView!
-    @IBOutlet weak var friStickersView: UIStackView!
-    @IBOutlet weak var satStickersView: UIStackView!
-    @IBOutlet weak var sunStickersView: UIStackView!
+    // MARK: - Outlets
     
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet var dayLabels: [UILabel]!
+    @IBOutlet var stickersViews: [UIStackView]!
+    @IBOutlet weak var monLabel: UILabel!
+    @IBOutlet weak var sunLabel: UILabel!
+    @IBOutlet weak var satLabel: UILabel!
     @IBOutlet weak var awardBadge: WeekBadgeView!
+    
+    // MARK: - Properties
     
     var delegate: ExpandedWeekCellDelegate?
     var cellIndexPath: IndexPath?
-    var allLabelsBadges: [(UILabel, UIStackView)]!
+    
+    // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,22 +41,12 @@ class ExpandedWeekCell: UITableViewCell {
         selectionStyle = .none
         contentView.backgroundColor = UIColor.systemBackground
         
-        allLabelsBadges = [
-            (mon, monStickersView),
-            (tue, tueStickersView),
-            (wed, wedStickersView),
-            (thu, thuStickersView),
-            (fri, friStickersView),
-            (sat, satStickersView),
-            (sun, sunStickersView)
-        ]
-
         configureLabels()
     }
     
     func configureLabels() {
         // Round corners will not be visible anywhere but on today's day
-        for (label, _) in allLabelsBadges {
+        for label in dayLabels {
             label.layer.cornerRadius = 6
             label.clipsToBounds = true
             label.textColor = UIColor.label
@@ -70,12 +54,11 @@ class ExpandedWeekCell: UITableViewCell {
         }
 
         if CalenderHelper.weekStartMonday {
-            sat.textColor = UIColor.secondaryLabel
-            sun.textColor = UIColor.secondaryLabel
-        }
-        else {
-            mon.textColor = UIColor.secondaryLabel
-            sun.textColor = UIColor.secondaryLabel
+            satLabel.textColor = UIColor.secondaryLabel
+            sunLabel.textColor = UIColor.secondaryLabel
+        } else {
+            monLabel.textColor = UIColor.secondaryLabel
+            sunLabel.textColor = UIColor.secondaryLabel
         }
     }
     
@@ -85,13 +68,13 @@ class ExpandedWeekCell: UITableViewCell {
     }
     
     func configure(_ labels: [String], data: [[StickerData]], awards: [UIColor], indexPath: IndexPath) {
-        for (_, badge) in allLabelsBadges {
-            for view in badge.arrangedSubviews {
+        for stickersView in stickersViews {
+            for view in stickersView.arrangedSubviews {
                 view.removeFromSuperview()
             }
         }
         
-        for (index, views) in allLabelsBadges.enumerated() {
+        for (index, views) in zip(dayLabels, stickersViews).enumerated() {
             let (label, badgeView) = views
             
             if labels[index].starts(with: "*") {
@@ -116,7 +99,7 @@ class ExpandedWeekCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        for (label, _) in allLabelsBadges {
+        for label in dayLabels {
             label.text = nil
         }
         awardBadge.badges = nil

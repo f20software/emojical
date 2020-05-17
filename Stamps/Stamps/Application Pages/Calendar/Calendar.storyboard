@@ -255,45 +255,45 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Y8-wy-g3S">
                                             <rect key="frame" x="30" y="11" width="354" height="20.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOR-F5-H9I">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOR-F5-H9I" userLabel="Monday">
                                                     <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-1r-YkH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-1r-YkH" userLabel="Tuesday">
                                                     <rect key="frame" x="53.5" y="0.0" width="33.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-bO-7HL">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-bO-7HL" userLabel="Wednesday">
                                                     <rect key="frame" x="107" y="0.0" width="33.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97f-h6-2rU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97f-h6-2rU" userLabel="Thrusday">
                                                     <rect key="frame" x="160.5" y="0.0" width="33" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-HG-TfB">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-HG-TfB" userLabel="Friday">
                                                     <rect key="frame" x="213.5" y="0.0" width="33.5" height="20.5"/>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edx-Fb-r9c">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edx-Fb-r9c" userLabel="Saturday">
                                                     <rect key="frame" x="267" y="0.0" width="33.5" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag1-V1-l0R">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag1-V1-l0R" userLabel="Sunday">
                                                     <rect key="frame" x="320.5" y="0.0" width="33.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -318,25 +318,25 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hZp-XE-LwM">
                                             <rect key="frame" x="30" y="39.5" width="354" height="11.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tsY-sV-1hX">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tsY-sV-1hX" userLabel="Monday Stickers">
                                                     <rect key="frame" x="0.0" y="0.0" width="33.5" height="11.5"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UMr-Ir-URn">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UMr-Ir-URn" userLabel="Tuesday Stickers">
                                                     <rect key="frame" x="53.5" y="0.0" width="33.5" height="11.5"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="brl-ey-dX9">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="brl-ey-dX9" userLabel="Wednesday Stickers">
                                                     <rect key="frame" x="107" y="0.0" width="33.5" height="11.5"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qYs-UP-b4E">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qYs-UP-b4E" userLabel="Thursday Stickers">
                                                     <rect key="frame" x="160.5" y="0.0" width="33" height="11.5"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-r2-zaW">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-r2-zaW" userLabel="Friday Stickers">
                                                     <rect key="frame" x="213.5" y="0.0" width="33.5" height="11.5"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-zQ-9ua">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-zQ-9ua" userLabel="Saturday Stickers">
                                                     <rect key="frame" x="267" y="0.0" width="33.5" height="11.5"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-4Z-Ddx">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-4Z-Ddx" userLabel="Sunday Stickers">
                                                     <rect key="frame" x="320.5" y="0.0" width="33.5" height="11.5"/>
                                                 </stackView>
                                             </subviews>
@@ -375,21 +375,24 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="awardBadge" destination="Pu0-jB-vWn" id="WaB-z8-Yy0"/>
-                                    <outlet property="fri" destination="rGL-HG-TfB" id="NaH-aY-jXR"/>
-                                    <outlet property="friStickersView" destination="fDJ-r2-zaW" id="lMe-Qc-Q0e"/>
-                                    <outlet property="mon" destination="XOR-F5-H9I" id="CyC-4r-RVK"/>
-                                    <outlet property="monStickersView" destination="tsY-sV-1hX" id="hwd-Bh-R7a"/>
-                                    <outlet property="sat" destination="edx-Fb-r9c" id="VlA-sx-MwV"/>
-                                    <outlet property="satStickersView" destination="w7n-zQ-9ua" id="I4f-DH-Ha7"/>
+                                    <outlet property="monLabel" destination="XOR-F5-H9I" id="pB9-S4-Ehj"/>
+                                    <outlet property="satLabel" destination="edx-Fb-r9c" id="yvS-Ve-EtO"/>
                                     <outlet property="stackView" destination="6Y8-wy-g3S" id="GFB-mY-IdG"/>
-                                    <outlet property="sun" destination="Ag1-V1-l0R" id="LfJ-AB-Lay"/>
-                                    <outlet property="sunStickersView" destination="mZV-4Z-Ddx" id="587-t4-mIf"/>
-                                    <outlet property="thu" destination="97f-h6-2rU" id="ztr-NZ-6Lz"/>
-                                    <outlet property="thuStickersView" destination="qYs-UP-b4E" id="SDA-AH-oX0"/>
-                                    <outlet property="tue" destination="Xxe-1r-YkH" id="5Be-45-hEp"/>
-                                    <outlet property="tueStickersView" destination="UMr-Ir-URn" id="1ra-ik-IFd"/>
-                                    <outlet property="wed" destination="jro-bO-7HL" id="zQ3-9F-AWB"/>
-                                    <outlet property="wedStickersView" destination="brl-ey-dX9" id="Ub3-2p-x1u"/>
+                                    <outlet property="sunLabel" destination="Ag1-V1-l0R" id="DRY-hE-thB"/>
+                                    <outletCollection property="dayLabels" destination="XOR-F5-H9I" collectionClass="NSMutableArray" id="cMj-Cy-eOV"/>
+                                    <outletCollection property="dayLabels" destination="Xxe-1r-YkH" collectionClass="NSMutableArray" id="vhj-L8-Eps"/>
+                                    <outletCollection property="dayLabels" destination="jro-bO-7HL" collectionClass="NSMutableArray" id="m4j-Mf-h65"/>
+                                    <outletCollection property="dayLabels" destination="97f-h6-2rU" collectionClass="NSMutableArray" id="gKb-Pk-2pP"/>
+                                    <outletCollection property="dayLabels" destination="rGL-HG-TfB" collectionClass="NSMutableArray" id="Y2d-8t-A0v"/>
+                                    <outletCollection property="dayLabels" destination="edx-Fb-r9c" collectionClass="NSMutableArray" id="Tud-xD-AQS"/>
+                                    <outletCollection property="dayLabels" destination="Ag1-V1-l0R" collectionClass="NSMutableArray" id="PcJ-Yn-p8U"/>
+                                    <outletCollection property="stickersViews" destination="tsY-sV-1hX" collectionClass="NSMutableArray" id="shb-pX-Rwv"/>
+                                    <outletCollection property="stickersViews" destination="UMr-Ir-URn" collectionClass="NSMutableArray" id="csN-x7-TaZ"/>
+                                    <outletCollection property="stickersViews" destination="brl-ey-dX9" collectionClass="NSMutableArray" id="etd-KD-c5t"/>
+                                    <outletCollection property="stickersViews" destination="qYs-UP-b4E" collectionClass="NSMutableArray" id="YGC-sV-SXC"/>
+                                    <outletCollection property="stickersViews" destination="fDJ-r2-zaW" collectionClass="NSMutableArray" id="bc8-Rn-g9T"/>
+                                    <outletCollection property="stickersViews" destination="w7n-zQ-9ua" collectionClass="NSMutableArray" id="UaF-Vw-vzA"/>
+                                    <outletCollection property="stickersViews" destination="mZV-4Z-Ddx" collectionClass="NSMutableArray" id="L1A-eo-kwY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

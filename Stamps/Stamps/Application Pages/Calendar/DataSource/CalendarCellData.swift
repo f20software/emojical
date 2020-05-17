@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
+struct StickerData {
+    let label: String
+    let color: UIColor
+}
+
 enum CalendarCellData {
     case header(title: String, monthlyAwards: [Award], weeklyAwards: [Award])
     case compactWeek(labels: [String], data: [[UIColor]], awards: [UIColor])
-    case expandedWeek(labels: [String], data: [[UIColor]], awards: [UIColor])
+    case expandedWeek(labels: [String], data: [[StickerData]], awards: [UIColor])
 }

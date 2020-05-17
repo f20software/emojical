@@ -63,9 +63,9 @@ class CalendarDataBuilder {
             weeklyAwards: weekAwards(forWeek: week)
         )
         
-        let week = CalendarCellData.compactWeek(
+        let week = CalendarCellData.expandedWeek(
             labels: week.labelsForDaysInWeek(),
-            data: weekColorData(week: week),
+            data: weekStickers(week: week).map { $0.map { StickerData(label: $0.label, color: $0.color) } },
             awards: weekAwardColors(forWeek: week)
         )
         
@@ -73,6 +73,17 @@ class CalendarDataBuilder {
     }
     
     // MARK: - Helpers
+    
+    func weekStickers(week: CalenderHelper.Week) -> [[Stamp]] {
+        return (1...7)
+        .map({
+            return Date(year: week.year, month: week.month, weekOfYear: week.weekOfYear, weekDay: $0)
+                .byAddingDays(CalenderHelper.weekStartMonday ? 1 : 0)
+        })
+        .map({ date in
+            repository.stampsIdsForDay(date).compactMap { repository.stampById($0) }
+        })
+    }
     
     // Helper method to go through seven days (some could be empty) and gather just
     // color data from stamps selected for these days
@@ -98,14 +109,11 @@ class CalendarDataBuilder {
     }
     
     func weekColorData(week: CalenderHelper.Week) -> [[UIColor]] {
-        return (1...7)
-            .map({
-                return Date(year: week.year, month: week.month, weekOfYear: week.weekOfYear, weekDay: $0)
-                    .byAddingDays(CalenderHelper.weekStartMonday ? 1 : 0)
-            })
-            .map({ date in
-                repository.stampsIdsForDay(date).map { repository.stampById($0)!.color }
-            })
+        weekStickers(week: week).map { $0.map { $0.color } }
+    }
+    
+    func weekLabelData(week: CalenderHelper.Week) -> [[String]] {
+        weekStickers(week: week).map { $0.map { $0.label } }
     }
     
     // Helper method to go through a week of awards and gather just colors

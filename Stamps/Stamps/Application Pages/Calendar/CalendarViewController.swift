@@ -89,11 +89,12 @@ class CalendarViewController: UITableViewController {
             cell.configure(labels, data: data, awards: awards, indexPath: indexPath)
             cell.delegate = self
             return cell
-        default:
-            assertionFailure("Unsupported cell type")
+        case let .expandedWeek(labels, data, awards):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "expandedWeekCell") as! ExpandedWeekCell
+            cell.configure(labels, data: data, awards: awards, indexPath: indexPath)
+            cell.delegate = self
+            return cell
         }
-        
-        return UITableViewCell()
     }
 
     func showDayView(date: Date, indexPath: IndexPath) {
@@ -205,7 +206,7 @@ extension CalendarViewController {
 }
 
 // MARK: WeekCellDelegate - handling tap on the week day
-extension CalendarViewController : WeekCellDelegate {
+extension CalendarViewController : WeekCellDelegate, ExpandedWeekCellDelegate {
     
     // After day stickers were edited we will refresh whole week that day is part of
     // Since week cells also include weekly awards and these awards are displayed on the right edge of the week

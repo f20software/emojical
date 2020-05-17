@@ -43,7 +43,6 @@ class CalenderHelper {
         var firstWeekDate = repository.getFirstDiaryDate()?.beginningOfWeek
         let lastWeekDate = repository.getLastDiaryDate()?.beginningOfWeek
         
-        
         if firstWeekDate == nil {
             let today = Date()
             weeks.append(Week(today.byAddingWeek(-1)))
@@ -248,7 +247,9 @@ extension CalenderHelper {
         let year: Int
         let month: Int
         let weekOfYear: Int
-        
+
+        private let calendar: Calendar
+
         var lastDay: Date {
             return Date(
                 year: year,
@@ -258,9 +259,7 @@ extension CalenderHelper {
                 calendar: calendar
             )
         }
-        
-        private let calendar: Calendar
-        
+
         init(_ date: Date) {
             self.month = Calendar.current.component(.month, from: date)
             self.year = Calendar.current.component(.year, from: date)
@@ -270,23 +269,23 @@ extension CalenderHelper {
             calendar.firstWeekday = CalenderHelper.weekStartMonday ? 2 : 1
             self.calendar = calendar
         }
-        
+
         var label: String {
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM d"
-            
+
             return [1, 7]
                 .map({ $0 + (CalenderHelper.weekStartMonday ? 1 : 0) })
                 .map({ Date(year: year, month: month, weekOfYear: weekOfYear, weekDay: $0, calendar: calendar) })
                 .map({ formatter.string(from: $0) })
                 .joined(separator: " - ")
         }
-        
+
         func labelsForDaysInWeek() -> [String] {
             let formatter = DateFormatter()
             formatter.dateFormat = "d"
             let today = Date().databaseKey
-            
+
             return (1...7)
                 .map({
                     return Date(year: year, month: month, weekOfYear: weekOfYear, weekDay: $0)
@@ -294,7 +293,6 @@ extension CalenderHelper {
                 })
                 .map({
                     let formatted = formatter.string(from: $0)
-                    
                     if $0.databaseKey == today {
                         return "*\(formatted)"
                     } else {
@@ -302,7 +300,7 @@ extension CalenderHelper {
                     }
                 })
         }
-        
+
         func date(forWeekday day: Int) -> Date? {
             return Date(year: year, month: month, weekOfYear: weekOfYear, weekDay: day + 1)
                 .byAddingDays(CalenderHelper.weekStartMonday ? 1 : 0)

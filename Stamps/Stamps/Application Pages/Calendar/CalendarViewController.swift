@@ -51,7 +51,7 @@ class CalendarViewController: UITableViewController {
     @IBAction func expandToggled(_ sender: AnyObject) {
         styleToggle.title = style.action
         style = !style
-        model = CalendarDataBuilder(repository: repository, calendar: calendar).cells(forStyle: style)
+        prepareData()
         tableView.reloadData()
     }
 
@@ -121,7 +121,7 @@ class CalendarViewController: UITableViewController {
 
             // Recalculate awards
             AwardManager.shared.recalculateAwards(date)
-            self.model = CalendarDataBuilder(repository: self.repository, calendar: self.calendar).cells(forStyle: self.style)
+            self.prepareData()
             
             // Update row.
             self.tableView.reloadRows(at: self.rowsToBeRefreshed(indexPath), with: .fade)
@@ -172,14 +172,12 @@ extension CalendarViewController {
     // animation)
     @objc func refreshAwards(notification: Notification) {
         guard let awards = notification.object as? [Award] else { return }
-        
-        // Update model.
-        model = CalendarDataBuilder(repository: repository, calendar: calendar).cells(forStyle: style)
+        prepareData()
         
         let cellsToRefresh: [IndexPath]? = {
             switch style {
             case .compact:
-                // Refresh each month that award was added to.
+                // Refresh each month cell that award was added to.
                 return awards.compactMap { award -> IndexPath? in
                     guard let (indexPath, _) = self.calendar.indexForDay(date: award.date)
                         else { return nil }

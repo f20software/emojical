@@ -284,14 +284,23 @@ extension CalenderHelper {
         
         func labelsForDaysInWeek() -> [String] {
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd"
+            formatter.dateFormat = "d"
+            let today = Date().databaseKey
             
             return (1...7)
                 .map({
                     return Date(year: year, month: month, weekOfYear: weekOfYear, weekDay: $0)
                         .byAddingDays(CalenderHelper.weekStartMonday ? 1 : 0)
                 })
-                .map({ formatter.string(from: $0) })
+                .map({
+                    let formatted = formatter.string(from: $0)
+                    
+                    if $0.databaseKey == today {
+                        return "*\(formatted)"
+                    } else {
+                        return formatted
+                    }
+                })
         }
         
         func date(forWeekday day: Int) -> Date? {

@@ -13,6 +13,7 @@ protocol ExpandedWeekCellDelegate {
     func dayTapped(_ dayIdx: Int, indexPath: IndexPath)
 }
 
+/// Week cell with all stamps shown below each day.
 class ExpandedWeekCell: UITableViewCell {
     
     // MARK: - Outlets
@@ -85,9 +86,20 @@ class ExpandedWeekCell: UITableViewCell {
             }
             
             for sticker in data[index] {
-                let stickerView = StickerView(frame: CGRect(x: 0, y: 0, width: Specs.stickerSide, height: Specs.stickerSide))
+                let stickerView = StickerView(
+                    frame: CGRect(
+                        x: 0,
+                        y: 0,
+                        width: Specs.stickerSide,
+                        height: Specs.stickerSide
+                    )
+                )
+                
+                stickerView.translatesAutoresizingMaskIntoConstraints = false
                 stickerView.heightAnchor.constraint(equalToConstant: Specs.stickerSide).isActive = true
                 stickerView.widthAnchor.constraint(equalToConstant: Specs.stickerSide).isActive = true
+                
+                stickerView.backgroundColor = UIColor.systemBackground
                 stickerView.text = sticker.label
                 stickerView.color = sticker.color
                 

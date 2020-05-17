@@ -179,12 +179,14 @@ extension CalendarViewController {
         let cellsToRefresh: [IndexPath]? = {
             switch style {
             case .compact:
+                // Refresh each month that award was added to.
                 return awards.compactMap { award -> IndexPath? in
                     guard let (indexPath, _) = self.calendar.indexForDay(date: award.date)
                         else { return nil }
                     return IndexPath(row: 0, section: indexPath.section)
                 }
             case .extended:
+                // Refresh each week cell that award was added to.
                 return awards.compactMap { award -> [IndexPath]? in
                     guard let index = self.calendar.weekIndexForDay(date: award.date)
                         else { return nil }
@@ -216,6 +218,7 @@ extension CalendarViewController : WeekCellDelegate, ExpandedWeekCellDelegate {
     func rowsToBeRefreshed(_ row: IndexPath) -> [IndexPath] {
         switch style {
         case .extended:
+            // Need to refresh the whole month in case awards have been added to/removed from other weeks.
             let editedWeek = calendar.currentWeeks[row.section]
             let rows = calendar.currentWeeks
                 .enumerated()

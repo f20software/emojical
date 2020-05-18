@@ -17,9 +17,11 @@ class CalenderHelper {
     static let shared = CalenderHelper()
 
     private var months = [Month]()
+    private var weeks = [Week]()
     private var repository = Storage.shared.repository
     
     private init() {
+        // Initialize months
         var firstDate = repository.getFirstDiaryDate()?.beginningOfMonth
         let lastDate = repository.getLastDiaryDate()?.beginningOfMonth
         
@@ -30,12 +32,30 @@ class CalenderHelper {
             months.append(Month(today.byAddingMonth(1)))
         }
         else {
-            // months.append(Month(firstDate!.byAddingMonth(-1)))
+            months.append(Month(firstDate!.byAddingMonth(-1)))
             while firstDate! <= lastDate! {
                 months.append(Month(firstDate!))
                 firstDate = firstDate!.byAddingMonth(1)
             }
             months.append(Month(firstDate!))
+        }
+        
+        // Initialize weeks
+        var firstWeekDate = repository.getFirstDiaryDate()?.beginningOfWeek
+        let lastWeekDate = repository.getLastDiaryDate()?.beginningOfWeek
+        
+        if firstWeekDate == nil {
+            let today = Date()
+            weeks.append(Week(today.byAddingWeek(-1)))
+            weeks.append(Week(today))
+            weeks.append(Week(today.byAddingWeek(1)))
+        } else {
+            weeks.append(Week(firstWeekDate!.byAddingWeek(-1)))
+            while firstWeekDate! <= lastWeekDate! {
+                weeks.append(Week(firstWeekDate!))
+                firstWeekDate = firstWeekDate!.byAddingWeek(1)
+            }
+            weeks.append(Week(firstWeekDate!))
         }
     }
     
@@ -61,6 +81,14 @@ class CalenderHelper {
         months.append(Month(Date(year: year, month: month)))
     }
 
+    var currentMonths: [Month] {
+        return months
+    }
+    
+    var currentWeeks: [Week] {
+        return weeks
+    }
+    
     var numberOfMonths: Int {
         return months.count
     }
@@ -80,7 +108,7 @@ class CalenderHelper {
         }
         return nil
     }
-
+    
     // Converts date into section, row and day index representing
     // position for this date in the calendar representation
     func indexForDay(date: Date) -> (IndexPath, Int)? {
@@ -95,6 +123,13 @@ class CalenderHelper {
         // now we add +1 to week index to accomodate the fact that CalendarViewController displays
         // month header on the first row in each section
         return (IndexPath(row: row+1, section: section), month.indexForDay(comps.day!))
+    }
+    
+    func weekIndexForDay(date: Date) -> Int? {
+        let target = Week(date)
+        return weeks.firstIndex(where: { week in
+            week.year == target.year && week.weekOfYear == target.weekOfYear
+        })
     }
     
     func labelForDay(_ date: Date) -> String {
@@ -120,7 +155,6 @@ class CalenderHelper {
 }
 
 extension CalenderHelper {
-
     class Month {
         let month: Int
         let year: Int
@@ -207,6 +241,79 @@ extension CalenderHelper {
                     numberOfWeeks = 6;
                 }
             }
+        }
+    }
+    
+    class Week {
+        let year: Int
+        let month: Int
+        let weekOfYear: Int
+        let label: String
+
+        let firstDay: Date
+        let lastDay: Date
+        
+        init(_ date: Date) {
+            self.month = Calendar.current.component(.month, from: date)
+            self.year = Calendar.current.component(.year, from: date)
+            self.weekOfYear = Calendar.current.component(.weekOfYear, from: date)
+            
+            var calendar = Calendar.current
+            calendar.firstWeekday = CalenderHelper.weekStartMonday ? 2 : 1
+            
+            firstDay = Date(
+                year: year,
+                month: month,
+                weekOfYear: weekOfYear,
+                weekDay: (CalenderHelper.weekStartMonday ? 2 : 1),
+                calendar: calendar
+            )
+            
+            lastDay = Date(
+                year: year,
+                month: month,
+                weekOfYear: weekOfYear,
+                weekDay: (CalenderHelper.weekStartMonday ? 8 : 7),
+                calendar: calendar
+            )
+            
+            // Week label formatting.
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM d"
+            
+            let firstLabel = formatter.string(from: firstDay)
+            
+            // If the week ends on the same month as it begins, we use short label format, like "Month X - Y".
+            // Otherwise we use long label format, like "Month1 X - Month2 Y".
+            if calendar.dateComponents([.month], from: firstDay) == calendar.dateComponents([.month], from: lastDay) {
+                formatter.dateFormat = "d"
+            }
+            let secondLabel = formatter.string(from: lastDay)
+            
+            label = "\(firstLabel) - \(secondLabel)"
+        }
+
+        func labelsForDaysInWeek() -> [String] {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "d"
+            let today = Date().databaseKey
+
+            return (0...6)
+                .map({
+                    return firstDay.byAddingDays($0)
+                })
+                .map({
+                    let formatted = formatter.string(from: $0)
+                    if $0.databaseKey == today {
+                        return "*\(formatted)"
+                    } else {
+                        return formatted
+                    }
+                })
+        }
+
+        func date(forWeekday day: Int) -> Date? {
+            return firstDay.byAddingDays(day)
         }
     }
 }

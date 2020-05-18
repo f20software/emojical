@@ -132,18 +132,25 @@ extension DataSource {
         // Load monthly goals so we can filter awards by their Ids
         let weeklyGoalIds = goalsByPeriod(.week).map({ $0.id! })
         let awards = awardsForDateInterval(from: startOfMonth, to: endOfMonth)
-            .filter({ weeklyGoalIds .contains( $0.goalId )})
+            .filter({ weeklyGoalIds.contains( $0.goalId )})
 
         return awards
     }
 
+    // Retrieve list of monthly awards given for given week.
+    func monthlyAwardsForInterval(start: Date, end: Date) -> [Award] {
+        // Load monthly goals so we can filter awards by their Ids
+        let monthlyGoalIds = goalsByPeriod(.month).map({ $0.id! })
+        let awards = awardsForDateInterval(from: start, to: end)
+            .filter({ monthlyGoalIds.contains( $0.goalId )})
+        return awards
+    }
+    
     // Retrieve list of weekly awards given for the week with specific end date
-    func weeklyAwardsForWeek(endingOn: Date?) -> [Award] {
-        guard let date = endingOn else { return [] }
-        
+    func weeklyAwardsForInterval(start: Date, end: Date) -> [Award] {
         // Load weekly goals so we can filter awards by their Ids
         let weeklyGoalIds = goalsByPeriod(.week).map({ $0.id! })
-        let awards = awardsForDateInterval(from: date.byAddingDays(-6), to: date)
+        let awards = awardsForDateInterval(from: start, to: end)
             .filter({ weeklyGoalIds.contains( $0.goalId )})
         return awards
     }

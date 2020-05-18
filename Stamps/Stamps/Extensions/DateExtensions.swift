@@ -43,6 +43,20 @@ extension Date {
         self = Calendar.current.date(from: comps) ?? Date()
     }
     
+    // Convinience constructor from week of year + week day
+    init(year: Int, month: Int, weekOfYear: Int, weekDay: Int, calendar: Calendar = Calendar.current) {
+        var components = DateComponents()
+        components.year = year
+        components.month = month
+        components.weekOfYear = weekOfYear
+        components.hour = 22
+        components.minute = 0
+        components.second = 0
+        components.weekday = weekDay
+        
+        self = calendar.date(from: components) ?? Date()
+    }
+    
     init(yyyyMmDd: String) {
         let comps = yyyyMmDd.split(separator: "-").map({ Int(String($0))! })
         if comps.count == 3 {
@@ -65,6 +79,13 @@ extension Date {
         return Calendar.current.date(byAdding: comp, to: self)!
     }
     
+    // Shift date by number of month
+    func byAddingWeek(_ weeks: Int) -> Date {
+        var comp = DateComponents()
+        comp.day = 7 * weeks
+        return Calendar.current.date(byAdding: comp, to: self)!
+    }
+    
     // Simple helper property to recognize that date is today
     var isToday: Bool {
         return self.databaseKey == Date().databaseKey
@@ -80,4 +101,8 @@ extension Date {
         return Date(year: comps.year!, month: comps.month!)
     }
 
+    var beginningOfWeek: Date {
+        let comps = Calendar.current.dateComponents([.year, .month, .weekOfYear], from: self)
+        return Date(year: comps.year!, month: comps.month!, weekOfYear: comps.weekOfYear!, weekDay: 1)
+    }
 }

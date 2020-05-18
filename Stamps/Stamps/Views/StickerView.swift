@@ -109,18 +109,27 @@ class StickerView: UIView {
         layer.shadowRadius = 2.0
 
         labelView = UILabel(frame: bounds)
+        labelView.translatesAutoresizingMaskIntoConstraints = false
         labelView.font = UIFont.systemFont(ofSize: (bounds.width * 0.65))
         labelView.textAlignment = .center
         labelView.backgroundColor = UIColor.clear
         addSubview(labelView)
         
         overlayView = UIImageView(frame: bounds)
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
         overlayView.layer.opacity = 0.3
         
         updateState()
         
         // let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         // addGestureRecognizer(tap)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        labelView.frame = CGRect(origin: .zero, size: bounds.size)
+        overlayView.frame = CGRect(origin: .zero, size: bounds.size)
     }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {

@@ -46,8 +46,11 @@ protocol DataRepository: class {
     /// Stamp with given ID
     func stampById(_ id: Int64) -> Stamp?
     
-    /// Retrieve list of weekly awards given for the week with specific end date
-    func weeklyAwardsForWeek(endingOn: Date?) -> [Award]
+    /// Retrieve list of weekly awards given for the week with specific start and end dates
+    func monthlyAwardsForInterval(start: Date, end: Date) -> [Award]
+    
+    /// Retrieve list of monthly awards given for the week with specific start and end dates
+    func weeklyAwardsForInterval(start: Date, end: Date) -> [Award]
     
     /// Retrieve list of monthly awards given for the month of input date
     func monthlyAwardsForMonth(date: Date) -> [Award]

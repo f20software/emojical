@@ -11,14 +11,25 @@ import AudioToolbox
 
 class CalendarViewController: UITableViewController {
 
-    var calendar: CalenderHelper {
+    // MARK: - Outlets
+    
+    @IBOutlet weak var styleToggle: UIBarButtonItem!
+    
+    // MARK: - Private state
+    
+    private var calendar: CalenderHelper {
         return CalenderHelper.shared
     }
     
-    var repository: DataRepository {
+    private var repository: DataRepository {
         return Storage.shared.repository
     }
+    
+    private var model: [[CalendarCellData]] = []
+    private var style: CalendarDataBuilder.Style = .compact
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,22 +42,27 @@ class CalendarViewController: UITableViewController {
         // default header and footer views and hide separators so header and footers are not visible
         tableView.separatorColor = UIColor.clear
         
-        guard let (indexPath, _) = calendar.indexForDay(date: Date()) else { return }
-
-        DispatchQueue.main.async {
-            self.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
-        }
+        prepareData()
+        updateScroll()
+    }
+    
+    // MARK: - Events
+    
+    @IBAction func expandToggled(_ sender: AnyObject) {
+        styleToggle.title = style.action
+        style = !style
+        prepareData()
+        tableView.reloadData()
     }
 
-    // MARK: UITableView
+    // MARK: - UITableView
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return calendar.numberOfMonths
+        return model.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Each month will contain one extra cell at the top to display month header
-        return calendar.monthAt(section).numberOfWeeks + 1
+        return model[section].count
     }
 
     // Minimize header and footer sizes
@@ -59,32 +75,29 @@ class CalendarViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let month = indexPath.section
-        // First row is month header
-        let week = indexPath.row - 1
+        guard model.count > indexPath.section, model[indexPath.section].count > indexPath.row else {
+            return UITableViewCell()
+        }
         
-        // Is this month header?
-        if week < 0 {
+        switch model[indexPath.section][indexPath.row] {
+        case let .header(title, monthlyAwards, weeklyAwards):
             let cell = tableView.dequeueReusableCell(withIdentifier: "monthHeader") as! MonthHeaderView
-            let monthlyAwards = monthAwardColors(monthIdx: month, period: .month)
-            let weeklyAwards = monthAwardColors(monthIdx: month, period: .week)
-            cell.configure(title: calendar.monthAt(month).label, monthlyAwards: monthlyAwards, weeklyAwards: weeklyAwards)
+            cell.configure(title: title, monthlyAwards: monthlyAwards, weeklyAwards: weeklyAwards)
             return cell
-        
-        // Everything else is regular weekly cells
-        } else {
+        case let .compactWeek(labels, data, awards):
             let cell = tableView.dequeueReusableCell(withIdentifier: "weekCell") as! WeekCell
-            let weekLabels = calendar.monthAt(month).labelsForDaysInWeek(week)
-            let weekData = weekColorData(monthIdx: month, weekIdx: week)
-            let awardData = weekAwardColors(monthIdx: month, weekIdx: week)
-            cell.configure(weekLabels, data: weekData, awards: awardData, indexPath: indexPath)
+            cell.configure(labels, data: data, awards: awards, indexPath: indexPath)
+            cell.delegate = self
+            return cell
+        case let .expandedWeek(labels, data, awards):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "expandedWeekCell") as! ExpandedWeekCell
+            cell.configure(labels, data: data, awards: awards, indexPath: indexPath)
             cell.delegate = self
             return cell
         }
     }
 
-    func showDayView(date: Date) {
-        
+    func showDayView(date: Date, indexPath: IndexPath) {
         // Load and configure day detail view controller
         let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
         let dayDetail = storyboard.instantiateViewController(
@@ -94,8 +107,9 @@ class CalendarViewController: UITableViewController {
         // Use the popover presentation style for your view controller.
         dayDetail.modalPresentationStyle = .overFullScreen
         dayDetail.modalTransitionStyle = .coverVertical
-        dayDetail.onDismiss = { (wasUpdated) in
+        dayDetail.onDismiss = { [weak self] (wasUpdated) in
             guard wasUpdated == true else { return }
+            guard let self = self else { return }
                 
             // If it was today's date - post notification that today's entry was updated
             // it will be used by ReminderManager to update reminder notification
@@ -107,15 +121,37 @@ class CalendarViewController: UITableViewController {
 
             // Recalculate awards
             AwardManager.shared.recalculateAwards(date)
+            self.prepareData()
             
-            // Update cell (or cells) in which edited day was shown
-            guard let (indexPath, _) = self.calendar.indexForDay(date: date) else { return }
+            // Update row.
             self.tableView.reloadRows(at: self.rowsToBeRefreshed(indexPath), with: .fade)
         }
         
         // Present the view controller (in a popover).
         self.present(dayDetail, animated: true) {
-          // The popover is visible.
+            // The popover is visible.
+        }
+    }
+    
+    // MARK: - Private helpers
+    
+    private func prepareData() {
+        model = CalendarDataBuilder(repository: repository, calendar: calendar).cells(forStyle: style)
+    }
+    
+    private func updateScroll() {
+        let indexPath: IndexPath? = {
+            switch style {
+            case .compact:
+                return calendar.indexForDay(date: Date())?.0
+            case .extended:
+                return calendar.weekIndexForDay(date: Date()).flatMap({ IndexPath(row: 1, section: $0) })
+            }
+        }()
+        
+        guard let target = indexPath else { return }
+        DispatchQueue.main.async {
+            self.tableView.scrollToRow(at: target, at: .middle, animated: false)
         }
     }
 }
@@ -124,7 +160,10 @@ class CalendarViewController: UITableViewController {
 extension CalendarViewController {
 
     @objc func navigateToToday() {
-        showDayView(date: Date())
+        let today = Date()
+        if let index = self.calendar.indexForDay(date: today) {
+            showDayView(date: today, indexPath: index.0)
+        }
     }
     
     // TODO: This method will be called when award is added or removed
@@ -133,82 +172,41 @@ extension CalendarViewController {
     // animation)
     @objc func refreshAwards(notification: Notification) {
         guard let awards = notification.object as? [Award] else { return }
-
-        var cellsToRefresh = [IndexPath]()
-        for award in awards {
-            guard let (indexPath, _) = self.calendar.indexForDay(date: award.date) else { return }
-            cellsToRefresh.append(IndexPath(row: 0, section: indexPath.section))
-        }
+        prepareData()
+        
+        let cellsToRefresh: [IndexPath]? = {
+            switch style {
+            case .compact:
+                // Refresh each month cell that award was added to.
+                return awards.compactMap { award -> IndexPath? in
+                    guard let (indexPath, _) = self.calendar.indexForDay(date: award.date)
+                        else { return nil }
+                    return IndexPath(row: 0, section: indexPath.section)
+                }
+            case .extended:
+                // Refresh each week cell that award was added to.
+                return awards.compactMap { award -> [IndexPath]? in
+                    guard let index = self.calendar.weekIndexForDay(date: award.date)
+                        else { return nil }
+                    return [IndexPath(row: 0, section: index), IndexPath(row: 1, section: index)]
+                }.flatMap { $0 }
+            }
+        }()
 
         // Refresh cells with a short delay and play a sound
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            self.tableView.reloadRows(at: cellsToRefresh, with: .fade)
+            if let paths = cellsToRefresh {
+                self.tableView.reloadRows(at: paths, with: .fade)
+            } else {
+                self.tableView.reloadData()
+            }
         })
     }
 }
 
-// MARK: - Data extraction
-//
-// Helper methods to get various awards data and organize it in an easy way to
-// consume by table cell views
-extension CalendarViewController {
-
-    // Helper method to go through seven days (some could be empty) and gather just
-    // color data from stamps selected for these days
-    func weekColorData(monthIdx: Int, weekIdx: Int) -> [[UIColor]] {
-        var res = [[UIColor]]()
-        for i in 0..<7 {
-            let date = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: i)
-            // Invalid date? Bail our early
-            if date == nil {
-                res.append([])
-                continue
-            }
-
-            var colors = [UIColor]()
-            for stamp in repository.stampsIdsForDay(date!) {
-                colors.append(repository.stampById(stamp)!.color)
-            }
-            
-            res.append(colors)
-        }
-        
-        return res
-    }
-    
-    // Helper method to go through a week of awards and gather just colors
-    func weekAwardColors(monthIdx: Int, weekIdx: Int) -> [UIColor] {
-        var res = [UIColor]()
-        let dateEnd = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: 6)
-
-        let awards = repository.weeklyAwardsForWeek(endingOn: dateEnd)
-        for award in awards {
-            res.append(repository.colorForAward(award))
-        }
-        
-        return res
-    }
-
-    // Helper method to go through a monthly awards and gather just colors
-    func monthAwardColors(monthIdx: Int, period: Period) -> [Award] {
-        let month = calendar.monthAt(monthIdx)
-        let date = Date(year: month.year, month: month.month)
-
-        let awards = period == .month
-            ? repository.monthlyAwardsForMonth(date: date)
-            : repository.weeklyAwardsForMonth(date: date)
-        let sorted = awards.sorted { (a1, a2) -> Bool in
-            return a1.goalId < a2.goalId
-        }
-
-        return sorted
-    }
-
-}
-
 // MARK: WeekCellDelegate - handling tap on the week day
-extension CalendarViewController : WeekCellDelegate {
+extension CalendarViewController : WeekCellDelegate, ExpandedWeekCellDelegate {
     
     // After day stickers were edited we will refresh whole week that day is part of
     // Since week cells also include weekly awards and these awards are displayed on the right edge of the week
@@ -216,22 +214,42 @@ extension CalendarViewController : WeekCellDelegate {
     // to upate week of 4/1/2020 since end of week for 3/31/2020 will fall into April
     // This method will return two IndexPath objects if such conditions were met
     func rowsToBeRefreshed(_ row: IndexPath) -> [IndexPath] {
-        let endOfWeek = calendar.dateFromIndex(month: row.section, week: row.row-1, day: 6)
-        // If end of week is not part of current month and we still have sections on the celendar
-        // include first week of next month to be refreshed too
-        if endOfWeek == nil && row.section < tableView.numberOfSections {
-            let row2 = IndexPath(row: 1, section: row.section+1)
-            return [row, row2]
+        switch style {
+        case .extended:
+            // Need to refresh the whole month in case awards have been added to/removed from other weeks.
+            let editedWeek = calendar.currentWeeks[row.section]
+            let rows = calendar.currentWeeks
+                .enumerated()
+                .filter({ $0.1.year == editedWeek.year && $0.1.month == editedWeek.month })
+                .flatMap { [IndexPath(row: 0, section: $0.offset), IndexPath(row: 1, section: $0.offset)] }
+            return rows
+        case .compact:
+            let endOfWeek = calendar.dateFromIndex(month: row.section, week: row.row-1, day: 6)
+            // If end of week is not part of current month and we still have sections on the celendar
+            // include first week of next month to be refreshed too
+            if endOfWeek == nil && row.section < tableView.numberOfSections {
+                let row2 = IndexPath(row: 1, section: row.section+1)
+                return [row, row2]
+            }
+            return [row]
         }
-        return [row]
     }
 
     func dayTapped(_ dayIdx: Int, indexPath: IndexPath) {
-        // If tapped outside actual month date - bail out
-        guard let date = calendar.dateFromIndex(month: indexPath.section, week: indexPath.row-1, day: dayIdx) else {
-            return
+        switch style {
+        case .extended:
+            guard let date = calendar.currentWeeks[indexPath.section].date(forWeekday: dayIdx) else {
+                return
+            }
+            
+            showDayView(date: date, indexPath: indexPath)
+        case .compact:
+            // If tapped outside actual month date - bail out
+            guard let date = calendar.dateFromIndex(month: indexPath.section, week: indexPath.row-1, day: dayIdx) else {
+                return
+            }
+            
+            showDayView(date: date, indexPath: indexPath)
         }
-        
-        showDayView(date: date)
     }
 }

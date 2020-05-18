@@ -13,6 +13,7 @@ protocol WeekCellDelegate {
     func dayTapped(_ dayIdx: Int, indexPath: IndexPath)
 }
 
+/// Week cell with colored badge shown below each day.
 class WeekCell: UITableViewCell {
     
     @IBOutlet weak var stackView: UIStackView!

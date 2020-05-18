@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,49 +87,55 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZ0-9c-Tzk">
                                                     <rect key="frame" x="0.0" y="2" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vu8-bD-zNG">
                                                     <rect key="frame" x="53.5" y="2" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1W-RF-Jbd">
                                                     <rect key="frame" x="107" y="2" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ru-Hm-JAX">
                                                     <rect key="frame" x="160.5" y="2" width="33" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHI-jE-eQk">
                                                     <rect key="frame" x="213.5" y="2" width="33.5" height="20.5"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZU-C2-4V7">
                                                     <rect key="frame" x="267" y="2" width="33.5" height="20.5"/>
-                                                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yD5-TO-XZ8">
                                                     <rect key="frame" x="320.5" y="2" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstItem="vu8-bD-zNG" firstAttribute="width" secondItem="dZ0-9c-Tzk" secondAttribute="width" id="575-HL-ouP"/>
                                                 <constraint firstItem="n1W-RF-Jbd" firstAttribute="height" secondItem="dZ0-9c-Tzk" secondAttribute="height" id="7k4-hm-Tra"/>
@@ -180,6 +186,7 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstItem="St7-vs-gHN" firstAttribute="width" secondItem="LDN-dV-k5q" secondAttribute="width" id="2o5-UR-FqX"/>
                                                 <constraint firstItem="cNc-Lp-Qea" firstAttribute="height" secondItem="LDN-dV-k5q" secondAttribute="height" id="4Gh-LE-tv3"/>
@@ -238,13 +245,193 @@
                                     <outlet property="wedBadge" destination="St7-vs-gHN" id="a3T-we-ivu"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expandedWeekCell" rowHeight="62" id="Dk2-ge-uyJ" customClass="ExpandedWeekCell" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="163" width="414" height="62"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dk2-ge-uyJ" id="5KE-E4-hcf">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fpn-5t-eoK" userLabel="Bottom Border">
+                                            <rect key="frame" x="0.0" y="61.5" width="414" height="0.5"/>
+                                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="0.5" id="4OO-LW-cj4"/>
+                                            </constraints>
+                                        </view>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Y8-wy-g3S">
+                                            <rect key="frame" x="30" y="11" width="354" height="20.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOR-F5-H9I" userLabel="Monday">
+                                                    <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-1r-YkH" userLabel="Tuesday">
+                                                    <rect key="frame" x="53.5" y="0.0" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-bO-7HL" userLabel="Wednesday">
+                                                    <rect key="frame" x="107" y="0.0" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97f-h6-2rU" userLabel="Thrusday">
+                                                    <rect key="frame" x="160.5" y="0.0" width="33" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-HG-TfB" userLabel="Friday">
+                                                    <rect key="frame" x="213.5" y="0.0" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edx-Fb-r9c" userLabel="Saturday">
+                                                    <rect key="frame" x="267" y="0.0" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag1-V1-l0R" userLabel="Sunday">
+                                                    <rect key="frame" x="320.5" y="0.0" width="33.5" height="20.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstItem="Xxe-1r-YkH" firstAttribute="width" secondItem="XOR-F5-H9I" secondAttribute="width" id="CKo-nz-7YJ"/>
+                                                <constraint firstItem="Ag1-V1-l0R" firstAttribute="height" secondItem="XOR-F5-H9I" secondAttribute="height" id="Dpg-w8-1vW"/>
+                                                <constraint firstItem="97f-h6-2rU" firstAttribute="height" secondItem="XOR-F5-H9I" secondAttribute="height" id="Fbq-s9-XXK"/>
+                                                <constraint firstItem="rGL-HG-TfB" firstAttribute="height" secondItem="XOR-F5-H9I" secondAttribute="height" id="LiN-tw-ZYb"/>
+                                                <constraint firstItem="97f-h6-2rU" firstAttribute="width" secondItem="XOR-F5-H9I" secondAttribute="width" id="MM1-dP-Q4h"/>
+                                                <constraint firstItem="rGL-HG-TfB" firstAttribute="width" secondItem="XOR-F5-H9I" secondAttribute="width" id="OvD-kT-1Ob"/>
+                                                <constraint firstItem="edx-Fb-r9c" firstAttribute="height" secondItem="XOR-F5-H9I" secondAttribute="height" id="Xie-sf-lWG"/>
+                                                <constraint firstItem="jro-bO-7HL" firstAttribute="width" secondItem="XOR-F5-H9I" secondAttribute="width" id="fWI-c1-ItW"/>
+                                                <constraint firstItem="edx-Fb-r9c" firstAttribute="width" secondItem="XOR-F5-H9I" secondAttribute="width" id="i8M-Ff-gzk"/>
+                                                <constraint firstItem="Ag1-V1-l0R" firstAttribute="width" secondItem="XOR-F5-H9I" secondAttribute="width" id="rAu-xr-JbM"/>
+                                                <constraint firstItem="jro-bO-7HL" firstAttribute="height" secondItem="XOR-F5-H9I" secondAttribute="height" id="uMB-C5-gwB"/>
+                                                <constraint firstItem="Xxe-1r-YkH" firstAttribute="height" secondItem="XOR-F5-H9I" secondAttribute="height" id="wa0-eL-xlX"/>
+                                            </constraints>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hZp-XE-LwM">
+                                            <rect key="frame" x="20" y="39.5" width="374" height="11.5"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tsY-sV-1hX" userLabel="Monday Stickers">
+                                                    <rect key="frame" x="0.0" y="0.0" width="53.5" height="11.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UMr-Ir-URn" userLabel="Tuesday Stickers">
+                                                    <rect key="frame" x="53.5" y="0.0" width="53.5" height="11.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="brl-ey-dX9" userLabel="Wednesday Stickers">
+                                                    <rect key="frame" x="107" y="0.0" width="53.5" height="11.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qYs-UP-b4E" userLabel="Thursday Stickers">
+                                                    <rect key="frame" x="160.5" y="0.0" width="53" height="11.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-r2-zaW" userLabel="Friday Stickers">
+                                                    <rect key="frame" x="213.5" y="0.0" width="53.5" height="11.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-zQ-9ua" userLabel="Saturday Stickers">
+                                                    <rect key="frame" x="267" y="0.0" width="53.5" height="11.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-4Z-Ddx" userLabel="Sunday Stickers">
+                                                    <rect key="frame" x="320.5" y="0.0" width="53.5" height="11.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstItem="w7n-zQ-9ua" firstAttribute="width" secondItem="tsY-sV-1hX" secondAttribute="width" id="4jP-nR-1c6"/>
+                                                <constraint firstItem="mZV-4Z-Ddx" firstAttribute="width" secondItem="tsY-sV-1hX" secondAttribute="width" id="B0G-wZ-hi6"/>
+                                                <constraint firstItem="brl-ey-dX9" firstAttribute="width" secondItem="tsY-sV-1hX" secondAttribute="width" id="QCW-6M-rOl"/>
+                                                <constraint firstItem="qYs-UP-b4E" firstAttribute="width" secondItem="tsY-sV-1hX" secondAttribute="width" id="Rye-wc-HUs"/>
+                                                <constraint firstItem="UMr-Ir-URn" firstAttribute="width" secondItem="tsY-sV-1hX" secondAttribute="width" id="gx1-am-mbs"/>
+                                                <constraint firstItem="fDJ-r2-zaW" firstAttribute="width" secondItem="tsY-sV-1hX" secondAttribute="width" id="hQF-h7-Knk"/>
+                                            </constraints>
+                                        </stackView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pu0-jB-vWn" customClass="WeekBadgeView" customModule="Emojical" customModuleProvider="target">
+                                            <rect key="frame" x="394" y="11" width="0.0" height="40"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" id="R0Q-tD-znb"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Fpn-5t-eoK" secondAttribute="trailing" id="5f8-Ia-UyL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Pu0-jB-vWn" secondAttribute="trailing" id="Dfz-eT-aHR"/>
+                                        <constraint firstItem="6Y8-wy-g3S" firstAttribute="top" secondItem="5KE-E4-hcf" secondAttribute="topMargin" id="E1R-Lp-VQe"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Pu0-jB-vWn" secondAttribute="bottom" id="FIP-DG-0RO"/>
+                                        <constraint firstItem="hZp-XE-LwM" firstAttribute="top" secondItem="6Y8-wy-g3S" secondAttribute="bottom" constant="8" id="H22-q5-Njz"/>
+                                        <constraint firstItem="Pu0-jB-vWn" firstAttribute="leading" secondItem="hZp-XE-LwM" secondAttribute="trailing" id="Tmq-x9-p6o"/>
+                                        <constraint firstItem="Fpn-5t-eoK" firstAttribute="leading" secondItem="5KE-E4-hcf" secondAttribute="leading" id="Ujd-SY-5qx"/>
+                                        <constraint firstItem="hZp-XE-LwM" firstAttribute="leading" secondItem="5KE-E4-hcf" secondAttribute="leadingMargin" id="aAY-V7-10R"/>
+                                        <constraint firstItem="Pu0-jB-vWn" firstAttribute="top" secondItem="5KE-E4-hcf" secondAttribute="topMargin" id="aMU-4c-fgv"/>
+                                        <constraint firstItem="6Y8-wy-g3S" firstAttribute="leading" secondItem="5KE-E4-hcf" secondAttribute="leadingMargin" constant="10" id="bTM-AU-RdP"/>
+                                        <constraint firstAttribute="bottom" secondItem="Fpn-5t-eoK" secondAttribute="bottom" id="cBP-RN-4US"/>
+                                        <constraint firstItem="Pu0-jB-vWn" firstAttribute="leading" secondItem="6Y8-wy-g3S" secondAttribute="trailing" constant="10" id="gp7-fO-6fu"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hZp-XE-LwM" secondAttribute="bottom" id="qao-Rf-6L9"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="awardBadge" destination="Pu0-jB-vWn" id="WaB-z8-Yy0"/>
+                                    <outlet property="monLabel" destination="XOR-F5-H9I" id="pB9-S4-Ehj"/>
+                                    <outlet property="satLabel" destination="edx-Fb-r9c" id="yvS-Ve-EtO"/>
+                                    <outlet property="stackView" destination="6Y8-wy-g3S" id="GFB-mY-IdG"/>
+                                    <outlet property="sunLabel" destination="Ag1-V1-l0R" id="DRY-hE-thB"/>
+                                    <outletCollection property="dayLabels" destination="XOR-F5-H9I" collectionClass="NSMutableArray" id="cMj-Cy-eOV"/>
+                                    <outletCollection property="dayLabels" destination="Xxe-1r-YkH" collectionClass="NSMutableArray" id="vhj-L8-Eps"/>
+                                    <outletCollection property="dayLabels" destination="jro-bO-7HL" collectionClass="NSMutableArray" id="m4j-Mf-h65"/>
+                                    <outletCollection property="dayLabels" destination="97f-h6-2rU" collectionClass="NSMutableArray" id="gKb-Pk-2pP"/>
+                                    <outletCollection property="dayLabels" destination="rGL-HG-TfB" collectionClass="NSMutableArray" id="Y2d-8t-A0v"/>
+                                    <outletCollection property="dayLabels" destination="edx-Fb-r9c" collectionClass="NSMutableArray" id="Tud-xD-AQS"/>
+                                    <outletCollection property="dayLabels" destination="Ag1-V1-l0R" collectionClass="NSMutableArray" id="PcJ-Yn-p8U"/>
+                                    <outletCollection property="stickersViews" destination="tsY-sV-1hX" collectionClass="NSMutableArray" id="shb-pX-Rwv"/>
+                                    <outletCollection property="stickersViews" destination="UMr-Ir-URn" collectionClass="NSMutableArray" id="csN-x7-TaZ"/>
+                                    <outletCollection property="stickersViews" destination="brl-ey-dX9" collectionClass="NSMutableArray" id="etd-KD-c5t"/>
+                                    <outletCollection property="stickersViews" destination="qYs-UP-b4E" collectionClass="NSMutableArray" id="YGC-sV-SXC"/>
+                                    <outletCollection property="stickersViews" destination="fDJ-r2-zaW" collectionClass="NSMutableArray" id="bc8-Rn-g9T"/>
+                                    <outletCollection property="stickersViews" destination="w7n-zQ-9ua" collectionClass="NSMutableArray" id="UaF-Vw-vzA"/>
+                                    <outletCollection property="stickersViews" destination="mZV-4Z-Ddx" collectionClass="NSMutableArray" id="L1A-eo-kwY"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="LGf-oC-4rP" id="bKE-CV-lbO"/>
                             <outlet property="delegate" destination="LGf-oC-4rP" id="KwZ-5z-c3W"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Calendar" id="FB9-Bf-PRK"/>
+                    <navigationItem key="navigationItem" title="Calendar" id="FB9-Bf-PRK">
+                        <barButtonItem key="rightBarButtonItem" title="Expand" style="plain" id="oAY-Zl-nVD">
+                            <connections>
+                                <action selector="expandToggled:" destination="LGf-oC-4rP" id="8Tp-Wk-WbJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="styleToggle" destination="oAY-Zl-nVD" id="Se2-iq-Jbv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Df4-aN-kKr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

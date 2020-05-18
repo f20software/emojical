@@ -117,11 +117,12 @@ class CalendarDataBuilder {
     // Helper method to go through a week of awards and gather just colors
     func weekAwardColors(monthIdx: Int, weekIdx: Int) -> [UIColor] {
         var res = [UIColor]()
-        let dateEnd = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: 6)
-
-        let awards = repository.weeklyAwardsForWeek(endingOn: dateEnd)
-        for award in awards {
-            res.append(repository.colorForAward(award))
+        
+        if let dateEnd = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: 6) {
+            let awards = repository.weeklyAwardsForInterval(start: dateEnd.byAddingDays(-6), end: dateEnd)
+            for award in awards {
+                res.append(repository.colorForAward(award))
+            }
         }
         
         return res
@@ -145,7 +146,7 @@ class CalendarDataBuilder {
     // Returns a list of awards earned on a given week
     func monthAwards(forWeek week: CalenderHelper.Week) -> [Award] {
         return repository
-            .monthlyAwardsForWeek(endingOn: week.lastDay)
+            .monthlyAwardsForInterval(start: week.firstDay, end: week.lastDay)
             .sorted { (a1, a2) -> Bool in
                 return a1.goalId < a2.goalId
             }
@@ -153,7 +154,7 @@ class CalendarDataBuilder {
     
     func weekAwards(forWeek week: CalenderHelper.Week) -> [Award] {
         return repository
-            .weeklyAwardsForWeek(endingOn: week.lastDay)
+            .weeklyAwardsForInterval(start: week.firstDay, end: week.lastDay)
             .sorted { (a1, a2) -> Bool in
                 return a1.goalId < a2.goalId
             }
@@ -161,7 +162,7 @@ class CalendarDataBuilder {
     
     func weekAwardColors(forWeek week: CalenderHelper.Week) -> [UIColor] {
         return repository
-            .weeklyAwardsForWeek(endingOn: week.lastDay)
+            .weeklyAwardsForInterval(start: week.firstDay, end: week.lastDay)
             .map { repository.colorForAward($0) }
     }
     

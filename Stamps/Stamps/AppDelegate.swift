@@ -16,7 +16,6 @@ extension NSNotification.Name {
     static let newAwardsSeen = NSNotification.Name("NewAwardsSeen")
 }
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 

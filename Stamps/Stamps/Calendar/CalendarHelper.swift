@@ -32,6 +32,7 @@ class CalenderHelper {
             months.append(Month(today.byAddingMonth(1)))
         }
         else {
+            months.append(Month(firstDate!.byAddingMonth(-1)))
             while firstDate! <= lastDate! {
                 months.append(Month(firstDate!))
                 firstDate = firstDate!.byAddingMonth(1)
@@ -247,19 +248,11 @@ extension CalenderHelper {
         let year: Int
         let month: Int
         let weekOfYear: Int
+        let label: String
 
-        private let calendar: Calendar
-
-        var lastDay: Date {
-            return Date(
-                year: year,
-                month: month,
-                weekOfYear: weekOfYear,
-                weekDay: 7 + (CalenderHelper.weekStartMonday ? 1 : 0),
-                calendar: calendar
-            )
-        }
-
+        let firstDay: Date
+        let lastDay: Date
+        
         init(_ date: Date) {
             self.month = Calendar.current.component(.month, from: date)
             self.year = Calendar.current.component(.year, from: date)
@@ -267,18 +260,37 @@ extension CalenderHelper {
             
             var calendar = Calendar.current
             calendar.firstWeekday = CalenderHelper.weekStartMonday ? 2 : 1
-            self.calendar = calendar
-        }
-
-        var label: String {
+            
+            firstDay = Date(
+                year: year,
+                month: month,
+                weekOfYear: weekOfYear,
+                weekDay: (CalenderHelper.weekStartMonday ? 2 : 1),
+                calendar: calendar
+            )
+            
+            lastDay = Date(
+                year: year,
+                month: month,
+                weekOfYear: weekOfYear,
+                weekDay: (CalenderHelper.weekStartMonday ? 8 : 7),
+                calendar: calendar
+            )
+            
+            // Week label formatting.
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM d"
-
-            return [1, 7]
-                .map({ $0 + (CalenderHelper.weekStartMonday ? 1 : 0) })
-                .map({ Date(year: year, month: month, weekOfYear: weekOfYear, weekDay: $0, calendar: calendar) })
-                .map({ formatter.string(from: $0) })
-                .joined(separator: " - ")
+            
+            let firstLabel = formatter.string(from: firstDay)
+            
+            // If the week ends on the same month as it begins, we use short label format, like "Month X - Y".
+            // Otherwise we use long label format, like "Month1 X - Month2 Y".
+            if calendar.dateComponents([.month], from: firstDay) == calendar.dateComponents([.month], from: lastDay) {
+                formatter.dateFormat = "d"
+            }
+            let secondLabel = formatter.string(from: lastDay)
+            
+            label = "\(firstLabel) - \(secondLabel)"
         }
 
         func labelsForDaysInWeek() -> [String] {
@@ -286,10 +298,9 @@ extension CalenderHelper {
             formatter.dateFormat = "d"
             let today = Date().databaseKey
 
-            return (1...7)
+            return (0...6)
                 .map({
-                    return Date(year: year, month: month, weekOfYear: weekOfYear, weekDay: $0)
-                        .byAddingDays(CalenderHelper.weekStartMonday ? 1 : 0)
+                    return firstDay.byAddingDays($0)
                 })
                 .map({
                     let formatted = formatter.string(from: $0)
@@ -302,8 +313,7 @@ extension CalenderHelper {
         }
 
         func date(forWeekday day: Int) -> Date? {
-            return Date(year: year, month: month, weekOfYear: weekOfYear, weekDay: day + 1)
-                .byAddingDays(CalenderHelper.weekStartMonday ? 1 : 0)
+            return firstDay.byAddingDays(day)
         }
     }
 }

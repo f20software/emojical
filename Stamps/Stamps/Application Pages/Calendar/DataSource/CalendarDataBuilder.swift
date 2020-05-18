@@ -37,8 +37,8 @@ class CalendarDataBuilder {
     private func cells(forMonth month: CalenderHelper.Month, index: Int) -> [CalendarCellData] {
         let header = CalendarCellData.header(
             title: calendar.monthAt(index).label,
-            monthlyAwards: monthAwardColors(monthIdx: index, period: .month),
-            weeklyAwards: monthAwardColors(monthIdx: index, period: .week)
+            monthlyAwards: monthAwards(monthIdx: index, period: .month),
+            weeklyAwards: monthAwards(monthIdx: index, period: .week)
         )
         
         let weeks: [CalendarCellData] = (0..<(calendar.monthAt(index).numberOfWeeks)).map { weekIndex in
@@ -74,6 +74,7 @@ class CalendarDataBuilder {
     
     // MARK: - Helpers
     
+    // Returns a list of Stamps grouped by day for a given week.
     func weekStickers(week: CalenderHelper.Week) -> [[Stamp]] {
         return (1...7)
         .map({
@@ -108,12 +109,9 @@ class CalendarDataBuilder {
         return res
     }
     
+    // Returns a list of colors based on sticker colors for each day of the week.
     func weekColorData(week: CalenderHelper.Week) -> [[UIColor]] {
         weekStickers(week: week).map { $0.map { $0.color } }
-    }
-    
-    func weekLabelData(week: CalenderHelper.Week) -> [[String]] {
-        weekStickers(week: week).map { $0.map { $0.label } }
     }
     
     // Helper method to go through a week of awards and gather just colors
@@ -130,7 +128,7 @@ class CalendarDataBuilder {
     }
 
     // Helper method to get monthly awards
-    func monthAwardColors(monthIdx: Int, period: Period) -> [Award] {
+    func monthAwards(monthIdx: Int, period: Period) -> [Award] {
         let month = calendar.monthAt(monthIdx)
         let date = Date(year: month.year, month: month.month)
 

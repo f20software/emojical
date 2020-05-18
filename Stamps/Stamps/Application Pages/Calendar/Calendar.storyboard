@@ -259,52 +259,52 @@
                                                 <constraint firstAttribute="height" constant="0.5" id="4OO-LW-cj4"/>
                                             </constraints>
                                         </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Y8-wy-g3S">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Y8-wy-g3S">
                                             <rect key="frame" x="30" y="11" width="354" height="20.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOR-F5-H9I" userLabel="Monday">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOR-F5-H9I" userLabel="Monday">
                                                     <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-1r-YkH" userLabel="Tuesday">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-1r-YkH" userLabel="Tuesday">
                                                     <rect key="frame" x="53.5" y="0.0" width="33.5" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-bO-7HL" userLabel="Wednesday">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-bO-7HL" userLabel="Wednesday">
                                                     <rect key="frame" x="107" y="0.0" width="33.5" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97f-h6-2rU" userLabel="Thrusday">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97f-h6-2rU" userLabel="Thrusday">
                                                     <rect key="frame" x="160.5" y="0.0" width="33" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-HG-TfB" userLabel="Friday">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-HG-TfB" userLabel="Friday">
                                                     <rect key="frame" x="213.5" y="0.0" width="33.5" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edx-Fb-r9c" userLabel="Saturday">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edx-Fb-r9c" userLabel="Saturday">
                                                     <rect key="frame" x="267" y="0.0" width="33.5" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag1-V1-l0R" userLabel="Sunday">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag1-V1-l0R" userLabel="Sunday">
                                                     <rect key="frame" x="320.5" y="0.0" width="33.5" height="20.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -328,35 +328,35 @@
                                                 <constraint firstItem="Xxe-1r-YkH" firstAttribute="height" secondItem="XOR-F5-H9I" secondAttribute="height" id="wa0-eL-xlX"/>
                                             </constraints>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hZp-XE-LwM">
-                                            <rect key="frame" x="30" y="39.5" width="354" height="11.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hZp-XE-LwM">
+                                            <rect key="frame" x="20" y="39.5" width="374" height="11.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tsY-sV-1hX" userLabel="Monday Stickers">
-                                                    <rect key="frame" x="0.0" y="0.0" width="33.5" height="11.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tsY-sV-1hX" userLabel="Monday Stickers">
+                                                    <rect key="frame" x="0.0" y="0.0" width="53.5" height="11.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UMr-Ir-URn" userLabel="Tuesday Stickers">
-                                                    <rect key="frame" x="53.5" y="0.0" width="33.5" height="11.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UMr-Ir-URn" userLabel="Tuesday Stickers">
+                                                    <rect key="frame" x="53.5" y="0.0" width="53.5" height="11.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="brl-ey-dX9" userLabel="Wednesday Stickers">
-                                                    <rect key="frame" x="107" y="0.0" width="33.5" height="11.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="brl-ey-dX9" userLabel="Wednesday Stickers">
+                                                    <rect key="frame" x="107" y="0.0" width="53.5" height="11.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qYs-UP-b4E" userLabel="Thursday Stickers">
-                                                    <rect key="frame" x="160.5" y="0.0" width="33" height="11.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qYs-UP-b4E" userLabel="Thursday Stickers">
+                                                    <rect key="frame" x="160.5" y="0.0" width="53" height="11.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-r2-zaW" userLabel="Friday Stickers">
-                                                    <rect key="frame" x="213.5" y="0.0" width="33.5" height="11.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-r2-zaW" userLabel="Friday Stickers">
+                                                    <rect key="frame" x="213.5" y="0.0" width="53.5" height="11.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-zQ-9ua" userLabel="Saturday Stickers">
-                                                    <rect key="frame" x="267" y="0.0" width="33.5" height="11.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-zQ-9ua" userLabel="Saturday Stickers">
+                                                    <rect key="frame" x="267" y="0.0" width="53.5" height="11.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-4Z-Ddx" userLabel="Sunday Stickers">
-                                                    <rect key="frame" x="320.5" y="0.0" width="33.5" height="11.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-4Z-Ddx" userLabel="Sunday Stickers">
+                                                    <rect key="frame" x="320.5" y="0.0" width="53.5" height="11.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </stackView>
                                             </subviews>
@@ -384,9 +384,9 @@
                                         <constraint firstItem="6Y8-wy-g3S" firstAttribute="top" secondItem="5KE-E4-hcf" secondAttribute="topMargin" id="E1R-Lp-VQe"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Pu0-jB-vWn" secondAttribute="bottom" id="FIP-DG-0RO"/>
                                         <constraint firstItem="hZp-XE-LwM" firstAttribute="top" secondItem="6Y8-wy-g3S" secondAttribute="bottom" constant="8" id="H22-q5-Njz"/>
-                                        <constraint firstItem="Pu0-jB-vWn" firstAttribute="leading" secondItem="hZp-XE-LwM" secondAttribute="trailing" constant="10" id="Tmq-x9-p6o"/>
+                                        <constraint firstItem="Pu0-jB-vWn" firstAttribute="leading" secondItem="hZp-XE-LwM" secondAttribute="trailing" id="Tmq-x9-p6o"/>
                                         <constraint firstItem="Fpn-5t-eoK" firstAttribute="leading" secondItem="5KE-E4-hcf" secondAttribute="leading" id="Ujd-SY-5qx"/>
-                                        <constraint firstItem="hZp-XE-LwM" firstAttribute="leading" secondItem="5KE-E4-hcf" secondAttribute="leadingMargin" constant="10" id="aAY-V7-10R"/>
+                                        <constraint firstItem="hZp-XE-LwM" firstAttribute="leading" secondItem="5KE-E4-hcf" secondAttribute="leadingMargin" id="aAY-V7-10R"/>
                                         <constraint firstItem="Pu0-jB-vWn" firstAttribute="top" secondItem="5KE-E4-hcf" secondAttribute="topMargin" id="aMU-4c-fgv"/>
                                         <constraint firstItem="6Y8-wy-g3S" firstAttribute="leading" secondItem="5KE-E4-hcf" secondAttribute="leadingMargin" constant="10" id="bTM-AU-RdP"/>
                                         <constraint firstAttribute="bottom" secondItem="Fpn-5t-eoK" secondAttribute="bottom" id="cBP-RN-4US"/>

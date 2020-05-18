@@ -101,8 +101,11 @@ extension Date {
         return Date(year: comps.year!, month: comps.month!)
     }
 
-    var beginningOfWeek: Date {
-        let comps = Calendar.current.dateComponents([.year, .month, .weekOfYear], from: self)
-        return Date(year: comps.year!, month: comps.month!, weekOfYear: comps.weekOfYear!, weekDay: 1)
+    /// Returns first weekday of the week that includes receiver's value.
+    /// Since first day depends on the calendar settings, method requires a calendar instance
+    /// that will be used to calculate actual beginning of the week.
+    func beginningOfWeek(inCalendar calendar: Calendar) -> Date {
+        let comps = Calendar.current.dateComponents([.weekday], from: self)
+        return byAddingDays(calendar.firstWeekday - comps.weekday!)
     }
 }

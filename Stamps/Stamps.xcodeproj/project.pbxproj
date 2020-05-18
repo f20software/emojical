@@ -51,7 +51,6 @@
 		F27968F1240C127900EA9436 /* StoredParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F0240C127900EA9436 /* StoredParam.swift */; };
 		F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F2240C12C700EA9436 /* DataSource+Param.swift */; };
 		F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B0450241EBD7A006E5175 /* EmojicalTests.swift */; };
-		F27B0458241EBDA0006E5175 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F27B0459241EBDA3006E5175 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
 		F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045A241EEB48006E5175 /* SelectStampCell.swift */; };
 		F27B045D2426B31E006E5175 /* MonthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045C2426B31E006E5175 /* MonthHeaderView.swift */; };
@@ -702,7 +701,6 @@
 			files = (
 				F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */,
 				F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */,
-				F27B0458241EBDA0006E5175 /* CalendarHelper.swift in Sources */,
 				F27B0459241EBDA3006E5175 /* DateExtensions.swift in Sources */,
 				F20E403A2443E5BC008759D1 /* UIColorExtensions.swift in Sources */,
 			);
@@ -987,6 +985,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1006,6 +1005,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

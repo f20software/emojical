@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Emojical
 
 class EmojicalTests: XCTestCase {
 
@@ -73,7 +74,6 @@ class EmojicalTests: XCTestCase {
     }
     
     func testIndexFromDay() {
-        
         let testData: [Date: (IndexPath, Int)] = [
             Date(year: 2020, month: 2, day: 12): (IndexPath(row: 2, section: 1), 2),
             Date(year: 2020, month: 2, day: 1): (IndexPath(row: 0, section: 1), 5),

@@ -21,28 +21,33 @@ class CalenderHelper {
     private var repository = Storage.shared.repository
     
     private init() {
-        // Initialize months
-        var firstDate = repository.getFirstDiaryDate()?.beginningOfMonth
-        let lastDate = repository.getLastDiaryDate()?.beginningOfMonth
+        // Initialize months.
+        var firstMonthDate = repository.getFirstDiaryDate()?.beginningOfMonth
+        let lastMonthDate = repository.getLastDiaryDate()?.beginningOfMonth
         
-        if firstDate == nil {
+        if firstMonthDate == nil {
             let today = Date()
             months.append(Month(today.byAddingMonth(-1)))
             months.append(Month(today))
             months.append(Month(today.byAddingMonth(1)))
         }
         else {
-            months.append(Month(firstDate!.byAddingMonth(-1)))
-            while firstDate! <= lastDate! {
-                months.append(Month(firstDate!))
-                firstDate = firstDate!.byAddingMonth(1)
+            months.append(Month(firstMonthDate!.byAddingMonth(-1)))
+            while firstMonthDate! <= lastMonthDate! {
+                months.append(Month(firstMonthDate!))
+                firstMonthDate = firstMonthDate!.byAddingMonth(1)
             }
-            months.append(Month(firstDate!))
+            months.append(Month(firstMonthDate!))
         }
         
-        // Initialize weeks
-        var firstWeekDate = repository.getFirstDiaryDate()?.beginningOfWeek
-        let lastWeekDate = repository.getLastDiaryDate()?.beginningOfWeek
+        // Initialize weeks.
+        var calendar = Calendar.current
+        if CalenderHelper.weekStartMonday {
+            calendar.firstWeekday = 2
+        }
+        
+        var firstWeekDate = repository.getFirstDiaryDate()?.beginningOfWeek(inCalendar: calendar)
+        let lastWeekDate = repository.getLastDiaryDate()?.beginningOfWeek(inCalendar: calendar)
         
         if firstWeekDate == nil {
             let today = Date()
@@ -265,7 +270,7 @@ extension CalenderHelper {
                 year: year,
                 month: month,
                 weekOfYear: weekOfYear,
-                weekDay: (CalenderHelper.weekStartMonday ? 2 : 1),
+                weekDay: calendar.firstWeekday,
                 calendar: calendar
             )
             
@@ -273,7 +278,7 @@ extension CalenderHelper {
                 year: year,
                 month: month,
                 weekOfYear: weekOfYear,
-                weekDay: (CalenderHelper.weekStartMonday ? 8 : 7),
+                weekDay: calendar.firstWeekday + 6,
                 calendar: calendar
             )
             

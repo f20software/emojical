@@ -113,8 +113,8 @@ extension DataSource {
     
     // Retrieve list of monthly awards given for the month of input date
     func monthlyAwardsForMonth(date: Date) -> [Award] {
-        let endOfMonth = CalenderHelper.shared.endOfMonth(date: date)
-        let startOfMonth = CalenderHelper.shared.endOfMonth(date: endOfMonth.byAddingMonth(-1)).byAddingDays(1)
+        let endOfMonth = CalendarHelper.shared.endOfMonth(date: date)
+        let startOfMonth = CalendarHelper.shared.endOfMonth(date: endOfMonth.byAddingMonth(-1)).byAddingDays(1)
         
         // Load monthly goals so we can filter awards by their Ids
         let monthlyGoalIds = goalsByPeriod(.month).map({ $0.id! })
@@ -126,8 +126,8 @@ extension DataSource {
 
     // Retrieve list of weekly awards given for the month of input date
     func weeklyAwardsForMonth(date: Date) -> [Award] {
-        let endOfMonth = CalenderHelper.shared.endOfMonth(date: date)
-        let startOfMonth = CalenderHelper.shared.endOfMonth(date: endOfMonth.byAddingMonth(-1)).byAddingDays(1)
+        let endOfMonth = CalendarHelper.shared.endOfMonth(date: date)
+        let startOfMonth = CalendarHelper.shared.endOfMonth(date: endOfMonth.byAddingMonth(-1)).byAddingDays(1)
         
         // Load monthly goals so we can filter awards by their Ids
         let weeklyGoalIds = goalsByPeriod(.week).map({ $0.id! })

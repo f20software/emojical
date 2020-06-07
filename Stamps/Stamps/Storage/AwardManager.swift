@@ -50,7 +50,7 @@ class AwardManager {
             }
 
             // This wil be either last Sunday before first entry or last Sunday before today
-            lastUpdated = CalenderHelper.shared.endOfWeek(date: firstEntryDate!).byAddingDays(-7)
+            lastUpdated = CalendarHelper.shared.endOfWeek(date: firstEntryDate!).byAddingDays(-7)
         }
         
         // TODO: Date comparision! - review how it works with only date components
@@ -72,13 +72,13 @@ class AwardManager {
             }
 
             // This wil be last day of the previous month or last day of month just before first diary entry
-            lastUpdated = CalenderHelper.shared.endOfMonth(date: firstEntryDate!.byAddingMonth(-1))
+            lastUpdated = CalendarHelper.shared.endOfMonth(date: firstEntryDate!.byAddingMonth(-1))
         }
         
         // TODO: Date comparision! - review how it works with only date components
         while (lastUpdated! < Date()) {
             repository.lastMonthUpdate = lastUpdated
-            lastUpdated = CalenderHelper.shared.endOfMonth(date: lastUpdated!.byAddingMonth(1))
+            lastUpdated = CalendarHelper.shared.endOfMonth(date: lastUpdated!.byAddingMonth(1))
             _ = recalculateAwardsForMonth(lastUpdated!)
         }
     }
@@ -90,8 +90,8 @@ class AwardManager {
         
         print("Recalculating monthly awards for \(date.databaseKey)")
 
-        let end = CalenderHelper.shared.endOfMonth(date: date)
-        let start = CalenderHelper.shared.endOfMonth(date: date.byAddingMonth(-1)).byAddingDays(1)
+        let end = CalendarHelper.shared.endOfMonth(date: date)
+        let start = CalendarHelper.shared.endOfMonth(date: date.byAddingMonth(-1)).byAddingDays(1)
         let past = end < Date()
 
         // Save off array of Ids so we can easily filter existing awards by only looking at ones that
@@ -141,7 +141,7 @@ class AwardManager {
 
         print("Recalculating weekly awards for \(date.databaseKey)")
 
-        let end = CalenderHelper.shared.endOfWeek(date: date)
+        let end = CalendarHelper.shared.endOfWeek(date: date)
         let start = end.byAddingDays(-6)
         let past = end < Date()
 
@@ -190,13 +190,13 @@ class AwardManager {
 
         var start, end: Date?
         if goal.period == .week {
-            end = CalenderHelper.shared.endOfWeek(date: Date())
+            end = CalendarHelper.shared.endOfWeek(date: Date())
             start = end!.byAddingDays(-6)
         }
         else { /* if goal.period == .month */
             let today = Date()
-            end = CalenderHelper.shared.endOfMonth(date: today)
-            start = CalenderHelper.shared.endOfMonth(date: today.byAddingMonth(-1)).byAddingDays(1)
+            end = CalendarHelper.shared.endOfMonth(date: today)
+            start = CalendarHelper.shared.endOfMonth(date: today.byAddingMonth(-1)).byAddingDays(1)
 
         }
         

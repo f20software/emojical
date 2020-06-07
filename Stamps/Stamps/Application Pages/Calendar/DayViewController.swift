@@ -30,8 +30,8 @@ class DayViewController : UIViewController {
     
     var locked: Bool = false
     
-    var calendar: CalenderHelper {
-        return CalenderHelper.shared
+    var calendar: CalendarHelper {
+        return CalendarHelper.shared
     }
     
     var repository: DataRepository {

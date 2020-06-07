@@ -70,7 +70,7 @@ class WeekCell: UITableViewCell {
             label.backgroundColor = UIColor.systemBackground
         }
 
-        if CalenderHelper.weekStartMonday {
+        if CalendarHelper.weekStartMonday {
             sat.textColor = UIColor.secondaryLabel
             sun.textColor = UIColor.secondaryLabel
         }

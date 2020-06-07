@@ -54,7 +54,7 @@ class ExpandedWeekCell: UITableViewCell {
             label.backgroundColor = UIColor.systemBackground
         }
 
-        if CalenderHelper.weekStartMonday {
+        if CalendarHelper.weekStartMonday {
             satLabel.textColor = UIColor.secondaryLabel
             sunLabel.textColor = UIColor.secondaryLabel
         } else {

@@ -17,8 +17,8 @@ class CalendarViewController: UITableViewController {
     
     // MARK: - Private state
     
-    private var calendar: CalenderHelper {
-        return CalenderHelper.shared
+    private var calendar: CalendarHelper {
+        return CalendarHelper.shared
     }
     
     private var repository: DataRepository {
@@ -52,6 +52,7 @@ class CalendarViewController: UITableViewController {
         styleToggle.title = style.action
         style = !style
         prepareData()
+        updateScroll()
         tableView.reloadData()
     }
 

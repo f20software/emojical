@@ -12,9 +12,9 @@ import UIKit
 class CalendarDataBuilder {
     
     private let repository: DataRepository
-    private let calendar: CalenderHelper
+    private let calendar: CalendarHelper
     
-    init(repository: DataRepository, calendar: CalenderHelper) {
+    init(repository: DataRepository, calendar: CalendarHelper) {
         self.repository = repository
         self.calendar = calendar
     }
@@ -30,11 +30,11 @@ class CalendarDataBuilder {
     
     // MARK: - Private
     
-    private func cellsForMonths(months: [CalenderHelper.Month]) -> [[CalendarCellData]] {
+    private func cellsForMonths(months: [CalendarHelper.Month]) -> [[CalendarCellData]] {
         months.enumerated().map { cells(forMonth: $0.1, index: $0.0) }
     }
     
-    private func cells(forMonth month: CalenderHelper.Month, index: Int) -> [CalendarCellData] {
+    private func cells(forMonth month: CalendarHelper.Month, index: Int) -> [CalendarCellData] {
         let header = CalendarCellData.header(
             title: calendar.monthAt(index).label,
             monthlyAwards: monthAwards(monthIdx: index, period: .month),
@@ -52,11 +52,11 @@ class CalendarDataBuilder {
         return [header] + weeks
     }
     
-    private func cellsForWeeks(weeks: [CalenderHelper.Week]) -> [[CalendarCellData]] {
+    private func cellsForWeeks(weeks: [CalendarHelper.Week]) -> [[CalendarCellData]] {
         weeks.map { cells(forWeek: $0) }
     }
     
-    private func cells(forWeek week: CalenderHelper.Week) -> [CalendarCellData] {
+    private func cells(forWeek week: CalendarHelper.Week) -> [CalendarCellData] {
         let header = CalendarCellData.header(
             title: week.label,
             monthlyAwards: monthAwards(forWeek: week),
@@ -75,11 +75,11 @@ class CalendarDataBuilder {
     // MARK: - Helpers
     
     // Returns a list of Stamps grouped by day for a given week.
-    func weekStickers(week: CalenderHelper.Week) -> [[Stamp]] {
+    func weekStickers(week: CalendarHelper.Week) -> [[Stamp]] {
         return (1...7)
         .map({
             return Date(year: week.year, month: week.month, weekOfYear: week.weekOfYear, weekDay: $0)
-                .byAddingDays(CalenderHelper.weekStartMonday ? 1 : 0)
+                .byAddingDays(CalendarHelper.weekStartMonday ? 1 : 0)
         })
         .map({ date in
             repository.stampsIdsForDay(date).compactMap { repository.stampById($0) }
@@ -109,9 +109,12 @@ class CalendarDataBuilder {
         return res
     }
     
-    // Returns a list of colors based on sticker colors for each day of the week.
-    func weekColorData(week: CalenderHelper.Week) -> [[UIColor]] {
+    func weekColorData(week: CalendarHelper.Week) -> [[UIColor]] {
         weekStickers(week: week).map { $0.map { $0.color } }
+    }
+    
+    func weekLabelData(week: CalendarHelper.Week) -> [[String]] {
+        weekStickers(week: week).map { $0.map { $0.label } }
     }
     
     // Helper method to go through a week of awards and gather just colors
@@ -144,7 +147,7 @@ class CalendarDataBuilder {
     }
     
     // Returns a list of awards earned on a given week
-    func monthAwards(forWeek week: CalenderHelper.Week) -> [Award] {
+    func monthAwards(forWeek week: CalendarHelper.Week) -> [Award] {
         return repository
             .monthlyAwardsForInterval(start: week.firstDay, end: week.lastDay)
             .sorted { (a1, a2) -> Bool in
@@ -152,7 +155,7 @@ class CalendarDataBuilder {
             }
     }
     
-    func weekAwards(forWeek week: CalenderHelper.Week) -> [Award] {
+    func weekAwards(forWeek week: CalendarHelper.Week) -> [Award] {
         return repository
             .weeklyAwardsForInterval(start: week.firstDay, end: week.lastDay)
             .sorted { (a1, a2) -> Bool in
@@ -160,7 +163,7 @@ class CalendarDataBuilder {
             }
     }
     
-    func weekAwardColors(forWeek week: CalenderHelper.Week) -> [UIColor] {
+    func weekAwardColors(forWeek week: CalendarHelper.Week) -> [UIColor] {
         return repository
             .weeklyAwardsForInterval(start: week.firstDay, end: week.lastDay)
             .map { repository.colorForAward($0) }

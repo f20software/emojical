@@ -8,22 +8,27 @@
 
 import Foundation
 
-class CalenderHelper {
+class CalendarHelper {
 
     // We will add configuration later where user can choose whether to have Mon...Sun weeks of Sun...Sat
     static var weekStartMonday = true
     
     // Singleton instance
-    static let shared = CalenderHelper()
+    static var shared: CalendarHelper! {
+        willSet {
+            if shared != nil {
+                assertionFailure("Calendar helper should be initialized once per application launch")
+            }
+        }
+    }
 
     private var months = [Month]()
     private var weeks = [Week]()
-    private var repository = Storage.shared.repository
     
-    private init() {
+    init(from: Date?, to: Date?) {
         // Initialize months.
-        var firstMonthDate = repository.getFirstDiaryDate()?.beginningOfMonth
-        let lastMonthDate = repository.getLastDiaryDate()?.beginningOfMonth
+        var firstMonthDate = from?.beginningOfMonth
+        let lastMonthDate = to?.beginningOfMonth
         
         if firstMonthDate == nil {
             let today = Date()
@@ -42,12 +47,12 @@ class CalenderHelper {
         
         // Initialize weeks.
         var calendar = Calendar.current
-        if CalenderHelper.weekStartMonday {
+        if CalendarHelper.weekStartMonday {
             calendar.firstWeekday = 2
         }
         
-        var firstWeekDate = repository.getFirstDiaryDate()?.beginningOfWeek(inCalendar: calendar)
-        let lastWeekDate = repository.getLastDiaryDate()?.beginningOfWeek(inCalendar: calendar)
+        var firstWeekDate = from?.beginningOfWeek(inCalendar: calendar)
+        let lastWeekDate = to?.beginningOfWeek(inCalendar: calendar)
         
         if firstWeekDate == nil {
             let today = Date()
@@ -159,7 +164,7 @@ class CalenderHelper {
     }
 }
 
-extension CalenderHelper {
+extension CalendarHelper {
     class Month {
         let month: Int
         let year: Int
@@ -189,7 +194,7 @@ extension CalenderHelper {
 
         // Returns index specific month days fall into (used in AwardManager to detect week that day falls into)
         func indexForDay(_ day: Int) -> Int {
-            return (day % 7 + firstIndex - 1) % 7
+            return (day % 7 + firstIndex + 6) % 7
         }
         
         func labelsForDaysInWeek(_ weekIdx: Int) -> [String] {
@@ -264,7 +269,7 @@ extension CalenderHelper {
             self.weekOfYear = Calendar.current.component(.weekOfYear, from: date)
             
             var calendar = Calendar.current
-            calendar.firstWeekday = CalenderHelper.weekStartMonday ? 2 : 1
+            calendar.firstWeekday = CalendarHelper.weekStartMonday ? 2 : 1
             
             firstDay = Date(
                 year: year,

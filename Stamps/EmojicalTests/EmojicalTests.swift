@@ -78,25 +78,37 @@ class EmojicalTests: XCTestCase {
     }
     
     func testIndexFromDay() {
-        /// Date -> week index (1 - first), day index - (0 - first column)
-        let testData: [Date: (Int, Int)] = [
-            Date(year: 2020, month: 2, day: 12): (3, 2),
-            Date(year: 2020, month: 2, day: 1): (1, 5),
-            Date(year: 2020, month: 2, day: 29): (5, 5),
-            Date(year: 2020, month: 3, day: 1): (1, 6),
-            Date(year: 2020, month: 3, day: 15): (3, 6),
-            Date(year: 2020, month: 3, day: 30): (6, 0),
-            Date(year: 2020, month: 6, day: 7): (1, 6),
-        ]
-        
-        for date in testData.keys {
-            print(date.databaseKey)
-            let result = CalendarHelper.shared.indexForDay(date: date)
-            /// XCTAssertEqual(result!.0.section, testData[date]!.0.section)
-            XCTAssertEqual(result!.0.row, testData[date]!.0)
-            XCTAssertEqual(result!.1, testData[date]!.1)
-        }
+        var date = Date(year: 2020, month: 1, day: 1)
+        let res = CalendarHelper.shared.indexForDay(date: date)
+        var weekIdx = res!.0.row
+        var dayIdx = res!.1
 
+        /// Going through all 2020 year and comparing day and week index to what it shoud be
+        /// if we will increment them one by one
+        for _ in 0...1000 {
+            let oldMonth = Calendar.current.component(.month, from: date)
+            date = date.byAddingDays(1)
+            let newMonth = Calendar.current.component(.month, from: date)
+            
+            if newMonth == oldMonth {
+                dayIdx = dayIdx + 1
+                if dayIdx == 7 {
+                    dayIdx = 0
+                    weekIdx = weekIdx + 1
+                }
+            }
+            else {
+                dayIdx = dayIdx + 1
+                if dayIdx == 7 {
+                    dayIdx = 0
+                }
+                weekIdx = 1
+            }
+            
+            let test = CalendarHelper.shared.indexForDay(date: date)
+            XCTAssert(test!.0.row == weekIdx, "Week index failed for \(date)")
+            XCTAssert(test!.1 == dayIdx, "Day index failed for \(date)")
+        }
     }
 
 //    func testPerformanceExample() {

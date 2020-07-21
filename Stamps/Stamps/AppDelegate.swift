@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         /// Setup calendar helper using first and last recorded diary entries
         CalendarHelper.shared = CalendarHelper(
             from: Storage.shared.repository.getFirstDiaryDate() ?? Date(year: 2020, month: 1, day: 20),
-            to: Storage.shared.repository.getLastDiaryDate() ?? Date(year: 2020, month: 11, day: 20))
+            to: Storage.shared.repository.getLastDiaryDate() ?? Date(year: 2022, month: 11, day: 20))
         
         AwardManager.shared.recalculateOnAppResume()
 

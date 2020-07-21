@@ -48,6 +48,7 @@
 		F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541C23E5DF6B006A13C3 /* Palette.swift */; };
 		F247542523E734CE006A13C3 /* AwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542423E734CE006A13C3 /* AwardManager.swift */; };
 		F247542723E74C49006A13C3 /* StoredAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542623E74C49006A13C3 /* StoredAward.swift */; };
+		F24B07C624C547B500FFD798 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24B07C524C547B500FFD798 /* Today.storyboard */; };
 		F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
 		F27968F1240C127900EA9436 /* StoredParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F0240C127900EA9436 /* StoredParam.swift */; };
 		F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F2240C12C700EA9436 /* DataSource+Param.swift */; };
@@ -56,6 +57,7 @@
 		F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045A241EEB48006E5175 /* SelectStampCell.swift */; };
 		F27B045D2426B31E006E5175 /* MonthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045C2426B31E006E5175 /* MonthHeaderView.swift */; };
 		F27B04612426B8FA006E5175 /* DayBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B04602426B8FA006E5175 /* DayBadgeView.swift */; };
+		F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280878C24C6BD00003E864E /* TodayViewController.swift */; };
 		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
@@ -160,6 +162,7 @@
 		F247541C23E5DF6B006A13C3 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		F247542423E734CE006A13C3 /* AwardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardManager.swift; sourceTree = "<group>"; };
 		F247542623E74C49006A13C3 /* StoredAward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredAward.swift; sourceTree = "<group>"; };
+		F24B07C524C547B500FFD798 /* Today.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
 		F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		F27968F0240C127900EA9436 /* StoredParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredParam.swift; sourceTree = "<group>"; };
 		F27968F2240C12C700EA9436 /* DataSource+Param.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Param.swift"; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 		F27B045A241EEB48006E5175 /* SelectStampCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStampCell.swift; sourceTree = "<group>"; };
 		F27B045C2426B31E006E5175 /* MonthHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthHeaderView.swift; sourceTree = "<group>"; };
 		F27B04602426B8FA006E5175 /* DayBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayBadgeView.swift; sourceTree = "<group>"; };
+		F280878C24C6BD00003E864E /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -377,6 +381,15 @@
 			path = ../../DynamicTables;
 			sourceTree = "<group>";
 		};
+		F24B07C724C547C300FFD798 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				F280878C24C6BD00003E864E /* TodayViewController.swift */,
+				F24B07C524C547B500FFD798 /* Today.storyboard */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
 		F26B273823D80CB000B8D0F9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +467,7 @@
 		F2B4763423DE3C300076BFDC /* Application Pages */ = {
 			isa = PBXGroup;
 			children = (
+				F24B07C724C547C300FFD798 /* Today */,
 				F20E403B2443E681008759D1 /* Main */,
 				F2A5256123D4CEEC00C3E0F3 /* Calendar */,
 				F2A99D2B243A78ED00D3CF1D /* Awards */,
@@ -685,6 +699,7 @@
 				F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */,
 				F2A99D2D243A790600D3CF1D /* Awards.storyboard in Resources */,
 				F2B7D35B244B47FE00C94E63 /* DTTableViewCell-Emoji.xib in Resources */,
+				F24B07C624C547B500FFD798 /* Today.storyboard in Resources */,
 				F2A21C12244271130030A117 /* Options.storyboard in Resources */,
 				F2FC633B2447FF4F00EF41AD /* DTTableViewCell-Label.xib in Resources */,
 				F2FC632E2446B4F000EF41AD /* DTTableViewCell-Segmented.xib in Resources */,
@@ -734,6 +749,7 @@
 				F2C493262430179500E997BD /* LocalSettings.swift in Sources */,
 				F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */,
 				BC5643F3246B0FCE00942066 /* Award.swift in Sources */,
+				F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */,
 				BC5643FB246B1C8300942066 /* Direction.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
 				BCF2300B24712DB6001E8844 /* ExpandedWeekCell.swift in Sources */,

@@ -77,7 +77,7 @@ extension DataSource {
             return try dbQueue.read { db in
                 let request = StoredDiary
                     .filter(StoredDiary.Columns.date == day.databaseKey)
-                    .order(StoredDiary.Columns.stampId)
+                    // .order(StoredDiary.Columns.)
                 let allrecs = try request.fetchAll(db)
                 return allrecs.map({ $0.stampId })
             }

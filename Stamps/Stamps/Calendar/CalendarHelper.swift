@@ -264,12 +264,12 @@ extension CalendarHelper {
         let lastDay: Date
         
         init(_ date: Date) {
-            self.month = Calendar.current.component(.month, from: date)
-            self.year = Calendar.current.component(.year, from: date)
-            self.weekOfYear = Calendar.current.component(.weekOfYear, from: date)
-            
             var calendar = Calendar.current
             calendar.firstWeekday = CalendarHelper.weekStartMonday ? 2 : 1
+
+            self.month = calendar.component(.month, from: date)
+            self.year = calendar.component(.year, from: date)
+            self.weekOfYear = calendar.component(.weekOfYear, from: date)
             
             firstDay = Date(
                 year: year,
@@ -301,6 +301,7 @@ extension CalendarHelper {
             let secondLabel = formatter.string(from: lastDay)
             
             label = "\(firstLabel) - \(secondLabel)"
+            print(date, weekOfYear, label)
         }
 
         func labelsForDaysInWeek() -> [String] {

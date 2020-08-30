@@ -147,6 +147,8 @@ class CalendarViewController: UITableViewController {
                 return calendar.indexForDay(date: Date())?.0
             case .extended:
                 return calendar.weekIndexForDay(date: Date()).flatMap({ IndexPath(row: 1, section: $0) })
+            case .today:
+                return nil
             }
         }()
         
@@ -191,6 +193,8 @@ extension CalendarViewController {
                         else { return nil }
                     return [IndexPath(row: 0, section: index), IndexPath(row: 1, section: index)]
                 }.flatMap { $0 }
+            case .today:
+                return nil
             }
         }()
 
@@ -233,6 +237,8 @@ extension CalendarViewController : WeekCellDelegate, ExpandedWeekCellDelegate {
                 return [row, row2]
             }
             return [row]
+        case .today:
+            return []
         }
     }
 
@@ -251,6 +257,8 @@ extension CalendarViewController : WeekCellDelegate, ExpandedWeekCellDelegate {
             }
             
             showDayView(date: date, indexPath: indexPath)
+        case .today:
+            return 
         }
     }
 }

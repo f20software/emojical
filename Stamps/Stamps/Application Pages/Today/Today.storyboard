@@ -445,14 +445,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 27 - August 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntc-mg-Dfb">
-                                <rect key="frame" x="16" y="15" width="382" height="33.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="BV3-tF-WFD">
-                                <rect key="frame" x="16" y="63.5" width="382" height="86"/>
+                                <rect key="frame" x="16" y="20" width="382" height="86"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5l-eD-wpg">
                                         <rect key="frame" x="0.0" y="0.0" width="49.5" height="86"/>
@@ -747,14 +741,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="BV3-tF-WFD" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="20" id="4mL-JA-bIC"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="leading" secondItem="BV3-tF-WFD" secondAttribute="leading" id="Ff5-od-DV2"/>
-                            <constraint firstItem="BV3-tF-WFD" firstAttribute="top" secondItem="Ntc-mg-Dfb" secondAttribute="bottom" constant="15" id="HSW-6k-oJv"/>
-                            <constraint firstItem="BV3-tF-WFD" firstAttribute="trailing" secondItem="Ntc-mg-Dfb" secondAttribute="trailing" id="Hma-ds-S47"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" id="XJd-Zd-x36"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="kD0-4R-gft" secondAttribute="bottom" constant="16" id="be8-Zf-eJO"/>
-                            <constraint firstItem="Ntc-mg-Dfb" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="15" id="ja6-i9-cAi"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="16" id="mkI-ZR-9mP"/>
-                            <constraint firstItem="BV3-tF-WFD" firstAttribute="leading" secondItem="Ntc-mg-Dfb" secondAttribute="leading" id="pTz-I8-fXl"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" constant="16" id="yRc-Oy-2D7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JNE-f6-5U0"/>
@@ -794,7 +785,6 @@
                         <outlet property="stamp8" destination="ZLx-Rk-kSS" id="SgX-mJ-MKx"/>
                         <outlet property="stamp9" destination="2E0-nb-EAm" id="S7v-K8-31Q"/>
                         <outlet property="stampsPlate" destination="kD0-4R-gft" id="Iod-r8-IGH"/>
-                        <outlet property="titleLabel" destination="Ntc-mg-Dfb" id="x29-0C-sUP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2j-Q2-fD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

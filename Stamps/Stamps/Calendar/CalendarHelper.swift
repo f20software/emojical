@@ -219,7 +219,6 @@ extension CalendarHelper {
             return res
         }
 
-        
         func recalculateWeeks() {
             let calendar = Calendar.current
             
@@ -320,6 +319,28 @@ extension CalendarHelper {
                     } else {
                         return formatted
                     }
+                })
+        }
+
+        func dayHeadersForWeek() -> [DayHeaderData] {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "d"
+            let today = Date().databaseKey
+
+            return (0...6)
+                .map({
+                    return firstDay.byAddingDays($0)
+                })
+                .map({
+                    formatter.dateFormat = "d"
+                    let dayNum = formatter.string(from: $0)
+                    formatter.dateFormat = "E"
+                    let weekday = formatter.string(from: $0)
+                    return DayHeaderData(
+                        dayNum: dayNum,
+                        dayName: weekday,
+                        isCurrent: $0.databaseKey == today,
+                        isWeekend: $0.isWeekend)
                 })
         }
 

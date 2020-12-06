@@ -14,6 +14,8 @@ struct StickerData {
     let color: UIColor
 }
 
+extension StickerData: Equatable, Hashable {}
+
 enum CalendarCellData {
     case header(title: String, monthlyAwards: [Award], weeklyAwards: [Award])
     case compactWeek(labels: [String], data: [[UIColor]], awards: [UIColor])

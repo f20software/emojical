@@ -30,6 +30,15 @@ class CalendarDataBuilder {
         }
     }
     
+    func weekDataForToday() -> [DayColumnData] {
+        let week = calendar.currentWeeks[calendar.weekIndexForDay(date: Date())!]
+
+        let labels = week.dayHeadersForWeek()
+        let stickers = weekStickers(week: week).map { $0.map { StickerData(label: $0.label, color: $0.color) } }
+
+        return zip(labels, stickers).map({ return DayColumnData(header: $0, stamps: $1) })
+    }
+    
     // MARK: - Private
     
     private func cellsForMonths(months: [CalendarHelper.Month]) -> [[CalendarCellData]] {
@@ -60,6 +69,7 @@ class CalendarDataBuilder {
     
     private func cellsForWeek(week: CalendarHelper.Week) -> [CalendarCellData] {
         cells(forWeek: week)
+        // daysData(for: week)
     }
     
     private func cells(forWeek week: CalendarHelper.Week) -> [CalendarCellData] {

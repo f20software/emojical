@@ -98,6 +98,15 @@
 		F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */; };
 		F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */; };
 		F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */; };
+		F2F3BE18257C267900A926E9 /* DayColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE17257C267900A926E9 /* DayColumnView.swift */; };
+		F2F3BE1F257C831000A926E9 /* DayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE1D257C831000A926E9 /* DayHeaderCell.swift */; };
+		F2F3BE20257C831000A926E9 /* DayHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F3BE1E257C831000A926E9 /* DayHeaderCell.xib */; };
+		F2F3BE25257D353D00A926E9 /* DayStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE23257D353D00A926E9 /* DayStampCell.swift */; };
+		F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F3BE24257D353D00A926E9 /* DayStampCell.xib */; };
+		F2F3BE3E257D489D00A926E9 /* DayHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */; };
+		F2F3BE3F257D489D00A926E9 /* DayElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3D257D489D00A926E9 /* DayElement.swift */; };
+		F2F3BE4A257D492300A926E9 /* DayColumnData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE49257D492300A926E9 /* DayColumnData.swift */; };
+		F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */; };
 		F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F449232430291B005AD6B9 /* MainViewController.swift */; };
 		F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */; };
 		F2FC632E2446B4F000EF41AD /* DTTableViewCell-Segmented.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FC632D2446B4F000EF41AD /* DTTableViewCell-Segmented.xib */; };
@@ -214,6 +223,15 @@
 		F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Goal.swift"; sourceTree = "<group>"; };
 		F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Diary.swift"; sourceTree = "<group>"; };
 		F2F260F22408D90200F5CCB9 /* DataSource+Award.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Award.swift"; sourceTree = "<group>"; };
+		F2F3BE17257C267900A926E9 /* DayColumnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayColumnView.swift; sourceTree = "<group>"; };
+		F2F3BE1D257C831000A926E9 /* DayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeaderCell.swift; sourceTree = "<group>"; };
+		F2F3BE1E257C831000A926E9 /* DayHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayHeaderCell.xib; sourceTree = "<group>"; };
+		F2F3BE23257D353D00A926E9 /* DayStampCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStampCell.swift; sourceTree = "<group>"; };
+		F2F3BE24257D353D00A926E9 /* DayStampCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayStampCell.xib; sourceTree = "<group>"; };
+		F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHeaderData.swift; sourceTree = "<group>"; };
+		F2F3BE3D257D489D00A926E9 /* DayElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayElement.swift; sourceTree = "<group>"; };
+		F2F3BE49257D492300A926E9 /* DayColumnData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayColumnData.swift; sourceTree = "<group>"; };
+		F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSelectorView.swift; sourceTree = "<group>"; };
 		F2F449232430291B005AD6B9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+ImportExport.swift"; sourceTree = "<group>"; };
 		F2FC632D2446B4F000EF41AD /* DTTableViewCell-Segmented.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Segmented.xib"; sourceTree = "<group>"; };
@@ -384,8 +402,11 @@
 		F24B07C724C547C300FFD798 /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				F280878C24C6BD00003E864E /* TodayViewController.swift */,
 				F24B07C524C547B500FFD798 /* Today.storyboard */,
+				F2F3BE44257D48F900A926E9 /* Model */,
+				F2F3BE39257D482D00A926E9 /* Cells */,
+				F2F3BE59257D65AE00A926E9 /* Views */,
+				F280878C24C6BD00003E864E /* TodayViewController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -550,6 +571,36 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		F2F3BE39257D482D00A926E9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F2F3BE1E257C831000A926E9 /* DayHeaderCell.xib */,
+				F2F3BE1D257C831000A926E9 /* DayHeaderCell.swift */,
+				F2F3BE24257D353D00A926E9 /* DayStampCell.xib */,
+				F2F3BE23257D353D00A926E9 /* DayStampCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F2F3BE44257D48F900A926E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2F3BE3D257D489D00A926E9 /* DayElement.swift */,
+				F2F3BE49257D492300A926E9 /* DayColumnData.swift */,
+				F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2F3BE59257D65AE00A926E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F2F3BE17257C267900A926E9 /* DayColumnView.swift */,
+				F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F2FC632C2446959E00EF41AD /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,8 +755,10 @@
 				F2FC633B2447FF4F00EF41AD /* DTTableViewCell-Label.xib in Resources */,
 				F2FC632E2446B4F000EF41AD /* DTTableViewCell-Segmented.xib in Resources */,
 				F2FC63322446B50A00EF41AD /* DTTableViewCell-TextField.xib in Resources */,
+				F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */,
 				F2B4763223DDF6CD0076BFDC /* Calendar.storyboard in Resources */,
 				F2FC63312446B50A00EF41AD /* DTTableViewCell-TextView.xib in Resources */,
+				F2F3BE20257C831000A926E9 /* DayHeaderCell.xib in Resources */,
 				F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -732,6 +785,7 @@
 				F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */,
 				F2C4943F23D2CBC800EAF9CC /* StampsViewController.swift in Sources */,
 				F2C4943D23D2CBC800EAF9CC /* CalendarViewController.swift in Sources */,
+				F2F3BE25257D353D00A926E9 /* DayStampCell.swift in Sources */,
 				F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */,
 				F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */,
 				F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */,
@@ -749,6 +803,7 @@
 				F2C493262430179500E997BD /* LocalSettings.swift in Sources */,
 				F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */,
 				BC5643F3246B0FCE00942066 /* Award.swift in Sources */,
+				F2F3BE1F257C831000A926E9 /* DayHeaderCell.swift in Sources */,
 				F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */,
 				BC5643FB246B1C8300942066 /* Direction.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
@@ -758,6 +813,7 @@
 				BCF23005246FD718001E8844 /* CalendarCellData.swift in Sources */,
 				BC564407246B2D0E00942066 /* AwardsDataSourceListener.swift in Sources */,
 				F2B7D35F244C9B3A00C94E63 /* StringExtensions.swift in Sources */,
+				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
 				F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */,
 				BC5643F1246B0F1900942066 /* Goal.swift in Sources */,
@@ -765,6 +821,7 @@
 				BC5643FF246B1E1F00942066 /* StoredDirection.swift in Sources */,
 				F2FC63392446D45000EF41AD /* DTFieldCells.swift in Sources */,
 				BC56440B246B2F5D00942066 /* GoalsDataSourceListener.swift in Sources */,
+				F2F3BE3E257D489D00A926E9 /* DayHeaderData.swift in Sources */,
 				F247541423DFC706006A13C3 /* StoredGoal.swift in Sources */,
 				F27B045D2426B31E006E5175 /* MonthHeaderView.swift in Sources */,
 				BC1E1EF8246C532300E05C8A /* DataProvider.swift in Sources */,
@@ -779,6 +836,7 @@
 				F2B7D3652454DB0C00C94E63 /* DTTableViewColorCell.swift in Sources */,
 				F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
+				F2F3BE3F257D489D00A926E9 /* DayElement.swift in Sources */,
 				F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */,
 				F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */,
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
@@ -792,6 +850,7 @@
 				F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
 				F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */,
+				F2F3BE4A257D492300A926E9 /* DayColumnData.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */,
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
@@ -807,6 +866,7 @@
 				F2B7D3632454B3DE00C94E63 /* DTColorCell.swift in Sources */,
 				BC56440F246B30BF00942066 /* StampsDataSourceListener.swift in Sources */,
 				F2C190D42402E17A003F5ABA /* GoalViewController.swift in Sources */,
+				F2F3BE18257C267900A926E9 /* DayColumnView.swift in Sources */,
 				F2A99D31243A793000D3CF1D /* AwardsViewController.swift in Sources */,
 				BC1E1EFF246C5B5000E05C8A /* DataSource+Repository.swift in Sources */,
 				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,

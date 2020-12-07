@@ -31,7 +31,7 @@ class CalendarDataBuilder {
     }
     
     func weekDataForWeek(_ index: Int) -> [DayColumnData] {
-        guard index > 0 && index < calendar.currentWeeks.count else { return [] }
+        guard index >= 0 && index < calendar.currentWeeks.count else { return [] }
         
         let week = calendar.currentWeeks[index]
         let labels = week.dayHeadersForWeek()
@@ -40,6 +40,12 @@ class CalendarDataBuilder {
         }}
 
         return zip(labels, stickers).map({ return DayColumnData(header: $0, stamps: $1) })
+    }
+    
+    func weekTitleForWeek(_ index: Int) -> String {
+        guard index >= 0 && index < calendar.currentWeeks.count else { return "" }
+        let week = calendar.currentWeeks[index]
+        return week.label
     }
     
     // MARK: - Private

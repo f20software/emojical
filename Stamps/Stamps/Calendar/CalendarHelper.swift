@@ -288,7 +288,7 @@ extension CalendarHelper {
             
             // Week label formatting.
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM d"
+            formatter.dateFormat = "MMM d"
             
             let firstLabel = formatter.string(from: firstDay)
             

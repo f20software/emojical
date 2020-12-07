@@ -13,6 +13,12 @@ class TodayViewController: UIViewController, TodayView {
 
     // MARK: - Outlets
     
+    @IBOutlet weak var selectedDayIndicator: UIView!
+    @IBOutlet weak var selectedDayIndicatorLeading: NSLayoutConstraint!
+
+    @IBOutlet var prevWeek: UIBarButtonItem!
+    @IBOutlet var nextWeek: UIBarButtonItem!
+
     @IBOutlet weak var day0: DayColumnView!
     @IBOutlet weak var day1: DayColumnView!
     @IBOutlet weak var day2: DayColumnView!
@@ -20,6 +26,8 @@ class TodayViewController: UIViewController, TodayView {
     @IBOutlet weak var day4: DayColumnView!
     @IBOutlet weak var day5: DayColumnView!
     @IBOutlet weak var day6: DayColumnView!
+    
+    @IBOutlet weak var lockIcon: UIImageView!
     @IBOutlet weak var stampSelector: StampSelectorView!
 
     // MARK: - DI
@@ -39,6 +47,8 @@ class TodayViewController: UIViewController, TodayView {
 
         presenter = TodayPresenter(
             repository: Storage.shared.repository,
+            stampsListener: Storage.shared.stampsListener(),
+            awards: AwardManager.shared,
             calendar: CalendarHelper.shared,
             view: self)
         
@@ -59,6 +69,25 @@ class TodayViewController: UIViewController, TodayView {
     /// Is called when user tapped on the day header, day index 0...6 is passed
     var onDayHeaderTapped: ((Int) -> Void)?
 
+    /// User tapped on the previous week button
+    var onPrevWeekTapped: (() -> Void)?
+
+    /// User tapped on the next week button
+    var onNextWeekTapped: (() -> Void)? 
+
+    /// Update page title
+    func setTitle(to title: String) {
+        navigationItem.title = title
+    }
+
+    /// Move selected day indicator
+    func setSelectedDay(to index: Int) {
+        DispatchQueue.main.async {
+            let size = self.day0.bounds.width
+            self.selectedDayIndicatorLeading.constant = CGFloat(index) * size + size / 2
+        }
+    }
+
     /// Loads stamps and header data into day columns
     func loadDaysData(data: [DayColumnData]) {
         guard data.count == 7 else { return }
@@ -74,10 +103,40 @@ class TodayViewController: UIViewController, TodayView {
     func loadStampSelectorData(data: [DayStampData]) {
         stampSelector.loadData(data: data)
     }
+    
+    /// Show/hide next week button
+    func showNextWeekButton(_ show: Bool) {
+        navigationItem.rightBarButtonItem = show ? nextWeek : nil
+    }
+    
+    /// Show/hide previous week button
+    func showPrevWeekButton(_ show: Bool) {
+        navigationItem.leftBarButtonItem = show ? prevWeek : nil
+    }
 
+    /// Show/hide lock icon
+    func showLock(_ show: Bool) {
+        lockIcon.isHidden = !show
+    }
+
+    // MARK: - Actions
+    
+    @IBAction func prevButtonTapped(_ sender: Any) {
+        onPrevWeekTapped?()
+    }
+    
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        onNextWeekTapped?()
+    }
+    
     // MARK: - Private helpers
     
     private func configureViews() {
+        
+        selectedDayIndicator.layer.cornerRadius = selectedDayIndicator.bounds.height / 2
+        selectedDayIndicator.backgroundColor = UIColor.systemGray3
+        selectedDayIndicator.clipsToBounds = true
+        
         stampSelector.onStampTapped = { (stampId) in
             self.onStampInSelectorTapped?(stampId)
         }

@@ -81,5 +81,6 @@ extension StoredStamp {
         self.name = stamp.name
         self.label = stamp.label
         self.color = stamp.color.hex
+        self.deleted = stamp.deleted
     }
 }

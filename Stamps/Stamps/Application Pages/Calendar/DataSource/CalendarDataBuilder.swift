@@ -30,9 +30,10 @@ class CalendarDataBuilder {
         }
     }
     
-    func weekDataForToday() -> [DayColumnData] {
-        let week = calendar.currentWeeks[calendar.weekIndexForDay(date: Date())!]
-
+    func weekDataForWeek(_ index: Int) -> [DayColumnData] {
+        guard index > 0 && index < calendar.currentWeeks.count else { return [] }
+        
+        let week = calendar.currentWeeks[index]
         let labels = week.dayHeadersForWeek()
         let stickers = weekStickers(week: week).map { $0.map {
             DayStampData(stampId: $0.id, label: $0.label, color: $0.color, isEnabled: true)

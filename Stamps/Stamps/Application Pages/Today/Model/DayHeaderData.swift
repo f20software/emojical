@@ -9,6 +9,7 @@
 import Foundation
 
 struct DayHeaderData {
+    let date: Date
     let dayNum: String
     let dayName: String
     let isCurrent: Bool

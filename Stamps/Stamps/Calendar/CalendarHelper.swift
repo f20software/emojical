@@ -337,6 +337,7 @@ extension CalendarHelper {
                     formatter.dateFormat = "E"
                     let weekday = formatter.string(from: $0)
                     return DayHeaderData(
+                        date: $0,
                         dayNum: dayNum,
                         dayName: weekday,
                         isCurrent: $0.databaseKey == today,

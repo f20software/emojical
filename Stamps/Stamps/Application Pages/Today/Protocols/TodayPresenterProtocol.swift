@@ -12,4 +12,7 @@ protocol TodayPresenterProtocol: AnyObject {
     
     /// Called when view finished initial loading
     func onViewDidLoad()
+
+    /// Called when view about to appear on the screen
+    func onViewWillAppear()
 }

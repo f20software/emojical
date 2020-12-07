@@ -34,8 +34,6 @@ class StampSelectorView : UIView {
     // MARK: - Public view interface
 
     func loadData(data: [DayStampData]) {
-        print(data)
-        
         var snapshot = NSDiffableDataSourceSnapshot<Int, DayStampData>()
         snapshot.appendSections([0])
         
@@ -87,16 +85,6 @@ class StampSelectorView : UIView {
         stamps.alwaysBounceVertical = false
     }
     
-    private func cell(for path: IndexPath, model: DayStampData, collectionView: UICollectionView) -> UICollectionViewCell? {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: Specs.Cells.stamp, for: path
-        ) as? DayStampCell else {
-            return UICollectionViewCell()
-        }
-        cell.configure(for: model, insets: Specs.stampInsets)
-        return cell
-    }
-        
     // Creates layout for the day column - vertical list of cells
     private func stampsSelectorLayout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(
@@ -125,6 +113,15 @@ extension StampSelectorView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else { return }
         onStampTapped?(Int64(stampId))
+    }
+    
+    private func cell(for path: IndexPath, model: DayStampData, collectionView: UICollectionView) -> UICollectionViewCell? {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: Specs.Cells.stamp, for: path
+        ) as? DayStampCell else { return UICollectionViewCell() }
+        
+        cell.configure(for: model, insets: Specs.stampInsets)
+        return cell
     }
 }
 

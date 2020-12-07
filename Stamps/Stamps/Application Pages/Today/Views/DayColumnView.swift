@@ -18,6 +18,14 @@ class DayColumnView : UIView {
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, DayElement>!
     
+    // MARK: - Callbacks
+    
+    // Called when user tapped on the first cell in the list (which is day header)
+    var onDayTapped: (() -> Void)?
+
+    // Called when user tapped on a stamp in the list
+    var onStampTapped: ((Int64) -> Void)?
+
     // MARK: - View lifecycle
     
     override func awakeFromNib() {
@@ -64,28 +72,11 @@ class DayColumnView : UIView {
         )
 
         column.dataSource = dataSource
+        column.delegate = self
         column.collectionViewLayout = dayColumnLayout()
         column.alwaysBounceVertical = false
         
         column.backgroundColor = UIColor.clear
-    }
-    
-    private func cell(for path: IndexPath, model: DayElement, collectionView: UICollectionView) -> UICollectionViewCell? {
-        switch model {
-        case .header(let data):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.header, for: path
-            ) as? DayHeaderCell else { return UICollectionViewCell() }
-            cell.configure(for: data)
-            return cell
-
-        case .stamp(let data):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.stamp, for: path
-            ) as? DayStampCell else { return UICollectionViewCell() }
-            cell.configure(for: data, insets: Specs.stampInsets)
-            return cell
-        }
     }
     
     // Creates layout for the day column - vertical list of cells
@@ -112,6 +103,36 @@ class DayColumnView : UIView {
         section.interGroupSpacing = Specs.verticalPadding
 
         return UICollectionViewCompositionalLayout(section: section)
+    }
+}
+
+extension DayColumnView: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            onDayTapped?()
+        } else {
+            // guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else { return }
+            // onStampTapped?(Int64(stampId))
+        }
+    }
+    
+    private func cell(for path: IndexPath, model: DayElement, collectionView: UICollectionView) -> UICollectionViewCell? {
+        switch model {
+        case .header(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.header, for: path
+            ) as? DayHeaderCell else { return UICollectionViewCell() }
+            cell.configure(for: data)
+            return cell
+
+        case .stamp(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.stamp, for: path
+            ) as? DayStampCell else { return UICollectionViewCell() }
+            cell.configure(for: data, insets: Specs.stampInsets)
+            return cell
+        }
     }
 }
 

@@ -10,5 +10,5 @@ import Foundation
 
 struct DayColumnData {
     let header: DayHeaderData
-    let stamps: [StickerData]
+    let stamps: [DayStampData]
 }

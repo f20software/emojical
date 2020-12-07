@@ -107,6 +107,10 @@
 		F2F3BE3F257D489D00A926E9 /* DayElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3D257D489D00A926E9 /* DayElement.swift */; };
 		F2F3BE4A257D492300A926E9 /* DayColumnData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE49257D492300A926E9 /* DayColumnData.swift */; };
 		F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */; };
+		F2F3BE61257D8C9800A926E9 /* DayStampData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE60257D8C9800A926E9 /* DayStampData.swift */; };
+		F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE64257DD25800A926E9 /* TodayView.swift */; };
+		F2F3BE67257DD25800A926E9 /* TodayPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE65257DD25800A926E9 /* TodayPresenterProtocol.swift */; };
+		F2F3BE77257DD2F300A926E9 /* TodayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE76257DD2F300A926E9 /* TodayPresenter.swift */; };
 		F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F449232430291B005AD6B9 /* MainViewController.swift */; };
 		F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */; };
 		F2FC632E2446B4F000EF41AD /* DTTableViewCell-Segmented.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FC632D2446B4F000EF41AD /* DTTableViewCell-Segmented.xib */; };
@@ -232,6 +236,10 @@
 		F2F3BE3D257D489D00A926E9 /* DayElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayElement.swift; sourceTree = "<group>"; };
 		F2F3BE49257D492300A926E9 /* DayColumnData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayColumnData.swift; sourceTree = "<group>"; };
 		F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSelectorView.swift; sourceTree = "<group>"; };
+		F2F3BE60257D8C9800A926E9 /* DayStampData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayStampData.swift; sourceTree = "<group>"; };
+		F2F3BE64257DD25800A926E9 /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		F2F3BE65257DD25800A926E9 /* TodayPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPresenterProtocol.swift; sourceTree = "<group>"; };
+		F2F3BE76257DD2F300A926E9 /* TodayPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPresenter.swift; sourceTree = "<group>"; };
 		F2F449232430291B005AD6B9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+ImportExport.swift"; sourceTree = "<group>"; };
 		F2FC632D2446B4F000EF41AD /* DTTableViewCell-Segmented.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Segmented.xib"; sourceTree = "<group>"; };
@@ -406,7 +414,8 @@
 				F2F3BE44257D48F900A926E9 /* Model */,
 				F2F3BE39257D482D00A926E9 /* Cells */,
 				F2F3BE59257D65AE00A926E9 /* Views */,
-				F280878C24C6BD00003E864E /* TodayViewController.swift */,
+				F2F3BE6C257DD2A600A926E9 /* Protocols */,
+				F2F3BE73257DD2C100A926E9 /* Implementation */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -587,6 +596,7 @@
 			children = (
 				F2F3BE3D257D489D00A926E9 /* DayElement.swift */,
 				F2F3BE49257D492300A926E9 /* DayColumnData.swift */,
+				F2F3BE60257D8C9800A926E9 /* DayStampData.swift */,
 				F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */,
 			);
 			path = Model;
@@ -599,6 +609,24 @@
 				F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F2F3BE6C257DD2A600A926E9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F2F3BE65257DD25800A926E9 /* TodayPresenterProtocol.swift */,
+				F2F3BE64257DD25800A926E9 /* TodayView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F2F3BE73257DD2C100A926E9 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				F2F3BE76257DD2F300A926E9 /* TodayPresenter.swift */,
+				F280878C24C6BD00003E864E /* TodayViewController.swift */,
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 		F2FC632C2446959E00EF41AD /* Xibs */ = {
@@ -793,6 +821,7 @@
 				F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */,
 				BCF23002246FD6F2001E8844 /* CalendarDataBuilder.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* StoredStamp.swift in Sources */,
+				F2F3BE67257DD25800A926E9 /* TodayPresenterProtocol.swift in Sources */,
 				F2C190D22401BD50003F5ABA /* WeekBadgeView.swift in Sources */,
 				BC5643F9246B1C6200942066 /* Period.swift in Sources */,
 				F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */,
@@ -809,6 +838,7 @@
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
 				BCF2300B24712DB6001E8844 /* ExpandedWeekCell.swift in Sources */,
 				F20E40492443ED25008759D1 /* DTTableViewController.swift in Sources */,
+				F2F3BE77257DD2F300A926E9 /* TodayPresenter.swift in Sources */,
 				F20E404E2443F4C6008759D1 /* DTStyle.swift in Sources */,
 				BCF23005246FD718001E8844 /* CalendarCellData.swift in Sources */,
 				BC564407246B2D0E00942066 /* AwardsDataSourceListener.swift in Sources */,
@@ -839,6 +869,7 @@
 				F2F3BE3F257D489D00A926E9 /* DayElement.swift in Sources */,
 				F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */,
 				F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */,
+				F2F3BE61257D8C9800A926E9 /* DayStampData.swift in Sources */,
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
 				F20E40462443ED25008759D1 /* DTTableCell.swift in Sources */,
 				F20E404A2443ED25008759D1 /* DTLinkedSwitchCell.swift in Sources */,
@@ -851,6 +882,7 @@
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
 				F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */,
 				F2F3BE4A257D492300A926E9 /* DayColumnData.swift in Sources */,
+				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */,
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,

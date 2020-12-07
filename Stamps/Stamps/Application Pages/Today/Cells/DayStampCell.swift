@@ -23,15 +23,21 @@ class DayStampCell: UICollectionViewCell {
         // backgroundColor = UIColor.red
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        sticker.text = nil
+        sticker.color = UIColor.clear
+        sticker.isEnabled = true
     }
     
     // MARK: - Public view interface
     
-    func configure(for data: StickerData, insets: UIEdgeInsets) {
+    func configure(for data: DayStampData, insets: UIEdgeInsets) {
+        print("CONFIGURE \(self), \(data.label)")
         sticker.text = data.label
         sticker.color = data.color
+        sticker.isEnabled = data.isEnabled
+        tag = Int(data.stampId ?? 0)
         
         // Sticker insets
         topMargin.constant = insets.top

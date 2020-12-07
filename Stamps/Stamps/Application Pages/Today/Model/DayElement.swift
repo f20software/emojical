@@ -10,5 +10,5 @@ import Foundation
 
 enum DayElement: Hashable {
     case header(DayHeaderData)
-    case stamp(StickerData)
+    case stamp(DayStampData)
 }

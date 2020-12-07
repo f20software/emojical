@@ -34,7 +34,9 @@ class CalendarDataBuilder {
         let week = calendar.currentWeeks[calendar.weekIndexForDay(date: Date())!]
 
         let labels = week.dayHeadersForWeek()
-        let stickers = weekStickers(week: week).map { $0.map { StickerData(label: $0.label, color: $0.color) } }
+        let stickers = weekStickers(week: week).map { $0.map {
+            DayStampData(stampId: $0.id, label: $0.label, color: $0.color, isEnabled: true)
+        }}
 
         return zip(labels, stickers).map({ return DayColumnData(header: $0, stamps: $1) })
     }

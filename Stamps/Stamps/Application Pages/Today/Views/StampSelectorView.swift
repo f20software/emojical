@@ -18,8 +18,12 @@ class StampSelectorView : UIView {
 
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, StickerData>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, DayStampData>!
     
+    // MARK: - Callbacks
+    
+    var onStampTapped: ((Int64) -> Void)?
+
     // MARK: - View lifecycle
     
     override func awakeFromNib() {
@@ -29,8 +33,10 @@ class StampSelectorView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: [StickerData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, StickerData>()
+    func loadData(data: [DayStampData]) {
+        print(data)
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Int, DayStampData>()
         snapshot.appendSections([0])
         
         snapshot.appendItems(data)
@@ -66,7 +72,7 @@ class StampSelectorView : UIView {
     }
 
     private func configureCollectionView() {
-        self.dataSource = UICollectionViewDiffableDataSource<Int, StickerData>(
+        self.dataSource = UICollectionViewDiffableDataSource<Int, DayStampData>(
             collectionView: stamps,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -74,19 +80,23 @@ class StampSelectorView : UIView {
         )
 
         stamps.dataSource = dataSource
+        stamps.delegate = self
         stamps.collectionViewLayout = stampsSelectorLayout()
         stamps.backgroundColor = UIColor.clear
         stamps.alwaysBounceHorizontal = false
+        stamps.alwaysBounceVertical = false
     }
     
-    private func cell(for path: IndexPath, model: StickerData, collectionView: UICollectionView) -> UICollectionViewCell? {
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.stamp, for: path
-            ) as? DayStampCell else { return UICollectionViewCell() }
-            cell.configure(for: model, insets: Specs.stampInsets)
-            return cell
+    private func cell(for path: IndexPath, model: DayStampData, collectionView: UICollectionView) -> UICollectionViewCell? {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: Specs.Cells.stamp, for: path
+        ) as? DayStampCell else {
+            return UICollectionViewCell()
+        }
+        cell.configure(for: model, insets: Specs.stampInsets)
+        return cell
     }
-    
+        
     // Creates layout for the day column - vertical list of cells
     private func stampsSelectorLayout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(
@@ -107,6 +117,14 @@ class StampSelectorView : UIView {
         let section = NSCollectionLayoutSection(group: group)
 
         return UICollectionViewCompositionalLayout(section: section)
+    }
+}
+
+extension StampSelectorView: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else { return }
+        onStampTapped?(Int64(stampId))
     }
 }
 

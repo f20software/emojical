@@ -29,4 +29,6 @@ extension UIColor {
     
     // When creating new sticker
     static let defaultStickerColor = "FFE175" // yellow
+    
+    static let appTintColor = UIColor(hex: "202674") // violet
 }

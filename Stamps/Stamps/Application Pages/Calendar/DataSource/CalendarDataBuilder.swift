@@ -28,6 +28,32 @@ class CalendarDataBuilder {
         }
     }
     
+    func weekDataForWeek(_ index: Int) -> [DayColumnData] {
+        guard index >= 0 && index < calendar.currentWeeks.count else { return [] }
+        
+        let week = calendar.currentWeeks[index]
+        let labels = week.dayHeadersForWeek()
+        let stickers = weekStickers(week: week).map { $0.map {
+            DayStampData(stampId: $0.id, label: $0.label, color: $0.color, isEnabled: true)
+        }}
+
+        return zip(labels, stickers).map({ return DayColumnData(header: $0, stamps: $1) })
+    }
+    
+    func weekTitleForWeek(_ index: Int) -> String {
+        guard index >= 0 && index < calendar.currentWeeks.count else { return "" }
+
+        let week = calendar.currentWeeks[index]
+        return week.label
+    }
+    
+    func awardsForWeek(_ index: Int) -> [Award] {
+        guard index >= 0 && index < calendar.currentWeeks.count else { return [] }
+        
+        let week = calendar.currentWeeks[index]
+        return monthAwards(forWeek: week) + weekAwards(forWeek: week)
+    }
+    
     // MARK: - Private
     
     private func cellsForMonths(months: [CalendarHelper.Month]) -> [[CalendarCellData]] {

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodayAwardCell" id="gTV-IL-0wX" customClass="TodayAwardCell" customModule="Emojical" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zrd-LK-ZF1" customClass="AwardView" customModule="Emojical" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="40" height="40"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="height" multiplier="1:1" id="cca-44-Flb"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Zrd-LK-ZF1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="9Uu-S6-oSk"/>
+                <constraint firstAttribute="trailing" secondItem="Zrd-LK-ZF1" secondAttribute="trailing" priority="999" constant="5" id="Gq3-UN-eiX"/>
+                <constraint firstItem="Zrd-LK-ZF1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="uoV-zU-f7d"/>
+                <constraint firstAttribute="bottom" secondItem="Zrd-LK-ZF1" secondAttribute="bottom" priority="999" constant="5" id="yAr-Hf-iPt"/>
+            </constraints>
+            <size key="customSize" width="50" height="50"/>
+            <connections>
+                <outlet property="award" destination="Zrd-LK-ZF1" id="rqn-dO-nbQ"/>
+            </connections>
+            <point key="canvasLocation" x="42.028985507246382" y="131.25"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

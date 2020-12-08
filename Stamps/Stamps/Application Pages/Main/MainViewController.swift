@@ -21,8 +21,6 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Save off default tabs so we can dynamically show/hide them
-        // based on user permissions
         calendarTab = viewControllers![0]
         awardsTab = viewControllers![1]
         stickersTab = viewControllers![2]

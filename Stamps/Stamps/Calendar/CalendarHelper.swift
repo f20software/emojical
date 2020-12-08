@@ -219,7 +219,6 @@ extension CalendarHelper {
             return res
         }
 
-        
         func recalculateWeeks() {
             let calendar = Calendar.current
             
@@ -264,12 +263,12 @@ extension CalendarHelper {
         let lastDay: Date
         
         init(_ date: Date) {
-            self.month = Calendar.current.component(.month, from: date)
-            self.year = Calendar.current.component(.year, from: date)
-            self.weekOfYear = Calendar.current.component(.weekOfYear, from: date)
-            
             var calendar = Calendar.current
             calendar.firstWeekday = CalendarHelper.weekStartMonday ? 2 : 1
+
+            self.month = calendar.component(.month, from: date)
+            self.year = calendar.component(.year, from: date)
+            self.weekOfYear = calendar.component(.weekOfYear, from: date)
             
             firstDay = Date(
                 year: year,
@@ -289,7 +288,7 @@ extension CalendarHelper {
             
             // Week label formatting.
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM d"
+            formatter.dateFormat = "MMM d"
             
             let firstLabel = formatter.string(from: firstDay)
             
@@ -301,6 +300,7 @@ extension CalendarHelper {
             let secondLabel = formatter.string(from: lastDay)
             
             label = "\(firstLabel) - \(secondLabel)"
+            // print(date, weekOfYear, label)
         }
 
         func labelsForDaysInWeek() -> [String] {
@@ -308,22 +308,48 @@ extension CalendarHelper {
             formatter.dateFormat = "d"
             let today = Date().databaseKey
 
-            return (0...6)
-                .map({
-                    return firstDay.byAddingDays($0)
-                })
-                .map({
-                    let formatted = formatter.string(from: $0)
-                    if $0.databaseKey == today {
-                        return "*\(formatted)"
-                    } else {
-                        return formatted
-                    }
-                })
+            return (0...6).map({
+                return firstDay.byAddingDays($0)
+            }).map({
+                let formatted = formatter.string(from: $0)
+                if $0.databaseKey == today {
+                    return "*\(formatted)"
+                } else {
+                    return formatted
+                }
+            })
+        }
+
+        func dayHeadersForWeek() -> [DayHeaderData] {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "d"
+            let today = Date().databaseKey
+
+            return (0...6).map({
+                return firstDay.byAddingDays($0)
+            }).map({
+                formatter.dateFormat = "d"
+                let dayNum = formatter.string(from: $0)
+                formatter.dateFormat = "E"
+                let weekday = formatter.string(from: $0)
+                return DayHeaderData(
+                    date: $0,
+                    dayNum: dayNum,
+                    dayName: weekday,
+                    isCurrent: $0.databaseKey == today,
+                    isWeekend: $0.isWeekend)
+            })
         }
 
         func date(forWeekday day: Int) -> Date? {
             return firstDay.byAddingDays(day)
+        }
+        
+        var isCurrentWeek: Bool {
+            let todayKey = Date().databaseKey
+            
+            return (firstDay.databaseKey <= todayKey &&
+                lastDay.databaseKey >= todayKey)
         }
     }
 }

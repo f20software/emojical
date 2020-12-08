@@ -25,3 +25,5 @@ struct Award {
         return "Earned on \(df.string(from: date))"
     }
 }
+
+extension Award: Equatable, Hashable {}

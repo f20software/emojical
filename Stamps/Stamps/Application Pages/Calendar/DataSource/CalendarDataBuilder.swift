@@ -82,11 +82,6 @@ class CalendarDataBuilder {
         weeks.map { cells(forWeek: $0) }
     }
     
-    private func cellsForWeek(week: CalendarHelper.Week) -> [CalendarCellData] {
-        cells(forWeek: week)
-        // daysData(for: week)
-    }
-    
     private func cells(forWeek week: CalendarHelper.Week) -> [CalendarCellData] {
         let header = CalendarCellData.header(
             title: week.label,
@@ -205,7 +200,6 @@ class CalendarDataBuilder {
     enum Style {
         case compact
         case extended
-        // case today
         
         static prefix func !(_ value: Style) -> Style {
             switch value {

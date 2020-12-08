@@ -13,6 +13,8 @@ struct TodayAwardData {
     let goalId: Int64
     let color: UIColor
     let dashes: Int
+    let progress: CGFloat
+    let progressColor: UIColor
 }
 
 extension TodayAwardData: Equatable, Hashable {}

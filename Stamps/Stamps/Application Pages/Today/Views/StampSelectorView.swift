@@ -40,16 +40,16 @@ class StampSelectorView : UIView {
         snapshot.appendItems(data)
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         
-        // Arrange stamps in row by 5. If we have fewer then 5,
+        // Arrange stamps in row by [stampsPerRow]. If we have fewer than [stampsPerRow],
         // center them inside selector view.
-        // Otherwise make width to 5 elements, and number of row to 2
+        // Otherwise make width to [stampsPerRow] elements, and number of row to 2
         // Will have to improve when more then 10 stamps are supported
-        if data.count <= 5 {
+        if data.count <= Specs.stampsPerRow {
             heightConstraint.constant = Specs.stampSize
             widthConstraint.constant = Specs.stampSize * CGFloat(data.count)
-        } else if data.count <= 10 {
+        } else if data.count <= Specs.stampsPerRow * 2 {
             heightConstraint.constant = Specs.stampSize * 2
-            widthConstraint.constant = Specs.stampSize * 5
+            widthConstraint.constant = Specs.stampSize * CGFloat(Specs.stampsPerRow)
         }
     }
     
@@ -142,8 +142,11 @@ fileprivate struct Specs {
     /// Stamp cell size
     static let stampSize: CGFloat = 60.0
     
+    /// Stamp row size
+    static let stampsPerRow = 5
+    
     /// Actual stamp insets inside the stamp cell
-    static let stampInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+    static let stampInsets = UIEdgeInsets(top: 6.0, left: 6.0, bottom: 6.0, right: 6.0)
 
     /// Background plate corner radius
     static let plateCornerRadius: CGFloat = 8.0

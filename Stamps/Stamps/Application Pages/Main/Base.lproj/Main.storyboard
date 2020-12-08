@@ -18,7 +18,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="Clg-kQ-XR2" kind="relationship" relationship="viewControllers" id="rNG-tM-A5v"/>
-                        <segue destination="BGe-M5-KsK" kind="relationship" relationship="viewControllers" id="0pU-OF-owc"/>
                         <segue destination="lPk-B2-hge" kind="relationship" relationship="viewControllers" id="kJK-JN-TPe"/>
                         <segue destination="uXQ-0Z-U2U" kind="relationship" relationship="viewControllers" id="FXF-cz-WyX"/>
                         <segue destination="ieI-hD-N29" kind="relationship" relationship="viewControllers" id="UzF-LL-Jax"/>
@@ -36,27 +35,27 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9d-CD-tDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="593" y="-344"/>
+            <point key="canvasLocation" x="499" y="335"/>
         </scene>
         <!--Stamps-->
         <scene sceneID="U2Q-Ox-Ezk">
             <objects>
                 <viewControllerPlaceholder storyboardName="Stamps" id="uXQ-0Z-U2U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stamps" image="smile" selectedImage="smile" id="wLk-FZ-EQZ"/>
+                    <tabBarItem key="tabBarItem" title="Stamps" image="circle.grid.hex" catalog="system" selectedImage="circle.grid.hex" id="wLk-FZ-EQZ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTe-Q0-Jge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="599" y="-218"/>
+            <point key="canvasLocation" x="42" y="419"/>
         </scene>
         <!--Goals-->
         <scene sceneID="spg-cO-tmA">
             <objects>
                 <viewControllerPlaceholder storyboardName="Goals" id="lPk-B2-hge" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Goals" image="award" selectedImage="award" id="Xda-pO-Tyr"/>
+                    <tabBarItem key="tabBarItem" title="Goals" image="star.circle" catalog="system" selectedImage="star.circle" id="Xda-pO-Tyr"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULA-qZ-KUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="590" y="-101"/>
+            <point key="canvasLocation" x="-251" y="428"/>
         </scene>
         <!--Awards-->
         <scene sceneID="iWU-kK-hxs">
@@ -66,33 +65,35 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O39-Dj-2vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="585" y="13"/>
+            <point key="canvasLocation" x="492" y="286"/>
         </scene>
         <!--Today-->
         <scene sceneID="OUq-az-596">
             <objects>
                 <viewControllerPlaceholder storyboardName="Today" id="Clg-kQ-XR2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="vfC-CN-l67"/>
+                    <tabBarItem key="tabBarItem" title="Today" image="circle.bottomthird.split" catalog="system" id="vfC-CN-l67"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TC-hv-lb1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="136"/>
+            <point key="canvasLocation" x="-486" y="428"/>
         </scene>
         <!--Options-->
         <scene sceneID="Hfl-gW-V0U">
             <objects>
                 <viewControllerPlaceholder storyboardName="Options" id="ieI-hD-N29" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hse-4T-ujs"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="gearshape" catalog="system" id="hse-4T-ujs"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q4u-zv-QOj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="428"/>
+            <point key="canvasLocation" x="304" y="419"/>
         </scene>
     </scenes>
     <resources>
-        <image name="award" width="30" height="30"/>
+        <image name="circle.bottomthird.split" catalog="system" width="128" height="121"/>
+        <image name="circle.grid.hex" catalog="system" width="128" height="112"/>
         <image name="dots" width="30" height="30"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="note1" width="29" height="30"/>
-        <image name="smile" width="30" height="30"/>
+        <image name="star.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

@@ -25,12 +25,20 @@
                             <constraint firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="height" multiplier="1:1" id="cca-44-Flb"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glV-Hm-xGi">
+                        <rect key="frame" x="1" y="1" width="48" height="48"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="glV-Hm-xGi" firstAttribute="centerX" secondItem="Zrd-LK-ZF1" secondAttribute="centerX" id="40X-gs-6kK"/>
                 <constraint firstItem="Zrd-LK-ZF1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="9Uu-S6-oSk"/>
                 <constraint firstAttribute="trailing" secondItem="Zrd-LK-ZF1" secondAttribute="trailing" priority="999" constant="5" id="Gq3-UN-eiX"/>
+                <constraint firstItem="glV-Hm-xGi" firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="width" constant="8" id="V1G-7Z-1lT"/>
+                <constraint firstItem="glV-Hm-xGi" firstAttribute="centerY" secondItem="Zrd-LK-ZF1" secondAttribute="centerY" id="XKA-lb-iy9"/>
+                <constraint firstItem="glV-Hm-xGi" firstAttribute="height" secondItem="Zrd-LK-ZF1" secondAttribute="height" constant="8" id="iIH-5T-Ccz"/>
                 <constraint firstItem="Zrd-LK-ZF1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="uoV-zU-f7d"/>
                 <constraint firstAttribute="bottom" secondItem="Zrd-LK-ZF1" secondAttribute="bottom" priority="999" constant="5" id="yAr-Hf-iPt"/>
             </constraints>
@@ -39,6 +47,7 @@
                 <outlet property="bottomMargin" destination="yAr-Hf-iPt" id="Kiq-xC-dZq"/>
                 <outlet property="leftMargin" destination="9Uu-S6-oSk" id="H0f-zX-7g4"/>
                 <outlet property="rightMargin" destination="Gq3-UN-eiX" id="qyE-wA-ScU"/>
+                <outlet property="selectionView" destination="glV-Hm-xGi" id="TSo-AZ-Hms"/>
                 <outlet property="sticker" destination="Zrd-LK-ZF1" id="HQ8-Ki-gYR"/>
                 <outlet property="topMargin" destination="uoV-zU-f7d" id="t1C-YW-ig1"/>
             </connections>

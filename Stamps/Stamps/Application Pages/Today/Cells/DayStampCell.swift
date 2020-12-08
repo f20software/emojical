@@ -17,16 +17,19 @@ class DayStampCell: UICollectionViewCell {
     @IBOutlet weak var bottomMargin: NSLayoutConstraint!
     @IBOutlet weak var leftMargin: NSLayoutConstraint!
     @IBOutlet weak var rightMargin: NSLayoutConstraint!
+    @IBOutlet weak var selectionView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupViews()
+        // self.backgroundColor = UIColor.red
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         sticker.text = nil
         sticker.color = UIColor.clear
-        sticker.isEnabled = true
+        // sticker.isEnabled = true
     }
     
     // MARK: - Public view interface
@@ -34,13 +37,27 @@ class DayStampCell: UICollectionViewCell {
     func configure(for data: DayStampData, insets: UIEdgeInsets) {
         sticker.text = data.label
         sticker.color = data.color
-        sticker.isEnabled = data.isEnabled
+        // sticker.isEnabled = data.isEnabled
         tag = Int(data.stampId ?? 0)
+        
+        if data.isEnabled {
+            selectionView.isHidden = false
+            selectionView.layer.borderColor = data.color.cgColor
+        } else {
+            selectionView.isHidden = true
+        }
         
         // Sticker insets
         topMargin.constant = insets.top
         bottomMargin.constant = insets.bottom
         leftMargin.constant = insets.left
         rightMargin.constant = insets.right
+    }
+    
+    // MARK: - Private helpers
+    
+    func setupViews() {
+        selectionView.layer.cornerRadius = 12.0
+        selectionView.layer.borderWidth = 2.0
     }
 }

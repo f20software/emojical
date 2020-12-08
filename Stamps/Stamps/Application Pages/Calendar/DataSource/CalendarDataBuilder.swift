@@ -213,9 +213,6 @@ class CalendarDataBuilder {
                 return .extended
             case .extended:
                 return .compact
-//            case .today:
-//                return .today
-                
             }
         }
         
@@ -225,8 +222,6 @@ class CalendarDataBuilder {
                 return "Collapse"
             case .extended:
                 return "Expand"
-//            case .today:
-//                return ""
             }
         }
     }

@@ -25,8 +25,6 @@ class CalendarDataBuilder {
             return cellsForMonths(months: calendar.currentMonths)
         case .extended:
             return cellsForWeeks(weeks: calendar.currentWeeks)
-        case .today:
-            return [cellsForWeek(week: calendar.currentWeeks[calendar.weekIndexForDay(date: Date())!])]
         }
     }
     
@@ -44,8 +42,16 @@ class CalendarDataBuilder {
     
     func weekTitleForWeek(_ index: Int) -> String {
         guard index >= 0 && index < calendar.currentWeeks.count else { return "" }
+
         let week = calendar.currentWeeks[index]
         return week.label
+    }
+    
+    func awardsForWeek(_ index: Int) -> [Award] {
+        guard index >= 0 && index < calendar.currentWeeks.count else { return [] }
+        
+        let week = calendar.currentWeeks[index]
+        return monthAwards(forWeek: week) + weekAwards(forWeek: week)
     }
     
     // MARK: - Private
@@ -199,7 +205,7 @@ class CalendarDataBuilder {
     enum Style {
         case compact
         case extended
-        case today
+        // case today
         
         static prefix func !(_ value: Style) -> Style {
             switch value {
@@ -207,8 +213,8 @@ class CalendarDataBuilder {
                 return .extended
             case .extended:
                 return .compact
-            case .today:
-                return .today
+//            case .today:
+//                return .today
                 
             }
         }
@@ -219,8 +225,8 @@ class CalendarDataBuilder {
                 return "Collapse"
             case .extended:
                 return "Expand"
-            case .today:
-                return ""
+//            case .today:
+//                return ""
             }
         }
     }

@@ -13,6 +13,8 @@ class TodayViewController: UIViewController, TodayView {
 
     // MARK: - Outlets
     
+    @IBOutlet weak var awards: WeeklyAwardsView!
+
     @IBOutlet weak var selectedDayIndicator: UIView!
     @IBOutlet weak var selectedDayIndicatorLeading: NSLayoutConstraint!
 
@@ -48,7 +50,8 @@ class TodayViewController: UIViewController, TodayView {
         presenter = TodayPresenter(
             repository: Storage.shared.repository,
             stampsListener: Storage.shared.stampsListener(),
-            awards: AwardManager.shared,
+            awardsListener: Storage.shared.awardsListener(),
+            awardManager: AwardManager.shared,
             calendar: CalendarHelper.shared,
             view: self)
         
@@ -97,6 +100,11 @@ class TodayViewController: UIViewController, TodayView {
         for (day, view) in zip(data, dayViews) {
             view.loadData(data: day)
         }
+    }
+
+    /// Loads awards data
+    func loadAwardsData(data: [TodayAwardData]) {
+        awards.loadData(data: data)
     }
 
     /// Loads stamps into stamp selector

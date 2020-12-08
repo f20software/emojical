@@ -44,6 +44,9 @@ protocol TodayView: AnyObject {
     /// Loads stamps into stamp selector
     func loadStampSelectorData(data: [DayStampData])
     
+    /// Loads awards data
+    func loadAwardsData(data: [TodayAwardData])
+
     /// Show/hide lock icon
     func showLock(_ show: Bool)
 }

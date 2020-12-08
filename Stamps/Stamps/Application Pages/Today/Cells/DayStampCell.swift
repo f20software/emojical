@@ -20,7 +20,6 @@ class DayStampCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // backgroundColor = UIColor.red
     }
     
     override func prepareForReuse() {
@@ -33,7 +32,6 @@ class DayStampCell: UICollectionViewCell {
     // MARK: - Public view interface
     
     func configure(for data: DayStampData, insets: UIEdgeInsets) {
-        // print("CONFIGURE \(self), \(data.label)")
         sticker.text = data.label
         sticker.color = data.color
         sticker.isEnabled = data.isEnabled

@@ -1,5 +1,5 @@
 //
-//  DayColumnView.swift
+//  StampSelectorView.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/06/20.
@@ -40,6 +40,10 @@ class StampSelectorView : UIView {
         snapshot.appendItems(data)
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         
+        // Arrange stamps in row by 5. If we have fewer then 5,
+        // center them inside selector view.
+        // Otherwise make width to 5 elements, and number of row to 2
+        // Will have to improve when more then 10 stamps are supported
         if data.count <= 5 {
             heightConstraint.constant = Specs.stampSize
             widthConstraint.constant = Specs.stampSize * CGFloat(data.count)

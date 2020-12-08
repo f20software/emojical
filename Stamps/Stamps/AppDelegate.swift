@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         NotificationManager.shared.requestAuthorization()
         
         UNUserNotificationCenter.current().delegate = self
+        
+        UIView.appearance().tintColor = UIColor.appTintColor
         return true
     }
 

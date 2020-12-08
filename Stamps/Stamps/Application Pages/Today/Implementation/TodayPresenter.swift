@@ -188,7 +188,7 @@ class TodayPresenter: TodayPresenterProtocol {
                 stampId: id,
                 label: $0.label,
                 color: $0.color,
-                isEnabled: currentStamps.contains(id) == false)
+                isEnabled: currentStamps.contains(id))
         })
         view?.loadStampSelectorData(data: data)
     }
@@ -201,10 +201,17 @@ class TodayPresenter: TodayPresenterProtocol {
                 guard let goalId = $0.id else { return nil }
                 
                 let progress = self.awardManager.currentProgressFor($0)
+                let goalReached = progress >= $0.limit
+
                 return TodayAwardData(
                     goalId: goalId,
-                    color: progress >= $0.limit ? repository.colorForGoal(goalId) : UIColor.systemGray,
-                    dashes: $0.period == .month ? 0 : 7
+                    color: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.3),
+                    dashes: $0.period == .month ? 0 : 7,
+                    progress: goalReached ? 1.0 : CGFloat(progress) / CGFloat($0.limit),
+                    progressColor: $0.direction == .positive ?
+                        (goalReached ? UIColor.positiveGoalReached : UIColor.positiveGoalNotReached) :
+                        (goalReached ? UIColor.negativeGoalReached : UIColor.negativeGoalNotReached)
+                    
                 )
             }))
         } else {
@@ -215,7 +222,9 @@ class TodayPresenter: TodayPresenterProtocol {
                 return TodayAwardData(
                     goalId: goalId,
                     color: repository.colorForAward($0),
-                    dashes: goal.period  == .month ? 0 : 7
+                    dashes: goal.period  == .month ? 0 : 7,
+                    progress: 1.0,
+                    progressColor: goal.direction == .positive ? UIColor.positiveGoalReached : UIColor.negativeGoalNotReached
                 )
             }))
         }

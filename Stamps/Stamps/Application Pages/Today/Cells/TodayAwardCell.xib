@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,31 +18,47 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zrd-LK-ZF1" customClass="AwardView" customModule="Emojical" customModuleProvider="target">
-                        <rect key="frame" x="5" y="5" width="40" height="40"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <rect key="frame" x="8" y="8" width="34" height="34"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="height" multiplier="1:1" id="cca-44-Flb"/>
                         </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftG-wh-ZRA" customClass="ProgressView" customModule="Emojical" customModuleProvider="target">
+                        <rect key="frame" x="1" y="1" width="48" height="48"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="1" green="0.1764705882" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="baseColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="Zrd-LK-ZF1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="9Uu-S6-oSk"/>
-                <constraint firstAttribute="trailing" secondItem="Zrd-LK-ZF1" secondAttribute="trailing" priority="999" constant="5" id="Gq3-UN-eiX"/>
-                <constraint firstItem="Zrd-LK-ZF1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="uoV-zU-f7d"/>
-                <constraint firstAttribute="bottom" secondItem="Zrd-LK-ZF1" secondAttribute="bottom" priority="999" constant="5" id="yAr-Hf-iPt"/>
+                <constraint firstItem="Zrd-LK-ZF1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="9Uu-S6-oSk"/>
+                <constraint firstAttribute="trailing" secondItem="Zrd-LK-ZF1" secondAttribute="trailing" priority="999" constant="8" id="Gq3-UN-eiX"/>
+                <constraint firstItem="ftG-wh-ZRA" firstAttribute="height" secondItem="Zrd-LK-ZF1" secondAttribute="height" constant="14" id="eze-LH-YKV"/>
+                <constraint firstItem="ftG-wh-ZRA" firstAttribute="centerX" secondItem="Zrd-LK-ZF1" secondAttribute="centerX" id="tU9-Kc-ELu"/>
+                <constraint firstItem="Zrd-LK-ZF1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="uoV-zU-f7d"/>
+                <constraint firstItem="ftG-wh-ZRA" firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="width" constant="14" id="xfw-Ov-1ln"/>
+                <constraint firstAttribute="bottom" secondItem="Zrd-LK-ZF1" secondAttribute="bottom" priority="999" constant="8" id="yAr-Hf-iPt"/>
+                <constraint firstItem="ftG-wh-ZRA" firstAttribute="centerY" secondItem="Zrd-LK-ZF1" secondAttribute="centerY" id="yM0-Oh-fBe"/>
             </constraints>
             <size key="customSize" width="50" height="50"/>
             <connections>
                 <outlet property="award" destination="Zrd-LK-ZF1" id="rqn-dO-nbQ"/>
+                <outlet property="progress" destination="ftG-wh-ZRA" id="MCm-3l-pDi"/>
             </connections>
             <point key="canvasLocation" x="42.028985507246382" y="131.25"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

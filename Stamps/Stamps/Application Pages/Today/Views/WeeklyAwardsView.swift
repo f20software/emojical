@@ -86,6 +86,10 @@ class WeeklyAwardsView : UIView {
         )
 
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: 5,
+            bottom: 0, trailing: 0)
+
         return UICollectionViewCompositionalLayout(section: section)
     }
 }

@@ -393,6 +393,7 @@
 		F20E403B2443E681008759D1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				F2C4944023D2CBC800EAF9CC /* Main.storyboard */,
 				F2F449232430291B005AD6B9 /* MainViewController.swift */,
 			);
 			path = Main;
@@ -431,7 +432,6 @@
 		F26B273823D80CB000B8D0F9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F2C4944023D2CBC800EAF9CC /* Main.storyboard */,
 				F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */,
 				F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */,
 			);
@@ -564,10 +564,10 @@
 				F26B273823D80CB000B8D0F9 /* Resources */,
 				F2A5256023D4CED000C3E0F3 /* Calendar */,
 				F20D1F9724142A1D00FB5000 /* Views */,
-				F2B4763423DE3C300076BFDC /* Application Pages */,
 				F2FF7EAB23D671050033D9DC /* Colors */,
 				F2FF7EA423D66F0B0033D9DC /* Storage */,
 				F2F260F42408D96700F5CCB9 /* Database */,
+				F2B4763423DE3C300076BFDC /* Application Pages */,
 				F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */,
 				F2C493252430179500E997BD /* LocalSettings.swift */,
 				F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */,

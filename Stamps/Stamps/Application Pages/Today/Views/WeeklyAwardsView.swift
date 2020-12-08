@@ -2,7 +2,7 @@
 //  WeeklyAwardsView.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/7/20.
+//  Created by Vladimir Svidersky on 12/07/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 
@@ -91,11 +91,6 @@ class WeeklyAwardsView : UIView {
 }
 
 extension WeeklyAwardsView: UICollectionViewDelegate {
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else { return }
-//        onStampTapped?(Int64(stampId))
-//    }
     
     private func cell(for path: IndexPath, model: TodayAwardData, collectionView: UICollectionView) -> UICollectionViewCell? {
         guard let cell = collectionView.dequeueReusableCell(

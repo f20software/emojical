@@ -2,7 +2,7 @@
 //  DayStampCell.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/6/20.
+//  Created by Vladimir Svidersky on 12/06/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 

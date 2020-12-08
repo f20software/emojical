@@ -1,8 +1,8 @@
 //
-//  CalendarViewController.swift
-//  Stamps
+//  TodayViewController.swift
+//  Emojical
 //
-//  Created by Vladimir Svidersky on 1/17/20.
+//  Created by Vladimir Svidersky on 12/06/2020.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 

@@ -1,8 +1,8 @@
 //
 //  DayHeaderCell.swift
-//  Stamps
+//  Emojical
 //
-//  Created by Vladimir Svidersky on 12/5/20.
+//  Created by Vladimir Svidersky on 12/05/2020.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 

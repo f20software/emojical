@@ -68,6 +68,11 @@
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
 		F2A5255F23D4BAA900C3E0F3 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */; };
+		F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A93F8425812881006C88F8 /* Stats.storyboard */; };
+		F2A93F90258128E5006C88F8 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93F8B258128E5006C88F8 /* StatsViewController.swift */; };
+		F2A93F91258128E5006C88F8 /* StatsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93F8C258128E5006C88F8 /* StatsPresenter.swift */; };
+		F2A93F92258128E5006C88F8 /* StatsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93F8E258128E5006C88F8 /* StatsPresenterProtocol.swift */; };
+		F2A93F93258128E5006C88F8 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93F8F258128E5006C88F8 /* StatsView.swift */; };
 		F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A99D282439346900D3CF1D /* OptionsViewController.swift */; };
 		F2A99D2D243A790600D3CF1D /* Awards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A99D2C243A790600D3CF1D /* Awards.storyboard */; };
 		F2A99D30243A793000D3CF1D /* AwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A99D2E243A793000D3CF1D /* AwardCell.swift */; };
@@ -202,6 +207,11 @@
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		F2A5255E23D4BAA900C3E0F3 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
+		F2A93F8425812881006C88F8 /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
+		F2A93F8B258128E5006C88F8 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		F2A93F8C258128E5006C88F8 /* StatsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPresenter.swift; sourceTree = "<group>"; };
+		F2A93F8E258128E5006C88F8 /* StatsPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPresenterProtocol.swift; sourceTree = "<group>"; };
+		F2A93F8F258128E5006C88F8 /* StatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		F2A99D282439346900D3CF1D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		F2A99D2C243A790600D3CF1D /* Awards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Awards.storyboard; sourceTree = "<group>"; };
 		F2A99D2E243A793000D3CF1D /* AwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardCell.swift; sourceTree = "<group>"; };
@@ -475,6 +485,34 @@
 			path = "Calendar-obsolete";
 			sourceTree = "<group>";
 		};
+		F2A93F8325812881006C88F8 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				F2A93F8425812881006C88F8 /* Stats.storyboard */,
+				F2A93F8D258128E5006C88F8 /* Protocols */,
+				F2A93F8A258128E5006C88F8 /* Implementation */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		F2A93F8A258128E5006C88F8 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				F2A93F8B258128E5006C88F8 /* StatsViewController.swift */,
+				F2A93F8C258128E5006C88F8 /* StatsPresenter.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		F2A93F8D258128E5006C88F8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F2A93F8E258128E5006C88F8 /* StatsPresenterProtocol.swift */,
+				F2A93F8F258128E5006C88F8 /* StatsView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		F2A99D2A2439346C00D3CF1D /* Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +550,7 @@
 			children = (
 				F20E403B2443E681008759D1 /* Main */,
 				F24B07C724C547C300FFD798 /* Today */,
+				F2A93F8325812881006C88F8 /* Stats */,
 				F2B4763323DE3C120076BFDC /* Stamps */,
 				F2B4763923DE3DBE0076BFDC /* Goals */,
 				F2A99D2A2439346C00D3CF1D /* Options */,
@@ -790,6 +829,7 @@
 			files = (
 				F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
+				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
 				F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */,
 				F2B7D3612454B27F00C94E63 /* DTTableViewCell-Color.xib in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
@@ -848,6 +888,7 @@
 				BC56440D246B309700942066 /* StampsListener.swift in Sources */,
 				F2B4763023DCF9DE0076BFDC /* StoredDiary.swift in Sources */,
 				F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */,
+				F2A93F93258128E5006C88F8 /* StatsView.swift in Sources */,
 				F2C493262430179500E997BD /* LocalSettings.swift in Sources */,
 				F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */,
 				BC5643F3246B0FCE00942066 /* Award.swift in Sources */,
@@ -886,6 +927,7 @@
 				BC1E1EFD246C59B000E05C8A /* Storage.swift in Sources */,
 				BC5643F7246B10B500942066 /* Diary.swift in Sources */,
 				F2B7D3652454DB0C00C94E63 /* DTTableViewColorCell.swift in Sources */,
+				F2A93F91258128E5006C88F8 /* StatsPresenter.swift in Sources */,
 				F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
 				F2F3BE3F257D489D00A926E9 /* DayElement.swift in Sources */,
@@ -893,6 +935,7 @@
 				F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */,
 				F2F3BE61257D8C9800A926E9 /* DayStampData.swift in Sources */,
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
+				F2A93F90258128E5006C88F8 /* StatsViewController.swift in Sources */,
 				F20E40462443ED25008759D1 /* DTTableCell.swift in Sources */,
 				F20E404A2443ED25008759D1 /* DTLinkedSwitchCell.swift in Sources */,
 				F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */,
@@ -917,6 +960,7 @@
 				F20E40442443ED25008759D1 /* DTTableViewModel.swift in Sources */,
 				F2B4763F23DE4B540076BFDC /* StampCell.swift in Sources */,
 				BC1E1EFA246C58F500E05C8A /* GRDBDataProvider.swift in Sources */,
+				F2A93F92258128E5006C88F8 /* StatsPresenterProtocol.swift in Sources */,
 				F20E40472443ED25008759D1 /* DTTableSelectionViewController.swift in Sources */,
 				F2FC63372446D17000EF41AD /* DTControlCells.swift in Sources */,
 				F2B7D3632454B3DE00C94E63 /* DTColorCell.swift in Sources */,

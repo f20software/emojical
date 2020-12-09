@@ -461,7 +461,7 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		F2A5256123D4CEEC00C3E0F3 /* Calendar */ = {
+		F2A5256123D4CEEC00C3E0F3 /* Calendar-obsolete */ = {
 			isa = PBXGroup;
 			children = (
 				BCF23003246FD6F6001E8844 /* DataSource */,
@@ -472,7 +472,7 @@
 				F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */,
 				F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */,
 			);
-			path = Calendar;
+			path = "Calendar-obsolete";
 			sourceTree = "<group>";
 		};
 		F2A99D2A2439346C00D3CF1D /* Options */ = {
@@ -484,14 +484,14 @@
 			path = Options;
 			sourceTree = "<group>";
 		};
-		F2A99D2B243A78ED00D3CF1D /* Awards */ = {
+		F2A99D2B243A78ED00D3CF1D /* Awards-obsolete */ = {
 			isa = PBXGroup;
 			children = (
 				F2A99D2C243A790600D3CF1D /* Awards.storyboard */,
 				F2A99D2E243A793000D3CF1D /* AwardCell.swift */,
 				F2A99D2F243A793000D3CF1D /* AwardsViewController.swift */,
 			);
-			path = Awards;
+			path = "Awards-obsolete";
 			sourceTree = "<group>";
 		};
 		F2B4763323DE3C120076BFDC /* Stamps */ = {
@@ -512,11 +512,11 @@
 			children = (
 				F20E403B2443E681008759D1 /* Main */,
 				F24B07C724C547C300FFD798 /* Today */,
-				F2A5256123D4CEEC00C3E0F3 /* Calendar */,
-				F2A99D2B243A78ED00D3CF1D /* Awards */,
 				F2B4763323DE3C120076BFDC /* Stamps */,
 				F2B4763923DE3DBE0076BFDC /* Goals */,
 				F2A99D2A2439346C00D3CF1D /* Options */,
+				F2A5256123D4CEEC00C3E0F3 /* Calendar-obsolete */,
+				F2A99D2B243A78ED00D3CF1D /* Awards-obsolete */,
 			);
 			path = "Application Pages";
 			sourceTree = "<group>";

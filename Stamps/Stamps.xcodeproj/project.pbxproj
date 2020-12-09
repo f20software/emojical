@@ -73,6 +73,14 @@
 		F2A93F91258128E5006C88F8 /* StatsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93F8C258128E5006C88F8 /* StatsPresenter.swift */; };
 		F2A93F92258128E5006C88F8 /* StatsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93F8E258128E5006C88F8 /* StatsPresenterProtocol.swift */; };
 		F2A93F93258128E5006C88F8 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93F8F258128E5006C88F8 /* StatsView.swift */; };
+		F2A93FA325812DEA006C88F8 /* WeekLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */; };
+		F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */; };
+		F2A93FA8258130DB006C88F8 /* WeekHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */; };
+		F2A93FAF2581314C006C88F8 /* WeekElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAC2581314C006C88F8 /* WeekElement.swift */; };
+		F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */; };
+		F2A93FB12581314C006C88F8 /* WeekLineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAE2581314C006C88F8 /* WeekLineData.swift */; };
+		F2A93FB625813668006C88F8 /* WeekLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FB525813668006C88F8 /* WeekLineView.swift */; };
+		F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */; };
 		F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A99D282439346900D3CF1D /* OptionsViewController.swift */; };
 		F2A99D2D243A790600D3CF1D /* Awards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A99D2C243A790600D3CF1D /* Awards.storyboard */; };
 		F2A99D30243A793000D3CF1D /* AwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A99D2E243A793000D3CF1D /* AwardCell.swift */; };
@@ -212,6 +220,14 @@
 		F2A93F8C258128E5006C88F8 /* StatsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPresenter.swift; sourceTree = "<group>"; };
 		F2A93F8E258128E5006C88F8 /* StatsPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2A93F8F258128E5006C88F8 /* StatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekLineCell.xib; sourceTree = "<group>"; };
+		F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekLineCell.swift; sourceTree = "<group>"; };
+		F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekHeaderCell.xib; sourceTree = "<group>"; };
+		F2A93FAC2581314C006C88F8 /* WeekElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekElement.swift; sourceTree = "<group>"; };
+		F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderData.swift; sourceTree = "<group>"; };
+		F2A93FAE2581314C006C88F8 /* WeekLineData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekLineData.swift; sourceTree = "<group>"; };
+		F2A93FB525813668006C88F8 /* WeekLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekLineView.swift; sourceTree = "<group>"; };
+		F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderCell.swift; sourceTree = "<group>"; };
 		F2A99D282439346900D3CF1D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		F2A99D2C243A790600D3CF1D /* Awards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Awards.storyboard; sourceTree = "<group>"; };
 		F2A99D2E243A793000D3CF1D /* AwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardCell.swift; sourceTree = "<group>"; };
@@ -489,6 +505,9 @@
 			isa = PBXGroup;
 			children = (
 				F2A93F8425812881006C88F8 /* Stats.storyboard */,
+				F2A93FAB2581314C006C88F8 /* Models */,
+				F2A93FB425813668006C88F8 /* Views */,
+				F2A93FA025812DEA006C88F8 /* Cells */,
 				F2A93F8D258128E5006C88F8 /* Protocols */,
 				F2A93F8A258128E5006C88F8 /* Implementation */,
 			);
@@ -498,8 +517,8 @@
 		F2A93F8A258128E5006C88F8 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				F2A93F8B258128E5006C88F8 /* StatsViewController.swift */,
 				F2A93F8C258128E5006C88F8 /* StatsPresenter.swift */,
+				F2A93F8B258128E5006C88F8 /* StatsViewController.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -512,6 +531,36 @@
 			);
 			path = Protocols;
 			sourceTree = "<group>";
+		};
+		F2A93FA025812DEA006C88F8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */,
+				F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */,
+				F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */,
+				F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F2A93FAB2581314C006C88F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F2A93FAC2581314C006C88F8 /* WeekElement.swift */,
+				F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */,
+				F2A93FAE2581314C006C88F8 /* WeekLineData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F2A93FB425813668006C88F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F2A93FB525813668006C88F8 /* WeekLineView.swift */,
+			);
+			name = Views;
+			path = "Stamps/Application Pages/Stats/Views";
+			sourceTree = SOURCE_ROOT;
 		};
 		F2A99D2A2439346C00D3CF1D /* Options */ = {
 			isa = PBXGroup;
@@ -837,12 +886,14 @@
 				F2A99D2D243A790600D3CF1D /* Awards.storyboard in Resources */,
 				F2B7D35B244B47FE00C94E63 /* DTTableViewCell-Emoji.xib in Resources */,
 				F24B07C624C547B500FFD798 /* Today.storyboard in Resources */,
+				F2A93FA8258130DB006C88F8 /* WeekHeaderCell.xib in Resources */,
 				F2A21C12244271130030A117 /* Options.storyboard in Resources */,
 				F2FC633B2447FF4F00EF41AD /* DTTableViewCell-Label.xib in Resources */,
 				F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */,
 				F2FC632E2446B4F000EF41AD /* DTTableViewCell-Segmented.xib in Resources */,
 				F2FC63322446B50A00EF41AD /* DTTableViewCell-TextField.xib in Resources */,
 				F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */,
+				F2A93FA325812DEA006C88F8 /* WeekLineCell.xib in Resources */,
 				F2B4763223DDF6CD0076BFDC /* Calendar.storyboard in Resources */,
 				F2FC63312446B50A00EF41AD /* DTTableViewCell-TextView.xib in Resources */,
 				F2F3BE20257C831000A926E9 /* DayHeaderCell.xib in Resources */,
@@ -897,6 +948,7 @@
 				F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */,
 				BC5643FB246B1C8300942066 /* Direction.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
+				F2A93FB625813668006C88F8 /* WeekLineView.swift in Sources */,
 				BCF2300B24712DB6001E8844 /* ExpandedWeekCell.swift in Sources */,
 				F20E40492443ED25008759D1 /* DTTableViewController.swift in Sources */,
 				F284F9B5257FDB9B0016D1C6 /* ProgressView.swift in Sources */,
@@ -910,6 +962,7 @@
 				F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */,
 				BC5643F1246B0F1900942066 /* Goal.swift in Sources */,
 				F247542723E74C49006A13C3 /* StoredAward.swift in Sources */,
+				F2A93FB12581314C006C88F8 /* WeekLineData.swift in Sources */,
 				BC5643FF246B1E1F00942066 /* StoredDirection.swift in Sources */,
 				F2FC63392446D45000EF41AD /* DTFieldCells.swift in Sources */,
 				F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */,
@@ -947,11 +1000,15 @@
 				F2C190D824030701003F5ABA /* SelectStampsViewController.swift in Sources */,
 				F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
+				F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */,
 				F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */,
 				F2F3BE4A257D492300A926E9 /* DayColumnData.swift in Sources */,
 				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */,
+				F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */,
+				F2A93FAF2581314C006C88F8 /* WeekElement.swift in Sources */,
+				F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */,
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */,
 				F2B67431243919D500610D86 /* AwardView.swift in Sources */,

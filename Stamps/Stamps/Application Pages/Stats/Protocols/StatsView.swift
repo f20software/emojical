@@ -23,6 +23,12 @@ protocol StatsView: AnyObject {
 
     // MARK: - Updates
 
+    /// Update page header
+    func setHeader(to text: String)
+
+    /// Load stats for the week
+    func loadWeekData(header: WeekHeaderData, data: [WeekLineData])
+    
     /// Show/hide next week button
     func showNextWeekButton(_ show: Bool)
     

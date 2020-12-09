@@ -54,6 +54,24 @@ class CalendarDataBuilder {
         return monthAwards(forWeek: week) + weekAwards(forWeek: week)
     }
     
+    func weeklyStatsForWeek(_ week: CalendarHelper.Week, allStamps: [Stamp]) -> [WeekLineData] {
+        let diary = repository.diaryForDateInterval(from: week.firstDay, to: week.lastDay)
+        return allStamps.compactMap({
+            guard let stampId = $0.id else { return nil }
+            let bits = (0...6).map({
+                let date = week.firstDay.byAddingDays($0)
+                return diary.contains(where: {
+                    $0.date.databaseKey == date.databaseKey && $0.stampId == stampId }) ? "1" : "0"
+            }).joined(separator: "|")
+            
+            return WeekLineData(
+                stampId: stampId,
+                label: $0.label,
+                color: $0.color,
+                bitsAsString: bits)
+        })
+    }
+    
     // MARK: - Private
     
     private func cellsForMonths(months: [CalendarHelper.Month]) -> [[CalendarCellData]] {

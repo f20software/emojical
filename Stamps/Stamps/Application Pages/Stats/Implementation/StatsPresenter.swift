@@ -26,6 +26,10 @@ class StatsPresenter: StatsPresenterProtocol {
 
     // MARK: - State
 
+    private var stamps = [Stamp]()
+    
+    private var currentWeek = CalendarHelper.Week(Date())
+
     // MARK: - Lifecycle
 
     init(
@@ -52,6 +56,9 @@ class StatsPresenter: StatsPresenterProtocol {
     /// Called when view finished initial loading.
     func onViewDidLoad() {
         setupView()
+        
+        // Load initial data
+        stamps = repository.allStamps()
     }
     
     func onViewWillAppear() {
@@ -63,10 +70,10 @@ class StatsPresenter: StatsPresenterProtocol {
     private func setupView() {
 
         view?.onNextWeekTapped = { [weak self] in
-//            self?.advanceWeek(by: 1)
+            self?.advanceWeek(by: 1)
         }
         view?.onPrevWeekTapped = { [weak self] in
-//            self?.advanceWeek(by: -1)
+            self?.advanceWeek(by: -1)
         }
     }
     
@@ -84,6 +91,23 @@ class StatsPresenter: StatsPresenterProtocol {
 //
 //        // Stamp selector data
 //        loadStampSelectorData()
+        
+        view?.setHeader(to: currentWeek.label)
+        
+        let data = dataBuilder.weeklyStatsForWeek(currentWeek, allStamps: stamps)
+        view?.loadWeekData(
+            header: WeekHeaderData(labels: ["M", "T", "W", "T", "F", "S", "S"]),
+            data: data)
+    }
+    
+    // Move today's date one week to the past or one week to the future
+    private func advanceWeek(by delta: Int) {
+
+        // Update current week
+        currentWeek = CalendarHelper.Week(currentWeek.firstDay.byAddingWeek(delta))
+        
+        // Update view
+        loadViewData()
     }
 }
 

@@ -112,6 +112,7 @@ extension DayColumnView: UICollectionViewDelegate {
         if indexPath.row == 0 {
             onDayTapped?()
         } else {
+            onDayTapped?()
             // guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else { return }
             // onStampTapped?(Int64(stampId))
         }

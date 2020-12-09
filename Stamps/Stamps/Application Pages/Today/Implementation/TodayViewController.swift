@@ -30,7 +30,9 @@ class TodayViewController: UIViewController, TodayView {
     @IBOutlet weak var day6: DayColumnView!
     
     @IBOutlet weak var stampSelector: StampSelectorView!
+    @IBOutlet weak var stampSelectorCloseButton: UIButton!
     @IBOutlet weak var stampSelectorBottomContstraint: NSLayoutConstraint!
+
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
@@ -164,6 +166,10 @@ class TodayViewController: UIViewController, TodayView {
     
     private func configureViews() {
         
+        prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        stampSelectorCloseButton.setImage(UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!, for: .normal)
+
         selectedDayIndicator.layer.cornerRadius = selectedDayIndicator.bounds.height / 2
         selectedDayIndicator.backgroundColor = UIColor.systemGray3
         selectedDayIndicator.clipsToBounds = true

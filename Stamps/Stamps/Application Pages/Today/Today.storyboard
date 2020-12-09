@@ -365,6 +365,7 @@
                         <outlet property="selectedDayIndicatorLeading" destination="pkb-tA-aJn" id="mfg-Pt-nG2"/>
                         <outlet property="stampSelector" destination="kD0-4R-gft" id="NT0-8X-QK3"/>
                         <outlet property="stampSelectorBottomContstraint" destination="be8-Zf-eJO" id="Qtl-Fj-ZqD"/>
+                        <outlet property="stampSelectorCloseButton" destination="jq9-LL-UNm" id="JKP-VO-DZu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2j-Q2-fD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

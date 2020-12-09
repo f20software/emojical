@@ -54,6 +54,44 @@ class CalendarDataBuilder {
         return monthAwards(forWeek: week) + weekAwards(forWeek: week)
     }
     
+    // MARK: - Navigation viability
+    
+    static let secondsInDay = 60 * 60 * 24
+    
+    func canMoveWeekForward(_ week: CalendarHelper.Week) -> Bool {
+        let lastEntryDate = repository.getLastDiaryDate() ?? Date()
+        let nextWeekFirstDay = week.firstDay.byAddingWeek(1)
+        
+        let distance = Int(nextWeekFirstDay.timeIntervalSince(lastEntryDate))
+        return !(distance > (7 * CalendarDataBuilder.secondsInDay))
+    }
+
+    func canMoveWeekBackwards(_ week: CalendarHelper.Week) -> Bool {
+        let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
+        let prevWeekLastDay = week.lastDay.byAddingWeek(-1)
+        
+        let distance = Int(firstEntryDate.timeIntervalSince(prevWeekLastDay))
+        return !(distance > (7 * CalendarDataBuilder.secondsInDay))
+    }
+
+    func canMoveMonthForward(_ month: CalendarHelper.Month) -> Bool {
+        let lastEntryDate = repository.getLastDiaryDate() ?? Date()
+        let nextMonthFirstDay = month.firstDay.byAddingMonth(1)
+        
+        let distance = Int(nextMonthFirstDay.timeIntervalSince(lastEntryDate))
+        return !(distance > 0)
+    }
+
+    func canMoveMonthBackwards(_ month: CalendarHelper.Month) -> Bool {
+        let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
+        let nextMonthLastDay = month.lastDay.byAddingMonth(-1)
+        
+        let distance = Int(firstEntryDate.timeIntervalSince(nextMonthLastDay))
+        return !(distance > 0)
+    }
+
+    // MARK: - Getting statistics
+    
     func weeklyStatsForWeek(_ week: CalendarHelper.Week, allStamps: [Stamp]) -> [WeekLineData] {
         let diary = repository.diaryForDateInterval(from: week.firstDay, to: week.lastDay)
         return allStamps.compactMap({

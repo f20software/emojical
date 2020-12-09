@@ -82,16 +82,12 @@ class StatsViewController: UIViewController, StatsView {
         }
     }
 
-    /// Show/hide next week button
-    func showNextWeekButton(_ show: Bool) {
-        navigationItem.rightBarButtonItem = show ? nextButton : nil
+    /// Show/hide next/prev button
+    func showNextPrevButtons(showPrev: Bool, showNext: Bool) {
+        navigationItem.leftBarButtonItem = showPrev ? prevButton : nil
+        navigationItem.rightBarButtonItem = showNext ? nextButton : nil
     }
     
-    /// Show/hide previous week button
-    func showPrevWeekButton(_ show: Bool) {
-        navigationItem.leftBarButtonItem = show ? prevButton : nil
-    }
-
     /// Load stats for the week
     func loadWeekData(header: WeekHeaderData, data: [WeekLineData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()

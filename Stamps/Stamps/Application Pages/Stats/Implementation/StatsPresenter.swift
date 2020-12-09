@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import AudioToolbox
 
 class StatsPresenter: StatsPresenterProtocol {
 
@@ -71,7 +70,6 @@ class StatsPresenter: StatsPresenterProtocol {
             self.stamps = self.repository.allStamps()
             self.loadViewData()
         })
-
     }
     
     func onViewWillAppear() {
@@ -100,6 +98,11 @@ class StatsPresenter: StatsPresenterProtocol {
         switch mode {
         case .week:
             view?.setHeader(to: selectedWeek.label)
+            view?.showNextPrevButtons(
+                showPrev: dataBuilder.canMoveWeekBackwards(selectedWeek),
+                showNext: dataBuilder.canMoveWeekForward(selectedWeek)
+            )
+
             let data = dataBuilder.weeklyStatsForWeek(selectedWeek, allStamps: stamps)
             view?.loadWeekData(
                 header: WeekHeaderData(
@@ -108,6 +111,11 @@ class StatsPresenter: StatsPresenterProtocol {
 
         case .month:
             view?.setHeader(to: selectedMonth.label)
+            view?.showNextPrevButtons(
+                showPrev: dataBuilder.canMoveMonthBackwards(selectedMonth),
+                showNext: dataBuilder.canMoveMonthForward(selectedMonth)
+            )
+
             let data = dataBuilder.monthlyStatsForMonth(selectedMonth, allStamps: stamps)
             view?.loadMonthData(data: data)
         }

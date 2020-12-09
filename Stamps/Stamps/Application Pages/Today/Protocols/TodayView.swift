@@ -24,6 +24,12 @@ protocol TodayView: AnyObject {
     /// User tapped on the next week button
     var onNextWeekTapped: (() -> Void)? { get set }
 
+    /// User tapped on the plus button
+    var onPlusButtonTapped: (() -> Void)? { get set }
+
+    /// User tapped to close selector button
+    var onCloseStampSelectorTapped: (() -> Void)? { get set }
+
     // MARK: - Updates
 
     /// Update page title
@@ -46,7 +52,7 @@ protocol TodayView: AnyObject {
     
     /// Loads awards data
     func loadAwardsData(data: [TodayAwardData])
-
-    /// Show/hide lock icon
-    func showLock(_ show: Bool)
+    
+    /// Show/hide stamp selector and plus button
+    func showStampSelector(_ state: SelectorState)
 }

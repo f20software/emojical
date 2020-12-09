@@ -29,8 +29,13 @@ class TodayViewController: UIViewController, TodayView {
     @IBOutlet weak var day5: DayColumnView!
     @IBOutlet weak var day6: DayColumnView!
     
-    @IBOutlet weak var lockIcon: UIImageView!
     @IBOutlet weak var stampSelector: StampSelectorView!
+    @IBOutlet weak var stampSelectorCloseButton: UIButton!
+    @IBOutlet weak var stampSelectorBottomContstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
+
 
     // MARK: - DI
 
@@ -78,6 +83,12 @@ class TodayViewController: UIViewController, TodayView {
     /// User tapped on the next week button
     var onNextWeekTapped: (() -> Void)? 
 
+    /// User tapped on the plus button
+    var onPlusButtonTapped: (() -> Void)?
+
+    /// User tapped to close selector button
+    var onCloseStampSelectorTapped: (() -> Void)?
+
     /// Update page title
     func setTitle(to title: String) {
         navigationItem.title = title
@@ -122,9 +133,15 @@ class TodayViewController: UIViewController, TodayView {
         navigationItem.leftBarButtonItem = show ? prevWeek : nil
     }
 
-    /// Show/hide lock icon
-    func showLock(_ show: Bool) {
-        lockIcon.isHidden = !show
+    /// Show/hide stamp selector and plus button
+    func showStampSelector(_ state: SelectorState) {
+        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
+            options: [.curveEaseInOut], animations:
+        {
+            self.stampSelectorBottomContstraint.constant = (state == .fullSelector) ? 16 : -200
+            self.plusButtonBottomContstraint.constant = (state == .miniButton) ? 16 : -100
+            self.view.layoutIfNeeded()
+        })
     }
 
     // MARK: - Actions
@@ -137,10 +154,22 @@ class TodayViewController: UIViewController, TodayView {
         onNextWeekTapped?()
     }
     
+    @IBAction func plusButtonTapped(_ sender: Any) {
+        onPlusButtonTapped?()
+    }
+
+    @IBAction func closeSelectorTapped(_ sender: Any) {
+        onCloseStampSelectorTapped?()
+    }
+
     // MARK: - Private helpers
     
     private func configureViews() {
         
+        prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        stampSelectorCloseButton.setImage(UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!, for: .normal)
+
         selectedDayIndicator.layer.cornerRadius = selectedDayIndicator.bounds.height / 2
         selectedDayIndicator.backgroundColor = UIColor.systemGray3
         selectedDayIndicator.clipsToBounds = true
@@ -169,5 +198,16 @@ class TodayViewController: UIViewController, TodayView {
         day6.onDayTapped = { () in
             self.onDayHeaderTapped?(6)
         }
+        
+        plusButton.layer.cornerRadius = Specs.miniButtonCornerRadius
+        plusButton.clipsToBounds = true
+        plusButton.backgroundColor = UIColor.systemGray6
     }
+}
+
+// MARK: - Specs
+fileprivate struct Specs {
+    
+    /// Stamp selector mini button corner radius
+    static let miniButtonCornerRadius: CGFloat = 8.0
 }

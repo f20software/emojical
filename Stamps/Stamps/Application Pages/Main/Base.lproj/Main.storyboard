@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,7 +40,7 @@
         <scene sceneID="U2Q-Ox-Ezk">
             <objects>
                 <viewControllerPlaceholder storyboardName="Stamps" id="uXQ-0Z-U2U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stamps" image="circle.grid.hex" catalog="system" selectedImage="circle.grid.hex" id="wLk-FZ-EQZ"/>
+                    <tabBarItem key="tabBarItem" title="Stamps" id="wLk-FZ-EQZ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTe-Q0-Jge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,7 +50,7 @@
         <scene sceneID="spg-cO-tmA">
             <objects>
                 <viewControllerPlaceholder storyboardName="Goals" id="lPk-B2-hge" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Goals" image="star.circle" catalog="system" selectedImage="star.circle" id="Xda-pO-Tyr"/>
+                    <tabBarItem key="tabBarItem" title="Goals" id="Xda-pO-Tyr"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULA-qZ-KUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,7 +70,7 @@
         <scene sceneID="OUq-az-596">
             <objects>
                 <viewControllerPlaceholder storyboardName="Today" id="Clg-kQ-XR2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Today" image="circle.bottomthird.split" catalog="system" id="vfC-CN-l67"/>
+                    <tabBarItem key="tabBarItem" title="Today" id="vfC-CN-l67"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TC-hv-lb1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -81,7 +80,7 @@
         <scene sceneID="Hfl-gW-V0U">
             <objects>
                 <viewControllerPlaceholder storyboardName="Options" id="ieI-hD-N29" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="gearshape" catalog="system" id="hse-4T-ujs"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="hse-4T-ujs"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q4u-zv-QOj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,11 +88,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circle.bottomthird.split" catalog="system" width="128" height="121"/>
-        <image name="circle.grid.hex" catalog="system" width="128" height="112"/>
         <image name="dots" width="30" height="30"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="note1" width="29" height="30"/>
-        <image name="star.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

@@ -63,6 +63,7 @@
 		F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */; };
 		F284F9AD257EFA8E0016D1C6 /* TodayAwardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F9AC257EFA8E0016D1C6 /* TodayAwardData.swift */; };
 		F284F9B5257FDB9B0016D1C6 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F9B4257FDB9B0016D1C6 /* ProgressView.swift */; };
+		F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F9C22580620D0016D1C6 /* SelectorState.swift */; };
 		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
@@ -196,6 +197,7 @@
 		F284F996257EF1720016D1C6 /* TodayAwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayAwardCell.xib; sourceTree = "<group>"; };
 		F284F9AC257EFA8E0016D1C6 /* TodayAwardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAwardData.swift; sourceTree = "<group>"; };
 		F284F9B4257FDB9B0016D1C6 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		F284F9C22580620D0016D1C6 /* SelectorState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorState.swift; sourceTree = "<group>"; };
 		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -459,7 +461,7 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		F2A5256123D4CEEC00C3E0F3 /* Calendar */ = {
+		F2A5256123D4CEEC00C3E0F3 /* Calendar-obsolete */ = {
 			isa = PBXGroup;
 			children = (
 				BCF23003246FD6F6001E8844 /* DataSource */,
@@ -470,7 +472,7 @@
 				F2FF7E9E23D6188F0033D9DC /* DayViewController.swift */,
 				F2C4943C23D2CBC800EAF9CC /* CalendarViewController.swift */,
 			);
-			path = Calendar;
+			path = "Calendar-obsolete";
 			sourceTree = "<group>";
 		};
 		F2A99D2A2439346C00D3CF1D /* Options */ = {
@@ -482,14 +484,14 @@
 			path = Options;
 			sourceTree = "<group>";
 		};
-		F2A99D2B243A78ED00D3CF1D /* Awards */ = {
+		F2A99D2B243A78ED00D3CF1D /* Awards-obsolete */ = {
 			isa = PBXGroup;
 			children = (
 				F2A99D2C243A790600D3CF1D /* Awards.storyboard */,
 				F2A99D2E243A793000D3CF1D /* AwardCell.swift */,
 				F2A99D2F243A793000D3CF1D /* AwardsViewController.swift */,
 			);
-			path = Awards;
+			path = "Awards-obsolete";
 			sourceTree = "<group>";
 		};
 		F2B4763323DE3C120076BFDC /* Stamps */ = {
@@ -510,11 +512,11 @@
 			children = (
 				F20E403B2443E681008759D1 /* Main */,
 				F24B07C724C547C300FFD798 /* Today */,
-				F2A5256123D4CEEC00C3E0F3 /* Calendar */,
-				F2A99D2B243A78ED00D3CF1D /* Awards */,
 				F2B4763323DE3C120076BFDC /* Stamps */,
 				F2B4763923DE3DBE0076BFDC /* Goals */,
 				F2A99D2A2439346C00D3CF1D /* Options */,
+				F2A5256123D4CEEC00C3E0F3 /* Calendar-obsolete */,
+				F2A99D2B243A78ED00D3CF1D /* Awards-obsolete */,
 			);
 			path = "Application Pages";
 			sourceTree = "<group>";
@@ -608,6 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F3BE3D257D489D00A926E9 /* DayElement.swift */,
+				F284F9C22580620D0016D1C6 /* SelectorState.swift */,
 				F2F3BE49257D492300A926E9 /* DayColumnData.swift */,
 				F2F3BE60257D8C9800A926E9 /* DayStampData.swift */,
 				F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */,
@@ -739,7 +742,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Vladimir Svidersky";
 				TargetAttributes = {
 					F27B044D241EBD7A006E5175 = {
@@ -892,6 +895,7 @@
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
 				F20E40462443ED25008759D1 /* DTTableCell.swift in Sources */,
 				F20E404A2443ED25008759D1 /* DTLinkedSwitchCell.swift in Sources */,
+				F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */,
 				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
 				F247542523E734CE006A13C3 /* AwardManager.swift in Sources */,
 				F2A99D30243A793000D3CF1D /* AwardCell.swift in Sources */,
@@ -1021,6 +1025,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1081,6 +1086,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1117,7 +1123,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1125,7 +1131,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
 				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1137,7 +1143,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1145,7 +1151,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
 				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

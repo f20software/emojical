@@ -63,6 +63,7 @@
 		F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */; };
 		F284F9AD257EFA8E0016D1C6 /* TodayAwardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F9AC257EFA8E0016D1C6 /* TodayAwardData.swift */; };
 		F284F9B5257FDB9B0016D1C6 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F9B4257FDB9B0016D1C6 /* ProgressView.swift */; };
+		F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F9C22580620D0016D1C6 /* SelectorState.swift */; };
 		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
@@ -196,6 +197,7 @@
 		F284F996257EF1720016D1C6 /* TodayAwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayAwardCell.xib; sourceTree = "<group>"; };
 		F284F9AC257EFA8E0016D1C6 /* TodayAwardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAwardData.swift; sourceTree = "<group>"; };
 		F284F9B4257FDB9B0016D1C6 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		F284F9C22580620D0016D1C6 /* SelectorState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorState.swift; sourceTree = "<group>"; };
 		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F3BE3D257D489D00A926E9 /* DayElement.swift */,
+				F284F9C22580620D0016D1C6 /* SelectorState.swift */,
 				F2F3BE49257D492300A926E9 /* DayColumnData.swift */,
 				F2F3BE60257D8C9800A926E9 /* DayStampData.swift */,
 				F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */,
@@ -892,6 +895,7 @@
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
 				F20E40462443ED25008759D1 /* DTTableCell.swift in Sources */,
 				F20E404A2443ED25008759D1 /* DTLinkedSwitchCell.swift in Sources */,
+				F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */,
 				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
 				F247542523E734CE006A13C3 /* AwardManager.swift in Sources */,
 				F2A99D30243A793000D3CF1D /* AwardCell.swift in Sources */,

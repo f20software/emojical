@@ -13,11 +13,9 @@ class StatsViewController: UIViewController, StatsView {
     
     // MARK: - Outlets
     
-    @IBOutlet var prevWeek: UIBarButtonItem!
-    @IBOutlet var nextWeek: UIBarButtonItem!
-
+    @IBOutlet var prevButton: UIBarButtonItem!
+    @IBOutlet var nextButton: UIBarButtonItem!
     @IBOutlet var header: UILabel!
-
     @IBOutlet var stats: UICollectionView!
 
     // MARK: - DI
@@ -26,7 +24,7 @@ class StatsViewController: UIViewController, StatsView {
     
     // MARK: - State
     
-    private var weekDataSource: UICollectionViewDiffableDataSource<Int, WeekElement>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, StatsElement>!
 
     // MARK: - Lifecycle
     
@@ -40,8 +38,6 @@ class StatsViewController: UIViewController, StatsView {
         presenter = StatsPresenter(
             repository: Storage.shared.repository,
             stampsListener: Storage.shared.stampsListener(),
-            awardsListener: Storage.shared.awardsListener(),
-            awardManager: AwardManager.shared,
             calendar: CalendarHelper.shared,
             view: self)
         
@@ -57,48 +53,80 @@ class StatsViewController: UIViewController, StatsView {
     // MARK: - TodayView
     
     /// User tapped on the mode selector on the top of the screen
-    var onModeChanged: ((Int) -> Void)?
+    var onModeChanged: ((StatsMode) -> Void)?
 
     /// User tapped on the previous week button
-    var onPrevWeekTapped: (() -> Void)?
+    var onPrevButtonTapped: (() -> Void)?
 
     /// User tapped on the next week button
-    var onNextWeekTapped: (() -> Void)? 
+    var onNextButtonTapped: (() -> Void)? 
 
     /// Update page header
     func setHeader(to text: String) {
         header.text = text
     }
 
+    /// Update collection view layout to appropriate mode
+    func updateLayout(to mode: StatsMode) {
+        // Clear existing data to eliminate animation glitches
+        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
+        snapshot.appendSections([0])
+        dataSource.apply(snapshot, animatingDifferences: false)
+        
+        switch mode {
+        case .week:
+            self.stats.collectionViewLayout = self.weekLayout()
+            
+        case .month:
+            self.stats.collectionViewLayout = self.monthLayout()
+        }
+    }
+
     /// Show/hide next week button
     func showNextWeekButton(_ show: Bool) {
-        navigationItem.rightBarButtonItem = show ? nextWeek : nil
+        navigationItem.rightBarButtonItem = show ? nextButton : nil
     }
     
     /// Show/hide previous week button
     func showPrevWeekButton(_ show: Bool) {
-        navigationItem.leftBarButtonItem = show ? prevWeek : nil
+        navigationItem.leftBarButtonItem = show ? prevButton : nil
     }
 
     /// Load stats for the week
     func loadWeekData(header: WeekHeaderData, data: [WeekLineData]) {
-        
-        var snapshot = NSDiffableDataSourceSnapshot<Int, WeekElement>()
+        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
         snapshot.appendSections([0])
         
-        snapshot.appendItems([.weekHeader(header)])
-        snapshot.appendItems(data.map({ WeekElement.weekLine($0) }))
-        weekDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+        snapshot.appendItems([.weekHeaderCell(header)])
+        snapshot.appendItems(data.map({ StatsElement.weekLineCell($0) }))
+        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
+    
+    /// Load stats for the month
+    func loadMonthData(data: [MonthBoxData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
+        snapshot.appendSections([0])
+        
+        // snapshot.appendItems([.weekHeader(header)])
+        snapshot.appendItems(data.map({ StatsElement.monthBoxCell($0) }))
+        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+    }
+
 
     // MARK: - Actions
     
     @IBAction func prevButtonTapped(_ sender: Any) {
-        onPrevWeekTapped?()
+        onPrevButtonTapped?()
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        onNextWeekTapped?()
+        onNextButtonTapped?()
+    }
+    
+    @IBAction func modeChanged(_ sender: Any) {
+        guard let control = sender as? UISegmentedControl,
+            let newMode = StatsMode(rawValue: control.selectedSegmentIndex) else { return }
+        onModeChanged?(newMode)
     }
     
     // MARK: - Private helpers
@@ -108,19 +136,18 @@ class StatsViewController: UIViewController, StatsView {
         configureCollectionView()
         registerCells()
         
-        prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
-        nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        prevButton.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        nextButton.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
     }
     
     private func configureCollectionView() {
-        self.weekDataSource = UICollectionViewDiffableDataSource<Int, WeekElement>(
+        self.dataSource = UICollectionViewDiffableDataSource<Int, StatsElement>(
             collectionView: stats,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
             }
         )
-
-        stats.dataSource = weekDataSource
+        stats.dataSource = dataSource
         stats.delegate = self
         stats.collectionViewLayout = weekLayout()
         stats.backgroundColor = UIColor.clear
@@ -129,11 +156,15 @@ class StatsViewController: UIViewController, StatsView {
     private func registerCells() {
         stats.register(
             UINib(nibName: "WeekLineCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.weekLine
+            forCellWithReuseIdentifier: Specs.Cells.weekStickerStatsCell
         )
         stats.register(
             UINib(nibName: "WeekHeaderCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.weekHeader
+        )
+        stats.register(
+            UINib(nibName: "MonthBoxCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.monthStickerStatsCell
         )
     }
 
@@ -156,21 +187,44 @@ class StatsViewController: UIViewController, StatsView {
         )
 
         let section = NSCollectionLayoutSection(group: group)
-//        section.contentInsets = NSDirectionalEdgeInsets(
-//            top: 0, leading: 5,
-//            bottom: 0, trailing: 0)
-
         return UICollectionViewCompositionalLayout(section: section)
     }
 
+    // Creates layout for the day column - vertical list of cells
+    private func monthLayout() -> UICollectionViewCompositionalLayout {
+        let item = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(0.5),
+                heightDimension: .estimated(100)
+            )
+        )
+
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(100)
+            ),
+            subitems: [item]
+        )
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: Specs.monthBoxesMargin,
+            bottom: 0, trailing: Specs.monthBoxesMargin)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: 0,
+            bottom: Specs.monthBoxesMargin, trailing: 0)
+
+        return UICollectionViewCompositionalLayout(section: section)
+    }
 }
 
 extension StatsViewController: UICollectionViewDelegate {
     
-    private func cell(for path: IndexPath, model: WeekElement, collectionView: UICollectionView) -> UICollectionViewCell? {
+    private func cell(for path: IndexPath, model: StatsElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         
         switch model {
-        case .weekHeader(let data):
+        case .weekHeaderCell(let data):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.weekHeader, for: path
             ) as? WeekHeaderCell else { return UICollectionViewCell() }
@@ -178,15 +232,22 @@ extension StatsViewController: UICollectionViewDelegate {
             cell.configure(for: data)
             return cell
 
-        case .weekLine(let data):
+        case .weekLineCell(let data):
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.weekLine, for: path
+                withReuseIdentifier: Specs.Cells.weekStickerStatsCell, for: path
             ) as? WeekLineCell else { return UICollectionViewCell() }
             
             cell.configure(for: data)
             return cell
+            
+        case .monthBoxCell(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.monthStickerStatsCell, for: path
+            ) as? MonthBoxCell else { return UICollectionViewCell() }
+            
+            cell.configure(for: data)
+            return cell
         }
-        
     }
 }
 
@@ -200,6 +261,12 @@ fileprivate struct Specs {
         static let weekHeader = "WeekHeaderCell"
 
         /// Week stat line cell
-        static let weekLine = "WeekLineCell"
+        static let weekStickerStatsCell = "WeekLineCell"
+
+        /// Month stat cell
+        static let monthStickerStatsCell = "MonthBoxCell"
     }
+    
+    /// Margins for monthly boxes (from left, right, and bottom)
+    static let monthBoxesMargin: CGFloat = 15.0
 }

@@ -13,22 +13,28 @@ protocol StatsView: AnyObject {
     // MARK: - Callbacks
     
     /// User tapped on the mode selector on the top of the screen
-    var onModeChanged: ((Int) -> Void)? { get set }
+    var onModeChanged: ((StatsMode) -> Void)? { get set }
 
     /// User tapped on the previous week button
-    var onPrevWeekTapped: (() -> Void)? { get set }
+    var onPrevButtonTapped: (() -> Void)? { get set }
 
     /// User tapped on the next week button
-    var onNextWeekTapped: (() -> Void)? { get set }
+    var onNextButtonTapped: (() -> Void)? { get set }
 
     // MARK: - Updates
 
     /// Update page header
     func setHeader(to text: String)
 
+    /// Update collection view layout to appropriate mode
+    func updateLayout(to mode: StatsMode)
+
     /// Load stats for the week
     func loadWeekData(header: WeekHeaderData, data: [WeekLineData])
     
+    /// Load stats for the month
+    func loadMonthData(data: [MonthBoxData])
+
     /// Show/hide next week button
     func showNextWeekButton(_ show: Bool)
     

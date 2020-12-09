@@ -16,9 +16,7 @@ class StatsPresenter: StatsPresenterProtocol {
 
     private let repository: DataRepository
     private let stampsListener: StampsListener
-    private let awardsListener: AwardsListener
     private let calendar: CalendarHelper
-    private let awardManager: AwardManager
     private weak var view: StatsView?
     
     // Private instance of the data builder
@@ -26,24 +24,28 @@ class StatsPresenter: StatsPresenterProtocol {
 
     // MARK: - State
 
+    /// Stats mode - weekly or monthly
+    private var mode: StatsMode = .week
+    
+    /// Copy of all stamps - used to build data model for view to show
     private var stamps = [Stamp]()
     
-    private var currentWeek = CalendarHelper.Week(Date())
+    /// Selected week
+    private var selectedWeek = CalendarHelper.Week(Date())
+
+    /// Selected month
+    private var selectedMonth = CalendarHelper.Month(Date())
 
     // MARK: - Lifecycle
 
     init(
         repository: DataRepository,
         stampsListener: StampsListener,
-        awardsListener: AwardsListener,
-        awardManager: AwardManager,
         calendar: CalendarHelper,
         view: StatsView
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
-        self.awardsListener = awardsListener
-        self.awardManager = awardManager
         self.calendar = calendar
         self.view = view
         
@@ -57,8 +59,19 @@ class StatsPresenter: StatsPresenterProtocol {
     func onViewDidLoad() {
         setupView()
         
-        // Load initial data
+        // Load initial set of data
         stamps = repository.allStamps()
+        // Subscribe to stamp listner in case stamps array ever changes
+        stampsListener.startListening(onError: { error in
+            fatalError("Unexpected error: \(error)")
+        },
+        onChange: { [weak self] stamps in
+            guard let self = self else { return }
+            
+            self.stamps = self.repository.allStamps()
+            self.loadViewData()
+        })
+
     }
     
     func onViewWillAppear() {
@@ -68,43 +81,47 @@ class StatsPresenter: StatsPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
-
-        view?.onNextWeekTapped = { [weak self] in
-            self?.advanceWeek(by: 1)
+        view?.onNextButtonTapped = { [weak self] in
+            self?.advancePeriod(by: 1)
         }
-        view?.onPrevWeekTapped = { [weak self] in
-            self?.advanceWeek(by: -1)
+        view?.onPrevButtonTapped = { [weak self] in
+            self?.advancePeriod(by: -1)
+        }
+        view?.onModeChanged = { [weak self] newMode in
+            guard self?.mode != newMode else { return }
+
+            self?.view?.updateLayout(to: newMode)
+            self?.mode = newMode
+            self?.loadViewData()
         }
     }
     
     private func loadViewData() {
-        // Title and nav bar
-//        view?.setTitle(to: dataBuilder.weekTitleForWeek(weekIndex))
-//        view?.showNextWeekButton(weekIndex < (calendar.currentWeeks.count-1))
-//        view?.showPrevWeekButton(weekIndex > 0)
-//
-//        // Awards strip on the top
-//        loadAwardsData()
-//
-//        // Column data
-//        view?.loadDaysData(data: model)
-//
-//        // Stamp selector data
-//        loadStampSelectorData()
-        
-        view?.setHeader(to: currentWeek.label)
-        
-        let data = dataBuilder.weeklyStatsForWeek(currentWeek, allStamps: stamps)
-        view?.loadWeekData(
-            header: WeekHeaderData(labels: ["M", "T", "W", "T", "F", "S", "S"]),
-            data: data)
+        switch mode {
+        case .week:
+            view?.setHeader(to: selectedWeek.label)
+            let data = dataBuilder.weeklyStatsForWeek(selectedWeek, allStamps: stamps)
+            view?.loadWeekData(
+                header: WeekHeaderData(
+                    weekdayHeaders: selectedWeek.weekdayLettersForWeek()),
+                data: data)
+
+        case .month:
+            view?.setHeader(to: selectedMonth.label)
+            let data = dataBuilder.monthlyStatsForMonth(selectedMonth, allStamps: stamps)
+            view?.loadMonthData(data: data)
+        }
     }
     
     // Move today's date one week to the past or one week to the future
-    private func advanceWeek(by delta: Int) {
-
-        // Update current week
-        currentWeek = CalendarHelper.Week(currentWeek.firstDay.byAddingWeek(delta))
+    private func advancePeriod(by delta: Int) {
+        switch mode {
+        case .week:
+            selectedWeek = CalendarHelper.Week(selectedWeek.firstDay.byAddingWeek(delta))
+            
+        case .month:
+            selectedMonth = CalendarHelper.Month(selectedMonth.firstDay.byAddingMonth(delta))
+        }
         
         // Update view
         loadViewData()

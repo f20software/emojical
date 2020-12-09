@@ -37,7 +37,7 @@ class WeekHeaderCell: UICollectionViewCell {
     // MARK: - Public view interface
     
     func configure(for data: WeekHeaderData) {
-        for (text, label) in zip(data.labels, days) {
+        for (text, label) in zip(data.weekdayHeaders, days) {
             label.text = text
         }
     }

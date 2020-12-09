@@ -58,7 +58,7 @@ class CalendarDataBuilder {
         let diary = repository.diaryForDateInterval(from: week.firstDay, to: week.lastDay)
         return allStamps.compactMap({
             guard let stampId = $0.id else { return nil }
-            let bits = (0...6).map({
+            let bits = (0..<7).map({
                 let date = week.firstDay.byAddingDays($0)
                 return diary.contains(where: {
                     $0.date.databaseKey == date.databaseKey && $0.stampId == stampId }) ? "1" : "0"
@@ -72,6 +72,30 @@ class CalendarDataBuilder {
         })
     }
     
+    func monthlyStatsForMonth(_ month: CalendarHelper.Month, allStamps: [Stamp]) -> [MonthBoxData] {
+        let diary = repository.diaryForDateInterval(from: month.firstDay, to: month.lastDay)
+        let weekdayHeaders = CalendarHelper.Week(Date()).weekdayLettersForWeek()
+        
+        return allStamps.compactMap({
+            guard let stampId = $0.id else { return nil }
+            let bits = (0..<month.numberOfDays).map({
+                let date = month.firstDay.byAddingDays($0)
+                return diary.contains(where: {
+                    $0.date.databaseKey == date.databaseKey && $0.stampId == stampId }) ? "1" : "0"
+            }).joined(separator: "|")
+            
+            return MonthBoxData(
+                stampId: stampId,
+                label: $0.label,
+                name: $0.name,
+                color: $0.color,
+                weekdayHeaders: weekdayHeaders,
+                numberOfWeeks: month.numberOfWeeks,
+                firstDayOffset: month.firstIndex,
+                bitsAsString: bits)
+        })
+    }
+
     // MARK: - Private
     
     private func cellsForMonths(months: [CalendarHelper.Month]) -> [[CalendarCellData]] {

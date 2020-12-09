@@ -8,8 +8,9 @@
 
 import Foundation
 
+/// View model data to display weekday header (used in Weekly view)
 struct WeekHeaderData {
-    let labels: [String]
+    let weekdayHeaders: [String]
 }
 
 extension WeekHeaderData: Equatable, Hashable {}

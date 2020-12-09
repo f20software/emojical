@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// View model data to display statistics of single stamp during one week
 struct WeekLineData {
     let stampId: Int64
     let label: String

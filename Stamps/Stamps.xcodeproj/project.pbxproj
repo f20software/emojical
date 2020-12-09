@@ -76,11 +76,16 @@
 		F2A93FA325812DEA006C88F8 /* WeekLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */; };
 		F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */; };
 		F2A93FA8258130DB006C88F8 /* WeekHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */; };
-		F2A93FAF2581314C006C88F8 /* WeekElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAC2581314C006C88F8 /* WeekElement.swift */; };
+		F2A93FAF2581314C006C88F8 /* StatsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAC2581314C006C88F8 /* StatsElement.swift */; };
 		F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */; };
 		F2A93FB12581314C006C88F8 /* WeekLineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAE2581314C006C88F8 /* WeekLineData.swift */; };
 		F2A93FB625813668006C88F8 /* WeekLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FB525813668006C88F8 /* WeekLineView.swift */; };
 		F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */; };
+		F2A93FC825816180006C88F8 /* MonthBoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FC725816180006C88F8 /* MonthBoxData.swift */; };
+		F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FCB25816249006C88F8 /* MonthBoxView.swift */; };
+		F2A93FD1258164B2006C88F8 /* MonthBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FCF258164B2006C88F8 /* MonthBoxCell.swift */; };
+		F2A93FD2258164B2006C88F8 /* MonthBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A93FD0258164B2006C88F8 /* MonthBoxCell.xib */; };
+		F2A93FD825816709006C88F8 /* StatsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FD725816709006C88F8 /* StatsMode.swift */; };
 		F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A99D282439346900D3CF1D /* OptionsViewController.swift */; };
 		F2A99D2D243A790600D3CF1D /* Awards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A99D2C243A790600D3CF1D /* Awards.storyboard */; };
 		F2A99D30243A793000D3CF1D /* AwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A99D2E243A793000D3CF1D /* AwardCell.swift */; };
@@ -223,11 +228,16 @@
 		F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekLineCell.xib; sourceTree = "<group>"; };
 		F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekLineCell.swift; sourceTree = "<group>"; };
 		F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekHeaderCell.xib; sourceTree = "<group>"; };
-		F2A93FAC2581314C006C88F8 /* WeekElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekElement.swift; sourceTree = "<group>"; };
+		F2A93FAC2581314C006C88F8 /* StatsElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsElement.swift; sourceTree = "<group>"; };
 		F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderData.swift; sourceTree = "<group>"; };
 		F2A93FAE2581314C006C88F8 /* WeekLineData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekLineData.swift; sourceTree = "<group>"; };
 		F2A93FB525813668006C88F8 /* WeekLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekLineView.swift; sourceTree = "<group>"; };
 		F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderCell.swift; sourceTree = "<group>"; };
+		F2A93FC725816180006C88F8 /* MonthBoxData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBoxData.swift; sourceTree = "<group>"; };
+		F2A93FCB25816249006C88F8 /* MonthBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBoxView.swift; sourceTree = "<group>"; };
+		F2A93FCF258164B2006C88F8 /* MonthBoxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBoxCell.swift; sourceTree = "<group>"; };
+		F2A93FD0258164B2006C88F8 /* MonthBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthBoxCell.xib; sourceTree = "<group>"; };
+		F2A93FD725816709006C88F8 /* StatsMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsMode.swift; sourceTree = "<group>"; };
 		F2A99D282439346900D3CF1D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		F2A99D2C243A790600D3CF1D /* Awards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Awards.storyboard; sourceTree = "<group>"; };
 		F2A99D2E243A793000D3CF1D /* AwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardCell.swift; sourceTree = "<group>"; };
@@ -451,7 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				F24B07C524C547B500FFD798 /* Today.storyboard */,
-				F2F3BE44257D48F900A926E9 /* Model */,
+				F2F3BE44257D48F900A926E9 /* Models */,
 				F2F3BE39257D482D00A926E9 /* Cells */,
 				F2F3BE59257D65AE00A926E9 /* Views */,
 				F2F3BE6C257DD2A600A926E9 /* Protocols */,
@@ -539,6 +549,8 @@
 				F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */,
 				F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */,
 				F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */,
+				F2A93FD0258164B2006C88F8 /* MonthBoxCell.xib */,
+				F2A93FCF258164B2006C88F8 /* MonthBoxCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -546,8 +558,10 @@
 		F2A93FAB2581314C006C88F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F2A93FAC2581314C006C88F8 /* WeekElement.swift */,
+				F2A93FD725816709006C88F8 /* StatsMode.swift */,
+				F2A93FAC2581314C006C88F8 /* StatsElement.swift */,
 				F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */,
+				F2A93FC725816180006C88F8 /* MonthBoxData.swift */,
 				F2A93FAE2581314C006C88F8 /* WeekLineData.swift */,
 			);
 			path = Models;
@@ -557,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				F2A93FB525813668006C88F8 /* WeekLineView.swift */,
+				F2A93FCB25816249006C88F8 /* MonthBoxView.swift */,
 			);
 			name = Views;
 			path = "Stamps/Application Pages/Stats/Views";
@@ -694,7 +709,7 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		F2F3BE44257D48F900A926E9 /* Model */ = {
+		F2F3BE44257D48F900A926E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F2F3BE3D257D489D00A926E9 /* DayElement.swift */,
@@ -704,7 +719,7 @@
 				F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */,
 				F284F9AC257EFA8E0016D1C6 /* TodayAwardData.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F2F3BE59257D65AE00A926E9 /* Views */ = {
@@ -891,6 +906,7 @@
 				F2FC633B2447FF4F00EF41AD /* DTTableViewCell-Label.xib in Resources */,
 				F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */,
 				F2FC632E2446B4F000EF41AD /* DTTableViewCell-Segmented.xib in Resources */,
+				F2A93FD2258164B2006C88F8 /* MonthBoxCell.xib in Resources */,
 				F2FC63322446B50A00EF41AD /* DTTableViewCell-TextField.xib in Resources */,
 				F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */,
 				F2A93FA325812DEA006C88F8 /* WeekLineCell.xib in Resources */,
@@ -944,6 +960,7 @@
 				F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */,
 				BC5643F3246B0FCE00942066 /* Award.swift in Sources */,
 				F2F3BE1F257C831000A926E9 /* DayHeaderCell.swift in Sources */,
+				F2A93FD1258164B2006C88F8 /* MonthBoxCell.swift in Sources */,
 				F284F997257EF1720016D1C6 /* TodayAwardCell.swift in Sources */,
 				F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */,
 				BC5643FB246B1C8300942066 /* Direction.swift in Sources */,
@@ -960,6 +977,7 @@
 				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
 				F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */,
+				F2A93FC825816180006C88F8 /* MonthBoxData.swift in Sources */,
 				BC5643F1246B0F1900942066 /* Goal.swift in Sources */,
 				F247542723E74C49006A13C3 /* StoredAward.swift in Sources */,
 				F2A93FB12581314C006C88F8 /* WeekLineData.swift in Sources */,
@@ -1004,10 +1022,12 @@
 				F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */,
 				F2F3BE4A257D492300A926E9 /* DayColumnData.swift in Sources */,
 				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
+				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */,
 				F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */,
-				F2A93FAF2581314C006C88F8 /* WeekElement.swift in Sources */,
+				F2A93FD825816709006C88F8 /* StatsMode.swift in Sources */,
+				F2A93FAF2581314C006C88F8 /* StatsElement.swift in Sources */,
 				F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */,
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2FF7E9F23D6188F0033D9DC /* DayViewController.swift in Sources */,

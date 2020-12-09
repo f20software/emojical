@@ -39,8 +39,10 @@
                                 <segments>
                                     <segment title="Week"/>
                                     <segment title="Month"/>
-                                    <segment title="Year"/>
                                 </segments>
+                                <connections>
+                                    <action selector="modeChanged:" destination="tvO-pK-EYQ" eventType="valueChanged" id="fnW-2K-BJx"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 19 - 26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXJ-0G-7yc">
                                 <rect key="frame" x="20" y="67" width="121" height="27"/>
@@ -89,8 +91,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="header" destination="YXJ-0G-7yc" id="bb7-dp-8xH"/>
-                        <outlet property="nextWeek" destination="ep7-Zj-mBI" id="WYu-5Y-dOU"/>
-                        <outlet property="prevWeek" destination="YEL-wK-uce" id="cYf-Yr-qvn"/>
+                        <outlet property="nextButton" destination="ep7-Zj-mBI" id="WYu-5Y-dOU"/>
+                        <outlet property="prevButton" destination="YEL-wK-uce" id="cYf-Yr-qvn"/>
                         <outlet property="stats" destination="NcW-C8-Csq" id="DXf-hy-FXM"/>
                     </connections>
                 </viewController>

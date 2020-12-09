@@ -1,5 +1,5 @@
 //
-//  WeekElement.swift
+//  StatsMode.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/09/2020.
@@ -8,7 +8,10 @@
 
 import Foundation
 
-enum WeekElement: Hashable {
-    case weekHeader(WeekHeaderData)
-    case weekLine(WeekLineData)
+enum StatsMode: Int, Hashable {
+    /// Weekly stats by sticker
+    case week
+    
+    /// Monthly stats by sticker
+    case month
 }

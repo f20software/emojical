@@ -17,14 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="stampCell" id="fGJ-k6-Rbj" customClass="StampCell" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="374" height="53"/>
+                                <rect key="frame" x="20" y="55.5" width="374" height="53.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fGJ-k6-Rbj" id="scU-Nk-XDk">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="53"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="53.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nh0-tm-36e" customClass="StickerView" customModule="Emojical" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="6.5" width="40" height="40"/>
+                                            <rect key="frame" x="20" y="7" width="40" height="40"/>
                                             <color key="backgroundColor" systemColor="systemGreenColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="jhX-Co-EIO"/>
@@ -32,13 +32,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4B-pC-Kzv">
-                                            <rect key="frame" x="70" y="16" width="63" height="21"/>
+                                            <rect key="frame" x="70" y="16" width="63" height="21.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFq-fI-buh">
-                                            <rect key="frame" x="302" y="18.5" width="33" height="16"/>
+                                            <rect key="frame" x="302" y="19" width="33" height="16"/>
                                             <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,7 +88,7 @@
         <scene sceneID="CFT-uY-mvt">
             <objects>
                 <navigationController id="I4W-gM-1yS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stickers" image="circle.grid.hex" catalog="system" selectedImage="circle.grid.hex.fill" id="Vi1-R5-SWP"/>
+                    <tabBarItem key="tabBarItem" title="Stickers" image="circles.hexagongrid" catalog="system" selectedImage="circles.hexagongrid.fill" id="Vi1-R5-SWP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hhp-j9-tvO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -177,8 +177,8 @@
         <segue reference="0C7-QJ-zr2"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="circle.grid.hex" catalog="system" width="128" height="112"/>
-        <image name="circle.grid.hex.fill" catalog="system" width="128" height="112"/>
+        <image name="circles.hexagongrid" catalog="system" width="128" height="112"/>
+        <image name="circles.hexagongrid.fill" catalog="system" width="128" height="112"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

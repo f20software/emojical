@@ -12,17 +12,25 @@ class StickerCell: UICollectionViewCell {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var sticker: StickerView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         configureViews()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        sticker.text = nil
+        tag = 0
+    }
+    
     // MARK: - Public view interface
 
-    func configure(for data: String) {
-        label.text = data
+    func configure(for data: DayStampData) {
+        sticker.color = data.color
+        sticker.text = data.label
+        tag = Int(data.stampId ?? 0)
     }
 
     // MARK: - Private helpers

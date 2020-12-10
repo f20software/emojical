@@ -10,6 +10,6 @@ import Foundation
 
 /// Unified view model for stickers/goals collection view
 enum StickersElement: Hashable {
-    case sticker(String)
-    case goal(String)
+    case sticker(DayStampData)
+    case goal(GoalAwardData)
 }

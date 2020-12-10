@@ -110,7 +110,7 @@ class StickerView: UIView {
 
         labelView = UILabel(frame: bounds)
         labelView.translatesAutoresizingMaskIntoConstraints = false
-        labelView.font = UIFont.systemFont(ofSize: (bounds.width * 0.65))
+        labelView.font = UIFont.systemFont(ofSize: 26/*((bounds.width * 0.60)*/)
         labelView.textAlignment = .center
         labelView.backgroundColor = UIColor.clear
         addSubview(labelView)

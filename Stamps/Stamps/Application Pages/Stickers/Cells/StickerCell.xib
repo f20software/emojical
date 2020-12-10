@@ -20,17 +20,16 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ChH-rG-WsF">
                         <rect key="frame" x="0.0" y="0.0" width="74" height="78"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="27" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-hg-Szf">
-                                <rect key="frame" x="20" y="22.5" width="34" height="33.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRr-MV-wZN" customClass="StickerView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="74" height="78"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lYa-hg-Szf" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="myH-hW-fKQ"/>
-                            <constraint firstItem="lYa-hg-Szf" firstAttribute="centerX" secondItem="ChH-rG-WsF" secondAttribute="centerX" id="xg2-eU-6Xs"/>
+                            <constraint firstItem="LRr-MV-wZN" firstAttribute="width" secondItem="ChH-rG-WsF" secondAttribute="width" id="5lC-TU-7Ub"/>
+                            <constraint firstItem="LRr-MV-wZN" firstAttribute="centerX" secondItem="ChH-rG-WsF" secondAttribute="centerX" id="H1p-Od-Crt"/>
+                            <constraint firstItem="LRr-MV-wZN" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="Qc1-aE-u82"/>
+                            <constraint firstItem="LRr-MV-wZN" firstAttribute="height" secondItem="ChH-rG-WsF" secondAttribute="height" id="wOH-C4-xkL"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -44,7 +43,7 @@
             </constraints>
             <size key="customSize" width="74" height="78"/>
             <connections>
-                <outlet property="label" destination="lYa-hg-Szf" id="XZc-Ud-aCC"/>
+                <outlet property="sticker" destination="LRr-MV-wZN" id="Sdz-RW-wZV"/>
             </connections>
             <point key="canvasLocation" x="59.420289855072468" y="138.61607142857142"/>
         </collectionViewCell>

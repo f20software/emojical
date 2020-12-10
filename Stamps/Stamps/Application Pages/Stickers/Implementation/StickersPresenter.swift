@@ -15,6 +15,8 @@ class StickersPresenter: StickersPresenterProtocol {
 
     private let repository: DataRepository
     private let stampsListener: StampsListener
+    private let awardsListener: AwardsListener
+    private let awardManager: AwardManager
     private weak var view: StickersView?
     
     // MARK: - State
@@ -28,10 +30,14 @@ class StickersPresenter: StickersPresenterProtocol {
     init(
         repository: DataRepository,
         stampsListener: StampsListener,
+        awardsListener: AwardsListener,
+        awardManager: AwardManager,
         view: StickersView
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
+        self.awardsListener = awardsListener
+        self.awardManager = awardManager
         self.view = view
     }
 
@@ -53,6 +59,16 @@ class StickersPresenter: StickersPresenterProtocol {
             self.stamps = self.repository.allStamps()
             self.loadViewData()
         })
+        
+        awardsListener.startListening(onError: { error in
+            fatalError("Unexpected error: \(error)")
+        },
+        onChange: { [weak self] awards in
+            guard let self = self else { return }
+            
+            self.loadViewData()
+        })
+
     }
     
     /// Called when view about to appear on the screen
@@ -66,6 +82,35 @@ class StickersPresenter: StickersPresenterProtocol {
     }
     
     private func loadViewData() {
-        view?.loadData(stickers: stamps, goals: goals)
+        let stampData = stamps.map({
+            DayStampData(
+                stampId: $0.id,
+                label: $0.label,
+                color: $0.color,
+                isUsed: false
+            )
+        })
+        
+        let goalsData: [GoalAwardData] = goals.compactMap({
+            guard let goalId = $0.id else { return nil }
+
+            let progress = self.awardManager.currentProgressFor($0)
+            let goalReached = progress >= $0.limit
+
+            return GoalAwardData(
+                goalId: goalId,
+                name: $0.name,
+                details: $0.details,
+                color: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.2),
+                dashes: $0.period == .month ? 0 : 7,
+                progress: goalReached ? 1.0 : CGFloat(progress) / CGFloat($0.limit),
+                progressColor: $0.direction == .positive ?
+                    (goalReached ? UIColor.positiveGoalReached : UIColor.positiveGoalNotReached) :
+                    (goalReached ? UIColor.negativeGoalReached : UIColor.negativeGoalNotReached)
+                
+            )
+        })
+        
+        view?.loadData(stickers: stampData, goals: goalsData)
     }
 }

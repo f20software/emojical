@@ -9,7 +9,13 @@
 import UIKit
 
 class StickersViewController: UIViewController, StickersView {
-    
+
+    // List of sections
+    enum Section: String, CaseIterable {
+        case stickers = "Stickers"
+        case goals = "Goals"
+    }
+
     // MARK: - Outlets
     
     @IBOutlet var collectionView: UICollectionView!
@@ -34,6 +40,8 @@ class StickersViewController: UIViewController, StickersView {
         presenter = StickersPresenter(
             repository: Storage.shared.repository,
             stampsListener: Storage.shared.stampsListener(),
+            awardsListener: Storage.shared.awardsListener(),
+            awardManager: AwardManager.shared,
             view: self)
         
         configureViews()
@@ -48,13 +56,12 @@ class StickersViewController: UIViewController, StickersView {
     // MARK: - StickersView
     
     /// Load data
-    func loadData(stickers: [Stamp], goals: [Goal]) {
+    func loadData(stickers: [DayStampData], goals: [GoalAwardData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
         snapshot.appendSections([0])
-        snapshot.appendItems(stickers.map({ StickersElement.sticker($0.name) }))
+        snapshot.appendItems(stickers.map({ StickersElement.sticker($0) }))
         snapshot.appendSections([1])
-        snapshot.appendItems(goals.map({ StickersElement.sticker($0.name) }))
-
+        snapshot.appendItems(goals.map({ StickersElement.goal($0) }))
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -68,15 +75,21 @@ class StickersViewController: UIViewController, StickersView {
     }
     
     private func configureCollectionView() {
-        self.dataSource = UICollectionViewDiffableDataSource<Int, StickersElement>(
+        
+        dataSource = UICollectionViewDiffableDataSource<Int, StickersElement>(
             collectionView: collectionView,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
             }
         )
+        dataSource.supplementaryViewProvider = { [weak self]
+            (collectionView, kind, indexPath) -> UICollectionReusableView? in
+            self?.header(for: indexPath, kind: kind, collectionView: collectionView)
+        }
+        
         collectionView.dataSource = dataSource
         collectionView.delegate = self
-        collectionView.collectionViewLayout = stickersLayout()
+        collectionView.collectionViewLayout = generateLayout()
         collectionView.backgroundColor = UIColor.clear
     }
     
@@ -89,34 +102,11 @@ class StickersViewController: UIViewController, StickersView {
             UINib(nibName: "Goal2Cell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.goalCell
         )
-    }
-
-    // Creates layout for monthly stats - each month inside box cell
-    private func stickersLayout() -> UICollectionViewCompositionalLayout {
-        let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.5),
-                heightDimension: .estimated(100)
-            )
+        collectionView.register(
+            StickersHeaderView.self,
+            forSupplementaryViewOfKind: Specs.Cells.header,
+            withReuseIdentifier: Specs.Cells.header
         )
-
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(100)
-            ),
-            subitems: [item]
-        )
-        group.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 20,
-            bottom: 0, trailing: 20)
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 0,
-            bottom: 20, trailing: 0)
-
-        return UICollectionViewCompositionalLayout(section: section)
     }
 }
 
@@ -142,6 +132,117 @@ extension StickersViewController: UICollectionViewDelegate {
             return cell
         }
     }
+    
+    private func header(for path: IndexPath, kind: String, collectionView: UICollectionView) ->
+        UICollectionReusableView? {
+        
+        guard let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: Specs.Cells.header,
+            for: path) as? StickersHeaderView else { return UICollectionReusableView() }
+
+        header.configure(Section.allCases[path.section].rawValue)
+        return header
+    }
+}
+
+// MARK: - Collection view layout generation
+
+extension StickersViewController {
+
+    // Creates collection layout based on the section required
+    private func generateLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout {
+            (sectionIndex, _) -> NSCollectionLayoutSection? in
+        
+            let section = Section.allCases[sectionIndex]
+            switch (section) {
+            case .stickers:
+                return self.generateStampsLayout()
+            case .goals:
+                return self.generateGoalsLayout()
+            }
+        }
+        return layout
+    }
+    
+    // Generates layout for stickers section - each sticker is fixed width square cell
+    private func generateStampsLayout() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .absolute(75),
+                heightDimension: .absolute(75)
+            )
+        )
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: 0,
+            bottom:  Specs.cellMargin, trailing: Specs.cellMargin
+        )
+
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(100)
+            ),
+            subitems: [item]
+        )
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(44)),
+            elementKind: Specs.Cells.header,
+            alignment: .top
+        )
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [sectionHeader]
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: Specs.margin,
+            bottom: 0, trailing: Specs.margin
+        )
+        
+        return section
+    }
+    
+    // Generates layout for goals section - each line is 100% width
+    private func generateGoalsLayout() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(100)
+            )
+        )
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: 0, bottom: 0, trailing: 0
+        )
+
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(100)
+            ),
+            subitems: [item]
+        )
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(44)),
+            elementKind: Specs.Cells.header,
+            alignment: .top
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [sectionHeader]
+        section.interGroupSpacing = Specs.cellMargin
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: Specs.margin,
+            bottom: Specs.margin, trailing: Specs.margin
+        )
+        
+        return section
+    }
 }
 
 // MARK: - Specs
@@ -154,6 +255,15 @@ fileprivate struct Specs {
         static let stickerCell = "StickerCell"
 
         /// Goal cell identifier
-        static let goalCell = "GoalCell"
+        static let goalCell = "Goal2Cell"
+        
+        /// Custom supplementary header identifier and kind
+        static let header = "stickers-header-element"
     }
+    
+    /// Left/right and bottom margin for the collection view cells
+    static let margin: CGFloat = 20.0
+
+    /// Cell margin
+    static let cellMargin: CGFloat = 16.0
 }

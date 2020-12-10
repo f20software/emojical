@@ -24,9 +24,12 @@ protocol DataRepository: class {
     
     // MARK: - Querying
     
-    /// Diary records filtered for specific date interval
+    /// Diary records filtered for specific date interval 
     func diaryForDateInterval(from: Date, to: Date) -> [Diary]
     
+    /// Diary records filtered for specific date interval and  filtered by stampId
+    func diaryForDateInterval(from: Date, to: Date, stampId: Int64) -> [Diary]
+
     /// Goals by period
     func goalsByPeriod(_ period: Period) -> [Goal]
     

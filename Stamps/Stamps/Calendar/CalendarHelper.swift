@@ -178,17 +178,28 @@ extension CalendarHelper {
         var firstIndex: Int = 0
 
         // Number of days in a month, duh
-        var numberOfDays = 31
+        var numberOfDays: Int
+
+        // Convinience shortcut for the first day of month
+        let firstDay: Date
+
+        // Convinience shortcut for the last day of month
+        let lastDay: Date
         
         init(_ date: Date) {
             self.month = Calendar.current.component(.month, from: date)
             self.year = Calendar.current.component(.year, from: date)
+            
+            self.firstDay = Date(year: year, month: month, day: 1)
+            self.numberOfDays = Calendar.current.range(of: .day, in: .month, for: firstDay)!.count
+            self.lastDay = Date(year: year, month: month, day: numberOfDays)
+
             recalculateWeeks()
         }
         
         var label: String {
             let df = DateFormatter()
-            df.dateFormat = "MMMM"
+            df.dateFormat = "MMMM, YYYY"
             return df.string(from: Date(year: year, month: month))
         }
 
@@ -220,25 +231,18 @@ extension CalendarHelper {
         }
 
         func recalculateWeeks() {
-            let calendar = Calendar.current
             
-            // Get 1st of the month
-            let first = Date(year: year, month: month, day: 1)
             // Get weekday for the 1st of the month
-            let firstWeekDay = Calendar.current.component(.weekday, from: first)
+            let firstWeekDay = Calendar.current.component(.weekday, from: firstDay)
 
             // Calendar week day defined starting with Sunday as 1 - we need to transform it to our index,
             // so Monday can be first
-
             if weekStartMonday == true {
                 firstIndex = firstWeekDay == 1 ? 6 : firstWeekDay - 2
             }
             else {
                 firstIndex = firstWeekDay - 1
             }
-            
-            // Get how many days in month we have
-            numberOfDays = calendar.range(of: .day, in: .month, for: first)!.count
             
             // Special case for February and 4 weeks
             if (firstIndex == 0 && numberOfDays == 28) {
@@ -322,10 +326,9 @@ extension CalendarHelper {
 
         func dayHeadersForWeek() -> [DayHeaderData] {
             let formatter = DateFormatter()
-            formatter.dateFormat = "d"
             let today = Date().databaseKey
 
-            return (0...6).map({
+            return (0..<7).map({
                 return firstDay.byAddingDays($0)
             }).map({
                 formatter.dateFormat = "d"
@@ -338,6 +341,19 @@ extension CalendarHelper {
                     dayName: weekday,
                     isCurrent: $0.databaseKey == today,
                     isWeekend: $0.isWeekend)
+            })
+        }
+
+        func weekdayLettersForWeek() -> [String] {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "E"
+
+            return (0..<7).map({
+                return firstDay.byAddingDays($0)
+            }).map({
+                formatter.dateFormat = "E"
+                let weekday = formatter.string(from: $0)
+                return String(weekday.prefix(1)).capitalized
             })
         }
 

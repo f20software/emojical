@@ -40,7 +40,7 @@ class DayStampCell: UICollectionViewCell {
         // sticker.isEnabled = data.isEnabled
         tag = Int(data.stampId ?? 0)
         
-        if data.isEnabled {
+        if data.isUsed {
             selectionView.isHidden = false
             selectionView.layer.borderColor = data.color.cgColor
         } else {

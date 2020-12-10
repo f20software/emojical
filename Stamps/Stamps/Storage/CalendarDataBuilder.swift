@@ -20,16 +20,25 @@ class CalendarDataBuilder {
         self.localCache = [:]
     }
     
-    func weekDataForWeek(_ week: CalendarHelper.Week) -> [DayColumnData] {
+    // MARK: - Today View data building
+    
+    /// Build data model for the single week for Today view
+    func weekDataModel(for week: CalendarHelper.Week) -> [DayColumnData] {
         let labels = week.dayHeadersForWeek()
         let stickers = weekStickers(week: week).map { $0.map {
-            DayStampData(stampId: $0.id, label: $0.label, color: $0.color, isEnabled: false)
+            DayStampData(
+                stampId: $0.id,
+                label: $0.label,
+                color: $0.color,
+                isUsed: false
+            )
         }}
 
         return zip(labels, stickers).map({ return DayColumnData(header: $0, stamps: $1) })
     }
     
-    func awardsForWeek(_ week: CalendarHelper.Week) -> [Award] {
+    /// Retrieve monthly and weeky awards for the week
+    func awards(for week: CalendarHelper.Week) -> [Award] {
         return monthAwards(forWeek: week) + weekAwards(forWeek: week)
     }
     
@@ -38,7 +47,7 @@ class CalendarDataBuilder {
     static let secondsInDay = (60 * 60 * 24)
     
     // We allow to move one week forward from the week with last entry (i.e. showing next empty week)
-    func canMoveWeekForward(_ week: CalendarHelper.Week) -> Bool {
+    func canMoveForward(_ week: CalendarHelper.Week) -> Bool {
         let lastEntryDate = repository.getLastDiaryDate() ?? Date()
         let nextWeekFirstDay = week.firstDay.byAddingWeek(1)
         
@@ -47,7 +56,7 @@ class CalendarDataBuilder {
     }
 
     // We allow to move one week back from the week with last entry (i.e. showing one empty week)
-    func canMoveWeekBackwards(_ week: CalendarHelper.Week) -> Bool {
+    func canMoveBackward(_ week: CalendarHelper.Week) -> Bool {
         let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
         let prevWeekLastDay = week.lastDay.byAddingWeek(-1)
         
@@ -56,7 +65,7 @@ class CalendarDataBuilder {
     }
 
     // Don't allow to move to the next month if there is no data for the next month
-    func canMoveMonthForward(_ month: CalendarHelper.Month) -> Bool {
+    func canMoveForward(_ month: CalendarHelper.Month) -> Bool {
         let lastEntryDate = repository.getLastDiaryDate() ?? Date()
         let nextMonthFirstDay = month.firstDay.byAddingMonth(1)
         
@@ -65,7 +74,7 @@ class CalendarDataBuilder {
     }
 
     // Don't allow to move to the previous month if there is no data for the next month
-    func canMoveMonthBackwards(_ month: CalendarHelper.Month) -> Bool {
+    func canMoveBackward(_ month: CalendarHelper.Month) -> Bool {
         let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
         let nextMonthLastDay = month.lastDay.byAddingMonth(-1)
         
@@ -73,10 +82,10 @@ class CalendarDataBuilder {
         return !(distance > 0)
     }
 
-    // MARK: - Getting statistics
+    // MARK: - Stats page data building
     
     /// Retrieve weekly stats for specific week for list of stamps - synchroniously
-    func weeklyStatsForWeek(_ week: CalendarHelper.Week, allStamps: [Stamp]) -> [WeekLineData] {
+    func weeklyStats(for week: CalendarHelper.Week, allStamps: [Stamp]) -> [WeekLineData] {
         let diary = repository.diaryForDateInterval(from: week.firstDay, to: week.lastDay)
         return allStamps.compactMap({
             guard let stampId = $0.id else { return nil }
@@ -95,10 +104,10 @@ class CalendarDataBuilder {
     }
     
     /// Creates Monthly stats empty data - actual statistics will be loaded asynchrouniously 
-    func emptyStatsDataForMonth(_ month: CalendarHelper.Month, allStamps: [Stamp]) -> [MonthBoxData] {
+    func emptyStatsData(for month: CalendarHelper.Month, stamps: [Stamp]) -> [MonthBoxData] {
         let weekdayHeaders = CalendarHelper.Week(Date()).weekdayLettersForWeek()
         
-        return allStamps.compactMap({
+        return stamps.compactMap({
             guard let stampId = $0.id else { return nil }
 
             // Create empty bits array for number of days in the month. Actual data will
@@ -163,68 +172,8 @@ class CalendarDataBuilder {
         })
     }
     
-    // Helper method to go through seven days (some could be empty) and gather just
-    // color data from stamps selected for these days
-    func weekColorData(monthIdx: Int, weekIdx: Int) -> [[UIColor]] {
-        var res = [[UIColor]]()
-        for i in 0..<7 {
-            let date = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: i)
-            // Invalid date? Bail our early
-            if date == nil {
-                res.append([])
-                continue
-            }
-
-            var colors = [UIColor]()
-            for stamp in repository.stampsIdsForDay(date!) {
-                colors.append(repository.stampById(stamp)!.color)
-            }
-            
-            res.append(colors)
-        }
-        
-        return res
-    }
-    
-    func weekColorData(week: CalendarHelper.Week) -> [[UIColor]] {
-        weekStickers(week: week).map { $0.map { $0.color } }
-    }
-    
-    func weekLabelData(week: CalendarHelper.Week) -> [[String]] {
-        weekStickers(week: week).map { $0.map { $0.label } }
-    }
-    
-    // Helper method to go through a week of awards and gather just colors
-    func weekAwardColors(monthIdx: Int, weekIdx: Int) -> [UIColor] {
-        var res = [UIColor]()
-        
-        if let dateEnd = calendar.dateFromIndex(month: monthIdx, week: weekIdx, day: 6) {
-            let awards = repository.weeklyAwardsForInterval(start: dateEnd.byAddingDays(-6), end: dateEnd)
-            for award in awards {
-                res.append(repository.colorForAward(award))
-            }
-        }
-        
-        return res
-    }
-
-    // Helper method to get monthly awards
-    func monthAwards(monthIdx: Int, period: Period) -> [Award] {
-        let month = calendar.monthAt(monthIdx)
-        let date = Date(year: month.year, month: month.month)
-
-        let awards = period == .month
-            ? repository.monthlyAwardsForMonth(date: date)
-            : repository.weeklyAwardsForMonth(date: date)
-        let sorted = awards.sorted { (a1, a2) -> Bool in
-            return a1.goalId < a2.goalId
-        }
-
-        return sorted
-    }
-    
     // Returns a list of awards earned on a given week
-    func monthAwards(forWeek week: CalendarHelper.Week) -> [Award] {
+    private func monthAwards(forWeek week: CalendarHelper.Week) -> [Award] {
         return repository
             .monthlyAwardsForInterval(start: week.firstDay, end: week.lastDay)
             .sorted { (a1, a2) -> Bool in
@@ -232,17 +181,11 @@ class CalendarDataBuilder {
             }
     }
     
-    func weekAwards(forWeek week: CalendarHelper.Week) -> [Award] {
+    private func weekAwards(forWeek week: CalendarHelper.Week) -> [Award] {
         return repository
             .weeklyAwardsForInterval(start: week.firstDay, end: week.lastDay)
             .sorted { (a1, a2) -> Bool in
                 return a1.goalId < a2.goalId
             }
-    }
-    
-    func weekAwardColors(forWeek week: CalendarHelper.Week) -> [UIColor] {
-        return repository
-            .weeklyAwardsForInterval(start: week.firstDay, end: week.lastDay)
-            .map { repository.colorForAward($0) }
     }
 }

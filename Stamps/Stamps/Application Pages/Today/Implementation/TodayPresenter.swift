@@ -45,8 +45,8 @@ class TodayPresenter: TodayPresenterProtocol {
     private var week = CalendarHelper.Week(Date()) {
         didSet {
             // Load data model from the repository
-            model = dataBuilder.weekDataForWeek(week)
-            awards = dataBuilder.awardsForWeek(week)
+            model = dataBuilder.weekDataModel(for: week)
+            awards = dataBuilder.awards(for: week)
             
             if week.isCurrentWeek {
                 goals = repository.allGoals()
@@ -132,7 +132,7 @@ class TodayPresenter: TodayPresenterProtocol {
         onChange: { [weak self] awards in
             guard let self = self else { return }
             
-            self.awards = self.dataBuilder.awardsForWeek(self.week)
+            self.awards = self.dataBuilder.awards(for: self.week)
             self.loadAwardsData()
         })
 
@@ -184,8 +184,8 @@ class TodayPresenter: TodayPresenterProtocol {
         // Title and nav bar
         view?.setTitle(to: week.label)
         view?.showNextPrevButtons(
-            showPrev: dataBuilder.canMoveWeekBackwards(week),
-            showNext: dataBuilder.canMoveWeekForward(week)
+            showPrev: dataBuilder.canMoveBackward(week),
+            showNext: dataBuilder.canMoveForward(week)
         )
 
         // Awards strip on the top
@@ -205,7 +205,7 @@ class TodayPresenter: TodayPresenterProtocol {
                 stampId: id,
                 label: $0.label,
                 color: $0.color,
-                isEnabled: currentStamps.contains(id))
+                isUsed: currentStamps.contains(id))
         })
         view?.loadStampSelectorData(data: data)
     }
@@ -264,7 +264,7 @@ class TodayPresenter: TodayPresenterProtocol {
         awardManager.recalculateAwards(selectedDay)
         
         // Reload the model and update the view
-        model = dataBuilder.weekDataForWeek(week)
+        model = dataBuilder.weekDataModel(for: week)
         loadViewData()
     }
     

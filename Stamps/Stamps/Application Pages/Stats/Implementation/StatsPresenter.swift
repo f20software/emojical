@@ -100,11 +100,11 @@ class StatsPresenter: StatsPresenterProtocol {
         case .week:
             view?.setHeader(to: selectedWeek.label)
             view?.showNextPrevButtons(
-                showPrev: dataBuilder.canMoveWeekBackwards(selectedWeek),
-                showNext: dataBuilder.canMoveWeekForward(selectedWeek)
+                showPrev: dataBuilder.canMoveBackward(selectedWeek),
+                showNext: dataBuilder.canMoveForward(selectedWeek)
             )
 
-            let data = dataBuilder.weeklyStatsForWeek(selectedWeek, allStamps: stamps)
+            let data = dataBuilder.weeklyStats(for: selectedWeek, allStamps: stamps)
             view?.loadWeekData(
                 header: WeekHeaderData(
                     weekdayHeaders: selectedWeek.weekdayLettersForWeek()),
@@ -113,11 +113,11 @@ class StatsPresenter: StatsPresenterProtocol {
         case .month:
             view?.setHeader(to: selectedMonth.label)
             view?.showNextPrevButtons(
-                showPrev: dataBuilder.canMoveMonthBackwards(selectedMonth),
-                showNext: dataBuilder.canMoveMonthForward(selectedMonth)
+                showPrev: dataBuilder.canMoveBackward(selectedMonth),
+                showNext: dataBuilder.canMoveForward(selectedMonth)
             )
 
-            let data = dataBuilder.emptyStatsDataForMonth(selectedMonth, allStamps: stamps)
+            let data = dataBuilder.emptyStatsData(for: selectedMonth, stamps: stamps)
             view?.loadMonthData(data: data)
         }
     }

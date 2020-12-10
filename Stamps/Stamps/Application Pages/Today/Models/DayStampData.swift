@@ -13,7 +13,7 @@ struct DayStampData {
     let stampId: Int64?
     let label: String
     let color: UIColor
-    let isEnabled: Bool
+    let isUsed: Bool
 }
 
 extension DayStampData: Equatable, Hashable {}

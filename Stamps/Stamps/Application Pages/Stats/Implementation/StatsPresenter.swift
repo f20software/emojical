@@ -135,8 +135,3 @@ class StatsPresenter: StatsPresenterProtocol {
         loadViewData()
     }
 }
-
-// MARK: - Specs
-fileprivate struct Specs {
-
-}

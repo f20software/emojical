@@ -59,7 +59,8 @@ class MonthBoxCell: UICollectionViewCell {
 
         dots.data = data.bitsAsString
         dots.startOffset = data.firstDayOffset
-        // Hacky? Sure... 
+        // Hacky? Sure... - can't change ratio constant in run-time
+        // https://stackoverflow.com/questions/19593641/can-i-change-multiplier-property-for-nslayoutconstraint
         dots4weeks.isActive = data.numberOfWeeks == 4
         dots5weeks.isActive = data.numberOfWeeks == 5
         dots6weeks.isActive = data.numberOfWeeks == 6

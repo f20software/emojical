@@ -56,8 +56,9 @@ class CalendarDataBuilder {
     
     // MARK: - Navigation viability
     
-    static let secondsInDay = 60 * 60 * 24
+    static let secondsInDay = (60 * 60 * 24)
     
+    // We allow to move one week forward from the week with last entry (i.e. showing next empty week)
     func canMoveWeekForward(_ week: CalendarHelper.Week) -> Bool {
         let lastEntryDate = repository.getLastDiaryDate() ?? Date()
         let nextWeekFirstDay = week.firstDay.byAddingWeek(1)
@@ -66,6 +67,7 @@ class CalendarDataBuilder {
         return !(distance > (7 * CalendarDataBuilder.secondsInDay))
     }
 
+    // We allow to move one week back from the week with last entry (i.e. showing one empty week)
     func canMoveWeekBackwards(_ week: CalendarHelper.Week) -> Bool {
         let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
         let prevWeekLastDay = week.lastDay.byAddingWeek(-1)
@@ -74,6 +76,7 @@ class CalendarDataBuilder {
         return !(distance > (7 * CalendarDataBuilder.secondsInDay))
     }
 
+    // Don't allow to move to the next month if there is no data for the next month
     func canMoveMonthForward(_ month: CalendarHelper.Month) -> Bool {
         let lastEntryDate = repository.getLastDiaryDate() ?? Date()
         let nextMonthFirstDay = month.firstDay.byAddingMonth(1)
@@ -82,6 +85,7 @@ class CalendarDataBuilder {
         return !(distance > 0)
     }
 
+    // Don't allow to move to the previous month if there is no data for the next month
     func canMoveMonthBackwards(_ month: CalendarHelper.Month) -> Bool {
         let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
         let nextMonthLastDay = month.lastDay.byAddingMonth(-1)

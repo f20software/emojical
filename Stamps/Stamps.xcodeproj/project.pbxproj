@@ -44,6 +44,16 @@
 		F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF36C258271BE0048BA74 /* YearBoxData.swift */; };
 		F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23CF370258272E70048BA74 /* YearBoxCell.xib */; };
 		F23CF373258272E80048BA74 /* YearBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF371258272E70048BA74 /* YearBoxCell.swift */; };
+		F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF39125829B500048BA74 /* StickersElement.swift */; };
+		F23CF3AC25829B500048BA74 /* StickersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF39425829B500048BA74 /* StickersViewController.swift */; };
+		F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF39525829B500048BA74 /* StickersPresenter.swift */; };
+		F23CF3AE25829B510048BA74 /* Stickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F23CF39625829B500048BA74 /* Stickers.storyboard */; };
+		F23CF3B225829B510048BA74 /* StickersPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF39C25829B500048BA74 /* StickersPresenterProtocol.swift */; };
+		F23CF3B325829B510048BA74 /* StickersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF39D25829B500048BA74 /* StickersView.swift */; };
+		F23CF3CC2582A95F0048BA74 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3CA2582A95F0048BA74 /* StickerCell.swift */; };
+		F23CF3CD2582A95F0048BA74 /* StickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23CF3CB2582A95F0048BA74 /* StickerCell.xib */; };
+		F23CF3D42582A9FB0048BA74 /* Goal2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23CF3D22582A9FB0048BA74 /* Goal2Cell.xib */; };
+		F23CF3D52582A9FB0048BA74 /* Goal2Cel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3D32582A9FB0048BA74 /* Goal2Cel.swift */; };
 		F247541423DFC706006A13C3 /* StoredGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541323DFC706006A13C3 /* StoredGoal.swift */; };
 		F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541623DFEADB006A13C3 /* StampViewController.swift */; };
 		F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541823E5D2CB006A13C3 /* IconCell.swift */; };
@@ -192,6 +202,16 @@
 		F23CF36C258271BE0048BA74 /* YearBoxData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxData.swift; sourceTree = "<group>"; };
 		F23CF370258272E70048BA74 /* YearBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearBoxCell.xib; sourceTree = "<group>"; };
 		F23CF371258272E70048BA74 /* YearBoxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxCell.swift; sourceTree = "<group>"; };
+		F23CF39125829B500048BA74 /* StickersElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickersElement.swift; sourceTree = "<group>"; };
+		F23CF39425829B500048BA74 /* StickersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickersViewController.swift; sourceTree = "<group>"; };
+		F23CF39525829B500048BA74 /* StickersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickersPresenter.swift; sourceTree = "<group>"; };
+		F23CF39625829B500048BA74 /* Stickers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stickers.storyboard; sourceTree = "<group>"; };
+		F23CF39C25829B500048BA74 /* StickersPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickersPresenterProtocol.swift; sourceTree = "<group>"; };
+		F23CF39D25829B500048BA74 /* StickersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickersView.swift; sourceTree = "<group>"; };
+		F23CF3CA2582A95F0048BA74 /* StickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
+		F23CF3CB2582A95F0048BA74 /* StickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StickerCell.xib; sourceTree = "<group>"; };
+		F23CF3D22582A9FB0048BA74 /* Goal2Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Goal2Cell.xib; sourceTree = "<group>"; };
+		F23CF3D32582A9FB0048BA74 /* Goal2Cel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal2Cel.swift; sourceTree = "<group>"; };
 		F247541323DFC706006A13C3 /* StoredGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredGoal.swift; sourceTree = "<group>"; };
 		F247541623DFEADB006A13C3 /* StampViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampViewController.swift; sourceTree = "<group>"; };
 		F247541823E5D2CB006A13C3 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
@@ -442,6 +462,55 @@
 			path = ../../DynamicTables;
 			sourceTree = "<group>";
 		};
+		F23CF38225829B500048BA74 /* Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				F23CF39625829B500048BA74 /* Stickers.storyboard */,
+				F23CF38325829B500048BA74 /* Cells */,
+				F23CF38C25829B500048BA74 /* Models */,
+				F23CF39B25829B500048BA74 /* Protocols */,
+				F23CF39325829B500048BA74 /* Implementation */,
+			);
+			path = Stickers;
+			sourceTree = "<group>";
+		};
+		F23CF38325829B500048BA74 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F23CF3D22582A9FB0048BA74 /* Goal2Cell.xib */,
+				F23CF3D32582A9FB0048BA74 /* Goal2Cel.swift */,
+				F23CF3CB2582A95F0048BA74 /* StickerCell.xib */,
+				F23CF3CA2582A95F0048BA74 /* StickerCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F23CF38C25829B500048BA74 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F23CF39125829B500048BA74 /* StickersElement.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F23CF39325829B500048BA74 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				F23CF39525829B500048BA74 /* StickersPresenter.swift */,
+				F23CF39425829B500048BA74 /* StickersViewController.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		F23CF39B25829B500048BA74 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F23CF39C25829B500048BA74 /* StickersPresenterProtocol.swift */,
+				F23CF39D25829B500048BA74 /* StickersView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		F24B07C724C547C300FFD798 /* Today */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,7 +640,7 @@
 			path = "Awards-obsolete";
 			sourceTree = "<group>";
 		};
-		F2B4763323DE3C120076BFDC /* Stamps */ = {
+		F2B4763323DE3C120076BFDC /* Stamps-obsolete */ = {
 			isa = PBXGroup;
 			children = (
 				F2B4763523DE3CE00076BFDC /* Stamps.storyboard */,
@@ -581,7 +650,7 @@
 				F247541623DFEADB006A13C3 /* StampViewController.swift */,
 				F2C4943E23D2CBC800EAF9CC /* StampsViewController.swift */,
 			);
-			path = Stamps;
+			path = "Stamps-obsolete";
 			sourceTree = "<group>";
 		};
 		F2B4763423DE3C300076BFDC /* Application Pages */ = {
@@ -590,15 +659,16 @@
 				F20E403B2443E681008759D1 /* Main */,
 				F24B07C724C547C300FFD798 /* Today */,
 				F2A93F8325812881006C88F8 /* Stats */,
-				F2B4763323DE3C120076BFDC /* Stamps */,
-				F2B4763923DE3DBE0076BFDC /* Goals */,
+				F23CF38225829B500048BA74 /* Stickers */,
+				F2B4763323DE3C120076BFDC /* Stamps-obsolete */,
+				F2B4763923DE3DBE0076BFDC /* Goals-obsolete */,
 				F2A99D2A2439346C00D3CF1D /* Options */,
 				F2A99D2B243A78ED00D3CF1D /* Awards-obsolete */,
 			);
 			path = "Application Pages";
 			sourceTree = "<group>";
 		};
-		F2B4763923DE3DBE0076BFDC /* Goals */ = {
+		F2B4763923DE3DBE0076BFDC /* Goals-obsolete */ = {
 			isa = PBXGroup;
 			children = (
 				F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */,
@@ -608,7 +678,7 @@
 				F2C190D32402E17A003F5ABA /* GoalViewController.swift */,
 				F2B4763A23DE3E390076BFDC /* GoalsViewController.swift */,
 			);
-			path = Goals;
+			path = "Goals-obsolete";
 			sourceTree = "<group>";
 		};
 		F2C493222430171000E997BD /* Notifications */ = {
@@ -867,6 +937,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */,
+				F23CF3CD2582A95F0048BA74 /* StickerCell.xib in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
 				F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */,
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
@@ -875,6 +946,7 @@
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
 				F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */,
 				F2A99D2D243A790600D3CF1D /* Awards.storyboard in Resources */,
+				F23CF3D42582A9FB0048BA74 /* Goal2Cell.xib in Resources */,
 				F2B7D35B244B47FE00C94E63 /* DTTableViewCell-Emoji.xib in Resources */,
 				F24B07C624C547B500FFD798 /* Today.storyboard in Resources */,
 				F2A93FA8258130DB006C88F8 /* WeekHeaderCell.xib in Resources */,
@@ -885,6 +957,7 @@
 				F2A93FD2258164B2006C88F8 /* MonthBoxCell.xib in Resources */,
 				F2FC63322446B50A00EF41AD /* DTTableViewCell-TextField.xib in Resources */,
 				F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */,
+				F23CF3AE25829B510048BA74 /* Stickers.storyboard in Resources */,
 				F2A93FA325812DEA006C88F8 /* WeekLineCell.xib in Resources */,
 				F2FC63312446B50A00EF41AD /* DTTableViewCell-TextView.xib in Resources */,
 				F2F3BE20257C831000A926E9 /* DayHeaderCell.xib in Resources */,
@@ -922,6 +995,7 @@
 				F2F3BE67257DD25800A926E9 /* TodayPresenterProtocol.swift in Sources */,
 				F2C190D22401BD50003F5ABA /* WeekBadgeView.swift in Sources */,
 				BC5643F9246B1C6200942066 /* Period.swift in Sources */,
+				F23CF3AC25829B500048BA74 /* StickersViewController.swift in Sources */,
 				F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */,
 				BC5643FD246B1DF000942066 /* StoredPeriod.swift in Sources */,
 				BC56440D246B309700942066 /* StampsListener.swift in Sources */,
@@ -947,6 +1021,7 @@
 				F2B7D35F244C9B3A00C94E63 /* StringExtensions.swift in Sources */,
 				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
+				F23CF3CC2582A95F0048BA74 /* StickerCell.swift in Sources */,
 				F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */,
 				F2A93FC825816180006C88F8 /* MonthBoxData.swift in Sources */,
 				BC5643F1246B0F1900942066 /* Goal.swift in Sources */,
@@ -978,6 +1053,7 @@
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
 				F2A93F90258128E5006C88F8 /* StatsViewController.swift in Sources */,
 				F20E40462443ED25008759D1 /* DTTableCell.swift in Sources */,
+				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F20E404A2443ED25008759D1 /* DTLinkedSwitchCell.swift in Sources */,
 				F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */,
 				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
@@ -990,7 +1066,9 @@
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
 				F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */,
 				F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */,
+				F23CF3B225829B510048BA74 /* StickersPresenterProtocol.swift in Sources */,
 				F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */,
+				F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */,
 				F2F3BE4A257D492300A926E9 /* DayColumnData.swift in Sources */,
 				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,
@@ -1012,7 +1090,9 @@
 				F2A93F92258128E5006C88F8 /* StatsPresenterProtocol.swift in Sources */,
 				F20E40472443ED25008759D1 /* DTTableSelectionViewController.swift in Sources */,
 				F2FC63372446D17000EF41AD /* DTControlCells.swift in Sources */,
+				F23CF3B325829B510048BA74 /* StickersView.swift in Sources */,
 				F2B7D3632454B3DE00C94E63 /* DTColorCell.swift in Sources */,
+				F23CF3D52582A9FB0048BA74 /* Goal2Cel.swift in Sources */,
 				BC56440F246B30BF00942066 /* StampsDataSourceListener.swift in Sources */,
 				F2C190D42402E17A003F5ABA /* GoalViewController.swift in Sources */,
 				F2F3BE18257C267900A926E9 /* DayColumnView.swift in Sources */,

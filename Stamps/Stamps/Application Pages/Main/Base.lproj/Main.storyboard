@@ -27,16 +27,6 @@
             </objects>
             <point key="canvasLocation" x="-125" y="-20"/>
         </scene>
-        <!--Calendar-->
-        <scene sceneID="s1R-kM-j9L">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Calendar" id="BGe-M5-KsK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calendar" image="dots" selectedImage="dots" id="EV3-uy-p6r"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g9d-CD-tDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="499" y="335"/>
-        </scene>
         <!--Stamps-->
         <scene sceneID="U2Q-Ox-Ezk">
             <objects>
@@ -99,7 +89,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dots" width="30" height="30"/>
         <image name="note1" width="29" height="30"/>
     </resources>
 </document>

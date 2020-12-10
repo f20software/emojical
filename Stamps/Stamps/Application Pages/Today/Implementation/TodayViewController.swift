@@ -123,14 +123,10 @@ class TodayViewController: UIViewController, TodayView {
         stampSelector.loadData(data: data)
     }
     
-    /// Show/hide next week button
-    func showNextWeekButton(_ show: Bool) {
-        navigationItem.rightBarButtonItem = show ? nextWeek : nil
-    }
-    
-    /// Show/hide previous week button
-    func showPrevWeekButton(_ show: Bool) {
-        navigationItem.leftBarButtonItem = show ? prevWeek : nil
+    /// Show/hide next/prev button
+    func showNextPrevButtons(showPrev: Bool, showNext: Bool) {
+        navigationItem.leftBarButtonItem = showPrev ? prevWeek : nil
+        navigationItem.rightBarButtonItem = showNext ? nextWeek : nil
     }
 
     /// Show/hide stamp selector and plus button

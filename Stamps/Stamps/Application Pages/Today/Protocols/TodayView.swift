@@ -35,11 +35,8 @@ protocol TodayView: AnyObject {
     /// Update page title
     func setTitle(to title: String)
     
-    /// Show/hide next week button
-    func showNextWeekButton(_ show: Bool)
-    
-    /// Show/hide previous week button
-    func showPrevWeekButton(_ show: Bool)
+    /// Show/hide next/prev button
+    func showNextPrevButtons(showPrev: Bool, showNext: Bool)
 
     /// Move selected day indicator
     func setSelectedDay(to index: Int)

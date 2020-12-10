@@ -39,19 +39,20 @@
                                 <segments>
                                     <segment title="Week"/>
                                     <segment title="Month"/>
+                                    <segment title="Year"/>
                                 </segments>
                                 <connections>
                                     <action selector="modeChanged:" destination="tvO-pK-EYQ" eventType="valueChanged" id="fnW-2K-BJx"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 19 - 26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXJ-0G-7yc">
-                                <rect key="frame" x="20" y="67" width="121" height="27"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <rect key="frame" x="20" y="67" width="131.5" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NcW-C8-Csq">
-                                <rect key="frame" x="0.0" y="102" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="621"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e25-Wg-mP0">
                                     <size key="itemSize" width="128" height="128"/>

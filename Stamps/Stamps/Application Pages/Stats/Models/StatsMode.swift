@@ -14,4 +14,7 @@ enum StatsMode: Int, Hashable {
     
     /// Monthly stats by sticker
     case month
+
+    /// Yearly stats by sticker
+    case year
 }

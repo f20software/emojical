@@ -165,6 +165,56 @@ class CalendarHelper {
 }
 
 extension CalendarHelper {
+
+    class Year {
+        let year: Int
+        
+        // Most of month will have 5 weeks, edge cases will be identified in recalculateWeeks() method
+        let numberOfWeeks: Int
+
+        let firstDay: Date
+        let lastDay: Date
+        
+        let numberOfDays: Int
+        
+        // Which day of the week 1st of the month fall into on the calendar view:
+        // when Monday is first day if the week: 0 - Monday, 1 - Tuesday ... 6 - Sunday
+        // when Sunday is first day if the week: 0 - Sunday, 1 - Monday ... 6 - Saturday
+        var firstIndex: Int = 0
+
+        init(_ year: Int) {
+            self.year = year
+            self.firstDay = Date(year: year, month: 1, day: 1)
+            self.lastDay = Date(year: year, month: 12, day: 31)
+            
+            let calendar: Calendar = .autoupdatingCurrent
+            self.numberOfDays = calendar.ordinality(of: .day, in: .year, for: lastDay) ?? 365
+            
+            let jan = Month(firstDay)
+            firstIndex = jan.firstIndex
+            
+            self.numberOfWeeks = 53 // (self.firstIndex == 6 && self.numberOfDays == 366) ? 54 : 53
+        }
+        
+        init(_ date: Date) {
+            self.year = Calendar.current.component(.year, from: date)
+            self.firstDay = Date(year: year, month: 1, day: 1)
+            self.lastDay = Date(year: year, month: 12, day: 31)
+            
+            let calendar: Calendar = .autoupdatingCurrent
+            self.numberOfDays = calendar.ordinality(of: .day, in: .year, for: lastDay) ?? 365
+            
+            let jan = Month(firstDay)
+            firstIndex = jan.firstIndex
+            
+            self.numberOfWeeks = 53 // (self.firstIndex == 6 && self.numberOfDays == 366) ? 54 : 53
+        }
+
+        var label: String {
+            return "\(year)"
+        }
+    }
+
     class Month {
         let month: Int
         let year: Int

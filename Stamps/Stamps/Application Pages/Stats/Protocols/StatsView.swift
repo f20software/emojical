@@ -35,6 +35,9 @@ protocol StatsView: AnyObject {
     /// Load stats for the month
     func loadMonthData(data: [MonthBoxData])
 
+    /// Load stats for the year
+    func loadYearData(data: [YearBoxData])
+
     /// Show/hide next/prev button
     func showNextPrevButtons(showPrev: Bool, showNext: Bool)
 }

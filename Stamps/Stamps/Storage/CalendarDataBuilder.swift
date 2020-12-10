@@ -20,15 +20,6 @@ class CalendarDataBuilder {
         self.localCache = [:]
     }
     
-    func cells(forStyle style: Style) -> [[CalendarCellData]] {
-        switch style {
-        case .compact:
-            return cellsForMonths(months: calendar.currentMonths)
-        case .extended:
-            return cellsForWeeks(weeks: calendar.currentWeeks)
-        }
-    }
-    
     func weekDataForWeek(_ week: CalendarHelper.Week) -> [DayColumnData] {
         let labels = week.dayHeadersForWeek()
         let stickers = weekStickers(week: week).map { $0.map {
@@ -158,50 +149,6 @@ class CalendarDataBuilder {
         }
     }
     
-    // MARK: - Private
-    
-    private func cellsForMonths(months: [CalendarHelper.Month]) -> [[CalendarCellData]] {
-        months.enumerated().map { cells(forMonth: $0.1, index: $0.0) }
-    }
-    
-    private func cells(forMonth month: CalendarHelper.Month, index: Int) -> [CalendarCellData] {
-        let header = CalendarCellData.header(
-            title: calendar.monthAt(index).label,
-            monthlyAwards: monthAwards(monthIdx: index, period: .month),
-            weeklyAwards: monthAwards(monthIdx: index, period: .week)
-        )
-        
-        let weeks: [CalendarCellData] = (0..<(calendar.monthAt(index).numberOfWeeks)).map { weekIndex in
-            CalendarCellData.compactWeek(
-                labels: calendar.monthAt(index).labelsForDaysInWeek(weekIndex),
-                data: weekColorData(monthIdx: index, weekIdx: weekIndex),
-                awards: weekAwardColors(monthIdx: index, weekIdx: weekIndex)
-            )
-        }
-        
-        return [header] + weeks
-    }
-    
-    private func cellsForWeeks(weeks: [CalendarHelper.Week]) -> [[CalendarCellData]] {
-        weeks.map { cells(forWeek: $0) }
-    }
-    
-    private func cells(forWeek week: CalendarHelper.Week) -> [CalendarCellData] {
-        let header = CalendarCellData.header(
-            title: week.label,
-            monthlyAwards: monthAwards(forWeek: week),
-            weeklyAwards: weekAwards(forWeek: week)
-        )
-        
-        let week = CalendarCellData.expandedWeek(
-            labels: week.labelsForDaysInWeek(),
-            data: weekStickers(week: week).map { $0.map { StickerData(label: $0.label, color: $0.color) } },
-            awards: weekAwardColors(forWeek: week)
-        )
-        
-        return [header, week]
-    }
-    
     // MARK: - Helpers
     
     // Returns a list of Stamps grouped by day for a given week.
@@ -297,30 +244,5 @@ class CalendarDataBuilder {
         return repository
             .weeklyAwardsForInterval(start: week.firstDay, end: week.lastDay)
             .map { repository.colorForAward($0) }
-    }
-    
-    // MARK: - Subclasses
-    
-    enum Style {
-        case compact
-        case extended
-        
-        static prefix func !(_ value: Style) -> Style {
-            switch value {
-            case .compact:
-                return .extended
-            case .extended:
-                return .compact
-            }
-        }
-        
-        var action: String {
-            switch self {
-            case .compact:
-                return "Collapse"
-            case .extended:
-                return "Expand"
-            }
-        }
     }
 }

@@ -169,18 +169,22 @@ extension CalendarHelper {
     class Year {
         let year: Int
         
-        // Most of month will have 5 weeks, edge cases will be identified in recalculateWeeks() method
+        // Most of years will have 53 weeks, but for leap year starting on Sunday - it will be 54
         let numberOfWeeks: Int
 
+        // Convenient shortcuts to Jan 1
         let firstDay: Date
+
+        // Convenient shortcuts to Dec 31
         let lastDay: Date
         
+        // 365 for regular years, 366 for the leap ones
         let numberOfDays: Int
         
         // Which day of the week 1st of the month fall into on the calendar view:
         // when Monday is first day if the week: 0 - Monday, 1 - Tuesday ... 6 - Sunday
         // when Sunday is first day if the week: 0 - Sunday, 1 - Monday ... 6 - Saturday
-        var firstIndex: Int = 0
+        var firstIndex: Int
 
         init(_ year: Int) {
             self.year = year
@@ -188,26 +192,22 @@ extension CalendarHelper {
             self.lastDay = Date(year: year, month: 12, day: 31)
             
             let calendar: Calendar = .autoupdatingCurrent
-            self.numberOfDays = calendar.ordinality(of: .day, in: .year, for: lastDay) ?? 365
+            let days = calendar.ordinality(of: .day, in: .year, for: lastDay) ?? 365
+            self.numberOfDays = days
             
+            // Use January Month object to calculate first day offset
             let jan = Month(firstDay)
-            firstIndex = jan.firstIndex
+            self.firstIndex = jan.firstIndex
             
-            self.numberOfWeeks = 53 // (self.firstIndex == 6 && self.numberOfDays == 366) ? 54 : 53
+            if jan.firstIndex == 6 && days == 366 {
+                self.numberOfWeeks = 54
+            } else {
+                self.numberOfWeeks = 53
+            }
         }
         
-        init(_ date: Date) {
-            self.year = Calendar.current.component(.year, from: date)
-            self.firstDay = Date(year: year, month: 1, day: 1)
-            self.lastDay = Date(year: year, month: 12, day: 31)
-            
-            let calendar: Calendar = .autoupdatingCurrent
-            self.numberOfDays = calendar.ordinality(of: .day, in: .year, for: lastDay) ?? 365
-            
-            let jan = Month(firstDay)
-            firstIndex = jan.firstIndex
-            
-            self.numberOfWeeks = 53 // (self.firstIndex == 6 && self.numberOfDays == 366) ? 54 : 53
+        convenience init(_ date: Date) {
+            self.init(Calendar.current.component(.year, from: date))
         }
 
         var label: String {

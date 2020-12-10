@@ -1,8 +1,8 @@
 //
-//  MonthBoxCell.swift
+//  YearBoxCell.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/09/20.
+//  Created by Vladimir Svidersky on 12/10/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 

@@ -170,7 +170,7 @@ class StatsViewController: UIViewController, StatsView {
     }
 
 
-    // Creates layout for the day column - vertical list of cells
+    // Creates layout for weekly stats - one line per stamp
     private func weekLayout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
@@ -191,7 +191,7 @@ class StatsViewController: UIViewController, StatsView {
         return UICollectionViewCompositionalLayout(section: section)
     }
 
-    // Creates layout for the day column - vertical list of cells
+    // Creates layout for monthly stats - each month inside box cell
     private func monthLayout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
@@ -247,7 +247,8 @@ extension StatsViewController: UICollectionViewDelegate {
             ) as? MonthBoxCell else { return UICollectionViewCell() }
             
             cell.configure(for: model, getData: { completion in
-                self.dataBuilder.monthlyStatsForStampAsync(stampId: model.stampId, month: CalendarHelper.Month(Date(yyyyMmDd: model.firstDayKey))) { (data) in
+                let month = CalendarHelper.Month(Date(yyyyMmDd: model.firstDayKey))
+                self.dataBuilder.monthlyStatsForStampAsync(stampId: model.stampId, month: month) { (data) in
                     completion(model.primaryKey, data)
                 }
             })

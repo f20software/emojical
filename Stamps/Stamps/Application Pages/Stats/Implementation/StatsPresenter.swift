@@ -72,6 +72,7 @@ class StatsPresenter: StatsPresenterProtocol {
         })
     }
     
+    /// Called when view about to appear on the screen
     func onViewWillAppear() {
         loadViewData()
     }
@@ -116,7 +117,7 @@ class StatsPresenter: StatsPresenterProtocol {
                 showNext: dataBuilder.canMoveMonthForward(selectedMonth)
             )
 
-            let data = dataBuilder.monthlyStatsForMonth(selectedMonth, allStamps: stamps)
+            let data = dataBuilder.emptyStatsDataForMonth(selectedMonth, allStamps: stamps)
             view?.loadMonthData(data: data)
         }
     }

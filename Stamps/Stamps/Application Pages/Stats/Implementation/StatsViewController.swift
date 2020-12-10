@@ -20,7 +20,8 @@ class StatsViewController: UIViewController, StatsView {
     // MARK: - DI
 
     var presenter: StatsPresenterProtocol!
-    
+    private var dataBuilder: CalendarDataBuilder!
+
     // MARK: - State
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StatsElement>!
@@ -40,6 +41,11 @@ class StatsViewController: UIViewController, StatsView {
             calendar: CalendarHelper.shared,
             view: self)
         
+        dataBuilder = CalendarDataBuilder(
+            repository: Storage.shared.repository,
+            calendar: CalendarHelper.shared
+        )
+
         configureViews()
         presenter.onViewDidLoad()
     }
@@ -235,12 +241,16 @@ extension StatsViewController: UICollectionViewDelegate {
             cell.configure(for: data)
             return cell
             
-        case .monthBoxCell(let data):
+        case .monthBoxCell(let model):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.monthStickerStatsCell, for: path
             ) as? MonthBoxCell else { return UICollectionViewCell() }
             
-            cell.configure(for: data)
+            cell.configure(for: model, getData: { completion in
+                self.dataBuilder.monthlyStatsForStampAsync(stampId: model.stampId, month: CalendarHelper.Month(Date(yyyyMmDd: model.firstDayKey))) { (data) in
+                    completion(model.primaryKey, data)
+                }
+            })
             return cell
         }
     }

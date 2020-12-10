@@ -17,6 +17,7 @@ class CalendarDataBuilder {
     init(repository: DataRepository, calendar: CalendarHelper) {
         self.repository = repository
         self.calendar = calendar
+        self.localCache = [:]
     }
     
     func cells(forStyle style: Style) -> [[CalendarCellData]] {
@@ -96,6 +97,7 @@ class CalendarDataBuilder {
 
     // MARK: - Getting statistics
     
+    /// Retrieve weekly stats for specific week for list of stamps - synchroniously
     func weeklyStatsForWeek(_ week: CalendarHelper.Week, allStamps: [Stamp]) -> [WeekLineData] {
         let diary = repository.diaryForDateInterval(from: week.firstDay, to: week.lastDay)
         return allStamps.compactMap({
@@ -114,30 +116,61 @@ class CalendarDataBuilder {
         })
     }
     
-    func monthlyStatsForMonth(_ month: CalendarHelper.Month, allStamps: [Stamp]) -> [MonthBoxData] {
-        let diary = repository.diaryForDateInterval(from: month.firstDay, to: month.lastDay)
+    /// Creates Monthly stats empty data - actual statistics will be loaded asynchrouniously 
+    func emptyStatsDataForMonth(_ month: CalendarHelper.Month, allStamps: [Stamp]) -> [MonthBoxData] {
         let weekdayHeaders = CalendarHelper.Week(Date()).weekdayLettersForWeek()
         
         return allStamps.compactMap({
             guard let stampId = $0.id else { return nil }
-            let bits = (0..<month.numberOfDays).map({
-                let date = month.firstDay.byAddingDays($0)
-                return diary.contains(where: {
-                    $0.date.databaseKey == date.databaseKey && $0.stampId == stampId }) ? "1" : "0"
-            }).joined(separator: "|")
-            
+
+            // Create empty bits array for number of days in the month. Actual data will
+            // be loaded asynchroniously using `monthlyStatsForStampAsync` call
+            let bits = String(repeating: "0|", count: month.numberOfDays-1) + "0"
+
             return MonthBoxData(
+                primaryKey: UUID(),
                 stampId: stampId,
                 label: $0.label,
                 name: $0.name,
                 color: $0.color,
                 weekdayHeaders: weekdayHeaders,
+                firstDayKey: month.firstDay.databaseKey,
                 numberOfWeeks: month.numberOfWeeks,
                 firstDayOffset: month.firstIndex,
-                bitsAsString: bits)
+                bitsAsString: bits
+            )
         })
     }
 
+    /// Local cache to store already calculated monthly stats
+    var localCache: [String:String]
+    // TODO: Come up with cache invalidating logic
+
+    /// Asynchronously returns monthly statistics as bit string by stampId and month
+    func monthlyStatsForStampAsync(stampId: Int64, month: CalendarHelper.Month,
+        completion: @escaping (String) -> Void)
+    {
+        let key = "\(stampId)-\(month.firstDay.databaseKey)"
+        if let local = localCache[key] {
+            completion(local)
+            return
+        }
+        
+        DispatchQueue.global().async {
+            let diary = self.repository.diaryForDateInterval(
+                from: month.firstDay, to: month.lastDay, stampId: stampId)
+            
+            let bits = (0..<month.numberOfDays).map({
+                let date = month.firstDay.byAddingDays($0)
+                return diary.contains(where: {
+                    $0.date.databaseKey == date.databaseKey && $0.stampId == stampId }) ? "1" : "0"
+            }).joined(separator: "|")
+            // Update local cache before returning
+            self.localCache[key] = bits
+            completion(bits)
+        }
+    }
+    
     // MARK: - Private
     
     private func cellsForMonths(months: [CalendarHelper.Month]) -> [[CalendarCellData]] {

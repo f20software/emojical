@@ -32,22 +32,28 @@ class MonthBoxCell: UICollectionViewCell {
 
     // Convinience array
     private var days: [UILabel] = []
-
+    
+    // We're loading data asynchroniously. To make sure that same cell is still used,
+    // when data is retrieved - store asyncKey and check it when callback is returned
+    private var asyncKey: UUID?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupViews()
-        // self.backgroundColor = UIColor.red
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         sticker.text = nil
         sticker.color = UIColor.clear
+        asyncKey = nil
     }
     
     // MARK: - Public view interface
     
-    func configure(for data: MonthBoxData) {
+    func configure(for data: MonthBoxData,
+        getData: ((_ completion: @escaping (UUID, String) -> Void) -> Void))
+    {
         sticker.text = data.label
         sticker.color = data.color
         
@@ -67,6 +73,19 @@ class MonthBoxCell: UICollectionViewCell {
 
         dots.setNeedsLayout()
         dots.setNeedsDisplay()
+
+        // asyncKey - to make sure when completion block is called, cell that asked for this data
+        // is still a cell that's receiving it
+        asyncKey = data.primaryKey
+        // Load month data async
+        getData { [weak self] (asyncKey, bits) in
+            guard asyncKey == self?.asyncKey else { return }
+            
+            self?.dots.data = bits
+            DispatchQueue.main.async {
+                self?.dots.setNeedsDisplay()
+            }
+        }
     }
     
     // MARK: - Private helpers

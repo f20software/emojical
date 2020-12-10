@@ -12,6 +12,9 @@ import UIKit
 /// View model data to display statistics of single stamp during one month
 struct MonthBoxData {
 
+    // Primary key
+    let primaryKey: UUID
+    
     // Stamp information
     let stampId: Int64
     let label: String
@@ -22,6 +25,7 @@ struct MonthBoxData {
     let weekdayHeaders: [String]
     
     // Month specific
+    let firstDayKey: String // YYYYMMDD - so we can re-create Month object
     let numberOfWeeks: Int
     let firstDayOffset: Int
     

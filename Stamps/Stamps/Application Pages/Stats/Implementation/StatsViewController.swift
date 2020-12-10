@@ -84,6 +84,9 @@ class StatsViewController: UIViewController, StatsView {
             
         case .month:
             self.stats.collectionViewLayout = self.monthLayout()
+
+        case .year:
+            self.stats.collectionViewLayout = self.weekLayout()
         }
     }
 
@@ -97,7 +100,6 @@ class StatsViewController: UIViewController, StatsView {
     func loadWeekData(header: WeekHeaderData, data: [WeekLineData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
         snapshot.appendSections([0])
-        
         snapshot.appendItems([.weekHeaderCell(header)])
         snapshot.appendItems(data.map({ StatsElement.weekLineCell($0) }))
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
@@ -107,9 +109,15 @@ class StatsViewController: UIViewController, StatsView {
     func loadMonthData(data: [MonthBoxData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
         snapshot.appendSections([0])
-        
-        // snapshot.appendItems([.weekHeader(header)])
         snapshot.appendItems(data.map({ StatsElement.monthBoxCell($0) }))
+        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+    }
+
+    /// Load stats for the month
+    func loadYearData(data: [YearBoxData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(data.map({ StatsElement.yearBoxCell($0) }))
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -166,6 +174,10 @@ class StatsViewController: UIViewController, StatsView {
         stats.register(
             UINib(nibName: "MonthBoxCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.monthStickerStatsCell
+        )
+        stats.register(
+            UINib(nibName: "YearBoxCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.yearStickerStatsCell
         )
     }
 
@@ -253,6 +265,19 @@ extension StatsViewController: UICollectionViewDelegate {
                 }
             })
             return cell
+
+        case .yearBoxCell(let model):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.yearStickerStatsCell, for: path
+            ) as? YearBoxCell else { return UICollectionViewCell() }
+            
+            cell.configure(for: model, getData: { completion in
+                let year = CalendarHelper.Year(model.year)
+                self.dataBuilder.yearlyStatsForStampAsync(stampId: model.stampId, year: year) { (data) in
+                    completion(model.primaryKey, data)
+                }
+            })
+            return cell
         }
     }
 }
@@ -271,6 +296,9 @@ fileprivate struct Specs {
 
         /// Month stat cell
         static let monthStickerStatsCell = "MonthBoxCell"
+
+        /// Year stat cell
+        static let yearStickerStatsCell = "YearBoxCell"
     }
     
     /// Margins for monthly boxes (from left, right, and bottom)

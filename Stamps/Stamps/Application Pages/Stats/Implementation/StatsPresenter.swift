@@ -35,6 +35,9 @@ class StatsPresenter: StatsPresenterProtocol {
     /// Selected month
     private var selectedMonth = CalendarHelper.Month(Date())
 
+    /// Selected year
+    private var selectedYear = CalendarHelper.Year(Date())
+
     // MARK: - Lifecycle
 
     init(
@@ -119,6 +122,16 @@ class StatsPresenter: StatsPresenterProtocol {
 
             let data = dataBuilder.emptyStatsData(for: selectedMonth, stamps: stamps)
             view?.loadMonthData(data: data)
+
+        case .year:
+            view?.setHeader(to: selectedYear.label)
+            view?.showNextPrevButtons(
+                showPrev: dataBuilder.canMoveBackward(selectedYear),
+                showNext: dataBuilder.canMoveForward(selectedYear)
+            )
+
+            let data = dataBuilder.emptyStatsData(for: selectedYear, stamps: stamps)
+            view?.loadYearData(data: data)
         }
     }
     
@@ -130,6 +143,9 @@ class StatsPresenter: StatsPresenterProtocol {
             
         case .month:
             selectedMonth = CalendarHelper.Month(selectedMonth.firstDay.byAddingMonth(delta))
+
+        case .year:
+            selectedYear = CalendarHelper.Year(selectedYear.firstDay.byAddingMonth(delta*12))
         }
         
         // Update view

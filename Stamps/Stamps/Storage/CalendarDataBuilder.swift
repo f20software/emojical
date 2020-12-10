@@ -82,6 +82,24 @@ class CalendarDataBuilder {
         return !(distance > 0)
     }
 
+    // Don't allow to move to the next year if there is no data for the next month
+    func canMoveForward(_ year: CalendarHelper.Year) -> Bool {
+        let lastEntryDate = repository.getLastDiaryDate() ?? Date()
+        let nextYearFirstDay = year.firstDay.byAddingMonth(12)
+        
+        let distance = Int(nextYearFirstDay.timeIntervalSince(lastEntryDate))
+        return !(distance > 0)
+    }
+
+    // Don't allow to move to the previous year if there is no data for the next month
+    func canMoveBackward(_ year: CalendarHelper.Year) -> Bool {
+        let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
+        let nextYearLastDay = year.lastDay.byAddingMonth(-12)
+        
+        let distance = Int(firstEntryDate.timeIntervalSince(nextYearLastDay))
+        return !(distance > 0)
+    }
+
     // MARK: - Stats page data building
     
     /// Retrieve weekly stats for specific week for list of stamps - synchroniously
@@ -128,6 +146,33 @@ class CalendarDataBuilder {
             )
         })
     }
+    
+    /// Creates Year stats empty data - actual statistics will be loaded asynchrouniously
+    func emptyStatsData(for year: CalendarHelper.Year, stamps: [Stamp]) -> [YearBoxData] {
+        let weekdayHeaders = CalendarHelper.Week(Date()).weekdayLettersForWeek()
+        
+        return stamps.compactMap({
+            guard let stampId = $0.id else { return nil }
+
+            // Create empty bits array for number of days in the month. Actual data will
+            // be loaded asynchroniously using `monthlyStatsForStampAsync` call
+            let bits = String(repeating: "0|", count: year.numberOfDays-1) + "0"
+
+            return YearBoxData(
+                primaryKey: UUID(),
+                stampId: stampId,
+                label: $0.label,
+                name: $0.name,
+                color: $0.color,
+                weekdayHeaders: weekdayHeaders,
+                monthHeaders: [""],
+                year: year.year,
+                numberOfWeeks: year.numberOfWeeks,
+                firstDayOffset: year.firstIndex,
+                bitsAsString: bits
+            )
+        })
+    }
 
     /// Local cache to store already calculated monthly stats
     var localCache: [String:String]
@@ -157,7 +202,33 @@ class CalendarDataBuilder {
             completion(bits)
         }
     }
-    
+
+    // TODO: !!!! Need to be optimized a lot
+    /// Asynchronously returns monthly statistics as bit string by stampId and month
+    func yearlyStatsForStampAsync(stampId: Int64, year: CalendarHelper.Year,
+        completion: @escaping (String) -> Void)
+    {
+        let key = "\(stampId)-\(year.year)"
+        if let local = localCache[key] {
+            completion(local)
+            return
+        }
+        
+        DispatchQueue.global().async {
+            let diary = self.repository.diaryForDateInterval(
+                from: year.firstDay, to: year.lastDay, stampId: stampId)
+            
+            let bits = (0..<year.numberOfDays).map({
+                let date = year.firstDay.byAddingDays($0)
+                return diary.contains(where: {
+                    $0.date.databaseKey == date.databaseKey && $0.stampId == stampId }) ? "1" : "0"
+            }).joined(separator: "|")
+            // Update local cache before returning
+            self.localCache[key] = bits
+            completion(bits)
+        }
+    }
+
     // MARK: - Helpers
     
     // Returns a list of Stamps grouped by day for a given week.

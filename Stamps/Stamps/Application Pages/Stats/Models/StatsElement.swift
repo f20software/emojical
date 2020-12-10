@@ -13,4 +13,5 @@ enum StatsElement: Hashable {
     case weekHeaderCell(WeekHeaderData)
     case weekLineCell(WeekLineData)
     case monthBoxCell(MonthBoxData)
+    case yearBoxCell(YearBoxData)
 }

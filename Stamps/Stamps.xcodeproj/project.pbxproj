@@ -40,6 +40,10 @@
 		F20E404C2443EDC9008759D1 /* DTTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E404B2443EDC9008759D1 /* DTTableViewSection.swift */; };
 		F20E404E2443F4C6008759D1 /* DTStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E404D2443F4C5008759D1 /* DTStyle.swift */; };
 		F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */; };
+		F23CF369258271750048BA74 /* YearBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF368258271750048BA74 /* YearBoxView.swift */; };
+		F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF36C258271BE0048BA74 /* YearBoxData.swift */; };
+		F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23CF370258272E70048BA74 /* YearBoxCell.xib */; };
+		F23CF373258272E80048BA74 /* YearBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF371258272E70048BA74 /* YearBoxCell.swift */; };
 		F247541423DFC706006A13C3 /* StoredGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541323DFC706006A13C3 /* StoredGoal.swift */; };
 		F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541623DFEADB006A13C3 /* StampViewController.swift */; };
 		F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541823E5D2CB006A13C3 /* IconCell.swift */; };
@@ -184,6 +188,10 @@
 		F20E404B2443EDC9008759D1 /* DTTableViewSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableViewSection.swift; sourceTree = "<group>"; };
 		F20E404D2443F4C5008759D1 /* DTStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTStyle.swift; sourceTree = "<group>"; };
 		F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataBuilder.swift; sourceTree = "<group>"; };
+		F23CF368258271750048BA74 /* YearBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxView.swift; sourceTree = "<group>"; };
+		F23CF36C258271BE0048BA74 /* YearBoxData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxData.swift; sourceTree = "<group>"; };
+		F23CF370258272E70048BA74 /* YearBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearBoxCell.xib; sourceTree = "<group>"; };
+		F23CF371258272E70048BA74 /* YearBoxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxCell.swift; sourceTree = "<group>"; };
 		F247541323DFC706006A13C3 /* StoredGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredGoal.swift; sourceTree = "<group>"; };
 		F247541623DFEADB006A13C3 /* StampViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampViewController.swift; sourceTree = "<group>"; };
 		F247541823E5D2CB006A13C3 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
@@ -508,12 +516,14 @@
 		F2A93FA025812DEA006C88F8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */,
-				F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */,
 				F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */,
 				F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */,
+				F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */,
+				F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */,
 				F2A93FD0258164B2006C88F8 /* MonthBoxCell.xib */,
 				F2A93FCF258164B2006C88F8 /* MonthBoxCell.swift */,
+				F23CF370258272E70048BA74 /* YearBoxCell.xib */,
+				F23CF371258272E70048BA74 /* YearBoxCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -524,8 +534,9 @@
 				F2A93FD725816709006C88F8 /* StatsMode.swift */,
 				F2A93FAC2581314C006C88F8 /* StatsElement.swift */,
 				F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */,
-				F2A93FC725816180006C88F8 /* MonthBoxData.swift */,
 				F2A93FAE2581314C006C88F8 /* WeekLineData.swift */,
+				F2A93FC725816180006C88F8 /* MonthBoxData.swift */,
+				F23CF36C258271BE0048BA74 /* YearBoxData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -535,6 +546,7 @@
 			children = (
 				F2A93FB525813668006C88F8 /* WeekLineView.swift */,
 				F2A93FCB25816249006C88F8 /* MonthBoxView.swift */,
+				F23CF368258271750048BA74 /* YearBoxView.swift */,
 			);
 			name = Views;
 			path = "Stamps/Application Pages/Stats/Views";
@@ -856,6 +868,7 @@
 			files = (
 				F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
+				F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */,
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
 				F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */,
 				F2B7D3612454B27F00C94E63 /* DTTableViewCell-Color.xib in Resources */,
@@ -912,6 +925,7 @@
 				F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */,
 				BC5643FD246B1DF000942066 /* StoredPeriod.swift in Sources */,
 				BC56440D246B309700942066 /* StampsListener.swift in Sources */,
+				F23CF373258272E80048BA74 /* YearBoxCell.swift in Sources */,
 				F2B4763023DCF9DE0076BFDC /* StoredDiary.swift in Sources */,
 				F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */,
 				F2A93F93258128E5006C88F8 /* StatsView.swift in Sources */,
@@ -983,6 +997,7 @@
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */,
 				F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */,
+				F23CF369258271750048BA74 /* YearBoxView.swift in Sources */,
 				F2A93FD825816709006C88F8 /* StatsMode.swift in Sources */,
 				F2A93FAF2581314C006C88F8 /* StatsElement.swift in Sources */,
 				F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */,
@@ -992,6 +1007,7 @@
 				F27B04612426B8FA006E5175 /* DayBadgeView.swift in Sources */,
 				F20E40442443ED25008759D1 /* DTTableViewModel.swift in Sources */,
 				F2B4763F23DE4B540076BFDC /* StampCell.swift in Sources */,
+				F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */,
 				BC1E1EFA246C58F500E05C8A /* GRDBDataProvider.swift in Sources */,
 				F2A93F92258128E5006C88F8 /* StatsPresenterProtocol.swift in Sources */,
 				F20E40472443ED25008759D1 /* DTTableSelectionViewController.swift in Sources */,

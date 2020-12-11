@@ -134,11 +134,7 @@ class TodayViewController: UIViewController, TodayView {
         UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
             options: [.curveEaseInOut], animations:
         {
-            self.stampSelectorBottomContstraint.constant = (state == .fullSelector) ?
-                16 : -(self.stampSelector.bounds.height + 16)
-            self.plusButtonBottomContstraint.constant = (state == .miniButton) ?
-                16 : -(self.plusButton.bounds.height + 16)
-            self.view.layoutIfNeeded()
+            self.adjustButtonConstraintsForState(state)
         })
     }
 
@@ -161,8 +157,21 @@ class TodayViewController: UIViewController, TodayView {
     }
 
     // MARK: - Private helpers
+
+    private func adjustButtonConstraintsForState(_ state: SelectorState) {
+        stampSelectorBottomContstraint.constant = (state == .fullSelector) ?
+            Specs.bottomButtonsMargin :
+            -(stampSelector.bounds.height + Specs.bottomButtonsMargin)
+        
+        plusButtonBottomContstraint.constant = (state == .miniButton) ?
+            Specs.bottomButtonsMargin :
+            -(plusButton.bounds.height + Specs.bottomButtonsMargin)
+        view.layoutIfNeeded()
+    }
     
     private func configureViews() {
+        // Hide buttons initially
+        adjustButtonConstraintsForState(.hidden)
         
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
@@ -208,4 +217,7 @@ fileprivate struct Specs {
     
     /// Stamp selector mini button corner radius
     static let miniButtonCornerRadius: CGFloat = 8.0
+    
+    /// Bottom buttons (both full and small) margin from the edge
+    static let bottomButtonsMargin: CGFloat = 16.0
 }

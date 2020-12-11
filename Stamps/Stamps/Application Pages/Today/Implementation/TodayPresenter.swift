@@ -136,7 +136,6 @@ class TodayPresenter: TodayPresenterProtocol {
             self.loadAwardsData()
         })
 
-
         // Load set of all stamps
         allStamps = repository.allStamps()
 
@@ -196,6 +195,9 @@ class TodayPresenter: TodayPresenterProtocol {
         
         // Stamp selector data
         loadStampSelectorData()
+        
+        // Update selectors state based on the lock status
+        view?.showStampSelector(selectorState)
     }
     
     private func loadStampSelectorData() {

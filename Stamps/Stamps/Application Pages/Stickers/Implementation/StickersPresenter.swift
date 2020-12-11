@@ -25,8 +25,10 @@ class StickersPresenter: StickersPresenterProtocol {
     // MARK: - State
 
     private var stamps: [Stamp] = []
+    private var stampsData: [DayStampData] = []
     
     private var goals: [Goal] = []
+    private var goalsData: [GoalAwardData] = []
     
     // MARK: - Lifecycle
 
@@ -62,7 +64,6 @@ class StickersPresenter: StickersPresenterProtocol {
         },
         onChange: { [weak self] stamps in
             guard let self = self else { return }
-            
             self.stamps = self.repository.allStamps()
             self.loadViewData()
         })
@@ -73,7 +74,6 @@ class StickersPresenter: StickersPresenterProtocol {
         },
         onChange: { [weak self] stamps in
             guard let self = self else { return }
-            
             self.goals = self.repository.allGoals()
             self.loadViewData()
         })
@@ -83,10 +83,8 @@ class StickersPresenter: StickersPresenterProtocol {
         },
         onChange: { [weak self] awards in
             guard let self = self else { return }
-            
             self.loadViewData()
         })
-
     }
     
     /// Called when view about to appear on the screen
@@ -112,7 +110,7 @@ class StickersPresenter: StickersPresenterProtocol {
     }
     
     private func loadViewData() {
-        let stampData = stamps.map({
+        let newStampsData = stamps.map({
             DayStampData(
                 stampId: $0.id,
                 label: $0.label,
@@ -121,7 +119,7 @@ class StickersPresenter: StickersPresenterProtocol {
             )
         })
         
-        let goalsData: [GoalAwardData] = goals.compactMap({
+        let newGoalsData: [GoalAwardData] = goals.compactMap({
             guard let goalId = $0.id else { return nil }
 
             let progress = self.awardManager.currentProgressFor($0)
@@ -142,6 +140,18 @@ class StickersPresenter: StickersPresenterProtocol {
             )
         })
         
-        view?.loadData(stickers: stampData, goals: goalsData)
+        var updated = false
+        if stampsData != newStampsData {
+            stampsData = newStampsData
+            updated = true
+        }
+        if goalsData != newGoalsData {
+            goalsData = newGoalsData
+            updated = true
+        }
+
+        if updated {
+            view?.loadData(stickers: stampsData, goals: goalsData)
+        }
     }
 }

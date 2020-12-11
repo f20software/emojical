@@ -41,6 +41,9 @@
                 <constraint firstItem="ChH-rG-WsF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xYn-70-LYq"/>
             </constraints>
             <size key="customSize" width="74" height="78"/>
+            <connections>
+                <outlet property="border" destination="ChH-rG-WsF" id="Qr0-pp-Lst"/>
+            </connections>
             <point key="canvasLocation" x="59.420289855072468" y="138.61607142857142"/>
         </collectionViewCell>
     </objects>

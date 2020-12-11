@@ -59,8 +59,7 @@ class StickersPresenter: StickersPresenterProtocol {
             fatalError("Unexpected error: \(error)")
         },
         onChange: { [weak self] stamps in
-            guard let self = self else { return }
-            self.loadViewData()
+            self?.loadViewData()
         })
 
         // Subscribe to goals listener in case stamps array ever changes
@@ -68,16 +67,16 @@ class StickersPresenter: StickersPresenterProtocol {
             fatalError("Unexpected error: \(error)")
         },
         onChange: { [weak self] stamps in
-            guard let self = self else { return }
-            self.loadViewData()
+            self?.loadViewData()
         })
 
+        // Subscribe to awards listener for when new award is given
+        // (to update list of goals including badges)
         awardsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
         onChange: { [weak self] awards in
-            guard let self = self else { return }
-            self.loadViewData()
+            self?.loadViewData()
         })
     }
     

@@ -44,13 +44,9 @@ class StampSelectorView : UIView {
         // center them inside selector view.
         // Otherwise make width to [stampsPerRow] elements, and number of row to 2
         // Will have to improve when more then 10 stamps are supported
-        if data.count <= Specs.stampsPerRow {
-            heightConstraint.constant = Specs.stampSize
-            widthConstraint.constant = Specs.stampSize * CGFloat(data.count)
-        } else if data.count <= Specs.stampsPerRow * 2 {
-            heightConstraint.constant = Specs.stampSize * 2
-            widthConstraint.constant = Specs.stampSize * CGFloat(Specs.stampsPerRow)
-        }
+        let rows = ((data.count - 1) / Specs.stampsPerRow) + 1
+        heightConstraint.constant = Specs.stampSize * CGFloat(rows)
+        widthConstraint.constant = Specs.stampSize * CGFloat(Specs.stampsPerRow)
     }
     
     // MARK: - Private helpers

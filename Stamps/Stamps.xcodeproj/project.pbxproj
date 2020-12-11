@@ -110,10 +110,6 @@
 		F2B4762B23DBDFEF0076BFDC /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F2B4762A23DBDFEF0076BFDC /* GRDB */; };
 		F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762C23DC1B440076BFDC /* AppDatabase.swift */; };
 		F2B4763023DCF9DE0076BFDC /* StoredDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */; };
-		F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B4763523DE3CE00076BFDC /* Stamps.storyboard */; };
-		F2B4763B23DE3E390076BFDC /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4763A23DE3E390076BFDC /* GoalsViewController.swift */; };
-		F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */; };
-		F2B4763F23DE4B540076BFDC /* StampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4763E23DE4B540076BFDC /* StampCell.swift */; };
 		F2B67431243919D500610D86 /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B67430243919D500610D86 /* AwardView.swift */; };
 		F2B7D35B244B47FE00C94E63 /* DTTableViewCell-Emoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B7D35A244B47FE00C94E63 /* DTTableViewCell-Emoji.xib */; };
 		F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */; };
@@ -123,13 +119,11 @@
 		F2B7D3652454DB0C00C94E63 /* DTTableViewColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D3642454DB0C00C94E63 /* DTTableViewColorCell.swift */; };
 		F2C190D22401BD50003F5ABA /* WeekBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */; };
 		F2C190D42402E17A003F5ABA /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D32402E17A003F5ABA /* GoalViewController.swift */; };
-		F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D52402E243003F5ABA /* GoalCell.swift */; };
 		F2C190D824030701003F5ABA /* SelectStampsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D724030701003F5ABA /* SelectStampsViewController.swift */; };
 		F2C493242430172D00E997BD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493232430172D00E997BD /* NotificationManager.swift */; };
 		F2C493262430179500E997BD /* LocalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493252430179500E997BD /* LocalSettings.swift */; };
 		F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */; };
 		F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */; };
-		F2C4943F23D2CBC800EAF9CC /* StampsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943E23D2CBC800EAF9CC /* StampsViewController.swift */; };
 		F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944023D2CBC800EAF9CC /* Main.storyboard */; };
 		F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */; };
 		F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */; };
@@ -275,10 +269,6 @@
 		F2A99D2F243A793000D3CF1D /* AwardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
 		F2B4762C23DC1B440076BFDC /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredDiary.swift; sourceTree = "<group>"; };
-		F2B4763523DE3CE00076BFDC /* Stamps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stamps.storyboard; sourceTree = "<group>"; };
-		F2B4763A23DE3E390076BFDC /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
-		F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Goals.storyboard; sourceTree = "<group>"; };
-		F2B4763E23DE4B540076BFDC /* StampCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampCell.swift; sourceTree = "<group>"; };
 		F2B67430243919D500610D86 /* AwardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
 		F2B7D35A244B47FE00C94E63 /* DTTableViewCell-Emoji.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Emoji.xib"; sourceTree = "<group>"; };
 		F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomStickerCell.xib; sourceTree = "<group>"; };
@@ -288,14 +278,12 @@
 		F2B7D3642454DB0C00C94E63 /* DTTableViewColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableViewColorCell.swift; sourceTree = "<group>"; };
 		F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekBadgeView.swift; sourceTree = "<group>"; };
 		F2C190D32402E17A003F5ABA /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
-		F2C190D52402E243003F5ABA /* GoalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		F2C190D724030701003F5ABA /* SelectStampsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStampsViewController.swift; sourceTree = "<group>"; };
 		F2C493232430172D00E997BD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		F2C493252430179500E997BD /* LocalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
 		F2C4943523D2CBC800EAF9CC /* Emojical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F2C4943E23D2CBC800EAF9CC /* StampsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsViewController.swift; sourceTree = "<group>"; };
 		F2C4944123D2CBC800EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2C4944623D2CBCA00EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -683,16 +671,6 @@
 			path = "Awards-obsolete";
 			sourceTree = "<group>";
 		};
-		F2B4763323DE3C120076BFDC /* Stamps-obsolete */ = {
-			isa = PBXGroup;
-			children = (
-				F2B4763523DE3CE00076BFDC /* Stamps.storyboard */,
-				F2B4763E23DE4B540076BFDC /* StampCell.swift */,
-				F2C4943E23D2CBC800EAF9CC /* StampsViewController.swift */,
-			);
-			path = "Stamps-obsolete";
-			sourceTree = "<group>";
-		};
 		F2B4763423DE3C300076BFDC /* Application Pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,22 +678,10 @@
 				F24B07C724C547C300FFD798 /* Today */,
 				F2A93F8325812881006C88F8 /* Stats */,
 				F23CF38225829B500048BA74 /* Stickers */,
-				F2B4763323DE3C120076BFDC /* Stamps-obsolete */,
-				F2B4763923DE3DBE0076BFDC /* Goals-obsolete */,
 				F2A99D2A2439346C00D3CF1D /* Options */,
 				F2A99D2B243A78ED00D3CF1D /* Awards-obsolete */,
 			);
 			path = "Application Pages";
-			sourceTree = "<group>";
-		};
-		F2B4763923DE3DBE0076BFDC /* Goals-obsolete */ = {
-			isa = PBXGroup;
-			children = (
-				F2B4763C23DE3E6D0076BFDC /* Goals.storyboard */,
-				F2C190D52402E243003F5ABA /* GoalCell.swift */,
-				F2B4763A23DE3E390076BFDC /* GoalsViewController.swift */,
-			);
-			path = "Goals-obsolete";
 			sourceTree = "<group>";
 		};
 		F2C493222430171000E997BD /* Notifications */ = {
@@ -973,12 +939,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2B4763D23DE3E6D0076BFDC /* Goals.storyboard in Resources */,
 				F23CF3CD2582A95F0048BA74 /* StickerCell.xib in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
 				F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */,
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
-				F2B4763623DE3CE00076BFDC /* Stamps.storyboard in Resources */,
 				F2B7D3612454B27F00C94E63 /* DTTableViewCell-Color.xib in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
 				F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */,
@@ -1024,7 +988,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */,
-				F2C4943F23D2CBC800EAF9CC /* StampsViewController.swift in Sources */,
 				F2F3BE25257D353D00A926E9 /* DayStampCell.swift in Sources */,
 				F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */,
 				F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */,
@@ -1065,7 +1028,6 @@
 				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
 				F23CF3CC2582A95F0048BA74 /* StickerCell.swift in Sources */,
-				F2C190D62402E243003F5ABA /* GoalCell.swift in Sources */,
 				F2A93FC825816180006C88F8 /* MonthBoxData.swift in Sources */,
 				BC5643F1246B0F1900942066 /* Goal.swift in Sources */,
 				F247542723E74C49006A13C3 /* StoredAward.swift in Sources */,
@@ -1124,10 +1086,8 @@
 				F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */,
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2B67431243919D500610D86 /* AwardView.swift in Sources */,
-				F2B4763B23DE3E390076BFDC /* GoalsViewController.swift in Sources */,
 				F27B04612426B8FA006E5175 /* DayBadgeView.swift in Sources */,
 				F20E40442443ED25008759D1 /* DTTableViewModel.swift in Sources */,
-				F2B4763F23DE4B540076BFDC /* StampCell.swift in Sources */,
 				F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */,
 				BC1E1EFA246C58F500E05C8A /* GRDBDataProvider.swift in Sources */,
 				F2A93F92258128E5006C88F8 /* StatsPresenterProtocol.swift in Sources */,

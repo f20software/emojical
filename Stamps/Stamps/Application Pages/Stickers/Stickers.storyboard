@@ -179,14 +179,6 @@
             </objects>
             <point key="canvasLocation" x="751" y="575"/>
         </scene>
-        <!--newGoal-->
-        <scene sceneID="HoY-Ub-pAt">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Goals" referencedIdentifier="newGoal" id="DmV-17-jtl" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XiW-Lh-vn7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4197" y="68"/>
-        </scene>
         <!--Stamp View Controller-->
         <scene sceneID="iHO-wT-JdA">
             <objects>
@@ -225,7 +217,7 @@
                         <outlet property="cancelBarButton" destination="GiK-Yo-QOT" id="04s-g4-yY8"/>
                         <outlet property="doneBarButton" destination="Bie-FE-IoP" id="0ZK-xa-w5b"/>
                         <outlet property="editBarButton" destination="Rol-qX-5MH" id="NUc-h6-sLH"/>
-                        <segue destination="DmV-17-jtl" kind="presentation" identifier="newGoal" id="n2U-EZ-vU4"/>
+                        <segue destination="eTd-Mb-UwN" kind="presentation" identifier="newGoal" id="u6X-P6-K89"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJK-r4-c2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,6 +243,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="1wj-1N-ZuG"/>
+        <segue reference="u6X-P6-K89"/>
         <segue reference="nXA-cL-kcP"/>
     </inferredMetricsTieBreakers>
     <resources>

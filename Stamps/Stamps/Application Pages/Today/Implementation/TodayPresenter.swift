@@ -89,6 +89,9 @@ class TodayPresenter: TodayPresenterProtocol {
             view?.showStampSelector(selectorState)
         }
     }
+    
+    // To make sure we don't play sound on initial page load (when awards are updated)
+    private var firstTime: Bool = true
 
     // MARK: - Lifecycle
 
@@ -131,7 +134,15 @@ class TodayPresenter: TodayPresenterProtocol {
         },
         onChange: { [weak self] awards in
             guard let self = self else { return }
-            
+
+            // This will get called only when actual new award is added or removed
+            // Skip first sound, since it will be called once on creation
+            if self.firstTime {
+                self.firstTime = false
+            } else {
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            }
+
             self.awards = self.dataBuilder.awards(for: self.week)
             self.loadAwardsData()
         })

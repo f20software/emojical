@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -36,13 +35,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BV3-tF-WFD">
-                                <rect key="frame" x="16" y="74" width="382" height="635"/>
+                                <rect key="frame" x="16" y="83" width="382" height="626"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJ0-of-a5u" customClass="DayColumnView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="54.5" height="635"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="54.5" height="626"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kMe-ZS-Mw5">
-                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="635"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="626"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sfl-QG-hYH">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -64,10 +63,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1lM-26-t9b" customClass="DayColumnView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="54.5" y="0.0" width="54.5" height="635"/>
+                                        <rect key="frame" x="54.5" y="0.0" width="54.5" height="626"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZQe-rR-Fdm">
-                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="635"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="626"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="w3K-Mb-vRi">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -89,10 +88,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOr-jo-VtK" customClass="DayColumnView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="109" y="0.0" width="54.5" height="635"/>
+                                        <rect key="frame" x="109" y="0.0" width="54.5" height="626"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="guW-n9-yPY">
-                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="635"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="626"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZD0-aw-rg4">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -114,10 +113,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3W-1S-Mqu" customClass="DayColumnView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="163.5" y="0.0" width="55" height="635"/>
+                                        <rect key="frame" x="163.5" y="0.0" width="55" height="626"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fBg-GN-S33">
-                                                <rect key="frame" x="0.0" y="0.0" width="55" height="635"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="626"/>
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OwH-J0-IjE">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -139,10 +138,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbx-OB-6HF" customClass="DayColumnView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="218.5" y="0.0" width="54.5" height="635"/>
+                                        <rect key="frame" x="218.5" y="0.0" width="54.5" height="626"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k1Q-me-bB5">
-                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="635"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="626"/>
                                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Hg-ot-qvJ">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -164,10 +163,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaH-jB-lBK" customClass="DayColumnView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="273" y="0.0" width="54.5" height="635"/>
+                                        <rect key="frame" x="273" y="0.0" width="54.5" height="626"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Gs-7F-wCC">
-                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="635"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="626"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fBQ-M7-8N8">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -189,10 +188,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bby-Z3-Ggw" customClass="DayColumnView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="327.5" y="0.0" width="54.5" height="635"/>
+                                        <rect key="frame" x="327.5" y="0.0" width="54.5" height="626"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fy6-FQ-oCX">
-                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="635"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="626"/>
                                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xCS-Yk-h7a">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -242,10 +241,10 @@
                                         <cells/>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jq9-LL-UNm">
-                                        <rect key="frame" x="354" y="4" width="24" height="24"/>
+                                        <rect key="frame" x="346" y="-4" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="LeR-HR-lSO"/>
-                                            <constraint firstAttribute="height" constant="24" id="gsE-Im-Bvp"/>
+                                            <constraint firstAttribute="width" constant="40" id="LeR-HR-lSO"/>
+                                            <constraint firstAttribute="height" constant="40" id="gsE-Im-Bvp"/>
                                         </constraints>
                                         <state key="normal" image="chevron.down" catalog="system"/>
                                         <connections>
@@ -255,9 +254,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <constraints>
-                                    <constraint firstItem="jq9-LL-UNm" firstAttribute="top" secondItem="kD0-4R-gft" secondAttribute="top" constant="4" id="0GB-P5-Bmk"/>
+                                    <constraint firstItem="jq9-LL-UNm" firstAttribute="top" secondItem="kD0-4R-gft" secondAttribute="top" constant="-4" id="0GB-P5-Bmk"/>
                                     <constraint firstItem="NDs-gn-bub" firstAttribute="centerX" secondItem="kD0-4R-gft" secondAttribute="centerX" id="4Ys-sR-GLx"/>
-                                    <constraint firstAttribute="trailing" secondItem="jq9-LL-UNm" secondAttribute="trailing" constant="4" id="FYF-4e-wmh"/>
+                                    <constraint firstAttribute="trailing" secondItem="jq9-LL-UNm" secondAttribute="trailing" constant="-4" id="FYF-4e-wmh"/>
                                     <constraint firstItem="NDs-gn-bub" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kD0-4R-gft" secondAttribute="leading" constant="20" id="MGP-Xx-dTw"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NDs-gn-bub" secondAttribute="trailing" constant="20" id="OT7-Sb-tST"/>
                                     <constraint firstItem="NDs-gn-bub" firstAttribute="top" secondItem="kD0-4R-gft" secondAttribute="top" constant="20" id="OgK-3N-db1"/>
@@ -270,14 +269,14 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxR-Kk-3sT">
-                                <rect key="frame" x="26.5" y="67" width="33" height="4"/>
+                                <rect key="frame" x="26.5" y="76" width="33" height="4"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="4" id="pr9-am-41z"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50g-Iv-28T" customClass="WeeklyAwardsView" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="16" y="14" width="382" height="50"/>
+                                <rect key="frame" x="16" y="10" width="382" height="50"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EhG-g1-xfW">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
@@ -314,24 +313,34 @@
                                     <action selector="plusButtonTapped:" destination="tvO-pK-EYQ" eventType="primaryActionTriggered" id="wz2-qJ-Lir"/>
                                 </connections>
                             </button>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tb-hZ-tEu">
+                                <rect key="frame" x="0.0" y="70" width="414" height="1"/>
+                                <color key="backgroundColor" systemColor="separatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="dcs-Uf-p69"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JNE-f6-5U0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="50g-Iv-28T" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="16" id="13r-Tt-ZEl"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="BV3-tF-WFD" secondAttribute="bottom" constant="16" id="3zU-Jb-ITv"/>
+                            <constraint firstItem="2Tb-hZ-tEu" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="BcA-0S-4bd"/>
                             <constraint firstItem="gxR-Kk-3sT" firstAttribute="width" secondItem="dJ0-of-a5u" secondAttribute="width" multiplier="0.6" id="DNH-yj-dj5"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="leading" secondItem="BV3-tF-WFD" secondAttribute="leading" id="Ff5-od-DV2"/>
-                            <constraint firstItem="BV3-tF-WFD" firstAttribute="top" secondItem="50g-Iv-28T" secondAttribute="bottom" constant="10" id="LsP-nK-hh7"/>
+                            <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="2Tb-hZ-tEu" secondAttribute="trailing" id="LO6-hf-Prm"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" id="XJd-Zd-x36"/>
-                            <constraint firstItem="50g-Iv-28T" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="14" id="Yiv-cK-xSs"/>
+                            <constraint firstItem="50g-Iv-28T" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="10" id="Yiv-cK-xSs"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="50g-Iv-28T" secondAttribute="trailing" constant="16" id="Yny-XS-tFX"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="xsj-3c-kfw" secondAttribute="trailing" id="Zvh-CQ-5vn"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="kD0-4R-gft" secondAttribute="bottom" constant="16" id="be8-Zf-eJO"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="xsj-3c-kfw" secondAttribute="bottom" constant="16" id="fdi-Q1-OZF"/>
+                            <constraint firstItem="2Tb-hZ-tEu" firstAttribute="top" secondItem="EhG-g1-xfW" secondAttribute="bottom" constant="10" id="fjO-gA-xYU"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="16" id="mkI-ZR-9mP"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="top" secondItem="gxR-Kk-3sT" secondAttribute="bottom" constant="3" id="mwc-dj-LWE"/>
                             <constraint firstItem="gxR-Kk-3sT" firstAttribute="centerX" secondItem="BV3-tF-WFD" secondAttribute="leading" constant="27" id="pkb-tA-aJn"/>
+                            <constraint firstItem="BV3-tF-WFD" firstAttribute="top" secondItem="2Tb-hZ-tEu" secondAttribute="bottom" constant="12" id="qvC-Ae-NpT"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" constant="16" id="yRc-Oy-2D7"/>
                         </constraints>
                     </view>
@@ -380,6 +389,9 @@
         <image name="calendar.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="square.grid.3x3.fill" catalog="system" width="128" height="112"/>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

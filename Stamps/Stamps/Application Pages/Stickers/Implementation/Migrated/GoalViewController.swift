@@ -205,6 +205,15 @@ extension GoalViewController: UITextFieldDelegate {
         }
     }
 
+    @IBAction func doneTapped(_ sender: Any) {
+        saveChanges()
+        if presentationMode == .push {
+            navigationController?.popViewController(animated: true)
+        } else {
+            dismiss(animated: true)
+        }
+    }
+
     func deleteAndDismiss() {
         goal.deleted = true
         saveChanges()

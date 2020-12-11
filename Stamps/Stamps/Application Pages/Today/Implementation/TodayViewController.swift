@@ -134,8 +134,10 @@ class TodayViewController: UIViewController, TodayView {
         UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
             options: [.curveEaseInOut], animations:
         {
-            self.stampSelectorBottomContstraint.constant = (state == .fullSelector) ? 16 : -200
-            self.plusButtonBottomContstraint.constant = (state == .miniButton) ? 16 : -100
+            self.stampSelectorBottomContstraint.constant = (state == .fullSelector) ?
+                16 : -(self.stampSelector.bounds.height + 16)
+            self.plusButtonBottomContstraint.constant = (state == .miniButton) ?
+                16 : -(self.plusButton.bounds.height + 16)
             self.view.layoutIfNeeded()
         })
     }

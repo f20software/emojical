@@ -106,14 +106,6 @@ struct AppDatabase {
                 var s = stamp
                 try s.insert(db)
             }
-
-            // Fill in default stamps
-            for goal in [
-                StoredGoal(id: nil, name: "Excersize", period: .week, direction: .positive, limit: 3, stamps: "2")
-            ] {
-                var g = goal
-                try g.insert(db)
-            }
         }
         
         return migrator

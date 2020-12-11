@@ -1,8 +1,8 @@
 //
-//  GoalCell.swift
+//  NoGoalsCell.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/10/2020.
+//  Created by Vladimir Svidersky on 12/11/2020.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 
@@ -33,11 +33,4 @@ class NoGoalsCell: UICollectionViewCell {
         text.font = UIFont.systemFont(ofSize: 15)
         text.textColor = UIColor.darkGray
     }
-}
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
 }

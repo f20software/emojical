@@ -24,10 +24,10 @@ class StickersPresenter: StickersPresenterProtocol {
     
     // MARK: - State
 
-    private var stamps: [Stamp] = []
+    // View model data for all stamps
     private var stampsData: [DayStampData] = []
     
-    private var goals: [Goal] = []
+    // View model data for all goals
     private var goalsData: [GoalAwardData] = []
     
     // MARK: - Lifecycle
@@ -54,17 +54,12 @@ class StickersPresenter: StickersPresenterProtocol {
     func onViewDidLoad() {
         setupView()
         
-        // Load initial set of data
-        stamps = repository.allStamps()
-        goals = repository.allGoals()
-
         // Subscribe to stamp listener in case stamps array ever changes
         stampsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
         onChange: { [weak self] stamps in
             guard let self = self else { return }
-            self.stamps = self.repository.allStamps()
             self.loadViewData()
         })
 
@@ -74,7 +69,6 @@ class StickersPresenter: StickersPresenterProtocol {
         },
         onChange: { [weak self] stamps in
             guard let self = self else { return }
-            self.goals = self.repository.allGoals()
             self.loadViewData()
         })
 
@@ -110,7 +104,7 @@ class StickersPresenter: StickersPresenterProtocol {
     }
     
     private func loadViewData() {
-        let newStampsData = stamps.map({
+        let newStampsData = repository.allStamps().map({
             DayStampData(
                 stampId: $0.id,
                 label: $0.label,
@@ -119,7 +113,7 @@ class StickersPresenter: StickersPresenterProtocol {
             )
         })
         
-        let newGoalsData: [GoalAwardData] = goals.compactMap({
+        let newGoalsData: [GoalAwardData] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }
 
             let progress = self.awardManager.currentProgressFor($0)

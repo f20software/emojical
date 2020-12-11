@@ -29,6 +29,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Cnn-kL-Tf0"/>
                                             <constraint firstAttribute="width" constant="40" id="la0-wu-eCw"/>
                                         </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVX-B1-bai">
                                         <rect key="frame" x="48" y="19" width="123.5" height="20.5"/>

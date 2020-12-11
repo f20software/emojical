@@ -14,6 +14,8 @@ class TodayViewController: UIViewController, TodayView {
     // MARK: - Outlets
     
     @IBOutlet weak var awards: WeeklyAwardsView!
+    // Used to hide awards list if there are no goals defined
+    @IBOutlet weak var separatorTopConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var selectedDayIndicator: UIView!
     @IBOutlet weak var selectedDayIndicatorLeading: NSLayoutConstraint!
@@ -56,9 +58,11 @@ class TodayViewController: UIViewController, TodayView {
             repository: Storage.shared.repository,
             stampsListener: Storage.shared.stampsListener(),
             awardsListener: Storage.shared.awardsListener(),
+            goalsListener: Storage.shared.goalsListener(),
             awardManager: AwardManager.shared,
             calendar: CalendarHelper.shared,
-            view: self)
+            view: self,
+            coordinator: self)
         
         configureViews()
         presenter.onViewDidLoad()
@@ -74,6 +78,9 @@ class TodayViewController: UIViewController, TodayView {
     /// Is called when user tapped on the stamp in the bottom stamp selector
     var onStampInSelectorTapped: ((Int64) -> Void)?
 
+    /// User tapped on create new stamp in the bottom stamp selector
+    var onNewStickerTapped: (() -> Void)?
+
     /// Is called when user tapped on the day header, day index 0...6 is passed
     var onDayHeaderTapped: ((Int) -> Void)?
 
@@ -88,6 +95,11 @@ class TodayViewController: UIViewController, TodayView {
 
     /// User tapped to close selector button
     var onCloseStampSelectorTapped: (() -> Void)?
+
+    /// Show/hide top awards strip
+    func showAwards(_ show: Bool) {
+        separatorTopConstraint.constant = show ? 70 : -1
+    }
 
     /// Update page title
     func setTitle(to title: String) {
@@ -119,7 +131,7 @@ class TodayViewController: UIViewController, TodayView {
     }
 
     /// Loads stamps into stamp selector
-    func loadStampSelectorData(data: [DayStampData]) {
+    func loadStampSelectorData(data: [StampSelectorElement]) {
         stampSelector.loadData(data: data)
     }
     
@@ -134,11 +146,7 @@ class TodayViewController: UIViewController, TodayView {
         UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
             options: [.curveEaseInOut], animations:
         {
-            self.stampSelectorBottomContstraint.constant = (state == .fullSelector) ?
-                16 : -(self.stampSelector.bounds.height + 16)
-            self.plusButtonBottomContstraint.constant = (state == .miniButton) ?
-                16 : -(self.plusButton.bounds.height + 16)
-            self.view.layoutIfNeeded()
+            self.adjustButtonConstraintsForState(state)
         })
     }
 
@@ -161,8 +169,21 @@ class TodayViewController: UIViewController, TodayView {
     }
 
     // MARK: - Private helpers
+
+    private func adjustButtonConstraintsForState(_ state: SelectorState) {
+        stampSelectorBottomContstraint.constant = (state == .fullSelector) ?
+            Specs.bottomButtonsMargin :
+            -(stampSelector.bounds.height + Specs.bottomButtonsMargin)
+        
+        plusButtonBottomContstraint.constant = (state == .miniButton) ?
+            Specs.bottomButtonsMargin :
+            -(plusButton.bounds.height + Specs.bottomButtonsMargin)
+        view.layoutIfNeeded()
+    }
     
     private func configureViews() {
+        // Hide buttons initially
+        adjustButtonConstraintsForState(.hidden)
         
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
@@ -174,6 +195,9 @@ class TodayViewController: UIViewController, TodayView {
         
         stampSelector.onStampTapped = { (stampId) in
             self.onStampInSelectorTapped?(stampId)
+        }
+        stampSelector.onNewStickerTapped = { () in
+            self.onNewStickerTapped?()
         }
         day0.onDayTapped = { () in
             self.onDayHeaderTapped?(0)
@@ -203,9 +227,36 @@ class TodayViewController: UIViewController, TodayView {
     }
 }
 
+// MARK: - TodayCoordinator
+
+extension TodayViewController: TodayCoordinator {
+    
+    func newSticker() {
+        performSegue(withIdentifier: UIStoryboardSegue.newSticker, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+
+        case UIStoryboardSegue.newSticker:
+            guard let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? StampViewController else { return }
+
+            setEditing(false, animated: true)
+            controller.stamp = Stamp.defaultStamp
+            controller.presentationMode = .modal
+        
+        default:
+            break
+        }
+    }
+}
+
 // MARK: - Specs
 fileprivate struct Specs {
     
     /// Stamp selector mini button corner radius
     static let miniButtonCornerRadius: CGFloat = 8.0
+    
+    /// Bottom buttons (both full and small) margin from the edge
+    static let bottomButtonsMargin: CGFloat = 16.0
 }

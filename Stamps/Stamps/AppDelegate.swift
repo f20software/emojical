@@ -24,11 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         /// Setup data storage. Change this line to swap to another data storage mechanism.
         Storage.shared = GRDBDataProvider(app: application)
-        /// Setup calendar helper using first and last recorded diary entries
-        CalendarHelper.shared = CalendarHelper(
-            from: Storage.shared.repository.getFirstDiaryDate() ?? Date(year: 2020, month: 1, day: 20),
-            to: Storage.shared.repository.getLastDiaryDate() ?? Date(year: 2022, month: 11, day: 20))
-        
+
+        /// Setup calendar helper
+        CalendarHelper.shared = CalendarHelper()
         AwardManager.shared.recalculateOnAppResume()
 
         // Initiate notification engine

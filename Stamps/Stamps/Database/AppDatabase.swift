@@ -41,6 +41,8 @@ struct AppDatabase {
                 t.column("color", .text).notNull().collate(.nocase)
                 t.column("favorite", .boolean).notNull()
                 t.column("deleted", .boolean).notNull()
+                t.column("count", .integer).notNull().defaults(to: 0)
+                t.column("lastUsed", .text).notNull().defaults(to: "")
             }
 
             // Create a table for diary
@@ -59,6 +61,8 @@ struct AppDatabase {
                 t.column("limit", .integer).notNull()
                 t.column("stamps", .text).notNull()
                 t.column("deleted", .boolean).notNull()
+                t.column("count", .integer).notNull().defaults(to: 0)
+                t.column("lastUsed", .text).notNull().defaults(to: "")
             }
 
             // Create a table for awards
@@ -67,26 +71,15 @@ struct AppDatabase {
                 t.column("goalId", .integer).notNull()
                 t.column("date", .text).notNull()
             }
-        }
-        
-        migrator.registerMigration("new-fields") { db in
-            try db.alter(table: "stamp", body: { t in
-                t.add(column: "count", .integer).notNull().defaults(to: 0)
-                t.add(column: "lastUsed", .text).notNull().defaults(to: "")
-            })
-            
-            try db.alter(table: "goal", body: { t in
-                t.add(column: "count", .integer).notNull().defaults(to: 0)
-                t.add(column: "lastUsed", .text).notNull().defaults(to: "")
-            })
-        }
 
-        migrator.registerMigration("db-state-1") { db in
-            // Create a table for various app params
             try db.create(table: "param") { t in
                 t.column("name", .text).notNull()
                 t.column("value", .text).notNull()
             }
+        }
+        
+        migrator.registerMigration("db-state-1") { db in
+            // Create a table for various app params
         }
 
 //        "B8B09B", "Gold",
@@ -112,14 +105,6 @@ struct AppDatabase {
             ] {
                 var s = stamp
                 try s.insert(db)
-            }
-
-            // Fill in default stamps
-            for goal in [
-                StoredGoal(id: nil, name: "Excersize", period: .week, direction: .positive, limit: 5, stamps: "2")
-            ] {
-                var g = goal
-                try g.insert(db)
             }
         }
         

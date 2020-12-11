@@ -13,6 +13,7 @@ struct GoalAwardData {
     let goalId: Int64
     let name: String
     let details: String
+    let count: Int
     let color: UIColor
     let dashes: Int
     let progress: CGFloat

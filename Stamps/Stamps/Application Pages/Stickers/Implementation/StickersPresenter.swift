@@ -24,9 +24,11 @@ class StickersPresenter: StickersPresenterProtocol {
     
     // MARK: - State
 
-    private var stamps: [Stamp] = []
+    // View model data for all stamps
+    private var stampsData: [DayStampData] = []
     
-    private var goals: [Goal] = []
+    // View model data for all goals
+    private var goalsData: [GoalAwardData] = []
     
     // MARK: - Lifecycle
 
@@ -52,19 +54,12 @@ class StickersPresenter: StickersPresenterProtocol {
     func onViewDidLoad() {
         setupView()
         
-        // Load initial set of data
-        stamps = repository.allStamps()
-        goals = repository.allGoals()
-
         // Subscribe to stamp listener in case stamps array ever changes
         stampsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
         onChange: { [weak self] stamps in
-            guard let self = self else { return }
-            
-            self.stamps = self.repository.allStamps()
-            self.loadViewData()
+            self?.loadViewData()
         })
 
         // Subscribe to goals listener in case stamps array ever changes
@@ -72,21 +67,17 @@ class StickersPresenter: StickersPresenterProtocol {
             fatalError("Unexpected error: \(error)")
         },
         onChange: { [weak self] stamps in
-            guard let self = self else { return }
-            
-            self.goals = self.repository.allGoals()
-            self.loadViewData()
+            self?.loadViewData()
         })
 
+        // Subscribe to awards listener for when new award is given
+        // (to update list of goals including badges)
         awardsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
         onChange: { [weak self] awards in
-            guard let self = self else { return }
-            
-            self.loadViewData()
+            self?.loadViewData()
         })
-
     }
     
     /// Called when view about to appear on the screen
@@ -112,7 +103,7 @@ class StickersPresenter: StickersPresenterProtocol {
     }
     
     private func loadViewData() {
-        let stampData = stamps.map({
+        let newStampsData = repository.allStamps().map({
             DayStampData(
                 stampId: $0.id,
                 label: $0.label,
@@ -121,7 +112,7 @@ class StickersPresenter: StickersPresenterProtocol {
             )
         })
         
-        let goalsData: [GoalAwardData] = goals.compactMap({
+        let newGoalsData: [GoalAwardData] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }
 
             let progress = self.awardManager.currentProgressFor($0)
@@ -131,6 +122,7 @@ class StickersPresenter: StickersPresenterProtocol {
                 goalId: goalId,
                 name: $0.name,
                 details: $0.details,
+                count: $0.count,
                 color: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.2),
                 dashes: $0.period == .month ? 0 : 7,
                 progress: goalReached ? 1.0 : CGFloat(progress) / CGFloat($0.limit),
@@ -141,6 +133,18 @@ class StickersPresenter: StickersPresenterProtocol {
             )
         })
         
-        view?.loadData(stickers: stampData, goals: goalsData)
+        var updated = false
+        if stampsData != newStampsData {
+            stampsData = newStampsData
+            updated = true
+        }
+        if goalsData != newGoalsData {
+            goalsData = newGoalsData
+            updated = true
+        }
+
+        if updated {
+            view?.loadData(stickers: stampsData, goals: goalsData)
+        }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Goal2Cell.swift
+//  GoalCell.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/10/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Goal2Cell: UICollectionViewCell {
+class GoalCell: UICollectionViewCell {
 
     // MARK: - Outlets
 
@@ -17,6 +17,7 @@ class Goal2Cell: UICollectionViewCell {
     @IBOutlet weak var subTitle: UILabel!
     @IBOutlet weak var award: AwardView!
     @IBOutlet weak var progress: ProgressView!
+    @IBOutlet weak var count: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +39,14 @@ class Goal2Cell: UICollectionViewCell {
         progress.lineWidth = 3.0
         progress.backgroundColor = UIColor.clear
         
+        if data.count > 0 {
+            count.text = "  \(data.count)  "
+            count.isHidden = false
+        } else {
+            count.text = nil
+            count.isHidden = true
+        }
+        
         progress.setNeedsDisplay()
         award.setNeedsDisplay()
     }
@@ -48,6 +57,10 @@ class Goal2Cell: UICollectionViewCell {
         plate.layer.cornerRadius = Specs.cornerRadius
         plate.backgroundColor = UIColor.systemGray6
         plate.clipsToBounds = true
+        
+        count.layer.cornerRadius = count.font.pointSize * 0.6
+        count.clipsToBounds = true
+        count.backgroundColor = UIColor.appTintColor
     }
 }
 

@@ -8,6 +8,21 @@
 
 import UIKit
 
+/// Segue names
+extension UIStoryboardSegue {
+    /// Editing sticker segue
+    static let editSticker = "editSticker"
+
+    /// New sticker segue
+    static let newSticker = "newSticker"
+
+    /// Editing goal segue
+    static let editGoal = "editGoal"
+
+    /// New goal segue
+    static let newGoal = "newGoal"
+}
+
 class StickersViewController: UIViewController, StickersView {
 
     // List of sections
@@ -29,7 +44,7 @@ class StickersViewController: UIViewController, StickersView {
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StickersElement>!
 
-    // Editing goal Id... :(
+    // Editing goal and stamp Id... :(
     var editGoalId: Int64?
     var editStampId: Int64?
 
@@ -83,6 +98,9 @@ class StickersViewController: UIViewController, StickersView {
         snapshot.appendItems([.newSticker])
         snapshot.appendSections([1])
         snapshot.appendItems(goals.map({ StickersElement.goal($0) }))
+        if goals.count == 0 {
+            snapshot.appendItems([.noGoals("There are no goals yet. We can help you to make yourself better, create new goals and track your progress.")])
+        }
         snapshot.appendItems([.newGoal])
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
@@ -120,7 +138,7 @@ class StickersViewController: UIViewController, StickersView {
             forCellWithReuseIdentifier: Specs.Cells.stickerCell
         )
         collectionView.register(
-            UINib(nibName: "Goal2Cell", bundle: .main),
+            UINib(nibName: "GoalCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.goalCell
         )
         collectionView.register(
@@ -130,6 +148,10 @@ class StickersViewController: UIViewController, StickersView {
         collectionView.register(
             UINib(nibName: "NewStickerCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.newStickerCell
+        )
+        collectionView.register(
+            UINib(nibName: "NoGoalsCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.noGoalsCell
         )
         collectionView.register(
             StickersHeaderView.self,
@@ -145,58 +167,64 @@ extension StickersViewController: StickersCoordinator {
     
     func editGoal(_ goalId: Int64) {
         editGoalId = goalId
-        performSegue(withIdentifier: "editGoal", sender: self)
+        performSegue(withIdentifier: UIStoryboardSegue.editGoal, sender: self)
     }
     
     func newGoal() {
         editGoalId = nil
-        performSegue(withIdentifier: "newGoal", sender: self)
+        performSegue(withIdentifier: UIStoryboardSegue.newGoal, sender: self)
     }
 
     func editSticker(_ stampId: Int64) {
         editStampId = stampId
-        performSegue(withIdentifier: "editSticker", sender: self)
+        performSegue(withIdentifier: UIStoryboardSegue.editSticker, sender: self)
     }
     
     func newSticker() {
         editStampId = nil
-        performSegue(withIdentifier: "newSticker", sender: self)
+        performSegue(withIdentifier: UIStoryboardSegue.newSticker, sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editGoal" {
-            let goal = repository.goalById(editGoalId!)!
-            // DataSource.shared.updateStatsForGoal(&goal)
-            let controller = segue.destination as! GoalViewController
+        switch segue.identifier {
+
+        case UIStoryboardSegue.editGoal:
+            guard let goalId = editGoalId,
+                  let goal = repository.goalById(goalId),
+                  let controller = segue.destination as? GoalViewController else { return }
+            
             controller.title = goal.name
             controller.goal = goal
             controller.currentProgress = AwardManager.shared.currentProgressFor(goal)
             controller.presentationMode = .push
-        }
-        else if segue.identifier == "newGoal" {
+            
+        case UIStoryboardSegue.newGoal:
+            guard let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? GoalViewController else { return }
+
             setEditing(false, animated: true)
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.viewControllers.first as! GoalViewController
             controller.title = "New Goal"
             controller.goal = Goal(id: nil, name: "New Goal", period: .week, direction: .positive, limit: 5, stamps: [])
             controller.presentationMode = .modal
-        }
-        else if segue.identifier == "editSticker" {
-            let stamp = repository.stampById(editStampId!)!
-            // DataSource.shared.updateStatsForStamp(stamp)
-            let controller = segue.destination as! StampViewController
+            
+        case UIStoryboardSegue.editSticker:
+            guard let stampId = editStampId,
+                  let stamp = repository.stampById(stampId),
+                  let controller = segue.destination as? StampViewController else { return }
+            
             controller.stamp = stamp
             controller.presentationMode = .push
-        }
-        else if segue.identifier == "newSticker" {
+            
+        case UIStoryboardSegue.newSticker:
+            guard let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? StampViewController else { return }
+
             setEditing(false, animated: true)
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.viewControllers.first as! StampViewController
             controller.stamp = Stamp.defaultStamp
             controller.presentationMode = .modal
+        
+        default:
+            break
         }
     }
-
 }
 
 extension StickersViewController: UICollectionViewDelegate {
@@ -235,7 +263,15 @@ extension StickersViewController: UICollectionViewDelegate {
         case .goal(let data):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.goalCell, for: path
-            ) as? Goal2Cell else { return UICollectionViewCell() }
+            ) as? GoalCell else { return UICollectionViewCell() }
+            
+            cell.configure(for: data)
+            return cell
+
+        case .noGoals(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.noGoalsCell, for: path
+            ) as? NoGoalsCell else { return UICollectionViewCell() }
             
             cell.configure(for: data)
             return cell
@@ -376,13 +412,16 @@ fileprivate struct Specs {
         static let stickerCell = "StickerCell"
 
         /// Goal cell identifier
-        static let goalCell = "Goal2Cell"
+        static let goalCell = "GoalCell"
         
         /// New goal cell identifier
         static let newGoalCell = "NewGoalCell"
 
         /// New sticker cell identifier
         static let newStickerCell = "NewStickerCell"
+
+        /// No goals cell identifier
+        static let noGoalsCell = "NoGoalsCell"
 
         /// Custom supplementary header identifier and kind
         static let header = "stickers-header-element"

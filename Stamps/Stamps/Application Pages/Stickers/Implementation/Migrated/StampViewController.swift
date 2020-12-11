@@ -140,6 +140,7 @@ class StampViewController: DTTableViewController {
                 self.title = self.stampRef?.name
                 self.loadStickerPreview()
             }
+            nameCell.autocapitalizationType = .words
 
             let labelCell = DTEmojiTextFieldCell(text: "Emoji", boundObject: stampRef, boundProperty: "label")
             labelCell.valueChanged = { (_cell) -> Void in

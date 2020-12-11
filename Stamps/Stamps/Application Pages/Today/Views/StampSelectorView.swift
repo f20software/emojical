@@ -18,11 +18,15 @@ class StampSelectorView : UIView {
 
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, DayStampData>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, StampSelectorElement>!
     
     // MARK: - Callbacks
     
+    /// Called when user tapped on the sticker
     var onStampTapped: ((Int64) -> Void)?
+
+    /// Called when user tapped on + to create new sticker
+    var onNewStickerTapped: (() -> Void)?
 
     // MARK: - View lifecycle
     
@@ -33,8 +37,8 @@ class StampSelectorView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: [DayStampData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, DayStampData>()
+    func loadData(data: [StampSelectorElement]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, StampSelectorElement>()
         snapshot.appendSections([0])
         
         snapshot.appendItems(data)
@@ -46,7 +50,11 @@ class StampSelectorView : UIView {
         // Will have to improve when more then 10 stamps are supported
         let rows = ((data.count - 1) / Specs.stampsPerRow) + 1
         heightConstraint.constant = Specs.stampSize * CGFloat(rows)
-        widthConstraint.constant = Specs.stampSize * CGFloat(Specs.stampsPerRow)
+        if rows == 1 {
+            widthConstraint.constant = Specs.stampSize * CGFloat(data.count)
+        } else {
+            widthConstraint.constant = Specs.stampSize * CGFloat(Specs.stampsPerRow)
+        }
     }
     
     // MARK: - Private helpers
@@ -67,10 +75,14 @@ class StampSelectorView : UIView {
             UINib(nibName: "DayStampCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.stamp
         )
+        stamps.register(
+            UINib(nibName: "NewStickerCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.newSticker
+        )
     }
 
     private func configureCollectionView() {
-        self.dataSource = UICollectionViewDiffableDataSource<Int, DayStampData>(
+        self.dataSource = UICollectionViewDiffableDataSource<Int, StampSelectorElement>(
             collectionView: stamps,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -103,7 +115,6 @@ class StampSelectorView : UIView {
         )
 
         let section = NSCollectionLayoutSection(group: group)
-
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
@@ -111,17 +122,35 @@ class StampSelectorView : UIView {
 extension StampSelectorView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else { return }
-        onStampTapped?(Int64(stampId))
+        guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else {
+            return
+        }
+        
+        if stampId > 0 {
+            onStampTapped?(Int64(stampId))
+        } else {
+            onNewStickerTapped?()
+        }
     }
     
-    private func cell(for path: IndexPath, model: DayStampData, collectionView: UICollectionView) -> UICollectionViewCell? {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: Specs.Cells.stamp, for: path
-        ) as? DayStampCell else { return UICollectionViewCell() }
-        
-        cell.configure(for: model, insets: Specs.stampInsets)
-        return cell
+    private func cell(for path: IndexPath, model: StampSelectorElement, collectionView: UICollectionView) -> UICollectionViewCell? {
+        switch model {
+        case .stamp(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.stamp, for: path
+            ) as? DayStampCell else { return UICollectionViewCell() }
+            
+            cell.configure(for: data, insets: Specs.stampInsets)
+            return cell
+            
+        case .newStamp:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.newSticker, for: path
+            ) as? NewStickerCell else { return UICollectionViewCell() }
+            
+            // cell.configure(for: model, insets: Specs.stampInsets)
+            return cell
+        }
     }
 }
 
@@ -133,6 +162,9 @@ fileprivate struct Specs {
         
         /// Stamp cell
         static let stamp = "DayStampCell"
+
+        /// New sticker cell
+        static let newSticker = "NewStickerCell"
     }
     
     /// Stamp cell size

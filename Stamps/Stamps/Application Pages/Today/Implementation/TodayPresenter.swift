@@ -17,10 +17,13 @@ class TodayPresenter: TodayPresenterProtocol {
     private let repository: DataRepository
     private let stampsListener: StampsListener
     private let awardsListener: AwardsListener
+    private let goalsListener: GoalsListener
     private let calendar: CalendarHelper
     private let awardManager: AwardManager
+
     private weak var view: TodayView?
-    
+    private weak var coordinator: TodayCoordinator?
+
     // Private instance of the data builder
     private let dataBuilder: CalendarDataBuilder
 
@@ -89,6 +92,9 @@ class TodayPresenter: TodayPresenterProtocol {
             view?.showStampSelector(selectorState)
         }
     }
+    
+    // To make sure we don't play sound on initial page load (when awards are updated)
+    private var firstTime: Bool = true
 
     // MARK: - Lifecycle
 
@@ -96,16 +102,20 @@ class TodayPresenter: TodayPresenterProtocol {
         repository: DataRepository,
         stampsListener: StampsListener,
         awardsListener: AwardsListener,
+        goalsListener: GoalsListener,
         awardManager: AwardManager,
         calendar: CalendarHelper,
-        view: TodayView
+        view: TodayView,
+        coordinator: TodayCoordinator
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
         self.awardsListener = awardsListener
+        self.goalsListener = goalsListener
         self.awardManager = awardManager
         self.calendar = calendar
         self.view = view
+        self.coordinator = coordinator
         
         self.dataBuilder = CalendarDataBuilder(
             repository: repository,
@@ -131,11 +141,27 @@ class TodayPresenter: TodayPresenterProtocol {
         },
         onChange: { [weak self] awards in
             guard let self = self else { return }
-            
+
+            // This will get called only when actual new award is added or removed
+            // Skip first sound, since it will be called once on creation
+            if self.firstTime {
+                self.firstTime = false
+            } else {
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            }
+
             self.awards = self.dataBuilder.awards(for: self.week)
             self.loadAwardsData()
         })
-
+        
+        goalsListener.startListening(onError: { error in
+            fatalError("Unexpected error: \(error)")
+        },
+        onChange: { [weak self] awards in
+            guard let self = self else { return }
+            self.goals = self.repository.allGoals()
+            self.loadAwardsData()
+        })
 
         // Load set of all stamps
         allStamps = repository.allStamps()
@@ -160,6 +186,9 @@ class TodayPresenter: TodayPresenterProtocol {
         // Subscribe to view callbacks
         view?.onStampInSelectorTapped = { [weak self] stampId in
             self?.stampToggled(stampId: stampId)
+        }
+        view?.onNewStickerTapped = { [weak self] in
+            self?.coordinator?.newSticker()
         }
         view?.onDayHeaderTapped = { [weak self] index in
             self?.selectDay(with: index)
@@ -196,23 +225,36 @@ class TodayPresenter: TodayPresenterProtocol {
         
         // Stamp selector data
         loadStampSelectorData()
+        
+        // Update selectors state based on the lock status
+        view?.showStampSelector(selectorState)
     }
     
     private func loadStampSelectorData() {
-        let data: [DayStampData] = allStamps.compactMap({
+        var data: [StampSelectorElement] = allStamps.compactMap({
             guard let id = $0.id else { return nil }
-            return DayStampData(
-                stampId: id,
-                label: $0.label,
-                color: $0.color,
-                isUsed: currentStamps.contains(id))
+            return StampSelectorElement.stamp(
+                DayStampData(
+                    stampId: id,
+                    label: $0.label,
+                    color: $0.color,
+                    isUsed: currentStamps.contains(id)
+                )
+            )
         })
+        
+        if data.count < 5 {
+            data.append(.newStamp)
+        }
+        
         view?.loadStampSelectorData(data: data)
     }
     
     private func loadAwardsData() {
+        var data = [TodayAwardData]()
+            
         if week.isCurrentWeek {
-            view?.loadAwardsData(data: goals.compactMap({
+            data = goals.compactMap({
                 guard let goalId = $0.id else { return nil }
                 
                 let progress = self.awardManager.currentProgressFor($0)
@@ -228,9 +270,9 @@ class TodayPresenter: TodayPresenterProtocol {
                         (goalReached ? UIColor.negativeGoalReached : UIColor.negativeGoalNotReached)
                     
                 )
-            }))
+            })
         } else {
-            view?.loadAwardsData(data: awards.compactMap({
+            data = awards.compactMap({
                 guard let goal = repository.goalById($0.goalId),
                       let goalId = goal.id else { return nil }
                 
@@ -241,8 +283,11 @@ class TodayPresenter: TodayPresenterProtocol {
                     progress: 1.0,
                     progressColor: goal.direction == .positive ? UIColor.positiveGoalReached : UIColor.negativeGoalNotReached
                 )
-            }))
+            })
         }
+
+        view?.loadAwardsData(data: data)
+        view?.showAwards(data.count > 0)
     }
     
     private func stampToggled(stampId: Int64) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,8 +21,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="😊" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nYf-0v-66Q" customClass="EmojiTextField" customModule="Emojical" customModuleProvider="target">
-                        <rect key="frame" x="294" y="11" width="100" height="22"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="😊" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nYf-0v-66Q" customClass="EmojiTextField" customModule="Emojical" customModuleProvider="target">
+                        <rect key="frame" x="125" y="11" width="269" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="qRj-pV-yfN"/>
                         </constraints>
@@ -38,6 +38,7 @@
                     <constraint firstItem="nYf-0v-66Q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ro7-WH-GAn" secondAttribute="trailing" constant="15" id="b5S-MH-oII"/>
                     <constraint firstItem="nYf-0v-66Q" firstAttribute="trailing" secondItem="jN0-uE-WcU" secondAttribute="trailingMargin" id="kd2-az-EDy"/>
                     <constraint firstItem="ro7-WH-GAn" firstAttribute="centerY" secondItem="jN0-uE-WcU" secondAttribute="centerY" id="s2m-uv-E4z"/>
+                    <constraint firstItem="nYf-0v-66Q" firstAttribute="width" secondItem="jN0-uE-WcU" secondAttribute="width" multiplier="0.65" id="wdE-20-jOV"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="-178.2608695652174" y="-160.04464285714286"/>

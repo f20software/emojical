@@ -44,7 +44,7 @@ class StickersViewController: UIViewController, StickersView {
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StickersElement>!
 
-    // Editing goal Id... :(
+    // Editing goal and stamp Id... :(
     var editGoalId: Int64?
     var editStampId: Int64?
 
@@ -225,7 +225,6 @@ extension StickersViewController: StickersCoordinator {
             break
         }
     }
-
 }
 
 extension StickersViewController: UICollectionViewDelegate {

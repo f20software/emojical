@@ -35,24 +35,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iza-3Z-HNb">
-                                <rect key="frame" x="20" y="20" width="374" height="32"/>
+                                <rect key="frame" x="80" y="16" width="254" height="32"/>
                                 <segments>
                                     <segment title="Week"/>
                                     <segment title="Month"/>
-                                    <segment title="Year"/>
                                 </segments>
                                 <connections>
                                     <action selector="modeChanged:" destination="tvO-pK-EYQ" eventType="valueChanged" id="fnW-2K-BJx"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 19 - 26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXJ-0G-7yc">
-                                <rect key="frame" x="20" y="67" width="131.5" height="29"/>
+                                <rect key="frame" x="20" y="63" width="131.5" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NcW-C8-Csq">
-                                <rect key="frame" x="0.0" y="104" width="414" height="621"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="625"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e25-Wg-mP0">
                                     <size key="itemSize" width="128" height="128"/>
@@ -66,11 +65,11 @@
                         <viewLayoutGuide key="safeArea" id="JNE-f6-5U0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iza-3Z-HNb" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="20" id="J4m-e2-9Hh"/>
-                            <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="iza-3Z-HNb" secondAttribute="trailing" constant="20" id="PgC-zj-l3Y"/>
+                            <constraint firstItem="iza-3Z-HNb" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="80" id="J4m-e2-9Hh"/>
+                            <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="iza-3Z-HNb" secondAttribute="trailing" constant="80" id="PgC-zj-l3Y"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="NcW-C8-Csq" secondAttribute="trailing" id="W2L-dB-PRn"/>
                             <constraint firstItem="YXJ-0G-7yc" firstAttribute="top" secondItem="iza-3Z-HNb" secondAttribute="bottom" constant="16" id="X7Y-67-2zN"/>
-                            <constraint firstItem="iza-3Z-HNb" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="20" id="XMX-4g-Noq"/>
+                            <constraint firstItem="iza-3Z-HNb" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="16" id="XMX-4g-Noq"/>
                             <constraint firstItem="NcW-C8-Csq" firstAttribute="top" secondItem="YXJ-0G-7yc" secondAttribute="bottom" constant="8" symbolic="YES" id="eQa-p3-8fh"/>
                             <constraint firstItem="YXJ-0G-7yc" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="20" id="kOL-fe-afs"/>
                             <constraint firstItem="NcW-C8-Csq" firstAttribute="bottom" secondItem="JNE-f6-5U0" secondAttribute="bottom" id="lbF-Dl-OsC"/>

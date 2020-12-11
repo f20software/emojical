@@ -28,6 +28,7 @@ class Goal2Cell: UICollectionViewCell {
     func configure(for data: GoalAwardData) {
         title.text = data.name
         subTitle.text = data.details
+        tag = Int(data.goalId)
         
         award.configure(color: data.color, dashes: data.dashes)
         award.backgroundColor = UIColor.clear

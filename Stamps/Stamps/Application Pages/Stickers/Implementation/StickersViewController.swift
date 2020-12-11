@@ -22,11 +22,16 @@ class StickersViewController: UIViewController, StickersView {
 
     // MARK: - DI
 
+    var repository: DataRepository!
     var presenter: StickersPresenterProtocol!
     
     // MARK: - State
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StickersElement>!
+
+    // Editing goal Id... :(
+    var editGoalId: Int64?
+    var editStampId: Int64?
 
     // MARK: - Lifecycle
     
@@ -37,12 +42,15 @@ class StickersViewController: UIViewController, StickersView {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        repository = Storage.shared.repository
         presenter = StickersPresenter(
-            repository: Storage.shared.repository,
+            repository: repository,
             stampsListener: Storage.shared.stampsListener(),
+            goalsListener: Storage.shared.goalsListener(),
             awardsListener: Storage.shared.awardsListener(),
             awardManager: AwardManager.shared,
-            view: self)
+            view: self,
+            coordinator: self)
         
         configureViews()
         presenter.onViewDidLoad()
@@ -55,13 +63,27 @@ class StickersViewController: UIViewController, StickersView {
     
     // MARK: - StickersView
     
+    /// User tapped on the sticker
+    var onStickerTapped: ((Int64) -> Void)?
+
+    /// User tapped on the goal
+    var onGoalTapped: ((Int64) -> Void)?
+
+    /// User tapped on create new goal button
+    var onNewGoalTapped: (() -> Void)?
+
+    /// User tapped on create new sticker button
+    var onNewStickerTapped: (() -> Void)?
+
     /// Load data
     func loadData(stickers: [DayStampData], goals: [GoalAwardData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
         snapshot.appendSections([0])
         snapshot.appendItems(stickers.map({ StickersElement.sticker($0) }))
+        snapshot.appendItems([.newSticker])
         snapshot.appendSections([1])
         snapshot.appendItems(goals.map({ StickersElement.goal($0) }))
+        snapshot.appendItems([.newGoal])
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -75,7 +97,6 @@ class StickersViewController: UIViewController, StickersView {
     }
     
     private func configureCollectionView() {
-        
         dataSource = UICollectionViewDiffableDataSource<Int, StickersElement>(
             collectionView: collectionView,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
@@ -103,6 +124,14 @@ class StickersViewController: UIViewController, StickersView {
             forCellWithReuseIdentifier: Specs.Cells.goalCell
         )
         collectionView.register(
+            UINib(nibName: "NewGoalCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.newGoalCell
+        )
+        collectionView.register(
+            UINib(nibName: "NewStickerCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.newStickerCell
+        )
+        collectionView.register(
             StickersHeaderView.self,
             forSupplementaryViewOfKind: Specs.Cells.header,
             withReuseIdentifier: Specs.Cells.header
@@ -110,8 +139,88 @@ class StickersViewController: UIViewController, StickersView {
     }
 }
 
+// MARK: - StickerCoordinator
+
+extension StickersViewController: StickersCoordinator {
+    
+    func editGoal(_ goalId: Int64) {
+        editGoalId = goalId
+        performSegue(withIdentifier: "editGoal", sender: self)
+    }
+    
+    func newGoal() {
+        editGoalId = nil
+        performSegue(withIdentifier: "newGoal", sender: self)
+    }
+
+    func editSticker(_ stampId: Int64) {
+        editStampId = stampId
+        performSegue(withIdentifier: "editSticker", sender: self)
+    }
+    
+    func newSticker() {
+        editStampId = nil
+        performSegue(withIdentifier: "newSticker", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editGoal" {
+            let goal = repository.goalById(editGoalId!)!
+            // DataSource.shared.updateStatsForGoal(&goal)
+            let controller = segue.destination as! GoalViewController
+            controller.title = goal.name
+            controller.goal = goal
+            controller.currentProgress = AwardManager.shared.currentProgressFor(goal)
+            controller.presentationMode = .push
+        }
+        else if segue.identifier == "newGoal" {
+            setEditing(false, animated: true)
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.viewControllers.first as! GoalViewController
+            controller.title = "New Goal"
+            controller.goal = Goal(id: nil, name: "New Goal", period: .week, direction: .positive, limit: 5, stamps: [])
+            controller.presentationMode = .modal
+        }
+        else if segue.identifier == "editSticker" {
+            let stamp = repository.stampById(editStampId!)!
+            // DataSource.shared.updateStatsForStamp(stamp)
+            let controller = segue.destination as! StampViewController
+            controller.stamp = stamp
+            controller.presentationMode = .push
+        }
+        else if segue.identifier == "newSticker" {
+            setEditing(false, animated: true)
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.viewControllers.first as! StampViewController
+            controller.stamp = Stamp.defaultStamp
+            controller.presentationMode = .modal
+        }
+    }
+
+}
+
 extension StickersViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let tag = collectionView.cellForItem(at: indexPath)?.tag else { return }
+        
+        let section = Section.allCases[indexPath.section]
+        switch (section) {
+        case .stickers:
+            if tag > 0 {
+                onStickerTapped?(Int64(tag))
+            } else {
+                onNewStickerTapped?()
+            }
+        case .goals:
+            if tag > 0 {
+                onGoalTapped?(Int64(tag))
+            } else {
+                onNewGoalTapped?()
+            }
+        }
+    }
+
     private func cell(for path: IndexPath, model: StickersElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         
         switch model {
@@ -129,6 +238,18 @@ extension StickersViewController: UICollectionViewDelegate {
             ) as? Goal2Cell else { return UICollectionViewCell() }
             
             cell.configure(for: data)
+            return cell
+
+        case .newSticker:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.newStickerCell, for: path
+            ) as? NewStickerCell else { return UICollectionViewCell() }
+            return cell
+
+        case .newGoal:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.newGoalCell, for: path
+            ) as? NewGoalCell else { return UICollectionViewCell() }
             return cell
         }
     }
@@ -170,8 +291,8 @@ extension StickersViewController {
     private func generateStampsLayout() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .absolute(75),
-                heightDimension: .absolute(75)
+                widthDimension: .absolute(64),
+                heightDimension: .absolute(64)
             )
         )
         item.contentInsets = NSDirectionalEdgeInsets(
@@ -257,6 +378,12 @@ fileprivate struct Specs {
         /// Goal cell identifier
         static let goalCell = "Goal2Cell"
         
+        /// New goal cell identifier
+        static let newGoalCell = "NewGoalCell"
+
+        /// New sticker cell identifier
+        static let newStickerCell = "NewStickerCell"
+
         /// Custom supplementary header identifier and kind
         static let header = "stickers-header-element"
     }

@@ -10,6 +10,18 @@ import Foundation
 
 protocol StickersView: AnyObject {
 
+    /// User tapped on the sticker
+    var onStickerTapped: ((Int64) -> Void)? { get set }
+
+    /// User tapped on the goal
+    var onGoalTapped: ((Int64) -> Void)? { get set }
+
+    /// User tapped on the create new goal
+    var onNewGoalTapped: (() -> Void)? { get set }
+
+    /// User tapped on the create new sticker
+    var onNewStickerTapped: (() -> Void)? { get set }
+
     // MARK: - Updates
 
     /// Load stats for the month

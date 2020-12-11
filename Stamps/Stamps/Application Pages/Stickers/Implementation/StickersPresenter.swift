@@ -15,9 +15,12 @@ class StickersPresenter: StickersPresenterProtocol {
 
     private let repository: DataRepository
     private let stampsListener: StampsListener
+    private let goalsListener: GoalsListener
     private let awardsListener: AwardsListener
     private let awardManager: AwardManager
+    
     private weak var view: StickersView?
+    private weak var coordinator: StickersCoordinator?
     
     // MARK: - State
 
@@ -30,15 +33,19 @@ class StickersPresenter: StickersPresenterProtocol {
     init(
         repository: DataRepository,
         stampsListener: StampsListener,
+        goalsListener: GoalsListener,
         awardsListener: AwardsListener,
         awardManager: AwardManager,
-        view: StickersView
+        view: StickersView,
+        coordinator: StickersCoordinator
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
+        self.goalsListener = goalsListener
         self.awardsListener = awardsListener
         self.awardManager = awardManager
         self.view = view
+        self.coordinator = coordinator
     }
 
     /// Called when view finished initial loading.
@@ -49,7 +56,7 @@ class StickersPresenter: StickersPresenterProtocol {
         stamps = repository.allStamps()
         goals = repository.allGoals()
 
-        // Subscribe to stamp listner in case stamps array ever changes
+        // Subscribe to stamp listener in case stamps array ever changes
         stampsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
@@ -59,7 +66,18 @@ class StickersPresenter: StickersPresenterProtocol {
             self.stamps = self.repository.allStamps()
             self.loadViewData()
         })
-        
+
+        // Subscribe to goals listener in case stamps array ever changes
+        goalsListener.startListening(onError: { error in
+            fatalError("Unexpected error: \(error)")
+        },
+        onChange: { [weak self] stamps in
+            guard let self = self else { return }
+            
+            self.goals = self.repository.allGoals()
+            self.loadViewData()
+        })
+
         awardsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
@@ -79,6 +97,18 @@ class StickersPresenter: StickersPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
+        view?.onGoalTapped = { [weak self] goalId in
+            self?.coordinator?.editGoal(goalId)
+        }
+        view?.onNewGoalTapped = { [weak self] in
+            self?.coordinator?.newGoal()
+        }
+        view?.onStickerTapped = { [weak self] stickerId in
+            self?.coordinator?.editSticker(stickerId)
+        }
+        view?.onNewStickerTapped = { [weak self] in
+            self?.coordinator?.newSticker()
+        }
     }
     
     private func loadViewData() {

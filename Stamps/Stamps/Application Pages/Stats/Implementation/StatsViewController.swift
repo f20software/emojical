@@ -12,6 +12,7 @@ class StatsViewController: UIViewController, StatsView {
     
     // MARK: - Outlets
     
+    @IBOutlet var modeSelector: UISegmentedControl!
     @IBOutlet var prevButton: UIBarButtonItem!
     @IBOutlet var nextButton: UIBarButtonItem!
     @IBOutlet var header: UILabel!
@@ -73,6 +74,9 @@ class StatsViewController: UIViewController, StatsView {
 
     /// Update collection view layout to appropriate mode
     func updateLayout(to mode: StatsMode) {
+        // Updated UI just in case 
+        modeSelector.selectedSegmentIndex = mode.rawValue
+        
         // Clear existing data to eliminate animation glitches
         var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
         snapshot.appendSections([0])

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewGoalCell" id="gTV-IL-0wX" customClass="NewGoalCell" customModule="Emojical" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="311" height="78"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="311" height="78"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ChH-rG-WsF">
+                        <rect key="frame" x="0.0" y="0.0" width="311" height="78"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UIg-Cx-4rp">
+                                <rect key="frame" x="70" y="10" width="171.5" height="58"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="f2U-Yj-Mny">
+                                        <rect key="frame" x="0.0" y="9.5" width="40" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Cnn-kL-Tf0"/>
+                                            <constraint firstAttribute="width" constant="40" id="la0-wu-eCw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVX-B1-bai">
+                                        <rect key="frame" x="48" y="19" width="123.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstItem="UIg-Cx-4rp" firstAttribute="top" secondItem="ChH-rG-WsF" secondAttribute="top" constant="10" id="Z3w-69-Ptf"/>
+                            <constraint firstItem="UIg-Cx-4rp" firstAttribute="centerX" secondItem="ChH-rG-WsF" secondAttribute="centerX" id="cGx-6B-SwG"/>
+                            <constraint firstItem="UIg-Cx-4rp" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="uwB-bg-HH5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ChH-rG-WsF" secondAttribute="bottom" id="QMW-hG-CzW"/>
+                <constraint firstAttribute="trailing" secondItem="ChH-rG-WsF" secondAttribute="trailing" id="pY1-0b-Ipz"/>
+                <constraint firstItem="ChH-rG-WsF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="urC-4m-7j8"/>
+                <constraint firstItem="ChH-rG-WsF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xYn-70-LYq"/>
+            </constraints>
+            <size key="customSize" width="311" height="78"/>
+            <connections>
+                <outlet property="plate" destination="ChH-rG-WsF" id="a2m-f5-8am"/>
+            </connections>
+            <point key="canvasLocation" x="231.15942028985509" y="138.61607142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

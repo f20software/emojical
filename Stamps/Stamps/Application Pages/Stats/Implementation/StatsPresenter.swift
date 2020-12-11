@@ -24,7 +24,7 @@ class StatsPresenter: StatsPresenterProtocol {
     // MARK: - State
 
     /// Stats mode - weekly or monthly
-    private var mode: StatsMode = .week
+    private var mode: StatsMode = .month
     
     /// Copy of all stamps - used to build data model for view to show
     private var stamps = [Stamp]()
@@ -60,7 +60,8 @@ class StatsPresenter: StatsPresenterProtocol {
     /// Called when view finished initial loading.
     func onViewDidLoad() {
         setupView()
-        
+        view?.updateLayout(to: mode)
+
         // Load initial set of data
         stamps = repository.allStamps()
         // Subscribe to stamp listner in case stamps array ever changes

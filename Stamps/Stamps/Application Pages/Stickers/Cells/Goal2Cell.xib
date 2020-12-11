@@ -67,9 +67,9 @@
                         <constraints>
                             <constraint firstItem="JUk-G8-Nse" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="61R-lT-idr"/>
                             <constraint firstItem="MN2-nT-Okg" firstAttribute="top" secondItem="ChH-rG-WsF" secondAttribute="top" constant="15" id="7qe-yx-rAE"/>
-                            <constraint firstAttribute="bottom" secondItem="MN2-nT-Okg" secondAttribute="bottom" constant="15" id="AEX-DY-ep1"/>
+                            <constraint firstAttribute="bottom" secondItem="MN2-nT-Okg" secondAttribute="bottom" priority="999" constant="15" id="AEX-DY-ep1"/>
                             <constraint firstItem="MQA-4P-Fhz" firstAttribute="centerX" secondItem="MN2-nT-Okg" secondAttribute="centerX" id="AaV-0z-gY2"/>
-                            <constraint firstItem="MN2-nT-Okg" firstAttribute="leading" secondItem="ChH-rG-WsF" secondAttribute="leading" constant="15" id="Q1o-n7-1F2"/>
+                            <constraint firstItem="MN2-nT-Okg" firstAttribute="leading" secondItem="ChH-rG-WsF" secondAttribute="leading" priority="999" constant="15" id="Q1o-n7-1F2"/>
                             <constraint firstItem="MN2-nT-Okg" firstAttribute="height" secondItem="MQA-4P-Fhz" secondAttribute="height" constant="14" id="bGV-K7-uPG"/>
                             <constraint firstItem="JUk-G8-Nse" firstAttribute="leading" secondItem="MQA-4P-Fhz" secondAttribute="trailing" constant="20" id="k2D-Ec-oEW"/>
                             <constraint firstItem="MQA-4P-Fhz" firstAttribute="centerY" secondItem="MN2-nT-Okg" secondAttribute="centerY" id="l86-fp-dJz"/>

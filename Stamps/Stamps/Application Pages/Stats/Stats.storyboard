@@ -92,6 +92,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="header" destination="YXJ-0G-7yc" id="bb7-dp-8xH"/>
+                        <outlet property="modeSelector" destination="iza-3Z-HNb" id="Id6-or-fvv"/>
                         <outlet property="nextButton" destination="ep7-Zj-mBI" id="WYu-5Y-dOU"/>
                         <outlet property="prevButton" destination="YEL-wK-uce" id="cYf-Yr-qvn"/>
                         <outlet property="stats" destination="NcW-C8-Csq" id="DXf-hy-FXM"/>

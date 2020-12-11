@@ -38,10 +38,3 @@ class StickerCell: UICollectionViewCell {
     private func configureViews() {
     }
 }
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
-}

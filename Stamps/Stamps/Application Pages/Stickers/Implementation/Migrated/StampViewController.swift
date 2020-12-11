@@ -240,6 +240,15 @@ extension StampViewController {
         }
     }
 
+    @IBAction func doneTapped(_ sender: Any) {
+        saveChanges()
+        if presentationMode == .push {
+            navigationController?.popViewController(animated: true)
+        } else {
+            dismiss(animated: true)
+        }
+    }
+
     func deleteAndDismiss() {
         stamp.deleted = true
         saveChanges()

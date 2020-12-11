@@ -120,6 +120,7 @@ class GoalViewController: DTTableViewController {
                 // Update form title with new value
                 self.title = self.goal.name
             }
+            nameCell.autocapitalizationType = .words
 
             let directionCell = DTSegmentedControlCell(text: "Direction", boundObject: goalRef, boundProperty: "direction", items: ["Positive", "Negative"])
 

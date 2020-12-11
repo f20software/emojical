@@ -21,6 +21,7 @@ class DTTextFieldCell: DTTableCell {
 
     // Cell options specific to text field cells
     var textAlignment: NSTextAlignment = .left
+    var autocapitalizationType: UITextAutocapitalizationType = .none
     
     // string representation of our copy of the object property
     // var value: String?
@@ -43,6 +44,7 @@ class DTTextFieldCell: DTTableCell {
         textField?.backgroundColor = DTStyle.themeColor(.backgroundColor)
         textField?.tintColor = DTStyle.themeColor(.tintColor)
         textField?.textAlignment = textAlignment
+        textField?.autocapitalizationType = autocapitalizationType
     }
 
     override func createCell(with identifier: String) -> UITableViewCell {

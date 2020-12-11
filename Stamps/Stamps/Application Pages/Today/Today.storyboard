@@ -313,7 +313,7 @@
                                     <action selector="plusButtonTapped:" destination="tvO-pK-EYQ" eventType="primaryActionTriggered" id="wz2-qJ-Lir"/>
                                 </connections>
                             </button>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tb-hZ-tEu">
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tb-hZ-tEu" userLabel="Separator Line">
                                 <rect key="frame" x="0.0" y="70" width="414" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
@@ -326,12 +326,12 @@
                         <constraints>
                             <constraint firstItem="50g-Iv-28T" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="16" id="13r-Tt-ZEl"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="BV3-tF-WFD" secondAttribute="bottom" constant="16" id="3zU-Jb-ITv"/>
+                            <constraint firstItem="2Tb-hZ-tEu" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="70" id="8kH-5r-qKy"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="BcA-0S-4bd"/>
                             <constraint firstItem="gxR-Kk-3sT" firstAttribute="width" secondItem="dJ0-of-a5u" secondAttribute="width" multiplier="0.6" id="DNH-yj-dj5"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="leading" secondItem="BV3-tF-WFD" secondAttribute="leading" id="Ff5-od-DV2"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="2Tb-hZ-tEu" secondAttribute="trailing" id="LO6-hf-Prm"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" id="XJd-Zd-x36"/>
-                            <constraint firstItem="50g-Iv-28T" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="10" id="Yiv-cK-xSs"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="50g-Iv-28T" secondAttribute="trailing" constant="16" id="Yny-XS-tFX"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="xsj-3c-kfw" secondAttribute="trailing" id="Zvh-CQ-5vn"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="kD0-4R-gft" secondAttribute="bottom" constant="16" id="be8-Zf-eJO"/>
@@ -372,6 +372,7 @@
                         <outlet property="prevWeek" destination="YEL-wK-uce" id="cYf-Yr-qvn"/>
                         <outlet property="selectedDayIndicator" destination="gxR-Kk-3sT" id="n2g-4a-L4D"/>
                         <outlet property="selectedDayIndicatorLeading" destination="pkb-tA-aJn" id="mfg-Pt-nG2"/>
+                        <outlet property="separatorTopConstraint" destination="8kH-5r-qKy" id="bhD-eH-rfJ"/>
                         <outlet property="stampSelector" destination="kD0-4R-gft" id="NT0-8X-QK3"/>
                         <outlet property="stampSelectorBottomContstraint" destination="be8-Zf-eJO" id="Qtl-Fj-ZqD"/>
                         <outlet property="stampSelectorCloseButton" destination="jq9-LL-UNm" id="JKP-VO-DZu"/>

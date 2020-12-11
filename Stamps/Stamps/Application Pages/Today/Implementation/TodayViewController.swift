@@ -14,6 +14,8 @@ class TodayViewController: UIViewController, TodayView {
     // MARK: - Outlets
     
     @IBOutlet weak var awards: WeeklyAwardsView!
+    // Used to hide awards list if there are no goals defined
+    @IBOutlet weak var separatorTopConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var selectedDayIndicator: UIView!
     @IBOutlet weak var selectedDayIndicatorLeading: NSLayoutConstraint!
@@ -56,6 +58,7 @@ class TodayViewController: UIViewController, TodayView {
             repository: Storage.shared.repository,
             stampsListener: Storage.shared.stampsListener(),
             awardsListener: Storage.shared.awardsListener(),
+            goalsListener: Storage.shared.goalsListener(),
             awardManager: AwardManager.shared,
             calendar: CalendarHelper.shared,
             view: self)
@@ -88,6 +91,11 @@ class TodayViewController: UIViewController, TodayView {
 
     /// User tapped to close selector button
     var onCloseStampSelectorTapped: (() -> Void)?
+
+    /// Show/hide top awards strip
+    func showAwards(_ show: Bool) {
+        separatorTopConstraint.constant = show ? 70 : -1
+    }
 
     /// Update page title
     func setTitle(to title: String) {

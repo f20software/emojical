@@ -17,6 +17,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private let repository: DataRepository
     private let stampsListener: StampsListener
     private let awardsListener: AwardsListener
+    private let goalsListener: GoalsListener
     private let calendar: CalendarHelper
     private let awardManager: AwardManager
     private weak var view: TodayView?
@@ -99,6 +100,7 @@ class TodayPresenter: TodayPresenterProtocol {
         repository: DataRepository,
         stampsListener: StampsListener,
         awardsListener: AwardsListener,
+        goalsListener: GoalsListener,
         awardManager: AwardManager,
         calendar: CalendarHelper,
         view: TodayView
@@ -106,6 +108,7 @@ class TodayPresenter: TodayPresenterProtocol {
         self.repository = repository
         self.stampsListener = stampsListener
         self.awardsListener = awardsListener
+        self.goalsListener = goalsListener
         self.awardManager = awardManager
         self.calendar = calendar
         self.view = view
@@ -144,6 +147,15 @@ class TodayPresenter: TodayPresenterProtocol {
             }
 
             self.awards = self.dataBuilder.awards(for: self.week)
+            self.loadAwardsData()
+        })
+        
+        goalsListener.startListening(onError: { error in
+            fatalError("Unexpected error: \(error)")
+        },
+        onChange: { [weak self] awards in
+            guard let self = self else { return }
+            self.goals = self.repository.allGoals()
             self.loadAwardsData()
         })
 
@@ -224,8 +236,10 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     private func loadAwardsData() {
+        var data = [TodayAwardData]()
+            
         if week.isCurrentWeek {
-            view?.loadAwardsData(data: goals.compactMap({
+            data = goals.compactMap({
                 guard let goalId = $0.id else { return nil }
                 
                 let progress = self.awardManager.currentProgressFor($0)
@@ -241,9 +255,9 @@ class TodayPresenter: TodayPresenterProtocol {
                         (goalReached ? UIColor.negativeGoalReached : UIColor.negativeGoalNotReached)
                     
                 )
-            }))
+            })
         } else {
-            view?.loadAwardsData(data: awards.compactMap({
+            data = awards.compactMap({
                 guard let goal = repository.goalById($0.goalId),
                       let goalId = goal.id else { return nil }
                 
@@ -254,8 +268,11 @@ class TodayPresenter: TodayPresenterProtocol {
                     progress: 1.0,
                     progressColor: goal.direction == .positive ? UIColor.positiveGoalReached : UIColor.negativeGoalNotReached
                 )
-            }))
+            })
         }
+
+        view?.loadAwardsData(data: data)
+        view?.showAwards(data.count > 0)
     }
     
     private func stampToggled(stampId: Int64) {

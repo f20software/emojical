@@ -32,6 +32,9 @@ protocol TodayView: AnyObject {
 
     // MARK: - Updates
 
+    /// Show/hide top awards strip
+    func showAwards(_ show: Bool)
+    
     /// Update page title
     func setTitle(to title: String)
     

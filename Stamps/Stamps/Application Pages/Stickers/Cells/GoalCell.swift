@@ -17,6 +17,7 @@ class GoalCell: UICollectionViewCell {
     @IBOutlet weak var subTitle: UILabel!
     @IBOutlet weak var award: AwardView!
     @IBOutlet weak var progress: ProgressView!
+    @IBOutlet weak var count: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +39,14 @@ class GoalCell: UICollectionViewCell {
         progress.lineWidth = 3.0
         progress.backgroundColor = UIColor.clear
         
+        if data.count > 0 {
+            count.text = "  \(data.count)  "
+            count.isHidden = false
+        } else {
+            count.text = nil
+            count.isHidden = true
+        }
+        
         progress.setNeedsDisplay()
         award.setNeedsDisplay()
     }
@@ -48,6 +57,10 @@ class GoalCell: UICollectionViewCell {
         plate.layer.cornerRadius = Specs.cornerRadius
         plate.backgroundColor = UIColor.systemGray6
         plate.clipsToBounds = true
+        
+        count.layer.cornerRadius = count.font.pointSize * 0.6
+        count.clipsToBounds = true
+        count.backgroundColor = UIColor.appTintColor
     }
 }
 

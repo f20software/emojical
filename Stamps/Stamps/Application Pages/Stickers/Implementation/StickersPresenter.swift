@@ -131,6 +131,7 @@ class StickersPresenter: StickersPresenterProtocol {
                 goalId: goalId,
                 name: $0.name,
                 details: $0.details,
+                count: $0.count,
                 color: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.2),
                 dashes: $0.period == .month ? 0 : 7,
                 progress: goalReached ? 1.0 : CGFloat(progress) / CGFloat($0.limit),

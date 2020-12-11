@@ -50,7 +50,12 @@ class GoalViewController: DTTableViewController {
     }
     
     // Reference to Goal object
-    var goal: Goal! { didSet { goalRef = GoalRef(from: goal) }}
+    var goal: Goal! {
+        didSet {
+            goalRef = GoalRef(from: goal)
+        }
+    }
+
     // Goal class reference - only used to be properly pass references to the object
     // to DynamicTables
     var goalRef: GoalRef?
@@ -131,6 +136,7 @@ class GoalViewController: DTTableViewController {
             let stickersCell = DTLabelCell(text: "Stickers", value: stickers.joined(separator: ", "))
             stickersCell.disclosureIndicator = true
             stickersCell.didSelect = { (_, _) -> Void in
+                self.goalRef?.update(to: &self.goal)
                 self.performSegue(withIdentifier: self.segueSelectStamps, sender: self)
             }
             

@@ -20,7 +20,7 @@ class DTTextFieldCell: DTTableCell {
     var textField: UITextField?
 
     // Cell options specific to text field cells
-    var textAlignment: NSTextAlignment = .right
+    var textAlignment: NSTextAlignment = .left
     
     // string representation of our copy of the object property
     // var value: String?
@@ -38,7 +38,6 @@ class DTTextFieldCell: DTTableCell {
     
     override func applyStyle() {
         super.applyStyle()
-
         textLabel?.textColor = DTStyle.themeColor(.alternateTextColor)
         textField?.textColor = DTStyle.themeColor(.textColor)
         textField?.backgroundColor = DTStyle.themeColor(.backgroundColor)

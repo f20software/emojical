@@ -14,4 +14,5 @@ enum StickersElement: Hashable {
     case newSticker
     case goal(GoalAwardData)
     case newGoal
+    case noGoals(String)
 }

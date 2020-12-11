@@ -40,7 +40,7 @@ class StickersHeaderView: UICollectionReusableView {
             label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Specs.margin)
         ])
         
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         label.textColor = UIColor.darkGray
     }
 }

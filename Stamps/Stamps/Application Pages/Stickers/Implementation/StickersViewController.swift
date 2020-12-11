@@ -120,7 +120,7 @@ class StickersViewController: UIViewController, StickersView {
             forCellWithReuseIdentifier: Specs.Cells.stickerCell
         )
         collectionView.register(
-            UINib(nibName: "Goal2Cell", bundle: .main),
+            UINib(nibName: "GoalCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.goalCell
         )
         collectionView.register(
@@ -235,7 +235,7 @@ extension StickersViewController: UICollectionViewDelegate {
         case .goal(let data):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.goalCell, for: path
-            ) as? Goal2Cell else { return UICollectionViewCell() }
+            ) as? GoalCell else { return UICollectionViewCell() }
             
             cell.configure(for: data)
             return cell
@@ -376,7 +376,7 @@ fileprivate struct Specs {
         static let stickerCell = "StickerCell"
 
         /// Goal cell identifier
-        static let goalCell = "Goal2Cell"
+        static let goalCell = "GoalCell"
         
         /// New goal cell identifier
         static let newGoalCell = "NewGoalCell"

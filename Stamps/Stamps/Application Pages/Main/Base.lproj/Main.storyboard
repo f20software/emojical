@@ -27,16 +27,6 @@
             </objects>
             <point key="canvasLocation" x="-125" y="-20"/>
         </scene>
-        <!--Stamps-->
-        <scene sceneID="U2Q-Ox-Ezk">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Stamps" id="uXQ-0Z-U2U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stamps" id="wLk-FZ-EQZ"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aTe-Q0-Jge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="490" y="324"/>
-        </scene>
         <!--Stickers-->
         <scene sceneID="zlE-lw-tLw">
             <objects>
@@ -57,16 +47,6 @@
             </objects>
             <point key="canvasLocation" x="-16" y="433"/>
         </scene>
-        <!--Goals-->
-        <scene sceneID="spg-cO-tmA">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Goals" id="lPk-B2-hge" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Goals" id="Xda-pO-Tyr"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ULA-qZ-KUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="483" y="362"/>
-        </scene>
         <!--Awards-->
         <scene sceneID="iWU-kK-hxs">
             <objects>
@@ -75,7 +55,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O39-Dj-2vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="492" y="286"/>
+            <point key="canvasLocation" x="267" y="317"/>
         </scene>
         <!--Today-->
         <scene sceneID="OUq-az-596">

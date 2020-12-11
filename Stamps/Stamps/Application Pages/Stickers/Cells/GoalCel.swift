@@ -1,5 +1,5 @@
 //
-//  Goal2Cell.swift
+//  GoalCell.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/10/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Goal2Cell: UICollectionViewCell {
+class GoalCell: UICollectionViewCell {
 
     // MARK: - Outlets
 

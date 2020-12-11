@@ -15,6 +15,9 @@ protocol TodayView: AnyObject {
     /// User tapped on the stamp in the bottom stamp selector
     var onStampInSelectorTapped: ((Int64) -> Void)? { get set }
 
+    /// User tapped on create new stamp in the bottom stamp selector
+    var onNewStickerTapped: (() -> Void)? { get set }
+
     /// User tapped on the day header, day index 0...6 is passed
     var onDayHeaderTapped: ((Int) -> Void)? { get set }
 
@@ -48,7 +51,7 @@ protocol TodayView: AnyObject {
     func loadDaysData(data: [DayColumnData])
     
     /// Loads stamps into stamp selector
-    func loadStampSelectorData(data: [DayStampData])
+    func loadStampSelectorData(data: [StampSelectorElement])
     
     /// Loads awards data
     func loadAwardsData(data: [TodayAwardData])

@@ -10,15 +10,15 @@ import Foundation
 
 protocol StickersCoordinator: AnyObject {
 
-    /// Navigates to developer options page.
+    /// Push to edit goal form
     func editGoal(_ goalId: Int64)
 
-    /// Navigates to developer options page.
+    /// Shows modal form to create new goal
     func newGoal()
 
-    /// Navigates to notification options page.
+    /// Push to edit sticker form
     func editSticker(_ stampId: Int64)
 
-    /// Navigates to developer options page.
+    /// Shows modal form to create new sticker
     func newSticker()
 }

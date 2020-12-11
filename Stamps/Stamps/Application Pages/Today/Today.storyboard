@@ -376,11 +376,20 @@
                         <outlet property="stampSelector" destination="kD0-4R-gft" id="NT0-8X-QK3"/>
                         <outlet property="stampSelectorBottomContstraint" destination="be8-Zf-eJO" id="Qtl-Fj-ZqD"/>
                         <outlet property="stampSelectorCloseButton" destination="jq9-LL-UNm" id="JKP-VO-DZu"/>
+                        <segue destination="DIf-UA-VLm" kind="presentation" identifier="newSticker" id="TSB-6g-cKh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2j-Q2-fD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1715.9420289855075" y="-333.48214285714283"/>
+        </scene>
+        <!--newSticker-->
+        <scene sceneID="kgy-hQ-Jtg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Stickers" referencedIdentifier="newSticker" id="DIf-UA-VLm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dsR-MV-yLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2314" y="-55"/>
         </scene>
     </scenes>
     <resources>

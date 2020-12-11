@@ -20,8 +20,10 @@ class TodayPresenter: TodayPresenterProtocol {
     private let goalsListener: GoalsListener
     private let calendar: CalendarHelper
     private let awardManager: AwardManager
+
     private weak var view: TodayView?
-    
+    private weak var coordinator: TodayCoordinator?
+
     // Private instance of the data builder
     private let dataBuilder: CalendarDataBuilder
 
@@ -103,7 +105,8 @@ class TodayPresenter: TodayPresenterProtocol {
         goalsListener: GoalsListener,
         awardManager: AwardManager,
         calendar: CalendarHelper,
-        view: TodayView
+        view: TodayView,
+        coordinator: TodayCoordinator
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
@@ -112,6 +115,7 @@ class TodayPresenter: TodayPresenterProtocol {
         self.awardManager = awardManager
         self.calendar = calendar
         self.view = view
+        self.coordinator = coordinator
         
         self.dataBuilder = CalendarDataBuilder(
             repository: repository,
@@ -183,6 +187,9 @@ class TodayPresenter: TodayPresenterProtocol {
         view?.onStampInSelectorTapped = { [weak self] stampId in
             self?.stampToggled(stampId: stampId)
         }
+        view?.onNewStickerTapped = { [weak self] in
+            self?.coordinator?.newSticker()
+        }
         view?.onDayHeaderTapped = { [weak self] index in
             self?.selectDay(with: index)
         }
@@ -224,14 +231,22 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     private func loadStampSelectorData() {
-        let data: [DayStampData] = allStamps.compactMap({
+        var data: [StampSelectorElement] = allStamps.compactMap({
             guard let id = $0.id else { return nil }
-            return DayStampData(
-                stampId: id,
-                label: $0.label,
-                color: $0.color,
-                isUsed: currentStamps.contains(id))
+            return StampSelectorElement.stamp(
+                DayStampData(
+                    stampId: id,
+                    label: $0.label,
+                    color: $0.color,
+                    isUsed: currentStamps.contains(id)
+                )
+            )
         })
+        
+        if data.count < 5 {
+            data.append(.newStamp)
+        }
+        
         view?.loadStampSelectorData(data: data)
     }
     

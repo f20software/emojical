@@ -63,6 +63,8 @@
 		F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */; };
 		F23CF4242583E8720048BA74 /* NoGoalsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23CF4222583E8720048BA74 /* NoGoalsCell.xib */; };
 		F23CF4252583E8720048BA74 /* NoGoalsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF4232583E8720048BA74 /* NoGoalsCell.swift */; };
+		F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF43C25840EBF0048BA74 /* StampSelectorElement.swift */; };
+		F23CF441258417A60048BA74 /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF440258417A60048BA74 /* TodayCoordinator.swift */; };
 		F247541423DFC706006A13C3 /* StoredGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541323DFC706006A13C3 /* StoredGoal.swift */; };
 		F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541623DFEADB006A13C3 /* StampViewController.swift */; };
 		F247541A23E5D2CB006A13C3 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541823E5D2CB006A13C3 /* IconCell.swift */; };
@@ -76,7 +78,6 @@
 		F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B0450241EBD7A006E5175 /* EmojicalTests.swift */; };
 		F27B0459241EBDA3006E5175 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
 		F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045A241EEB48006E5175 /* SelectStampCell.swift */; };
-		F27B04612426B8FA006E5175 /* DayBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B04602426B8FA006E5175 /* DayBadgeView.swift */; };
 		F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280878C24C6BD00003E864E /* TodayViewController.swift */; };
 		F284F997257EF1720016D1C6 /* TodayAwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F995257EF1720016D1C6 /* TodayAwardCell.swift */; };
 		F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F284F996257EF1720016D1C6 /* TodayAwardCell.xib */; };
@@ -119,7 +120,6 @@
 		F2B7D3612454B27F00C94E63 /* DTTableViewCell-Color.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B7D3602454B27F00C94E63 /* DTTableViewCell-Color.xib */; };
 		F2B7D3632454B3DE00C94E63 /* DTColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D3622454B3DE00C94E63 /* DTColorCell.swift */; };
 		F2B7D3652454DB0C00C94E63 /* DTTableViewColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D3642454DB0C00C94E63 /* DTTableViewColorCell.swift */; };
-		F2C190D22401BD50003F5ABA /* WeekBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */; };
 		F2C190D42402E17A003F5ABA /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D32402E17A003F5ABA /* GoalViewController.swift */; };
 		F2C190D824030701003F5ABA /* SelectStampsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C190D724030701003F5ABA /* SelectStampsViewController.swift */; };
 		F2C493242430172D00E997BD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493232430172D00E997BD /* NotificationManager.swift */; };
@@ -224,6 +224,8 @@
 		F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewStickerCell.swift; sourceTree = "<group>"; };
 		F23CF4222583E8720048BA74 /* NoGoalsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoGoalsCell.xib; sourceTree = "<group>"; };
 		F23CF4232583E8720048BA74 /* NoGoalsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoGoalsCell.swift; sourceTree = "<group>"; };
+		F23CF43C25840EBF0048BA74 /* StampSelectorElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSelectorElement.swift; sourceTree = "<group>"; };
+		F23CF440258417A60048BA74 /* TodayCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
 		F247541323DFC706006A13C3 /* StoredGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredGoal.swift; sourceTree = "<group>"; };
 		F247541623DFEADB006A13C3 /* StampViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampViewController.swift; sourceTree = "<group>"; };
 		F247541823E5D2CB006A13C3 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
@@ -238,7 +240,6 @@
 		F27B0450241EBD7A006E5175 /* EmojicalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojicalTests.swift; sourceTree = "<group>"; };
 		F27B0452241EBD7A006E5175 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F27B045A241EEB48006E5175 /* SelectStampCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStampCell.swift; sourceTree = "<group>"; };
-		F27B04602426B8FA006E5175 /* DayBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayBadgeView.swift; sourceTree = "<group>"; };
 		F280878C24C6BD00003E864E /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyAwardsView.swift; sourceTree = "<group>"; };
 		F284F995257EF1720016D1C6 /* TodayAwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAwardCell.swift; sourceTree = "<group>"; };
@@ -280,7 +281,6 @@
 		F2B7D3602454B27F00C94E63 /* DTTableViewCell-Color.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Color.xib"; sourceTree = "<group>"; };
 		F2B7D3622454B3DE00C94E63 /* DTColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTColorCell.swift; sourceTree = "<group>"; };
 		F2B7D3642454DB0C00C94E63 /* DTTableViewColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTTableViewColorCell.swift; sourceTree = "<group>"; };
-		F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekBadgeView.swift; sourceTree = "<group>"; };
 		F2C190D32402E17A003F5ABA /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		F2C190D724030701003F5ABA /* SelectStampsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStampsViewController.swift; sourceTree = "<group>"; };
 		F2C493232430172D00E997BD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -422,8 +422,6 @@
 		F20D1F9724142A1D00FB5000 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F27B04602426B8FA006E5175 /* DayBadgeView.swift */,
-				F2C190D12401BD50003F5ABA /* WeekBadgeView.swift */,
 				F20D1F9424142A1700FB5000 /* StickerView.swift */,
 				F284F9B4257FDB9B0016D1C6 /* ProgressView.swift */,
 				F2B67430243919D500610D86 /* AwardView.swift */,
@@ -766,6 +764,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F3BE3D257D489D00A926E9 /* DayElement.swift */,
+				F23CF43C25840EBF0048BA74 /* StampSelectorElement.swift */,
 				F284F9C22580620D0016D1C6 /* SelectorState.swift */,
 				F2F3BE49257D492300A926E9 /* DayColumnData.swift */,
 				F2F3BE60257D8C9800A926E9 /* DayStampData.swift */,
@@ -789,6 +788,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F3BE65257DD25800A926E9 /* TodayPresenterProtocol.swift */,
+				F23CF440258417A60048BA74 /* TodayCoordinator.swift */,
 				F2F3BE64257DD25800A926E9 /* TodayView.swift */,
 			);
 			path = Protocols;
@@ -1002,7 +1002,6 @@
 				F247541D23E5DF6B006A13C3 /* Palette.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* StoredStamp.swift in Sources */,
 				F2F3BE67257DD25800A926E9 /* TodayPresenterProtocol.swift in Sources */,
-				F2C190D22401BD50003F5ABA /* WeekBadgeView.swift in Sources */,
 				BC5643F9246B1C6200942066 /* Period.swift in Sources */,
 				F23CF3AC25829B500048BA74 /* StickersViewController.swift in Sources */,
 				F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */,
@@ -1063,11 +1062,13 @@
 				F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */,
 				F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */,
 				F2F3BE61257D8C9800A926E9 /* DayStampData.swift in Sources */,
+				F23CF441258417A60048BA74 /* TodayCoordinator.swift in Sources */,
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
 				F2A93F90258128E5006C88F8 /* StatsViewController.swift in Sources */,
 				F20E40462443ED25008759D1 /* DTTableCell.swift in Sources */,
 				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F20E404A2443ED25008759D1 /* DTLinkedSwitchCell.swift in Sources */,
+				F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */,
 				F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */,
 				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
 				F247542523E734CE006A13C3 /* AwardManager.swift in Sources */,
@@ -1094,7 +1095,6 @@
 				F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */,
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2B67431243919D500610D86 /* AwardView.swift in Sources */,
-				F27B04612426B8FA006E5175 /* DayBadgeView.swift in Sources */,
 				F20E40442443ED25008759D1 /* DTTableViewModel.swift in Sources */,
 				F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */,
 				BC1E1EFA246C58F500E05C8A /* GRDBDataProvider.swift in Sources */,

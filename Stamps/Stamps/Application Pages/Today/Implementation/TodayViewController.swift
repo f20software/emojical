@@ -61,7 +61,8 @@ class TodayViewController: UIViewController, TodayView {
             goalsListener: Storage.shared.goalsListener(),
             awardManager: AwardManager.shared,
             calendar: CalendarHelper.shared,
-            view: self)
+            view: self,
+            coordinator: self)
         
         configureViews()
         presenter.onViewDidLoad()
@@ -76,6 +77,9 @@ class TodayViewController: UIViewController, TodayView {
     
     /// Is called when user tapped on the stamp in the bottom stamp selector
     var onStampInSelectorTapped: ((Int64) -> Void)?
+
+    /// User tapped on create new stamp in the bottom stamp selector
+    var onNewStickerTapped: (() -> Void)?
 
     /// Is called when user tapped on the day header, day index 0...6 is passed
     var onDayHeaderTapped: ((Int) -> Void)?
@@ -127,7 +131,7 @@ class TodayViewController: UIViewController, TodayView {
     }
 
     /// Loads stamps into stamp selector
-    func loadStampSelectorData(data: [DayStampData]) {
+    func loadStampSelectorData(data: [StampSelectorElement]) {
         stampSelector.loadData(data: data)
     }
     
@@ -192,6 +196,9 @@ class TodayViewController: UIViewController, TodayView {
         stampSelector.onStampTapped = { (stampId) in
             self.onStampInSelectorTapped?(stampId)
         }
+        stampSelector.onNewStickerTapped = { () in
+            self.onNewStickerTapped?()
+        }
         day0.onDayTapped = { () in
             self.onDayHeaderTapped?(0)
         }
@@ -217,6 +224,30 @@ class TodayViewController: UIViewController, TodayView {
         plusButton.layer.cornerRadius = Specs.miniButtonCornerRadius
         plusButton.clipsToBounds = true
         plusButton.backgroundColor = UIColor.systemGray6
+    }
+}
+
+// MARK: - TodayCoordinator
+
+extension TodayViewController: TodayCoordinator {
+    
+    func newSticker() {
+        performSegue(withIdentifier: UIStoryboardSegue.newSticker, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+
+        case UIStoryboardSegue.newSticker:
+            guard let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? StampViewController else { return }
+
+            setEditing(false, animated: true)
+            controller.stamp = Stamp.defaultStamp
+            controller.presentationMode = .modal
+        
+        default:
+            break
+        }
     }
 }
 

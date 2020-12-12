@@ -12,6 +12,7 @@ import UIKit
 struct TodayAwardData {
     let goalId: Int64
     let color: UIColor
+    let emoji: String?
     let dashes: Int
     let progress: CGFloat
     let progressColor: UIColor

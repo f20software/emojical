@@ -76,6 +76,7 @@ class WeeklyAwardsView : UIView {
                 heightDimension: .absolute(Specs.awardSize)
             )
         )
+        item.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
 
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(

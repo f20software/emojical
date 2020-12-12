@@ -258,11 +258,13 @@ class TodayPresenter: TodayPresenterProtocol {
                 guard let goalId = $0.id else { return nil }
                 
                 let progress = self.awardManager.currentProgressFor($0)
+                let stamp = repository.stampById($0.stamps[0])
                 let goalReached = progress >= $0.limit
 
                 return TodayAwardData(
                     goalId: goalId,
                     color: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.2),
+                    emoji: stamp?.label,
                     dashes: $0.period == .month ? 0 : 7,
                     progress: goalReached ? 1.0 : CGFloat(progress) / CGFloat($0.limit),
                     progressColor: $0.direction == .positive ?
@@ -275,10 +277,13 @@ class TodayPresenter: TodayPresenterProtocol {
             data = awards.compactMap({
                 guard let goal = repository.goalById($0.goalId),
                       let goalId = goal.id else { return nil }
-                
+
+                let stamp = repository.stampById(goal.stamps[0])
+
                 return TodayAwardData(
                     goalId: goalId,
                     color: repository.colorForAward($0),
+                    emoji: stamp?.label,
                     dashes: goal.period  == .month ? 0 : 7,
                     progress: 1.0,
                     progressColor: goal.direction == .positive ? UIColor.positiveGoalReached : UIColor.negativeGoalNotReached

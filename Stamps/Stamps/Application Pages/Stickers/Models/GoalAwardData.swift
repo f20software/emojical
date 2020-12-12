@@ -15,6 +15,7 @@ struct GoalAwardData {
     let details: String
     let count: Int
     let color: UIColor
+    let emoji: String?
     let dashes: Int
     let progress: CGFloat
     let progressColor: UIColor

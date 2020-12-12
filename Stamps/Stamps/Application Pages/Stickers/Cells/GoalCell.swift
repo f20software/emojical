@@ -15,8 +15,7 @@ class GoalCell: UICollectionViewCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
-    @IBOutlet weak var award: AwardView!
-    @IBOutlet weak var progress: ProgressView!
+    @IBOutlet weak var goalIcon: GoalAwardView!
     @IBOutlet weak var count: UILabel!
 
     override func awakeFromNib() {
@@ -31,13 +30,11 @@ class GoalCell: UICollectionViewCell {
         subTitle.text = data.details
         tag = Int(data.goalId)
         
-        award.configure(color: data.color, dashes: data.dashes)
-        award.backgroundColor = UIColor.clear
-        
-        progress.tintColor = data.progressColor
-        progress.progress = data.progress
-        progress.lineWidth = 3.0
-        progress.backgroundColor = UIColor.clear
+        goalIcon.progress = data.progress
+        goalIcon.progressLineWidth = 3.0
+        goalIcon.progressColor = UIColor.appTintColor
+        goalIcon.labelColor = data.color
+        goalIcon.text = data.emoji
         
         if data.count > 0 {
             count.text = "  \(data.count)  "
@@ -47,8 +44,7 @@ class GoalCell: UICollectionViewCell {
             count.isHidden = true
         }
         
-        progress.setNeedsDisplay()
-        award.setNeedsDisplay()
+        goalIcon.setNeedsDisplay()
     }
 
     // MARK: - Private helpers

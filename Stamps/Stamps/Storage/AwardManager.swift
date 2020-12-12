@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AwardManager {
     struct AwardUpdate {
@@ -37,6 +38,72 @@ class AwardManager {
     func recalculateAwards(_ date: Date) {
         recalculateAwardsForWeek(date)
         recalculateAwardsForMonth(date)
+    }
+    
+    // Build GoalAwardData model from the Goal and Stamp object
+    func goalAwardModel(for goal: Goal, stamp: Stamp) -> GoalAwardData {
+        let progress = currentProgressFor(goal)
+
+        switch goal.direction {
+        case .positive:
+            if progress >= goal.limit {
+                // You got it - should match award render mode
+                return GoalAwardData(
+                    goalId: goal.id,
+                    emoji: stamp.label,
+                    backgroundColor: stamp.color.withAlphaComponent(0.5),
+                    direction: .positive,
+                    progress: 1.0,
+                    progressColor: UIColor.darkGray
+                )
+            } else {
+                // Still have some work to do
+                return GoalAwardData(
+                    goalId: goal.id,
+                    emoji: stamp.label,
+                    backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
+                    direction: .positive,
+                    progress: Float(progress) / Float(goal.limit),
+                    progressColor: UIColor.positiveGoalNotReached
+                )
+            }
+        case .negative:
+            if progress > goal.limit {
+                // Busted
+                return GoalAwardData(
+                    goalId: goal.id,
+                    emoji: stamp.label,
+                    backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
+                    direction: .negative,
+                    progress: 0.0,
+                    progressColor: UIColor.clear
+                )
+            } else {
+                // Still have some room to go
+                let percent: Float = Float(goal.limit - progress) / Float(goal.limit) + 0.03
+                return GoalAwardData(
+                    goalId: goal.id,
+                    emoji: stamp.label,
+                    backgroundColor: stamp.color.withAlphaComponent(0.3),
+                    direction: .negative,
+                    progress: percent,
+                    progressColor: UIColor.negativeGoalNotReached
+                )
+
+            }
+        }
+    }
+
+    // Build GoalAwardData model from the Award, Goal and Stamp object
+    func goalAwardModel(for award: Award, goal: Goal, stamp: Stamp) -> GoalAwardData {
+        return GoalAwardData(
+            goalId: goal.id,
+            emoji: stamp.label,
+            backgroundColor: stamp.color.withAlphaComponent(0.5),
+            direction: goal.direction,
+            progress: 1.0,
+            progressColor: UIColor.darkGray
+        )
     }
 
     // Recalculate weekly goals and update last-week-update parameter in the database

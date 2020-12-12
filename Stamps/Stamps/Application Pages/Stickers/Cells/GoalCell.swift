@@ -15,8 +15,7 @@ class GoalCell: UICollectionViewCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
-    @IBOutlet weak var award: AwardView!
-    @IBOutlet weak var progress: ProgressView!
+    @IBOutlet weak var goalIcon: GoalAwardView!
     @IBOutlet weak var count: UILabel!
 
     override func awakeFromNib() {
@@ -26,18 +25,16 @@ class GoalCell: UICollectionViewCell {
     
     // MARK: - Public view interface
 
-    func configure(for data: GoalAwardData) {
+    func configure(for data: GoalData) {
         title.text = data.name
         subTitle.text = data.details
         tag = Int(data.goalId)
         
-        award.configure(color: data.color, dashes: data.dashes)
-        award.backgroundColor = UIColor.clear
-        
-        progress.tintColor = data.progressColor
-        progress.progress = data.progress
-        progress.lineWidth = 3.0
-        progress.backgroundColor = UIColor.clear
+        goalIcon.text = data.progress.emoji
+        goalIcon.labelColor = data.progress.backgroundColor
+        goalIcon.clockwise = (data.progress.direction == .positive)
+        goalIcon.progress = CGFloat(data.progress.progress)
+        goalIcon.progressColor = data.progress.progressColor
         
         if data.count > 0 {
             count.text = "  \(data.count)  "
@@ -47,8 +44,7 @@ class GoalCell: UICollectionViewCell {
             count.isHidden = true
         }
         
-        progress.setNeedsDisplay()
-        award.setNeedsDisplay()
+        goalIcon.setNeedsDisplay()
     }
 
     // MARK: - Private helpers
@@ -61,6 +57,7 @@ class GoalCell: UICollectionViewCell {
         count.layer.cornerRadius = count.font.pointSize * 0.6
         count.clipsToBounds = true
         count.backgroundColor = UIColor.appTintColor
+        goalIcon.progressLineWidth = Specs.progressLineWidth
     }
 }
 
@@ -69,4 +66,7 @@ fileprivate struct Specs {
     
     /// Background corner radius
     static let cornerRadius: CGFloat = 8.0
+
+    /// Line width for the progress around award icon
+    static let progressLineWidth: CGFloat = 3.0
 }

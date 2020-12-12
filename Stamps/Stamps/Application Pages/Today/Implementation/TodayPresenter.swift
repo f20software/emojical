@@ -251,38 +251,22 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     private func loadAwardsData() {
-        var data = [TodayAwardData]()
+        var data = [GoalAwardData]()
             
         if week.isCurrentWeek {
             data = goals.compactMap({
-                guard let goalId = $0.id else { return nil }
-                
-                let progress = self.awardManager.currentProgressFor($0)
-                let goalReached = progress >= $0.limit
-
-                return TodayAwardData(
-                    goalId: goalId,
-                    color: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.2),
-                    dashes: $0.period == .month ? 0 : 7,
-                    progress: goalReached ? 1.0 : CGFloat(progress) / CGFloat($0.limit),
-                    progressColor: $0.direction == .positive ?
-                        (goalReached ? UIColor.positiveGoalReached : UIColor.positiveGoalNotReached) :
-                        (goalReached ? UIColor.negativeGoalReached : UIColor.negativeGoalNotReached)
-                    
-                )
+                guard let stampId = $0.stamps.first,
+                      let stamp = repository.stampById(stampId) else { return nil }
+                return self.awardManager.goalAwardModel(for: $0, stamp: stamp)
             })
+            // Put goals that are already reached in front
+            data = data.filter({ $0.progress >= 1.0}) + data.filter({ $0.progress < 1.0 })
         } else {
             data = awards.compactMap({
                 guard let goal = repository.goalById($0.goalId),
-                      let goalId = goal.id else { return nil }
-                
-                return TodayAwardData(
-                    goalId: goalId,
-                    color: repository.colorForAward($0),
-                    dashes: goal.period  == .month ? 0 : 7,
-                    progress: 1.0,
-                    progressColor: goal.direction == .positive ? UIColor.positiveGoalReached : UIColor.negativeGoalNotReached
-                )
+                    let stampId = goal.stamps.first,
+                    let stamp = repository.stampById(stampId) else { return nil }
+                return self.awardManager.goalAwardModel(for: $0, goal: goal, stamp: stamp)
             })
         }
 

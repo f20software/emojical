@@ -8,7 +8,12 @@
 
 import Foundation
 
+/// Goal direction
 enum Direction: Int {
+    
+    /// Positive goal - need to reach `limit`
     case positive
+    
+    /// Negative goal - cannot overcome `limit`
     case negative
 }

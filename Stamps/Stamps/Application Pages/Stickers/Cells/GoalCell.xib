@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="395" height="78"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="JUk-G8-Nse">
-                                <rect key="frame" x="76" y="16.5" width="111" height="45.5"/>
+                                <rect key="frame" x="78" y="16.5" width="111" height="45.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Excersize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-hg-Szf">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="24"/>
@@ -37,28 +37,24 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQA-4P-Fhz" customClass="AwardView" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="22" y="22" width="34" height="34"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="PUQ-lI-iWD"/>
-                                    <constraint firstAttribute="width" secondItem="MQA-4P-Fhz" secondAttribute="height" multiplier="1:1" id="fDo-kr-6XD"/>
-                                    <constraint firstAttribute="width" constant="34" id="mpD-3I-sNt"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MN2-nT-Okg" customClass="ProgressView" customModule="Emojical" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MN2-nT-Okg" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="15" y="15" width="48" height="48"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Jae-Li-80O"/>
+                                    <constraint firstAttribute="width" constant="48" id="PD1-tw-Rhk"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="baseColor">
-                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
                                         <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="5"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 48 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tp0-7k-auf">
@@ -76,13 +72,9 @@
                             <constraint firstItem="JUk-G8-Nse" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="61R-lT-idr"/>
                             <constraint firstItem="MN2-nT-Okg" firstAttribute="top" secondItem="ChH-rG-WsF" secondAttribute="top" constant="15" id="7qe-yx-rAE"/>
                             <constraint firstAttribute="bottom" secondItem="MN2-nT-Okg" secondAttribute="bottom" priority="999" constant="15" id="AEX-DY-ep1"/>
-                            <constraint firstItem="MQA-4P-Fhz" firstAttribute="centerX" secondItem="MN2-nT-Okg" secondAttribute="centerX" id="AaV-0z-gY2"/>
                             <constraint firstItem="Tp0-7k-auf" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="MDQ-fe-sWK"/>
                             <constraint firstItem="MN2-nT-Okg" firstAttribute="leading" secondItem="ChH-rG-WsF" secondAttribute="leading" priority="999" constant="15" id="Q1o-n7-1F2"/>
-                            <constraint firstItem="MN2-nT-Okg" firstAttribute="height" secondItem="MQA-4P-Fhz" secondAttribute="height" constant="14" id="bGV-K7-uPG"/>
-                            <constraint firstItem="JUk-G8-Nse" firstAttribute="leading" secondItem="MQA-4P-Fhz" secondAttribute="trailing" constant="20" id="k2D-Ec-oEW"/>
-                            <constraint firstItem="MQA-4P-Fhz" firstAttribute="centerY" secondItem="MN2-nT-Okg" secondAttribute="centerY" id="l86-fp-dJz"/>
-                            <constraint firstItem="MN2-nT-Okg" firstAttribute="width" secondItem="MQA-4P-Fhz" secondAttribute="width" constant="14" id="oo9-v5-Nqo"/>
+                            <constraint firstItem="JUk-G8-Nse" firstAttribute="leading" secondItem="MN2-nT-Okg" secondAttribute="trailing" constant="15" id="t06-kf-TDk"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -96,10 +88,9 @@
             </constraints>
             <size key="customSize" width="395" height="78"/>
             <connections>
-                <outlet property="award" destination="MQA-4P-Fhz" id="dWP-uW-cFr"/>
                 <outlet property="count" destination="Tp0-7k-auf" id="7Hh-6q-Ivo"/>
+                <outlet property="goalIcon" destination="MN2-nT-Okg" id="KEw-93-kCQ"/>
                 <outlet property="plate" destination="ChH-rG-WsF" id="a2m-f5-8am"/>
-                <outlet property="progress" destination="MN2-nT-Okg" id="KEw-93-kCQ"/>
                 <outlet property="subTitle" destination="F74-qT-oTK" id="M00-cL-56U"/>
                 <outlet property="title" destination="lYa-hg-Szf" id="q7N-uS-jiZ"/>
             </connections>

@@ -16,7 +16,7 @@ class WeeklyAwardsView : UIView {
 
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, TodayAwardData>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, GoalAwardData>!
     
     // MARK: - Callbacks
     
@@ -29,8 +29,8 @@ class WeeklyAwardsView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: [TodayAwardData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, TodayAwardData>()
+    func loadData(data: [GoalAwardData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, GoalAwardData>()
         snapshot.appendSections([0])
         
         snapshot.appendItems(data)
@@ -53,7 +53,7 @@ class WeeklyAwardsView : UIView {
     }
 
     private func configureCollectionView() {
-        self.dataSource = UICollectionViewDiffableDataSource<Int, TodayAwardData>(
+        self.dataSource = UICollectionViewDiffableDataSource<Int, GoalAwardData>(
             collectionView: awards,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -76,6 +76,9 @@ class WeeklyAwardsView : UIView {
                 heightDimension: .absolute(Specs.awardSize)
             )
         )
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: Specs.awardMargin, leading: Specs.awardMargin,
+            bottom: Specs.awardMargin, trailing: Specs.awardMargin)
 
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
@@ -87,8 +90,8 @@ class WeeklyAwardsView : UIView {
 
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 5,
-            bottom: 0, trailing: 0)
+            top: 0, leading: Specs.awardStripHorizontalMargin,
+            bottom: 0, trailing: Specs.awardStripHorizontalMargin)
 
         return UICollectionViewCompositionalLayout(section: section)
     }
@@ -96,7 +99,7 @@ class WeeklyAwardsView : UIView {
 
 extension WeeklyAwardsView: UICollectionViewDelegate {
     
-    private func cell(for path: IndexPath, model: TodayAwardData, collectionView: UICollectionView) -> UICollectionViewCell? {
+    private func cell(for path: IndexPath, model: GoalAwardData, collectionView: UICollectionView) -> UICollectionViewCell? {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: Specs.Cells.award, for: path
         ) as? TodayAwardCell else { return UICollectionViewCell() }
@@ -118,4 +121,10 @@ fileprivate struct Specs {
     
     /// Award cell size
     static let awardSize: CGFloat = 50.0
+    
+    /// Margin around award icons
+    static let awardMargin: CGFloat = 3.0
+    
+    /// Margin from the left/right of the award strip
+    static let awardStripHorizontalMargin: CGFloat = 5.0
 }

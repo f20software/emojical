@@ -12,7 +12,7 @@ import Foundation
 enum StickersElement: Hashable {
     case sticker(DayStampData)
     case newSticker
-    case goal(GoalAwardData)
+    case goal(GoalData)
     case newGoal
     case noGoals(String)
 }

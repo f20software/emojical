@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-// A cell with 7 buttons to selecte different color
+// A cell with 7 buttons to select different color
 // --- [ [] [] [] [] [] [] [] ]
 class DTColorCell: DTTableCell, DTTableViewColorCellDelegate {
     

@@ -76,7 +76,9 @@ class WeeklyAwardsView : UIView {
                 heightDimension: .absolute(Specs.awardSize)
             )
         )
-        item.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: Specs.awardMargin, leading: Specs.awardMargin,
+            bottom: Specs.awardMargin, trailing: Specs.awardMargin)
 
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
@@ -88,8 +90,8 @@ class WeeklyAwardsView : UIView {
 
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 5,
-            bottom: 0, trailing: 0)
+            top: 0, leading: Specs.awardStripHorizontalMargin,
+            bottom: 0, trailing: Specs.awardStripHorizontalMargin)
 
         return UICollectionViewCompositionalLayout(section: section)
     }
@@ -119,4 +121,10 @@ fileprivate struct Specs {
     
     /// Award cell size
     static let awardSize: CGFloat = 50.0
+    
+    /// Margin around award icons
+    static let awardMargin: CGFloat = 3.0
+    
+    /// Margin from the left/right of the award strip
+    static let awardStripHorizontalMargin: CGFloat = 5.0
 }

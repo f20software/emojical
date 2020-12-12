@@ -251,7 +251,7 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     private func loadAwardsData() {
-        var data = [TodayAwardData]()
+        var data = [GoalAwardData]()
             
         if week.isCurrentWeek {
             data = goals.compactMap({
@@ -261,11 +261,10 @@ class TodayPresenter: TodayPresenterProtocol {
                 let stamp = repository.stampById($0.stamps[0])
                 let goalReached = progress >= $0.limit
 
-                return TodayAwardData(
+                return GoalAwardData(
                     goalId: goalId,
-                    color: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.2),
                     emoji: stamp?.label,
-                    dashes: $0.period == .month ? 0 : 7,
+                    backgroundColor: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.2),
                     progress: goalReached ? 1.0 : CGFloat(progress) / CGFloat($0.limit),
                     progressColor: $0.direction == .positive ?
                         (goalReached ? UIColor.positiveGoalReached : UIColor.positiveGoalNotReached) :
@@ -280,11 +279,10 @@ class TodayPresenter: TodayPresenterProtocol {
 
                 let stamp = repository.stampById(goal.stamps[0])
 
-                return TodayAwardData(
+                return GoalAwardData(
                     goalId: goalId,
-                    color: repository.colorForAward($0),
                     emoji: stamp?.label,
-                    dashes: goal.period  == .month ? 0 : 7,
+                    backgroundColor: repository.colorForAward($0),
                     progress: 1.0,
                     progressColor: goal.direction == .positive ? UIColor.positiveGoalReached : UIColor.negativeGoalNotReached
                 )

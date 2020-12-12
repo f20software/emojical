@@ -54,7 +54,7 @@ protocol TodayView: AnyObject {
     func loadStampSelectorData(data: [StampSelectorElement])
     
     /// Loads awards data
-    func loadAwardsData(data: [TodayAwardData])
+    func loadAwardsData(data: [GoalAwardData])
     
     /// Show/hide stamp selector and plus button
     func showStampSelector(_ state: SelectorState)

@@ -16,18 +16,23 @@ class TodayAwardCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // backgroundColor = UIColor.blue
+        awardIcon.progressLineWidth = Specs.progressLineWidth
     }
     
     // MARK: - Public view interface
     
-    func configure(for data: TodayAwardData) {
+    func configure(for data: GoalAwardData) {
         awardIcon.progress = data.progress
-        awardIcon.progressLineWidth = 3.0
-        awardIcon.progressColor = UIColor.appTintColor
-        awardIcon.labelColor = data.color
+        awardIcon.progressColor = data.progressColor
+        awardIcon.labelColor = data.backgroundColor
         awardIcon.text = data.emoji
-        
         awardIcon.setNeedsDisplay()
     }
+}
+
+// MARK: - Specs
+fileprivate struct Specs {
+    
+    /// Line width for the progress around award icon
+    static let progressLineWidth: CGFloat = 3.0
 }

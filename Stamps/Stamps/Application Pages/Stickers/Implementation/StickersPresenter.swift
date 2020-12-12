@@ -28,7 +28,7 @@ class StickersPresenter: StickersPresenterProtocol {
     private var stampsData: [DayStampData] = []
     
     // View model data for all goals
-    private var goalsData: [GoalAwardData] = []
+    private var goalsData: [GoalData] = []
     
     // MARK: - Lifecycle
 
@@ -112,26 +112,27 @@ class StickersPresenter: StickersPresenterProtocol {
             )
         })
         
-        let newGoalsData: [GoalAwardData] = repository.allGoals().compactMap({
+        let newGoalsData: [GoalData] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }
 
             let progress = self.awardManager.currentProgressFor($0)
             let firstStamp = self.repository.stampById($0.stamps[0])
             let goalReached = progress >= $0.limit
 
-            return GoalAwardData(
+            return GoalData(
                 goalId: goalId,
                 name: $0.name,
                 details: $0.details,
                 count: $0.count,
-                color: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.2),
-                emoji: firstStamp?.label,
-                dashes: $0.period == .month ? 0 : 7,
-                progress: goalReached ? 1.0 : CGFloat(progress) / CGFloat($0.limit),
-                progressColor: $0.direction == .positive ?
-                    (goalReached ? UIColor.positiveGoalReached : UIColor.positiveGoalNotReached) :
-                    (goalReached ? UIColor.negativeGoalReached : UIColor.negativeGoalNotReached)
-                
+                progress: GoalAwardData(
+                    goalId: goalId,
+                    emoji: firstStamp?.label,
+                    backgroundColor: goalReached ? repository.colorForGoal(goalId) : UIColor.systemGray.withAlphaComponent(0.2),
+                    progress: goalReached ? 1.0 : CGFloat(progress) / CGFloat($0.limit),
+                    progressColor: $0.direction == .positive ?
+                        (goalReached ? UIColor.positiveGoalReached : UIColor.positiveGoalNotReached) :
+                        (goalReached ? UIColor.negativeGoalReached : UIColor.negativeGoalNotReached)
+                )
             )
         })
         

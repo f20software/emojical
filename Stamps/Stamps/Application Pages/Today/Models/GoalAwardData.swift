@@ -1,5 +1,5 @@
 //
-//  TodayAwardData.swift
+//  GoalAwardData.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/06/2020.
@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-struct TodayAwardData {
+/// View model to show goal / award data
+struct GoalAwardData {
     let goalId: Int64
-    let color: UIColor
     let emoji: String?
-    let dashes: Int
+    let backgroundColor: UIColor
     let progress: CGFloat
     let progressColor: UIColor
 }
 
-extension TodayAwardData: Equatable, Hashable {}
+extension GoalAwardData: Equatable, Hashable {}

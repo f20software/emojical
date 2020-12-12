@@ -126,7 +126,7 @@ class TodayViewController: UIViewController, TodayView {
     }
 
     /// Loads awards data
-    func loadAwardsData(data: [TodayAwardData]) {
+    func loadAwardsData(data: [GoalAwardData]) {
         awards.loadData(data: data)
     }
 

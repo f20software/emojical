@@ -16,7 +16,7 @@ class WeeklyAwardsView : UIView {
 
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, TodayAwardData>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, GoalAwardData>!
     
     // MARK: - Callbacks
     
@@ -29,8 +29,8 @@ class WeeklyAwardsView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: [TodayAwardData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, TodayAwardData>()
+    func loadData(data: [GoalAwardData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, GoalAwardData>()
         snapshot.appendSections([0])
         
         snapshot.appendItems(data)
@@ -53,7 +53,7 @@ class WeeklyAwardsView : UIView {
     }
 
     private func configureCollectionView() {
-        self.dataSource = UICollectionViewDiffableDataSource<Int, TodayAwardData>(
+        self.dataSource = UICollectionViewDiffableDataSource<Int, GoalAwardData>(
             collectionView: awards,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -97,7 +97,7 @@ class WeeklyAwardsView : UIView {
 
 extension WeeklyAwardsView: UICollectionViewDelegate {
     
-    private func cell(for path: IndexPath, model: TodayAwardData, collectionView: UICollectionView) -> UICollectionViewCell? {
+    private func cell(for path: IndexPath, model: GoalAwardData, collectionView: UICollectionView) -> UICollectionViewCell? {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: Specs.Cells.award, for: path
         ) as? TodayAwardCell else { return UICollectionViewCell() }

@@ -25,16 +25,15 @@ class GoalCell: UICollectionViewCell {
     
     // MARK: - Public view interface
 
-    func configure(for data: GoalAwardData) {
+    func configure(for data: GoalData) {
         title.text = data.name
         subTitle.text = data.details
         tag = Int(data.goalId)
         
-        goalIcon.progress = data.progress
-        goalIcon.progressLineWidth = 3.0
-        goalIcon.progressColor = UIColor.appTintColor
-        goalIcon.labelColor = data.color
-        goalIcon.text = data.emoji
+        goalIcon.text = data.progress.emoji
+        goalIcon.labelColor = data.progress.backgroundColor
+        goalIcon.progress = data.progress.progress
+        goalIcon.progressColor = data.progress.progressColor
         
         if data.count > 0 {
             count.text = "  \(data.count)  "
@@ -57,6 +56,8 @@ class GoalCell: UICollectionViewCell {
         count.layer.cornerRadius = count.font.pointSize * 0.6
         count.clipsToBounds = true
         count.backgroundColor = UIColor.appTintColor
+
+        goalIcon.progressLineWidth = 3.0
     }
 }
 

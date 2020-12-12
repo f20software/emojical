@@ -25,5 +25,5 @@ protocol StickersView: AnyObject {
     // MARK: - Updates
 
     /// Load stats for the month
-    func loadData(stickers: [DayStampData], goals: [GoalAwardData])
+    func loadData(stickers: [DayStampData], goals: [GoalData])
 }

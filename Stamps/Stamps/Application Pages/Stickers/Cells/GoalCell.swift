@@ -57,8 +57,7 @@ class GoalCell: UICollectionViewCell {
         count.layer.cornerRadius = count.font.pointSize * 0.6
         count.clipsToBounds = true
         count.backgroundColor = UIColor.appTintColor
-
-        goalIcon.progressLineWidth = 3.0
+        goalIcon.progressLineWidth = Specs.progressLineWidth
     }
 }
 
@@ -67,4 +66,7 @@ fileprivate struct Specs {
     
     /// Background corner radius
     static let cornerRadius: CGFloat = 8.0
+
+    /// Line width for the progress around award icon
+    static let progressLineWidth: CGFloat = 3.0
 }

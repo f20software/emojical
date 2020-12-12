@@ -17,6 +17,9 @@ class GoalAwardView : UIView {
     var progressColor: UIColor = UIColor.appTintColor { didSet { setupView() }}
 
     @IBInspectable
+    var clockwise: Bool = true { didSet { setupView() }}
+
+    @IBInspectable
     var labelColor: UIColor = UIColor.clear { didSet { setupView() }}
     
     @IBInspectable
@@ -80,7 +83,7 @@ class GoalAwardView : UIView {
         // Add progress bar layer
         let barRect = bounds.insetBy(dx: progressLineWidth / 2, dy: progressLineWidth / 2)
         let progressPath = UIBezierPath()
-        let resultAngle: CGFloat = -1 * progress * 360 + 90
+        let resultAngle: CGFloat = -90 + (clockwise ? 1 : -1) * (progress * 360)
         let border = CAShapeLayer()
 
         border.strokeColor = progressColor.cgColor
@@ -88,7 +91,14 @@ class GoalAwardView : UIView {
         border.lineWidth = progressLineWidth
         border.frame = bounds
         border.lineCap = .round
-        progressPath.addArc(withCenter: CGPoint(x: barRect.midX, y: barRect.midY), radius: barRect.width / 2, startAngle: -90 * CGFloat.pi/180, endAngle: -resultAngle * CGFloat.pi/180, clockwise: true)
+        progressPath.addArc(
+            withCenter: CGPoint(x: barRect.midX, y: barRect.midY),
+            radius: barRect.width / 2,
+            startAngle: -90 * CGFloat.pi/180,
+            endAngle: resultAngle * CGFloat.pi/180,
+            clockwise: clockwise
+        )
+
         border.path = progressPath.cgPath
         layer.addSublayer(border)
     }

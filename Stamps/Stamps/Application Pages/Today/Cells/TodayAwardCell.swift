@@ -22,10 +22,11 @@ class TodayAwardCell: UICollectionViewCell {
     // MARK: - Public view interface
     
     func configure(for data: GoalAwardData) {
-        awardIcon.progress = data.progress
-        awardIcon.progressColor = data.progressColor
-        awardIcon.labelColor = data.backgroundColor
         awardIcon.text = data.emoji
+        awardIcon.labelColor = data.backgroundColor
+        awardIcon.progress = CGFloat(data.progress)
+        awardIcon.progressColor = data.progressColor
+        awardIcon.clockwise = (data.direction == .positive)
         awardIcon.setNeedsDisplay()
     }
 }

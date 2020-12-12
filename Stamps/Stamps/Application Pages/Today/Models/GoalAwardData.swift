@@ -11,10 +11,11 @@ import UIKit
 
 /// View model to show goal / award data
 struct GoalAwardData {
-    let goalId: Int64
+    let goalId: Int64?
     let emoji: String?
     let backgroundColor: UIColor
-    let progress: CGFloat
+    let direction: Direction
+    let progress: Float
     let progressColor: UIColor
 }
 

@@ -32,7 +32,8 @@ class GoalCell: UICollectionViewCell {
         
         goalIcon.text = data.progress.emoji
         goalIcon.labelColor = data.progress.backgroundColor
-        goalIcon.progress = data.progress.progress
+        goalIcon.clockwise = (data.progress.direction == .positive)
+        goalIcon.progress = CGFloat(data.progress.progress)
         goalIcon.progressColor = data.progress.progressColor
         
         if data.count > 0 {

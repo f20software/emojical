@@ -19,6 +19,15 @@ class TodayAwardCell: UICollectionViewCell {
         awardIcon.progressLineWidth = Specs.progressLineWidth
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        awardIcon.labelColor = UIColor.clear
+        awardIcon.text = nil
+        awardIcon.progress = 0.0
+        awardIcon.progressColor = UIColor.clear
+        awardIcon.setNeedsDisplay()
+    }
+    
     // MARK: - Public view interface
     
     func configure(for data: GoalAwardData) {

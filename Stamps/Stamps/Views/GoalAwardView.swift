@@ -68,20 +68,21 @@ class GoalAwardView : UIView {
         clipsToBounds = true
         backgroundColor = UIColor.clear
         
-        let labelRect = bounds.insetBy(dx: progressLineWidth / 2, dy: progressLineWidth / 2)
-        let label = UILabel(frame: labelRect)
+        let barRect = bounds.insetBy(dx: progressLineWidth / 2.0, dy: progressLineWidth / 2.0)
+        let radius = barRect.height / 2.0
+
+        let label = UILabel(frame: barRect)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 24)
         label.textAlignment = .center
         label.backgroundColor = labelColor
         label.text = text
-        label.layer.cornerRadius = labelRect.height / 2.0
+        label.layer.cornerRadius = radius
         label.clipsToBounds = true
         addSubview(label)
         self.labelView = label
 
         // Add progress bar layer
-        let barRect = bounds.insetBy(dx: progressLineWidth / 2, dy: progressLineWidth / 2)
         let progressPath = UIBezierPath()
         let resultAngle: CGFloat = -90 + (clockwise ? 1 : -1) * (progress * 360)
         let border = CAShapeLayer()
@@ -93,9 +94,9 @@ class GoalAwardView : UIView {
         border.lineCap = .round
         progressPath.addArc(
             withCenter: CGPoint(x: barRect.midX, y: barRect.midY),
-            radius: barRect.width / 2,
-            startAngle: -90 * CGFloat.pi/180,
-            endAngle: resultAngle * CGFloat.pi/180,
+            radius: radius,
+            startAngle: -90 * CGFloat.pi / 180,
+            endAngle: resultAngle * CGFloat.pi / 180,
             clockwise: clockwise
         )
 

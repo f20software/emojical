@@ -255,17 +255,15 @@ class TodayPresenter: TodayPresenterProtocol {
             
         if week.isCurrentWeek {
             data = goals.compactMap({
-                guard let stampId = $0.stamps.first,
-                      let stamp = repository.stampById(stampId) else { return nil }
+                let stamp = repository.stampById($0.stamps.first)
                 return self.awardManager.goalAwardModel(for: $0, stamp: stamp)
             })
             // Put goals that are already reached in front
             data = data.filter({ $0.progress >= 1.0}) + data.filter({ $0.progress < 1.0 })
         } else {
             data = awards.compactMap({
-                guard let goal = repository.goalById($0.goalId),
-                    let stampId = goal.stamps.first,
-                    let stamp = repository.stampById(stampId) else { return nil }
+                guard let goal = repository.goalById($0.goalId) else { return nil }
+                let stamp = repository.stampById(goal.stamps.first)
                 return self.awardManager.goalAwardModel(for: $0, goal: goal, stamp: stamp)
             })
         }

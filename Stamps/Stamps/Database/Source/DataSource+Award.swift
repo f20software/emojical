@@ -159,8 +159,7 @@ extension DataSource {
     // and get color of the first stamp on that goal
     func colorForAward(_ award: Award) -> UIColor {
         if let goal = goalById(award.goalId),
-            let stampId = goal.stamps.first,
-            let stamp = stampById(stampId) {
+            let stamp = stampById(goal.stamps.first) {
             return stamp.color
         }
         

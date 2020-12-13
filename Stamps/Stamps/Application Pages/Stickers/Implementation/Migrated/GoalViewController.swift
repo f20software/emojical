@@ -129,7 +129,7 @@ class GoalViewController: DTTableViewController {
 
             let directionCell = DTSegmentedControlCell(text: "Direction", boundObject: goalRef, boundProperty: "direction", items: ["Positive", "Negative"])
 
-            let limitCell = DTNumericTextFieldCell(text: "Limit", boundObject: goalRef, boundProperty: "limit")
+            let limitCell = DTNumericTextFieldCell(text: "Goal", boundObject: goalRef, boundProperty: "limit")
 
             let periodCell = DTSegmentedControlCell(text: "Period", boundObject: goalRef, boundProperty: "period", items: ["Week", "Month"])
 

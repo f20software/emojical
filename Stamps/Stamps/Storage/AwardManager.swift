@@ -25,7 +25,7 @@ class AwardManager {
     }
 
     // For weekly goals we will do the following:
-    // We will in the database last Sunday (end of week) that we recalculated
+    // We will store in the database last Sunday (end of week) that we recalculated
     // When app resumes we read that value and recalculate weeks for all weeks after that date until
     // we reach Sunday
     func recalculateOnAppResume() {
@@ -40,72 +40,6 @@ class AwardManager {
         recalculateAwardsForMonth(date)
     }
     
-    // Build GoalAwardData model from the Goal and Stamp object
-    func goalAwardModel(for goal: Goal, stamp: Stamp?) -> GoalAwardData {
-        let progress = currentProgressFor(goal)
-
-        switch goal.direction {
-        case .positive:
-            if progress >= goal.limit {
-                // You got it - should match award render mode
-                return GoalAwardData(
-                    goalId: goal.id,
-                    emoji: stamp?.label,
-                    backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.5),
-                    direction: .positive,
-                    progress: 1.0,
-                    progressColor: UIColor.darkGray
-                )
-            } else {
-                // Still have some work to do
-                return GoalAwardData(
-                    goalId: goal.id,
-                    emoji: stamp?.label,
-                    backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
-                    direction: .positive,
-                    progress: Float(progress) / Float(goal.limit),
-                    progressColor: UIColor.positiveGoalNotReached
-                )
-            }
-        case .negative:
-            if progress > goal.limit {
-                // Busted
-                return GoalAwardData(
-                    goalId: goal.id,
-                    emoji: stamp?.label,
-                    backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
-                    direction: .negative,
-                    progress: 0.0,
-                    progressColor: UIColor.clear
-                )
-            } else {
-                // Still have some room to go
-                let percent: Float = Float(goal.limit - progress) / Float(goal.limit) + 0.03
-                return GoalAwardData(
-                    goalId: goal.id,
-                    emoji: stamp?.label,
-                    backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.3),
-                    direction: .negative,
-                    progress: percent,
-                    progressColor: UIColor.negativeGoalNotReached
-                )
-
-            }
-        }
-    }
-
-    // Build GoalAwardData model from the Award, Goal and Stamp object
-    func goalAwardModel(for award: Award, goal: Goal, stamp: Stamp?) -> GoalAwardData {
-        return GoalAwardData(
-            goalId: goal.id,
-            emoji: stamp?.label,
-            backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.5),
-            direction: goal.direction,
-            progress: 1.0,
-            progressColor: UIColor.darkGray
-        )
-    }
-
     // Recalculate weekly goals and update last-week-update parameter in the database
     private func recalculateWeeklyGoals() {
         // When was the last weekly goals recalculated?
@@ -146,7 +80,7 @@ class AwardManager {
         while (lastUpdated! < Date()) {
             repository.lastMonthUpdate = lastUpdated
             lastUpdated = CalendarHelper.shared.endOfMonth(date: lastUpdated!.byAddingMonth(1))
-            _ = recalculateAwardsForMonth(lastUpdated!)
+            recalculateAwardsForMonth(lastUpdated!)
         }
     }
 
@@ -159,7 +93,7 @@ class AwardManager {
 
         let end = CalendarHelper.shared.endOfMonth(date: date)
         let start = CalendarHelper.shared.endOfMonth(date: date.byAddingMonth(-1)).byAddingDays(1)
-        let past = end < Date()
+        let past = end.databaseKey < Date().databaseKey
 
         // Save off array of Ids so we can easily filter existing awards by only looking at ones that
         // correspond to our goals
@@ -210,7 +144,7 @@ class AwardManager {
 
         let end = CalendarHelper.shared.endOfWeek(date: date)
         let start = end.byAddingDays(-6)
-        let past = end < Date()
+        let past = end.databaseKey < Date().databaseKey
 
         // Save off array of Ids so we can easily filter existing awards by only looking at ones that
         // correspond to our goals
@@ -264,7 +198,6 @@ class AwardManager {
             let today = Date()
             end = CalendarHelper.shared.endOfMonth(date: today)
             start = CalendarHelper.shared.endOfMonth(date: today.byAddingMonth(-1)).byAddingDays(1)
-
         }
         
         let stampsLog = repository.diaryForDateInterval(from: start!, to: end!)

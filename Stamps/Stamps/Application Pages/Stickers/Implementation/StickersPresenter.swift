@@ -121,7 +121,11 @@ class StickersPresenter: StickersPresenterProtocol {
                 name: $0.name,
                 details: $0.details,
                 count: $0.count,
-                progress: self.awardManager.goalAwardModel(for: $0, stamp: stamp)
+                progress: GoalAwardData(
+                    goal: $0,
+                    progress: self.awardManager.currentProgressFor($0),
+                    stamp: stamp
+                )
             )
         })
         

@@ -184,10 +184,10 @@ fileprivate struct Specs {
     static let plateCornerRadius: CGFloat = 8.0
 
     /// Shadow radius
-    static let shadowRadius: CGFloat = 8.0
+    static let shadowRadius: CGFloat = 15.0
     
     /// Shadow opacity
-    static let shadowOpacity: Float = 0.4
+    static let shadowOpacity: Float = 0.3
     
     /// Shadow offset
     static let shadowOffset = CGSize.zero

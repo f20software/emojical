@@ -47,16 +47,6 @@
             </objects>
             <point key="canvasLocation" x="-16" y="433"/>
         </scene>
-        <!--Awards-->
-        <scene sceneID="iWU-kK-hxs">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Awards" id="fGg-yw-MHe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Awards" image="note1" selectedImage="note1" id="wPz-5o-eut"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O39-Dj-2vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="267" y="317"/>
-        </scene>
         <!--Today-->
         <scene sceneID="OUq-az-596">
             <objects>
@@ -78,7 +68,4 @@
             <point key="canvasLocation" x="241" y="433"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="note1" width="29" height="30"/>
-    </resources>
 </document>

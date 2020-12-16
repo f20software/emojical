@@ -92,11 +92,11 @@ class AwardManager {
         print("Recalculating monthly awards for \(date.databaseKey)")
 
         let end = CalendarHelper.shared.endOfMonth(date: date)
-        let start = CalendarHelper.shared.endOfMonth(date: date.byAddingMonth(-1)).byAddingDays(1)
+        let start = date.beginningOfMonth
         let past = end.databaseKey < Date().databaseKey
 
-        // Save off array of Ids so we can easily filter existing awards by only looking at ones that
-        // correspond to our goals
+        // Save off array of Ids so we can easily filter existing awards by only
+        // looking at ones that correspond to our goals
         let goalIds = goals.map { $0.id! }
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
         var allAwards = [Award]()
@@ -189,18 +189,18 @@ class AwardManager {
     func currentProgressFor(_ goal: Goal) -> Int {
         guard goal.period == .week || goal.period == .month else { return 0 }
 
-        var start, end: Date?
+        var start, end: Date!
         if goal.period == .week {
             end = CalendarHelper.shared.endOfWeek(date: Date())
-            start = end!.byAddingDays(-6)
+            start = end.byAddingDays(-6)
         }
         else { /* if goal.period == .month */
             let today = Date()
             end = CalendarHelper.shared.endOfMonth(date: today)
-            start = CalendarHelper.shared.endOfMonth(date: today.byAddingMonth(-1)).byAddingDays(1)
+            start = today.beginningOfMonth
         }
         
-        let stampsLog = repository.diaryForDateInterval(from: start!, to: end!)
+        let stampsLog = repository.diaryForDateInterval(from: start, to: end)
         var count = 0
 
         for stamp in stampsLog {

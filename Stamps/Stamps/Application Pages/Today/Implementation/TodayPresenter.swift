@@ -263,7 +263,7 @@ class TodayPresenter: TodayPresenterProtocol {
                 )
             })
             // Put goals that are already reached in front
-            // data = data.filter({ $0.progress >= 1.0}) + data.filter({ $0.progress < 1.0 })
+            data = data.sorted(by: { return $0 < $1 })
         } else {
             data = awards.compactMap({
                 guard let goal = repository.goalById($0.goalId) else { return nil }

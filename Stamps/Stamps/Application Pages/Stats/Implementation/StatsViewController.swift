@@ -211,7 +211,7 @@ class StatsViewController: UIViewController, StatsView {
     private func monthLayout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.5),
+                widthDimension: .fractionalWidth(0.49),
                 heightDimension: .estimated(100)
             )
         )

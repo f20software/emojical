@@ -97,7 +97,7 @@ class AwardManager {
 
         // Save off array of Ids so we can easily filter existing awards by only
         // looking at ones that correspond to our goals
-        let goalIds = goals.map { $0.id! }
+        let goalIds = goals.compactMap({ $0.id })
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
         var allAwards = [Award]()
 
@@ -148,7 +148,7 @@ class AwardManager {
 
         // Save off array of Ids so we can easily filter existing awards by only looking at ones that
         // correspond to our goals
-        let goalIds = goals.map { $0.id! }
+        let goalIds = goals.compactMap({ $0.id })
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
         var allAwards = [Award]()
 

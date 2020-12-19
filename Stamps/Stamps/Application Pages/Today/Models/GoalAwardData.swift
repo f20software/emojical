@@ -15,8 +15,25 @@ struct GoalAwardData {
     let emoji: String?
     let backgroundColor: UIColor
     let direction: Direction
+    let period: Period
     let progress: Float
     let progressColor: UIColor
+    let isReached: Bool
+
+    static func < (lhs: GoalAwardData, rhs: GoalAwardData) -> Bool {
+        // First compare isReached - if it's reached - put them first
+        if lhs.isReached != rhs.isReached {
+            return lhs.isReached
+        }
+        
+        // Then compare period - weekly first
+        if lhs.period != rhs.period {
+            return lhs.period.rawValue < rhs.period.rawValue
+        }
+        
+        // Rest - use Ids to compare 
+        return ((lhs.goalId ?? 0) < (rhs.goalId ?? 0))
+    }
 }
 
 extension GoalAwardData: Equatable, Hashable {}
@@ -30,8 +47,10 @@ extension GoalAwardData {
             emoji: stamp?.label,
             backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.5),
             direction: goal.direction,
+            period: goal.period,
             progress: 1.0,
-            progressColor: UIColor.darkGray
+            progressColor: UIColor.darkGray,
+            isReached: true
         )
     }
     
@@ -54,8 +73,10 @@ extension GoalAwardData {
                     emoji: stamp?.label,
                     backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.5),
                     direction: .positive,
+                    period: goal.period,
                     progress: 1.0,
-                    progressColor: UIColor.darkGray
+                    progressColor: UIColor.darkGray,
+                    isReached: true
                 )
             } else {
                 // Still have some work to do
@@ -64,8 +85,10 @@ extension GoalAwardData {
                     emoji: stamp?.label,
                     backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
                     direction: .positive,
+                    period: goal.period,
                     progress: Float(progress) / Float(goal.limit) + zeroProgressMock,
-                    progressColor: UIColor.positiveGoalNotReached
+                    progressColor: UIColor.positiveGoalNotReached,
+                    isReached: false
                 )
             }
         case .negative:
@@ -76,8 +99,10 @@ extension GoalAwardData {
                     emoji: stamp?.label,
                     backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
                     direction: .negative,
+                    period: goal.period,
                     progress: 0.0,
-                    progressColor: UIColor.clear
+                    progressColor: UIColor.clear,
+                    isReached: false
                 )
             } else {
                 // Still have some room to go
@@ -89,8 +114,10 @@ extension GoalAwardData {
                     emoji: stamp?.label,
                     backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.3),
                     direction: .negative,
+                    period: goal.period,
                     progress: percent,
-                    progressColor: UIColor.negativeGoalNotReached
+                    progressColor: UIColor.negativeGoalNotReached,
+                    isReached: false
                 )
             }
         }

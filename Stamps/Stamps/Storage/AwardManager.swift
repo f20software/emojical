@@ -54,6 +54,7 @@ class AwardManager {
         
         guard var last = lastUpdated else { return }
         while (last.databaseKey < Date().databaseKey) {
+            print("Last week update set \(last.databaseKey)")
             repository.lastWeekUpdate = last
             last = last.byAddingWeek(1)
             recalculateAwardsForWeek(last)
@@ -74,6 +75,7 @@ class AwardManager {
 
         guard var last = lastUpdated else { return }
         while (last.databaseKey < Date().databaseKey) {
+            print("Last month update set \(last.databaseKey)")
             repository.lastMonthUpdate = last
             last = last.lastOfMonth.byAddingMonth(1)
             recalculateAwardsForMonth(last)

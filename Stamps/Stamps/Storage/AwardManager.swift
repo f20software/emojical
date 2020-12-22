@@ -112,7 +112,8 @@ class AwardManager {
         }
             
         // Load existing awards from the database
-        let existingAwards = repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
+        let existingAwards =
+            repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
         // And calculate difference - separate set of awards to be added and set of awards to be deleted
@@ -163,7 +164,8 @@ class AwardManager {
         }
             
         // Load existing awards from the database
-        let existingAwards = repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
+        let existingAwards =
+            repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
         // And calculate difference - separate set of awards to be added and set of awards to be deleted
@@ -212,7 +214,7 @@ class AwardManager {
     }
     
     // Return the date goal is reached or nil of goals is not reached
-    func positiveGoalReachedDate(_ goal: Goal, diary: [Diary]) -> Date? {
+    private func positiveGoalReachedDate(_ goal: Goal, diary: [Diary]) -> Date? {
         var count = 0
         for stamp in diary {
             if goal.stamps.contains(stamp.stampId) {
@@ -227,7 +229,7 @@ class AwardManager {
     }
 
     // Returns true if negative goal is reached or false if it's not
-    func isNegativeGoalReached(_ goal: Goal, diary: [Diary]) -> Bool {
+    private func isNegativeGoalReached(_ goal: Goal, diary: [Diary]) -> Bool {
         var count = 0
         for stamp in diary {
             if goal.stamps.contains(stamp.stampId) {

@@ -82,16 +82,17 @@ class WeeklyAwardsView : UIView {
 
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
+                widthDimension: .absolute(Specs.awardSize),
                 heightDimension: .absolute(Specs.awardSize)
             ),
             subitems: [item]
         )
 
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: Specs.awardStripHorizontalMargin,
-            bottom: 0, trailing: Specs.awardStripHorizontalMargin)
+            top: 0, leading: 0,
+            bottom: 0, trailing: 0)
 
         return UICollectionViewCompositionalLayout(section: section)
     }

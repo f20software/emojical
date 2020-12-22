@@ -63,7 +63,11 @@ class StampSelectorView : UIView {
         // Background view
         backgroundColor = UIColor.systemGray6
         layer.cornerRadius = Specs.plateCornerRadius
-        clipsToBounds = true
+        
+        layer.shadowRadius = Specs.shadowRadius
+        layer.shadowOpacity = Specs.shadowOpacity
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOffset = Specs.shadowOffset
         
         // Collection view for stamps
         configureCollectionView()
@@ -178,4 +182,13 @@ fileprivate struct Specs {
 
     /// Background plate corner radius
     static let plateCornerRadius: CGFloat = 8.0
+
+    /// Shadow radius
+    static let shadowRadius: CGFloat = 15.0
+    
+    /// Shadow opacity
+    static let shadowOpacity: Float = 0.3
+    
+    /// Shadow offset
+    static let shadowOffset = CGSize.zero
 }

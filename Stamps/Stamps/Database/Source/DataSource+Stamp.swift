@@ -12,8 +12,9 @@ import GRDB
 extension DataSource {
 
     // Single stamp object
-    func stampById(_ identifier: Int64) -> Stamp? {
-        return storedStamp(withId: identifier)?.toModel()
+    func stampById(_ identifier: Int64?) -> Stamp? {
+        guard let id = identifier else { return nil }
+        return storedStamp(withId: id)?.toModel()
     }
     
     // Count for specific stamp in Diary table

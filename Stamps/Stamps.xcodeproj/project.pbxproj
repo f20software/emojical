@@ -80,6 +80,8 @@
 		F27B0459241EBDA3006E5175 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
 		F27B045B241EEB48006E5175 /* SelectStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B045A241EEB48006E5175 /* SelectStampCell.swift */; };
 		F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280878C24C6BD00003E864E /* TodayViewController.swift */; };
+		F282B4E32591A856000BC92B /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
+		F282B4E62591A875000BC92B /* DayHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */; };
 		F284F997257EF1720016D1C6 /* TodayAwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F995257EF1720016D1C6 /* TodayAwardCell.swift */; };
 		F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F284F996257EF1720016D1C6 /* TodayAwardCell.xib */; };
 		F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */; };
@@ -962,8 +964,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */,
+				F282B4E32591A856000BC92B /* CalendarHelper.swift in Sources */,
 				F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */,
 				F27B0459241EBDA3006E5175 /* DateExtensions.swift in Sources */,
+				F282B4E62591A875000BC92B /* DayHeaderData.swift in Sources */,
 				F20E403A2443E5BC008759D1 /* UIColorExtensions.swift in Sources */,
 				BCF2300F2473222F001E8844 /* DateTests.swift in Sources */,
 			);
@@ -1125,8 +1129,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KAC999QFLP;
+				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = EmojicalTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1145,8 +1150,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KAC999QFLP;
+				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = EmojicalTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1281,7 +1287,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1302,7 +1308,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

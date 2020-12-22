@@ -47,19 +47,13 @@ protocol DataRepository: class {
     func favoriteStamps() -> [Stamp]
     
     /// Stamp with given ID
-    func stampById(_ id: Int64) -> Stamp?
+    func stampById(_ id: Int64?) -> Stamp?
     
-    /// Retrieve list of weekly awards given for the week with specific start and end dates
+    /// Retrieves list of monthly awards for a given time interval
     func monthlyAwardsForInterval(start: Date, end: Date) -> [Award]
     
-    /// Retrieve list of monthly awards given for the week with specific start and end dates
+    /// Retrieves list of weekly awards for a given time interval
     func weeklyAwardsForInterval(start: Date, end: Date) -> [Award]
-    
-    /// Retrieve list of monthly awards given for the month of input date
-    func monthlyAwardsForMonth(date: Date) -> [Award]
-    
-    /// Retrieve list of weekly awards given for the month of input date
-    func weeklyAwardsForMonth(date: Date) -> [Award]
     
     /// Collect all stamp labels by iterating through Ids stored in the goal object
     func stampLabelsFor(_ goal: Goal) -> [String]

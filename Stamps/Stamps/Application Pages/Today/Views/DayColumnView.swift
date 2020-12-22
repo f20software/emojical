@@ -17,6 +17,10 @@ class DayColumnView : UIView {
     // MARK: - State
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, DayElement>!
+
+    // MARK: - Private references
+    
+    private var tapRecognizer: UITapGestureRecognizer?
     
     // MARK: - Callbacks
     
@@ -75,8 +79,14 @@ class DayColumnView : UIView {
         column.delegate = self
         column.collectionViewLayout = dayColumnLayout()
         column.alwaysBounceVertical = false
-        
         column.backgroundColor = UIColor.clear
+        
+        tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        column.addGestureRecognizer(tapRecognizer!)
+    }
+    
+    @objc private func handleTap(recognizer: UITapGestureRecognizer) {
+        onDayTapped?()
     }
     
     // Creates layout for the day column - vertical list of cells

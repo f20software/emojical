@@ -142,15 +142,15 @@ class TodayPresenter: TodayPresenterProtocol {
         onChange: { [weak self] awards in
             guard let self = self else { return }
 
-            // This will get called only when actual new award is added or removed
-            // Skip first sound, since it will be called once on creation
-            if self.firstTime {
-                self.firstTime = false
-            } else {
-                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            let newAwards = self.dataBuilder.awards(for: self.week)
+            if newAwards.count > self.awards.count {
+                if self.firstTime {
+                    self.firstTime = false
+                } else {
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                }
             }
-
-            self.awards = self.dataBuilder.awards(for: self.week)
+            self.awards = newAwards
             self.loadAwardsData()
         })
         
@@ -255,18 +255,24 @@ class TodayPresenter: TodayPresenterProtocol {
             
         if week.isCurrentWeek {
             data = goals.compactMap({
-                guard let stampId = $0.stamps.first,
-                      let stamp = repository.stampById(stampId) else { return nil }
-                return self.awardManager.goalAwardModel(for: $0, stamp: stamp)
+                let stamp = repository.stampById($0.stamps.first)
+                return GoalAwardData(
+                    goal: $0,
+                    progress: awardManager.currentProgressFor($0),
+                    stamp: stamp
+                )
             })
             // Put goals that are already reached in front
-            data = data.filter({ $0.progress >= 1.0}) + data.filter({ $0.progress < 1.0 })
+            data = data.sorted(by: { return $0 < $1 })
         } else {
             data = awards.compactMap({
-                guard let goal = repository.goalById($0.goalId),
-                    let stampId = goal.stamps.first,
-                    let stamp = repository.stampById(stampId) else { return nil }
-                return self.awardManager.goalAwardModel(for: $0, goal: goal, stamp: stamp)
+                guard let goal = repository.goalById($0.goalId) else { return nil }
+                let stamp = repository.stampById(goal.stamps.first)
+                return GoalAwardData(
+                    award: $0,
+                    goal: goal,
+                    stamp: stamp
+                )
             })
         }
 

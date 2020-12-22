@@ -221,8 +221,11 @@ class TodayViewController: UIViewController, TodayView {
             self.onDayHeaderTapped?(6)
         }
         
+        plusButton.layer.shadowRadius = Specs.shadowRadius
+        plusButton.layer.shadowOpacity = Specs.shadowOpacity
+        plusButton.layer.shadowColor = UIColor.gray.cgColor
+        plusButton.layer.shadowOffset = Specs.shadowOffset
         plusButton.layer.cornerRadius = Specs.miniButtonCornerRadius
-        plusButton.clipsToBounds = true
         plusButton.backgroundColor = UIColor.systemGray6
     }
 }
@@ -259,4 +262,13 @@ fileprivate struct Specs {
     
     /// Bottom buttons (both full and small) margin from the edge
     static let bottomButtonsMargin: CGFloat = 16.0
+
+    /// Shadow radius
+    static let shadowRadius: CGFloat = 8.0
+    
+    /// Shadow opacity
+    static let shadowOpacity: Float = 0.4
+    
+    /// Shadow offset
+    static let shadowOffset = CGSize.zero
 }

@@ -67,45 +67,51 @@ extension Date {
         }
     }
     
-    // Shift date by number of days
+    /// Shifts date by number of days
     func byAddingDays(_ days: Int) -> Date {
         return self.advanced(by: TimeInterval(days * 24 * 60 * 60))
     }
 
-    // Shift date by number of month
+    /// Shifts date by number of months
     func byAddingMonth(_ months: Int) -> Date {
         var comp = DateComponents()
         comp.month = months
         return Calendar.current.date(byAdding: comp, to: self)!
     }
     
-    // Shift date by number of month
+    /// Shifts date by number of weeks
     func byAddingWeek(_ weeks: Int) -> Date {
         var comp = DateComponents()
         comp.day = 7 * weeks
         return Calendar.current.date(byAdding: comp, to: self)!
     }
     
-    // Simple helper property to recognize that date is today
+    /// Simple helper property to recognize that date is today
     var isToday: Bool {
         return self.databaseKey == Date().databaseKey
     }
     
+    /// 
     var isWeekend: Bool {
         let weekday = Calendar.current.component(.weekday, from: self)
         return weekday == 1 || weekday == 7
     }
     
-    var beginningOfMonth: Date {
+    /// Returns first date of the month for the date
+    var firstOfMonth: Date {
         let comps = Calendar.current.dateComponents([.year, .month], from: self)
         return Date(year: comps.year!, month: comps.month!)
     }
 
-    /// Returns first weekday of the week that includes receiver's value.
-    /// Since first day depends on the calendar settings, method requires a calendar instance
-    /// that will be used to calculate actual beginning of the week.
-    func beginningOfWeek(inCalendar calendar: Calendar) -> Date {
-        let comps = Calendar.current.dateComponents([.weekday], from: self)
-        return byAddingDays(calendar.firstWeekday - comps.weekday!)
+    /// Returns last day of the month for the date
+    var lastOfMonth: Date {
+        return firstOfMonth.byAddingMonth(1).byAddingDays(-1)
+    }
+
+    /// Returns last date of the week (Sunday or Saturday) based on CalendarHelper setting and selected month
+    var lastOfWeek: Date {
+        let month = CalendarHelper.Month(self)
+        let dayIndex = month.indexForDay(Calendar.current.component(.day, from: self))
+        return self.byAddingDays(6-dayIndex)
     }
 }

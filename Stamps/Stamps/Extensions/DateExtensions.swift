@@ -96,16 +96,21 @@ extension Date {
         return weekday == 1 || weekday == 7
     }
     
-    var beginningOfMonth: Date {
+    /// Returns first date of the month for the date
+    var firstOfMonth: Date {
         let comps = Calendar.current.dateComponents([.year, .month], from: self)
         return Date(year: comps.year!, month: comps.month!)
     }
 
-    /// Returns first weekday of the week that includes receiver's value.
-    /// Since first day depends on the calendar settings, method requires a calendar instance
-    /// that will be used to calculate actual beginning of the week.
-    func beginningOfWeek(inCalendar calendar: Calendar) -> Date {
-        let comps = Calendar.current.dateComponents([.weekday], from: self)
-        return byAddingDays(calendar.firstWeekday - comps.weekday!)
+    /// Returns last day of the month for the date
+    var lastOfMonth: Date {
+        return firstOfMonth.byAddingMonth(1).byAddingDays(-1)
+    }
+
+    /// Returns last date of the week (Sunday or Saturday) based on CalendarHelper setting and selected month
+    var lastOfWeek: Date {
+        let month = CalendarHelper.Month(self)
+        let dayIndex = month.indexForDay(Calendar.current.component(.day, from: self))
+        return self.byAddingDays(6-dayIndex)
     }
 }

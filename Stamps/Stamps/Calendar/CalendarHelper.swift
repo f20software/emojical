@@ -29,20 +29,6 @@ class CalendarHelper {
             calendar.firstWeekday = 2
         }
     }
-    
-    // Returns date of the end of week (Sunday or Saturday) based on
-    // CalendarHelper setting and selected month
-    func endOfWeek(date: Date) -> Date {
-        let month = Month(date)
-        let dayIndex = month.indexForDay(Calendar.current.component(.day, from: date))
-        return date.byAddingDays(6-dayIndex)
-    }
-    
-    // Returns date of the end of the month
-    func endOfMonth(date: Date) -> Date {
-        let month = Month(date)
-        return Date(year: month.year, month: month.month, day: month.numberOfDays)
-    }
 }
 
 extension CalendarHelper {
@@ -134,8 +120,7 @@ extension CalendarHelper {
             return df.string(from: Date(year: year, month: month))
         }
 
-        // Returns index specific month days fall into (used in AwardManager
-        // to detect week that day falls into)
+        /// Returns index specific month days fall into (used in AwardManager to detect week that day falls into)
         func indexForDay(_ day: Int) -> Int {
             return (day % 7 + firstIndex + 6) % 7
         }

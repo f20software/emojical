@@ -111,48 +111,24 @@ extension DataSource {
         updateStatsForGoals(ids)
     }
     
-    // Retrieve list of monthly awards given for the month of input date
-    func monthlyAwardsForMonth(date: Date) -> [Award] {
-        let endOfMonth = CalendarHelper.shared.endOfMonth(date: date)
-        let startOfMonth = CalendarHelper.shared.endOfMonth(date: endOfMonth.byAddingMonth(-1)).byAddingDays(1)
-        
-        // Load monthly goals so we can filter awards by their Ids
-        let monthlyGoalIds = goalsByPeriod(.month).map({ $0.id! })
-        let awards = awardsForDateInterval(from: startOfMonth, to: endOfMonth)
-            .filter({ monthlyGoalIds .contains( $0.goalId )})
-
-        return awards
-    }
-
-    // Retrieve list of weekly awards given for the month of input date
-    func weeklyAwardsForMonth(date: Date) -> [Award] {
-        let endOfMonth = CalendarHelper.shared.endOfMonth(date: date)
-        let startOfMonth = CalendarHelper.shared.endOfMonth(date: endOfMonth.byAddingMonth(-1)).byAddingDays(1)
-        
-        // Load monthly goals so we can filter awards by their Ids
-        let weeklyGoalIds = goalsByPeriod(.week).map({ $0.id! })
-        let awards = awardsForDateInterval(from: startOfMonth, to: endOfMonth)
-            .filter({ weeklyGoalIds.contains( $0.goalId )})
-
-        return awards
-    }
-
-    // Retrieve list of monthly awards given for given week.
+    /// Retrieves list of monthly awards for a given time interval
     func monthlyAwardsForInterval(start: Date, end: Date) -> [Award] {
-        // Load monthly goals so we can filter awards by their Ids
-        let monthlyGoalIds = goalsByPeriod(.month).map({ $0.id! })
-        let awards = awardsForDateInterval(from: start, to: end)
-            .filter({ monthlyGoalIds.contains( $0.goalId )})
-        return awards
+        return awardsOf(period: .month, from: start, to: end)
     }
     
-    // Retrieve list of weekly awards given for the week with specific end date
+    /// Retrieves list of weekly awards for a given time interval
     func weeklyAwardsForInterval(start: Date, end: Date) -> [Award] {
+        return awardsOf(period: .week, from: start, to: end)
+    }
+    
+    /// Retrieves list awards for specific period for a given time interval
+    private func awardsOf(period: Period, from start: Date, to end: Date) -> [Award] {
         // Load weekly goals so we can filter awards by their Ids
-        let weeklyGoalIds = goalsByPeriod(.week).map({ $0.id! })
-        let awards = awardsForDateInterval(from: start, to: end)
-            .filter({ weeklyGoalIds.contains( $0.goalId )})
-        return awards
+        let goalIds = goalsByPeriod(period).compactMap({ $0.id })
+        return awardsForDateInterval(
+            from: start,
+            to: end
+        ).filter({ goalIds.contains( $0.goalId )})
     }
     
     // Get color for an award. Currently we just check the goal this award was given for

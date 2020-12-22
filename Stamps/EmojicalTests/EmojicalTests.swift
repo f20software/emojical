@@ -14,8 +14,7 @@ class EmojicalTests: XCTestCase {
     override func setUp() {
         // Default setting is for week from Monday to Sunday
         if CalendarHelper.shared == nil {
-            CalendarHelper.shared = CalendarHelper(from: Date(year: 2020, month: 1, day: 20),
-                                               to: Date(year: 2020, month: 10, day: 20))
+            CalendarHelper.shared = CalendarHelper()
         }
         CalendarHelper.weekStartMonday = true
     }
@@ -34,9 +33,9 @@ class EmojicalTests: XCTestCase {
         ]
 
         for date in testData.keys {
-            XCTAssertEqual(CalendarHelper.shared.endOfMonth(date: date).databaseKey, testData[date]![0])
+            XCTAssertEqual(date.lastOfMonth.databaseKey, testData[date]![0])
             let prev = date.byAddingMonth(-1)
-            XCTAssertEqual(CalendarHelper.shared.endOfMonth(date: prev).databaseKey, testData[date]![1])
+            XCTAssertEqual(prev.lastOfMonth.databaseKey, testData[date]![1])
         }
     }
 
@@ -49,17 +48,24 @@ class EmojicalTests: XCTestCase {
             Date(year: 2020, month: 3, day: 1): ["2020-03-01", "2020-03-01", "2020-03-31"],
             Date(year: 2020, month: 3, day: 15): ["2020-03-15", "2020-03-15", "2020-03-31"],
             Date(year: 2020, month: 3, day: 31): ["2020-03-31", "2020-04-05", "2020-03-31"],
+            Date(year: 2020, month: 9, day: 29): ["2020-09-29", "2020-10-04", "2020-09-30"],
+            Date(year: 2020, month: 8, day: 25): ["2020-08-25", "2020-08-30", "2020-08-31"],
+            Date(year: 2020, month: 8, day: 1): ["2020-08-01", "2020-08-02", "2020-08-31"],
+            Date(year: 2020, month: 6, day: 30): ["2020-06-30", "2020-07-05", "2020-06-30"],
+            Date(year: 2020, month: 5, day: 25): ["2020-05-25", "2020-05-31", "2020-05-31"],
+            Date(year: 2020, month: 4, day: 30): ["2020-04-30", "2020-05-03", "2020-04-30"],
         ]
 
         for date in testData.keys {
             XCTAssertEqual(date.databaseKey, testData[date]![0])
-            XCTAssertEqual(CalendarHelper.shared.endOfWeek(date: date).databaseKey, testData[date]![1])
-            XCTAssertEqual(CalendarHelper.shared.endOfMonth(date: date).databaseKey, testData[date]![2])
+            XCTAssertEqual(date.lastOfWeek.databaseKey, testData[date]![1])
+            XCTAssertEqual(date.lastOfMonth.databaseKey, testData[date]![2])
         }
     }
 
     func testCalendarHelperSaturday() {
         CalendarHelper.weekStartMonday = false
+        
         // Date: databaseKey, end of week, end of month
         let testData: [Date: [String]] = [
             Date(year: 2020, month: 2, day: 12): ["2020-02-12", "2020-02-15", "2020-02-29"],
@@ -68,54 +74,18 @@ class EmojicalTests: XCTestCase {
             Date(year: 2020, month: 3, day: 1): ["2020-03-01", "2020-03-07", "2020-03-31"],
             Date(year: 2020, month: 3, day: 15): ["2020-03-15", "2020-03-21", "2020-03-31"],
             Date(year: 2020, month: 3, day: 31): ["2020-03-31", "2020-04-04", "2020-03-31"],
+            Date(year: 2020, month: 9, day: 29): ["2020-09-29", "2020-10-03", "2020-09-30"],
+            Date(year: 2020, month: 8, day: 25): ["2020-08-25", "2020-08-29", "2020-08-31"],
+            Date(year: 2020, month: 8, day: 1): ["2020-08-01", "2020-08-01", "2020-08-31"],
+            Date(year: 2020, month: 6, day: 30): ["2020-06-30", "2020-07-04", "2020-06-30"],
+            Date(year: 2020, month: 5, day: 25): ["2020-05-25", "2020-05-30", "2020-05-31"],
+            Date(year: 2020, month: 4, day: 30): ["2020-04-30", "2020-05-02", "2020-04-30"],
         ]
 
         for date in testData.keys {
             XCTAssertEqual(date.databaseKey, testData[date]![0])
-            XCTAssertEqual(CalendarHelper.shared.endOfWeek(date: date).databaseKey, testData[date]![1])
-            XCTAssertEqual(CalendarHelper.shared.endOfMonth(date: date).databaseKey, testData[date]![2])
+            XCTAssertEqual(date.lastOfWeek.databaseKey, testData[date]![1])
+            XCTAssertEqual(date.lastOfMonth.databaseKey, testData[date]![2])
         }
     }
-    
-    func testIndexFromDay() {
-        var date = Date(year: 2020, month: 1, day: 1)
-        let res = CalendarHelper.shared.indexForDay(date: date)
-        var weekIdx = res!.0.row
-        var dayIdx = res!.1
-
-        /// Going through all 2020 year and comparing day and week index to what it shoud be
-        /// if we will increment them one by one
-        for _ in 0...1000 {
-            let oldMonth = Calendar.current.component(.month, from: date)
-            date = date.byAddingDays(1)
-            let newMonth = Calendar.current.component(.month, from: date)
-            
-            if newMonth == oldMonth {
-                dayIdx = dayIdx + 1
-                if dayIdx == 7 {
-                    dayIdx = 0
-                    weekIdx = weekIdx + 1
-                }
-            }
-            else {
-                dayIdx = dayIdx + 1
-                if dayIdx == 7 {
-                    dayIdx = 0
-                }
-                weekIdx = 1
-            }
-            
-            let test = CalendarHelper.shared.indexForDay(date: date)
-            XCTAssert(test!.0.row == weekIdx, "Week index failed for \(date)")
-            XCTAssert(test!.1 == dayIdx, "Day index failed for \(date)")
-        }
-    }
-
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
-
 }

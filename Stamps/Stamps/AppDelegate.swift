@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         // Initiate notification engine
         NotificationManager.shared.requestAuthorization()
-        
         UNUserNotificationCenter.current().delegate = self
         
         UIView.appearance().tintColor = UIColor.appTintColor

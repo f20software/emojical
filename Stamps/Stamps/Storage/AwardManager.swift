@@ -42,23 +42,21 @@ class AwardManager {
     
     // Recalculate weekly goals and update last-week-update parameter in the database
     private func recalculateWeeklyGoals() {
+
         // When was the last weekly goals recalculated?
         var lastUpdated = repository.lastWeekUpdate
         if lastUpdated == nil {
-            var firstEntryDate = repository.getFirstDiaryDate()
-            if firstEntryDate == nil {
-                firstEntryDate = Date()
-            }
+            let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
 
             // This wil be either last Sunday before first entry or last Sunday before today
-            lastUpdated = CalendarHelper.shared.endOfWeek(date: firstEntryDate!).byAddingDays(-7)
+            lastUpdated = firstEntryDate.lastOfWeek.byAddingWeek(-1)
         }
         
-        // TODO: Date comparision! - review how it works with only date components
-        while (lastUpdated! < Date()) {
-            repository.lastWeekUpdate = lastUpdated
-            lastUpdated = lastUpdated!.byAddingDays(7)
-            recalculateAwardsForWeek(lastUpdated!)
+        guard var last = lastUpdated else { return }
+        while (last.databaseKey < Date().databaseKey) {
+            repository.lastWeekUpdate = last
+            last = last.byAddingWeek(1)
+            recalculateAwardsForWeek(last)
         }
     }
     
@@ -67,20 +65,18 @@ class AwardManager {
         // When was the last weekly goals recalculated?
         var lastUpdated = repository.lastMonthUpdate
         if lastUpdated == nil {
-            var firstEntryDate = repository.getFirstDiaryDate()
-            if firstEntryDate == nil {
-                firstEntryDate = Date()
-            }
+            let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
 
-            // This wil be last day of the previous month or last day of month just before first diary entry
-            lastUpdated = CalendarHelper.shared.endOfMonth(date: firstEntryDate!.byAddingMonth(-1))
+            // This wil be last day of the previous month or last day of month
+            // just before first diary entry
+            lastUpdated = firstEntryDate.lastOfMonth.byAddingMonth(-1)
         }
-        
-        // TODO: Date comparision! - review how it works with only date components
-        while (lastUpdated! < Date()) {
-            repository.lastMonthUpdate = lastUpdated
-            lastUpdated = CalendarHelper.shared.endOfMonth(date: lastUpdated!.byAddingMonth(1))
-            recalculateAwardsForMonth(lastUpdated!)
+
+        guard var last = lastUpdated else { return }
+        while (last.databaseKey < Date().databaseKey) {
+            repository.lastMonthUpdate = last
+            last = last.lastOfMonth.byAddingMonth(1)
+            recalculateAwardsForMonth(last)
         }
     }
 
@@ -91,8 +87,8 @@ class AwardManager {
         
         print("Recalculating monthly awards for \(date.databaseKey)")
 
-        let end = CalendarHelper.shared.endOfMonth(date: date)
-        let start = date.beginningOfMonth
+        let end = date.lastOfMonth
+        let start = date.firstOfMonth
         let past = end.databaseKey < Date().databaseKey
 
         // Save off array of Ids so we can easily filter existing awards by only
@@ -142,7 +138,7 @@ class AwardManager {
 
         print("Recalculating weekly awards for \(date.databaseKey)")
 
-        let end = CalendarHelper.shared.endOfWeek(date: date)
+        let end = date.lastOfWeek
         let start = end.byAddingDays(-6)
         let past = end.databaseKey < Date().databaseKey
 
@@ -191,13 +187,14 @@ class AwardManager {
 
         var start, end: Date!
         if goal.period == .week {
-            end = CalendarHelper.shared.endOfWeek(date: Date())
+            let today = Date()
+            end = today.lastOfWeek
             start = end.byAddingDays(-6)
         }
         else { /* if goal.period == .month */
             let today = Date()
-            end = CalendarHelper.shared.endOfMonth(date: today)
-            start = today.beginningOfMonth
+            end = today.lastOfMonth
+            start = today.firstOfMonth
         }
         
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)

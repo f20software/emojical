@@ -67,30 +67,31 @@ extension Date {
         }
     }
     
-    // Shift date by number of days
+    /// Shifts date by number of days
     func byAddingDays(_ days: Int) -> Date {
         return self.advanced(by: TimeInterval(days * 24 * 60 * 60))
     }
 
-    // Shift date by number of month
+    /// Shifts date by number of months
     func byAddingMonth(_ months: Int) -> Date {
         var comp = DateComponents()
         comp.month = months
         return Calendar.current.date(byAdding: comp, to: self)!
     }
     
-    // Shift date by number of month
+    /// Shifts date by number of weeks
     func byAddingWeek(_ weeks: Int) -> Date {
         var comp = DateComponents()
         comp.day = 7 * weeks
         return Calendar.current.date(byAdding: comp, to: self)!
     }
     
-    // Simple helper property to recognize that date is today
+    /// Simple helper property to recognize that date is today
     var isToday: Bool {
         return self.databaseKey == Date().databaseKey
     }
     
+    /// 
     var isWeekend: Bool {
         let weekday = Calendar.current.component(.weekday, from: self)
         return weekday == 1 || weekday == 7

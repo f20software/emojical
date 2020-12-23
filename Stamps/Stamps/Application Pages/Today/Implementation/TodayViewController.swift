@@ -12,11 +12,17 @@ import AudioToolbox
 class TodayViewController: UIViewController, TodayView {
 
     // MARK: - Outlets
-    
+
+    /// List of awards / goals on the top of the view
     @IBOutlet weak var awards: WeeklyAwardsView!
-    // Used to hide awards list if there are no goals defined
+
+    /// Constraint to hide awards list if there are no goals defined
     @IBOutlet weak var separatorTopConstraint: NSLayoutConstraint!
 
+    /// Days header view
+    @IBOutlet weak var daysHeader: DaysHeaderView!
+
+    /// Selected day indicator above day header view
     @IBOutlet weak var selectedDayIndicator: UIView!
     @IBOutlet weak var selectedDayIndicatorLeading: NSLayoutConstraint!
 
@@ -115,14 +121,18 @@ class TodayViewController: UIViewController, TodayView {
     }
 
     /// Loads stamps and header data into day columns
-    func loadDaysData(data: [DayColumnData]) {
-        guard data.count == 7 else { return }
+    func loadDaysData(header: [DayHeaderData], daysData: [[StickerData]]) {
+        guard daysData.count == 7,
+              header.count == 7 else { return }
+        
         let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
         
         // Mapping 7 data objects to 7 day views
-        for (day, view) in zip(data, dayViews) {
+        for (day, view) in zip(daysData, dayViews) {
             view.loadData(data: day)
         }
+        
+        daysHeader.loadData(data: header)
     }
 
     /// Loads awards data
@@ -198,6 +208,9 @@ class TodayViewController: UIViewController, TodayView {
         }
         stampSelector.onNewStickerTapped = { () in
             self.onNewStickerTapped?()
+        }
+        daysHeader.onDayTapped = { (index) in
+            self.onDayHeaderTapped?(index)
         }
         day0.onDayTapped = { () in
             self.onDayHeaderTapped?(0)

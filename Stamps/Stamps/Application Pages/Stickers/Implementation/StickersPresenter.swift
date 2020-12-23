@@ -25,7 +25,7 @@ class StickersPresenter: StickersPresenterProtocol {
     // MARK: - State
 
     // View model data for all stamps
-    private var stampsData: [DayStampData] = []
+    private var stampsData: [StickerData] = []
     
     // View model data for all goals
     private var goalsData: [GoalData] = []
@@ -104,7 +104,7 @@ class StickersPresenter: StickersPresenterProtocol {
     
     private func loadViewData() {
         let newStampsData = repository.allStamps().map({
-            DayStampData(
+            StickerData(
                 stampId: $0.id,
                 label: $0.label,
                 color: $0.color,

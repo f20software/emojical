@@ -27,7 +27,7 @@ class StickerCell: UICollectionViewCell {
     
     // MARK: - Public view interface
 
-    func configure(for data: DayStampData) {
+    func configure(for data: StickerData) {
         sticker.color = data.color
         sticker.text = data.label
         tag = Int(data.stampId ?? 0)

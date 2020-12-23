@@ -48,12 +48,17 @@ class StampSelectorView : UIView {
         // center them inside selector view.
         // Otherwise make width to [stampsPerRow] elements, and number of row to 2
         // Will have to improve when more then 10 stamps are supported
-        let rows = ((data.count - 1) / Specs.stampsPerRow) + 1
-        heightConstraint.constant = Specs.stampSize * CGFloat(rows)
+        let rows = ((data.count - 1) / Specs.stickersPerRow) + 1
+        
+        let cellSize = Specs.stickerSize
+        let gap = Specs.stickerMargin
+        
+        heightConstraint.constant = (cellSize + gap) * CGFloat(rows) - gap
+        
         if rows == 1 {
-            widthConstraint.constant = Specs.stampSize * CGFloat(data.count)
+            widthConstraint.constant = (cellSize + gap) * CGFloat(data.count)
         } else {
-            widthConstraint.constant = Specs.stampSize * CGFloat(Specs.stampsPerRow)
+            widthConstraint.constant = (cellSize + gap) * CGFloat(Specs.stickersPerRow)
         }
     }
     
@@ -105,20 +110,23 @@ class StampSelectorView : UIView {
     private func stampsSelectorLayout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .absolute(Specs.stampSize),
-                heightDimension: .absolute(Specs.stampSize)
+                widthDimension: .absolute(Specs.stickerSize),
+                heightDimension: .absolute(Specs.stickerSize)
             )
         )
 
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(Specs.stampSize)
+                heightDimension: .absolute(Specs.stickerSize)
             ),
             subitems: [item]
         )
+        group.interItemSpacing = .fixed(Specs.stickerMargin)
 
         let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = Specs.stickerMargin
+        
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
@@ -144,15 +152,13 @@ extension StampSelectorView: UICollectionViewDelegate {
                 withReuseIdentifier: Specs.Cells.stamp, for: path
             ) as? DayStampCell else { return UICollectionViewCell() }
             
-            cell.configure(for: data, insets: Specs.stampInsets)
+            cell.configure(for: data, sizeDelta: Specs.stickerSelectionGap * 2)
             return cell
             
         case .newStamp:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.newSticker, for: path
             ) as? NewStickerCell else { return UICollectionViewCell() }
-            
-            // cell.configure(for: model, insets: Specs.stampInsets)
             return cell
         }
     }
@@ -172,13 +178,16 @@ fileprivate struct Specs {
     }
     
     /// Stamp cell size
-    static let stampSize: CGFloat = 60.0
+    static let stickerSize: CGFloat = 50.0
     
-    /// Stamp row size
-    static let stampsPerRow = 5
+    /// Stickers row size
+    static let stickersPerRow = 5
     
-    /// Actual stamp insets inside the stamp cell
-    static let stampInsets = UIEdgeInsets(top: 6.0, left: 6.0, bottom: 6.0, right: 6.0)
+    /// Margins between stickers
+    static let stickerMargin: CGFloat = 6.0
+
+    /// Gap between sticker and selection border
+    static let stickerSelectionGap: CGFloat = 3.0
 
     /// Background plate corner radius
     static let plateCornerRadius: CGFloat = 8.0

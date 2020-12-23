@@ -91,7 +91,7 @@ class StickersViewController: UIViewController, StickersView {
     var onNewStickerTapped: (() -> Void)?
 
     /// Load data
-    func loadData(stickers: [DayStampData], goals: [GoalData]) {
+    func loadData(stickers: [StickerData], goals: [GoalData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
         snapshot.appendSections([0])
         snapshot.appendItems(stickers.map({ StickersElement.sticker($0) }))

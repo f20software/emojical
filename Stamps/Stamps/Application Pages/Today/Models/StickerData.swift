@@ -1,5 +1,5 @@
 //
-//  DayStampData.swift
+//  StickerData.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/06/2020.
@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-struct DayStampData {
+struct StickerData {
     let stampId: Int64?
     let label: String
     let color: UIColor
     let isUsed: Bool
 }
 
-extension DayStampData: Equatable, Hashable {}
+extension StickerData: Equatable, Hashable {}

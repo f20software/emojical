@@ -9,6 +9,7 @@
 import Foundation
 
 enum SelectorState: Hashable {
+    
     /// Nothing is visible - user cannot add stamps
     case hidden
     

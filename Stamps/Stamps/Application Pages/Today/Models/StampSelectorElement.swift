@@ -9,6 +9,6 @@
 import Foundation
 
 enum StampSelectorElement: Hashable {
-    case stamp(DayStampData)
+    case stamp(StickerData)
     case newStamp
 }

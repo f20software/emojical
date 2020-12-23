@@ -13,16 +13,14 @@ class DayStampCell: UICollectionViewCell {
     // MARK: - Outlets
 
     @IBOutlet weak var sticker: StickerView!
-    @IBOutlet weak var topMargin: NSLayoutConstraint!
-    @IBOutlet weak var bottomMargin: NSLayoutConstraint!
-    @IBOutlet weak var leftMargin: NSLayoutConstraint!
-    @IBOutlet weak var rightMargin: NSLayoutConstraint!
+    @IBOutlet weak var stickerAndSelectionSizeDelta: NSLayoutConstraint!
     @IBOutlet weak var selectionView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         setupViews()
-        // self.backgroundColor = UIColor.red
+        
+        backgroundColor = UIColor.clear
     }
     
     override func prepareForReuse() {
@@ -34,10 +32,9 @@ class DayStampCell: UICollectionViewCell {
     
     // MARK: - Public view interface
     
-    func configure(for data: DayStampData, insets: UIEdgeInsets) {
+    func configure(for data: StickerData, sizeDelta: CGFloat) {
         sticker.text = data.label
         sticker.color = data.color
-        // sticker.isEnabled = data.isEnabled
         tag = Int(data.stampId ?? 0)
         
         if data.isUsed {
@@ -47,17 +44,25 @@ class DayStampCell: UICollectionViewCell {
             selectionView.isHidden = true
         }
         
-        // Sticker insets
-        topMargin.constant = insets.top
-        bottomMargin.constant = insets.bottom
-        leftMargin.constant = insets.left
-        rightMargin.constant = insets.right
+        // Sticker size delta constraint
+        stickerAndSelectionSizeDelta.constant = sizeDelta
     }
     
     // MARK: - Private helpers
     
     func setupViews() {
-        selectionView.layer.cornerRadius = 12.0
-        selectionView.layer.borderWidth = 2.0
+        selectionView.layer.cornerRadius = Specs.selectionCornerRadius
+        selectionView.layer.borderWidth = Specs.selectionBorderWidth
     }
+}
+
+// MARK: - Specs
+
+fileprivate struct Specs {
+    
+    /// Selection corner radius
+    static let selectionCornerRadius: CGFloat = 12.0
+
+    /// Selection border thickness
+    static let selectionBorderWidth: CGFloat = 2.0
 }

@@ -23,20 +23,17 @@ class CalendarDataBuilder {
     // MARK: - Today View data building
     
     /// Build data model for the single week for Today view
-    func weekDataModel(for week: CalendarHelper.Week) -> [DayColumnData] {
-        let labels = week.dayHeadersForWeek()
-        let stickers = weekStickers(week: week).map { $0.map {
-            DayStampData(
+    func weekDataModel(for week: CalendarHelper.Week) -> [[StickerData]] {
+        return weekStickers(week: week).map { $0.map {
+            StickerData(
                 stampId: $0.id,
                 label: $0.label,
                 color: $0.color,
                 isUsed: false
             )
         }}
-
-        return zip(labels, stickers).map({ return DayColumnData(header: $0, stamps: $1) })
     }
-    
+
     /// Retrieve monthly and weeky awards for the week
     func awards(for week: CalendarHelper.Week) -> [Award] {
         return monthAwards(forWeek: week) + weekAwards(forWeek: week)

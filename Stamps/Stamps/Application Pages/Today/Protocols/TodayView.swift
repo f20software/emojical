@@ -48,7 +48,7 @@ protocol TodayView: AnyObject {
     func setSelectedDay(to index: Int)
     
     /// Loads stamps and header data into day columns
-    func loadDaysData(data: [DayColumnData])
+    func loadDaysData(header: [DayHeaderData], daysData: [[StickerData]])
     
     /// Loads stamps into stamp selector
     func loadStampSelectorData(data: [StampSelectorElement])

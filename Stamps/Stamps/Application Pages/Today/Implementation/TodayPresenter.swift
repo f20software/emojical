@@ -32,11 +32,14 @@ class TodayPresenter: TodayPresenterProtocol {
     // All available stamps (to be shown in stamp selector)
     private var allStamps: [Stamp] = []
     
-    // Stamps and data headers for the whole week
-    private var model: [DayColumnData] = []
+    // Date header data for the week
+    private var weekHeader: [DayHeaderData] = []
+    
+    // Days stickers data for the week
+    private var dailyStickers: [[StickerData]] = []
 
     // Current stamps selected for the day
-    private var currentStamps = [Int64]()
+    private var selectedDayStickers = [Int64]()
     
     // Current awards
     private var awards = [Award]()
@@ -48,7 +51,8 @@ class TodayPresenter: TodayPresenterProtocol {
     private var week = CalendarHelper.Week(Date()) {
         didSet {
             // Load data model from the repository
-            model = dataBuilder.weekDataModel(for: week)
+            weekHeader = week.dayHeadersForWeek()
+            dailyStickers = dataBuilder.weekDataModel(for: week)
             awards = dataBuilder.awards(for: week)
             
             if week.isCurrentWeek {
@@ -67,7 +71,7 @@ class TodayPresenter: TodayPresenterProtocol {
             locked = untilToday < -Specs.editingBackDays || untilToday > Specs.editingForwardDays
 
             // Update current day stamps from the repository
-            currentStamps = repository.stampsIdsForDay(selectedDay)
+            selectedDayStickers = repository.stampsIdsForDay(selectedDay)
         }
     }
 
@@ -170,7 +174,7 @@ class TodayPresenter: TodayPresenterProtocol {
         selectedDay = Date()
         week = CalendarHelper.Week(selectedDay)
         let key = selectedDay.databaseKey
-        selectedDayIndex = model.firstIndex(where: { $0.header.date.databaseKey == key }) ?? 0
+        selectedDayIndex = weekHeader.firstIndex(where: { $0.date.databaseKey == key }) ?? 0
         
         setupView()
     }
@@ -221,7 +225,7 @@ class TodayPresenter: TodayPresenterProtocol {
         loadAwardsData()
         
         // Column data
-        view?.loadDaysData(data: model)
+        view?.loadDaysData(header: weekHeader, daysData: dailyStickers)
         
         // Stamp selector data
         loadStampSelectorData()
@@ -234,11 +238,11 @@ class TodayPresenter: TodayPresenterProtocol {
         var data: [StampSelectorElement] = allStamps.compactMap({
             guard let id = $0.id else { return nil }
             return StampSelectorElement.stamp(
-                DayStampData(
+                StickerData(
                     stampId: id,
                     label: $0.label,
                     color: $0.color,
-                    isUsed: currentStamps.contains(id)
+                    isUsed: selectedDayStickers.contains(id)
                 )
             )
         })
@@ -286,27 +290,28 @@ class TodayPresenter: TodayPresenterProtocol {
             return
         }
         
-        if currentStamps.contains(stampId) {
-            currentStamps.removeAll { $0 == stampId }
+        if selectedDayStickers.contains(stampId) {
+            selectedDayStickers.removeAll { $0 == stampId }
         } else {
-            currentStamps.append(stampId)
+            selectedDayStickers.append(stampId)
         }
         
         // Update repository with stamps for today
-        repository.setStampsForDay(selectedDay, stamps: currentStamps)
+        repository.setStampsForDay(selectedDay, stamps: selectedDayStickers)
         
         // Recalculate awards
         awardManager.recalculateAwards(selectedDay)
         
         // Reload the model and update the view
-        model = dataBuilder.weekDataModel(for: week)
+        weekHeader = week.dayHeadersForWeek()
+        dailyStickers = dataBuilder.weekDataModel(for: week)
         loadViewData()
     }
     
     // Moving day within selected week
     private func selectDay(with index: Int) {
         selectedDayIndex = index
-        selectedDay = model[index].header.date
+        selectedDay = weekHeader[index].date
 
         // Update view
         loadStampSelectorData()
@@ -330,7 +335,7 @@ class TodayPresenter: TodayPresenterProtocol {
         if week.isCurrentWeek {
             selectedDay = Date()
             let key = selectedDay.databaseKey
-            selectedDayIndex = model.firstIndex(where: { $0.header.date.databaseKey == key }) ?? 0
+            selectedDayIndex = weekHeader.firstIndex(where: { $0.date.databaseKey == key }) ?? 0
         }
         
         // Update view

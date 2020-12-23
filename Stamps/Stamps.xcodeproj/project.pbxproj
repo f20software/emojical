@@ -82,6 +82,7 @@
 		F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280878C24C6BD00003E864E /* TodayViewController.swift */; };
 		F282B4E32591A856000BC92B /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F282B4E62591A875000BC92B /* DayHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */; };
+		F282B4FA25928FB9000BC92B /* DaysHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282B4F925928FB9000BC92B /* DaysHeaderView.swift */; };
 		F284F997257EF1720016D1C6 /* TodayAwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F995257EF1720016D1C6 /* TodayAwardCell.swift */; };
 		F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F284F996257EF1720016D1C6 /* TodayAwardCell.xib */; };
 		F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */; };
@@ -137,10 +138,8 @@
 		F2F3BE25257D353D00A926E9 /* DayStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE23257D353D00A926E9 /* DayStampCell.swift */; };
 		F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F3BE24257D353D00A926E9 /* DayStampCell.xib */; };
 		F2F3BE3E257D489D00A926E9 /* DayHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */; };
-		F2F3BE3F257D489D00A926E9 /* DayElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3D257D489D00A926E9 /* DayElement.swift */; };
-		F2F3BE4A257D492300A926E9 /* DayColumnData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE49257D492300A926E9 /* DayColumnData.swift */; };
 		F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */; };
-		F2F3BE61257D8C9800A926E9 /* DayStampData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE60257D8C9800A926E9 /* DayStampData.swift */; };
+		F2F3BE61257D8C9800A926E9 /* StickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE60257D8C9800A926E9 /* StickerData.swift */; };
 		F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE64257DD25800A926E9 /* TodayView.swift */; };
 		F2F3BE67257DD25800A926E9 /* TodayPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE65257DD25800A926E9 /* TodayPresenterProtocol.swift */; };
 		F2F3BE77257DD2F300A926E9 /* TodayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE76257DD2F300A926E9 /* TodayPresenter.swift */; };
@@ -240,6 +239,7 @@
 		F27B0452241EBD7A006E5175 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F27B045A241EEB48006E5175 /* SelectStampCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStampCell.swift; sourceTree = "<group>"; };
 		F280878C24C6BD00003E864E /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		F282B4F925928FB9000BC92B /* DaysHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysHeaderView.swift; sourceTree = "<group>"; };
 		F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyAwardsView.swift; sourceTree = "<group>"; };
 		F284F995257EF1720016D1C6 /* TodayAwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAwardCell.swift; sourceTree = "<group>"; };
 		F284F996257EF1720016D1C6 /* TodayAwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayAwardCell.xib; sourceTree = "<group>"; };
@@ -296,10 +296,8 @@
 		F2F3BE23257D353D00A926E9 /* DayStampCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStampCell.swift; sourceTree = "<group>"; };
 		F2F3BE24257D353D00A926E9 /* DayStampCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayStampCell.xib; sourceTree = "<group>"; };
 		F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHeaderData.swift; sourceTree = "<group>"; };
-		F2F3BE3D257D489D00A926E9 /* DayElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayElement.swift; sourceTree = "<group>"; };
-		F2F3BE49257D492300A926E9 /* DayColumnData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayColumnData.swift; sourceTree = "<group>"; };
 		F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSelectorView.swift; sourceTree = "<group>"; };
-		F2F3BE60257D8C9800A926E9 /* DayStampData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayStampData.swift; sourceTree = "<group>"; };
+		F2F3BE60257D8C9800A926E9 /* StickerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerData.swift; sourceTree = "<group>"; };
 		F2F3BE64257DD25800A926E9 /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		F2F3BE65257DD25800A926E9 /* TodayPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2F3BE76257DD2F300A926E9 /* TodayPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPresenter.swift; sourceTree = "<group>"; };
@@ -745,11 +743,9 @@
 		F2F3BE44257D48F900A926E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F2F3BE3D257D489D00A926E9 /* DayElement.swift */,
 				F23CF43C25840EBF0048BA74 /* StampSelectorElement.swift */,
 				F284F9C22580620D0016D1C6 /* SelectorState.swift */,
-				F2F3BE49257D492300A926E9 /* DayColumnData.swift */,
-				F2F3BE60257D8C9800A926E9 /* DayStampData.swift */,
+				F2F3BE60257D8C9800A926E9 /* StickerData.swift */,
 				F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */,
 				F284F9AC257EFA8E0016D1C6 /* GoalAwardData.swift */,
 			);
@@ -760,6 +756,7 @@
 			isa = PBXGroup;
 			children = (
 				F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */,
+				F282B4F925928FB9000BC92B /* DaysHeaderView.swift */,
 				F2F3BE17257C267900A926E9 /* DayColumnView.swift */,
 				F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */,
 			);
@@ -1037,13 +1034,13 @@
 				BC1E1EFD246C59B000E05C8A /* Storage.swift in Sources */,
 				BC5643F7246B10B500942066 /* Diary.swift in Sources */,
 				F2B7D3652454DB0C00C94E63 /* DTTableViewColorCell.swift in Sources */,
+				F282B4FA25928FB9000BC92B /* DaysHeaderView.swift in Sources */,
 				F2A93F91258128E5006C88F8 /* StatsPresenter.swift in Sources */,
 				F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
-				F2F3BE3F257D489D00A926E9 /* DayElement.swift in Sources */,
 				F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */,
 				F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */,
-				F2F3BE61257D8C9800A926E9 /* DayStampData.swift in Sources */,
+				F2F3BE61257D8C9800A926E9 /* StickerData.swift in Sources */,
 				F23CF441258417A60048BA74 /* TodayCoordinator.swift in Sources */,
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
 				F2A93F90258128E5006C88F8 /* StatsViewController.swift in Sources */,
@@ -1064,7 +1061,6 @@
 				F23CF3B225829B510048BA74 /* StickersPresenterProtocol.swift in Sources */,
 				F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */,
 				F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */,
-				F2F3BE4A257D492300A926E9 /* DayColumnData.swift in Sources */,
 				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,

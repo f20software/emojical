@@ -16,7 +16,7 @@ class DayColumnView : UIView {
     
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, DayElement>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, StickerData>!
 
     // MARK: - Private references
     
@@ -27,7 +27,7 @@ class DayColumnView : UIView {
     // Called when user tapped on the first cell in the list (which is day header)
     var onDayTapped: (() -> Void)?
 
-    // Called when user tapped on a stamp in the list
+    // Called when user tapped on a stamp in the list - not used yet
     var onStampTapped: ((Int64) -> Void)?
 
     // MARK: - View lifecycle
@@ -39,12 +39,12 @@ class DayColumnView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: DayColumnData) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, DayElement>()
+    func loadData(data: [StickerData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, StickerData>()
         snapshot.appendSections([0])
         
-        snapshot.appendItems([.header(data.header)])
-        snapshot.appendItems(data.stamps.map({ DayElement.stamp($0) }))
+        // snapshot.appendItems([.header(data.header)])
+        snapshot.appendItems(data)
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
     
@@ -57,18 +57,13 @@ class DayColumnView : UIView {
     
     private func registerCells() {
         column.register(
-            UINib(nibName: "DayHeaderCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.header
-        )
-
-        column.register(
             UINib(nibName: "DayStampCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.stamp
         )
     }
 
     private func configureCollectionView() {
-        self.dataSource = UICollectionViewDiffableDataSource<Int, DayElement>(
+        self.dataSource = UICollectionViewDiffableDataSource<Int, StickerData>(
             collectionView: column,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -94,24 +89,22 @@ class DayColumnView : UIView {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(50)
+                heightDimension: .fractionalWidth(1.0)
             )
         )
-
-        let group = NSCollectionLayoutGroup.horizontal(
+        let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(50)
+                heightDimension: .fractionalHeight(1.0)
             ),
             subitems: [item]
         )
-
+        group.interItemSpacing = .fixed(Specs.stickerMargin)
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: Specs.stickerMargin, leading: Specs.stickerMargin / 2, 
+            bottom: 0, trailing: Specs.stickerMargin / 2)
+        
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(
-            top: Specs.verticalPadding, leading: Specs.horizontalPadding,
-            bottom: Specs.verticalPadding, trailing: Specs.horizontalPadding)
-        section.interGroupSpacing = Specs.verticalPadding
-
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
@@ -128,22 +121,12 @@ extension DayColumnView: UICollectionViewDelegate {
         }
     }
     
-    private func cell(for path: IndexPath, model: DayElement, collectionView: UICollectionView) -> UICollectionViewCell? {
-        switch model {
-        case .header(let data):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.header, for: path
-            ) as? DayHeaderCell else { return UICollectionViewCell() }
-            cell.configure(for: data)
-            return cell
-
-        case .stamp(let data):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.stamp, for: path
-            ) as? DayStampCell else { return UICollectionViewCell() }
-            cell.configure(for: data, insets: Specs.stampInsets)
-            return cell
-        }
+    private func cell(for path: IndexPath, model: StickerData, collectionView: UICollectionView) -> UICollectionViewCell? {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: Specs.Cells.stamp, for: path
+        ) as? DayStampCell else { return UICollectionViewCell() }
+        cell.configure(for: model, sizeDelta: 0)
+        return cell
     }
 }
 
@@ -152,20 +135,10 @@ fileprivate struct Specs {
     
     /// Cell identifiers
     struct Cells {
-        
-        /// Header cell
-        static let header = "DayHeaderCell"
-        
         /// Stamp cell
         static let stamp = "DayStampCell"
     }
     
-    /// Actual stamp insets inside the stamp cell
-    static let stampInsets = UIEdgeInsets(top: 10.0, left: 2.0, bottom: 0.0, right: 2.0)
-
-    /// Horizontal padding from the edge of day column to the cell edge
-    static let horizontalPadding: CGFloat = 3.0
-    
-    /// Vertical padding from the top and bottom of the day column
-    static let verticalPadding: CGFloat = 0.0
+    /// Margin between each columns and rows of stickers
+    static let stickerMargin: CGFloat = 10.0
 }

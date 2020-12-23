@@ -178,16 +178,16 @@ fileprivate struct Specs {
     }
     
     /// Stamp cell size
-    static let stickerSize: CGFloat = 50.0
+    static let stickerSize: CGFloat = 55.0
     
     /// Stickers row size
     static let stickersPerRow = 5
     
     /// Margins between stickers
-    static let stickerMargin: CGFloat = 6.0
+    static let stickerMargin: CGFloat = 3.0
 
     /// Gap between sticker and selection border
-    static let stickerSelectionGap: CGFloat = 3.0
+    static let stickerSelectionGap: CGFloat = 4.0
 
     /// Background plate corner radius
     static let plateCornerRadius: CGFloat = 8.0

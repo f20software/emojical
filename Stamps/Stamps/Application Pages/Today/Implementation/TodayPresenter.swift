@@ -68,7 +68,11 @@ class TodayPresenter: TodayPresenterProtocol {
         didSet {
             // Calculate distance from today and lock/unlock stamp selector
             let untilToday = Int(selectedDay.timeIntervalSince(Date()) / (60*60*24))
-            locked = untilToday < -Specs.editingBackDays || untilToday > Specs.editingForwardDays
+            locked = (untilToday > 0) ?
+                // Today is in the future
+                ((untilToday+1) > Specs.editingForwardDays) :
+                // Today is in the past
+                (untilToday < -Specs.editingBackDays)
 
             // Update current day stamps from the repository
             selectedDayStickers = repository.stampsIdsForDay(selectedDay)
@@ -353,8 +357,8 @@ class TodayPresenter: TodayPresenterProtocol {
 fileprivate struct Specs {
     
     /// Editing days back from today (when it's further in the past - entries will become read-only)
-    static let editingBackDays = 3
+    static let editingBackDays = 1
 
     /// Editing days forward from today (when it's further in the future - entries will become read-only)
-    static let editingForwardDays = 3
+    static let editingForwardDays = 2
 }

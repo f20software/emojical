@@ -51,7 +51,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private var week = CalendarHelper.Week(Date()) {
         didSet {
             // Load data model from the repository
-            weekHeader = week.dayHeadersForWeek()
+            weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
             dailyStickers = dataBuilder.weekDataModel(for: week)
             awards = dataBuilder.awards(for: week)
             
@@ -78,6 +78,8 @@ class TodayPresenter: TodayPresenterProtocol {
     // Currently selected day index
     private var selectedDayIndex = 0 {
         didSet {
+            weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
+            loadViewData()
             view?.setSelectedDay(to: selectedDayIndex)
         }
     }
@@ -85,8 +87,10 @@ class TodayPresenter: TodayPresenterProtocol {
     // Lock out dates too far from today
     private var locked: Bool = false {
         didSet {
+            let lastSelectorState = selectorState
             selectorState = locked ? .hidden :
-                (selectedDay.isToday ? .fullSelector : .miniButton)
+                (lastSelectorState == .hidden ? .fullSelector : lastSelectorState)
+            
         }
     }
     
@@ -303,7 +307,7 @@ class TodayPresenter: TodayPresenterProtocol {
         awardManager.recalculateAwards(selectedDay)
         
         // Reload the model and update the view
-        weekHeader = week.dayHeadersForWeek()
+        weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
         dailyStickers = dataBuilder.weekDataModel(for: week)
         loadViewData()
     }

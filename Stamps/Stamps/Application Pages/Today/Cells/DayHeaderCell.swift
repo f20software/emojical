@@ -27,10 +27,15 @@ class DayHeaderCell: UICollectionViewCell {
         dayNum.text = data.dayNum
         dayName.text = data.dayName
         
-        dayNum.textColor = data.isWeekend ? UIColor.red : UIColor.label
-        dayName.textColor = data.isWeekend ? UIColor.red : UIColor.label
-        
-        dayPlate.backgroundColor = data.isCurrent ? UIColor.systemGray3 : UIColor.systemGray6
+        if data.isHighlighted {
+            dayPlate.backgroundColor = data.isToday ? UIColor.red : UIColor.darkGray
+            dayNum.textColor = UIColor.white
+            dayName.textColor = UIColor.white
+        } else {
+            dayPlate.backgroundColor = UIColor.systemGray6
+            dayNum.textColor = data.isWeekend ? UIColor.red : UIColor.label
+            dayName.textColor = data.isWeekend ? UIColor.red : UIColor.label
+        }
     }
 
     // MARK: - Private helpers

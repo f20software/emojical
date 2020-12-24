@@ -38,7 +38,6 @@ class TodayViewController: UIViewController, TodayView {
     @IBOutlet weak var day6: DayColumnView!
     
     @IBOutlet weak var stampSelector: StampSelectorView!
-    @IBOutlet weak var stampSelectorCloseButton: UIButton!
     @IBOutlet weak var stampSelectorBottomContstraint: NSLayoutConstraint!
 
     @IBOutlet weak var plusButton: UIButton!
@@ -173,11 +172,26 @@ class TodayViewController: UIViewController, TodayView {
     @IBAction func plusButtonTapped(_ sender: Any) {
         onPlusButtonTapped?()
     }
+    
+    // Handling panning gesture inside StampSelector view
+    @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
 
-    @IBAction func closeSelectorTapped(_ sender: Any) {
-        onCloseStampSelectorTapped?()
+        // Move stamp selector down / up if necessary - x coordinate is ignored
+        stampSelectorBottomContstraint.constant = Specs.bottomButtonsMargin - translation.y
+        
+        // When gesture ended - see if passed threshold - dismiss the view otherwise
+        // roll back to the full state
+        if gesture.state == .ended {
+            if translation.y > stampSelector.bounds.height / 2 {
+                onCloseStampSelectorTapped?()
+            } else {
+                // Rollback and show full stamp selector 
+                showStampSelector(.fullSelector)
+            }
+        }
     }
-
+    
     // MARK: - Private helpers
 
     private func adjustButtonConstraintsForState(_ state: SelectorState) {
@@ -197,7 +211,6 @@ class TodayViewController: UIViewController, TodayView {
         
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
-        stampSelectorCloseButton.setImage(UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!, for: .normal)
 
         selectedDayIndicator.layer.cornerRadius = selectedDayIndicator.bounds.height / 2
         selectedDayIndicator.backgroundColor = UIColor.systemGray3

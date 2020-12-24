@@ -15,6 +15,7 @@ class StampSelectorView : UIView {
     @IBOutlet weak var stamps: UICollectionView!
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dragIndicator: UIView!
 
     // MARK: - State
     
@@ -74,6 +75,11 @@ class StampSelectorView : UIView {
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOffset = Specs.shadowOffset
         
+        dragIndicator.layer.cornerRadius = dragIndicator.bounds.height / 2
+        dragIndicator.backgroundColor = UIColor.appTintColor
+        dragIndicator.layer.opacity = 0.7
+        dragIndicator.clipsToBounds = true
+
         // Collection view for stamps
         configureCollectionView()
         registerCells()

@@ -22,10 +22,6 @@ class TodayViewController: UIViewController, TodayView {
     /// Days header view
     @IBOutlet weak var daysHeader: DaysHeaderView!
 
-    /// Selected day indicator above day header view
-    @IBOutlet weak var selectedDayIndicator: UIView!
-    @IBOutlet weak var selectedDayIndicatorLeading: NSLayoutConstraint!
-
     @IBOutlet var prevWeek: UIBarButtonItem!
     @IBOutlet var nextWeek: UIBarButtonItem!
 
@@ -42,7 +38,6 @@ class TodayViewController: UIViewController, TodayView {
 
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
-
 
     // MARK: - DI
 
@@ -111,37 +106,31 @@ class TodayViewController: UIViewController, TodayView {
         navigationItem.title = title
     }
 
-    /// Move selected day indicator
-    func setSelectedDay(to index: Int) {
-        DispatchQueue.main.async {
-            let size = self.day0.bounds.width
-            self.selectedDayIndicatorLeading.constant = CGFloat(index) * size + size / 2
-        }
+    /// Loads header data
+    func loadWeekHeader(data: [DayHeaderData]) {
+        guard data.count == 7 else { return }
+        daysHeader.loadData(data)
     }
 
-    /// Loads stamps and header data into day columns
-    func loadDaysData(header: [DayHeaderData], daysData: [[StickerData]]) {
-        guard daysData.count == 7,
-              header.count == 7 else { return }
+    /// Loads stamps  data into day columns
+    func loadDays(data: [[StickerData]]) {
+        guard data.count == 7 else { return }
         
         let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
-        
         // Mapping 7 data objects to 7 day views
-        for (day, view) in zip(daysData, dayViews) {
-            view.loadData(data: day)
+        for (day, view) in zip(data, dayViews) {
+            view.loadData(day)
         }
-        
-        daysHeader.loadData(data: header)
     }
 
     /// Loads awards data
-    func loadAwardsData(data: [GoalAwardData]) {
-        awards.loadData(data: data)
+    func loadAwards(data: [GoalAwardData]) {
+        awards.loadData(data)
     }
 
     /// Loads stamps into stamp selector
-    func loadStampSelectorData(data: [StampSelectorElement]) {
-        stampSelector.loadData(data: data)
+    func loadStampSelector(data: [StampSelectorElement]) {
+        stampSelector.loadData(data)
     }
     
     /// Show/hide next/prev button
@@ -212,10 +201,6 @@ class TodayViewController: UIViewController, TodayView {
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
 
-        selectedDayIndicator.layer.cornerRadius = selectedDayIndicator.bounds.height / 2
-        selectedDayIndicator.backgroundColor = UIColor.systemGray3
-        selectedDayIndicator.clipsToBounds = true
-        
         stampSelector.onStampTapped = { (stampId) in
             self.onStampInSelectorTapped?(stampId)
         }

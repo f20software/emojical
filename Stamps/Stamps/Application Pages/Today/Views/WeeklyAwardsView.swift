@@ -29,7 +29,7 @@ class WeeklyAwardsView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: [GoalAwardData]) {
+    func loadData(_ data: [GoalAwardData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, GoalAwardData>()
         snapshot.appendSections([0])
         

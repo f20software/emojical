@@ -222,13 +222,6 @@
                                     <constraint firstItem="EOr-jo-VtK" firstAttribute="width" secondItem="dJ0-of-a5u" secondAttribute="width" id="qm5-v6-6tb"/>
                                 </constraints>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxR-Kk-3sT">
-                                <rect key="frame" x="26.5" y="74" width="33" height="4"/>
-                                <color key="backgroundColor" systemColor="systemGrayColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="4" id="pr9-am-41z"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50g-Iv-28T" customClass="WeeklyAwardsView" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="16" y="10" width="398" height="50"/>
                                 <subviews>
@@ -355,12 +348,10 @@
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="BV3-tF-WFD" secondAttribute="bottom" constant="16" id="3zU-Jb-ITv"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="70" id="8kH-5r-qKy"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="BcA-0S-4bd"/>
-                            <constraint firstItem="gxR-Kk-3sT" firstAttribute="width" secondItem="dJ0-of-a5u" secondAttribute="width" multiplier="0.6" id="DNH-yj-dj5"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="leading" secondItem="BV3-tF-WFD" secondAttribute="leading" id="Ff5-od-DV2"/>
                             <constraint firstItem="FnJ-i2-3rh" firstAttribute="top" secondItem="2Tb-hZ-tEu" secondAttribute="bottom" constant="10" id="Hkx-We-4fl"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="top" secondItem="FnJ-i2-3rh" secondAttribute="bottom" id="JgR-KG-XES"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="2Tb-hZ-tEu" secondAttribute="trailing" id="LO6-hf-Prm"/>
-                            <constraint firstItem="FnJ-i2-3rh" firstAttribute="top" secondItem="gxR-Kk-3sT" secondAttribute="bottom" constant="3" id="M3R-32-Two"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" id="XJd-Zd-x36"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="trailing" secondItem="FnJ-i2-3rh" secondAttribute="trailing" id="YBd-yf-rnZ"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="50g-Iv-28T" secondAttribute="trailing" id="Yny-XS-tFX"/>
@@ -370,7 +361,6 @@
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="xsj-3c-kfw" secondAttribute="bottom" constant="16" id="fdi-Q1-OZF"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="top" secondItem="EhG-g1-xfW" secondAttribute="bottom" constant="10" id="fjO-gA-xYU"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="16" id="mkI-ZR-9mP"/>
-                            <constraint firstItem="gxR-Kk-3sT" firstAttribute="centerX" secondItem="BV3-tF-WFD" secondAttribute="leading" constant="27" id="pkb-tA-aJn"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" constant="16" id="yRc-Oy-2D7"/>
                         </constraints>
                     </view>
@@ -401,8 +391,6 @@
                         <outlet property="plusButton" destination="xsj-3c-kfw" id="EFH-o9-Jia"/>
                         <outlet property="plusButtonBottomContstraint" destination="fdi-Q1-OZF" id="gU0-1V-Owl"/>
                         <outlet property="prevWeek" destination="YEL-wK-uce" id="cYf-Yr-qvn"/>
-                        <outlet property="selectedDayIndicator" destination="gxR-Kk-3sT" id="n2g-4a-L4D"/>
-                        <outlet property="selectedDayIndicatorLeading" destination="pkb-tA-aJn" id="mfg-Pt-nG2"/>
                         <outlet property="separatorTopConstraint" destination="8kH-5r-qKy" id="bhD-eH-rfJ"/>
                         <outlet property="stampSelector" destination="kD0-4R-gft" id="NT0-8X-QK3"/>
                         <outlet property="stampSelectorBottomContstraint" destination="be8-Zf-eJO" id="Qtl-Fj-ZqD"/>

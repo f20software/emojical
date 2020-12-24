@@ -39,7 +39,7 @@ class DayColumnView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: [StickerData]) {
+    func loadData(_ data: [StickerData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickerData>()
         snapshot.appendSections([0])
         

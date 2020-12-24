@@ -79,8 +79,6 @@ class TodayPresenter: TodayPresenterProtocol {
     private var selectedDayIndex = 0 {
         didSet {
             weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
-            loadViewData()
-            view?.setSelectedDay(to: selectedDayIndex)
         }
     }
     
@@ -228,8 +226,11 @@ class TodayPresenter: TodayPresenterProtocol {
         // Awards strip on the top
         loadAwardsData()
         
+        // Week header data
+        view?.loadWeekHeader(data: weekHeader)
+
         // Column data
-        view?.loadDaysData(header: weekHeader, daysData: dailyStickers)
+        view?.loadDays(data: dailyStickers)
         
         // Stamp selector data
         loadStampSelectorData()
@@ -255,7 +256,7 @@ class TodayPresenter: TodayPresenterProtocol {
             data.append(.newStamp)
         }
         
-        view?.loadStampSelectorData(data: data)
+        view?.loadStampSelector(data: data)
     }
     
     private func loadAwardsData() {
@@ -284,7 +285,7 @@ class TodayPresenter: TodayPresenterProtocol {
             })
         }
 
-        view?.loadAwardsData(data: data)
+        view?.loadAwards(data: data)
         view?.showAwards(data.count > 0)
     }
     
@@ -318,6 +319,7 @@ class TodayPresenter: TodayPresenterProtocol {
         selectedDay = weekHeader[index].date
 
         // Update view
+        view?.loadWeekHeader(data: weekHeader)
         loadStampSelectorData()
     }
     

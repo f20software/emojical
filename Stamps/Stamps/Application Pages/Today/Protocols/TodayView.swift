@@ -44,17 +44,17 @@ protocol TodayView: AnyObject {
     /// Show/hide next/prev button
     func showNextPrevButtons(showPrev: Bool, showNext: Bool)
 
-    /// Move selected day indicator
-    func setSelectedDay(to index: Int)
-    
-    /// Loads stamps and header data into day columns
-    func loadDaysData(header: [DayHeaderData], daysData: [[StickerData]])
+    /// Loads header data
+    func loadWeekHeader(data: [DayHeaderData])
+
+    /// Loads stamps data into day columns
+    func loadDays(data: [[StickerData]])
     
     /// Loads stamps into stamp selector
-    func loadStampSelectorData(data: [StampSelectorElement])
+    func loadStampSelector(data: [StampSelectorElement])
     
     /// Loads awards data
-    func loadAwardsData(data: [GoalAwardData])
+    func loadAwards(data: [GoalAwardData])
     
     /// Show/hide stamp selector and plus button
     func showStampSelector(_ state: SelectorState)

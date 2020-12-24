@@ -38,7 +38,7 @@ class StampSelectorView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: [StampSelectorElement]) {
+    func loadData(_ data: [StampSelectorElement]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StampSelectorElement>()
         snapshot.appendSections([0])
         

@@ -12,8 +12,9 @@ struct DayHeaderData {
     let date: Date
     let dayNum: String
     let dayName: String
-    let isCurrent: Bool
+    let isToday: Bool
     let isWeekend: Bool
+    let isHighlighted: Bool
 }
 
 extension DayHeaderData: Equatable, Hashable {}

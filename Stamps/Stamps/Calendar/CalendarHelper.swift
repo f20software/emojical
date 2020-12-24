@@ -201,23 +201,24 @@ extension CalendarHelper {
             label = "\(firstLabel) - \(secondLabel)"
         }
 
-        func dayHeadersForWeek() -> [DayHeaderData] {
+        func dayHeadersForWeek(highlightedIndex: Int) -> [DayHeaderData] {
             let formatter = DateFormatter()
             let today = Date().databaseKey
 
             return (0..<7).map({
-                return firstDay.byAddingDays($0)
+                return (firstDay.byAddingDays($0), $0)
             }).map({
                 formatter.dateFormat = "d"
-                let dayNum = formatter.string(from: $0)
+                let dayNum = formatter.string(from: $0.0)
                 formatter.dateFormat = "E"
-                let weekday = formatter.string(from: $0)
+                let weekday = formatter.string(from: $0.0)
                 return DayHeaderData(
-                    date: $0,
+                    date: $0.0,
                     dayNum: dayNum,
                     dayName: weekday,
-                    isCurrent: $0.databaseKey == today,
-                    isWeekend: $0.isWeekend)
+                    isToday: $0.0.databaseKey == today,
+                    isWeekend: $0.0.isWeekend,
+                    isHighlighted: $0.1 == highlightedIndex)
             })
         }
 

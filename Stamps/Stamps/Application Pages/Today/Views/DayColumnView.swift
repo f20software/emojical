@@ -39,7 +39,7 @@ class DayColumnView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: [StickerData]) {
+    func loadData(_ data: [StickerData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickerData>()
         snapshot.appendSections([0])
         
@@ -140,5 +140,5 @@ fileprivate struct Specs {
     }
     
     /// Margin between each columns and rows of stickers
-    static let stickerMargin: CGFloat = 8.0
+    static let stickerMargin: CGFloat = 10.0
 }

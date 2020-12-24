@@ -32,7 +32,7 @@ class DaysHeaderView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(data: [DayHeaderData]) {
+    func loadData(_ data: [DayHeaderData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, DayHeaderData>()
         snapshot.appendSections([0])
         

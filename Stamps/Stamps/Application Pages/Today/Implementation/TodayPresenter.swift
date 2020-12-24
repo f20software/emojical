@@ -51,7 +51,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private var week = CalendarHelper.Week(Date()) {
         didSet {
             // Load data model from the repository
-            weekHeader = week.dayHeadersForWeek()
+            weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
             dailyStickers = dataBuilder.weekDataModel(for: week)
             awards = dataBuilder.awards(for: week)
             
@@ -68,7 +68,11 @@ class TodayPresenter: TodayPresenterProtocol {
         didSet {
             // Calculate distance from today and lock/unlock stamp selector
             let untilToday = Int(selectedDay.timeIntervalSince(Date()) / (60*60*24))
-            locked = untilToday < -Specs.editingBackDays || untilToday > Specs.editingForwardDays
+            locked = (untilToday > 0) ?
+                // Today is in the future
+                ((untilToday+1) > Specs.editingForwardDays) :
+                // Today is in the past
+                (untilToday < -Specs.editingBackDays)
 
             // Update current day stamps from the repository
             selectedDayStickers = repository.stampsIdsForDay(selectedDay)
@@ -78,15 +82,17 @@ class TodayPresenter: TodayPresenterProtocol {
     // Currently selected day index
     private var selectedDayIndex = 0 {
         didSet {
-            view?.setSelectedDay(to: selectedDayIndex)
+            weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
         }
     }
     
     // Lock out dates too far from today
     private var locked: Bool = false {
         didSet {
+            let lastSelectorState = selectorState
             selectorState = locked ? .hidden :
-                (selectedDay.isToday ? .fullSelector : .miniButton)
+                (lastSelectorState == .hidden ? .fullSelector : lastSelectorState)
+            
         }
     }
     
@@ -224,8 +230,11 @@ class TodayPresenter: TodayPresenterProtocol {
         // Awards strip on the top
         loadAwardsData()
         
+        // Week header data
+        view?.loadWeekHeader(data: weekHeader)
+
         // Column data
-        view?.loadDaysData(header: weekHeader, daysData: dailyStickers)
+        view?.loadDays(data: dailyStickers)
         
         // Stamp selector data
         loadStampSelectorData()
@@ -251,7 +260,7 @@ class TodayPresenter: TodayPresenterProtocol {
             data.append(.newStamp)
         }
         
-        view?.loadStampSelectorData(data: data)
+        view?.loadStampSelector(data: data)
     }
     
     private func loadAwardsData() {
@@ -280,7 +289,7 @@ class TodayPresenter: TodayPresenterProtocol {
             })
         }
 
-        view?.loadAwardsData(data: data)
+        view?.loadAwards(data: data)
         view?.showAwards(data.count > 0)
     }
     
@@ -303,7 +312,7 @@ class TodayPresenter: TodayPresenterProtocol {
         awardManager.recalculateAwards(selectedDay)
         
         // Reload the model and update the view
-        weekHeader = week.dayHeadersForWeek()
+        weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
         dailyStickers = dataBuilder.weekDataModel(for: week)
         loadViewData()
     }
@@ -314,6 +323,7 @@ class TodayPresenter: TodayPresenterProtocol {
         selectedDay = weekHeader[index].date
 
         // Update view
+        view?.loadWeekHeader(data: weekHeader)
         loadStampSelectorData()
     }
     
@@ -347,8 +357,8 @@ class TodayPresenter: TodayPresenterProtocol {
 fileprivate struct Specs {
     
     /// Editing days back from today (when it's further in the past - entries will become read-only)
-    static let editingBackDays = 3
+    static let editingBackDays = 1
 
     /// Editing days forward from today (when it's further in the future - entries will become read-only)
-    static let editingForwardDays = 3
+    static let editingForwardDays = 2
 }

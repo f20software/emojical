@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AwardsRecapView : UIView {
+class AwardsRecapView : UIViewController, RecapView {
 
     // List of sections
     enum Section: String, CaseIterable {
@@ -18,9 +18,13 @@ class AwardsRecapView : UIView {
 
     // MARK: - UI Outlets
     
-    @IBOutlet weak var dragIndicator: UIView!
-    @IBOutlet weak var title: UILabel!
+    // @IBOutlet weak var dragIndicator: UIView!
+    // @IBOutlet weak var title: UILabel!
     @IBOutlet weak var awards: UICollectionView!
+
+    // MARK: - DI
+
+    var presenter: RecapPresenterProtocol!
 
     // MARK: - State
     
@@ -28,14 +32,21 @@ class AwardsRecapView : UIView {
     
     // MARK: - View lifecycle
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         setupViews()
+        presenter.onViewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.onViewWillAppear()
     }
     
     // MARK: - Public view interface
 
-    func loadData(_ data: [AwardRecapData]) {
+    func loadRecapData(data: [AwardRecapData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, AwardRecapData>()
         let reached = data.filter({ $0.progress.isReached == true })
         let notReached = data.filter({ $0.progress.isReached == false })
@@ -50,28 +61,13 @@ class AwardsRecapView : UIView {
             snapshot.appendItems(notReached)
         }
         
-        title.text = "🏆 Weekly recap - \(reached.count) goals reached"
-        
+        title = "Weekly recap"
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
     
     // MARK: - Private helpers
     
-    private func setupViews() {
-        // Background view
-        backgroundColor = UIColor.systemBackground
-        layer.cornerRadius = Specs.plateCornerRadius
-        
-        layer.shadowRadius = Specs.shadowRadius
-        layer.shadowOpacity = Specs.shadowOpacity
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOffset = Specs.shadowOffset
-        
-        dragIndicator.layer.cornerRadius = dragIndicator.bounds.height / 2
-        dragIndicator.backgroundColor = UIColor.appTintColor
-        dragIndicator.layer.opacity = 0.7
-        dragIndicator.clipsToBounds = true
-
+    func setupViews() {
         // Collection view for stamps
         configureCollectionView()
         registerCells()
@@ -106,7 +102,7 @@ class AwardsRecapView : UIView {
         awards.collectionViewLayout = awardsRecapLayout()
         awards.backgroundColor = UIColor.clear
         awards.alwaysBounceHorizontal = false
-        awards.alwaysBounceVertical = false
+//        awards.alwaysBounceVertical = false
     }
     
     // Creates layout for the day column - vertical list of cells
@@ -140,7 +136,7 @@ class AwardsRecapView : UIView {
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [sectionHeader]
         section.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 0,
+            top: 0, leading: Specs.margin,
             bottom: 0, trailing: 0
         )
         

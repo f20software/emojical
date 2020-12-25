@@ -294,55 +294,6 @@
                                     <action selector="plusButtonTapped:" destination="tvO-pK-EYQ" eventType="primaryActionTriggered" id="wz2-qJ-Lir"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioz-dZ-hIu" customClass="AwardsRecapView" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="305" width="414" height="404"/>
-                                <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6GX-DK-3rx">
-                                        <rect key="frame" x="20" y="57" width="394" height="347"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K7c-bK-XLl">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                    </collectionView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dv6-4T-dc7">
-                                        <rect key="frame" x="177" y="6" width="60" height="4"/>
-                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="4" id="7P7-tu-BFO"/>
-                                            <constraint firstAttribute="width" constant="60" id="Vbg-vw-0WV"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly recap: 5 goals reached" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyp-HZ-0iV">
-                                        <rect key="frame" x="20" y="18" width="286.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="6GX-DK-3rx" firstAttribute="leading" secondItem="Zyp-HZ-0iV" secondAttribute="leading" id="0i7-5h-9Pa"/>
-                                    <constraint firstItem="Dv6-4T-dc7" firstAttribute="centerX" secondItem="ioz-dZ-hIu" secondAttribute="centerX" id="4gS-DY-c6N"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Zyp-HZ-0iV" secondAttribute="trailing" constant="20" id="LPs-VU-1qF"/>
-                                    <constraint firstAttribute="bottom" secondItem="6GX-DK-3rx" secondAttribute="bottom" id="QTU-aS-y1A"/>
-                                    <constraint firstAttribute="trailing" secondItem="6GX-DK-3rx" secondAttribute="trailing" id="bO7-1y-6KE"/>
-                                    <constraint firstItem="Dv6-4T-dc7" firstAttribute="top" secondItem="ioz-dZ-hIu" secondAttribute="top" constant="6" id="e9Y-QH-2qO"/>
-                                    <constraint firstItem="Zyp-HZ-0iV" firstAttribute="top" secondItem="Dv6-4T-dc7" secondAttribute="bottom" constant="8" id="hcF-9Z-apC"/>
-                                    <constraint firstItem="6GX-DK-3rx" firstAttribute="top" secondItem="Zyp-HZ-0iV" secondAttribute="bottom" constant="15" id="nNw-eE-sHK"/>
-                                    <constraint firstItem="6GX-DK-3rx" firstAttribute="leading" secondItem="ioz-dZ-hIu" secondAttribute="leading" constant="20" id="rwU-5j-hR5"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="awards" destination="6GX-DK-3rx" id="MPg-3W-SnM"/>
-                                    <outlet property="dragIndicator" destination="Dv6-4T-dc7" id="q6t-Jo-HS0"/>
-                                    <outlet property="title" destination="Zyp-HZ-0iV" id="1Q2-MT-ToU"/>
-                                    <outletCollection property="gestureRecognizers" destination="has-Jp-hOE" appends="YES" id="qFl-tT-U2A"/>
-                                </connections>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kD0-4R-gft" customClass="StampSelectorView" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="16" y="541" width="382" height="168"/>
                                 <subviews>
@@ -396,7 +347,6 @@
                             <constraint firstItem="50g-Iv-28T" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="16" id="13r-Tt-ZEl"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="BV3-tF-WFD" secondAttribute="bottom" constant="16" id="3zU-Jb-ITv"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="70" id="8kH-5r-qKy"/>
-                            <constraint firstItem="ioz-dZ-hIu" firstAttribute="height" secondItem="kjo-hp-mne" secondAttribute="height" multiplier="0.5" id="BPp-sA-gRY"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="BcA-0S-4bd"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="leading" secondItem="BV3-tF-WFD" secondAttribute="leading" id="Ff5-od-DV2"/>
                             <constraint firstItem="FnJ-i2-3rh" firstAttribute="top" secondItem="2Tb-hZ-tEu" secondAttribute="bottom" constant="10" id="Hkx-We-4fl"/>
@@ -406,14 +356,11 @@
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="trailing" secondItem="FnJ-i2-3rh" secondAttribute="trailing" id="YBd-yf-rnZ"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="50g-Iv-28T" secondAttribute="trailing" id="Yny-XS-tFX"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="xsj-3c-kfw" secondAttribute="trailing" id="Zvh-CQ-5vn"/>
-                            <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="ioz-dZ-hIu" secondAttribute="trailing" id="b2j-EZ-D8W"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="kD0-4R-gft" secondAttribute="bottom" constant="16" id="be8-Zf-eJO"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="leading" secondItem="FnJ-i2-3rh" secondAttribute="leading" id="byq-hh-7ro"/>
-                            <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="ioz-dZ-hIu" secondAttribute="bottom" constant="16" id="elR-8V-4Fr"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="xsj-3c-kfw" secondAttribute="bottom" constant="16" id="fdi-Q1-OZF"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="top" secondItem="EhG-g1-xfW" secondAttribute="bottom" constant="10" id="fjO-gA-xYU"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="16" id="mkI-ZR-9mP"/>
-                            <constraint firstItem="ioz-dZ-hIu" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="xN2-GN-7mM"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" constant="16" id="yRc-Oy-2D7"/>
                         </constraints>
                     </view>
@@ -432,8 +379,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="awards" destination="50g-Iv-28T" id="rJg-33-0R6"/>
-                        <outlet property="awardsRecap" destination="ioz-dZ-hIu" id="wZj-8f-45q"/>
-                        <outlet property="awardsRecapBottomContstraint" destination="elR-8V-4Fr" id="sXz-AM-J30"/>
                         <outlet property="day0" destination="dJ0-of-a5u" id="KGk-pN-C4M"/>
                         <outlet property="day1" destination="1lM-26-t9b" id="4Ap-si-crK"/>
                         <outlet property="day2" destination="EOr-jo-VtK" id="p15-0A-47v"/>

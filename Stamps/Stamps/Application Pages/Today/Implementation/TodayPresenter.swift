@@ -22,10 +22,37 @@ class TodayPresenter: TodayPresenterProtocol {
     private let awardManager: AwardManager
 
     private weak var view: TodayView?
-    private weak var coordinator: TodayCoordinator?
+    private weak var coordinator: TodayCoordinatorProtocol?
 
     // Private instance of the data builder
     private let dataBuilder: CalendarDataBuilder
+
+    // MARK: - Lifecycle
+
+    init(
+        repository: DataRepository,
+        stampsListener: StampsListener,
+        awardsListener: AwardsListener,
+        goalsListener: GoalsListener,
+        awardManager: AwardManager,
+        calendar: CalendarHelper,
+        view: TodayView,
+        coordinator: TodayCoordinatorProtocol
+    ) {
+        self.repository = repository
+        self.stampsListener = stampsListener
+        self.awardsListener = awardsListener
+        self.goalsListener = goalsListener
+        self.awardManager = awardManager
+        self.calendar = calendar
+        self.view = view
+        self.coordinator = coordinator
+        
+        self.dataBuilder = CalendarDataBuilder(
+            repository: repository,
+            calendar: calendar
+        )
+    }
 
     // MARK: - State
 
@@ -104,41 +131,14 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     // Awards recap view visibility
-    private var awardsRecapShown: Bool = false {
-        didSet {
-            view?.showAwardsRecap(awardsRecapShown)
-        }
-    }
+//    private var awardsRecapShown: Bool = false {
+//        didSet {
+//            view?.showAwardsRecap(awardsRecapShown)
+//        }
+//    }
     
     // To make sure we don't play sound on initial page load (when awards are updated)
     private var firstTime: Bool = true
-
-    // MARK: - Lifecycle
-
-    init(
-        repository: DataRepository,
-        stampsListener: StampsListener,
-        awardsListener: AwardsListener,
-        goalsListener: GoalsListener,
-        awardManager: AwardManager,
-        calendar: CalendarHelper,
-        view: TodayView,
-        coordinator: TodayCoordinator
-    ) {
-        self.repository = repository
-        self.stampsListener = stampsListener
-        self.awardsListener = awardsListener
-        self.goalsListener = goalsListener
-        self.awardManager = awardManager
-        self.calendar = calendar
-        self.view = view
-        self.coordinator = coordinator
-        
-        self.dataBuilder = CalendarDataBuilder(
-            repository: repository,
-            calendar: calendar
-        )
-    }
 
     /// Called when view finished initial loading.
     func onViewDidLoad() {
@@ -221,15 +221,20 @@ class TodayPresenter: TodayPresenterProtocol {
                 self?.selectorState = .fullSelector
             }
         }
-        view?.onCloseStampSelectorTapped = { [weak self] in
+        view?.onCloseStampSelector = { [weak self] in
             self?.selectorState = .miniButton
         }
         view?.onAwardTapped = { [weak self] in
+            guard let self = self else { return }
             // Only show recap for the past weeks
-            if self?.week.isCurrentWeek == false {
-                self?.awardsRecapShown = true
+            if self.week.isCurrentWeek == false {
+                self.coordinator?.showAwardsRecap(data: self.recapData())
+//                self?.awardsRecapShown = true
             }
         }
+//        view?.onAwardsRecapDismiss = { [weak self] in
+//            self?.awardsRecapShown = false
+//        }
     }
     
     private func loadViewData() {
@@ -274,6 +279,23 @@ class TodayPresenter: TodayPresenterProtocol {
         }
         
         view?.loadStampSelector(data: data)
+    }
+    
+    private func recapData() -> [AwardRecapData] {
+        return awards.compactMap({
+            guard let goal = repository.goalById($0.goalId) else { return nil }
+            let stamp = repository.stampById(goal.stamps.first)
+            let goalAwardData = GoalAwardData(
+                award: $0,
+                goal: goal,
+                stamp: stamp
+            )
+
+            return AwardRecapData(
+                progress: goalAwardData,
+                title: $0.descriptionText
+            )
+        })
     }
     
     private func loadAwardsData() {
@@ -372,7 +394,7 @@ class TodayPresenter: TodayPresenterProtocol {
         // Special logic of we're coming back to the current week
         // Select today's date
         if week.isCurrentWeek {
-            awardsRecapShown = false
+//            awardsRecapShown = false
             selectedDay = Date()
             let key = selectedDay.databaseKey
             selectedDayIndex = weekHeader.firstIndex(where: { $0.date.databaseKey == key }) ?? 0

@@ -36,13 +36,17 @@ class TodayViewController: UIViewController, TodayView {
     @IBOutlet weak var stampSelector: StampSelectorView!
     @IBOutlet weak var stampSelectorBottomContstraint: NSLayoutConstraint!
 
-    @IBOutlet weak var awardsRecap: AwardsRecapView!
-    @IBOutlet weak var awardsRecapBottomContstraint: NSLayoutConstraint!
+//    @IBOutlet weak var awardsRecap: AwardsRecapView!
+//    @IBOutlet weak var awardsRecapBottomContstraint: NSLayoutConstraint!
 
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
     // MARK: - DI
+
+    lazy var coordinator: TodayCoordinatorProtocol = {
+        TodayCoordinator(parent: self.navigationController!)
+    }()
 
     var presenter: TodayPresenterProtocol!
 
@@ -65,7 +69,7 @@ class TodayViewController: UIViewController, TodayView {
             awardManager: AwardManager.shared,
             calendar: CalendarHelper.shared,
             view: self,
-            coordinator: self)
+            coordinator: coordinator)
         
         configureViews()
         presenter.onViewDidLoad()
@@ -96,11 +100,14 @@ class TodayViewController: UIViewController, TodayView {
     /// User tapped on the plus button
     var onPlusButtonTapped: (() -> Void)?
 
-    /// User tapped to close selector button
-    var onCloseStampSelectorTapped: (() -> Void)?
+    /// User wants to dismiss Stamp Selector (by dragging it down)
+    var onCloseStampSelector: (() -> Void)?
 
     /// User tapped on the award icon on the top
     var onAwardTapped: (() -> Void)?
+
+    /// User wants to dismiss Awards Recap view (by dragging it down)
+    var onAwardsRecapDismiss: (() -> Void)?
 
     /// Show/hide top awards strip
     func showAwards(_ show: Bool) {
@@ -132,7 +139,7 @@ class TodayViewController: UIViewController, TodayView {
     /// Loads awards data
     func loadAwards(data: [GoalAwardData], recap: [AwardRecapData]) {
         awards.loadData(data)
-        awardsRecap.loadData(recap)
+//        awardsRecap.loadData(recap)
     }
 
     /// Loads stamps into stamp selector
@@ -155,14 +162,14 @@ class TodayViewController: UIViewController, TodayView {
         })
     }
     
-    /// Show/hide awards recap view
-    func showAwardsRecap(_ show: Bool) {
-        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
-            options: [.curveEaseInOut], animations:
-        {
-            self.adjustAwardsRecapConstraintsForState(show)
-        })
-    }
+//    /// Show/hide awards recap view
+//    func showAwardsRecap(_ show: Bool) {
+//        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
+//            options: [.curveEaseInOut], animations:
+//        {
+//            self.adjustAwardsRecapConstraintsForState(show)
+//        })
+//    }
 
     // MARK: - Actions
     
@@ -189,7 +196,7 @@ class TodayViewController: UIViewController, TodayView {
         // roll back to the full state
         if gesture.state == .ended {
             if translation.y > stampSelector.bounds.height / 2 {
-                onCloseStampSelectorTapped?()
+                onCloseStampSelector?()
             } else {
                 // Rollback and show full stamp selector 
                 showStampSelector(.fullSelector)
@@ -198,23 +205,23 @@ class TodayViewController: UIViewController, TodayView {
     }
     
     // Handling panning gesture inside AwardsRecap view
-    @IBAction func handleAwardsRecapPanning(_ gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: view)
-
-        // Move stamp selector down / up if necessary - x coordinate is ignored
-        awardsRecapBottomContstraint.constant = 0 - translation.y
-        
-        // When gesture ended - see if passed threshold - dismiss the view otherwise
-        // roll back to the full state
-        if gesture.state == .ended {
-            if translation.y > awardsRecap.bounds.height / 2 {
-                showAwardsRecap(false)
-            } else {
-                // Rollback and show full stamp selector
-                showAwardsRecap(true)
-            }
-        }
-    }
+//    @IBAction func handleAwardsRecapPanning(_ gesture: UIPanGestureRecognizer) {
+//        let translation = gesture.translation(in: view)
+//
+//        // Move stamp selector down / up if necessary - x coordinate is ignored
+//        awardsRecapBottomContstraint.constant = 0 - translation.y
+//
+//        // When gesture ended - see if passed threshold - dismiss the view otherwise
+//        // roll back to the full state
+//        if gesture.state == .ended {
+//            if translation.y > awardsRecap.bounds.height / 4 {
+//                onAwardsRecapDismiss?()
+//            } else {
+//                // Rollback and show full stamp selector
+//                showAwardsRecap(true)
+//            }
+//        }
+//    }
 
     // MARK: - Private helpers
 
@@ -229,15 +236,15 @@ class TodayViewController: UIViewController, TodayView {
         view.layoutIfNeeded()
     }
     
-    private func adjustAwardsRecapConstraintsForState(_ show: Bool) {
-        awardsRecapBottomContstraint.constant = show ? 0 : -(awardsRecap.bounds.height + Specs.shadowRadius * 2)
-        view.layoutIfNeeded()
-    }
+//    private func adjustAwardsRecapConstraintsForState(_ show: Bool) {
+//        awardsRecapBottomContstraint.constant = show ? 0 : -(awardsRecap.bounds.height + Specs.shadowRadius * 2)
+//        view.layoutIfNeeded()
+//    }
 
     private func configureViews() {
         // Hide buttons initially
         adjustButtonConstraintsForState(.hidden)
-        adjustAwardsRecapConstraintsForState(false)
+//        adjustAwardsRecapConstraintsForState(false)
 
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
@@ -287,27 +294,26 @@ class TodayViewController: UIViewController, TodayView {
 
 // MARK: - TodayCoordinator
 
-extension TodayViewController: TodayCoordinator {
-    
-    func newSticker() {
-        performSegue(withIdentifier: UIStoryboardSegue.newSticker, sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-
-        case UIStoryboardSegue.newSticker:
-            guard let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? StampViewController else { return }
-
-            setEditing(false, animated: true)
-            controller.stamp = Stamp.defaultStamp
-            controller.presentationMode = .modal
-        
-        default:
-            break
-        }
-    }
-}
+//extension TodayViewController: TodayCoordinator {
+//
+//    func newSticker() {
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        switch segue.identifier {
+//
+//        case UIStoryboardSegue.newSticker:
+//            guard let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? StampViewController else { return }
+//
+//            setEditing(false, animated: true)
+//            controller.stamp = Stamp.defaultStamp
+//            controller.presentationMode = .modal
+//
+//        default:
+//            break
+//        }
+//    }
+//}
 
 // MARK: - Specs
 fileprivate struct Specs {

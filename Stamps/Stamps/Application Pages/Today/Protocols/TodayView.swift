@@ -30,11 +30,14 @@ protocol TodayView: AnyObject {
     /// User tapped on the plus button
     var onPlusButtonTapped: (() -> Void)? { get set }
 
-    /// User tapped to close selector button
-    var onCloseStampSelectorTapped: (() -> Void)? { get set }
+    /// User wants to dismiss Stamp Selector (by dragging it down)
+    var onCloseStampSelector: (() -> Void)? { get set }
 
     /// User tapped on the award icon on the top
     var onAwardTapped: (() -> Void)? { get set }
+
+    /// User wants to dismiss Awards Recap view (by dragging it down)
+//    var onAwardsRecapDismiss: (() -> Void)? { get set }
 
     // MARK: - Updates
 
@@ -63,5 +66,5 @@ protocol TodayView: AnyObject {
     func showStampSelector(_ state: SelectorState)
 
     /// Show/hide awards recap view
-    func showAwardsRecap(_ show: Bool)
+//    func showAwardsRecap(_ show: Bool)
 }

@@ -116,14 +116,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectStampCell" id="pNW-tj-ylN" customClass="SelectStampCell" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="374" height="53"/>
+                                <rect key="frame" x="20" y="55.5" width="374" height="53.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pNW-tj-ylN" id="dn4-Tf-Jea">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="53"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCG-et-jeO" customClass="StickerView" customModule="Emojical" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="6.5" width="40" height="40"/>
+                                            <rect key="frame" x="20" y="7" width="40" height="40"/>
                                             <color key="backgroundColor" systemColor="systemGreenColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="9h2-ry-CCK"/>
@@ -131,7 +131,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="761" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgX-cz-i77">
-                                            <rect key="frame" x="70" y="16" width="63" height="21"/>
+                                            <rect key="frame" x="70" y="16" width="63" height="21.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -184,7 +184,7 @@
             <objects>
                 <tableViewController id="XyN-Kv-G37" customClass="StampViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" id="Byk-kR-7zo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections/>
                         <connections>
@@ -242,8 +242,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1wj-1N-ZuG"/>
-        <segue reference="cf9-hF-D9A"/>
+        <segue reference="OQy-OH-Atf"/>
+        <segue reference="u6X-P6-K89"/>
         <segue reference="nXA-cL-kcP"/>
     </inferredMetricsTieBreakers>
     <resources>

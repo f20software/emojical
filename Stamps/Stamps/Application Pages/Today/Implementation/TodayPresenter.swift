@@ -103,6 +103,13 @@ class TodayPresenter: TodayPresenterProtocol {
         }
     }
     
+    // Awards recap view visibility
+    private var awardsRecapShown: Bool = false {
+        didSet {
+            view?.showAwardsRecap(awardsRecapShown)
+        }
+    }
+    
     // To make sure we don't play sound on initial page load (when awards are updated)
     private var firstTime: Bool = true
 
@@ -217,6 +224,12 @@ class TodayPresenter: TodayPresenterProtocol {
         view?.onCloseStampSelectorTapped = { [weak self] in
             self?.selectorState = .miniButton
         }
+        view?.onAwardTapped = { [weak self] in
+            // Only show recap for the past weeks
+            if self?.week.isCurrentWeek == false {
+                self?.awardsRecapShown = true
+            }
+        }
     }
     
     private func loadViewData() {
@@ -265,6 +278,7 @@ class TodayPresenter: TodayPresenterProtocol {
     
     private func loadAwardsData() {
         var data = [GoalAwardData]()
+        var recapData = [AwardRecapData]()
             
         if week.isCurrentWeek {
             data = goals.compactMap({
@@ -279,6 +293,7 @@ class TodayPresenter: TodayPresenterProtocol {
             data = data.sorted(by: { return $0 < $1 })
         } else {
             data = awards.compactMap({
+                guard $0.reached == true else { return nil }
                 guard let goal = repository.goalById($0.goalId) else { return nil }
                 let stamp = repository.stampById(goal.stamps.first)
                 return GoalAwardData(
@@ -287,9 +302,23 @@ class TodayPresenter: TodayPresenterProtocol {
                     stamp: stamp
                 )
             })
+            recapData = awards.compactMap({
+                guard let goal = repository.goalById($0.goalId) else { return nil }
+                let stamp = repository.stampById(goal.stamps.first)
+                let goalAwardData = GoalAwardData(
+                    award: $0,
+                    goal: goal,
+                    stamp: stamp
+                )
+
+                return AwardRecapData(
+                    progress: goalAwardData,
+                    title: $0.descriptionText
+                )
+            })
         }
 
-        view?.loadAwards(data: data)
+        view?.loadAwards(data: data, recap: recapData)
         view?.showAwards(data.count > 0)
     }
     
@@ -343,6 +372,7 @@ class TodayPresenter: TodayPresenterProtocol {
         // Special logic of we're coming back to the current week
         // Select today's date
         if week.isCurrentWeek {
+            awardsRecapShown = false
             selectedDay = Date()
             let key = selectedDay.databaseKey
             selectedDayIndex = weekHeader.firstIndex(where: { $0.date.databaseKey == key }) ?? 0

@@ -36,6 +36,9 @@ class TodayViewController: UIViewController, TodayView {
     @IBOutlet weak var stampSelector: StampSelectorView!
     @IBOutlet weak var stampSelectorBottomContstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var awardsRecap: AwardsRecapView!
+    @IBOutlet weak var awardsRecapBottomContstraint: NSLayoutConstraint!
+
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
@@ -96,6 +99,9 @@ class TodayViewController: UIViewController, TodayView {
     /// User tapped to close selector button
     var onCloseStampSelectorTapped: (() -> Void)?
 
+    /// User tapped on the award icon on the top
+    var onAwardTapped: (() -> Void)?
+
     /// Show/hide top awards strip
     func showAwards(_ show: Bool) {
         separatorTopConstraint.constant = show ? 70 : -1
@@ -124,8 +130,9 @@ class TodayViewController: UIViewController, TodayView {
     }
 
     /// Loads awards data
-    func loadAwards(data: [GoalAwardData]) {
+    func loadAwards(data: [GoalAwardData], recap: [AwardRecapData]) {
         awards.loadData(data)
+        awardsRecap.loadData(recap)
     }
 
     /// Loads stamps into stamp selector
@@ -147,6 +154,15 @@ class TodayViewController: UIViewController, TodayView {
             self.adjustButtonConstraintsForState(state)
         })
     }
+    
+    /// Show/hide awards recap view
+    func showAwardsRecap(_ show: Bool) {
+        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
+            options: [.curveEaseInOut], animations:
+        {
+            self.adjustAwardsRecapConstraintsForState(show)
+        })
+    }
 
     // MARK: - Actions
     
@@ -163,7 +179,7 @@ class TodayViewController: UIViewController, TodayView {
     }
     
     // Handling panning gesture inside StampSelector view
-    @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
+    @IBAction func handleStampSelectorPanning(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
 
         // Move stamp selector down / up if necessary - x coordinate is ignored
@@ -181,6 +197,25 @@ class TodayViewController: UIViewController, TodayView {
         }
     }
     
+    // Handling panning gesture inside AwardsRecap view
+    @IBAction func handleAwardsRecapPanning(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+
+        // Move stamp selector down / up if necessary - x coordinate is ignored
+        awardsRecapBottomContstraint.constant = 0 - translation.y
+        
+        // When gesture ended - see if passed threshold - dismiss the view otherwise
+        // roll back to the full state
+        if gesture.state == .ended {
+            if translation.y > awardsRecap.bounds.height / 2 {
+                showAwardsRecap(false)
+            } else {
+                // Rollback and show full stamp selector
+                showAwardsRecap(true)
+            }
+        }
+    }
+
     // MARK: - Private helpers
 
     private func adjustButtonConstraintsForState(_ state: SelectorState) {
@@ -194,18 +229,21 @@ class TodayViewController: UIViewController, TodayView {
         view.layoutIfNeeded()
     }
     
+    private func adjustAwardsRecapConstraintsForState(_ show: Bool) {
+        awardsRecapBottomContstraint.constant = show ? 0 : -(awardsRecap.bounds.height + Specs.shadowRadius * 2)
+        view.layoutIfNeeded()
+    }
+
     private func configureViews() {
         // Hide buttons initially
         adjustButtonConstraintsForState(.hidden)
-        
+        adjustAwardsRecapConstraintsForState(false)
+
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
 
-        stampSelector.onStampTapped = { (stampId) in
-            self.onStampInSelectorTapped?(stampId)
-        }
-        stampSelector.onNewStickerTapped = { () in
-            self.onNewStickerTapped?()
+        awards.onAwardTapped = { () in
+            self.onAwardTapped?()
         }
         daysHeader.onDayTapped = { (index) in
             self.onDayHeaderTapped?(index)
@@ -230,6 +268,12 @@ class TodayViewController: UIViewController, TodayView {
         }
         day6.onDayTapped = { () in
             self.onDayHeaderTapped?(6)
+        }
+        stampSelector.onStampTapped = { (stampId) in
+            self.onStampInSelectorTapped?(stampId)
+        }
+        stampSelector.onNewStickerTapped = { () in
+            self.onNewStickerTapped?()
         }
         
         plusButton.layer.shadowRadius = Specs.shadowRadius

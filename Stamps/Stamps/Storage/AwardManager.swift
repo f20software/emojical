@@ -82,7 +82,7 @@ class AwardManager {
         }
     }
 
-    private func recalculateAwardsForMonth(_ date: Date) {
+    func recalculateAwardsForMonth(_ date: Date) {
         let goals = repository.goalsByPeriod(.month)
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
@@ -102,11 +102,37 @@ class AwardManager {
         // Only add awards if we actually had any stamps for this week
         if stampsLog.count > 0 {
             for goal in goals {
-                if goal.direction == .positive, let dateReached = positiveGoalReachedDate(goal, diary: stampsLog) {
-                    allAwards.append(Award(id: nil, goalId: goal.id!, date: dateReached))
+                if goal.direction == .positive {
+                    let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
+                    allAwards.append(
+                        Award(
+                            id: nil,
+                            goalId: goal.id!,
+                            date: dateReached ?? end,
+                            reached: dateReached != nil,
+                            count: totalCount,
+                            period: goal.period,
+                            direction: goal.direction,
+                            limit: goal.limit,
+                            goalName: goal.name
+                        )
+                    )
                 }
-                else if past && goal.direction == .negative && isNegativeGoalReached(goal, diary: stampsLog) {
-                    allAwards.append(Award(id: nil, goalId: goal.id!, date: end))
+                else if (past && goal.direction == .negative) {
+                    let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
+                    allAwards.append(
+                        Award(
+                            id: nil,
+                            goalId: goal.id!,
+                            date: end,
+                            reached: reached,
+                            count: totalCount,
+                            period: goal.period,
+                            direction: goal.direction,
+                            limit: goal.limit,
+                            goalName: goal.name
+                        )
+                    )
                 }
             }
         }
@@ -134,7 +160,7 @@ class AwardManager {
         }
     }
 
-    private func recalculateAwardsForWeek(_ date: Date) {
+    func recalculateAwardsForWeek(_ date: Date) {
         let goals = repository.goalsByPeriod(.week)
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
@@ -154,11 +180,37 @@ class AwardManager {
         // Only add awards if we actually had any stamps for this week
         if stampsLog.count > 0 {
             for goal in goals {
-                if goal.direction == .positive, let dateReached = positiveGoalReachedDate(goal, diary: stampsLog) {
-                    allAwards.append(Award(id: nil, goalId: goal.id!, date: dateReached))
+                if goal.direction == .positive {
+                    let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
+                    allAwards.append(
+                        Award(
+                            id: nil,
+                            goalId: goal.id!,
+                            date: dateReached ?? end,
+                            reached: dateReached != nil,
+                            count: totalCount,
+                            period: goal.period,
+                            direction: goal.direction,
+                            limit: goal.limit,
+                            goalName: goal.name
+                        )
+                    )
                 }
-                else if past && goal.direction == .negative && isNegativeGoalReached(goal, diary: stampsLog) {
-                    allAwards.append(Award(id: nil, goalId: goal.id!, date: end))
+                else if (past && goal.direction == .negative) {
+                    let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
+                    allAwards.append(
+                        Award(
+                            id: nil,
+                            goalId: goal.id!,
+                            date: end,
+                            reached: reached,
+                            count: totalCount,
+                            period: goal.period,
+                            direction: goal.direction,
+                            limit: goal.limit,
+                            goalName: goal.name
+                        )
+                    )
                 }
             }
         }
@@ -213,33 +265,36 @@ class AwardManager {
         return count
     }
     
-    // Return the date goal is reached or nil of goals is not reached
-    private func positiveGoalReachedDate(_ goal: Goal, diary: [Diary]) -> Date? {
+    // Return the date goal is reached and the total count of stickers collected for this goal
+    private func positiveGoalReached(_ goal: Goal, diary: [Diary]) -> (Date?, Int) {
         var count = 0
+        var dateReached: Date?
         for stamp in diary {
             if goal.stamps.contains(stamp.stampId) {
                 count += 1
                 if count == goal.limit {
-                    return stamp.date
+                    dateReached = stamp.date
                 }
             }
         }
         
-        return nil
+        return (dateReached, count)
     }
 
     // Returns true if negative goal is reached or false if it's not
-    private func isNegativeGoalReached(_ goal: Goal, diary: [Diary]) -> Bool {
+    private func isNegativeGoalReached(_ goal: Goal, diary: [Diary]) -> (Bool, Int) {
         var count = 0
+        var reached: Bool = true
+        
         for stamp in diary {
             if goal.stamps.contains(stamp.stampId) {
                 count += 1
                 if count > goal.limit {
-                    return false
+                    reached = false
                 }
             }
         }
         
-        return true
+        return (reached, count)
     }
 }

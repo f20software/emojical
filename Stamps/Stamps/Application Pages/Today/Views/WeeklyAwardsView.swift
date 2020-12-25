@@ -20,6 +20,9 @@ class WeeklyAwardsView : UIView {
     
     // MARK: - Callbacks
     
+    // Called when user tapped on the award cell
+    var onAwardTapped: (() -> Void)?
+
     // MARK: - View lifecycle
     
     override func awakeFromNib() {
@@ -100,6 +103,10 @@ class WeeklyAwardsView : UIView {
 
 extension WeeklyAwardsView: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        onAwardTapped?()
+    }
+
     private func cell(for path: IndexPath, model: GoalAwardData, collectionView: UICollectionView) -> UICollectionViewCell? {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: Specs.Cells.award, for: path

@@ -19,6 +19,14 @@ struct StoredAward {
     var id: Int64?
     let goalId: Int64 // FK to Goals table
     let date: String // YYYY-MM-DD
+
+    let reached: Bool
+    let count: Int
+    // De-normalization - these values are copied from the Goal record
+    let period: Period
+    let direction: Direction
+    let limit: Int
+    let goalName: String?
 }
 
 extension StoredAward : Hashable { }
@@ -36,6 +44,12 @@ extension StoredAward: Codable, FetchableRecord, MutablePersistableRecord {
         case id
         case goalId
         case date
+        case reached
+        case count
+        case period
+        case direction
+        case limit
+        case goalName
     }
 
     // Update an award id after it has been inserted in the database.
@@ -59,7 +73,25 @@ extension StoredAward {
         Award(
             id: id,
             goalId: goalId,
-            date: Date(yyyyMmDd: date)
+            date: Date(yyyyMmDd: date),
+            reached: reached,
+            count: count,
+            period: period,
+            direction: direction,
+            limit: limit,
+            goalName: goalName
         )
+    }
+    
+    init(award: Award) {
+        self.id = award.id
+        self.goalId = award.goalId
+        self.date = award.date.databaseKey
+        self.reached = award.reached
+        self.count = award.count
+        self.period = award.period
+        self.direction = award.direction
+        self.limit = award.limit
+        self.goalName = award.goalName
     }
 }

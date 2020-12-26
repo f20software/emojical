@@ -11,21 +11,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AwardRecapCell" id="gTV-IL-0wX" customClass="AwardRecapCell" customModule="Emojical" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="395" height="73"/>
+            <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="395" height="73"/>
+                <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ChH-rG-WsF">
-                        <rect key="frame" x="0.0" y="0.0" width="395" height="73"/>
+                        <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MN2-nT-Okg" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="15" width="40" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Jae-Li-80O"/>
-                                    <constraint firstAttribute="width" constant="40" id="PD1-tw-Rhk"/>
+                                    <constraint firstAttribute="width" secondItem="MN2-nT-Okg" secondAttribute="height" id="RCc-xY-dV9"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
@@ -40,21 +39,13 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="A"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Excersize" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-hg-Szf">
-                                <rect key="frame" x="48" y="25" width="72.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstItem="lYa-hg-Szf" firstAttribute="centerY" secondItem="MN2-nT-Okg" secondAttribute="centerY" id="0w5-Bj-eMy"/>
-                            <constraint firstItem="MN2-nT-Okg" firstAttribute="top" secondItem="ChH-rG-WsF" secondAttribute="top" constant="15" id="7qe-yx-rAE"/>
-                            <constraint firstAttribute="bottom" secondItem="MN2-nT-Okg" secondAttribute="bottom" priority="999" constant="15" id="AEX-DY-ep1"/>
-                            <constraint firstItem="MN2-nT-Okg" firstAttribute="leading" secondItem="ChH-rG-WsF" secondAttribute="leading" priority="999" id="Q1o-n7-1F2"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lYa-hg-Szf" secondAttribute="trailing" constant="20" id="ti6-SY-LUL"/>
-                            <constraint firstItem="lYa-hg-Szf" firstAttribute="leading" secondItem="MN2-nT-Okg" secondAttribute="trailing" constant="8" symbolic="YES" id="wBu-pP-rfS"/>
+                            <constraint firstItem="MN2-nT-Okg" firstAttribute="leading" secondItem="ChH-rG-WsF" secondAttribute="leading" id="53c-DR-6Jh"/>
+                            <constraint firstAttribute="trailing" secondItem="MN2-nT-Okg" secondAttribute="trailing" id="RPL-a0-NnQ"/>
+                            <constraint firstItem="MN2-nT-Okg" firstAttribute="top" secondItem="ChH-rG-WsF" secondAttribute="top" id="Wcp-PJ-bbt"/>
+                            <constraint firstAttribute="bottom" secondItem="MN2-nT-Okg" secondAttribute="bottom" id="hJg-hs-AkF"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -66,13 +57,12 @@
                 <constraint firstItem="ChH-rG-WsF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="urC-4m-7j8"/>
                 <constraint firstItem="ChH-rG-WsF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xYn-70-LYq"/>
             </constraints>
-            <size key="customSize" width="395" height="73"/>
+            <size key="customSize" width="73" height="73"/>
             <connections>
                 <outlet property="goalIcon" destination="MN2-nT-Okg" id="KEw-93-kCQ"/>
                 <outlet property="plate" destination="ChH-rG-WsF" id="a2m-f5-8am"/>
-                <outlet property="title" destination="lYa-hg-Szf" id="q7N-uS-jiZ"/>
             </connections>
-            <point key="canvasLocation" x="290.57971014492756" y="136.94196428571428"/>
+            <point key="canvasLocation" x="57.24637681159421" y="136.94196428571428"/>
         </collectionViewCell>
     </objects>
     <resources>

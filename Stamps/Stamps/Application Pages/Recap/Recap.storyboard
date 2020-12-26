@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Awards Recap View-->
+        <!--Awards Recap View Controller-->
         <scene sceneID="ASw-R6-U4j">
             <objects>
-                <viewController id="j3j-M2-yeB" customClass="AwardsRecapView" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="j3j-M2-yeB" customClass="AwardsRecapViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ht8-id-w0T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,61 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AwardRecapCell" id="rdc-0M-hRg" customClass="AwardRecapCell" customModule="Emojical" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KJZ-Ns-eW8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOY-tr-w8X" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                                                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="IOY-tr-w8X" secondAttribute="height" id="WPm-FT-knW"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                                                    <real key="value" value="0.5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                                                    <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                                                    <real key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="A"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="IOY-tr-w8X" firstAttribute="top" secondItem="KJZ-Ns-eW8" secondAttribute="top" id="3Mb-ma-4KW"/>
+                                                        <constraint firstItem="IOY-tr-w8X" firstAttribute="leading" secondItem="KJZ-Ns-eW8" secondAttribute="leading" id="5XX-VI-FqK"/>
+                                                        <constraint firstAttribute="trailing" secondItem="IOY-tr-w8X" secondAttribute="trailing" id="UoH-yw-vMH"/>
+                                                        <constraint firstAttribute="bottom" secondItem="IOY-tr-w8X" secondAttribute="bottom" id="adH-GM-rlK"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <viewLayoutGuide key="safeArea" id="cZP-ae-66q"/>
+                                        <constraints>
+                                            <constraint firstItem="KJZ-Ns-eW8" firstAttribute="top" secondItem="rdc-0M-hRg" secondAttribute="top" id="2gj-qg-dbC"/>
+                                            <constraint firstAttribute="trailing" secondItem="KJZ-Ns-eW8" secondAttribute="trailing" id="kcu-0e-N4X"/>
+                                            <constraint firstAttribute="bottom" secondItem="KJZ-Ns-eW8" secondAttribute="bottom" id="qlQ-Ch-GZF"/>
+                                            <constraint firstItem="KJZ-Ns-eW8" firstAttribute="leading" secondItem="rdc-0M-hRg" secondAttribute="leading" id="r6o-af-Owc"/>
+                                        </constraints>
+                                        <size key="customSize" width="73" height="73"/>
+                                        <connections>
+                                            <outlet property="goalIcon" destination="IOY-tr-w8X" id="hBR-8X-qUx"/>
+                                            <outlet property="plate" destination="KJZ-Ns-eW8" id="ed7-Vb-Mkg"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OeJ-Fb-bRl"/>
@@ -51,6 +105,12 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

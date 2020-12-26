@@ -13,7 +13,6 @@ class AwardRecapCell: UICollectionViewCell {
     // MARK: - Outlets
 
     @IBOutlet weak var plate: UIView!
-    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var goalIcon: GoalAwardView!
 
     override func awakeFromNib() {
@@ -24,7 +23,7 @@ class AwardRecapCell: UICollectionViewCell {
     // MARK: - Public view interface
 
     func configure(for data: AwardRecapData) {
-        title.text = data.title
+        // title.text = data.title
         tag = Int(data.progress.goalId ?? 0)
         
         goalIcon.text = data.progress.emoji
@@ -41,6 +40,7 @@ class AwardRecapCell: UICollectionViewCell {
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
         goalIcon.progressLineWidth = Specs.progressLineWidth
+        goalIcon.emojiFontSize = Specs.emojiFontSize
     }
 }
 
@@ -48,5 +48,9 @@ class AwardRecapCell: UICollectionViewCell {
 fileprivate struct Specs {
     
     /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 3.0
+    static let progressLineWidth: CGFloat = 6.0
+    
+    /// Emoji font size for award icon
+    static let emojiFontSize: CGFloat = 52.0
+
 }

@@ -26,6 +26,9 @@ class GoalAwardView : UIView {
     var progress: CGFloat = 0.5 { didSet { setupView() }}
 
     @IBInspectable
+    var emojiFontSize: CGFloat = 24.0 { didSet { setupView() }}
+
+    @IBInspectable
     var progressLineWidth: CGFloat = 2.0 { didSet { setupView() }}
 
     @IBInspectable
@@ -73,7 +76,7 @@ class GoalAwardView : UIView {
 
         let label = UILabel(frame: barRect)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.systemFont(ofSize: emojiFontSize)
         label.textAlignment = .center
         label.backgroundColor = labelColor
         label.text = text

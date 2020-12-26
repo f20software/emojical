@@ -1,14 +1,13 @@
 //
-//  TodayPresenter.swift
+//  RecapPresenter.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/06/20.
+//  Created by Vladimir Svidersky on 12/25/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 
 import Foundation
 import UIKit
-import AudioToolbox
 
 class RecapPresenter: RecapPresenterProtocol {
 
@@ -33,7 +32,6 @@ class RecapPresenter: RecapPresenterProtocol {
     
     /// Called when view finished initial loading.
     func onViewDidLoad() {
-        
         setupView()
     }
     

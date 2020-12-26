@@ -130,13 +130,6 @@ class TodayPresenter: TodayPresenterProtocol {
         }
     }
     
-    // Awards recap view visibility
-//    private var awardsRecapShown: Bool = false {
-//        didSet {
-//            view?.showAwardsRecap(awardsRecapShown)
-//        }
-//    }
-    
     // To make sure we don't play sound on initial page load (when awards are updated)
     private var firstTime: Bool = true
 
@@ -226,15 +219,15 @@ class TodayPresenter: TodayPresenterProtocol {
         }
         view?.onAwardTapped = { [weak self] in
             guard let self = self else { return }
-            // Only show recap for the past weeks
+            
+            // We should show recap window only for the past weeks
+            // Presumably list of goals/awards on the top for the future will be empty,
+            // so this callback won't be possible to call for the future weeks
+            // Disabling current week should be enough.
             if self.week.isCurrentWeek == false {
                 self.coordinator?.showAwardsRecap(data: self.recapData())
-//                self?.awardsRecapShown = true
             }
         }
-//        view?.onAwardsRecapDismiss = { [weak self] in
-//            self?.awardsRecapShown = false
-//        }
     }
     
     private func loadViewData() {
@@ -284,23 +277,22 @@ class TodayPresenter: TodayPresenterProtocol {
     private func recapData() -> [AwardRecapData] {
         return awards.compactMap({
             guard let goal = repository.goalById($0.goalId) else { return nil }
+
             let stamp = repository.stampById(goal.stamps.first)
             let goalAwardData = GoalAwardData(
                 award: $0,
                 goal: goal,
                 stamp: stamp
             )
-
             return AwardRecapData(
-                progress: goalAwardData,
-                title: $0.descriptionText
+                title: $0.descriptionText,
+                progress: goalAwardData
             )
         })
     }
     
     private func loadAwardsData() {
         var data = [GoalAwardData]()
-        var recapData = [AwardRecapData]()
             
         if week.isCurrentWeek {
             data = goals.compactMap({
@@ -324,23 +316,9 @@ class TodayPresenter: TodayPresenterProtocol {
                     stamp: stamp
                 )
             })
-            recapData = awards.compactMap({
-                guard let goal = repository.goalById($0.goalId) else { return nil }
-                let stamp = repository.stampById(goal.stamps.first)
-                let goalAwardData = GoalAwardData(
-                    award: $0,
-                    goal: goal,
-                    stamp: stamp
-                )
-
-                return AwardRecapData(
-                    progress: goalAwardData,
-                    title: $0.descriptionText
-                )
-            })
         }
 
-        view?.loadAwards(data: data, recap: recapData)
+        view?.loadAwards(data: data)
         view?.showAwards(data.count > 0)
     }
     

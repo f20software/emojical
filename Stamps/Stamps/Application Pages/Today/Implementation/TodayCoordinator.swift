@@ -1,5 +1,5 @@
 //
-//  TodayPresenterProtocol.swift
+//  TodayCoordinator.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/06/20.
@@ -38,17 +38,21 @@ class TodayCoordinator: TodayCoordinatorProtocol {
 
     /// Navigates to goals / awards recap window
     func showAwardsRecap(data: [AwardRecapData]) {
-        guard let awardsView: AwardsRecapView = Storyboard.Recap.initialViewController() else {
+
+        // Instantiate AwardsRecapViewController from the storyboard file
+        guard let awardsView: AwardsRecapViewController = Storyboard.Recap.initialViewController() else {
             assertionFailure("Failed to initialize item details controller")
             return
         }
         
+        // Hook up presenter
         let presenter = RecapPresenter(
             data: data,
             view: awardsView
         )
         awardsView.presenter = presenter
 
+        // Navigate to AwardsRecapViewController
         parentController?.pushViewController(awardsView, animated: true)
     }
 }

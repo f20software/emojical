@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AwardsRecapView : UIViewController, RecapView {
+class AwardsRecapViewController : UIViewController {
 
     // List of sections
     enum Section: String, CaseIterable {
@@ -18,8 +18,6 @@ class AwardsRecapView : UIViewController, RecapView {
 
     // MARK: - UI Outlets
     
-    // @IBOutlet weak var dragIndicator: UIView!
-    // @IBOutlet weak var title: UILabel!
     @IBOutlet weak var awards: UICollectionView!
 
     // MARK: - DI
@@ -35,49 +33,20 @@ class AwardsRecapView : UIViewController, RecapView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupViews()
+        configureCollectionView()
+        registerCells()
         presenter.onViewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         presenter.onViewWillAppear()
-    }
-    
-    // MARK: - Public view interface
-
-    func loadRecapData(data: [AwardRecapData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, AwardRecapData>()
-        let reached = data.filter({ $0.progress.isReached == true })
-        let notReached = data.filter({ $0.progress.isReached == false })
-        
-        if reached.count > 0 {
-            snapshot.appendSections([0])
-            snapshot.appendItems(reached)
-        }
-        
-        if notReached.count > 0 {
-            snapshot.appendSections([1])
-            snapshot.appendItems(notReached)
-        }
-        
-        title = "Weekly recap"
-        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
     
     // MARK: - Private helpers
     
-    func setupViews() {
-        // Collection view for stamps
-        configureCollectionView()
-        registerCells()
-    }
-    
     private func registerCells() {
-        awards.register(
-            UINib(nibName: "AwardRecapCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.award
-        )
         awards.register(
             StickersHeaderView.self,
             forSupplementaryViewOfKind: Specs.Cells.header,
@@ -102,25 +71,27 @@ class AwardsRecapView : UIViewController, RecapView {
         awards.collectionViewLayout = awardsRecapLayout()
         awards.backgroundColor = UIColor.clear
         awards.alwaysBounceHorizontal = false
-//        awards.alwaysBounceVertical = false
+        // awards.backgroundColor = UIColor.green
+        // awards.alwaysBounceVertical = false
     }
     
-    // Creates layout for the day column - vertical list of cells
+    // Creates layout for the collection of large awards cells (1/3 of width)
     private func awardsRecapLayout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(50)
+                widthDimension: .fractionalWidth(0.33),
+                heightDimension: .fractionalWidth(0.33)
             )
         )
         item.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 0, bottom: 0, trailing: 0
+            top: 0, leading: 0,
+            bottom: Specs.margin, trailing: Specs.margin
         )
 
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(50)
+                heightDimension: .fractionalWidth(0.33)
             ),
             subitems: [item]
         )
@@ -128,7 +99,8 @@ class AwardsRecapView : UIViewController, RecapView {
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(44)),
+                heightDimension: .estimated(34)
+            ),
             elementKind: Specs.Cells.header,
             alignment: .top
         )
@@ -144,7 +116,31 @@ class AwardsRecapView : UIViewController, RecapView {
     }
 }
 
-extension AwardsRecapView: UICollectionViewDelegate {
+// MARK: - RecapView implementation
+
+extension AwardsRecapViewController: RecapView {
+
+    func loadRecapData(data: [AwardRecapData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, AwardRecapData>()
+        let reached = data.filter({ $0.progress.isReached == true })
+        let notReached = data.filter({ $0.progress.isReached == false })
+        
+        if reached.count > 0 {
+            snapshot.appendSections([0])
+            snapshot.appendItems(reached)
+        }
+        
+        if notReached.count > 0 {
+            snapshot.appendSections([1])
+            snapshot.appendItems(notReached)
+        }
+        
+        title = "Weekly recap"
+        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+    }
+}
+
+extension AwardsRecapViewController: UICollectionViewDelegate {
     
     private func cell(for path: IndexPath, model: AwardRecapData, collectionView: UICollectionView) -> UICollectionViewCell? {
         guard let cell = collectionView.dequeueReusableCell(
@@ -180,21 +176,6 @@ fileprivate struct Specs {
         static let header = "stickers-header-element"
     }
     
-    /// Background plate corner radius
-    static let plateCornerRadius: CGFloat = 8.0
-
-    /// Shadow radius
-    static let shadowRadius: CGFloat = 15.0
-    
-    /// Shadow opacity
-    static let shadowOpacity: Float = 0.3
-    
-    /// Shadow offset
-    static let shadowOffset = CGSize.zero
-
     /// Left/right and bottom margin for the collection view cells
     static let margin: CGFloat = 20.0
-
-    /// Cell margin
-    static let cellMargin: CGFloat = 16.0
 }

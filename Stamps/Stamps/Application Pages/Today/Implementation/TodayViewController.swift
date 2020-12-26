@@ -9,7 +9,7 @@
 import UIKit
 import AudioToolbox
 
-class TodayViewController: UIViewController, TodayView {
+class TodayViewController: UIViewController {
 
     // MARK: - Outlets
 
@@ -36,9 +36,6 @@ class TodayViewController: UIViewController, TodayView {
     @IBOutlet weak var stampSelector: StampSelectorView!
     @IBOutlet weak var stampSelectorBottomContstraint: NSLayoutConstraint!
 
-//    @IBOutlet weak var awardsRecap: AwardsRecapView!
-//    @IBOutlet weak var awardsRecapBottomContstraint: NSLayoutConstraint!
-
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
@@ -50,8 +47,6 @@ class TodayViewController: UIViewController, TodayView {
 
     var presenter: TodayPresenterProtocol!
 
-    // Reference arrays for easier access
-    
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
@@ -80,7 +75,7 @@ class TodayViewController: UIViewController, TodayView {
         presenter.onViewWillAppear()
     }
     
-    // MARK: - TodayView
+    // MARK: - TodayView callback properties
     
     /// Is called when user tapped on the stamp in the bottom stamp selector
     var onStampInSelectorTapped: ((Int64) -> Void)?
@@ -95,7 +90,7 @@ class TodayViewController: UIViewController, TodayView {
     var onPrevWeekTapped: (() -> Void)?
 
     /// User tapped on the next week button
-    var onNextWeekTapped: (() -> Void)? 
+    var onNextWeekTapped: (() -> Void)?
 
     /// User tapped on the plus button
     var onPlusButtonTapped: (() -> Void)?
@@ -108,69 +103,7 @@ class TodayViewController: UIViewController, TodayView {
 
     /// User wants to dismiss Awards Recap view (by dragging it down)
     var onAwardsRecapDismiss: (() -> Void)?
-
-    /// Show/hide top awards strip
-    func showAwards(_ show: Bool) {
-        separatorTopConstraint.constant = show ? 70 : -1
-    }
-
-    /// Update page title
-    func setTitle(to title: String) {
-        navigationItem.title = title
-    }
-
-    /// Loads header data
-    func loadWeekHeader(data: [DayHeaderData]) {
-        guard data.count == 7 else { return }
-        daysHeader.loadData(data)
-    }
-
-    /// Loads stamps  data into day columns
-    func loadDays(data: [[StickerData]]) {
-        guard data.count == 7 else { return }
-        
-        let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
-        // Mapping 7 data objects to 7 day views
-        for (day, view) in zip(data, dayViews) {
-            view.loadData(day)
-        }
-    }
-
-    /// Loads awards data
-    func loadAwards(data: [GoalAwardData], recap: [AwardRecapData]) {
-        awards.loadData(data)
-//        awardsRecap.loadData(recap)
-    }
-
-    /// Loads stamps into stamp selector
-    func loadStampSelector(data: [StampSelectorElement]) {
-        stampSelector.loadData(data)
-    }
     
-    /// Show/hide next/prev button
-    func showNextPrevButtons(showPrev: Bool, showNext: Bool) {
-        navigationItem.leftBarButtonItem = showPrev ? prevWeek : nil
-        navigationItem.rightBarButtonItem = showNext ? nextWeek : nil
-    }
-
-    /// Show/hide stamp selector and plus button
-    func showStampSelector(_ state: SelectorState) {
-        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
-            options: [.curveEaseInOut], animations:
-        {
-            self.adjustButtonConstraintsForState(state)
-        })
-    }
-    
-//    /// Show/hide awards recap view
-//    func showAwardsRecap(_ show: Bool) {
-//        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
-//            options: [.curveEaseInOut], animations:
-//        {
-//            self.adjustAwardsRecapConstraintsForState(show)
-//        })
-//    }
-
     // MARK: - Actions
     
     @IBAction func prevButtonTapped(_ sender: Any) {
@@ -204,25 +137,6 @@ class TodayViewController: UIViewController, TodayView {
         }
     }
     
-    // Handling panning gesture inside AwardsRecap view
-//    @IBAction func handleAwardsRecapPanning(_ gesture: UIPanGestureRecognizer) {
-//        let translation = gesture.translation(in: view)
-//
-//        // Move stamp selector down / up if necessary - x coordinate is ignored
-//        awardsRecapBottomContstraint.constant = 0 - translation.y
-//
-//        // When gesture ended - see if passed threshold - dismiss the view otherwise
-//        // roll back to the full state
-//        if gesture.state == .ended {
-//            if translation.y > awardsRecap.bounds.height / 4 {
-//                onAwardsRecapDismiss?()
-//            } else {
-//                // Rollback and show full stamp selector
-//                showAwardsRecap(true)
-//            }
-//        }
-//    }
-
     // MARK: - Private helpers
 
     private func adjustButtonConstraintsForState(_ state: SelectorState) {
@@ -236,15 +150,9 @@ class TodayViewController: UIViewController, TodayView {
         view.layoutIfNeeded()
     }
     
-//    private func adjustAwardsRecapConstraintsForState(_ show: Bool) {
-//        awardsRecapBottomContstraint.constant = show ? 0 : -(awardsRecap.bounds.height + Specs.shadowRadius * 2)
-//        view.layoutIfNeeded()
-//    }
-
     private func configureViews() {
         // Hide buttons initially
         adjustButtonConstraintsForState(.hidden)
-//        adjustAwardsRecapConstraintsForState(false)
 
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
@@ -292,28 +200,60 @@ class TodayViewController: UIViewController, TodayView {
     }
 }
 
-// MARK: - TodayCoordinator
+extension TodayViewController: TodayView {
+    
+    /// Show/hide top awards strip
+    func showAwards(_ show: Bool) {
+        separatorTopConstraint.constant = show ? 70 : -1
+    }
 
-//extension TodayViewController: TodayCoordinator {
-//
-//    func newSticker() {
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        switch segue.identifier {
-//
-//        case UIStoryboardSegue.newSticker:
-//            guard let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? StampViewController else { return }
-//
-//            setEditing(false, animated: true)
-//            controller.stamp = Stamp.defaultStamp
-//            controller.presentationMode = .modal
-//
-//        default:
-//            break
-//        }
-//    }
-//}
+    /// Update page title
+    func setTitle(to title: String) {
+        navigationItem.title = title
+    }
+
+    /// Loads header data
+    func loadWeekHeader(data: [DayHeaderData]) {
+        guard data.count == 7 else { return }
+        daysHeader.loadData(data)
+    }
+
+    /// Loads stamps  data into day columns
+    func loadDays(data: [[StickerData]]) {
+        guard data.count == 7 else { return }
+        
+        let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
+        // Mapping 7 data objects to 7 day views
+        for (day, view) in zip(data, dayViews) {
+            view.loadData(day)
+        }
+    }
+
+    /// Loads awards data
+    func loadAwards(data: [GoalAwardData]) {
+        awards.loadData(data)
+    }
+
+    /// Loads stamps into stamp selector
+    func loadStampSelector(data: [StampSelectorElement]) {
+        stampSelector.loadData(data)
+    }
+    
+    /// Show/hide next/prev button
+    func showNextPrevButtons(showPrev: Bool, showNext: Bool) {
+        navigationItem.leftBarButtonItem = showPrev ? prevWeek : nil
+        navigationItem.rightBarButtonItem = showNext ? nextWeek : nil
+    }
+
+    /// Show/hide stamp selector and plus button
+    func showStampSelector(_ state: SelectorState) {
+        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
+            options: [.curveEaseInOut], animations:
+        {
+            self.adjustButtonConstraintsForState(state)
+        })
+    }
+}
 
 // MARK: - Specs
 fileprivate struct Specs {

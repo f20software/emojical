@@ -1,17 +1,16 @@
 //
-//  GoalData.swift
+//  AwardRecapData.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/10/2020.
+//  Created by Vladimir Svidersky on 12/24/2020.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 
 import Foundation
-import UIKit
 
 struct AwardRecapData {
-    let progress: GoalAwardData
     let title: String
+    let progress: GoalAwardData
 }
 
 extension AwardRecapData: Equatable, Hashable {}

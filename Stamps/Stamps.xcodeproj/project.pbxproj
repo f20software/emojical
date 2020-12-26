@@ -73,11 +73,10 @@
 		F247542523E734CE006A13C3 /* AwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542423E734CE006A13C3 /* AwardManager.swift */; };
 		F247542723E74C49006A13C3 /* StoredAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542623E74C49006A13C3 /* StoredAward.swift */; };
 		F24B07C624C547B500FFD798 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24B07C524C547B500FFD798 /* Today.storyboard */; };
-		F26596EC2596AF1300B10B76 /* AwardRecapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26596E12596AF1300B10B76 /* AwardRecapCell.xib */; };
 		F26596ED2596AF1300B10B76 /* AwardRecapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E22596AF1300B10B76 /* AwardRecapCell.swift */; };
 		F26596EE2596AF1300B10B76 /* Recap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26596E32596AF1300B10B76 /* Recap.storyboard */; };
 		F26596EF2596AF1300B10B76 /* RecapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E52596AF1300B10B76 /* RecapPresenter.swift */; };
-		F26596F02596AF1300B10B76 /* AwardsRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E62596AF1300B10B76 /* AwardsRecapView.swift */; };
+		F26596F02596AF1300B10B76 /* AwardsRecapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E62596AF1300B10B76 /* AwardsRecapViewController.swift */; };
 		F26596F12596AF1300B10B76 /* AwardRecapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E82596AF1300B10B76 /* AwardRecapData.swift */; };
 		F26596F22596AF1300B10B76 /* RecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596EA2596AF1300B10B76 /* RecapView.swift */; };
 		F26596F32596AF1300B10B76 /* RecapPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596EB2596AF1300B10B76 /* RecapPresenterProtocol.swift */; };
@@ -241,11 +240,10 @@
 		F247542423E734CE006A13C3 /* AwardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardManager.swift; sourceTree = "<group>"; };
 		F247542623E74C49006A13C3 /* StoredAward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredAward.swift; sourceTree = "<group>"; };
 		F24B07C524C547B500FFD798 /* Today.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
-		F26596E12596AF1300B10B76 /* AwardRecapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AwardRecapCell.xib; sourceTree = "<group>"; };
 		F26596E22596AF1300B10B76 /* AwardRecapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardRecapCell.swift; sourceTree = "<group>"; };
 		F26596E32596AF1300B10B76 /* Recap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recap.storyboard; sourceTree = "<group>"; };
 		F26596E52596AF1300B10B76 /* RecapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapPresenter.swift; sourceTree = "<group>"; };
-		F26596E62596AF1300B10B76 /* AwardsRecapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardsRecapView.swift; sourceTree = "<group>"; };
+		F26596E62596AF1300B10B76 /* AwardsRecapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardsRecapViewController.swift; sourceTree = "<group>"; };
 		F26596E82596AF1300B10B76 /* AwardRecapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardRecapData.swift; sourceTree = "<group>"; };
 		F26596EA2596AF1300B10B76 /* RecapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapView.swift; sourceTree = "<group>"; };
 		F26596EB2596AF1300B10B76 /* RecapPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapPresenterProtocol.swift; sourceTree = "<group>"; };
@@ -585,7 +583,6 @@
 		F26596E02596AF1300B10B76 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F26596E12596AF1300B10B76 /* AwardRecapCell.xib */,
 				F26596E22596AF1300B10B76 /* AwardRecapCell.swift */,
 			);
 			path = Cells;
@@ -595,7 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				F26596E52596AF1300B10B76 /* RecapPresenter.swift */,
-				F26596E62596AF1300B10B76 /* AwardsRecapView.swift */,
+				F26596E62596AF1300B10B76 /* AwardsRecapViewController.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -1000,7 +997,6 @@
 				F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */,
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
 				F2B7D3612454B27F00C94E63 /* DTTableViewCell-Color.xib in Resources */,
-				F26596EC2596AF1300B10B76 /* AwardRecapCell.xib in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
 				F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */,
 				F23CF3D42582A9FB0048BA74 /* GoalCell.xib in Resources */,
@@ -1048,7 +1044,7 @@
 			files = (
 				F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */,
 				F2F3BE25257D353D00A926E9 /* DayStampCell.swift in Sources */,
-				F26596F02596AF1300B10B76 /* AwardsRecapView.swift in Sources */,
+				F26596F02596AF1300B10B76 /* AwardsRecapViewController.swift in Sources */,
 				F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */,
 				F26596F12596AF1300B10B76 /* AwardRecapData.swift in Sources */,
 				F247541723DFEADB006A13C3 /* StampViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  AwardsRecapView.swift
+//  AwardsRecapViewController.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/24/20.

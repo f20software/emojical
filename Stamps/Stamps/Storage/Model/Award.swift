@@ -58,3 +58,26 @@ struct Award {
 }
 
 extension Award: Equatable, Hashable {}
+
+extension Award {
+    
+    /// Convinience construction for the new award from a Goal instance and completion data
+    init(
+        with goal: Goal,
+        date: Date,
+        reached: Bool,
+        count: Int
+    ) {
+        self.init(
+            id: nil,
+            goalId: goal.id ?? 0,
+            date: date,
+            reached: reached,
+            count: count,
+            period: goal.period,
+            direction: goal.direction,
+            limit: goal.limit,
+            goalName: goal.name
+        )
+    }
+}

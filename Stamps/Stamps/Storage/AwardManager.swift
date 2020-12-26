@@ -105,33 +105,17 @@ class AwardManager {
                 if goal.direction == .positive {
                     let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
                     allAwards.append(
-                        Award(
-                            id: nil,
-                            goalId: goal.id!,
+                        Award(with: goal,
                             date: dateReached ?? end,
                             reached: dateReached != nil,
-                            count: totalCount,
-                            period: goal.period,
-                            direction: goal.direction,
-                            limit: goal.limit,
-                            goalName: goal.name
+                            count: totalCount
                         )
                     )
                 }
                 else if (past && goal.direction == .negative) {
                     let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
                     allAwards.append(
-                        Award(
-                            id: nil,
-                            goalId: goal.id!,
-                            date: end,
-                            reached: reached,
-                            count: totalCount,
-                            period: goal.period,
-                            direction: goal.direction,
-                            limit: goal.limit,
-                            goalName: goal.name
-                        )
+                        Award(with: goal, date: end, reached: reached, count: totalCount)
                     )
                 }
             }
@@ -183,33 +167,17 @@ class AwardManager {
                 if goal.direction == .positive {
                     let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
                     allAwards.append(
-                        Award(
-                            id: nil,
-                            goalId: goal.id!,
+                        Award(with: goal,
                             date: dateReached ?? end,
                             reached: dateReached != nil,
-                            count: totalCount,
-                            period: goal.period,
-                            direction: goal.direction,
-                            limit: goal.limit,
-                            goalName: goal.name
+                            count: totalCount
                         )
                     )
                 }
                 else if (past && goal.direction == .negative) {
                     let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
                     allAwards.append(
-                        Award(
-                            id: nil,
-                            goalId: goal.id!,
-                            date: end,
-                            reached: reached,
-                            count: totalCount,
-                            period: goal.period,
-                            direction: goal.direction,
-                            limit: goal.limit,
-                            goalName: goal.name
-                        )
+                        Award(with: goal, date: end, reached: reached, count: totalCount)
                     )
                 }
             }

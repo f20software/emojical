@@ -96,9 +96,9 @@ class TodayPresenter: TodayPresenterProtocol {
             // Calculate distance from today and lock/unlock stamp selector
             let untilToday = Int(selectedDay.timeIntervalSince(Date()) / (60*60*24))
             locked = (untilToday > 0) ?
-                // Today is in the future
+                // Selected day is in the future
                 ((untilToday+1) > Specs.editingForwardDays) :
-                // Today is in the past
+                // Selected day is in the past
                 (untilToday < -Specs.editingBackDays)
 
             // Update current day stamps from the repository
@@ -107,7 +107,7 @@ class TodayPresenter: TodayPresenterProtocol {
     }
 
     // Currently selected day index
-    private var selectedDayIndex = 0 {
+    private var selectedDayIndex: Int = -1 {
         didSet {
             weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
         }
@@ -372,7 +372,6 @@ class TodayPresenter: TodayPresenterProtocol {
         // Special logic of we're coming back to the current week
         // Select today's date
         if week.isCurrentWeek {
-//            awardsRecapShown = false
             selectedDay = Date()
             let key = selectedDay.databaseKey
             selectedDayIndex = weekHeader.firstIndex(where: { $0.date.databaseKey == key }) ?? 0

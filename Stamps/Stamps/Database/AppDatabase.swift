@@ -78,8 +78,22 @@ struct AppDatabase {
             }
         }
         
-        migrator.registerMigration("db-state-1") { db in
-            // Create a table for various app params
+        migrator.registerMigration("db-state-2") { db in
+            // Updating Awards table with new fields
+            try db.alter(table: "award", body: { t in
+                t.add(column: "reached", .boolean).notNull().defaults(to: true)
+                t.add(column: "count", .integer).notNull().defaults(to: 0)
+                t.add(column: "period", .integer).notNull().defaults(to: 0)
+                t.add(column: "direction", .integer).notNull().defaults(to: 0)
+                t.add(column: "limit", .integer).notNull().defaults(to: 0)
+            })
+        }
+
+        migrator.registerMigration("db-state-3") { db in
+            // Updating Awards table with new fields
+            try db.alter(table: "award", body: { t in
+                t.add(column: "goalName", .text)
+            })
         }
 
 //        "B8B09B", "Gold",

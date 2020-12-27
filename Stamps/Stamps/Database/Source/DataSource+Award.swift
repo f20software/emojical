@@ -84,7 +84,7 @@ extension DataSource {
         do {
             try dbQueue.inDatabase { db in
                 try add.forEach({
-                    var stored = StoredAward(id: $0.id, goalId: $0.goalId, date: $0.date.databaseKey)
+                    var stored = StoredAward(award: $0)
                     try stored.save(db)
                 })
                 

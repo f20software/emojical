@@ -10,6 +10,7 @@ import UIKit
 
 /// Segue names
 extension UIStoryboardSegue {
+    
     /// Editing sticker segue
     static let editSticker = "editSticker"
 

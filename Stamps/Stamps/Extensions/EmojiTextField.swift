@@ -1,6 +1,6 @@
 //
 //  EmojiTextField.swift
-//  Stamps
+//  Emojical
 //
 //  Created by Vladimir Svidersky on 3/7/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.

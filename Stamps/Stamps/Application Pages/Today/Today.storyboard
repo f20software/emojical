@@ -400,7 +400,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2j-Q2-fD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="o8m-Np-zqb">
                     <connections>
-                        <action selector="handlePan:" destination="tvO-pK-EYQ" id="DNd-a3-ZRr"/>
+                        <action selector="handleStampSelectorPanning:" destination="tvO-pK-EYQ" id="o5M-2h-XQp"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="has-Jp-hOE">
+                    <connections>
+                        <action selector="handleAwardsRecapPanning:" destination="tvO-pK-EYQ" id="mgW-GX-Rgo"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>

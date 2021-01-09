@@ -10,8 +10,15 @@ import Foundation
 
 class CalendarHelper {
 
-    // We will add configuration later where user can choose whether to have Mon...Sun weeks of Sun...Sat
-    static var weekStartMonday = true
+    // Right now we will support in the code only two options - week
+    // can start either on Monday and end on Sunday or start on Sunday and end on Saturday
+    enum WeekStartOption {
+        case monday
+        case sunday
+    }
+    
+    // Default value is Monday through Sunday
+    static var weekStartDay: WeekStartOption = .monday
     
     // Singleton instance
     static var shared: CalendarHelper! {
@@ -23,35 +30,44 @@ class CalendarHelper {
     }
 
     init() {
-        // Initialize weeks.
+        // Update current calendar with a proper firstWeekday property
         var calendar = Calendar.current
-        if CalendarHelper.weekStartMonday {
+        switch CalendarHelper.weekStartDay {
+        case .monday:
             calendar.firstWeekday = 2
+        case .sunday:
+            calendar.firstWeekday = 1
         }
     }
 }
 
 extension CalendarHelper {
 
+    // MARK: - Year
+    
+    /// Class encapsulating a Year. Provides easy access for the first and last day of it,
+    /// number of weeks, based on `weekStartDay` option in CalendarHelper class.
     class Year {
+
+        /// Year value
         let year: Int
         
-        // Most of years will have 53 weeks, but for leap year starting on Sunday - it will be 54
+        /// Most of the years will have 53 weeks, but for leap year starting on Sunday - it will be 54
         let numberOfWeeks: Int
 
-        // Convenient shortcuts to Jan 1
+        /// Convenient shortcuts to Jan 1
         let firstDay: Date
 
-        // Convenient shortcuts to Dec 31
+        /// Convenient shortcuts to Dec 31
         let lastDay: Date
         
-        // 365 for regular years, 366 for the leap ones
+        /// 365 for regular years, 366 for the leap ones
         let numberOfDays: Int
         
-        // Which day of the week 1st of the month fall into on the calendar view:
-        // when Monday is first day if the week: 0 - Monday, 1 - Tuesday ... 6 - Sunday
-        // when Sunday is first day if the week: 0 - Sunday, 1 - Monday ... 6 - Saturday
-        var firstIndex: Int
+        /// Which day of the week 1st of the month fall into on the calendar view:
+        /// when Monday is first day if the week: 0 - Monday, 1 - Tuesday ... 6 - Sunday
+        /// when Sunday is first day if the week: 0 - Sunday, 1 - Monday ... 6 - Saturday
+        let firstIndex: Int
 
         init(_ year: Int) {
             self.year = year
@@ -77,32 +93,42 @@ extension CalendarHelper {
             self.init(Calendar.current.component(.year, from: date))
         }
 
+        /// Label for the year in a "2021" format
         var label: String {
             return "\(year)"
         }
     }
 
+    // MARK: - Month
+
+    /// Class encapsulating a Month. Provides easy access for the first and last day of it,
+    /// number of weeks, and index for the first day based on `weekStartDay` option in CalendarHelper class.
     class Month {
-        let month: Int
+
+        /// Year value
         let year: Int
+
+        /// Month index (1 - January, 12 - December)
+        let month: Int
         
-        // Most of month will have 5 weeks, edge cases will be identified in recalculateWeeks() method
-        var numberOfWeeks: Int = 5
+        /// Number of days in a month, duh
+        let numberOfDays: Int
 
-        // Which day of the week 1st of the month fall into on the calendar view:
-        // when Monday is first day if the week: 0 - Monday, 1 - Tuesday ... 6 - Sunday
-        // when Sunday is first day if the week: 0 - Sunday, 1 - Monday ... 6 - Saturday
-        var firstIndex: Int = 0
-
-        // Number of days in a month, duh
-        var numberOfDays: Int
-
-        // Convinience shortcut for the first day of month
+        /// Convinience shortcut for the first day of month
         let firstDay: Date
 
-        // Convinience shortcut for the last day of month
+        /// Convinience shortcut for the last day of month
         let lastDay: Date
-        
+
+        /// Number of weeks in the month (based on `weekStartDay` option).
+        /// Most of month will have 5 weeks, edge cases will be identified in recalculateWeeks() method.
+        private (set) var numberOfWeeks: Int!
+
+        /// Which day of the week 1st of the month fall into on the calendar view:
+        /// when Monday is first day if the week: 0 - Monday, 1 - Tuesday ... 6 - Sunday
+        /// when Sunday is first day if the week: 0 - Sunday, 1 - Monday ... 6 - Saturday
+        private (set) var firstIndex: Int!
+
         init(_ date: Date) {
             self.month = Calendar.current.component(.month, from: date)
             self.year = Calendar.current.component(.year, from: date)
@@ -110,10 +136,10 @@ extension CalendarHelper {
             self.firstDay = Date(year: year, month: month, day: 1)
             self.numberOfDays = Calendar.current.range(of: .day, in: .month, for: firstDay)!.count
             self.lastDay = Date(year: year, month: month, day: numberOfDays)
-
-            recalculateWeeks()
+            self.numberOfWeeks = recalculateWeeks()
         }
         
+        /// Label for the month in a "January 2021" format
         var label: String {
             let df = DateFormatter()
             df.dateFormat = "MMMM, YYYY"
@@ -125,66 +151,68 @@ extension CalendarHelper {
             return (day % 7 + firstIndex + 6) % 7
         }
         
-        func recalculateWeeks() {
+        /// Initializes internal properties for the number of weeks, first day index etc
+        private func recalculateWeeks() -> Int {
             
             // Get weekday for the 1st of the month
             let firstWeekDay = Calendar.current.component(.weekday, from: firstDay)
 
-            // Calendar week day defined starting with Sunday as 1 - we need to transform it to our index,
-            // so Monday can be first
-            if weekStartMonday == true {
-                firstIndex = firstWeekDay == 1 ? 6 : firstWeekDay - 2
+            // Calendar week day defined starting with Sunday as 1
+            // - we need to transform it to our index, so Monday can be first
+            var index = 0
+            if weekStartDay == .monday {
+                index = firstWeekDay == 1 ? 6 : firstWeekDay - 2
             }
             else {
-                firstIndex = firstWeekDay - 1
+                index = firstWeekDay - 1
             }
+            self.firstIndex = index
             
             // Special case for February and 4 weeks
+            var weeksNum = 5
             if (firstIndex == 0 && numberOfDays == 28) {
-                numberOfWeeks = 4;
+                weeksNum = 4;
             }
             else {
                 // Do we have spill over for 6 weeks or not?
-                if (firstIndex + (numberOfDays - 28) > 7) {
-                    numberOfWeeks = 6;
+                if ((firstIndex + (numberOfDays - 28)) > 7) {
+                    weeksNum = 6;
                 }
             }
+            
+            return weeksNum
         }
     }
     
+    // MARK: - Week
+
+    /// Class encapsulating a Week. Provides easy access for the first and last day of it,
+    /// based on `weekStartDay` option in CalendarHelper class.
     class Week {
-        let year: Int
-        let month: Int
-        let weekOfYear: Int
-        let label: String
 
+        /// Convinience shortcut for the first day of week
         let firstDay: Date
-        let lastDay: Date
-        
-        init(_ date: Date) {
-            var calendar = Calendar.current
-            calendar.firstWeekday = CalendarHelper.weekStartMonday ? 2 : 1
 
-            self.month = calendar.component(.month, from: date)
-            self.year = calendar.component(.year, from: date)
-            self.weekOfYear = calendar.component(.weekOfYear, from: date)
+        /// Convinience shortcut for the last day of week
+        let lastDay: Date
+
+        init(_ date: Date) {
+            self.lastDay = date.lastOfWeek
+            self.firstDay = lastDay.byAddingDays(-6)
+        }
+
+        /// Returns `true` when today date falls into this week range
+        var isCurrentWeek: Bool {
+            let todayKey = Date().databaseKey
             
-            firstDay = Date(
-                year: year,
-                month: month,
-                weekOfYear: weekOfYear,
-                weekDay: calendar.firstWeekday,
-                calendar: calendar
-            )
-            
-            lastDay = Date(
-                year: year,
-                month: month,
-                weekOfYear: weekOfYear,
-                weekDay: calendar.firstWeekday + 6,
-                calendar: calendar
-            )
-            
+            return (firstDay.databaseKey <= todayKey &&
+                lastDay.databaseKey >= todayKey)
+        }
+
+        /// Label for the week in a "December 21 - 28" or "December 28 - January 3" format
+        var label: String {
+            let calendar: Calendar = .autoupdatingCurrent
+
             // Week label formatting.
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM d"
@@ -198,28 +226,36 @@ extension CalendarHelper {
             }
             let secondLabel = formatter.string(from: lastDay)
             
-            label = "\(firstLabel) - \(secondLabel)"
+            return "\(firstLabel) - \(secondLabel)"
         }
 
+        /// Returns array of days for all dates within the week
+        var days: [Date] {
+            return (0..<7).map { firstDay.byAddingDays($0) }
+        }
+        
+        
         func dayHeadersForWeek(highlightedIndex: Int) -> [DayHeaderData] {
             let formatter = DateFormatter()
             let today = Date().databaseKey
 
-            return (0..<7).map({
-                return (firstDay.byAddingDays($0), $0)
-            }).map({
+            var result: [DayHeaderData] = self.days.map {
                 formatter.dateFormat = "d"
-                let dayNum = formatter.string(from: $0.0)
+                let dayNum = formatter.string(from: $0)
                 formatter.dateFormat = "E"
-                let weekday = formatter.string(from: $0.0)
+                let weekday = formatter.string(from: $0)
+                
                 return DayHeaderData(
-                    date: $0.0,
+                    date: $0,
                     dayNum: dayNum,
                     dayName: weekday,
-                    isToday: $0.0.databaseKey == today,
-                    isWeekend: $0.0.isWeekend,
-                    isHighlighted: $0.1 == highlightedIndex)
-            })
+                    isToday: $0.databaseKey == today,
+                    isWeekend: $0.isWeekend,
+                    isHighlighted: false)
+            }
+            
+            result[highlightedIndex].isHighlighted = true
+            return result
         }
 
         func weekdayLettersForWeek() -> [String] {
@@ -233,13 +269,6 @@ extension CalendarHelper {
                 let weekday = formatter.string(from: $0)
                 return String(weekday.prefix(1)).capitalized
             })
-        }
-
-        var isCurrentWeek: Bool {
-            let todayKey = Date().databaseKey
-            
-            return (firstDay.databaseKey <= todayKey &&
-                lastDay.databaseKey >= todayKey)
         }
     }
 }

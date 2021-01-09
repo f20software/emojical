@@ -224,7 +224,7 @@ class TodayPresenter: TodayPresenterProtocol {
             // Presumably list of goals/awards on the top for the future will be empty,
             // so this callback won't be possible to call for the future weeks
             // Disabling current week should be enough.
-            if self.week.isCurrentWeek == false {
+            if !self.week.isCurrentWeek {
                 self.coordinator?.showAwardsRecap(data: self.recapData())
             }
         }

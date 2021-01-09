@@ -230,10 +230,11 @@ class CalendarDataBuilder {
     
     // Returns a list of Stamps grouped by day for a given week.
     func weekStickers(week: CalendarHelper.Week) -> [[Stamp]] {
-        return (1...7)
+        return (0...6)
         .map({
-            return Date(year: week.year, month: week.month, weekOfYear: week.weekOfYear, weekDay: $0)
-                .byAddingDays(CalendarHelper.weekStartMonday ? 1 : 0)
+//            return Date(year: week.year, month: week.month, weekOfYear: week.weekOfYear, weekDay: $0)
+//                .byAddingDays(CalendarHelper.weekStartMonday ? 1 : 0)
+            return week.firstDay.byAddingDays($0)
         })
         .map({ date in
             repository.stampsIdsForDay(date).compactMap { repository.stampById($0) }

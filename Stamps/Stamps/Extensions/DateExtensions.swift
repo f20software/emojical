@@ -1,6 +1,6 @@
 //
 //  DateExtensions.swift
-//  Stamps
+//  Emojical
 //
 //  Created by Vladimir Svidersky on 1/18/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
@@ -43,26 +43,11 @@ extension Date {
         self = Calendar.current.date(from: comps) ?? Date()
     }
     
-    // Convinience constructor from week of year + week day
-    init(year: Int, month: Int, weekOfYear: Int, weekDay: Int, calendar: Calendar = Calendar.current) {
-        var components = DateComponents()
-        components.year = year
-        components.month = month
-        components.weekOfYear = weekOfYear
-        components.hour = 22
-        components.minute = 0
-        components.second = 0
-        components.weekday = weekDay
-        
-        self = calendar.date(from: components) ?? Date()
-    }
-    
     init(yyyyMmDd: String) {
         let comps = yyyyMmDd.split(separator: "-").map({ Int(String($0))! })
         if comps.count == 3 {
             self = Date(year: comps[0], month: comps[1], day: comps[2])
-        }
-        else {
+        } else {
             self = Date()
         }
     }
@@ -81,17 +66,15 @@ extension Date {
     
     /// Shifts date by number of weeks
     func byAddingWeek(_ weeks: Int) -> Date {
-        var comp = DateComponents()
-        comp.day = 7 * weeks
-        return Calendar.current.date(byAdding: comp, to: self)!
+        return self.byAddingDays(weeks * 7)
     }
     
-    /// Simple helper property to recognize that date is today
+    /// Property to recognize that date is today
     var isToday: Bool {
         return self.databaseKey == Date().databaseKey
     }
     
-    /// 
+    /// Property to recognize whether day is a weekend (Saturday/Sunday) or not
     var isWeekend: Bool {
         let weekday = Calendar.current.component(.weekday, from: self)
         return weekday == 1 || weekday == 7

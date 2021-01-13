@@ -97,14 +97,14 @@ class AwardManager {
         // looking at ones that correspond to our goals
         let goalIds = goals.compactMap({ $0.id })
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
-        var newAwards = [Award]()
+        var addAwards = [Award]()
 
         // Only add awards if we actually had any stamps for this week
         if stampsLog.count > 0 {
             for goal in goals {
                 if goal.direction == .positive {
                     let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
-                    newAwards.append(
+                    addAwards.append(
                         Award(with: goal,
                             date: dateReached ?? end,
                             reached: dateReached != nil,
@@ -114,7 +114,7 @@ class AwardManager {
                 }
                 else if (past && goal.direction == .negative) {
                     let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
-                    newAwards.append(
+                    addAwards.append(
                         Award(with: goal, date: end, reached: reached, count: totalCount)
                     )
                 }
@@ -122,14 +122,14 @@ class AwardManager {
         }
             
         // Load existing awards from the database
-        let oldAwards =
+        let deleteAwards =
             repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
 
         // Update data source with new and/or deleted awards
-        if newAwards.count > 0 || oldAwards.count > 0 {
-            repository.updateAwards(add: newAwards, remove: oldAwards)
+        if addAwards.count > 0 || deleteAwards.count > 0 {
+            repository.updateAwards(add: addAwards, remove: deleteAwards)
         }
     }
 
@@ -148,14 +148,14 @@ class AwardManager {
         // correspond to our goals
         let goalIds = goals.compactMap({ $0.id })
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
-        var newAwards = [Award]()
+        var addAwards = [Award]()
 
         // Only add awards if we actually had any stamps for this week
         if stampsLog.count > 0 {
             for goal in goals {
                 if goal.direction == .positive {
                     let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
-                    newAwards.append(
+                    addAwards.append(
                         Award(with: goal,
                             date: dateReached ?? end,
                             reached: dateReached != nil,
@@ -165,7 +165,7 @@ class AwardManager {
                 }
                 else if (past && goal.direction == .negative) {
                     let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
-                    newAwards.append(
+                    addAwards.append(
                         Award(with: goal, date: end, reached: reached, count: totalCount)
                     )
                 }
@@ -173,14 +173,14 @@ class AwardManager {
         }
             
         // Load existing awards from the database
-        let oldAwards =
+        let deleteAwards =
             repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
 
         // Update data source with new and/or deleted awards
-        if newAwards.count > 0 || oldAwards.count > 0 {
-            repository.updateAwards(add: newAwards, remove: oldAwards)
+        if addAwards.count > 0 || deleteAwards.count > 0 {
+            repository.updateAwards(add: addAwards, remove: deleteAwards)
         }
     }
     

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AwardsListener {
-    func startListening(onError: @escaping (Error) -> Void, onChange: @escaping ([Award]) -> Void)
+    func startListening(onChange: @escaping () -> Void)
 }

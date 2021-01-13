@@ -72,10 +72,7 @@ class StickersPresenter: StickersPresenterProtocol {
 
         // Subscribe to awards listener for when new award is given
         // (to update list of goals including badges)
-        awardsListener.startListening(onError: { error in
-            fatalError("Unexpected error: \(error)")
-        },
-        onChange: { [weak self] awards in
+        awardsListener.startListening(onChange: { [weak self] in
             self?.loadViewData()
         })
     }

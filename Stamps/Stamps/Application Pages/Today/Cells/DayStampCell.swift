@@ -15,6 +15,7 @@ class DayStampCell: UICollectionViewCell {
     @IBOutlet weak var sticker: StickerView!
     @IBOutlet weak var stickerAndSelectionSizeDelta: NSLayoutConstraint!
     @IBOutlet weak var selectionView: UIView!
+    @IBOutlet weak var badgeView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,10 +39,12 @@ class DayStampCell: UICollectionViewCell {
         tag = Int(data.stampId ?? 0)
         
         if data.isUsed {
-            selectionView.isHidden = false
-            selectionView.layer.borderColor = data.color.cgColor
+            badgeView.isHidden = false
+//            selectionView.isHidden = false
+//            selectionView.layer.borderColor = data.color.cgColor
         } else {
-            selectionView.isHidden = true
+            badgeView.isHidden = true
+//            selectionView.isHidden = true
         }
         
         // Sticker size delta constraint
@@ -53,6 +56,12 @@ class DayStampCell: UICollectionViewCell {
     func setupViews() {
         selectionView.layer.cornerRadius = Specs.selectionCornerRadius
         selectionView.layer.borderWidth = Specs.selectionBorderWidth
+        badgeView.layer.cornerRadius = badgeView.bounds.width / 2.0
+        badgeView.backgroundColor = UIColor.appTintColor
+        
+        selectionView.isHidden = true
+        badgeView.isHidden = true
+        
     }
 }
 

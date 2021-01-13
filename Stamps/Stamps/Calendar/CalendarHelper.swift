@@ -234,7 +234,6 @@ extension CalendarHelper {
             return (0..<7).map { firstDay.byAddingDays($0) }
         }
         
-        
         func dayHeadersForWeek(highlightedIndex: Int) -> [DayHeaderData] {
             let formatter = DateFormatter()
             let today = Date().databaseKey
@@ -254,7 +253,9 @@ extension CalendarHelper {
                     isHighlighted: false)
             }
             
-            result[highlightedIndex].isHighlighted = true
+            if highlightedIndex >= 0 {
+                result[highlightedIndex].isHighlighted = true
+            }
             return result
         }
 

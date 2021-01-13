@@ -13,7 +13,6 @@ class AwardsDataSourceListener: AwardsListener {
     
     // MARK: - Private properties.
     
-    private var observer: TransactionObserver?
     private var source: DataSource
     
     // MARK: - Lifecycle.
@@ -22,17 +21,9 @@ class AwardsDataSourceListener: AwardsListener {
         self.source = source
     }
     
-    func startListening(onError: @escaping (Error) -> Void, onChange: @escaping ([Award]) -> Void) {
-        let request = StoredAward.orderedByDateDesc()
-        let observation = ValueObservation.tracking { db in
-            try request.fetchAll(db)
-        }
-        observer = observation.start(
-            in: source.dbQueue,
-            onError: onError,
-            onChange: { awards in
-                onChange(awards.map { $0.toModel()})
-            }
-        )
+    func startListening(onChange: @escaping () -> Void) {
+        source.addAwardsObserver(self, onChange: {
+            onChange()
+        })
     }
 }

@@ -22,7 +22,9 @@ extension DataSource {
     func goalCountById(_ identifier: Int64) -> Int {
         do {
             return try dbQueue.read { db -> Int in
-                let request = StoredAward.filter(StoredAward.Columns.goalId == identifier)
+                let request = StoredAward.filter(
+                    StoredAward.Columns.goalId == identifier &&
+                    StoredAward.Columns.reached == true)
                 return try request.fetchCount(db)
             }
         }
@@ -34,7 +36,10 @@ extension DataSource {
     func goalLastUsed(_ identifier: Int64) -> String? {
         do {
             return try dbQueue.read { db -> String? in
-                let request = StoredAward.filter(StoredAward.Columns.goalId == identifier).order(StoredAward.Columns.date.desc)
+                let request = StoredAward.filter(
+                    StoredAward.Columns.goalId == identifier &&
+                    StoredAward.Columns.reached == true)
+                .order(StoredAward.Columns.date.desc)
                 return try request.fetchOne(db)?.date
             }
         }

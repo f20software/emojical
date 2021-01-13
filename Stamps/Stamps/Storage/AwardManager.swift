@@ -97,14 +97,14 @@ class AwardManager {
         // looking at ones that correspond to our goals
         let goalIds = goals.compactMap({ $0.id })
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
-        var allAwards = [Award]()
+        var newAwards = [Award]()
 
         // Only add awards if we actually had any stamps for this week
         if stampsLog.count > 0 {
             for goal in goals {
                 if goal.direction == .positive {
                     let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
-                    allAwards.append(
+                    newAwards.append(
                         Award(with: goal,
                             date: dateReached ?? end,
                             reached: dateReached != nil,
@@ -114,7 +114,7 @@ class AwardManager {
                 }
                 else if (past && goal.direction == .negative) {
                     let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
-                    allAwards.append(
+                    newAwards.append(
                         Award(with: goal, date: end, reached: reached, count: totalCount)
                     )
                 }
@@ -122,25 +122,14 @@ class AwardManager {
         }
             
         // Load existing awards from the database
-        let existingAwards =
+        let oldAwards =
             repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
-        // And calculate difference - separate set of awards to be added and set of awards to be deleted
-        let addAwards = allAwards.filter { (a1) -> Bool in
-            return existingAwards.contains { (a2) -> Bool in
-                a2.goalId == a1.goalId && a2.date == a1.date
-            } == false
-        }
-        let deleteAwards = existingAwards.filter { (a1) -> Bool in
-            return allAwards.contains { (a2) -> Bool in
-                a2.goalId == a1.goalId && a2.date == a1.date
-            } == false
-        }
 
-        // Update data source and post notification about new or deleted awards
-        if addAwards.count > 0 || deleteAwards.count > 0 {
-            repository.updateAwards(add: addAwards, remove: deleteAwards)
+        // Update data source with new and/or deleted awards
+        if newAwards.count > 0 || oldAwards.count > 0 {
+            repository.updateAwards(add: newAwards, remove: oldAwards)
         }
     }
 
@@ -159,14 +148,14 @@ class AwardManager {
         // correspond to our goals
         let goalIds = goals.compactMap({ $0.id })
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
-        var allAwards = [Award]()
+        var newAwards = [Award]()
 
         // Only add awards if we actually had any stamps for this week
         if stampsLog.count > 0 {
             for goal in goals {
                 if goal.direction == .positive {
                     let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
-                    allAwards.append(
+                    newAwards.append(
                         Award(with: goal,
                             date: dateReached ?? end,
                             reached: dateReached != nil,
@@ -176,7 +165,7 @@ class AwardManager {
                 }
                 else if (past && goal.direction == .negative) {
                     let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
-                    allAwards.append(
+                    newAwards.append(
                         Award(with: goal, date: end, reached: reached, count: totalCount)
                     )
                 }
@@ -184,25 +173,14 @@ class AwardManager {
         }
             
         // Load existing awards from the database
-        let existingAwards =
+        let oldAwards =
             repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
-        // And calculate difference - separate set of awards to be added and set of awards to be deleted
-        let addAwards = allAwards.filter { (a1) -> Bool in
-            return existingAwards.contains { (a2) -> Bool in
-                a2.goalId == a1.goalId && a2.date == a1.date
-            } == false
-        }
-        let deleteAwards = existingAwards.filter { (a1) -> Bool in
-            return allAwards.contains { (a2) -> Bool in
-                a2.goalId == a1.goalId && a2.date == a1.date
-            } == false
-        }
 
-        // Update data source and post notification about new or deleted awards
-        if addAwards.count > 0 || deleteAwards.count > 0 {
-            repository.updateAwards(add: addAwards, remove: deleteAwards)
+        // Update data source with new and/or deleted awards
+        if newAwards.count > 0 || oldAwards.count > 0 {
+            repository.updateAwards(add: newAwards, remove: oldAwards)
         }
     }
     

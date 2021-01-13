@@ -12,6 +12,26 @@ import GRDB
 // MARK: - Award Helper Methods
 extension DataSource {
 
+    // MARK: - Observers
+    
+    func addAwardsObserver(_ disposable: AnyObject, onChange: @escaping () -> Void) {
+        queue.async { [weak self] in
+            self?.awardsOnChangeObservers.addObserver(disposable, onChange)
+        }
+    }
+
+    func removeAwardsObserver(_ disposable: AnyObject) {
+        queue.async { [weak self] in
+            self?.awardsOnChangeObservers.removeObserver(disposable)
+        }
+    }
+
+    private func notifyAwardsOnChangeObservers() {
+        awardsOnChangeObservers.forEach { observer in
+            observer()
+        }
+    }
+
     // All awards
     func allAwards() -> [Award] {
         allStoredAwards().map { $0.toModel() }
@@ -23,6 +43,8 @@ extension DataSource {
             _ = try dbQueue.write { db in
                 try StoredAward.deleteAll(db)
             }
+
+            notifyAwardsOnChangeObservers()
         }
         catch { }
     }
@@ -96,18 +118,7 @@ extension DataSource {
         }
         catch { }
 
-        if add.count > 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                NotificationCenter.default.post(name: .awardsAdded, object: add)
-                print("Awards added: \(add.count)")
-            })
-        }
-        if remove.count > 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                NotificationCenter.default.post(name: .awardsDeleted, object: remove)
-                print("Awards removed: \(add.count)")
-            })
-        }
+        notifyAwardsOnChangeObservers()
         updateStatsForGoals(ids)
     }
     

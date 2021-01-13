@@ -117,7 +117,7 @@ class StatsViewController: UIViewController, StatsView {
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
-    /// Load stats for the month
+    /// Load stats for the year
     func loadYearData(data: [YearBoxData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
         snapshot.appendSections([0])

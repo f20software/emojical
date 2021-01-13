@@ -119,6 +119,7 @@
 		F2A93FD2258164B2006C88F8 /* MonthBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A93FD0258164B2006C88F8 /* MonthBoxCell.xib */; };
 		F2A93FD825816709006C88F8 /* StatsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FD725816709006C88F8 /* StatsMode.swift */; };
 		F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A99D282439346900D3CF1D /* OptionsViewController.swift */; };
+		F2B3949225AE9BAE005F1EF7 /* ObserverList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */; };
 		F2B4762B23DBDFEF0076BFDC /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F2B4762A23DBDFEF0076BFDC /* GRDB */; };
 		F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762C23DC1B440076BFDC /* AppDatabase.swift */; };
 		F2B4763023DCF9DE0076BFDC /* StoredDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */; };
@@ -285,6 +286,7 @@
 		F2A93FD0258164B2006C88F8 /* MonthBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthBoxCell.xib; sourceTree = "<group>"; };
 		F2A93FD725816709006C88F8 /* StatsMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsMode.swift; sourceTree = "<group>"; };
 		F2A99D282439346900D3CF1D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverList.swift; sourceTree = "<group>"; };
 		F2B4762C23DC1B440076BFDC /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredDiary.swift; sourceTree = "<group>"; };
 		F2B7D35A244B47FE00C94E63 /* DTTableViewCell-Emoji.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DTTableViewCell-Emoji.xib"; sourceTree = "<group>"; };
@@ -720,6 +722,15 @@
 			path = Options;
 			sourceTree = "<group>";
 		};
+		F2B3949025AE9BAE005F1EF7 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */,
+			);
+			name = Tools;
+			path = Stamps/Tools;
+			sourceTree = SOURCE_ROOT;
+		};
 		F2B4763423DE3C300076BFDC /* Application Pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -763,6 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				F20E403C2443ED25008759D1 /* DynamicTables */,
+				F2B3949025AE9BAE005F1EF7 /* Tools */,
 				F20E40382443E598008759D1 /* Extensions */,
 				F2C493222430171000E997BD /* Notifications */,
 				F26B273823D80CB000B8D0F9 /* Resources */,
@@ -1129,6 +1141,7 @@
 				F2FC63352446B70E00EF41AD /* DTTextViewCell.swift in Sources */,
 				F284F9AD257EFA8E0016D1C6 /* GoalAwardData.swift in Sources */,
 				F2C190D824030701003F5ABA /* SelectStampsViewController.swift in Sources */,
+				F2B3949225AE9BAE005F1EF7 /* ObserverList.swift in Sources */,
 				F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
 				F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */,

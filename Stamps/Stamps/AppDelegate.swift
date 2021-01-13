@@ -11,9 +11,6 @@ import UIKit
 extension NSNotification.Name {
     static let navigateToToday = NSNotification.Name("NavigateToToday")
     static let todayStickersUpdated = NSNotification.Name("TodayStickersUpdated")
-    static let awardsAdded = NSNotification.Name("AwardsAdded")
-    static let awardsDeleted = NSNotification.Name("AwardsDeleted")
-    static let newAwardsSeen = NSNotification.Name("NewAwardsSeen")
 }
 
 @UIApplicationMain
@@ -35,6 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         UIView.appearance().tintColor = UIColor.appTintColor
         return true
+    }
+    
+    func applicationSignificantTimeChange(_ application: UIApplication) {
+        
+        //
     }
 
     // MARK: Notification handling

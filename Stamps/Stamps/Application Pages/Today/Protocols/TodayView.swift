@@ -36,9 +36,6 @@ protocol TodayView: AnyObject {
     /// User tapped on the award icon on the top
     var onAwardTapped: (() -> Void)? { get set }
 
-    /// User wants to dismiss Awards Recap view (by dragging it down)
-//    var onAwardsRecapDismiss: (() -> Void)? { get set }
-
     // MARK: - Updates
 
     /// Show/hide top awards strip

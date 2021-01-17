@@ -109,25 +109,22 @@ class AwardManager {
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
         var addAwards = [Award]()
 
-        // Only add awards if we actually had any stamps for this week
-        if stampsLog.count > 0 {
-            for goal in goals {
-                if goal.direction == .positive {
-                    let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
-                    addAwards.append(
-                        Award(with: goal,
-                            date: dateReached ?? end,
-                            reached: dateReached != nil,
-                            count: totalCount
-                        )
+        for goal in goals {
+            if goal.direction == .positive {
+                let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
+                addAwards.append(
+                    Award(with: goal,
+                        date: dateReached ?? end,
+                        reached: dateReached != nil,
+                        count: totalCount
                     )
-                }
-                else if (past && goal.direction == .negative) {
-                    let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
-                    addAwards.append(
-                        Award(with: goal, date: end, reached: reached, count: totalCount)
-                    )
-                }
+                )
+            }
+            else if (past && goal.direction == .negative) {
+                let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
+                addAwards.append(
+                    Award(with: goal, date: end, reached: reached, count: totalCount)
+                )
             }
         }
             
@@ -160,25 +157,22 @@ class AwardManager {
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
         var addAwards = [Award]()
 
-        // Only add awards if we actually had any stamps for this week
-        if stampsLog.count > 0 {
-            for goal in goals {
-                if goal.direction == .positive {
-                    let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
-                    addAwards.append(
-                        Award(with: goal,
-                            date: dateReached ?? end,
-                            reached: dateReached != nil,
-                            count: totalCount
-                        )
+        for goal in goals {
+            if goal.direction == .positive {
+                let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
+                addAwards.append(
+                    Award(with: goal,
+                        date: dateReached ?? end,
+                        reached: dateReached != nil,
+                        count: totalCount
                     )
-                }
-                else if (past && goal.direction == .negative) {
-                    let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
-                    addAwards.append(
-                        Award(with: goal, date: end, reached: reached, count: totalCount)
-                    )
-                }
+                )
+            }
+            else if (past && goal.direction == .negative) {
+                let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
+                addAwards.append(
+                    Award(with: goal, date: end, reached: reached, count: totalCount)
+                )
             }
         }
             

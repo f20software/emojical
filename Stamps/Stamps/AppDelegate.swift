@@ -9,10 +9,15 @@
 import UIKit
 
 extension NSNotification.Name {
+    
+    /// Navigate to today's data in Today view. This notification will get generated when user taps on the reminder
     static let navigateToToday = NSNotification.Name("NavigateToToday")
+    
+    /// When today stickers got updated we need to re-generate reminder notification
     static let todayStickersUpdated = NSNotification.Name("TodayStickersUpdated")
+    
+    /// Week is closed, awards were given
     static let weekClosed = NSNotification.Name("LastWeekClosed")
-    static let viewWeekRecap = NSNotification.Name("ViewWeekRecap")
 }
 
 @UIApplicationMain
@@ -46,9 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
         // Post application notification to navigate to today's date
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-            NotificationCenter.default.post(name: .navigateToToday, object: nil)
-        })
+        NotificationCenter.default.post(name: .navigateToToday, object: nil)
         completionHandler()
     }
     
@@ -57,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // MARK: UISceneSession Lifecycle
 
-    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -69,7 +71,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 

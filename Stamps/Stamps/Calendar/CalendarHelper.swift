@@ -208,6 +208,13 @@ extension CalendarHelper {
             return (firstDay.databaseKey <= todayKey &&
                 lastDay.databaseKey >= todayKey)
         }
+        
+        /// Returns `true` when first date of the week is in the future
+        var isFuture: Bool {
+            let todayKey = Date().databaseKey
+            
+            return (firstDay.databaseKey > todayKey)
+        }
 
         /// Label for the week in a "December 21 - 28" or "December 28 - January 3" format
         var label: String {

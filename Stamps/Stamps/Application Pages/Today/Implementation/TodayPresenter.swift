@@ -146,10 +146,31 @@ class TodayPresenter: TodayPresenterProtocol {
         setupView()
     }
     
+    /// Called when view about to appear on the screen
     func onViewWillAppear() {
         loadViewData()
     }
     
+    /// Navigate Today view to specific date
+    func navigateTo(_ date: Date) {
+        
+        // Initialize data and load view
+        initializeDataFor(date: date)
+        loadViewData()
+    }
+
+    /// Show week recap for the specific date (any daty in a week will do)
+    func showWeekRecapFor(_ date: Date) {
+
+        // Initialize data and load view
+        initializeDataFor(date: date)
+        setupView()
+        loadViewData()
+
+        // Coordinator is responsible for navigating to the recap view
+        coordinator?.showAwardsRecap(data: recapData())
+    }
+
     // MARK: - Private helpers
 
     /// Reacting to significate time change event - updating data to current date and refreshing view
@@ -162,19 +183,6 @@ class TodayPresenter: TodayPresenterProtocol {
         // Configuring view according to the data
         setupView()
         loadViewData()
-    }
-
-    /// Reacting to significate time change event - updating data to current date and refreshing view
-    @objc func weekRecap() {
-        print("Navigating to week recap")
-        
-        // Initial data configuration for the current date
-        initializeDataFor(date: Date().byAddingWeek(-1))
-        
-        // Configuring view according to the data
-        setupView()
-        loadViewData()
-        coordinator?.showAwardsRecap(data: self.recapData())
     }
 
     /// Initialize data objects based on the current date
@@ -234,9 +242,6 @@ class TodayPresenter: TodayPresenterProtocol {
         // Subscribe to significant time change notification
         NotificationCenter.default.addObserver(self, selector: #selector(significantTimeChange),
             name: UIApplication.significantTimeChangeNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(weekRecap),
-            name: .viewWeekRecap, object: nil)
     }
 
     private func setupView() {
@@ -341,6 +346,7 @@ class TodayPresenter: TodayPresenterProtocol {
     
     private func loadAwardsData() {
         var data = [GoalAwardData]()
+        var showAwards = true
             
         if week.isCurrentWeek {
             data = goals.compactMap({
@@ -353,6 +359,7 @@ class TodayPresenter: TodayPresenterProtocol {
             })
             // Put goals that are already reached in front
             data = data.sorted(by: { return $0 < $1 })
+            showAwards = data.count > 0
         } else {
             data = awards.compactMap({
                 guard $0.reached == true else { return nil }
@@ -364,10 +371,13 @@ class TodayPresenter: TodayPresenterProtocol {
                     stamp: stamp
                 )
             })
+            showAwards = awards.count > 0
         }
 
-        view?.loadAwards(data: data)
-        view?.showAwards(data.count > 0)
+        view?.showAwards(showAwards)
+        if showAwards {
+            view?.loadAwards(data: data)
+        }
     }
     
     private func stampToggled(stampId: Int64) {

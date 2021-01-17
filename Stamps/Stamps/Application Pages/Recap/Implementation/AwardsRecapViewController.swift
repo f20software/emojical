@@ -133,8 +133,8 @@ extension AwardsRecapViewController: RecapView {
         let reached = data.filter({ $0.progress.isReached == true })
         let notReached = data.filter({ $0.progress.isReached == false })
         
+        snapshot.appendSections([0])
         if reached.count > 0 {
-            snapshot.appendSections([0])
             snapshot.appendItems(reached)
         }
         

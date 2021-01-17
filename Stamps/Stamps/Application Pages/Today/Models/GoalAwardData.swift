@@ -106,7 +106,8 @@ extension GoalAwardData {
                     backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
                     direction: .positive,
                     period: goal.period,
-                    progress: Float(progress) / Float(goal.limit) + Specs.zeroProgressMock,
+                    progress: Float(progress) / Float(goal.limit) +
+                        (progress == 0 ? Specs.zeroProgressMock : 0),
                     progressColor: UIColor.positiveGoalNotReached,
                     isReached: false
                 )

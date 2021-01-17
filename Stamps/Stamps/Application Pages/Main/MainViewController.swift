@@ -10,9 +10,9 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
-    var todayTab: UIViewController!
+    var todayTab: TodayViewController?
     var goalsTab: UIViewController!
-    var stickersTab: UIViewController!
+    var statsTab: UIViewController!
     var optionsTab: UIViewController!
 
     private var newAwardCounter = 0
@@ -20,17 +20,17 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        todayTab = viewControllers![0]
+        todayTab = ((viewControllers?[0] as? UINavigationController)?.viewControllers[0] as? TodayViewController)
         goalsTab = viewControllers![1]
-        stickersTab = viewControllers![2]
+        statsTab = viewControllers![2]
         optionsTab = viewControllers![3]
 
-        // Subscribe to app notifications on when user sign in/out
-        NotificationCenter.default.addObserver(self, selector: #selector(navigateToCalendar), name: .navigateToToday, object: nil)
+        // Add handlers to app wide notifications
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(navigateToCalendar), name: .navigateToToday, object: nil)
 
-//        NotificationCenter.default.addObserver(self, selector: #selector(awardsAdded), name: .awardsAdded, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(awardsDeleted), name: .awardsDeleted, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(newAwardsSeen), name: .newAwardsSeen, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(weekReady), name: .weekClosed, object: nil)
     }
 }
 
@@ -38,27 +38,25 @@ class MainViewController: UITabBarController {
 extension MainViewController {
 
     @objc func navigateToCalendar() {
+        // Move to Today's tab
         selectedIndex = 0
+        
+        // And navigate to current day
+        todayTab?.presenter?.navigateTo(Date())
     }
-
-//    @objc func awardsAdded(notification: Notification) {
-//        guard let awards = notification.object as? [Award] else { return }
-//        newAwardCounter += awards.count
-//        tabBar.items?[1].badgeValue = "\(newAwardCounter)"
-//    }
-//
-//    @objc func awardsDeleted(notification: Notification) {
-//        guard let awards = notification.object as? [Award] else { return }
-//
-//        newAwardCounter -= awards.count
-//        if newAwardCounter < 0 {
-//            newAwardCounter = 0
-//        }
-//        tabBar.items?[1].badgeValue = newAwardCounter > 0 ? "\(newAwardCounter)" : nil
-//    }
-//
-//    @objc func newAwardsSeen(notification: Notification) {
-//        newAwardCounter = 0
-//        tabBar.items?[1].badgeValue = nil
-//    }
+    
+    @objc func weekReady() {
+        selectedIndex = 0
+        let alert = UIAlertController(title: "Week recap is ready", message: "You've reached some goals and failed others", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Review", style: .default, handler: { (_) in
+            // Show week recap for the previous week
+            DispatchQueue.main.async {
+                self.todayTab?.presenter?.showWeekRecapFor(Date().byAddingWeek(-1))
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
 }

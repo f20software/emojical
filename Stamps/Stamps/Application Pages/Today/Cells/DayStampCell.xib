@@ -24,6 +24,14 @@
                             <constraint firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="height" multiplier="1:1" id="lDM-39-pup"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ma3-8W-bGA">
+                        <rect key="frame" x="35" y="3" width="12" height="12"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12" id="CXa-a6-KVj"/>
+                            <constraint firstAttribute="height" constant="12" id="FTO-H2-zpU"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glV-Hm-xGi">
                         <rect key="frame" x="1" y="1" width="48" height="48"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,13 +45,16 @@
             <constraints>
                 <constraint firstItem="Zrd-LK-ZF1" firstAttribute="centerY" secondItem="glV-Hm-xGi" secondAttribute="centerY" id="97d-QF-sT7"/>
                 <constraint firstItem="Zrd-LK-ZF1" firstAttribute="centerX" secondItem="glV-Hm-xGi" secondAttribute="centerX" id="IOq-kE-ER1"/>
+                <constraint firstItem="Zrd-LK-ZF1" firstAttribute="trailing" secondItem="Ma3-8W-bGA" secondAttribute="centerX" constant="3" id="Kch-bI-nud"/>
                 <constraint firstItem="glV-Hm-xGi" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="fu7-9B-jdH"/>
                 <constraint firstAttribute="width" secondItem="glV-Hm-xGi" secondAttribute="width" constant="2" id="oU0-MK-Ve3"/>
+                <constraint firstItem="Ma3-8W-bGA" firstAttribute="centerY" secondItem="Zrd-LK-ZF1" secondAttribute="top" constant="3" id="q0W-hU-yeX"/>
                 <constraint firstItem="glV-Hm-xGi" firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="width" constant="10" id="s05-Yv-32B"/>
                 <constraint firstItem="glV-Hm-xGi" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="yZf-FU-vbn"/>
             </constraints>
             <size key="customSize" width="50" height="50"/>
             <connections>
+                <outlet property="badgeView" destination="Ma3-8W-bGA" id="C8c-6T-TZY"/>
                 <outlet property="selectionView" destination="glV-Hm-xGi" id="TSo-AZ-Hms"/>
                 <outlet property="sticker" destination="Zrd-LK-ZF1" id="HQ8-Ki-gYR"/>
                 <outlet property="stickerAndSelectionSizeDelta" destination="s05-Yv-32B" id="9DV-q6-UHj"/>
@@ -54,6 +65,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

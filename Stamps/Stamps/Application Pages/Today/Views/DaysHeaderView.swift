@@ -65,14 +65,14 @@ class DaysHeaderView : UIView {
 
         days.dataSource = dataSource
         days.delegate = self
-        days.collectionViewLayout = awardsLayout()
+        days.collectionViewLayout = daysHeaderLayout()
         days.backgroundColor = UIColor.clear
         days.alwaysBounceHorizontal = false
         days.alwaysBounceVertical = false
     }
     
     // Creates layout for the day column - vertical list of cells
-    private func awardsLayout() -> UICollectionViewCompositionalLayout {
+    private func daysHeaderLayout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1/7),

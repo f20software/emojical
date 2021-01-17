@@ -12,7 +12,7 @@ import MessageUI
 class OptionsViewController: UITableViewController {
 
     @IBOutlet weak var exportCell: UITableViewCell!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -33,8 +33,18 @@ class OptionsViewController: UITableViewController {
         }
     }
     
-    
-    
+    @IBAction func significantTimeChange(_ sender: Any) {
+        NotificationCenter.default.post(name: UIApplication.significantTimeChangeNotification, object: nil)
+    }
+
+    @IBAction func navigateToToday(_ sender: Any) {
+        NotificationCenter.default.post(name: .navigateToToday, object: nil)
+    }
+
+    @IBAction func weekRecapIsReady(_ sender: Any) {
+        NotificationCenter.default.post(name: .weekClosed, object: nil)
+    }
+
     func sendEmail(attachment: URL) {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()

@@ -135,7 +135,74 @@ class TodayPresenter: TodayPresenterProtocol {
 
     /// Called when view finished initial loading.
     func onViewDidLoad() {
+
+        // Configure listeners for the database
+        setupListeners()
+
+        // Initial data configuration for the current date
+        initializeDataFor(date: Date())
         
+        // Configuring view according to the data
+        setupView()
+    }
+    
+    /// Called when view about to appear on the screen
+    func onViewWillAppear() {
+        loadViewData()
+    }
+    
+    /// Navigate Today view to specific date
+    func navigateTo(_ date: Date) {
+        
+        // Initialize data and load view
+        initializeDataFor(date: date)
+        loadViewData()
+    }
+
+    /// Show week recap for the specific date (any daty in a week will do)
+    func showWeekRecapFor(_ date: Date) {
+
+        // Initialize data and load view
+        initializeDataFor(date: date)
+        setupView()
+        loadViewData()
+
+        // Coordinator is responsible for navigating to the recap view
+        coordinator?.showAwardsRecap(data: recapData())
+    }
+
+    // MARK: - Private helpers
+
+    /// Reacting to significate time change event - updating data to current date and refreshing view
+    @objc func significantTimeChange() {
+        print("Significant Time Change")
+        
+        // Initial data configuration for the current date
+        initializeDataFor(date: Date())
+        
+        // Configuring view according to the data
+        setupView()
+        loadViewData()
+    }
+
+    /// Initialize data objects based on the current date
+    private func initializeDataFor(date: Date) {
+        // Load set of all stamps
+        allStamps = repository.allStamps()
+
+        // Set date and week objects
+        selectedDay = date
+        week = CalendarHelper.Week(date)
+        
+        let key = selectedDay.databaseKey
+        selectedDayIndex = weekHeader.firstIndex(where: { $0.date.databaseKey == key }) ?? 0
+    }
+    
+    
+    /// Configure listeners to the data source changes
+    private func setupListeners() {
+        
+        // When stamps are updated
         stampsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
@@ -146,10 +213,8 @@ class TodayPresenter: TodayPresenterProtocol {
             self.loadStampSelectorData()
         })
         
-        awardsListener.startListening(onError: { error in
-            fatalError("Unexpected error: \(error)")
-        },
-        onChange: { [weak self] awards in
+        // When awards are updated
+        awardsListener.startListening(onChange: { [weak self] in
             guard let self = self else { return }
 
             let newAwards = self.dataBuilder.awards(for: self.week)
@@ -164,6 +229,7 @@ class TodayPresenter: TodayPresenterProtocol {
             self.loadAwardsData()
         })
         
+        // When goals are updated
         goalsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
@@ -173,23 +239,10 @@ class TodayPresenter: TodayPresenterProtocol {
             self.loadAwardsData()
         })
 
-        // Load set of all stamps
-        allStamps = repository.allStamps()
-
-        // Set current day and week
-        selectedDay = Date()
-        week = CalendarHelper.Week(selectedDay)
-        let key = selectedDay.databaseKey
-        selectedDayIndex = weekHeader.firstIndex(where: { $0.date.databaseKey == key }) ?? 0
-        
-        setupView()
+        // Subscribe to significant time change notification
+        NotificationCenter.default.addObserver(self, selector: #selector(significantTimeChange),
+            name: UIApplication.significantTimeChangeNotification, object: nil)
     }
-    
-    func onViewWillAppear() {
-        loadViewData()
-    }
-    
-    // MARK: - Private helpers
 
     private func setupView() {
         
@@ -292,8 +345,14 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     private func loadAwardsData() {
+        // Awards will be shown only when we have goals or awards already
+        let showAwards = week.isCurrentWeek ? goals.count > 0 : awards.count > 0
+        guard showAwards else {
+            view?.showAwards(false)
+            return
+        }
+
         var data = [GoalAwardData]()
-            
         if week.isCurrentWeek {
             data = goals.compactMap({
                 let stamp = repository.stampById($0.stamps.first)
@@ -318,8 +377,8 @@ class TodayPresenter: TodayPresenterProtocol {
             })
         }
 
+        view?.showAwards(true)
         view?.loadAwards(data: data)
-        view?.showAwards(data.count > 0)
     }
     
     private func stampToggled(stampId: Int64) {
@@ -340,8 +399,12 @@ class TodayPresenter: TodayPresenterProtocol {
         // Recalculate awards
         awardManager.recalculateAwards(selectedDay)
         
+        // TODO: Optimize to use listener approach
+        if selectedDay.isToday {
+            NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
+        }
+        
         // Reload the model and update the view
-        weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
         dailyStickers = dataBuilder.weekDataModel(for: week)
         loadViewData()
     }

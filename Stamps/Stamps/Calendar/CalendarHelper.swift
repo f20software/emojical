@@ -208,7 +208,7 @@ extension CalendarHelper {
             return (firstDay.databaseKey <= todayKey &&
                 lastDay.databaseKey >= todayKey)
         }
-
+        
         /// Label for the week in a "December 21 - 28" or "December 28 - January 3" format
         var label: String {
             let calendar: Calendar = .autoupdatingCurrent
@@ -234,7 +234,6 @@ extension CalendarHelper {
             return (0..<7).map { firstDay.byAddingDays($0) }
         }
         
-        
         func dayHeadersForWeek(highlightedIndex: Int) -> [DayHeaderData] {
             let formatter = DateFormatter()
             let today = Date().databaseKey
@@ -254,7 +253,9 @@ extension CalendarHelper {
                     isHighlighted: false)
             }
             
-            result[highlightedIndex].isHighlighted = true
+            if highlightedIndex >= 0 {
+                result[highlightedIndex].isHighlighted = true
+            }
             return result
         }
 

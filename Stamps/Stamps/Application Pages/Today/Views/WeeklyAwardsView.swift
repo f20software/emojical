@@ -16,7 +16,11 @@ class WeeklyAwardsView : UIView {
 
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, GoalAwardData>!
+    /// Diffable data source
+    private var dataSource: UICollectionViewDiffableDataSource<Int, TodayAwardElement>!
+    
+    /// Is dataSource empty? Different layout will be generated if it's empty
+    private var isDataSourceEmpty: Bool = false
     
     // MARK: - Callbacks
     
@@ -33,11 +37,24 @@ class WeeklyAwardsView : UIView {
     // MARK: - Public view interface
 
     func loadData(_ data: [GoalAwardData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, GoalAwardData>()
+        var empty = isDataSourceEmpty
+        var snapshot = NSDiffableDataSourceSnapshot<Int, TodayAwardElement>()
         snapshot.appendSections([0])
         
-        snapshot.appendItems(data)
+        if data.count > 0 {
+            snapshot.appendItems(data.map({ TodayAwardElement.award($0) }))
+            empty = false
+        } else {
+            snapshot.appendItems([.noAwards("No goals were reached this week")])
+            empty = true
+        }
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+
+        // If emptiness of the dataSource has changed - need to re-create layout
+        if empty != isDataSourceEmpty {
+            isDataSourceEmpty = empty
+            awards.collectionViewLayout = awardsLayout(empty: empty)
+        }
     }
     
     // MARK: - Private helpers
@@ -53,10 +70,14 @@ class WeeklyAwardsView : UIView {
             UINib(nibName: "TodayAwardCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.award
         )
+        awards.register(
+            UINib(nibName: "NoAwardsCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.noAwards
+        )
     }
 
     private func configureCollectionView() {
-        self.dataSource = UICollectionViewDiffableDataSource<Int, GoalAwardData>(
+        self.dataSource = UICollectionViewDiffableDataSource<Int, TodayAwardElement>(
             collectionView: awards,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -65,17 +86,18 @@ class WeeklyAwardsView : UIView {
 
         awards.dataSource = dataSource
         awards.delegate = self
-        awards.collectionViewLayout = awardsLayout()
+        awards.collectionViewLayout = awardsLayout(empty: isDataSourceEmpty)
         awards.backgroundColor = UIColor.clear
         awards.alwaysBounceHorizontal = false
         awards.alwaysBounceVertical = false
     }
     
     // Creates layout for the day column - vertical list of cells
-    private func awardsLayout() -> UICollectionViewCompositionalLayout {
+    private func awardsLayout(empty: Bool) -> UICollectionViewCompositionalLayout {
+        // When dataSource is empty - we just need to display one cell with full width
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .absolute(Specs.awardSize),
+                widthDimension: empty ? .fractionalWidth(1.0) : .absolute(Specs.awardSize),
                 heightDimension: .absolute(Specs.awardSize)
             )
         )
@@ -85,7 +107,7 @@ class WeeklyAwardsView : UIView {
 
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .absolute(Specs.awardSize),
+                widthDimension: empty ? .fractionalWidth(1.0) : .absolute(Specs.awardSize),
                 heightDimension: .absolute(Specs.awardSize)
             ),
             subitems: [item]
@@ -107,13 +129,24 @@ extension WeeklyAwardsView: UICollectionViewDelegate {
         onAwardTapped?()
     }
 
-    private func cell(for path: IndexPath, model: GoalAwardData, collectionView: UICollectionView) -> UICollectionViewCell? {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: Specs.Cells.award, for: path
-        ) as? TodayAwardCell else { return UICollectionViewCell() }
-        
-        cell.configure(for: model)
-        return cell
+    private func cell(for path: IndexPath, model: TodayAwardElement, collectionView: UICollectionView) -> UICollectionViewCell? {
+        switch  model {
+        case .award(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.award, for: path
+            ) as? TodayAwardCell else { return UICollectionViewCell() }
+            
+            cell.configure(for: data)
+            return cell
+            
+        case .noAwards(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.noAwards, for: path
+            ) as? NoAwardsCell else { return UICollectionViewCell() }
+            
+            cell.configure(for: data)
+            return cell
+        }
     }
 }
 
@@ -123,8 +156,11 @@ fileprivate struct Specs {
     /// Cell identifiers
     struct Cells {
         
-        /// Stamp cell
+        /// Award cell
         static let award = "TodayAwardCell"
+        
+        /// No awards cell
+        static let noAwards = "NoAwardsCell"
     }
     
     /// Award cell size

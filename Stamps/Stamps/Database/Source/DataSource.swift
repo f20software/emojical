@@ -13,11 +13,20 @@ import GRDB
 /// GRDB data storage wrapper.
 class DataSource {
 
+    /// List of observers for awards change notification
+    internal var awardsOnChangeObservers = ObserverList<(() -> Void)>()
+    
+    /// Internal queue to ensure that work with observers is done in a thread safe way
+    internal var queue: DispatchQueue!
+
     /// Database queue.
     internal var dbQueue: DatabaseQueue!
     
     /// Initializes database.
     func setupDatabase(_ application: UIApplication) throws {
+
+        queue = DispatchQueue(label: "com.svidersky.Emojical.datasource")
+
         let databaseURL = try FileManager.default
             .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             .appendingPathComponent("db.sqlite")

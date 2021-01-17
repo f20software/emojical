@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WFy-OT-yXN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WFy-OT-yXN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,6 +66,82 @@
                                                 <constraint firstItem="Efg-lM-cIg" firstAttribute="centerY" secondItem="e95-9O-P6z" secondAttribute="centerY" id="MAV-VO-9to"/>
                                                 <constraint firstItem="Efg-lM-cIg" firstAttribute="top" secondItem="e95-9O-P6z" secondAttribute="top" constant="5" id="trQ-kf-qdg"/>
                                                 <constraint firstItem="Efg-lM-cIg" firstAttribute="centerX" secondItem="e95-9O-P6z" secondAttribute="centerX" id="ucd-IL-8Db"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Notifications" id="n88-9B-y1U">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Xuo-oe-Jmh">
+                                        <rect key="frame" x="20" y="304" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xuo-oe-Jmh" id="eym-3C-jES">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDU-Yt-CQo">
+                                                    <rect key="frame" x="94" y="5" width="186" height="34"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <state key="normal" title="Significant Time Change"/>
+                                                    <connections>
+                                                        <action selector="significantTimeChange:" destination="8Y1-v5-Mb4" eventType="primaryActionTriggered" id="g0h-yl-vg7"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GDU-Yt-CQo" firstAttribute="centerX" secondItem="eym-3C-jES" secondAttribute="centerX" id="Frl-xC-9FY"/>
+                                                <constraint firstItem="GDU-Yt-CQo" firstAttribute="centerY" secondItem="eym-3C-jES" secondAttribute="centerY" id="HEj-Hu-z9w"/>
+                                                <constraint firstAttribute="bottom" secondItem="GDU-Yt-CQo" secondAttribute="bottom" constant="5" id="TXF-As-wmM"/>
+                                                <constraint firstItem="GDU-Yt-CQo" firstAttribute="top" secondItem="eym-3C-jES" secondAttribute="top" constant="5" id="Uqk-kG-qd0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="acB-Df-34y">
+                                        <rect key="frame" x="20" y="347.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="acB-Df-34y" id="uA1-zp-qLC">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEC-v3-FtU">
+                                                    <rect key="frame" x="117" y="5" width="140" height="34"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <state key="normal" title="Navigate To Today"/>
+                                                    <connections>
+                                                        <action selector="navigateToToday:" destination="8Y1-v5-Mb4" eventType="primaryActionTriggered" id="Rwf-Zm-bUQ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tEC-v3-FtU" firstAttribute="top" secondItem="uA1-zp-qLC" secondAttribute="top" constant="5" id="SBM-X8-xfs"/>
+                                                <constraint firstItem="tEC-v3-FtU" firstAttribute="centerX" secondItem="uA1-zp-qLC" secondAttribute="centerX" id="iqT-JM-N1c"/>
+                                                <constraint firstItem="tEC-v3-FtU" firstAttribute="centerY" secondItem="uA1-zp-qLC" secondAttribute="centerY" id="pqC-cU-DhC"/>
+                                                <constraint firstAttribute="bottom" secondItem="tEC-v3-FtU" secondAttribute="bottom" constant="5" id="yv6-S0-shY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="mCz-WC-nqp">
+                                        <rect key="frame" x="20" y="391" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCz-WC-nqp" id="miL-vm-FTE">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oc-QU-9iv">
+                                                    <rect key="frame" x="105.5" y="5" width="163" height="34"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <state key="normal" title="Week Recap is Ready"/>
+                                                    <connections>
+                                                        <action selector="weekRecapIsReady:" destination="8Y1-v5-Mb4" eventType="primaryActionTriggered" id="Rfk-ls-w2K"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8oc-QU-9iv" firstAttribute="centerX" secondItem="miL-vm-FTE" secondAttribute="centerX" id="01k-dw-Mfi"/>
+                                                <constraint firstItem="8oc-QU-9iv" firstAttribute="top" secondItem="miL-vm-FTE" secondAttribute="top" constant="5" id="4t1-ad-JYq"/>
+                                                <constraint firstItem="8oc-QU-9iv" firstAttribute="centerY" secondItem="miL-vm-FTE" secondAttribute="centerY" id="Y0W-nl-Pz4"/>
+                                                <constraint firstAttribute="bottom" secondItem="8oc-QU-9iv" secondAttribute="bottom" constant="5" id="gj2-se-y9j"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

@@ -9,11 +9,15 @@
 import UIKit
 
 extension NSNotification.Name {
+    
+    /// Navigate to today's data in Today view. This notification will get generated when user taps on the reminder
     static let navigateToToday = NSNotification.Name("NavigateToToday")
+    
+    /// When today stickers got updated we need to re-generate reminder notification
     static let todayStickersUpdated = NSNotification.Name("TodayStickersUpdated")
-    static let awardsAdded = NSNotification.Name("AwardsAdded")
-    static let awardsDeleted = NSNotification.Name("AwardsDeleted")
-    static let newAwardsSeen = NSNotification.Name("NewAwardsSeen")
+    
+    /// Week is closed, awards were given
+    static let weekClosed = NSNotification.Name("LastWeekClosed")
 }
 
 @UIApplicationMain
@@ -24,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         /// Setup data storage. Change this line to swap to another data storage mechanism.
         Storage.shared = GRDBDataProvider(app: application)
-
+        
         /// Setup calendar helper
         CalendarHelper.shared = CalendarHelper()
         AwardManager.shared.recalculateOnAppResume()
@@ -36,15 +40,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UIView.appearance().tintColor = UIColor.appTintColor
         return true
     }
+    
+    func applicationSignificantTimeChange(_ application: UIApplication) {
+        AwardManager.shared.recalculateOnAppResume()
+        NotificationCenter.default.post(name: UIApplication.significantTimeChangeNotification, object: nil)
+    }
 
     // MARK: Notification handling
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
         // Post application notification to navigate to today's date
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-            NotificationCenter.default.post(name: .navigateToToday, object: nil)
-        })
+        NotificationCenter.default.post(name: .navigateToToday, object: nil)
         completionHandler()
     }
     
@@ -53,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // MARK: UISceneSession Lifecycle
 
-    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -65,7 +71,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 

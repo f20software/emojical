@@ -345,9 +345,14 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     private func loadAwardsData() {
+        // Awards will be shown only when we have goals or awards already
+        let showAwards = week.isCurrentWeek ? goals.count > 0 : awards.count > 0
+        guard showAwards else {
+            view?.showAwards(false)
+            return
+        }
+
         var data = [GoalAwardData]()
-        var showAwards = true
-            
         if week.isCurrentWeek {
             data = goals.compactMap({
                 let stamp = repository.stampById($0.stamps.first)
@@ -359,9 +364,6 @@ class TodayPresenter: TodayPresenterProtocol {
             })
             // Put goals that are already reached in front
             data = data.sorted(by: { return $0 < $1 })
-            
-            // On current week show awards view only when some goals exist
-            showAwards = goals.count > 0
         } else {
             data = awards.compactMap({
                 guard $0.reached == true else { return nil }
@@ -373,13 +375,10 @@ class TodayPresenter: TodayPresenterProtocol {
                     stamp: stamp
                 )
             })
-            showAwards = awards.count > 0
         }
 
-        view?.showAwards(showAwards)
-        if showAwards {
-            view?.loadAwards(data: data)
-        }
+        view?.showAwards(true)
+        view?.loadAwards(data: data)
     }
     
     private func stampToggled(stampId: Int64) {

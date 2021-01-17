@@ -16,9 +16,11 @@ class WeeklyAwardsView : UIView {
 
     // MARK: - State
     
+    /// Diffable data source
     private var dataSource: UICollectionViewDiffableDataSource<Int, TodayAwardElement>!
     
-    private var dataSourceEmpty: Bool = false
+    /// Is dataSource empty? Different layout will be generated if it's empty
+    private var isDataSourceEmpty: Bool = false
     
     // MARK: - Callbacks
     
@@ -35,22 +37,23 @@ class WeeklyAwardsView : UIView {
     // MARK: - Public view interface
 
     func loadData(_ data: [GoalAwardData]) {
-        var newStateEmpty = dataSourceEmpty
+        var empty = isDataSourceEmpty
         var snapshot = NSDiffableDataSourceSnapshot<Int, TodayAwardElement>()
         snapshot.appendSections([0])
         
         if data.count > 0 {
             snapshot.appendItems(data.map({ TodayAwardElement.award($0) }))
-            newStateEmpty = false
+            empty = false
         } else {
-            snapshot.appendItems([.noAwards("Oh no, no goals reached :( ")])
-            newStateEmpty = true
+            snapshot.appendItems([.noAwards("No goals were reached this week")])
+            empty = true
         }
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
 
-        if newStateEmpty != dataSourceEmpty {
-            dataSourceEmpty = newStateEmpty
-            awards.collectionViewLayout = awardsLayout(empty: dataSourceEmpty)
+        // If emptiness of the dataSource has changed - need to re-create layout
+        if empty != isDataSourceEmpty {
+            isDataSourceEmpty = empty
+            awards.collectionViewLayout = awardsLayout(empty: empty)
         }
     }
     
@@ -83,7 +86,7 @@ class WeeklyAwardsView : UIView {
 
         awards.dataSource = dataSource
         awards.delegate = self
-        awards.collectionViewLayout = awardsLayout(empty: dataSourceEmpty)
+        awards.collectionViewLayout = awardsLayout(empty: isDataSourceEmpty)
         awards.backgroundColor = UIColor.clear
         awards.alwaysBounceHorizontal = false
         awards.alwaysBounceVertical = false
@@ -91,6 +94,7 @@ class WeeklyAwardsView : UIView {
     
     // Creates layout for the day column - vertical list of cells
     private func awardsLayout(empty: Bool) -> UICollectionViewCompositionalLayout {
+        // When dataSource is empty - we just need to display one cell with full width
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: empty ? .fractionalWidth(1.0) : .absolute(Specs.awardSize),

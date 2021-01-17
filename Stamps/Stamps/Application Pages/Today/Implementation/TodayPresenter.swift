@@ -359,7 +359,9 @@ class TodayPresenter: TodayPresenterProtocol {
             })
             // Put goals that are already reached in front
             data = data.sorted(by: { return $0 < $1 })
-            showAwards = data.count > 0
+            
+            // On current week show awards view only when some goals exist
+            showAwards = goals.count > 0
         } else {
             data = awards.compactMap({
                 guard $0.reached == true else { return nil }

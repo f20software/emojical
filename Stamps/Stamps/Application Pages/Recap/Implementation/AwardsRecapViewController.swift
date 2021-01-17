@@ -133,6 +133,9 @@ extension AwardsRecapViewController: RecapView {
         let reached = data.filter({ $0.progress.isReached == true })
         let notReached = data.filter({ $0.progress.isReached == false })
         
+        // TODO: Fix this
+        // Adding first section always, otherwise section header
+        // will be screwed up
         snapshot.appendSections([0])
         if reached.count > 0 {
             snapshot.appendItems(reached)

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AwardRecapCell" id="7y9-Gf-xbO" customClass="AwardRecapCell" customModule="Emojical" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErJ-gD-7GI">
+                        <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9u-YB-NBN" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="p9u-YB-NBN" secondAttribute="height" id="XWy-dy-hes"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details about award, when and how it was scored." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPb-sz-Xjn">
+                                <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="p9u-YB-NBN" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" id="0Kt-Oz-dQR"/>
+                            <constraint firstAttribute="bottom" secondItem="p9u-YB-NBN" secondAttribute="bottom" id="Cw0-Mw-rm6"/>
+                            <constraint firstItem="JPb-sz-Xjn" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" id="DvE-oc-Ozf"/>
+                            <constraint firstItem="p9u-YB-NBN" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" id="Ivd-A4-mAf"/>
+                            <constraint firstAttribute="trailing" secondItem="p9u-YB-NBN" secondAttribute="trailing" id="feA-mo-Z3j"/>
+                            <constraint firstItem="JPb-sz-Xjn" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" id="h8p-P6-28o"/>
+                            <constraint firstAttribute="bottom" secondItem="JPb-sz-Xjn" secondAttribute="bottom" id="pwk-8w-ezG"/>
+                            <constraint firstAttribute="trailing" secondItem="JPb-sz-Xjn" secondAttribute="trailing" id="qXy-lK-R27"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="0Jf-aO-hI9"/>
+            <constraints>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="leading" secondItem="7y9-Gf-xbO" secondAttribute="leading" id="2In-3p-MBt"/>
+                <constraint firstAttribute="trailing" secondItem="ErJ-gD-7GI" secondAttribute="trailing" id="7Yf-ox-2cP"/>
+                <constraint firstAttribute="bottom" secondItem="ErJ-gD-7GI" secondAttribute="bottom" id="F4h-Bb-K5a"/>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="top" secondItem="7y9-Gf-xbO" secondAttribute="top" id="myl-9q-LxP"/>
+            </constraints>
+            <size key="customSize" width="86" height="86"/>
+            <connections>
+                <outlet property="details" destination="JPb-sz-Xjn" id="BKx-ar-iZt"/>
+                <outlet property="goalIcon" destination="p9u-YB-NBN" id="odB-Zt-dbu"/>
+                <outlet property="plate" destination="ErJ-gD-7GI" id="u5y-pG-AKn"/>
+            </connections>
+            <point key="canvasLocation" x="-153.62318840579712" y="44.866071428571423"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

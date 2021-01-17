@@ -26,7 +26,11 @@ class MainViewController: UITabBarController {
         optionsTab = viewControllers![3]
 
         // Subscribe to app notifications on when user sign in/out
-        NotificationCenter.default.addObserver(self, selector: #selector(navigateToCalendar), name: .navigateToToday, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(navigateToCalendar), name: .navigateToToday, object: nil)
+
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(weekReady), name: .weekClosed, object: nil)
     }
 }
 
@@ -35,5 +39,19 @@ extension MainViewController {
 
     @objc func navigateToCalendar() {
         selectedIndex = 0
+    }
+    
+    @objc func weekReady() {
+        let alert = UIAlertController(title: "Week recap is ready", message: "You've reached some goals and failed others", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Review", style: .default, handler: { (_) in
+            self.selectedIndex = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                NotificationCenter.default.post(name: .viewWeekRecap, object: nil)
+            })
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }

@@ -11,6 +11,8 @@ import UIKit
 extension NSNotification.Name {
     static let navigateToToday = NSNotification.Name("NavigateToToday")
     static let todayStickersUpdated = NSNotification.Name("TodayStickersUpdated")
+    static let weekClosed = NSNotification.Name("LastWeekClosed")
+    static let viewWeekRecap = NSNotification.Name("ViewWeekRecap")
 }
 
 @UIApplicationMain
@@ -21,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         /// Setup data storage. Change this line to swap to another data storage mechanism.
         Storage.shared = GRDBDataProvider(app: application)
-
+        
         /// Setup calendar helper
         CalendarHelper.shared = CalendarHelper()
         AwardManager.shared.recalculateOnAppResume()
@@ -35,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func applicationSignificantTimeChange(_ application: UIApplication) {
-        
-        //
+        AwardManager.shared.recalculateOnAppResume()
+        NotificationCenter.default.post(name: UIApplication.significantTimeChangeNotification, object: nil)
     }
 
     // MARK: Notification handling

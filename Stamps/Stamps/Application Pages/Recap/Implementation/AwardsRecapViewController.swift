@@ -26,7 +26,11 @@ class AwardsRecapViewController : UIViewController {
 
     // MARK: - State
     
+    /// Diffable data source
     private var dataSource: UICollectionViewDiffableDataSource<Int, AwardRecapData>!
+    
+    /// Selected item (showing details)
+    private var detailsIndexPath: IndexPath?
     
     // MARK: - View lifecycle
     
@@ -51,6 +55,10 @@ class AwardsRecapViewController : UIViewController {
             StickersHeaderView.self,
             forSupplementaryViewOfKind: Specs.Cells.header,
             withReuseIdentifier: Specs.Cells.header
+        )
+        awards.register(
+            UINib(nibName: "AwardRecapCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.award
         )
     }
 
@@ -141,6 +149,26 @@ extension AwardsRecapViewController: RecapView {
 }
 
 extension AwardsRecapViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AwardRecapCell else {
+            return
+        }
+
+        if detailsIndexPath == indexPath {
+            cell.toggleDetails()
+            detailsIndexPath = nil
+            return
+        }
+        
+        if let oldSelected = detailsIndexPath,
+           let oldCell = collectionView.cellForItem(at: oldSelected) as? AwardRecapCell {
+            oldCell.toggleDetails()
+        }
+        
+        cell.toggleDetails()
+        detailsIndexPath = indexPath
+    }
     
     private func cell(for path: IndexPath, model: AwardRecapData, collectionView: UICollectionView) -> UICollectionViewCell? {
         guard let cell = collectionView.dequeueReusableCell(

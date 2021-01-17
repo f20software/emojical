@@ -64,7 +64,4 @@ protocol TodayView: AnyObject {
     
     /// Show/hide stamp selector and plus button
     func showStampSelector(_ state: SelectorState)
-
-    /// Show/hide awards recap view
-//    func showAwardsRecap(_ show: Bool)
 }

@@ -25,33 +25,33 @@ struct Award {
     var limit: Int
     var goalName: String?
 
-    var descriptionText: String {
+    var oldStyleDescription: String {
         let df = DateFormatter()
-        df.dateStyle = .long
+        df.dateFormat = "EEEE"
+        return "Earned on \(df.string(from: date))"
+    }
+    
+    var descriptionText: String {
+        // Fallback to the old style
+        if reached && limit == 0 {
+            return oldStyleDescription
+        }
         
-        if reached {
-            // Old style data - don't have details about limit and count - just the date
-            if limit == 0 {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "EEEE"
-                let reachedDate = formatter.string(from: date)
-                return "Goal reached on \(reachedDate)"
+        let df = DateFormatter()
+        df.dateFormat = "MMMM d"
+        switch direction {
+        case .positive:
+            if reached {
+                return "Earned on \(df.string(from: date)), by getting \(count) stickers."
             } else {
-            // New style data - have all details
-                if direction == .positive {
-                    return "Got \(count) stickers (needed \(limit)). Earned on \(df.string(from: date))."
-                } else {
-                    return "Got \(count) stickers (needed \(limit)). Earned on \(df.string(from: date))."
-                }
+                return "\(period.name) goal not reached. Got \(count) stickers (needed \(limit))."
             }
-        } else {
-            // New style data - have all details
-            switch direction {
-            case .positive:
-                return "Not reached. Got \(count) stickers (needed \(limit))."
 
-            case .negative:
-                return "Busted. Got \(count) stickers (limit was \(limit))."
+        case .negative:
+            if reached {
+                return "Earned on \(df.string(from: date)). You had \(count) stickers (limit was \(limit))."
+            } else {
+                return "\(period.name) goal not reached. Got \(count) stickers (limit was \(limit))."
             }
         }
     }

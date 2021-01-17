@@ -12,7 +12,8 @@ import MessageUI
 class OptionsViewController: UITableViewController {
 
     @IBOutlet weak var exportCell: UITableViewCell!
-    
+    @IBOutlet weak var significantTimeCell: UITableViewCell!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,6 +22,8 @@ class OptionsViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         if cell === exportCell {
             exportTapped(self)
+        } else if cell === significantTimeCell {
+            significantTimeTapped(self)
         }
     }
     
@@ -33,7 +36,11 @@ class OptionsViewController: UITableViewController {
         }
     }
     
-    
+    @IBAction func significantTimeTapped(_ sender: Any) {
+//        NotificationCenter.default.post(name: UIApplication.significantTimeChangeNotification, object: nil)
+        NotificationCenter.default.post(name: .weekClosed, object: nil)
+    }
+
     
     func sendEmail(attachment: URL) {
         if MFMailComposeViewController.canSendMail() {

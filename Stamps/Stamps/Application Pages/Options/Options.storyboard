@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WFy-OT-yXN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WFy-OT-yXN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -70,6 +69,30 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="SNG-Yh-1jU">
+                                        <rect key="frame" x="20" y="248" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SNG-Yh-1jU" id="uHD-qC-7pf">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zc5-nj-8dz">
+                                                    <rect key="frame" x="94" y="5" width="186" height="34"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <state key="normal" title="Significant Time Change"/>
+                                                    <connections>
+                                                        <action selector="significantTimeTapped:" destination="8Y1-v5-Mb4" eventType="touchUpInside" id="tS4-zH-y7Q"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zc5-nj-8dz" firstAttribute="centerY" secondItem="uHD-qC-7pf" secondAttribute="centerY" id="5pn-Ak-1MR"/>
+                                                <constraint firstItem="zc5-nj-8dz" firstAttribute="centerX" secondItem="uHD-qC-7pf" secondAttribute="centerX" id="CwX-nQ-uZq"/>
+                                                <constraint firstAttribute="bottom" secondItem="zc5-nj-8dz" secondAttribute="bottom" constant="5" id="Yng-6A-DmH"/>
+                                                <constraint firstItem="zc5-nj-8dz" firstAttribute="top" secondItem="uHD-qC-7pf" secondAttribute="top" constant="5" id="ZJw-db-g3G"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -81,6 +104,7 @@
                     <navigationItem key="navigationItem" title="Options" id="HEI-Hx-fAJ"/>
                     <connections>
                         <outlet property="exportCell" destination="ejW-4b-VAs" id="y7t-l9-Z6F"/>
+                        <outlet property="significantTimeCell" destination="SNG-Yh-1jU" id="nkV-tM-wC3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hya-Xv-EM5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -154,11 +154,27 @@ class TodayPresenter: TodayPresenterProtocol {
 
     /// Reacting to significate time change event - updating data to current date and refreshing view
     @objc func significantTimeChange() {
+        print("Significant Time Change")
+        
         // Initial data configuration for the current date
         initializeDataFor(date: Date())
         
         // Configuring view according to the data
         setupView()
+        loadViewData()
+    }
+
+    /// Reacting to significate time change event - updating data to current date and refreshing view
+    @objc func weekRecap() {
+        print("Navigating to week recap")
+        
+        // Initial data configuration for the current date
+        initializeDataFor(date: Date().byAddingWeek(-1))
+        
+        // Configuring view according to the data
+        setupView()
+        loadViewData()
+        coordinator?.showAwardsRecap(data: self.recapData())
     }
 
     /// Initialize data objects based on the current date
@@ -216,7 +232,11 @@ class TodayPresenter: TodayPresenterProtocol {
         })
 
         // Subscribe to significant time change notification
-        NotificationCenter.default.addObserver(self, selector: #selector(significantTimeChange), name: UIApplication.significantTimeChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(significantTimeChange),
+            name: UIApplication.significantTimeChangeNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(weekRecap),
+            name: .viewWeekRecap, object: nil)
     }
 
     private func setupView() {
@@ -368,8 +388,12 @@ class TodayPresenter: TodayPresenterProtocol {
         // Recalculate awards
         awardManager.recalculateAwards(selectedDay)
         
+        // TODO: Optimize to use listener approach
+        if selectedDay.isToday {
+            NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
+        }
+        
         // Reload the model and update the view
-//        weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
         dailyStickers = dataBuilder.weekDataModel(for: week)
         loadViewData()
     }

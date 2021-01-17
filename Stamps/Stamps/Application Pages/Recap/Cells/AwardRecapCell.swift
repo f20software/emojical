@@ -13,7 +13,10 @@ class AwardRecapCell: UICollectionViewCell {
     // MARK: - Outlets
 
     @IBOutlet weak var plate: UIView!
+    @IBOutlet weak var details: UILabel!
     @IBOutlet weak var goalIcon: GoalAwardView!
+    
+    private var detailsVisible: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,9 +26,9 @@ class AwardRecapCell: UICollectionViewCell {
     // MARK: - Public view interface
 
     func configure(for data: AwardRecapData) {
-        // title.text = data.title
         tag = Int(data.progress.goalId ?? 0)
         
+        details.text = data.title
         goalIcon.text = data.progress.emoji
         goalIcon.labelColor = data.progress.backgroundColor
         goalIcon.clockwise = (data.progress.direction == .positive)
@@ -33,8 +36,12 @@ class AwardRecapCell: UICollectionViewCell {
         goalIcon.progressColor = data.progress.progressColor
         
         goalIcon.setNeedsDisplay()
-    }
 
+        detailsVisible = false
+        goalIcon.isHidden = detailsVisible
+        details.isHidden = !detailsVisible
+    }
+    
     // MARK: - Private helpers
 
     private func configureViews() {
@@ -42,6 +49,14 @@ class AwardRecapCell: UICollectionViewCell {
         goalIcon.progressLineWidth = Specs.progressLineWidth
         goalIcon.emojiFontSize = Specs.emojiFontSize
     }
+    
+    func toggleDetails() {
+        detailsVisible = !detailsVisible
+        goalIcon.isHidden = detailsVisible
+        details.isHidden = !detailsVisible
+    }
+    
+    
 }
 
 // MARK: - Specs

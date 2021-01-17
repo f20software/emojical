@@ -29,8 +29,10 @@ class AwardManager {
     // When app resumes we read that value and recalculate weeks for all weeks after that date until
     // we reach Sunday
     func recalculateOnAppResume() {
-        recalculateWeeklyGoals()
         recalculateMonthlyGoals()
+        if recalculateWeeklyGoals() > 1 {
+            NotificationCenter.default.post(name: .weekClosed, object: nil)
+        }
     }
     
     // When stickers are updated manually for a certain date, we will recalculate
@@ -41,8 +43,11 @@ class AwardManager {
     }
     
     // Recalculate weekly goals and update last-week-update parameter in the database
-    private func recalculateWeeklyGoals() {
-
+    // Return number of weeks we actually "closed" and need to notify user
+    private func recalculateWeeklyGoals() -> Int {
+        // Count weeks we just closed
+        var closedWeeks = 0
+        
         // When was the last weekly goals recalculated?
         var lastUpdated = repository.lastWeekUpdate
         if lastUpdated == nil {
@@ -52,13 +57,18 @@ class AwardManager {
             lastUpdated = firstEntryDate.lastOfWeek.byAddingWeek(-1)
         }
         
-        guard var last = lastUpdated else { return }
+        guard var last = lastUpdated else { return 0 }
         while (last.databaseKey < Date().databaseKey) {
             print("Last week update set \(last.databaseKey)")
             repository.lastWeekUpdate = last
             last = last.byAddingWeek(1)
+            closedWeeks += 1
             recalculateAwardsForWeek(last)
         }
+        
+        // closedWeeks will always be at least 1, but if we actually close it one
+        // we will return it here
+        return closedWeeks - 1
     }
     
     // Recalculate monthly goals and update last-month-update parameter in the database

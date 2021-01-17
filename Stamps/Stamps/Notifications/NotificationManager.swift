@@ -18,6 +18,10 @@ class NotificationManager {
     // If application is running withing 120 minutes from reminder time, we will not show reminder
     // today but will schedule it for tomorrow
     let reminderGap: Int = 120
+    
+    var userNotificationCenter: UNUserNotificationCenter {
+        return UNUserNotificationCenter.current()
+    }
 
     // Singleton instance
     static let shared = NotificationManager(settings: LocalSettings.shared)
@@ -61,7 +65,8 @@ class NotificationManager {
     }
     
     func requestAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .provisional]) { granted, error in
+        userNotificationCenter.requestAuthorization(
+            options: [.alert, .sound, .badge, .provisional]) { granted, error in
             
             if error != nil {
                 // Handle the error here.
@@ -84,17 +89,20 @@ class NotificationManager {
 //        }
 //    }
     
-    
     @objc func refreshNotifications() {
-        let notificationId = settings.todayNotificationId
-        if notificationId != nil {
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationId!])
+        if let existingId = settings.todayNotificationId {
+            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [existingId])
         }
         
-        settings.todayNotificationId = createNextNotification()
+        let notification = createNextNotification()
+        settings.todayNotificationId = notification.identifier
+        userNotificationCenter.add(notification) { (error) in
+            // TODO: - add error handling
+            //
+        }
     }
     
-    private func createNextNotification() -> String {
+    private func createNextNotification() -> UNNotificationRequest {
         var nextNotificationDate = todayReminderTime
         var content = defaultReminderContent
 
@@ -114,11 +122,10 @@ class NotificationManager {
         print("Reminder (\"\(content.body)\") is set to \(nextNotificationDate.databaseKeyWithTime)")
         
         // Create the request
-        let uuidString = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-
-        // TODO: This is actually async call and requires error handling in completion handler
-        UNUserNotificationCenter.current().add(request)
-        return request.identifier
+        return UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: trigger
+        )
     }
 }

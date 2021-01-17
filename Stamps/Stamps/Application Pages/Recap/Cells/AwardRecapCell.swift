@@ -13,11 +13,17 @@ class AwardRecapCell: UICollectionViewCell {
     // MARK: - Outlets
 
     @IBOutlet weak var plate: UIView!
-    @IBOutlet weak var details: UILabel!
     @IBOutlet weak var goalIcon: GoalAwardView!
-    
-    private var detailsVisible: Bool = false
+    @IBOutlet weak var details: UILabel!
 
+    /// When cell is selected we show details text instead of award icon
+    override var isHighlighted: Bool {
+        didSet {
+            goalIcon.isHidden = isHighlighted
+            details.isHidden = !isHighlighted
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configureViews()
@@ -29,17 +35,19 @@ class AwardRecapCell: UICollectionViewCell {
         tag = Int(data.progress.goalId ?? 0)
         
         details.text = data.title
+        details.isHidden = !isHighlighted
+        
         goalIcon.text = data.progress.emoji
         goalIcon.labelColor = data.progress.backgroundColor
         goalIcon.clockwise = (data.progress.direction == .positive)
         goalIcon.progress = CGFloat(data.progress.progress)
         goalIcon.progressColor = data.progress.progressColor
-        
         goalIcon.setNeedsDisplay()
-
-        detailsVisible = false
-        goalIcon.isHidden = detailsVisible
-        details.isHidden = !detailsVisible
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isHighlighted = false
     }
     
     // MARK: - Private helpers
@@ -49,14 +57,6 @@ class AwardRecapCell: UICollectionViewCell {
         goalIcon.progressLineWidth = Specs.progressLineWidth
         goalIcon.emojiFontSize = Specs.emojiFontSize
     }
-    
-    func toggleDetails() {
-        detailsVisible = !detailsVisible
-        goalIcon.isHidden = detailsVisible
-        details.isHidden = !detailsVisible
-    }
-    
-    
 }
 
 // MARK: - Specs

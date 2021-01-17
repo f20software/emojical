@@ -29,8 +29,8 @@ class AwardsRecapViewController : UIViewController {
     /// Diffable data source
     private var dataSource: UICollectionViewDiffableDataSource<Int, AwardRecapData>!
     
-    /// Selected item (showing details)
-    private var detailsIndexPath: IndexPath?
+    /// Highlighted item (showing details)
+    private var highlightedItem: IndexPath?
     
     // MARK: - View lifecycle
     
@@ -155,19 +155,21 @@ extension AwardsRecapViewController: UICollectionViewDelegate {
             return
         }
 
-        if detailsIndexPath == indexPath {
-            cell.toggleDetails()
-            detailsIndexPath = nil
+        // Tap on selected cell? Deselect it
+        if highlightedItem == indexPath {
+            cell.isHighlighted = false
+            highlightedItem = nil
             return
         }
         
-        if let oldSelected = detailsIndexPath,
+        // Remove selection from the old selected cell
+        if let oldSelected = highlightedItem,
            let oldCell = collectionView.cellForItem(at: oldSelected) as? AwardRecapCell {
-            oldCell.toggleDetails()
+            oldCell.isHighlighted = false
         }
         
-        cell.toggleDetails()
-        detailsIndexPath = indexPath
+        cell.isHighlighted = true
+        highlightedItem = indexPath
     }
     
     private func cell(for path: IndexPath, model: AwardRecapData, collectionView: UICollectionView) -> UICollectionViewCell? {

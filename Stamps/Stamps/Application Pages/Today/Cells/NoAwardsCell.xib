@@ -33,7 +33,7 @@
             </constraints>
             <size key="customSize" width="297" height="43"/>
             <connections>
-                <outlet property="text" destination="yqj-CH-mze" id="XR6-sZ-qT4"/>
+                <outlet property="textLabel" destination="yqj-CH-mze" id="XR6-sZ-qT4"/>
             </connections>
             <point key="canvasLocation" x="-360.14492753623193" y="-20.424107142857142"/>
         </collectionViewCell>

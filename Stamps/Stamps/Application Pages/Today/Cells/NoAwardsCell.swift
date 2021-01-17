@@ -12,16 +12,18 @@ class NoAwardsCell: UICollectionViewCell {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var textLabel: UILabel!
+
+    // MARK: - View life cycle
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        text.text = nil
+        textLabel.text = nil
     }
     
     // MARK: - Public view interface
     
     func configure(for data: String) {
-        text.text = data
+        textLabel.text = data
     }
 }

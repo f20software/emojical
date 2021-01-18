@@ -414,7 +414,7 @@
         <!--newSticker-->
         <scene sceneID="kgy-hQ-Jtg">
             <objects>
-                <viewControllerPlaceholder storyboardName="Stickers" referencedIdentifier="newSticker" id="DIf-UA-VLm" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Sticker" referencedIdentifier="newSticker" id="DIf-UA-VLm" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dsR-MV-yLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2314" y="-55"/>

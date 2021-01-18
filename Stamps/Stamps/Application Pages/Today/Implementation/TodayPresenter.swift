@@ -346,7 +346,9 @@ class TodayPresenter: TodayPresenterProtocol {
     
     private func loadAwardsData() {
         // Awards will be shown only when we have goals or awards already
-        let showAwards = week.isCurrentWeek ? goals.count > 0 : awards.count > 0
+        let showAwards = week.isCurrentWeek ?
+            (goals.count > 0) :
+            (awards.count > 0 && week.isFuture == false)
         guard showAwards else {
             view?.showAwards(false)
             return

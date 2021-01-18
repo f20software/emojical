@@ -23,7 +23,7 @@ class TodayCoordinator: TodayCoordinatorProtocol {
     func newSticker() {
         guard
             let navVC: UINavigationController =
-                Storyboard.Stickers.viewController(withIdentifier: "newSticker"),
+                Storyboard.Sticker.viewController(withIdentifier: "newSticker"),
             let stickerVC: StampViewController =
                 navVC.viewControllers.first as? StampViewController else {
             assertionFailure("Failed to initialize item details controller")

@@ -14,6 +14,8 @@ enum Storyboard: String {
     case Today
     case Stats
     case Recap
+    case Goal
+    case Sticker
 
     var instance: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)

@@ -20,7 +20,7 @@ class StickersPresenter: StickersPresenterProtocol {
     private let awardManager: AwardManager
     
     private weak var view: StickersView?
-    private weak var coordinator: StickersCoordinator?
+    private weak var coordinator: StickersCoordinatorProtocol?
     
     // MARK: - State
 
@@ -39,7 +39,7 @@ class StickersPresenter: StickersPresenterProtocol {
         awardsListener: AwardsListener,
         awardManager: AwardManager,
         view: StickersView,
-        coordinator: StickersCoordinator
+        coordinator: StickersCoordinatorProtocol
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
@@ -86,13 +86,15 @@ class StickersPresenter: StickersPresenterProtocol {
 
     private func setupView() {
         view?.onGoalTapped = { [weak self] goalId in
-            self?.coordinator?.editGoal(goalId)
+            guard let goal = self?.repository.goalById(goalId) else { return }
+            self?.coordinator?.editGoal(goal)
         }
         view?.onNewGoalTapped = { [weak self] in
             self?.coordinator?.newGoal()
         }
         view?.onStickerTapped = { [weak self] stickerId in
-            self?.coordinator?.editSticker(stickerId)
+            guard let sticker = self?.repository.stampById(stickerId) else { return }
+            self?.coordinator?.editSticker(sticker)
         }
         view?.onNewStickerTapped = { [weak self] in
             self?.coordinator?.newSticker()

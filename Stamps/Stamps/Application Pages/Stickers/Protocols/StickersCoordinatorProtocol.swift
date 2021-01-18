@@ -1,5 +1,5 @@
 //
-//  StickersCoordinator.swift
+//  StickersCoordinatorProtocol.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/10/20.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-protocol StickersCoordinator: AnyObject {
+protocol StickersCoordinatorProtocol: AnyObject {
 
     /// Push to edit goal form
-    func editGoal(_ goalId: Int64)
+    func editGoal(_ goal: Goal)
 
     /// Shows modal form to create new goal
     func newGoal()
 
     /// Push to edit sticker form
-    func editSticker(_ stampId: Int64)
+    func editSticker(_ sticker: Stamp)
 
     /// Shows modal form to create new sticker
     func newSticker()

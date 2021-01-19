@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoalDetailsEditCell" id="7y9-Gf-xbO" customClass="GoalDetailsEditCell" customModule="Emojical" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="177"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="177"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErJ-gD-7GI">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="177"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ote-mX-R31" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="15" y="15" width="65" height="65"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="8Gt-Ov-vZg"/>
+                                    <constraint firstAttribute="height" constant="65" id="Meq-rA-OOD"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IcB-0G-7eP">
+                                <rect key="frame" x="15" y="123" width="270" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9A5-ln-Jli">
+                                <rect key="frame" x="15" y="100" width="37" height="15"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="9A5-ln-Jli" firstAttribute="top" secondItem="ote-mX-R31" secondAttribute="bottom" constant="20" id="3qZ-tH-BK3"/>
+                            <constraint firstAttribute="trailing" secondItem="IcB-0G-7eP" secondAttribute="trailing" constant="15" id="CDY-6I-bJ5"/>
+                            <constraint firstItem="ote-mX-R31" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" constant="15" id="KIf-JZ-F72"/>
+                            <constraint firstAttribute="bottom" secondItem="IcB-0G-7eP" secondAttribute="bottom" constant="15" id="NYT-lX-7j5"/>
+                            <constraint firstItem="9A5-ln-Jli" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="dSw-Ma-eV7"/>
+                            <constraint firstItem="ote-mX-R31" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" constant="15" id="mvm-Q8-l4x"/>
+                            <constraint firstItem="IcB-0G-7eP" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="pYd-6X-ahf"/>
+                            <constraint firstItem="IcB-0G-7eP" firstAttribute="top" secondItem="9A5-ln-Jli" secondAttribute="bottom" constant="8" id="xw1-cu-9ph"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="0Jf-aO-hI9"/>
+            <constraints>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="leading" secondItem="7y9-Gf-xbO" secondAttribute="leading" id="Vlm-nP-CF7"/>
+                <constraint firstAttribute="trailing" secondItem="ErJ-gD-7GI" secondAttribute="trailing" priority="999" id="cCk-yV-ErB"/>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="top" secondItem="7y9-Gf-xbO" secondAttribute="top" id="kKH-tu-Wdp"/>
+                <constraint firstAttribute="bottom" secondItem="ErJ-gD-7GI" secondAttribute="bottom" priority="999" id="pQi-uY-Es9"/>
+            </constraints>
+            <size key="customSize" width="308" height="123"/>
+            <connections>
+                <outlet property="goalIcon" destination="ote-mX-R31" id="D8r-gw-kFk"/>
+                <outlet property="name" destination="IcB-0G-7eP" id="Npw-C9-Ra5"/>
+                <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
+            </connections>
+            <point key="canvasLocation" x="7.2463768115942031" y="-61.941964285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

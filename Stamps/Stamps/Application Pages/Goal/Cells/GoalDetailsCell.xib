@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoalDetailsCell" id="7y9-Gf-xbO" customClass="GoalDetailsCell" customModule="Emojical" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErJ-gD-7GI">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ote-mX-R31" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="15" y="15" width="65" height="65"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="8Gt-Ov-vZg"/>
+                                    <constraint firstAttribute="height" constant="65" id="Meq-rA-OOD"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly goal, get 5 or more" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xju-ua-GfL">
+                                <rect key="frame" x="95" y="15" width="190" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stickers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjk-mE-KPa">
+                                <rect key="frame" x="15" y="95" width="66" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Goal has been reached multiple times, last time two years ago." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-52-QBf">
+                                <rect key="frame" x="15" y="168" width="270" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="you're doing great - you have already scored some stickets this month" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWy-wl-aZ0">
+                                <rect key="frame" x="15" y="224" width="270" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="coJ-52-QBf" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="2lK-Jx-h2I"/>
+                            <constraint firstItem="sjk-mE-KPa" firstAttribute="top" secondItem="ote-mX-R31" secondAttribute="bottom" constant="15" id="4OP-0z-DCZ"/>
+                            <constraint firstItem="ZWy-wl-aZ0" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="5g0-wK-OHU"/>
+                            <constraint firstItem="ote-mX-R31" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" constant="15" id="KIf-JZ-F72"/>
+                            <constraint firstItem="Xju-ua-GfL" firstAttribute="top" secondItem="ote-mX-R31" secondAttribute="top" id="KbU-JE-UVA"/>
+                            <constraint firstAttribute="trailing" secondItem="Xju-ua-GfL" secondAttribute="trailing" constant="15" id="QhD-4x-lEV"/>
+                            <constraint firstAttribute="bottom" secondItem="ZWy-wl-aZ0" secondAttribute="bottom" constant="15" id="Qwx-uY-dds"/>
+                            <constraint firstItem="ZWy-wl-aZ0" firstAttribute="top" secondItem="coJ-52-QBf" secondAttribute="bottom" constant="15" id="ZrA-yN-RY5"/>
+                            <constraint firstAttribute="trailing" secondItem="ZWy-wl-aZ0" secondAttribute="trailing" constant="15" id="bHq-3i-UHp"/>
+                            <constraint firstItem="coJ-52-QBf" firstAttribute="top" secondItem="sjk-mE-KPa" secondAttribute="bottom" constant="30" id="bTw-Wg-WeF"/>
+                            <constraint firstItem="ote-mX-R31" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" constant="15" id="mvm-Q8-l4x"/>
+                            <constraint firstItem="Xju-ua-GfL" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="trailing" constant="15" id="nBS-Uo-2jM"/>
+                            <constraint firstItem="sjk-mE-KPa" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="nRT-5F-VO6"/>
+                            <constraint firstAttribute="trailing" secondItem="coJ-52-QBf" secondAttribute="trailing" constant="15" id="yJl-mY-7T4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="0Jf-aO-hI9"/>
+            <constraints>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="leading" secondItem="7y9-Gf-xbO" secondAttribute="leading" id="Vlm-nP-CF7"/>
+                <constraint firstAttribute="trailing" secondItem="ErJ-gD-7GI" secondAttribute="trailing" priority="999" id="cCk-yV-ErB"/>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="top" secondItem="7y9-Gf-xbO" secondAttribute="top" id="kKH-tu-Wdp"/>
+                <constraint firstAttribute="bottom" secondItem="ErJ-gD-7GI" secondAttribute="bottom" priority="999" id="pQi-uY-Es9"/>
+            </constraints>
+            <size key="customSize" width="308" height="246"/>
+            <connections>
+                <outlet property="currentProgress" destination="ZWy-wl-aZ0" id="mnF-nd-BBD"/>
+                <outlet property="goalDescription" destination="Xju-ua-GfL" id="5X2-4u-zvR"/>
+                <outlet property="goalIcon" destination="ote-mX-R31" id="D8r-gw-kFk"/>
+                <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
+                <outlet property="statistics" destination="coJ-52-QBf" id="2aS-ur-QdE"/>
+            </connections>
+            <point key="canvasLocation" x="7.2463768115942031" y="-20.758928571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

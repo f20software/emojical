@@ -23,7 +23,10 @@ class StickersViewController: UIViewController, StickersView {
     // MARK: - DI
 
     lazy var coordinator: StickersCoordinatorProtocol = {
-        StickersCoordinator(parent: self.navigationController!)
+        StickersCoordinator(
+            parent: self.navigationController!,
+            repository: repository,
+            awardManager: AwardManager.shared)
     }()
 
     var repository: DataRepository!
@@ -32,10 +35,6 @@ class StickersViewController: UIViewController, StickersView {
     // MARK: - State
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StickersElement>!
-
-    // Editing goal and stamp Id... :(
-    var editGoalId: Int64?
-    var editStampId: Int64?
 
     // MARK: - Lifecycle
     

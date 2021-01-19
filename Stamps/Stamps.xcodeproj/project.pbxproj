@@ -650,8 +650,8 @@
 		F26596E92596AF1300B10B76 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				F26596EA2596AF1300B10B76 /* RecapView.swift */,
 				F26596EB2596AF1300B10B76 /* RecapPresenterProtocol.swift */,
+				F26596EA2596AF1300B10B76 /* RecapView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

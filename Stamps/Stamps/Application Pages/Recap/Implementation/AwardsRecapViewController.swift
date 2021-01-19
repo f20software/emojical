@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AwardsRecapViewController : UIViewController {
+class AwardsRecapViewController : UIViewController, RecapView {
 
     // List of sections
     enum Section: String, CaseIterable {
@@ -29,9 +29,6 @@ class AwardsRecapViewController : UIViewController {
     /// Diffable data source
     private var dataSource: UICollectionViewDiffableDataSource<Int, AwardRecapData>!
     
-    /// Highlighted item (showing details)
-    private var highlightedItem: IndexPath?
-    
     // MARK: - View lifecycle
     
     override func viewDidLoad() {
@@ -47,6 +44,43 @@ class AwardsRecapViewController : UIViewController {
         
         presenter.onViewWillAppear()
     }
+    
+    // MARK: - RecapView
+    
+    /// User tapped on the award
+    var onAwardTapped: ((IndexPath) -> Void)?
+
+    /// Loads awards recap data
+    func loadRecapData(data: [AwardRecapData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, AwardRecapData>()
+        let reached = data.filter({ $0.progress.isReached == true })
+        let notReached = data.filter({ $0.progress.isReached == false })
+        
+        // TODO: Fix this
+        // Adding first section always, otherwise section header
+        // will be screwed up
+        snapshot.appendSections([0])
+        if reached.count > 0 {
+            snapshot.appendItems(reached)
+        }
+        
+        if notReached.count > 0 {
+            snapshot.appendSections([1])
+            snapshot.appendItems(notReached)
+        }
+        
+        title = "Weekly recap"
+        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+    }
+
+    /// Highlight selected award
+    func highlightAward(at indexPath: IndexPath, highlight: Bool) {
+        guard let cell = awards.cellForItem(at: indexPath) as? AwardRecapCell else {
+            return
+        }
+        cell.isHighlighted = highlight
+    }
+
     
     // MARK: - Private helpers
     
@@ -79,8 +113,6 @@ class AwardsRecapViewController : UIViewController {
         awards.collectionViewLayout = awardsRecapLayout()
         awards.backgroundColor = UIColor.clear
         awards.alwaysBounceHorizontal = false
-        // awards.backgroundColor = UIColor.green
-        // awards.alwaysBounceVertical = false
     }
     
     // Creates layout for the collection of large awards cells (1/3 of width)
@@ -126,53 +158,10 @@ class AwardsRecapViewController : UIViewController {
 
 // MARK: - RecapView implementation
 
-extension AwardsRecapViewController: RecapView {
-
-    func loadRecapData(data: [AwardRecapData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, AwardRecapData>()
-        let reached = data.filter({ $0.progress.isReached == true })
-        let notReached = data.filter({ $0.progress.isReached == false })
-        
-        // TODO: Fix this
-        // Adding first section always, otherwise section header
-        // will be screwed up
-        snapshot.appendSections([0])
-        if reached.count > 0 {
-            snapshot.appendItems(reached)
-        }
-        
-        if notReached.count > 0 {
-            snapshot.appendSections([1])
-            snapshot.appendItems(notReached)
-        }
-        
-        title = "Weekly recap"
-        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
-    }
-}
-
 extension AwardsRecapViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? AwardRecapCell else {
-            return
-        }
-
-        // Tap on selected cell? Deselect it
-        if highlightedItem == indexPath {
-            cell.isHighlighted = false
-            highlightedItem = nil
-            return
-        }
-        
-        // Remove selection from the old selected cell
-        if let oldSelected = highlightedItem,
-           let oldCell = collectionView.cellForItem(at: oldSelected) as? AwardRecapCell {
-            oldCell.isHighlighted = false
-        }
-        
-        cell.isHighlighted = true
-        highlightedItem = indexPath
+        onAwardTapped?(indexPath)
     }
     
     private func cell(for path: IndexPath, model: AwardRecapData, collectionView: UICollectionView) -> UICollectionViewCell? {

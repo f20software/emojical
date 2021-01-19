@@ -10,8 +10,14 @@ import Foundation
 
 protocol RecapView: AnyObject {
 
+    /// User tapped on the award
+    var onAwardTapped: ((IndexPath) -> Void)? { get set }
+
     // MARK: - Updates
 
     /// Loads awards recap data
     func loadRecapData(data: [AwardRecapData])
+
+    /// Highlight selected award
+    func highlightAward(at indexPath: IndexPath, highlight: Bool)
 }

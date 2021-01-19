@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AwardsRecapViewController : UIViewController, RecapView {
+class RecapViewController : UIViewController, RecapView {
 
     // List of sections
     enum Section: String, CaseIterable {
@@ -158,7 +158,7 @@ class AwardsRecapViewController : UIViewController, RecapView {
 
 // MARK: - RecapView implementation
 
-extension AwardsRecapViewController: UICollectionViewDelegate {
+extension RecapViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         onAwardTapped?(indexPath)

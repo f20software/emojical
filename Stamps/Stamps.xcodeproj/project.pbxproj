@@ -76,7 +76,7 @@
 		F26596ED2596AF1300B10B76 /* AwardRecapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E22596AF1300B10B76 /* AwardRecapCell.swift */; };
 		F26596EE2596AF1300B10B76 /* Recap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26596E32596AF1300B10B76 /* Recap.storyboard */; };
 		F26596EF2596AF1300B10B76 /* RecapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E52596AF1300B10B76 /* RecapPresenter.swift */; };
-		F26596F02596AF1300B10B76 /* AwardsRecapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E62596AF1300B10B76 /* AwardsRecapViewController.swift */; };
+		F26596F02596AF1300B10B76 /* RecapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E62596AF1300B10B76 /* RecapViewController.swift */; };
 		F26596F12596AF1300B10B76 /* AwardRecapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E82596AF1300B10B76 /* AwardRecapData.swift */; };
 		F26596F22596AF1300B10B76 /* RecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596EA2596AF1300B10B76 /* RecapView.swift */; };
 		F26596F32596AF1300B10B76 /* RecapPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596EB2596AF1300B10B76 /* RecapPresenterProtocol.swift */; };
@@ -263,7 +263,7 @@
 		F26596E22596AF1300B10B76 /* AwardRecapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardRecapCell.swift; sourceTree = "<group>"; };
 		F26596E32596AF1300B10B76 /* Recap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recap.storyboard; sourceTree = "<group>"; };
 		F26596E52596AF1300B10B76 /* RecapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapPresenter.swift; sourceTree = "<group>"; };
-		F26596E62596AF1300B10B76 /* AwardsRecapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardsRecapViewController.swift; sourceTree = "<group>"; };
+		F26596E62596AF1300B10B76 /* RecapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapViewController.swift; sourceTree = "<group>"; };
 		F26596E82596AF1300B10B76 /* AwardRecapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardRecapData.swift; sourceTree = "<group>"; };
 		F26596EA2596AF1300B10B76 /* RecapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapView.swift; sourceTree = "<group>"; };
 		F26596EB2596AF1300B10B76 /* RecapPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapPresenterProtocol.swift; sourceTree = "<group>"; };
@@ -634,7 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				F26596E52596AF1300B10B76 /* RecapPresenter.swift */,
-				F26596E62596AF1300B10B76 /* AwardsRecapViewController.swift */,
+				F26596E62596AF1300B10B76 /* RecapViewController.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -1168,7 +1168,7 @@
 			files = (
 				F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */,
 				F2F3BE25257D353D00A926E9 /* DayStampCell.swift in Sources */,
-				F26596F02596AF1300B10B76 /* AwardsRecapViewController.swift in Sources */,
+				F26596F02596AF1300B10B76 /* RecapViewController.swift in Sources */,
 				F29533A225B6611B003CA002 /* GoalDetailsEditCell.swift in Sources */,
 				F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */,
 				F26596F12596AF1300B10B76 /* AwardRecapData.swift in Sources */,

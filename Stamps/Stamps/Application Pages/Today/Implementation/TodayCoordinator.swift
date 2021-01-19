@@ -39,7 +39,7 @@ class TodayCoordinator: TodayCoordinatorProtocol {
     func showAwardsRecap(data: [AwardRecapData]) {
 
         // Instantiate AwardsRecapViewController from the storyboard file
-        guard let awardsView: AwardsRecapViewController = Storyboard.Recap.initialViewController() else {
+        guard let awardsView: RecapViewController = Storyboard.Recap.initialViewController() else {
             assertionFailure("Failed to initialize item details controller")
             return
         }

@@ -23,7 +23,7 @@ class GoalDetailsEditCell: UICollectionViewCell {
     
     // MARK: - Public view interface
 
-    func configure(for data: GoalDetailsData) {
+    func configure(for data: GoalEditData) {
         
         goalIcon.text = data.award.emoji
         goalIcon.labelColor = data.award.backgroundColor

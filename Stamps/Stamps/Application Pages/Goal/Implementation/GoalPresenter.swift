@@ -11,13 +11,6 @@ import UIKit
 
 class GoalPresenter: GoalPresenterProtocol {
 
-    enum Presentation {
-        /// Modal presentation - editing new goal initially
-        case modal
-        /// Push presentation - viewing goal initially, can switch to edit mode
-        case push
-    }
-
     // MARK: - DI
 
     private weak var view: GoalView?
@@ -31,21 +24,21 @@ class GoalPresenter: GoalPresenterProtocol {
         awardManager: AwardManager,
         repository: DataRepository,
         goal: Goal?,
-        presentation: Presentation
+        presentation: PresentationMode
     ) {
         self.view = view
         self.awardManager = awardManager
         self.repository = repository
-        self.goal = goal
+        self.goal = goal ?? Goal.new
         self.presentationMode = presentation
         self.isEditing = (presentation == .modal)
     }
 
     // MARK: - State
 
-    private var goal: Goal?
+    private var goal: Goal!
     
-    private var presentationMode: Presentation!
+    private var presentationMode: PresentationMode!
 
     private var isEditing: Bool!
     
@@ -67,23 +60,20 @@ class GoalPresenter: GoalPresenterProtocol {
         }
         view?.onCancelTapped = { [weak self] in
             if self?.presentationMode == .modal {
-                self?.view?.dismiss()
+                self?.view?.dismiss(from: self!.presentationMode)
             } else {
                 self?.setViewEditing(false)
             }
         }
         view?.onDoneTapped = { [weak self] in
             self?.saveViewData()
-            if self?.presentationMode == .modal {
-                self?.view?.dismiss()
-            } else {
-                self?.setViewEditing(false)
-            }
+            self?.view?.dismiss(from: self!.presentationMode)
         }
     }
     
     private func saveViewData() {
-        print("SAVE GOAL VIEW DATA")
+        view?.update(to: &goal)
+        try! repository.save(goal: goal)
     }
     
     private func setViewEditing(_ editing: Bool) {
@@ -93,30 +83,35 @@ class GoalPresenter: GoalPresenterProtocol {
     }
     
     private func loadViewData() {
-        let goal = self.goal ?? Goal(
-            id: nil,
-            name: "New Goal",
-            period: .week,
-            direction: .positive,
-            limit: 5,
-            stamps: []
-        )
         let progress = awardManager.currentProgressFor(goal)
         let stamp = repository.stampById(goal.stamps.first)
-        let award = GoalAwardData(
+        let currentProgress = GoalAwardData(
             goal: goal,
             progress: progress,
             stamp: stamp
         )
-        
+        let award = GoalAwardData(
+            goal: goal,
+            progress: goal.limit,
+            stamp: stamp
+        )
+
         if isEditing {
-            view?.loadGoal(
-                data: [.edit(GoalDetailsData(goal: goal, progress: progress, award: award))]
+            let data = GoalEditData(
+                goal: goal,
+                award: award
             )
+            view?.loadGoalDetails(.edit(data))
         } else {
-            view?.loadGoal(
-                data: [.details(GoalDetailsData(goal: goal, progress: progress, award: award))]
+            let data = GoalViewData(
+                title: goal.name,
+                details: goal.details,
+                statis: goal.statsDescription,
+                progressText: goal.descriptionForCurrentProgress(progress),
+                award: award,
+                progress: currentProgress
             )
+            view?.loadGoalDetails(.view(data))
         }
     }
 }

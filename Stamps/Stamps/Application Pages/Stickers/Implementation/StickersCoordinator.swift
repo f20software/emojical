@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
+enum PresentationMode {
+    /// Modal presentation - editing new goal initially
+    case modal
+    /// Push presentation - viewing goal initially, can switch to edit mode
+    case push
+}
+
 class StickersCoordinator: StickersCoordinatorProtocol {
     
     // MARK: - Private

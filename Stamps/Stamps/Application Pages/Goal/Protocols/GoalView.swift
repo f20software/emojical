@@ -26,12 +26,15 @@ protocol GoalView: AnyObject {
 
     // MARK: - Updates
 
-    /// Dismisses view if it was presented modally
-    func dismiss()
+    /// Dismisses Goal view 
+    func dismiss(from mode: PresentationMode)
 
     /// Set / reset editing mode
     func setEditing(_ editing: Bool, animated: Bool)
 
     /// Loads Goal data
-    func loadGoal(data: [GoalDetailsElement])
+    func loadGoalDetails(_ data: GoalDetailsElement)
+
+    /// Update Goal data from the UI
+    func update(to: inout Goal)
 }

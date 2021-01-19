@@ -26,6 +26,10 @@ class GoalViewController2 : UIViewController, GoalView {
     
     /// Diffable data source
     private var dataSource: UICollectionViewDiffableDataSource<Int, GoalDetailsElement>!
+    
+    
+    /// Details cell
+    private weak var detailsEditView: GoalDetailsEditCell?
 
     // MARK: - View lifecycle
     
@@ -65,16 +69,36 @@ class GoalViewController2 : UIViewController, GoalView {
     }
 
     /// Loads Goal data
-    func loadGoal(data: [GoalDetailsElement]) {
+    func loadGoalDetails(_ data: GoalDetailsElement) {
+        
         var snapshot = NSDiffableDataSourceSnapshot<Int, GoalDetailsElement>()
         snapshot.appendSections([0])
-        snapshot.appendItems(data)
+        snapshot.appendItems([data])
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+        
+        switch data {
+        case .view(let viewData):
+            title = viewData.title
+        case .edit(let viewData):
+            title = viewData.goal.name
+        }
+    }
+    
+    /// Update Goal data from the UI
+    func update(to: inout Goal) {
+        guard let details = detailsEditView else { return }
+        
+        to.name = details.name.text ?? to.name
     }
     
     /// Dismisses view if it was presented modally
-    func dismiss() {
-        dismiss(animated: true, completion: nil)
+    func dismiss(from mode: PresentationMode) {
+        switch mode {
+        case .modal:
+            dismiss(animated: true, completion: nil)
+        case .push:
+            navigationController?.popViewController(animated: true)
+        }
     }
 
     // MARK: - Action
@@ -144,9 +168,6 @@ class GoalViewController2 : UIViewController, GoalView {
                 heightDimension: .estimated(100)
             )
         )
-//        item.contentInsets = NSDirectionalEdgeInsets(
-//            top: 0, leading: 0, bottom: 0, trailing: 0
-//        )
 
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
@@ -157,8 +178,6 @@ class GoalViewController2 : UIViewController, GoalView {
         )
 
         let section = NSCollectionLayoutSection(group: group)
-        // section.boundarySupplementaryItems = [sectionHeader]
-        // section.interGroupSpacing = Specs.cellMargin
         section.contentInsets = NSDirectionalEdgeInsets(
             top: Specs.margin, leading: Specs.margin,
             bottom: Specs.margin, trailing: Specs.margin
@@ -175,7 +194,7 @@ extension GoalViewController2: UICollectionViewDelegate {
     
     private func cell(for path: IndexPath, model: GoalDetailsElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         switch model {
-        case .details(let data):
+        case .view(let data):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.details, for: path
             ) as? GoalDetailsCell else { return UICollectionViewCell() }
@@ -183,9 +202,11 @@ extension GoalViewController2: UICollectionViewDelegate {
             return cell
             
         case .edit(let data):
-            guard let cell = collectionView.dequeueReusableCell(
+            detailsEditView = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.edit, for: path
-            ) as? GoalDetailsEditCell else { return UICollectionViewCell() }
+            ) as? GoalDetailsEditCell
+            
+            guard let cell = detailsEditView else { return UICollectionViewCell() }
             cell.configure(for: data)
             return cell
         }

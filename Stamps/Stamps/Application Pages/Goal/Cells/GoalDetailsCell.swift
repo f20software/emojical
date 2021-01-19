@@ -25,7 +25,7 @@ class GoalDetailsCell: UICollectionViewCell {
     
     // MARK: - Public view interface
 
-    func configure(for data: GoalDetailsData) {
+    func configure(for data: GoalViewData) {
         
         goalIcon.text = data.award.emoji
         goalIcon.labelColor = data.award.backgroundColor
@@ -33,9 +33,9 @@ class GoalDetailsCell: UICollectionViewCell {
         goalIcon.progress = CGFloat(data.award.progress)
         goalIcon.progressColor = data.award.progressColor
         
-        goalDescription.text = data.goal.details
-        statistics.text = data.goal.statsDescription
-        currentProgress.text = data.goal.descriptionForCurrentProgress(data.progress)
+        goalDescription.text = data.details
+        statistics.text = data.statis
+        currentProgress.text = data.progressText
     }
     
     override func prepareForReuse() {

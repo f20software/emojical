@@ -9,6 +9,7 @@
 import Foundation
 
 struct Goal: Equatable, Hashable {
+    
     // Prefer Int64 for auto-incremented database ids
     var id: Int64?
     var name: String
@@ -19,6 +20,18 @@ struct Goal: Equatable, Hashable {
     var deleted: Bool = false
     var count: Int = 0
     var lastUsed: Date?
+    
+    /// Default new empty goal
+    static var new: Goal {
+        return Goal(
+            id: nil,
+            name: "Do good",
+            period: .week,
+            direction: .positive,
+            limit: 5,
+            stamps: []
+        )
+    }
     
     // How do we call goal limit based on direction (used in configuration screen)
     var limitName: String {

@@ -9,6 +9,6 @@
 import Foundation
 
 enum GoalDetailsElement: Hashable {
-    case details(GoalDetailsData)
-    case edit(GoalDetailsData)
+    case view(GoalViewData)
+    case edit(GoalEditData)
 }

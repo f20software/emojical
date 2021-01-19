@@ -1,5 +1,5 @@
 //
-//  GoalDetailsData.swift
+//  GoalEditData.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 1/18/2021.
@@ -8,10 +8,9 @@
 
 import Foundation
 
-struct GoalDetailsData {
+struct GoalEditData {
     let goal: Goal
-    let progress: Int
     let award: GoalAwardData
 }
 
-extension GoalDetailsData: Equatable, Hashable {}
+extension GoalEditData: Equatable, Hashable {}

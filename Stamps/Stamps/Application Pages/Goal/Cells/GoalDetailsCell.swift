@@ -15,6 +15,7 @@ class GoalDetailsCell: UICollectionViewCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var goalDescription: UILabel!
     @IBOutlet weak var goalIcon: GoalAwardView!
+    @IBOutlet weak var stickers: UILabel!
     @IBOutlet weak var statistics: UILabel!
     @IBOutlet weak var currentProgress: UILabel!
 
@@ -35,6 +36,7 @@ class GoalDetailsCell: UICollectionViewCell {
         
         goalDescription.text = data.details
         statistics.text = data.statis
+        stickers.text = "Stickers: \(data.stickers.joined(separator: ", "))"
         currentProgress.text = data.progressText
     }
     
@@ -50,6 +52,11 @@ class GoalDetailsCell: UICollectionViewCell {
         plate.clipsToBounds = true
         goalIcon.progressLineWidth = Specs.progressLineWidth
         goalIcon.emojiFontSize = Specs.emojiFontSize
+        
+        goalDescription.font = Theme.shared.fonts.listBody
+        statistics.font = Theme.shared.fonts.listBody
+        stickers.font = Theme.shared.fonts.listBody
+        currentProgress.font = Theme.shared.fonts.listBody
     }
 }
 
@@ -63,6 +70,6 @@ fileprivate struct Specs {
     static let progressLineWidth: CGFloat = 4.0
     
     /// Emoji font size for award icon
-    static let emojiFontSize: CGFloat = 40.0
+    static let emojiFontSize: CGFloat = 50.0
 }
 

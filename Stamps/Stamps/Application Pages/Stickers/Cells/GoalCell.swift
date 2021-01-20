@@ -58,6 +58,9 @@ class GoalCell: UICollectionViewCell {
         count.clipsToBounds = true
         count.backgroundColor = UIColor.appTintColor
         goalIcon.progressLineWidth = Specs.progressLineWidth
+
+        title.font = Theme.shared.fonts.listTitle
+        subTitle.font = Theme.shared.fonts.listBody
     }
 }
 

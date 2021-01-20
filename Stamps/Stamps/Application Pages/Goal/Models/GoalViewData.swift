@@ -14,6 +14,7 @@ struct GoalViewData {
     let title: String
     let details: String
     let statis: String
+    let stickers: [String]
     let progressText: String
     
     // Final award data and current progress data

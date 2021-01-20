@@ -107,6 +107,7 @@ class GoalPresenter: GoalPresenterProtocol {
                 title: goal.name,
                 details: goal.details,
                 statis: goal.statsDescription,
+                stickers: repository.stampLabelsFor(goal),
                 progressText: goal.descriptionForCurrentProgress(progress),
                 award: award,
                 progress: currentProgress

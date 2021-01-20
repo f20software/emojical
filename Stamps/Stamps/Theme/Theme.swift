@@ -73,6 +73,9 @@ final class Theme {
     struct Colors {
         /// Main application tint color
         let tint: UIColor
+
+        ///
+        let caption: UIColor
     }
 
     // MARK: - Private

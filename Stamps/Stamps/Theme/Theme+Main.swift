@@ -16,12 +16,18 @@ extension Theme {
 
         let light = Colors(
             /// Main application tint color
-            tint: UIColor(r: 13, g: 15, b: 45)
+            tint: UIColor(r: 13, g: 15, b: 45),
+
+            ///
+            caption: UIColor.gray
         )
 
         let dark = Colors(
             /// Main application tint color
-            tint: UIColor(r: 13, g: 15, b: 45)
+            tint: UIColor(r: 13, g: 15, b: 45),
+            
+            ///
+            caption: UIColor.lightGray
         )
 
         return Theme(lightColors: light, darkColors: dark)

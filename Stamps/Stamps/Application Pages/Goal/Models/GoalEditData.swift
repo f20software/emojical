@@ -10,6 +10,7 @@ import Foundation
 
 struct GoalEditData {
     let goal: Goal
+    let stickers: [String]
     let award: GoalAwardData
 }
 

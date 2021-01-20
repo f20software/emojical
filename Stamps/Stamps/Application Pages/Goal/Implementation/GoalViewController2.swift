@@ -89,6 +89,9 @@ class GoalViewController2 : UIViewController, GoalView {
         guard let details = detailsEditView else { return }
         
         to.name = details.name.text ?? to.name
+        to.limit = Int.init(details.limit.text ?? "1") ?? 1
+        to.direction = Direction(rawValue: details.direction.selectedSegmentIndex) ?? .positive
+        to.period = Period(rawValue: details.period.selectedSegmentIndex) ?? .week
     }
     
     /// Dismisses view if it was presented modally

@@ -67,7 +67,12 @@ class GoalPresenter: GoalPresenterProtocol {
         }
         view?.onDoneTapped = { [weak self] in
             self?.saveViewData()
-            self?.view?.dismiss(from: self!.presentationMode)
+            if self?.presentationMode == .modal {
+                self?.view?.dismiss(from: self!.presentationMode)
+            } else {
+                self?.setViewEditing(false)
+                self?.loadViewData()
+            }
         }
     }
     
@@ -92,13 +97,13 @@ class GoalPresenter: GoalPresenterProtocol {
         )
         let award = GoalAwardData(
             goal: goal,
-            progress: goal.limit,
             stamp: stamp
         )
 
         if isEditing {
             let data = GoalEditData(
                 goal: goal,
+                stickers: repository.stampLabelsFor(goal),
                 award: award
             )
             view?.loadGoalDetails(.edit(data))

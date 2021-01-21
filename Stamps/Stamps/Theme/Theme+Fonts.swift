@@ -26,7 +26,7 @@ extension Theme {
 
         /// Caption for form fields (when editing Goal / Sticker)
         lazy var formFieldCaption: UIFont = {
-            font(ofSize: 14, weight: .regular, style: .body)
+            font(ofSize: 18, weight: .regular, style: .body)
         }()
 
         /// Returns a base font scaled according to current system font size.

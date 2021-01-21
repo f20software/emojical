@@ -74,8 +74,33 @@ class GoalPresenter: GoalPresenterProtocol {
                 self?.loadViewData()
             }
         }
+        view?.onDeleteTapped = { [weak self] in
+            self?.confirmGoalDelete()
+        }
     }
     
+    private func confirmGoalDelete() {
+        if goal.count > 0 {
+            let confirm = UIAlertController(title: "Woah!", message: "\(goal.statsDescription) Are you sure you want to delete it?", preferredStyle: .actionSheet)
+            confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+                self.deleteAndDismiss()
+            }))
+            confirm.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+                confirm.dismiss(animated: true, completion: nil)
+            }))
+            (view as! UIViewController).present(confirm, animated: true, completion: nil)
+        }
+        else {
+            deleteAndDismiss()
+        }
+    }
+    
+    private func deleteAndDismiss() {
+        goal.deleted = true
+        try! repository.save(goal: goal)
+        view?.dismiss(from: presentationMode)
+    }
+
     private func saveViewData() {
         view?.update(to: &goal)
         try! repository.save(goal: goal)

@@ -27,7 +27,6 @@ class GoalViewController2 : UIViewController, GoalView {
     /// Diffable data source
     private var dataSource: UICollectionViewDiffableDataSource<Int, GoalDetailsElement>!
     
-    
     /// Details cell
     private weak var detailsEditView: GoalDetailsEditCell?
 
@@ -70,6 +69,9 @@ class GoalViewController2 : UIViewController, GoalView {
 
     /// Loads Goal data
     func loadGoalDetails(_ data: GoalDetailsElement) {
+
+        // Reset old reference
+        detailsEditView = nil
         
         var snapshot = NSDiffableDataSourceSnapshot<Int, GoalDetailsElement>()
         snapshot.appendSections([0])
@@ -192,8 +194,11 @@ class GoalViewController2 : UIViewController, GoalView {
 
 extension GoalViewController2: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
+//    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        guard let editView = detailsEditView else { return }
+//
+//        editView.name.becomeFirstResponder()
+//    }
     
     private func cell(for path: IndexPath, model: GoalDetailsElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         switch model {
@@ -211,6 +216,12 @@ extension GoalViewController2: UICollectionViewDelegate {
             
             guard let cell = detailsEditView else { return UICollectionViewCell() }
             cell.configure(for: data)
+            cell.onDeleteTapped = { [weak self] in
+                self?.onDeleteTapped?()
+            }
+            cell.onValueChanged = { [weak self] in
+                self?.title = self?.detailsEditView?.name.text
+            }
             return cell
         }
     }

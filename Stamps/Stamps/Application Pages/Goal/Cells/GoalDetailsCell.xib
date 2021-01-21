@@ -11,48 +11,48 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoalDetailsCell" id="7y9-Gf-xbO" customClass="GoalDetailsCell" customModule="Emojical" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="376"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="385"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="376"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="385"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErJ-gD-7GI">
-                        <rect key="frame" x="0.0" y="115" width="300" height="261"/>
+                        <rect key="frame" x="0.0" y="115" width="300" height="270"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Weekly goal, get 5 or more" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xju-ua-GfL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Weekly goal, get 5 or more" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xju-ua-GfL">
                                 <rect key="frame" x="15" y="15" width="270" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Stickers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjk-mE-KPa">
-                                <rect key="frame" x="15" y="50.5" width="66" height="31.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stickers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjk-mE-KPa">
+                                <rect key="frame" x="15" y="50.5" width="66" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" ambiguous="YES" text="Goal has been reached multiple times, last time two years ago." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-52-QBf">
-                                <rect key="frame" x="15" y="123" width="270" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Goal has been reached multiple times, last time two years ago." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-52-QBf">
+                                <rect key="frame" x="15" y="112" width="270" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" ambiguous="YES" text="you're doing great - you have already scored some stickets this month" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWy-wl-aZ0">
-                                <rect key="frame" x="15" y="205" width="270" height="61"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="you're doing great - you have already scored some stickets this month" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWy-wl-aZ0">
+                                <rect key="frame" x="15" y="194" width="270" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5EO-Ht-Kgi">
-                                <rect key="frame" x="15" y="184" width="270" height="1"/>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EO-Ht-Kgi" userLabel="Separator 1">
+                                <rect key="frame" x="15" y="173" width="270" height="1"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="PRD-ox-KdN"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggP-Ma-8kI">
-                                <rect key="frame" x="15" y="102" width="270" height="1"/>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggP-Ma-8kI" userLabel="Separator 2">
+                                <rect key="frame" x="15" y="91" width="270" height="1"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="gyg-7y-XmA"/>
@@ -100,7 +100,7 @@
                 <constraint firstItem="coJ-52-QBf" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="vig-Bo-U1h"/>
                 <constraint firstItem="ote-mX-R31" firstAttribute="leading" secondItem="7y9-Gf-xbO" secondAttribute="leading" constant="15" id="y1U-0q-Xh8"/>
             </constraints>
-            <size key="customSize" width="308" height="322"/>
+            <size key="customSize" width="308" height="331"/>
             <connections>
                 <outlet property="currentProgress" destination="ZWy-wl-aZ0" id="mnF-nd-BBD"/>
                 <outlet property="goalDescription" destination="Xju-ua-GfL" id="5X2-4u-zvR"/>
@@ -109,7 +109,7 @@
                 <outlet property="statistics" destination="coJ-52-QBf" id="2aS-ur-QdE"/>
                 <outlet property="stickers" destination="sjk-mE-KPa" id="kqO-Oe-pq6"/>
             </connections>
-            <point key="canvasLocation" x="7.2463768115942031" y="4.6875"/>
+            <point key="canvasLocation" x="7.2463768115942031" y="7.7008928571428568"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -207,6 +207,9 @@ extension GoalViewController2: UICollectionViewDelegate {
                 withReuseIdentifier: Specs.Cells.details, for: path
             ) as? GoalDetailsCell else { return UICollectionViewCell() }
             cell.configure(for: data)
+            cell.onIconTapped = { () in
+                cell.toggleState()
+            }
             return cell
             
         case .edit(let data):

@@ -18,41 +18,41 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErJ-gD-7GI">
-                        <rect key="frame" x="0.0" y="115" width="300" height="270"/>
+                        <rect key="frame" x="0.0" y="40" width="300" height="345"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Weekly goal, get 5 or more" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xju-ua-GfL">
-                                <rect key="frame" x="15" y="15" width="270" height="20.5"/>
+                                <rect key="frame" x="15" y="15" width="145" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stickers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjk-mE-KPa">
-                                <rect key="frame" x="15" y="50.5" width="66" height="20.5"/>
+                                <rect key="frame" x="15" y="76" width="66" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Goal has been reached multiple times, last time two years ago." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-52-QBf">
-                                <rect key="frame" x="15" y="112" width="270" height="41"/>
+                                <rect key="frame" x="15" y="137.5" width="270" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="you're doing great - you have already scored some stickets this month" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWy-wl-aZ0">
-                                <rect key="frame" x="15" y="194" width="270" height="61"/>
+                                <rect key="frame" x="15" y="219.5" width="270" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EO-Ht-Kgi" userLabel="Separator 1">
-                                <rect key="frame" x="15" y="173" width="270" height="1"/>
+                                <rect key="frame" x="15" y="198.5" width="270" height="1"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="PRD-ox-KdN"/>
                                 </constraints>
                             </view>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggP-Ma-8kI" userLabel="Separator 2">
-                                <rect key="frame" x="15" y="91" width="270" height="1"/>
+                                <rect key="frame" x="15" y="116.5" width="270" height="1"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="gyg-7y-XmA"/>
@@ -64,21 +64,28 @@
                             <constraint firstItem="coJ-52-QBf" firstAttribute="top" secondItem="ggP-Ma-8kI" secondAttribute="bottom" constant="20" id="51W-XH-ZeF"/>
                             <constraint firstAttribute="trailing" secondItem="5EO-Ht-Kgi" secondAttribute="trailing" constant="15" id="77Q-Ej-xDq"/>
                             <constraint firstItem="ggP-Ma-8kI" firstAttribute="top" secondItem="sjk-mE-KPa" secondAttribute="bottom" constant="20" id="B4f-gY-ZSn"/>
+                            <constraint firstItem="coJ-52-QBf" firstAttribute="leading" secondItem="sjk-mE-KPa" secondAttribute="leading" id="B6f-iy-t6A"/>
                             <constraint firstItem="Xju-ua-GfL" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" constant="15" id="FXu-dx-DeL"/>
-                            <constraint firstItem="sjk-mE-KPa" firstAttribute="top" secondItem="Xju-ua-GfL" secondAttribute="bottom" constant="15" id="J6J-Pm-hZa"/>
                             <constraint firstItem="5EO-Ht-Kgi" firstAttribute="trailing" secondItem="ggP-Ma-8kI" secondAttribute="trailing" id="QNb-sk-B4D"/>
-                            <constraint firstAttribute="trailing" secondItem="Xju-ua-GfL" secondAttribute="trailing" constant="15" id="QhD-4x-lEV"/>
-                            <constraint firstAttribute="bottom" secondItem="ZWy-wl-aZ0" secondAttribute="bottom" constant="15" id="Qwx-uY-dds"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZWy-wl-aZ0" secondAttribute="bottom" constant="15" id="Qwx-uY-dds"/>
+                            <constraint firstItem="ZWy-wl-aZ0" firstAttribute="leading" secondItem="sjk-mE-KPa" secondAttribute="leading" id="TtI-jz-E4h"/>
+                            <constraint firstItem="Xju-ua-GfL" firstAttribute="leading" secondItem="sjk-mE-KPa" secondAttribute="leading" id="Vaj-pb-t9Y"/>
                             <constraint firstItem="5EO-Ht-Kgi" firstAttribute="leading" secondItem="coJ-52-QBf" secondAttribute="leading" id="WMh-8M-2WF"/>
+                            <constraint firstItem="Xju-ua-GfL" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" constant="15" id="aHh-YO-hUu"/>
                             <constraint firstAttribute="trailing" secondItem="ZWy-wl-aZ0" secondAttribute="trailing" constant="15" id="bHq-3i-UHp"/>
                             <constraint firstItem="5EO-Ht-Kgi" firstAttribute="top" secondItem="coJ-52-QBf" secondAttribute="bottom" constant="20" id="jbv-tP-ayH"/>
                             <constraint firstItem="ZWy-wl-aZ0" firstAttribute="top" secondItem="5EO-Ht-Kgi" secondAttribute="bottom" constant="20" id="ora-da-b8C"/>
+                            <constraint firstItem="sjk-mE-KPa" firstAttribute="top" secondItem="Xju-ua-GfL" secondAttribute="bottom" constant="20" id="tzM-70-UvA"/>
                             <constraint firstItem="5EO-Ht-Kgi" firstAttribute="leading" secondItem="ggP-Ma-8kI" secondAttribute="leading" id="ucX-fM-xfb"/>
                             <constraint firstAttribute="trailing" secondItem="coJ-52-QBf" secondAttribute="trailing" constant="15" id="yJl-mY-7T4"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="um0-VU-eCP">
+                        <rect key="frame" x="170" y="-5" width="110" height="110"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ote-mX-R31" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
-                        <rect key="frame" x="15" y="0.0" width="100" height="100"/>
+                        <rect key="frame" x="175" y="0.0" width="100" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="8Gt-Ov-vZg"/>
@@ -89,20 +96,22 @@
             </view>
             <viewLayoutGuide key="safeArea" id="0Jf-aO-hI9"/>
             <constraints>
-                <constraint firstItem="ZWy-wl-aZ0" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="0bH-te-PBf"/>
-                <constraint firstItem="Xju-ua-GfL" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="2Nk-dl-Cn1"/>
+                <constraint firstItem="0Jf-aO-hI9" firstAttribute="trailing" secondItem="um0-VU-eCP" secondAttribute="trailing" constant="20" id="2dy-As-AXM"/>
                 <constraint firstItem="ote-mX-R31" firstAttribute="top" secondItem="7y9-Gf-xbO" secondAttribute="top" id="6JQ-Vd-AeV"/>
-                <constraint firstItem="sjk-mE-KPa" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="FEk-lw-cQe"/>
                 <constraint firstItem="ErJ-gD-7GI" firstAttribute="leading" secondItem="7y9-Gf-xbO" secondAttribute="leading" id="Vlm-nP-CF7"/>
+                <constraint firstItem="um0-VU-eCP" firstAttribute="width" secondItem="ote-mX-R31" secondAttribute="width" constant="10" id="az3-4k-6dq"/>
                 <constraint firstAttribute="trailing" secondItem="ErJ-gD-7GI" secondAttribute="trailing" priority="999" id="cCk-yV-ErB"/>
-                <constraint firstItem="ErJ-gD-7GI" firstAttribute="top" secondItem="ote-mX-R31" secondAttribute="bottom" constant="15" id="ehq-1O-Jmo"/>
+                <constraint firstItem="um0-VU-eCP" firstAttribute="leading" secondItem="Xju-ua-GfL" secondAttribute="trailing" constant="10" id="eQr-jk-Uej"/>
+                <constraint firstItem="um0-VU-eCP" firstAttribute="centerX" secondItem="ote-mX-R31" secondAttribute="centerX" id="eXv-3u-Ibn"/>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="top" secondItem="ote-mX-R31" secondAttribute="bottom" constant="-60" id="ehq-1O-Jmo"/>
                 <constraint firstAttribute="bottom" secondItem="ErJ-gD-7GI" secondAttribute="bottom" priority="999" id="pQi-uY-Es9"/>
-                <constraint firstItem="coJ-52-QBf" firstAttribute="leading" secondItem="ote-mX-R31" secondAttribute="leading" id="vig-Bo-U1h"/>
-                <constraint firstItem="ote-mX-R31" firstAttribute="leading" secondItem="7y9-Gf-xbO" secondAttribute="leading" constant="15" id="y1U-0q-Xh8"/>
+                <constraint firstItem="um0-VU-eCP" firstAttribute="height" secondItem="ote-mX-R31" secondAttribute="height" constant="10" id="rB6-rj-8E3"/>
+                <constraint firstItem="um0-VU-eCP" firstAttribute="centerY" secondItem="ote-mX-R31" secondAttribute="centerY" id="zA7-Zq-vRA"/>
             </constraints>
             <size key="customSize" width="308" height="331"/>
             <connections>
                 <outlet property="currentProgress" destination="ZWy-wl-aZ0" id="mnF-nd-BBD"/>
+                <outlet property="goalBackground" destination="um0-VU-eCP" id="INV-RW-mbz"/>
                 <outlet property="goalDescription" destination="Xju-ua-GfL" id="5X2-4u-zvR"/>
                 <outlet property="goalIcon" destination="ote-mX-R31" id="D8r-gw-kFk"/>
                 <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
@@ -121,6 +130,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoalViewController2 : UIViewController, GoalView {
+class GoalViewController : UIViewController, GoalView {
 
     // MARK: - UI Outlets
     
@@ -195,7 +195,7 @@ class GoalViewController2 : UIViewController, GoalView {
     }
 }
 
-extension GoalViewController2: UICollectionViewDelegate {
+extension GoalViewController: UICollectionViewDelegate {
     
 //    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 //        guard let editView = detailsEditView else { return }

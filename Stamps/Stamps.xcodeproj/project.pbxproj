@@ -104,15 +104,14 @@
 		F295334625B4D87D003CA002 /* NoAwardsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295334425B4D87D003CA002 /* NoAwardsCell.swift */; };
 		F295334C25B4DA03003CA002 /* TodayAwardElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295334B25B4DA03003CA002 /* TodayAwardElement.swift */; };
 		F295335E25B604A4003CA002 /* StickersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295335D25B604A4003CA002 /* StickersCoordinator.swift */; };
-		F295336225B605DA003CA002 /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F295336125B605DA003CA002 /* Goal.storyboard */; };
 		F295336625B60CEB003CA002 /* Sticker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F295336525B60CEB003CA002 /* Sticker.storyboard */; };
 		F295337425B61522003CA002 /* GoalPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295337225B61522003CA002 /* GoalPresenterProtocol.swift */; };
 		F295337525B61522003CA002 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295337325B61522003CA002 /* GoalView.swift */; };
 		F295337A25B6165C003CA002 /* GoalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295337825B6165B003CA002 /* GoalPresenter.swift */; };
-		F295337B25B6165C003CA002 /* GoalViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295337925B6165B003CA002 /* GoalViewController2.swift */; };
+		F295337B25B6165C003CA002 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295337925B6165B003CA002 /* GoalViewController.swift */; };
 		F295337F25B6168D003CA002 /* GoalViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295337E25B6168D003CA002 /* GoalViewData.swift */; };
 		F295338925B62F3A003CA002 /* GoalDetailsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295338825B62F3A003CA002 /* GoalDetailsElement.swift */; };
-		F295338D25B62F7D003CA002 /* Goal2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F295338C25B62F7D003CA002 /* Goal2.storyboard */; };
+		F295338D25B62F7D003CA002 /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F295338C25B62F7D003CA002 /* Goal.storyboard */; };
 		F295339325B63DB1003CA002 /* GoalDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F295339125B63DB1003CA002 /* GoalDetailsCell.swift */; };
 		F295339A25B64098003CA002 /* GoalDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F295339925B64097003CA002 /* GoalDetailsCell.xib */; };
 		F29533A125B6611B003CA002 /* GoalDetailsEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */; };
@@ -299,15 +298,14 @@
 		F295334425B4D87D003CA002 /* NoAwardsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAwardsCell.swift; sourceTree = "<group>"; };
 		F295334B25B4DA03003CA002 /* TodayAwardElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAwardElement.swift; sourceTree = "<group>"; };
 		F295335D25B604A4003CA002 /* StickersCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickersCoordinator.swift; sourceTree = "<group>"; };
-		F295336125B605DA003CA002 /* Goal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
 		F295336525B60CEB003CA002 /* Sticker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sticker.storyboard; sourceTree = "<group>"; };
 		F295337225B61522003CA002 /* GoalPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalPresenterProtocol.swift; sourceTree = "<group>"; };
 		F295337325B61522003CA002 /* GoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		F295337825B6165B003CA002 /* GoalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalPresenter.swift; sourceTree = "<group>"; };
-		F295337925B6165B003CA002 /* GoalViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController2.swift; sourceTree = "<group>"; };
+		F295337925B6165B003CA002 /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		F295337E25B6168D003CA002 /* GoalViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewData.swift; sourceTree = "<group>"; };
 		F295338825B62F3A003CA002 /* GoalDetailsElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDetailsElement.swift; sourceTree = "<group>"; };
-		F295338C25B62F7D003CA002 /* Goal2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Goal2.storyboard; sourceTree = "<group>"; };
+		F295338C25B62F7D003CA002 /* Goal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
 		F295339125B63DB1003CA002 /* GoalDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDetailsCell.swift; sourceTree = "<group>"; };
 		F295339925B64097003CA002 /* GoalDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalDetailsCell.xib; sourceTree = "<group>"; };
 		F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalDetailsEditCell.xib; sourceTree = "<group>"; };
@@ -693,8 +691,7 @@
 		F295336D25B61522003CA002 /* Goal */ = {
 			isa = PBXGroup;
 			children = (
-				F295336125B605DA003CA002 /* Goal.storyboard */,
-				F295338C25B62F7D003CA002 /* Goal2.storyboard */,
+				F295338C25B62F7D003CA002 /* Goal.storyboard */,
 				F295336E25B61522003CA002 /* Models */,
 				F295337025B61522003CA002 /* Views */,
 				F295339025B63DB1003CA002 /* Cells */,
@@ -718,7 +715,7 @@
 			isa = PBXGroup;
 			children = (
 				F295337825B6165B003CA002 /* GoalPresenter.swift */,
-				F295337925B6165B003CA002 /* GoalViewController2.swift */,
+				F295337925B6165B003CA002 /* GoalViewController.swift */,
 				F2FD4DCF25BCB89C005819A0 /* GoalCoordinator.swift */,
 			);
 			path = Implementation;
@@ -1207,8 +1204,7 @@
 				F2FC63312446B50A00EF41AD /* DTTableViewCell-TextView.xib in Resources */,
 				F2F3BE20257C831000A926E9 /* DayHeaderCell.xib in Resources */,
 				F29533A125B6611B003CA002 /* GoalDetailsEditCell.xib in Resources */,
-				F295338D25B62F7D003CA002 /* Goal2.storyboard in Resources */,
-				F295336225B605DA003CA002 /* Goal.storyboard in Resources */,
+				F295338D25B62F7D003CA002 /* Goal.storyboard in Resources */,
 				F23CF4242583E8720048BA74 /* NoGoalsCell.xib in Resources */,
 				F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */,
 			);
@@ -1272,7 +1268,7 @@
 				F27BC99125B7DF3A00B58087 /* Theme.swift in Sources */,
 				BC5643FB246B1C8300942066 /* Direction.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
-				F295337B25B6165C003CA002 /* GoalViewController2.swift in Sources */,
+				F295337B25B6165C003CA002 /* GoalViewController.swift in Sources */,
 				F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */,
 				F2A93FB625813668006C88F8 /* WeekLineView.swift in Sources */,
 				F20E40492443ED25008759D1 /* DTTableViewController.swift in Sources */,

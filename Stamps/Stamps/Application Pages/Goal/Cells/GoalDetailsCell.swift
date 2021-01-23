@@ -79,7 +79,6 @@ class GoalDetailsCell: UICollectionViewCell {
         goalIcon.setNeedsDisplay()
     }
     
-    
     @objc func viewTapped(sender: UITapGestureRecognizer) {
         let loc = sender.location(in: goalIcon)
         if goalIcon.bounds.contains(loc) {

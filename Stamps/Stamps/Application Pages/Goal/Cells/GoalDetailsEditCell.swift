@@ -46,6 +46,9 @@ class GoalDetailsEditCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configureViews()
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        addGestureRecognizer(tap)
     }
     
     // MARK: - Public view interface
@@ -117,6 +120,13 @@ class GoalDetailsEditCell: UICollectionViewCell {
 
     @objc func textDidChange(sender: NSNotification) {
         onValueChanged?()
+    }
+
+    @objc func viewTapped(sender: UITapGestureRecognizer) {
+        let loc = sender.location(in: stickers)
+        if stickers.bounds.contains(loc) {
+            onSelectStickersTapped?()
+        }
     }
 }
 

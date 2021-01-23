@@ -693,7 +693,6 @@
 			children = (
 				F295338C25B62F7D003CA002 /* Goal.storyboard */,
 				F295336E25B61522003CA002 /* Models */,
-				F295337025B61522003CA002 /* Views */,
 				F295339025B63DB1003CA002 /* Cells */,
 				F295337125B61522003CA002 /* Protocols */,
 				F295336F25B61522003CA002 /* Implementation */,
@@ -719,13 +718,6 @@
 				F2FD4DCF25BCB89C005819A0 /* GoalCoordinator.swift */,
 			);
 			path = Implementation;
-			sourceTree = "<group>";
-		};
-		F295337025B61522003CA002 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		F295337125B61522003CA002 /* Protocols */ = {

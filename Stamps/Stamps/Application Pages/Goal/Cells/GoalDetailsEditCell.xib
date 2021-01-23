@@ -157,7 +157,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="5ek-oh-Wzd"/>
                                 </constraints>
-                                <state key="normal" image="chevron.right" catalog="system"/>
+                                <state key="normal" image="chevron.right" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                </state>
                                 <connections>
                                     <action selector="selectStickersButtonTapped:" destination="7y9-Gf-xbO" eventType="primaryActionTriggered" id="gz5-gk-Lro"/>
                                 </connections>

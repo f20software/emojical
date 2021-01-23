@@ -19,7 +19,7 @@ extension Theme {
             tint: UIColor(r: 13, g: 15, b: 45),
 
             ///
-            caption: UIColor.gray
+            secondaryText: UIColor.secondaryLabel
         )
 
         let dark = Colors(
@@ -27,7 +27,7 @@ extension Theme {
             tint: UIColor(r: 13, g: 15, b: 45),
             
             ///
-            caption: UIColor.lightGray
+            secondaryText: UIColor.lightGray
         )
 
         return Theme(lightColors: light, darkColors: dark)

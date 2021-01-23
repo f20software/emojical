@@ -75,7 +75,7 @@ final class Theme {
         let tint: UIColor
 
         ///
-        let caption: UIColor
+        let secondaryText: UIColor
     }
 
     // MARK: - Private

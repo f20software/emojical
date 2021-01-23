@@ -18,7 +18,7 @@ enum PresentationMode {
 
 class StickersCoordinator: StickersCoordinatorProtocol {
     
-    // MARK: - Private
+    // MARK: - DI
 
     private weak var parentController: UINavigationController?
     private let repository: DataRepository
@@ -36,12 +36,12 @@ class StickersCoordinator: StickersCoordinatorProtocol {
 
     /// Push to edit goal form
     func editGoal(_ goal: Goal) {
-        navigateToGoal2(goal)
+        navigateToGoal(mode: .push, goal: goal)
     }
 
     /// Shows modal form to create new goal
     func newGoal() {
-        navigateToGoal2(nil)
+        navigateToGoal(mode: .modal, goal: nil)
     }
     
     /// Push to edit sticker form
@@ -58,7 +58,7 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     
     // Navigate to Goal edit / create screen - if `goal` object is passed will
     // push GoalViewController, otherwise - present as modal
-    private func navigateToGoal2(_ goal: Goal?) {
+    private func navigateToGoal(mode: PresentationMode, goal: Goal?) {
 
         // Instantiate GoalViewController from the storyboard file
         guard let nav: UINavigationController = Storyboard.Goal2.initialViewController(),
@@ -67,52 +67,25 @@ class StickersCoordinator: StickersCoordinatorProtocol {
             return
         }
 
+        let coordinator = GoalCoordinator(
+            parent: mode == .modal ? nav : parentController,
+            repository: repository)
+        
         // Hook up GoalPresenter and tie it together to a view controller
         view.presenter = GoalPresenter(
             view: view,
+            coordinator: coordinator,
             awardManager: awardManager,
             repository: repository,
             goal: goal,
-            presentation: goal == nil ? .modal : .push
+            presentation: mode
         )
 
-        if goal == nil {
+        switch mode {
+        case .modal:
             parentController?.present(nav, animated: true)
-        } else {
+        case .push:
             parentController?.pushViewController(view, animated: true)
-        }
-    }
-
-    // Navigate to Goal edit / create screen - if `goal` object is passed will
-    // push GoalViewController, otherwise - present as modal
-    private func navigateToGoal(_ goal: Goal?) {
-
-        // Instantiate GoalViewController from the storyboard file
-        guard let nav: UINavigationController = Storyboard.Goal.initialViewController(),
-              let goalVC = nav.viewControllers.first as? GoalViewController else {
-            assertionFailure("Failed to initialize GoalViewController")
-            return
-        }
-
-        if let goal = goal {
-            goalVC.title = goal.name
-            goalVC.goal = goal
-            goalVC.currentProgress = AwardManager.shared.currentProgressFor(goal)
-            goalVC.presentationMode = .push
-            parentController?.pushViewController(goalVC, animated: true)
-
-        } else {
-            goalVC.title = "New Goal"
-            goalVC.goal = Goal(
-                id: nil,
-                name: "New Goal",
-                period: .week,
-                direction: .positive,
-                limit: 5,
-                stamps: []
-            )
-            goalVC.presentationMode = .modal
-            parentController?.present(nav, animated: true)
         }
     }
 

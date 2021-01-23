@@ -16,7 +16,7 @@ extension Theme {
 
         /// List item title font (i.e. restaurant name)
         lazy var listTitle: UIFont = {
-            font(ofSize: 20, weight: .bold, style: .body)
+            font(ofSize: 20, weight: .semibold, style: .body)
         }()
 
         /// List item subtitle font (i.e. restaurant type)
@@ -27,6 +27,11 @@ extension Theme {
         /// Caption for form fields (when editing Goal / Sticker)
         lazy var formFieldCaption: UIFont = {
             font(ofSize: 18, weight: .regular, style: .body)
+        }()
+
+        /// Footer for the form (when editing Goal / Sticker)
+        lazy var footer: UIFont = {
+            font(ofSize: 14, weight: .regular, style: .body)
         }()
 
         /// Returns a base font scaled according to current system font size.

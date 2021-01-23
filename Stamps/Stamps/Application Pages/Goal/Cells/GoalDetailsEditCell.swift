@@ -23,6 +23,7 @@ class GoalDetailsEditCell: UICollectionViewCell {
 
     @IBOutlet weak var stickersLabel: UILabel!
     @IBOutlet weak var stickers: UILabel!
+    @IBOutlet weak var selectStickersButton: UIButton!
 
     @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var direction: UISegmentedControl!
@@ -30,6 +31,7 @@ class GoalDetailsEditCell: UICollectionViewCell {
     @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var period: UISegmentedControl!
 
+    @IBOutlet weak var footer: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
 
     /// User tapped on the Delete button
@@ -37,6 +39,9 @@ class GoalDetailsEditCell: UICollectionViewCell {
 
     /// User changed any value
     var onValueChanged: (() -> Void)?
+
+    /// User tapped on list of stickers
+    var onSelectStickersTapped: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -64,6 +69,10 @@ class GoalDetailsEditCell: UICollectionViewCell {
         onDeleteTapped?()
     }
     
+    @IBAction func selectStickersButtonTapped(_ sender: Any) {
+        onSelectStickersTapped?()
+    }
+
     @IBAction func directionChanged(_ sender: Any) {
         let positive = direction.selectedSegmentIndex == 0
         limitLabel.text = positive ? "Goal:" : "Limit:"
@@ -78,7 +87,7 @@ class GoalDetailsEditCell: UICollectionViewCell {
         let labels: [UILabel] = [nameLabel, limitLabel, stickersLabel, directionLabel, periodLabel, limitExplanation1, limitExplanation2]
         for label in labels {
             label.font = Theme.shared.fonts.formFieldCaption
-            label.textColor = Theme.shared.colors.caption
+            label.textColor = Theme.shared.colors.secondaryText
         }
 
         nameLabel.text = "Name:"
@@ -98,6 +107,9 @@ class GoalDetailsEditCell: UICollectionViewCell {
         periodLabel.text = "Goal Period:"
         directionLabel.text = "Direction:"
         
+        footer.font = Theme.shared.fonts.footer
+        footer.textColor = Theme.shared.colors.secondaryText
+        footer.text = "If you update or delete the goal, all previously earned awards will remain unchanged."
         deleteButton.titleLabel?.font = Theme.shared.fonts.listBody
 
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: name)

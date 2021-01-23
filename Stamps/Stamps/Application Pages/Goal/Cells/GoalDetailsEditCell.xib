@@ -128,8 +128,8 @@
                                     <action selector="deleteButtonTapped:" destination="7y9-Gf-xbO" eventType="primaryActionTriggered" id="6xB-94-gka"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A, B, C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pC-rq-yBj">
-                                <rect key="frame" x="112.5" y="86.5" width="52" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A, B, C, D, E, F, G, H" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pC-rq-yBj">
+                                <rect key="frame" x="112.5" y="86.5" width="122.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -152,6 +152,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVV-u2-xnY">
+                                <rect key="frame" x="235" y="86" width="50" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="5ek-oh-Wzd"/>
+                                </constraints>
+                                <state key="normal" image="chevron.right" catalog="system"/>
+                                <connections>
+                                    <action selector="selectStickersButtonTapped:" destination="7y9-Gf-xbO" eventType="primaryActionTriggered" id="gz5-gk-Lro"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
@@ -177,6 +187,7 @@
                             <constraint firstItem="Gz6-Ti-SPo" firstAttribute="leading" secondItem="9A5-ln-Jli" secondAttribute="leading" id="Cbg-Pn-Dot"/>
                             <constraint firstItem="9A5-ln-Jli" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" constant="5" id="ED4-VM-NkS"/>
                             <constraint firstItem="4Qg-s1-Urg" firstAttribute="leading" secondItem="IcB-0G-7eP" secondAttribute="leading" id="Ep8-54-I5Y"/>
+                            <constraint firstItem="qVV-u2-xnY" firstAttribute="trailing" secondItem="IcB-0G-7eP" secondAttribute="trailing" id="FgS-A9-xJu"/>
                             <constraint firstItem="CdS-kf-A8r" firstAttribute="top" secondItem="NTQ-yw-a5M" secondAttribute="bottom" constant="20" id="Fgp-Nv-JjZ"/>
                             <constraint firstItem="IcB-0G-7eP" firstAttribute="trailing" secondItem="Gz6-Ti-SPo" secondAttribute="trailing" id="GYw-HA-jVs"/>
                             <constraint firstItem="bPV-Bk-ngu" firstAttribute="leading" secondItem="Gz6-Ti-SPo" secondAttribute="leading" id="NYO-dG-Rjs"/>
@@ -185,6 +196,7 @@
                             <constraint firstItem="NTQ-yw-a5M" firstAttribute="top" secondItem="9S7-Z0-9ZT" secondAttribute="bottom" constant="20" id="WTm-Av-cGT"/>
                             <constraint firstItem="9A5-ln-Jli" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" constant="25" id="bZ2-E6-iIt"/>
                             <constraint firstItem="lJp-yZ-ULG" firstAttribute="top" secondItem="bPV-Bk-ngu" secondAttribute="bottom" constant="20" id="dKL-LW-fwM"/>
+                            <constraint firstItem="qVV-u2-xnY" firstAttribute="leading" secondItem="8pC-rq-yBj" secondAttribute="trailing" id="dUV-DX-B49"/>
                             <constraint firstItem="Jka-bv-Tbn" firstAttribute="leading" secondItem="5QR-8X-0S4" secondAttribute="leading" id="dZR-tM-sgu"/>
                             <constraint firstItem="IUW-Px-7ns" firstAttribute="trailing" secondItem="Jka-bv-Tbn" secondAttribute="trailing" id="dzL-IG-ZxY"/>
                             <constraint firstItem="iyT-yu-Vhi" firstAttribute="top" secondItem="Gz6-Ti-SPo" secondAttribute="bottom" constant="20" id="fML-VJ-BbW"/>
@@ -198,6 +210,7 @@
                             <constraint firstItem="8pC-rq-yBj" firstAttribute="centerY" secondItem="iyT-yu-Vhi" secondAttribute="centerY" id="odk-MV-8bz"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BPp-jC-Rgy" secondAttribute="bottom" constant="15" id="rfF-Kj-61X"/>
                             <constraint firstItem="lKh-YE-wsH" firstAttribute="centerY" secondItem="9S7-Z0-9ZT" secondAttribute="centerY" id="rmN-qX-e8I"/>
+                            <constraint firstItem="qVV-u2-xnY" firstAttribute="centerY" secondItem="8pC-rq-yBj" secondAttribute="centerY" id="tVq-WX-38j"/>
                             <constraint firstItem="bPV-Bk-ngu" firstAttribute="top" secondItem="iyT-yu-Vhi" secondAttribute="bottom" constant="20" id="tbP-gs-pkf"/>
                             <constraint firstItem="xUg-jF-mf5" firstAttribute="centerY" secondItem="9S7-Z0-9ZT" secondAttribute="centerY" id="uhE-yS-c8C"/>
                             <constraint firstItem="IcB-0G-7eP" firstAttribute="centerY" secondItem="9A5-ln-Jli" secondAttribute="centerY" id="v6e-70-iBt"/>
@@ -221,6 +234,7 @@
                 <outlet property="deleteButton" destination="BPp-jC-Rgy" id="906-3T-jPg"/>
                 <outlet property="direction" destination="5QR-8X-0S4" id="doy-q3-ffT"/>
                 <outlet property="directionLabel" destination="lJp-yZ-ULG" id="wwb-R0-756"/>
+                <outlet property="footer" destination="IUW-Px-7ns" id="1bC-dt-8ag"/>
                 <outlet property="limit" destination="xUg-jF-mf5" id="lHc-kw-EtF"/>
                 <outlet property="limitExplanation1" destination="4Qg-s1-Urg" id="i7j-tT-jTl"/>
                 <outlet property="limitExplanation2" destination="lKh-YE-wsH" id="zVO-dO-7T7"/>
@@ -230,6 +244,7 @@
                 <outlet property="period" destination="Jka-bv-Tbn" id="SGi-VE-aPl"/>
                 <outlet property="periodLabel" destination="CdS-kf-A8r" id="uXx-Im-kzh"/>
                 <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
+                <outlet property="selectStickersButton" destination="qVV-u2-xnY" id="xkU-jM-ZmX"/>
                 <outlet property="stickers" destination="8pC-rq-yBj" id="aRw-wF-xR3"/>
                 <outlet property="stickersLabel" destination="iyT-yu-Vhi" id="L7w-kI-Ekb"/>
             </connections>
@@ -237,6 +252,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

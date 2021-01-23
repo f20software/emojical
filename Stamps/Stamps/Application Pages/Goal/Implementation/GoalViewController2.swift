@@ -61,6 +61,9 @@ class GoalViewController2 : UIViewController, GoalView {
     /// User tapped on the Delete button
     var onDeleteTapped: (() -> Void)?
 
+    /// User tapped on list of stickers to select
+    var onSelectStickersTapped: (() -> Void)?
+
     /// Set / reset editing mode
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
@@ -224,6 +227,9 @@ extension GoalViewController2: UICollectionViewDelegate {
             }
             cell.onValueChanged = { [weak self] in
                 self?.title = self?.detailsEditView?.name.text
+            }
+            cell.onSelectStickersTapped = { [weak self] in
+                self?.onSelectStickersTapped?()
             }
             return cell
         }

@@ -24,6 +24,9 @@ protocol GoalView: AnyObject {
     /// User tapped on the delete button
     var onDeleteTapped: (() -> Void)? { get set }
 
+    /// User tapped on list of stickers to select
+    var onSelectStickersTapped: (() -> Void)? { get set }
+
     // MARK: - Updates
 
     /// Dismisses Goal view 

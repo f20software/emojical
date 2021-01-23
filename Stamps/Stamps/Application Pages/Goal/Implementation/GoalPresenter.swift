@@ -6,7 +6,6 @@
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class GoalPresenter: GoalPresenterProtocol {
@@ -15,18 +14,21 @@ class GoalPresenter: GoalPresenterProtocol {
 
     private weak var view: GoalView?
     private let awardManager: AwardManager
+    private let coordinator: GoalCoordinatorProtocol
     private let repository: DataRepository
 
     // MARK: - Lifecycle
 
     init(
         view: GoalView,
+        coordinator: GoalCoordinatorProtocol,
         awardManager: AwardManager,
         repository: DataRepository,
         goal: Goal?,
         presentation: PresentationMode
     ) {
         self.view = view
+        self.coordinator = coordinator
         self.awardManager = awardManager
         self.repository = repository
         self.goal = goal ?? Goal.new
@@ -36,11 +38,16 @@ class GoalPresenter: GoalPresenterProtocol {
 
     // MARK: - State
 
+    // Goal object
     private var goal: Goal!
     
+    // Presentation mode (pushed or popped as modal)
     private var presentationMode: PresentationMode!
 
+    // Whether we're editing goal or viewing it
     private var isEditing: Bool!
+    
+    // MARK: - View lifecycle
     
     /// Called when view finished initial loading.
     func onViewDidLoad() {
@@ -77,6 +84,9 @@ class GoalPresenter: GoalPresenterProtocol {
         view?.onDeleteTapped = { [weak self] in
             self?.confirmGoalDelete()
         }
+        view?.onSelectStickersTapped = { [weak self] in
+            self?.selectStickers()
+        }
     }
     
     private func confirmGoalDelete() {
@@ -112,6 +122,7 @@ class GoalPresenter: GoalPresenterProtocol {
         loadViewData()
     }
     
+    // Create a load view data based on editing mode
     private func loadViewData() {
         let progress = awardManager.currentProgressFor(goal)
         let stamp = repository.stampById(goal.stamps.first)
@@ -143,6 +154,14 @@ class GoalPresenter: GoalPresenterProtocol {
                 progress: currentProgress
             )
             view?.loadGoalDetails(.view(data))
+        }
+    }
+    
+    // Navigate to select stickers view and configure callback
+    private func selectStickers() {
+        coordinator.selectStickers(goal.stamps) { [weak self] (updateIds) in
+            self?.goal.stamps = updateIds
+            self?.loadViewData()
         }
     }
 }

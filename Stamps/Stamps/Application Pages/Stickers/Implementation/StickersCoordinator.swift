@@ -61,7 +61,7 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     private func navigateToGoal(mode: PresentationMode, goal: Goal?) {
 
         // Instantiate GoalViewController from the storyboard file
-        guard let nav: UINavigationController = Storyboard.Goal2.initialViewController(),
+        guard let nav: UINavigationController = Storyboard.Goal.initialViewController(),
               let view = nav.viewControllers.first as? GoalViewController else {
             assertionFailure("Failed to initialize GoalViewController")
             return

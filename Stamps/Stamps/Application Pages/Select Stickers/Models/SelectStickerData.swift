@@ -2,7 +2,7 @@
 //  SelectStickerData.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 1/23/2021.
+//  Created by Vladimir Svidersky on 1/23/21.
 //  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 

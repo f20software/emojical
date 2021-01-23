@@ -31,12 +31,6 @@ class GoalDetailsEditCell: UICollectionViewCell {
     @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var period: UISegmentedControl!
 
-    @IBOutlet weak var footer: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
-
-    /// User tapped on the Delete button
-    var onDeleteTapped: (() -> Void)?
-
     /// User changed any value
     var onValueChanged: (() -> Void)?
 
@@ -56,7 +50,13 @@ class GoalDetailsEditCell: UICollectionViewCell {
     func configure(for data: GoalEditData) {
         name.text = data.goal.name
         limit.text = "\(data.goal.limit)"
-        stickers.text = data.stickers.joined(separator: ", ")
+        
+        let stickersText = data.stickers.joined(separator: ", ")
+        if stickersText.lengthOfBytes(using: .utf8) > 0 {
+            stickers.text = stickersText
+        } else {
+            stickers.text = "Select one or more"
+        }
         direction.selectedSegmentIndex = data.goal.direction.rawValue
         period.selectedSegmentIndex = data.goal.period.rawValue
         directionChanged(self)
@@ -68,10 +68,6 @@ class GoalDetailsEditCell: UICollectionViewCell {
     
     // MARK: - Actions
     
-    @IBAction func deleteButtonTapped(_ sender: Any) {
-        onDeleteTapped?()
-    }
-    
     @IBAction func selectStickersButtonTapped(_ sender: Any) {
         onSelectStickersTapped?()
     }
@@ -80,8 +76,13 @@ class GoalDetailsEditCell: UICollectionViewCell {
         let positive = direction.selectedSegmentIndex == 0
         limitLabel.text = positive ? "Goal:" : "Limit:"
         limitExplanation2.text = positive ? "or more" : "or fewer"
+        onValueChanged?()
     }
     
+    @IBAction func periodChanged(_ sender: Any) {
+        onValueChanged?()
+    }
+
     // MARK: - Private helpers
 
     private func configureViews() {
@@ -109,16 +110,9 @@ class GoalDetailsEditCell: UICollectionViewCell {
         
         periodLabel.text = "Goal Period:"
         directionLabel.text = "Direction:"
-        
-        footer.font = Theme.shared.fonts.footer
-        footer.textColor = Theme.shared.colors.secondaryText
-        footer.text = "If you update or delete the goal, all previously earned awards will remain unchanged."
-        deleteButton.titleLabel?.font = Theme.shared.fonts.listBody
-
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: name)
     }
-
-    @objc func textDidChange(sender: NSNotification) {
+    
+    @IBAction func textChanged(_ sender: Any) {
         onValueChanged?()
     }
 

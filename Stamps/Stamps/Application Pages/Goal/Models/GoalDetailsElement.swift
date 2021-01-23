@@ -11,4 +11,5 @@ import Foundation
 enum GoalDetailsElement: Hashable {
     case view(GoalViewData)
     case edit(GoalEditData)
+    case deleteButton
 }

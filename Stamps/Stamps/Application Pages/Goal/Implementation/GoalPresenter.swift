@@ -8,6 +8,31 @@
 
 import UIKit
 
+extension Goal {
+    
+    // Goal editing validation
+    var isValid: Bool {
+        // Should have not empty name
+        guard name.lengthOfBytes(using: .utf8) > 0 else { return false }
+        
+        // Should have some stickers selected
+        guard stamps.count > 0 else { return false }
+        
+        // Should have some positive limit
+        guard limit > 0 else { return false }
+        
+        // Is goal reachable / or realistic
+        if period == .week && limit > 7 {
+            return false
+        }
+        if period == .month && limit > 31 {
+            return false
+        }
+        
+        return true
+    }
+}
+
 class GoalPresenter: GoalPresenterProtocol {
 
     // MARK: - DI
@@ -87,6 +112,9 @@ class GoalPresenter: GoalPresenterProtocol {
         view?.onSelectStickersTapped = { [weak self] in
             self?.selectStickers()
         }
+        view?.onGoalChanged = { [weak self] in
+            self?.validateInputAndUpdateView()
+        }
     }
     
     private func confirmGoalDelete() {
@@ -121,9 +149,19 @@ class GoalPresenter: GoalPresenterProtocol {
         view?.setEditing(editing, animated: true)
         loadViewData()
     }
+
+    private func validateInputAndUpdateView() {
+        guard let view = view else { return }
+
+        view.update(to: &goal)
+        view.updateTitle(goal.name)
+        view.setDoneButton(goal.isValid)
+    }
     
     // Create a load view data based on editing mode
     private func loadViewData() {
+        guard let view = view else { return }
+        
         let progress = awardManager.currentProgressFor(goal)
         let stamp = repository.stampById(goal.stamps.first)
         let currentProgress = GoalAwardData(
@@ -142,7 +180,13 @@ class GoalPresenter: GoalPresenterProtocol {
                 stickers: repository.stampLabelsFor(goal),
                 award: award
             )
-            view?.loadGoalDetails(.edit(data))
+
+            if presentationMode == .modal {
+                view.loadGoalDetails([.edit(data)])
+            } else {
+                view.loadGoalDetails([.edit(data), .deleteButton])
+            }
+            view.setDoneButton(goal.isValid)
         } else {
             let data = GoalViewData(
                 title: goal.name,
@@ -153,7 +197,7 @@ class GoalPresenter: GoalPresenterProtocol {
                 award: award,
                 progress: currentProgress
             )
-            view?.loadGoalDetails(.view(data))
+            view.loadGoalDetails([.view(data)])
         }
     }
     

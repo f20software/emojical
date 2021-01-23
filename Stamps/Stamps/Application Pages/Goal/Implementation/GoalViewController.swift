@@ -64,41 +64,42 @@ class GoalViewController : UIViewController, GoalView {
     /// User tapped on list of stickers to select
     var onSelectStickersTapped: (() -> Void)?
 
+    /// Uer has changed any data
+    var onGoalChanged: (() -> Void)? 
+
     /// Set / reset editing mode
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         configureBarButtons(animated: animated)
     }
 
+    /// Set form title
+    func updateTitle(_ text: String) {
+        title = text
+    }
+
     /// Loads Goal data
-    func loadGoalDetails(_ data: GoalDetailsElement) {
+    func loadGoalDetails(_ data: [GoalDetailsElement]) {
 
         // Reset old reference
         detailsEditView = nil
         
         var snapshot = NSDiffableDataSourceSnapshot<Int, GoalDetailsElement>()
         snapshot.appendSections([0])
-        snapshot.appendItems([data])
+        snapshot.appendItems(data)
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
-        
-        switch data {
-        case .view(let viewData):
-            title = viewData.title
-        case .edit(let viewData):
-            title = viewData.goal.name
-        }
     }
     
     /// Update Goal data from the UI
     func update(to: inout Goal) {
         guard let details = detailsEditView else { return }
         
-        to.name = details.name.text ?? to.name
-        to.limit = Int.init(details.limit.text ?? "1") ?? 1
+        to.name = (details.name.text ?? to.name).trimmingCharacters(in: CharacterSet(charactersIn: " "))
+        to.limit = Int.init(details.limit.text ?? "0") ?? 0
         to.direction = Direction(rawValue: details.direction.selectedSegmentIndex) ?? .positive
         to.period = Period(rawValue: details.period.selectedSegmentIndex) ?? .week
     }
-    
+
     /// Dismisses view if it was presented modally
     func dismiss(from mode: PresentationMode) {
         switch mode {
@@ -107,6 +108,11 @@ class GoalViewController : UIViewController, GoalView {
         case .push:
             navigationController?.popViewController(animated: true)
         }
+    }
+
+    /// Enable / disable saving data
+    func setDoneButton(_ enabled: Bool) {
+        doneBarButton.isEnabled = enabled
     }
 
     // MARK: - Action
@@ -138,6 +144,10 @@ class GoalViewController : UIViewController, GoalView {
             UINib(nibName: "GoalDetailsEditCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.edit
         )
+        details.register(
+            UINib(nibName: "GoalDetailsDeleteButtonCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.delete
+        )
     }
 
     private func configureBarButtons(animated: Bool) {
@@ -164,8 +174,6 @@ class GoalViewController : UIViewController, GoalView {
         details.collectionViewLayout = goalDetailsLayout()
         details.backgroundColor = UIColor.clear
         details.alwaysBounceHorizontal = false
-        // awards.backgroundColor = UIColor.green
-        // awards.alwaysBounceVertical = false
     }
     
     // Creates layout for the collection of large awards cells (1/3 of width)
@@ -197,12 +205,6 @@ class GoalViewController : UIViewController, GoalView {
 
 extension GoalViewController: UICollectionViewDelegate {
     
-//    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        guard let editView = detailsEditView else { return }
-//
-//        editView.name.becomeFirstResponder()
-//    }
-    
     private func cell(for path: IndexPath, model: GoalDetailsElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         switch model {
         case .view(let data):
@@ -216,20 +218,29 @@ extension GoalViewController: UICollectionViewDelegate {
             return cell
             
         case .edit(let data):
-            detailsEditView = collectionView.dequeueReusableCell(
+            guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.edit, for: path
-            ) as? GoalDetailsEditCell
+            ) as? GoalDetailsEditCell else { return UICollectionViewCell() }
             
-            guard let cell = detailsEditView else { return UICollectionViewCell() }
             cell.configure(for: data)
-            cell.onDeleteTapped = { [weak self] in
-                self?.onDeleteTapped?()
-            }
             cell.onValueChanged = { [weak self] in
-                self?.title = self?.detailsEditView?.name.text
+                // WTF???? - for some reason previous reference to detailsEditView will
+                // point to something else...
+                self?.detailsEditView = cell
+                self?.onGoalChanged?()
             }
             cell.onSelectStickersTapped = { [weak self] in
                 self?.onSelectStickersTapped?()
+            }
+            detailsEditView = cell
+            return cell
+            
+        case .deleteButton:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.delete, for: path
+            ) as? GoalDetailsDeleteButtonCell else { return UICollectionViewCell() }
+            cell.onDeleteTapped = { [weak self] in
+                self?.onDeleteTapped?()
             }
             return cell
         }
@@ -247,6 +258,9 @@ fileprivate struct Specs {
 
         /// Goal editing cell
         static let edit = "GoalDetailsEditCell"
+
+        /// Goal editing delete button cell
+        static let delete = "GoalDetailsDeleteButtonCell"
     }
     
     /// Left/right and bottom margin for the collection view cells

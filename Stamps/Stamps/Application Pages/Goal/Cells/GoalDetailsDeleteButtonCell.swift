@@ -1,0 +1,46 @@
+//
+//  GoalDetailsEditCell.swift
+//  Emojical
+//
+//  Created by Vladimir Svidersky on 12/24/2020.
+//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//
+
+import UIKit
+
+class GoalDetailsDeleteButtonCell: UICollectionViewCell {
+
+    // MARK: - Outlets
+
+    @IBOutlet weak var plate: UIView!
+    @IBOutlet weak var footer: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+
+    /// User tapped on the Delete button
+    var onDeleteTapped: (() -> Void)?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configureViews()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        onDeleteTapped?()
+    }
+    
+    // MARK: - Private helpers
+
+    private func configureViews() {
+        plate.backgroundColor = UIColor.clear
+        footer.font = Theme.shared.fonts.footer
+        footer.textColor = Theme.shared.colors.secondaryText
+        footer.text = "If you update or delete the goal, all previously earned awards will remain unchanged."
+        deleteButton.titleLabel?.font = Theme.shared.fonts.listBody
+    }
+}

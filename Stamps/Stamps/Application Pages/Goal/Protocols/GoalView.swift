@@ -27,6 +27,9 @@ protocol GoalView: AnyObject {
     /// User tapped on list of stickers to select
     var onSelectStickersTapped: (() -> Void)? { get set }
 
+    /// Uer has changed any data 
+    var onGoalChanged: (() -> Void)? { get set }
+
     // MARK: - Updates
 
     /// Dismisses Goal view 
@@ -35,8 +38,14 @@ protocol GoalView: AnyObject {
     /// Set / reset editing mode
     func setEditing(_ editing: Bool, animated: Bool)
 
+    /// Set form title
+    func updateTitle(_ text: String)
+
+    /// Enable / disable saving data
+    func setDoneButton(_ enabled: Bool)
+
     /// Loads Goal data
-    func loadGoalDetails(_ data: GoalDetailsElement)
+    func loadGoalDetails(_ data: [GoalDetailsElement])
 
     /// Update Goal data from the UI
     func update(to: inout Goal)

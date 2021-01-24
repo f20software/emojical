@@ -79,7 +79,7 @@ class GoalViewController : UIViewController, GoalView {
     }
 
     /// Loads Goal data
-    func loadGoalDetails(_ data: [GoalDetailsElement]) {
+    func loadGoalData(_ data: [GoalDetailsElement]) {
 
         // Reset old reference
         detailsEditView = nil
@@ -111,7 +111,7 @@ class GoalViewController : UIViewController, GoalView {
     }
 
     /// Enable / disable saving data
-    func setDoneButton(_ enabled: Bool) {
+    func enableDoneButton(_ enabled: Bool) {
         doneBarButton.isEnabled = enabled
     }
 

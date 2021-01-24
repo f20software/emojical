@@ -25,7 +25,7 @@ struct Goal: Equatable, Hashable {
     static var new: Goal {
         return Goal(
             id: nil,
-            name: "Do good",
+            name: "Do Good",
             period: .week,
             direction: .positive,
             limit: 5,

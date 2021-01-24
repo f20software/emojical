@@ -22,6 +22,9 @@ protocol StickersView: AnyObject {
     /// User tapped on the create new sticker
     var onNewStickerTapped: (() -> Void)? { get set }
 
+    /// User tapped on Add button
+    var onAddButtonTapped: (() -> Void)? { get set }
+
     // MARK: - Updates
 
     /// Load stats for the month

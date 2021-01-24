@@ -10,7 +10,6 @@ import Foundation
 
 struct GoalViewData {
     // Text information to be displayed on the Goal details in view mode
-    let title: String
     let details: String
     let statis: String
     let stickers: [String]

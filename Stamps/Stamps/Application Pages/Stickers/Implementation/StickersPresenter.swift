@@ -99,6 +99,9 @@ class StickersPresenter: StickersPresenterProtocol {
         view?.onNewStickerTapped = { [weak self] in
             self?.coordinator?.newSticker()
         }
+        view?.onAddButtonTapped = { [weak self] in
+            self?.confirmAddAction()
+        }
     }
     
     private func loadViewData() {
@@ -142,4 +145,19 @@ class StickersPresenter: StickersPresenterProtocol {
             view?.loadData(stickers: stampsData, goals: goalsData)
         }
     }
+    
+    private func confirmAddAction() {
+        let confirm = UIAlertController(title: "Create New...", message: nil, preferredStyle: .actionSheet)
+        confirm.addAction(UIAlertAction(title: "Sticker", style: .default, handler: { (_) in
+            self.coordinator?.newSticker()
+        }))
+        confirm.addAction(UIAlertAction(title: "Goal", style: .default, handler: { (_) in
+            self.coordinator?.newGoal()
+        }))
+        confirm.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+            confirm.dismiss(animated: true, completion: nil)
+        }))
+        (view as! UIViewController).present(confirm, animated: true, completion: nil)
+    }
+
 }

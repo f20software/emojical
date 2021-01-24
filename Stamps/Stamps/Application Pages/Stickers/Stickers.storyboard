@@ -55,8 +55,15 @@
                             <constraint firstItem="NcW-C8-Csq" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="mGr-Eg-KBU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stickers" id="yvL-kP-cnY"/>
+                    <navigationItem key="navigationItem" title="Stickers" id="yvL-kP-cnY">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="E5E-UQ-oFi">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="tvO-pK-EYQ" id="bKK-Nd-9S4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="E5E-UQ-oFi" id="re8-WS-fXH"/>
                         <outlet property="collectionView" destination="NcW-C8-Csq" id="dEj-WI-ibo"/>
                     </connections>
                 </viewController>
@@ -68,6 +75,7 @@
     <resources>
         <image name="circles.hexagongrid" catalog="system" width="128" height="112"/>
         <image name="circles.hexagongrid.fill" catalog="system" width="128" height="112"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -41,11 +41,11 @@ protocol GoalView: AnyObject {
     /// Set form title
     func updateTitle(_ text: String)
 
-    /// Enable / disable saving data
-    func setDoneButton(_ enabled: Bool)
+    /// Enable / disable Done button data
+    func enableDoneButton(_ enabled: Bool)
 
     /// Loads Goal data
-    func loadGoalDetails(_ data: [GoalDetailsElement])
+    func loadGoalData(_ data: [GoalDetailsElement])
 
     /// Update Goal data from the UI
     func update(to: inout Goal)

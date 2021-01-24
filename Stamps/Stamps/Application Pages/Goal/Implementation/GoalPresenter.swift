@@ -155,7 +155,7 @@ class GoalPresenter: GoalPresenterProtocol {
 
         view.update(to: &goal)
         view.updateTitle(goal.name)
-        view.setDoneButton(goal.isValid)
+        view.enableDoneButton(goal.isValid)
     }
     
     // Create a load view data based on editing mode
@@ -180,16 +180,14 @@ class GoalPresenter: GoalPresenterProtocol {
                 stickers: repository.stampLabelsFor(goal),
                 award: award
             )
-
             if presentationMode == .modal {
-                view.loadGoalDetails([.edit(data)])
+                view.loadGoalData([.edit(data)])
             } else {
-                view.loadGoalDetails([.edit(data), .deleteButton])
+                view.loadGoalData([.edit(data), .deleteButton])
             }
-            view.setDoneButton(goal.isValid)
+            view.enableDoneButton(goal.isValid)
         } else {
             let data = GoalViewData(
-                title: goal.name,
                 details: goal.details,
                 statis: goal.statsDescription,
                 stickers: repository.stampLabelsFor(goal),
@@ -197,7 +195,8 @@ class GoalPresenter: GoalPresenterProtocol {
                 award: award,
                 progress: currentProgress
             )
-            view.loadGoalDetails([.view(data)])
+            view.updateTitle(goal.name)
+            view.loadGoalData([.view(data)])
         }
     }
     

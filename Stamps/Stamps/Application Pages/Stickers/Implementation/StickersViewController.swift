@@ -18,6 +18,7 @@ class StickersViewController: UIViewController, StickersView {
 
     // MARK: - Outlets
     
+    @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var collectionView: UICollectionView!
 
     // MARK: - DI
@@ -78,6 +79,9 @@ class StickersViewController: UIViewController, StickersView {
     /// User tapped on create new sticker button
     var onNewStickerTapped: (() -> Void)?
 
+    /// User tapped on Add button
+    var onAddButtonTapped: (() -> Void)?
+
     /// Load data
     func loadData(stickers: [StickerData], goals: [GoalData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
@@ -95,11 +99,17 @@ class StickersViewController: UIViewController, StickersView {
 
     // MARK: - Actions
     
+    @IBAction func addButtonTapped(_ sender: Any) {
+        onAddButtonTapped?()
+    }
+
     // MARK: - Private helpers
     
     private func configureViews() {
         configureCollectionView()
         registerCells()
+
+        addButton.image = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))!
     }
     
     private func configureCollectionView() {

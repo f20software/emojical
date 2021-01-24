@@ -45,12 +45,14 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     
     /// Push to edit sticker form
     func editSticker(_ sticker: Stamp) {
-        navigateToSticker(sticker)
+//        navigateToSticker(sticker)
+        navigateToSticker2(mode: .push, sticker: sticker)
     }
 
     /// Shows modal form to create new sticker
     func newSticker() {
-        navigateToSticker(nil)
+//        navigateToSticker(nil)
+        navigateToSticker2(mode: .modal, sticker: nil)
     }
 
     // MARK: - Private helpers
@@ -106,6 +108,39 @@ class StickersCoordinator: StickersCoordinatorProtocol {
             stickerVC.stamp = Stamp.defaultStamp
             stickerVC.presentationMode = .modal
             parentController?.present(nav, animated: true)
+        }
+    }
+    
+    // Navigate to Sticker edit / create screen - if `goal` object is passed will
+    // push StickerViewController, otherwise - present as modal
+    private func navigateToSticker2(mode: PresentationMode, sticker: Stamp?) {
+
+        // Instantiate StickerViewController from the storyboard file
+        guard let nav: UINavigationController = Storyboard.Sticker.initialViewController(),
+              let view = nav.viewControllers.first as? StickerViewController else {
+            assertionFailure("Failed to initialize StickerViewController")
+            return
+        }
+
+        let coordinator = StickerCoordinator(
+            parent: mode == .modal ? nav : parentController,
+            repository: repository)
+        
+        // Hook up GoalPresenter and tie it together to a view controller
+        view.presenter = StickerPresenter(
+            view: view,
+            coordinator: coordinator,
+            awardManager: awardManager,
+            repository: repository,
+            sticker: sticker,
+            presentation: mode
+        )
+
+        switch mode {
+        case .modal:
+            parentController?.present(nav, animated: true)
+        case .push:
+            parentController?.pushViewController(view, animated: true)
         }
     }
 }

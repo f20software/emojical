@@ -36,10 +36,6 @@ class GoalDetailsCell: UICollectionViewCell {
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         addGestureRecognizer(tap)
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
 
     // MARK: - Public view interface
 

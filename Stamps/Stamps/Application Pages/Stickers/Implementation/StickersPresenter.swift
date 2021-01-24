@@ -159,5 +159,4 @@ class StickersPresenter: StickersPresenterProtocol {
         }))
         (view as! UIViewController).present(confirm, animated: true, completion: nil)
     }
-
 }

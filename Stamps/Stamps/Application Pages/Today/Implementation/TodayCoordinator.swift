@@ -22,25 +22,24 @@ class TodayCoordinator: TodayCoordinatorProtocol {
     /// Shows modal form to create new sticker
     func newSticker() {
         guard
-            let navVC: UINavigationController =
-                Storyboard.Stickers.viewController(withIdentifier: "newSticker"),
+            let nav: UINavigationController = Storyboard.Sticker.initialViewController(),
             let stickerVC: StampViewController =
-                navVC.viewControllers.first as? StampViewController else {
-            assertionFailure("Failed to initialize item details controller")
+                nav.viewControllers.first as? StampViewController else {
+            assertionFailure("Failed to initialize StampViewController")
             return
         }
 
         stickerVC.stamp = Stamp.defaultStamp
         stickerVC.presentationMode = .modal
 
-        parentController?.present(navVC, animated: true, completion: nil)
+        parentController?.present(nav, animated: true)
     }
 
     /// Navigates to goals / awards recap window
     func showAwardsRecap(data: [AwardRecapData]) {
 
         // Instantiate AwardsRecapViewController from the storyboard file
-        guard let awardsView: AwardsRecapViewController = Storyboard.Recap.initialViewController() else {
+        guard let awardsView: RecapViewController = Storyboard.Recap.initialViewController() else {
             assertionFailure("Failed to initialize item details controller")
             return
         }

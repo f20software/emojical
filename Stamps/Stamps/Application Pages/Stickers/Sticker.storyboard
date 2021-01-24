@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="msc-z6-fVi">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Stamp View Controller-->
+        <scene sceneID="iHO-wT-JdA">
+            <objects>
+                <tableViewController id="XyN-Kv-G37" customClass="StampViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" id="Byk-kR-7zo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="XyN-Kv-G37" id="UBQ-HF-YBa"/>
+                            <outlet property="delegate" destination="XyN-Kv-G37" id="jUA-Ie-Wkz"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="42s-4W-Y7o">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GiK-Yo-QOT">
+                            <connections>
+                                <action selector="cancelTapped:" destination="XyN-Kv-G37" id="ub1-r1-uvc"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="done" systemItem="done" id="Bie-FE-IoP">
+                                <connections>
+                                    <action selector="doneTapped:" destination="XyN-Kv-G37" id="XCc-re-8iC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="Rol-qX-5MH">
+                                <connections>
+                                    <action selector="editTapped:" destination="XyN-Kv-G37" id="FaB-gJ-dNc"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cancelBarButton" destination="GiK-Yo-QOT" id="04s-g4-yY8"/>
+                        <outlet property="doneBarButton" destination="Bie-FE-IoP" id="0ZK-xa-w5b"/>
+                        <outlet property="editBarButton" destination="Rol-qX-5MH" id="NUc-h6-sLH"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UJK-r4-c2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2735" y="-538"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MBN-At-hZK">
+            <objects>
+                <navigationController storyboardIdentifier="newSticker" id="msc-z6-fVi" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qj4-0S-w7Z">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XyN-Kv-G37" kind="relationship" relationship="rootViewController" id="OQy-OH-Atf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TyS-AL-ROh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1699" y="-538"/>
+        </scene>
+    </scenes>
+</document>

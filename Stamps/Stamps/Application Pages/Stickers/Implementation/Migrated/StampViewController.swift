@@ -207,11 +207,11 @@ extension StampViewController {
             saveChanges()
         }
         else if segue.identifier == "newGoal" {
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.viewControllers.first as! GoalViewController
-            controller.title = "New Goal"
-            controller.goal = Goal(id: nil, name: "New Goal", period: .week, direction: .positive, limit: 5, stamps: [stamp.id!])
-            controller.presentationMode = .modal
+//            let navigationController = segue.destination as! UINavigationController
+//            let controller = navigationController.viewControllers.first as! GoalViewController
+//            controller.title = "New Goal"
+//            controller.goal = Goal(id: nil, name: "New Goal", period: .week, direction: .positive, limit: 5, stamps: [stamp.id!])
+//            controller.presentationMode = .modal
         }
     }
 

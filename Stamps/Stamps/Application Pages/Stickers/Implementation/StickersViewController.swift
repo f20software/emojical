@@ -8,22 +8,6 @@
 
 import UIKit
 
-/// Segue names
-extension UIStoryboardSegue {
-    
-    /// Editing sticker segue
-    static let editSticker = "editSticker"
-
-    /// New sticker segue
-    static let newSticker = "newSticker"
-
-    /// Editing goal segue
-    static let editGoal = "editGoal"
-
-    /// New goal segue
-    static let newGoal = "newGoal"
-}
-
 class StickersViewController: UIViewController, StickersView {
 
     // List of sections
@@ -34,9 +18,17 @@ class StickersViewController: UIViewController, StickersView {
 
     // MARK: - Outlets
     
+    @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var collectionView: UICollectionView!
 
     // MARK: - DI
+
+    lazy var coordinator: StickersCoordinatorProtocol = {
+        StickersCoordinator(
+            parent: self.navigationController!,
+            repository: repository,
+            awardManager: AwardManager.shared)
+    }()
 
     var repository: DataRepository!
     var presenter: StickersPresenterProtocol!
@@ -44,10 +36,6 @@ class StickersViewController: UIViewController, StickersView {
     // MARK: - State
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StickersElement>!
-
-    // Editing goal and stamp Id... :(
-    var editGoalId: Int64?
-    var editStampId: Int64?
 
     // MARK: - Lifecycle
     
@@ -66,7 +54,7 @@ class StickersViewController: UIViewController, StickersView {
             awardsListener: Storage.shared.awardsListener(),
             awardManager: AwardManager.shared,
             view: self,
-            coordinator: self)
+            coordinator: coordinator)
         
         configureViews()
         presenter.onViewDidLoad()
@@ -91,6 +79,9 @@ class StickersViewController: UIViewController, StickersView {
     /// User tapped on create new sticker button
     var onNewStickerTapped: (() -> Void)?
 
+    /// User tapped on Add button
+    var onAddButtonTapped: (() -> Void)?
+
     /// Load data
     func loadData(stickers: [StickerData], goals: [GoalData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
@@ -108,11 +99,17 @@ class StickersViewController: UIViewController, StickersView {
 
     // MARK: - Actions
     
+    @IBAction func addButtonTapped(_ sender: Any) {
+        onAddButtonTapped?()
+    }
+
     // MARK: - Private helpers
     
     private func configureViews() {
         configureCollectionView()
         registerCells()
+
+        addButton.image = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))!
     }
     
     private func configureCollectionView() {
@@ -159,72 +156,6 @@ class StickersViewController: UIViewController, StickersView {
             forSupplementaryViewOfKind: Specs.Cells.header,
             withReuseIdentifier: Specs.Cells.header
         )
-    }
-}
-
-// MARK: - StickerCoordinator
-
-extension StickersViewController: StickersCoordinator {
-    
-    func editGoal(_ goalId: Int64) {
-        editGoalId = goalId
-        performSegue(withIdentifier: UIStoryboardSegue.editGoal, sender: self)
-    }
-    
-    func newGoal() {
-        editGoalId = nil
-        performSegue(withIdentifier: UIStoryboardSegue.newGoal, sender: self)
-    }
-
-    func editSticker(_ stampId: Int64) {
-        editStampId = stampId
-        performSegue(withIdentifier: UIStoryboardSegue.editSticker, sender: self)
-    }
-    
-    func newSticker() {
-        editStampId = nil
-        performSegue(withIdentifier: UIStoryboardSegue.newSticker, sender: self)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-
-        case UIStoryboardSegue.editGoal:
-            guard let goalId = editGoalId,
-                  let goal = repository.goalById(goalId),
-                  let controller = segue.destination as? GoalViewController else { return }
-            
-            controller.title = goal.name
-            controller.goal = goal
-            controller.currentProgress = AwardManager.shared.currentProgressFor(goal)
-            controller.presentationMode = .push
-            
-        case UIStoryboardSegue.newGoal:
-            guard let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? GoalViewController else { return }
-
-            setEditing(false, animated: true)
-            controller.title = "New Goal"
-            controller.goal = Goal(id: nil, name: "New Goal", period: .week, direction: .positive, limit: 5, stamps: [])
-            controller.presentationMode = .modal
-            
-        case UIStoryboardSegue.editSticker:
-            guard let stampId = editStampId,
-                  let stamp = repository.stampById(stampId),
-                  let controller = segue.destination as? StampViewController else { return }
-            
-            controller.stamp = stamp
-            controller.presentationMode = .push
-            
-        case UIStoryboardSegue.newSticker:
-            guard let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? StampViewController else { return }
-
-            setEditing(false, animated: true)
-            controller.stamp = Stamp.defaultStamp
-            controller.presentationMode = .modal
-        
-        default:
-            break
-        }
     }
 }
 
@@ -328,8 +259,8 @@ extension StickersViewController {
     private func generateStampsLayout() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .absolute(64),
-                heightDimension: .absolute(64)
+                widthDimension: .fractionalWidth(0.165), // .absolute(64),
+                heightDimension: .fractionalWidth(0.165) // .absolute(64)
             )
         )
         item.contentInsets = NSDirectionalEdgeInsets(

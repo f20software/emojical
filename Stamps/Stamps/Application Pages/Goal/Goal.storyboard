@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TIq-HF-SaA">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Goal-->
+        <scene sceneID="CSK-Ba-Oii">
+            <objects>
+                <viewController id="FHp-5Y-AzG" customClass="GoalViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M8p-1E-gza">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yGs-JE-pHL">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1ns-1b-9cl">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QhZ-Ce-BEm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yGs-JE-pHL" firstAttribute="leading" secondItem="QhZ-Ce-BEm" secondAttribute="leading" id="CiA-eV-nWb"/>
+                            <constraint firstItem="yGs-JE-pHL" firstAttribute="top" secondItem="QhZ-Ce-BEm" secondAttribute="top" id="ad5-ls-Gg4"/>
+                            <constraint firstItem="QhZ-Ce-BEm" firstAttribute="trailing" secondItem="yGs-JE-pHL" secondAttribute="trailing" id="hPp-a3-Pgh"/>
+                            <constraint firstItem="QhZ-Ce-BEm" firstAttribute="bottom" secondItem="yGs-JE-pHL" secondAttribute="bottom" id="hrD-r7-Nq2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Goal" id="frZ-f7-o4W">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ecR-ud-Xtw">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="FHp-5Y-AzG" id="WED-67-djz"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="done" id="Fpw-ff-koS">
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="FHp-5Y-AzG" id="F4f-t2-cxH"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="6uF-lE-isa">
+                                <connections>
+                                    <action selector="editButtonTapped:" destination="FHp-5Y-AzG" id="rBn-5f-xfA"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelBarButton" destination="ecR-ud-Xtw" id="pMB-rA-n3g"/>
+                        <outlet property="details" destination="yGs-JE-pHL" id="Nbn-vh-m4M"/>
+                        <outlet property="doneBarButton" destination="Fpw-ff-koS" id="MLD-oD-UlS"/>
+                        <outlet property="editBarButton" destination="6uF-lE-isa" id="o1u-Q3-Eps"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0HG-rY-MXQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1716" y="1239"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vGY-ZC-yGh">
+            <objects>
+                <navigationController storyboardIdentifier="newGoal2" id="TIq-HF-SaA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rqS-zm-Pmq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FHp-5Y-AzG" kind="relationship" relationship="rootViewController" id="rcJ-iI-tVw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0O-gc-duc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="751" y="1239"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

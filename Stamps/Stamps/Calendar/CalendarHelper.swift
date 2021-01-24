@@ -209,6 +209,13 @@ extension CalendarHelper {
                 lastDay.databaseKey >= todayKey)
         }
         
+        /// Returns `true` when week start is in a future
+        var isFuture: Bool {
+            let todayKey = Date().databaseKey
+            
+            return (firstDay.databaseKey > todayKey)
+        }
+
         /// Label for the week in a "December 21 - 28" or "December 28 - January 3" format
         var label: String {
             let calendar: Calendar = .autoupdatingCurrent

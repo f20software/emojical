@@ -39,7 +39,21 @@ struct GoalAwardData {
 extension GoalAwardData: Equatable, Hashable {}
 
 extension GoalAwardData {
-    
+
+    // Build GoalAwardData model for already received award
+    init(goal: Goal, stamp: Stamp?) {
+        self.init(
+            goalId: goal.id,
+            emoji: stamp?.label,
+            backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.5),
+            direction: goal.direction,
+            period: goal.period,
+            progress: 1.0,
+            progressColor: UIColor.darkGray,
+            isReached: true
+        )
+    }
+            
     // Build GoalAwardData model for already received award whether goal was reached or not
     init(award: Award, goal: Goal, stamp: Stamp?) {
         if award.reached {

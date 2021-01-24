@@ -27,9 +27,12 @@ class RecapPresenter: RecapPresenterProtocol {
 
     // MARK: - State
 
-    // All available stamps (to be shown in stamp selector)
+    /// Awards (reached and not reached)
     private var data: [AwardRecapData] = []
     
+    /// Highlighted award (showing details)
+    private var highlightedItem: IndexPath?
+
     /// Called when view finished initial loading.
     func onViewDidLoad() {
         setupView()
@@ -42,10 +45,27 @@ class RecapPresenter: RecapPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
-        
+        view?.onAwardTapped = { [weak self] (indexPath) in
+            self?.highlightAward(at: indexPath)
+        }
     }
     
     private func loadViewData() {
         view?.loadRecapData(data: data)
+    }
+    
+    private func highlightAward(at indexPath: IndexPath) {
+        // Tap on selected cell? Deselect it
+        if highlightedItem == indexPath {
+            view?.highlightAward(at: indexPath, highlight: false)
+            highlightedItem = nil
+            return
+        }
+        
+        if let old = highlightedItem {
+            view?.highlightAward(at: old, highlight: false)
+        }
+        highlightedItem = indexPath
+        view?.highlightAward(at: indexPath, highlight: true)
     }
 }

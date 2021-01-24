@@ -26,7 +26,9 @@ class SelectStickerCell: UICollectionViewCell {
     }
     
     func configure(for data: SelectStickerData) {
+        // Save off sticker Id, so we can use later when select / deselected specific cell
         tag = Int(data.sticker.id ?? -1)
+        
         sticker.text = data.sticker.label
         sticker.color = data.sticker.color
         name.text = data.sticker.name

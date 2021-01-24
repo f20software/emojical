@@ -58,7 +58,7 @@ class GoalPresenter: GoalPresenterProtocol {
         self.repository = repository
         self.goal = goal ?? Goal.new
         self.presentationMode = presentation
-        self.isEditing = (presentation == .modal)
+        self.isEditing = (goal == nil)
     }
 
     // MARK: - State

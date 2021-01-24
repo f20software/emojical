@@ -1,9 +1,9 @@
 //
-//  GoalDetailsEditCell.swift
+//  GoalDetailsDeleteButtonCell.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/24/2020.
-//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//  Created by Vladimir Svidersky on 1/23/21.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import UIKit

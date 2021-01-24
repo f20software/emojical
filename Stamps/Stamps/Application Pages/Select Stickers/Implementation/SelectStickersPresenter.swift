@@ -6,7 +6,6 @@
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
 //
 
-// import Foundation
 import UIKit
 
 class SelectStickersPresenter: SelectStickersPresenterProtocol {

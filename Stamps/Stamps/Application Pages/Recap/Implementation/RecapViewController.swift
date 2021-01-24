@@ -69,7 +69,7 @@ class RecapViewController : UIViewController, RecapView {
             snapshot.appendItems(notReached)
         }
         
-        title = "Weekly recap"
+        title = "Weekly Recap"
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 

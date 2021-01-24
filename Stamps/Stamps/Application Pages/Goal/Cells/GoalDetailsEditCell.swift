@@ -123,17 +123,3 @@ class GoalDetailsEditCell: UICollectionViewCell {
         }
     }
 }
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
-
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 4.0
-    
-    /// Emoji font size for award icon
-    static let emojiFontSize: CGFloat = 40.0
-}
-

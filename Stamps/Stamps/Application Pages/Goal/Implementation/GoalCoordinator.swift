@@ -1,12 +1,11 @@
 //
-//  StickersCoordinator.swift
+//  GoalCoordinator.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 1/18/21.
-//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class GoalCoordinator: GoalCoordinatorProtocol {
@@ -24,10 +23,9 @@ class GoalCoordinator: GoalCoordinatorProtocol {
         self.repository = repository
     }
 
-    // Navigate to SelectSticker edit / create screen - if `sticker` object is passed will
-    // push StickerViewController, otherwise - present as modal
+    // Navigate to SelectStickers screen
     func selectStickers(_ selectedStickersIds: [Int64], onChange: @escaping ([Int64]) -> Void) {
-        // Instantiate GoalViewController from the storyboard file
+
         guard let stickers = Storyboard.SelectStickers.initialViewController() as? SelectStickersViewController else {
             assertionFailure("Failed to initialize SelectStickersViewController")
             return
@@ -38,6 +36,7 @@ class GoalCoordinator: GoalCoordinatorProtocol {
             repository: repository,
             selectedStickers: selectedStickersIds
         )
+        // Whenever selected stickers changed, notify caller via callback
         stickers.presenter.onChange = { updatedIds in
             onChange(updatedIds)
         }

@@ -41,7 +41,7 @@ class StickerDetailsCell: UICollectionViewCell {
         plate.clipsToBounds = true
         
         stickerBackground.backgroundColor = UIColor.systemBackground
-        stickerBackground.layer.cornerRadius = 8.0
+        stickerBackground.layer.cornerRadius = 10.0
         
         statistics.font = Theme.shared.fonts.listBody
         usage.font = Theme.shared.fonts.listBody

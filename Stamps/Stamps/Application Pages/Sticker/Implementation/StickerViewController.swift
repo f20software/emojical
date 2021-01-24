@@ -219,6 +219,7 @@ extension StickerViewController: UICollectionViewDelegate {
                 withReuseIdentifier: Specs.Cells.edit, for: path
             ) as? StickerDetailsEditCell else { return UICollectionViewCell() }
             
+            cell.setColors(Theme.shared.colors.pallete)
             cell.configure(for: data)
             cell.onValueChanged = { [weak self] in
                 // WTF???? - for some reason previous reference to detailsEditView will
@@ -226,8 +227,8 @@ extension StickerViewController: UICollectionViewDelegate {
                 self?.detailsEditView = cell
                 self?.onStickerChanged?()
             }
-            cell.onSelectStickersTapped = { [weak self] in
-                self?.onSelectStickersTapped?()
+            cell.onColorSelected = { [weak self] index in
+                // self?.onSelectStickersTapped?()
             }
             detailsEditView = cell
             return cell

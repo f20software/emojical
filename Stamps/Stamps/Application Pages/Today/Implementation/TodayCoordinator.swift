@@ -29,7 +29,7 @@ class TodayCoordinator: TodayCoordinatorProtocol {
             return
         }
 
-        stickerVC.stamp = Stamp.defaultStamp
+        stickerVC.stamp = Stamp.new
         stickerVC.presentationMode = .modal
 
         parentController?.present(nav, animated: true)

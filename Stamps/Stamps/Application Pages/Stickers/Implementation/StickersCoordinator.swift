@@ -45,8 +45,8 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     
     /// Push to edit sticker form
     func editSticker(_ sticker: Stamp) {
-//        navigateToSticker(sticker)
-        navigateToSticker2(mode: .push, sticker: sticker)
+        navigateToSticker(sticker)
+//        navigateToSticker2(mode: .push, sticker: sticker)
     }
 
     /// Shows modal form to create new sticker
@@ -105,7 +105,7 @@ class StickersCoordinator: StickersCoordinatorProtocol {
             stickerVC.presentationMode = .push
             parentController?.pushViewController(stickerVC, animated: true)
         } else {
-            stickerVC.stamp = Stamp.defaultStamp
+            stickerVC.stamp = Stamp.new
             stickerVC.presentationMode = .modal
             parentController?.present(nav, animated: true)
         }

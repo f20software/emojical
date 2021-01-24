@@ -39,15 +39,15 @@ class StickerPresenter: StickerPresenterProtocol {
         self.coordinator = coordinator
         self.awardManager = awardManager
         self.repository = repository
-        self.goal = goal ?? Goal.new
+        self.sticker = sticker ?? Stamp.new
         self.presentationMode = presentation
-        self.isEditing = (goal == nil)
+        self.isEditing = (sticker == nil)
     }
 
     // MARK: - State
 
     // Goal object
-    private var goal: Goal!
+    private var sticker: Stamp!
     
     // Presentation mode (pushed or popped as modal)
     private var presentationMode: PresentationMode!
@@ -92,17 +92,14 @@ class StickerPresenter: StickerPresenterProtocol {
         view?.onDeleteTapped = { [weak self] in
             self?.confirmGoalDelete()
         }
-        view?.onSelectStickersTapped = { [weak self] in
-            self?.selectStickers()
-        }
         view?.onStickerChanged = { [weak self] in
             self?.validateInputAndUpdateView()
         }
     }
     
     private func confirmGoalDelete() {
-        if goal.count > 0 {
-            let confirm = UIAlertController(title: "Woah!", message: "\(goal.statsDescription) Are you sure you want to delete it?", preferredStyle: .actionSheet)
+        if sticker.count > 0 {
+            let confirm = UIAlertController(title: "Woah!", message: "\(sticker.statsDescription) Are you sure you want to delete it?", preferredStyle: .actionSheet)
             confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
                 self.deleteAndDismiss()
             }))
@@ -117,14 +114,14 @@ class StickerPresenter: StickerPresenterProtocol {
     }
     
     private func deleteAndDismiss() {
-        goal.deleted = true
-        try! repository.save(goal: goal)
+        sticker.deleted = true
+        try! repository.save(stamp: sticker)
         view?.dismiss(from: presentationMode)
     }
 
     private func saveViewData() {
-        view?.update(to: &goal)
-        try! repository.save(goal: goal)
+        view?.update(to: &sticker)
+        try! repository.save(stamp: sticker)
     }
     
     private func setViewEditing(_ editing: Bool) {
@@ -136,58 +133,44 @@ class StickerPresenter: StickerPresenterProtocol {
     private func validateInputAndUpdateView() {
         guard let view = view else { return }
 
-        view.update(to: &goal)
-        view.updateTitle(goal.name)
-        view.enableDoneButton(goal.isValid)
+        view.update(to: &sticker)
+        view.updateTitle(sticker.name)
+        view.enableDoneButton(sticker.isValid)
     }
     
     // Create a load view data based on editing mode
     private func loadViewData() {
         guard let view = view else { return }
-        
-        let progress = awardManager.currentProgressFor(goal)
-        let stamp = repository.stampById(goal.stamps.first)
-        let currentProgress = GoalAwardData(
-            goal: goal,
-            progress: progress,
-            stamp: stamp
-        )
-        let award = GoalAwardData(
-            goal: goal,
-            stamp: stamp
-        )
 
+        let goals = repository.goalsUsedStamp(sticker.id)
+        var usageText = ""
+        if goals.count == 0 {
+            usageText = "You haven't created a goal yet with this sticker."
+        } else if goals.count == 1 {
+            usageText = "Sticker is used in \'\(goals.first?.name ?? "")\' goal."
+        } else {
+            let text = goals.map({ "'\($0.name)'" }).sentence
+            usageText = "Sticker is used in \(text) goals."
+        }
+        
         if isEditing {
-            let data = GoalEditData(
-                goal: goal,
-                stickers: repository.stampLabelsFor(goal),
-                award: award
+            let data = StickerEditData(
+                sticker: sticker
             )
             if presentationMode == .modal {
-                view.loadGoalData([.edit(data)])
+                view.loadStickerData([.edit(data)])
             } else {
-                view.loadGoalData([.edit(data), .deleteButton])
+                view.loadStickerData([.edit(data), .deleteButton])
             }
-            view.enableDoneButton(goal.isValid)
+            view.enableDoneButton(sticker.isValid)
         } else {
-            let data = GoalViewData(
-                details: goal.details,
-                statis: goal.statsDescription,
-                stickers: repository.stampLabelsFor(goal),
-                progressText: goal.descriptionForCurrentProgress(progress),
-                award: award,
-                progress: currentProgress
+            let data = StickerViewData(
+                sticker: sticker,
+                statistics: sticker.statsDescription,
+                usage: usageText
             )
-            view.updateTitle(goal.name)
-            view.loadGoalData([.view(data)])
-        }
-    }
-    
-    // Navigate to select stickers view and configure callback
-    private func selectStickers() {
-        coordinator.selectStickers(goal.stamps) { [weak self] (updateIds) in
-            self?.goal.stamps = updateIds
-            self?.loadViewData()
+            view.updateTitle(sticker.name)
+            view.loadStickerData([.view(data)])
         }
     }
 }

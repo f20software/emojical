@@ -75,7 +75,7 @@ protocol DataRepository: class {
     func colorForGoal(_ goalId: Int64) -> UIColor
     
     /// List of goals particular stamp is used in
-    func goalsUsedStamp(_ stampId: Int64) -> [Goal]
+    func goalsUsedStamp(_ stampId: Int64?) -> [Goal]
     
     /// All registered goals
     func allGoals(includeDeleted: Bool) -> [Goal]

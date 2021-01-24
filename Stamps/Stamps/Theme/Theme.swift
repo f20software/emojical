@@ -76,6 +76,9 @@ final class Theme {
 
         ///
         let secondaryText: UIColor
+        
+        ///
+        let pallete: [UIColor]
     }
 
     // MARK: - Private

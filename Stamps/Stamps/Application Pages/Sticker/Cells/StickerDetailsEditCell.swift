@@ -13,29 +13,31 @@ class StickerDetailsEditCell: UICollectionViewCell {
     // MARK: - Outlets
 
     @IBOutlet weak var plate: UIView!
+    @IBOutlet weak var emojiLabel: UILabel!
+    @IBOutlet weak var emoji: EmojiTextField!
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var name: UITextField!
 
-    @IBOutlet weak var limitLabel: UILabel!
-    @IBOutlet weak var limit: UITextField!
-    @IBOutlet weak var limitExplanation1: UILabel!
-    @IBOutlet weak var limitExplanation2: UILabel!
+    @IBOutlet var stackView: UIStackView!
+    @IBOutlet var color0: UIView!
+    @IBOutlet var color1: UIView!
+    @IBOutlet var color2: UIView!
+    @IBOutlet var color3: UIView!
+    @IBOutlet var color4: UIView!
+    @IBOutlet var color5: UIView!
+    @IBOutlet var color6: UIView!
 
-    @IBOutlet weak var stickersLabel: UILabel!
-    @IBOutlet weak var stickers: UILabel!
-    @IBOutlet weak var selectStickersButton: UIButton!
-
-    @IBOutlet weak var directionLabel: UILabel!
-    @IBOutlet weak var direction: UISegmentedControl!
-
-    @IBOutlet weak var periodLabel: UILabel!
-    @IBOutlet weak var period: UISegmentedControl!
+    // MARK: - State
+    
+    var selectedColorIndex = -1
+    var allColorViews: [UIView]!
 
     /// User changed any value
     var onValueChanged: (() -> Void)?
 
     /// User tapped on list of stickers
-    var onSelectStickersTapped: (() -> Void)?
+    var onColorSelected: ((Int) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,36 +50,50 @@ class StickerDetailsEditCell: UICollectionViewCell {
     // MARK: - Public view interface
 
     func configure(for data: StickerEditData) {
-//        name.text = data.goal.name
-//        limit.text = "\(data.goal.limit)"
-//
-//        let stickersText = data.stickers.joined(separator: ", ")
-//        if stickersText.lengthOfBytes(using: .utf8) > 0 {
-//            stickers.text = stickersText
-//        } else {
-//            stickers.text = "Select one or more"
-//        }
-//        direction.selectedSegmentIndex = data.goal.direction.rawValue
-//        period.selectedSegmentIndex = data.goal.period.rawValue
-//        directionChanged(self)
+        name.text = data.sticker.name
+        emoji.text = data.sticker.label
+        
+        if let index = allColorViews.firstIndex(where: {
+            print($0.backgroundColor?.hex, data.sticker.color.hex)
+            return $0.backgroundColor?.hex == data.sticker.color.hex
+        }) {
+            setSelectedColorIndex(index)
+        }
     }
     
-    // MARK: - Actions
-    
-    @IBAction func selectStickersButtonTapped(_ sender: Any) {
-        onSelectStickersTapped?()
-    }
-
-    @IBAction func periodChanged(_ sender: Any) {
-        onValueChanged?()
-    }
-
     // MARK: - Private helpers
+
+    func setSelectedColorIndex(_ index: Int) {
+        // Clear previous value
+        if selectedColorIndex >= 0 {
+            allColorViews[selectedColorIndex].layer.borderWidth = 0.0
+        }
+     
+        allColorViews[index].layer.borderWidth = 3.0
+        selectedColorIndex = index
+    }
+
+    func setColors(_ colors: [UIColor]) {
+        guard colors.count >= allColorViews.count else { return }
+        for i in 0..<allColorViews.count {
+            allColorViews[i].backgroundColor = colors[i]
+        }
+    }
 
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
+
+        allColorViews = [color0, color1, color2, color3, color4, color5, color6]
+        // Round corners will not be visible anywhere but on today's day
+        for view in allColorViews {
+            view.layer.cornerRadius = 10
+            view.clipsToBounds = true
+            view.backgroundColor = UIColor.systemBackground
+            view.layer.borderColor = UIColor.black.cgColor
+            view.layer.borderWidth = 0.0
+        }
         
-        let labels: [UILabel] = [nameLabel, limitLabel, stickersLabel, directionLabel, periodLabel, limitExplanation1, limitExplanation2]
+        let labels: [UILabel] = [nameLabel, emojiLabel]
         for label in labels {
             label.font = Theme.shared.fonts.formFieldCaption
             label.textColor = Theme.shared.colors.secondaryText
@@ -86,19 +102,10 @@ class StickerDetailsEditCell: UICollectionViewCell {
         nameLabel.text = "Name:"
         name.backgroundColor = UIColor.systemGray6
         name.font = Theme.shared.fonts.listBody
-        
-        stickersLabel.text = "Stickers:"
-        stickers.font = Theme.shared.fonts.listBody
-        
-        limitLabel.text = "Goal:"
-        limitExplanation1.text = "get"
-        limitExplanation2.text = "or more"
-        
-        limit.backgroundColor = UIColor.systemGray6
-        limit.font = Theme.shared.fonts.listBody
-        
-        periodLabel.text = "Goal Period:"
-        directionLabel.text = "Direction:"
+
+        emojiLabel.text = "Emoji:"
+        emoji.backgroundColor = UIColor.systemGray6
+        emoji.font = Theme.shared.fonts.listBody
     }
     
     @IBAction func textChanged(_ sender: Any) {
@@ -106,9 +113,12 @@ class StickerDetailsEditCell: UICollectionViewCell {
     }
 
     @objc func viewTapped(sender: UITapGestureRecognizer) {
-        let loc = sender.location(in: stickers)
-        if stickers.bounds.contains(loc) {
-            onSelectStickersTapped?()
+        let loc = sender.location(in: self.stackView)
+        let index = Int(ceil(loc.x / (self.stackView.frame.width / 7))) - 1
+        
+        if index >= 0 && index < 7 {
+            onColorSelected?(index)
+            setSelectedColorIndex(index)
         }
     }
 }

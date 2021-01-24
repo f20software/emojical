@@ -124,8 +124,9 @@ extension DataSource {
     }
 
     // List of goals particular stamp is used in
-    func goalsUsedStamp(_ stampId: Int64) -> [Goal] {
-        return self.allGoals().filter { $0.stamps.contains(stampId) }
+    func goalsUsedStamp(_ stampId: Int64?) -> [Goal] {
+        guard let id = stampId else { return [] }
+        return self.allGoals().filter { $0.stamps.contains(id) }
     }
     
     // MARK: - Saving

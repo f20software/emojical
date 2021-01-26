@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StickerDetailsDeleteButtonCell" id="7y9-Gf-xbO" customClass="StickerDetailsDeleteButtonCell" customModule="Emojical" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="133"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="133"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErJ-gD-7GI">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="133"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qv-Xw-iWs" userLabel="Separator 3">
+                                <rect key="frame" x="5" y="5" width="280" height="1"/>
+                                <color key="backgroundColor" systemColor="separatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="YTD-Fg-Da7"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPp-jC-Rgy">
+                                <rect key="frame" x="103" y="75" width="94" height="34"/>
+                                <state key="normal" title="Delete Goal">
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonTapped:" destination="7y9-Gf-xbO" eventType="primaryActionTriggered" id="6xB-94-gka"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you update or delete the goal, all previously earned awards would remain unchanged." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUW-Px-7ns">
+                                <rect key="frame" x="5" y="16" width="280" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="IUW-Px-7ns" firstAttribute="top" secondItem="6Qv-Xw-iWs" secondAttribute="bottom" constant="10" id="23R-EM-ud8"/>
+                            <constraint firstAttribute="trailing" secondItem="IUW-Px-7ns" secondAttribute="trailing" constant="15" id="6ha-I8-fAd"/>
+                            <constraint firstItem="BPp-jC-Rgy" firstAttribute="top" secondItem="IUW-Px-7ns" secondAttribute="bottom" constant="30" id="7CO-Rg-mCm"/>
+                            <constraint firstItem="IUW-Px-7ns" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" constant="5" id="RGn-DI-aGj"/>
+                            <constraint firstItem="6Qv-Xw-iWs" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" constant="5" id="gVk-mQ-zq6"/>
+                            <constraint firstAttribute="trailing" secondItem="6Qv-Xw-iWs" secondAttribute="trailing" constant="15" id="jP5-wx-lb8"/>
+                            <constraint firstItem="BPp-jC-Rgy" firstAttribute="centerX" secondItem="ErJ-gD-7GI" secondAttribute="centerX" id="oQE-P4-mbc"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BPp-jC-Rgy" secondAttribute="bottom" constant="15" id="rfF-Kj-61X"/>
+                            <constraint firstItem="6Qv-Xw-iWs" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" constant="5" id="wVO-Qv-B47"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="0Jf-aO-hI9"/>
+            <constraints>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="leading" secondItem="7y9-Gf-xbO" secondAttribute="leading" id="Vlm-nP-CF7"/>
+                <constraint firstAttribute="trailing" secondItem="ErJ-gD-7GI" secondAttribute="trailing" priority="999" id="cCk-yV-ErB"/>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="top" secondItem="7y9-Gf-xbO" secondAttribute="top" id="kKH-tu-Wdp"/>
+                <constraint firstAttribute="bottom" secondItem="ErJ-gD-7GI" secondAttribute="bottom" priority="999" id="pQi-uY-Es9"/>
+            </constraints>
+            <size key="customSize" width="308" height="79"/>
+            <connections>
+                <outlet property="deleteButton" destination="BPp-jC-Rgy" id="906-3T-jPg"/>
+                <outlet property="footer" destination="IUW-Px-7ns" id="1bC-dt-8ag"/>
+                <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
+            </connections>
+            <point key="canvasLocation" x="7.2463768115942031" y="-76.674107142857139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

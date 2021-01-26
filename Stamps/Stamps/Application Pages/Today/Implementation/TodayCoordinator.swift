@@ -11,27 +11,34 @@ import UIKit
 
 class TodayCoordinator: TodayCoordinatorProtocol {
     
-    // MARK: - Private
+    // MARK: - DI
 
     private weak var parentController: UINavigationController?
 
-    init(parent: UINavigationController) {
+    init(parent: UINavigationController?) {
         self.parentController = parent
     }
 
     /// Shows modal form to create new sticker
     func newSticker() {
-        guard
-            let nav: UINavigationController = Storyboard.Sticker.initialViewController(),
-            let stickerVC: StampViewController =
-                nav.viewControllers.first as? StampViewController else {
-            assertionFailure("Failed to initialize StampViewController")
+        // Instantiate StickerViewController from the storyboard file
+        guard let nav: UINavigationController = Storyboard.Sticker.initialViewController(),
+              let view = nav.viewControllers.first as? StickerViewController else {
+            assertionFailure("Failed to initialize StickerViewController")
             return
         }
 
-        stickerVC.stamp = Stamp.defaultStamp
-        stickerVC.presentationMode = .modal
-
+        let coordinator = StickerCoordinator(parent: nav)
+        
+        // Hook up GoalPresenter and tie it together to a view controller
+        view.presenter = StickerPresenter(
+            view: view,
+            coordinator: coordinator,
+            awardManager: AwardManager.shared,
+            repository: Storage.shared.repository,
+            sticker: nil,
+            presentation: .modal
+        )
         parentController?.present(nav, animated: true)
     }
 

@@ -50,7 +50,8 @@ class GoalPresenter: GoalPresenterProtocol {
         awardManager: AwardManager,
         repository: DataRepository,
         goal: Goal?,
-        presentation: PresentationMode
+        presentation: PresentationMode,
+        editing: Bool
     ) {
         self.view = view
         self.coordinator = coordinator
@@ -58,7 +59,7 @@ class GoalPresenter: GoalPresenterProtocol {
         self.repository = repository
         self.goal = goal ?? Goal.new
         self.presentationMode = presentation
-        self.isEditing = (goal == nil)
+        self.isEditing = editing
     }
 
     // MARK: - State
@@ -91,11 +92,12 @@ class GoalPresenter: GoalPresenterProtocol {
             self?.setViewEditing(true)
         }
         view?.onCancelTapped = { [weak self] in
-            if self?.presentationMode == .modal {
-                self?.view?.dismiss(from: self!.presentationMode)
-            } else {
-                self?.setViewEditing(false)
-            }
+            // We potentially can have here different logic, for exmaple:
+            // if we're in the view->edit mode, "Cancel" could bring
+            // us back to the viewing mode, but then we need to carefully review
+            // what will happen with current `goal` object, since we can update initial
+            // state of it when selecting stickers 
+            self?.view?.dismiss(from: self!.presentationMode)
         }
         view?.onDoneTapped = { [weak self] in
             self?.saveViewData()

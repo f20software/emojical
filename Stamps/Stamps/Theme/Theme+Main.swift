@@ -19,7 +19,17 @@ extension Theme {
             tint: UIColor(r: 13, g: 15, b: 45),
 
             ///
-            secondaryText: UIColor.secondaryLabel
+            secondaryText: UIColor.secondaryLabel,
+            
+            pallete: [
+                UIColor(hex: "EF476F"), // red
+                UIColor(hex: "D671DB"), // violet
+                UIColor(hex: "FFE175"), // yellow
+                UIColor(hex: "83D483"), // light green
+                UIColor(hex: "049F70"), // green
+                UIColor(hex: "118AB2"), // light blue
+                UIColor(hex: "202674")  // blue
+            ]
         )
 
         let dark = Colors(
@@ -27,7 +37,17 @@ extension Theme {
             tint: UIColor(r: 13, g: 15, b: 45),
             
             ///
-            secondaryText: UIColor.lightGray
+            secondaryText: UIColor.lightGray,
+
+            pallete: [
+                UIColor(hex: "EF476F"), // red
+                UIColor(hex: "D671DB"), // violet
+                UIColor(hex: "FFE175"), // yellow
+                UIColor(hex: "83D483"), // light green
+                UIColor(hex: "049F70"), // green
+                UIColor(hex: "118AB2"), // light blue
+                UIColor(hex: "202674")  // blue
+            ]
         )
 
         return Theme(lightColors: light, darkColors: dark)

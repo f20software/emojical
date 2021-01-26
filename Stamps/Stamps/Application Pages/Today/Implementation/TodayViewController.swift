@@ -42,7 +42,7 @@ class TodayViewController: UIViewController {
     // MARK: - DI
 
     lazy var coordinator: TodayCoordinatorProtocol = {
-        TodayCoordinator(parent: self.navigationController!)
+        TodayCoordinator(parent: self.navigationController)
     }()
 
     var presenter: TodayPresenterProtocol!

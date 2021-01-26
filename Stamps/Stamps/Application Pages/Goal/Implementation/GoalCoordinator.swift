@@ -13,17 +13,9 @@ class GoalCoordinator: GoalCoordinatorProtocol {
     // MARK: - DI
 
     private weak var parentController: UINavigationController?
-    private var repository: DataRepository
-    private var awardManager: AwardManager
 
-    init(
-        parent: UINavigationController?,
-        repository: DataRepository,
-        awardManager: AwardManager)
-    {
+    init(parent: UINavigationController?) {
         self.parentController = parent
-        self.repository = repository
-        self.awardManager = awardManager
     }
 
     // Navigate to SelectStickers screen
@@ -36,7 +28,7 @@ class GoalCoordinator: GoalCoordinatorProtocol {
         
         stickers.presenter = SelectStickersPresenter(
             view: stickers,
-            repository: repository,
+            repository: Storage.shared.repository,
             stampsListener: Storage.shared.stampsListener(),
             coordinator: self,
             selectedStickers: selectedStickersIds
@@ -57,16 +49,14 @@ class GoalCoordinator: GoalCoordinatorProtocol {
             return
         }
 
-        let coordinator = StickerCoordinator(
-            parent: nav,
-            repository: repository)
+        let coordinator = StickerCoordinator(parent: nav)
         
         // Hook up GoalPresenter and tie it together to a view controller
         view.presenter = StickerPresenter(
             view: view,
             coordinator: coordinator,
-            awardManager: awardManager,
-            repository: repository,
+            awardManager: AwardManager.shared,
+            repository: Storage.shared.repository,
             sticker: nil,
             presentation: .modal
         )

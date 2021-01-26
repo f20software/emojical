@@ -14,17 +14,9 @@ class TodayCoordinator: TodayCoordinatorProtocol {
     // MARK: - DI
 
     private weak var parentController: UINavigationController?
-    private var repository: DataRepository
-    private var awardManager: AwardManager
 
-    init(
-        parent: UINavigationController?,
-        repository: DataRepository,
-        awardManager: AwardManager
-    ) {
+    init(parent: UINavigationController?) {
         self.parentController = parent
-        self.repository = repository
-        self.awardManager = awardManager
     }
 
     /// Shows modal form to create new sticker
@@ -36,16 +28,14 @@ class TodayCoordinator: TodayCoordinatorProtocol {
             return
         }
 
-        let coordinator = StickerCoordinator(
-            parent: nav,
-            repository: repository)
+        let coordinator = StickerCoordinator(parent: nav)
         
         // Hook up GoalPresenter and tie it together to a view controller
         view.presenter = StickerPresenter(
             view: view,
             coordinator: coordinator,
-            awardManager: awardManager,
-            repository: repository,
+            awardManager: AwardManager.shared,
+            repository: Storage.shared.repository,
             sticker: nil,
             presentation: .modal
         )

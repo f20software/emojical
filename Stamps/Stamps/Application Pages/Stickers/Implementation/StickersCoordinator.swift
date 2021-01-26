@@ -73,10 +73,7 @@ class StickersCoordinator: StickersCoordinatorProtocol {
             return
         }
 
-        let coordinator = GoalCoordinator(
-            parent: mode == .modal ? nav : parentController,
-            repository: repository,
-            awardManager: awardManager)
+        let coordinator = GoalCoordinator(parent: mode == .modal ? nav : parentController)
         
         // Hook up GoalPresenter and tie it together to a view controller
         view.presenter = GoalPresenter(
@@ -108,9 +105,7 @@ class StickersCoordinator: StickersCoordinatorProtocol {
             return
         }
 
-        let coordinator = StickerCoordinator(
-            parent: mode == .modal ? nav : parentController,
-            repository: repository)
+        let coordinator = StickerCoordinator(parent: mode == .modal ? nav : parentController)
         
         // Hook up GoalPresenter and tie it together to a view controller
         view.presenter = StickerPresenter(

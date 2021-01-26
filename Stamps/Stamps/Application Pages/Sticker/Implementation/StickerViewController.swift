@@ -61,6 +61,9 @@ class StickerViewController : UIViewController, StickerViewProtocol {
     /// User tapped on the Delete button
     var onDeleteTapped: (() -> Void)?
 
+    /// User tapped on new goal button
+    var onNewGoalTapped: (() -> Void)?
+
     /// User tapped on list of stickers to select
     var onSelectStickersTapped: (() -> Void)?
 
@@ -94,7 +97,7 @@ class StickerViewController : UIViewController, StickerViewProtocol {
     }
 
     /// Loads Sticker data
-    func loadStickerData(_ data: [StickerDetailsElement]) {
+    func loadData(_ data: [StickerDetailsElement]) {
 
         // Reset old reference
         detailsEditView = nil
@@ -112,9 +115,6 @@ class StickerViewController : UIViewController, StickerViewProtocol {
         to.name = (details.name.text ?? to.name).trimmingCharacters(in: CharacterSet(charactersIn: " "))
         to.label = details.emoji.text ?? ""
         to.color = Theme.shared.colors.pallete[details.selectedColorIndex]
-//        to.limit = Int.init(details.limit.text ?? "0") ?? 0
-//        to.direction = Direction(rawValue: details.direction.selectedSegmentIndex) ?? .positive
-//        to.period = Period(rawValue: details.period.selectedSegmentIndex) ?? .week
     }
 
     /// Dismisses view if it was presented modally
@@ -165,6 +165,10 @@ class StickerViewController : UIViewController, StickerViewProtocol {
             UINib(nibName: "StickerDetailsDeleteButtonCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.delete
         )
+        details.register(
+            UINib(nibName: "NewGoalCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.newGoal
+        )
     }
 
     private func configureBarButtons(animated: Bool) {
@@ -211,6 +215,7 @@ class StickerViewController : UIViewController, StickerViewProtocol {
         )
 
         let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = Specs.margin
         section.contentInsets = NSDirectionalEdgeInsets(
             top: Specs.margin, leading: Specs.margin,
             bottom: Specs.margin, trailing: Specs.margin
@@ -222,6 +227,12 @@ class StickerViewController : UIViewController, StickerViewProtocol {
 
 extension StickerViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (collectionView.cellForItem(at: indexPath) as? NewGoalCell) != nil {
+            onNewGoalTapped?()
+        }
+    }
+    
     private func cell(for path: IndexPath, model: StickerDetailsElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         switch model {
         case .view(let data):
@@ -229,6 +240,12 @@ extension StickerViewController: UICollectionViewDelegate {
                 withReuseIdentifier: Specs.Cells.details, for: path
             ) as? StickerDetailsCell else { return UICollectionViewCell() }
             cell.configure(for: data)
+            return cell
+
+        case .newGoalButton:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.newGoal, for: path
+            ) as? NewGoalCell else { return UICollectionViewCell() }
             return cell
             
         case .edit(let data):
@@ -276,6 +293,9 @@ fileprivate struct Specs {
 
         /// Sticker editing delete button cell
         static let delete = "StickerDetailsDeleteButtonCell"
+
+        /// New Goal button cell
+        static let newGoal = "NewGoalCell"
     }
     
     /// Left/right and bottom margin for the collection view cells

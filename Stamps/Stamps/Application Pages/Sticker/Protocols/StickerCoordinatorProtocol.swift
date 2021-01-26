@@ -10,6 +10,6 @@ import Foundation
 
 protocol StickerCoordinatorProtocol: AnyObject {
 
-//    /// Select stickers for goal
-//    func selectStickers(_ selectedStickersIds: [Int64], onChange: @escaping ([Int64]) -> Void)
+    /// Shows modal form to create new goal
+    func newGoal(with stickerId: Int64)
 }

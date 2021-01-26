@@ -77,11 +77,10 @@ class StickerPresenter: StickerPresenterProtocol {
             self?.setViewEditing(true)
         }
         view?.onCancelTapped = { [weak self] in
-            if self?.presentationMode == .modal {
-                self?.view?.dismiss(from: self!.presentationMode)
-            } else {
-                self?.setViewEditing(false)
-            }
+            // We potentially can have here different logic, for exmaple:
+            // if we're in the view->edit mode, "Cancel" could bring
+            // us back to the viewing mode
+            self?.view?.dismiss(from: self!.presentationMode)
         }
         view?.onDoneTapped = { [weak self] in
             self?.saveViewData()
@@ -94,6 +93,10 @@ class StickerPresenter: StickerPresenterProtocol {
         }
         view?.onDeleteTapped = { [weak self] in
             self?.confirmGoalDelete()
+        }
+        view?.onNewGoalTapped = { [weak self] in
+            guard let id = self?.sticker.id else { return }
+            self?.coordinator.newGoal(with: id)
         }
         view?.onStickerChanged = { [weak self] in
             self?.validateInputAndUpdateView()
@@ -144,44 +147,61 @@ class StickerPresenter: StickerPresenterProtocol {
     
     // Create a load view data based on editing mode
     private func loadViewData() {
+        // First set title and then check whether we're in edit or viewing mode
+        view?.updateTitle(sticker.name)
+        if isEditing {
+            loadViewDataEditing()
+        } else {
+            loadViewDataViewing()
+        }
+    }
+
+    // Form is in viewing mode
+    private func loadViewDataViewing() {
         guard let view = view else { return }
 
-        // First set title in both edit and view mode
-        view.updateTitle(sticker.name)
-
-        if isEditing {
-            let data = StickerEditData(
-                sticker: sticker
-            )
-            if presentationMode == .modal {
-                view.loadStickerData([.edit(data)])
-                // For newly created emoji - help user understand what needs to be done
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                    view.focusOnEmoji()
-                })
-            } else {
-                view.loadStickerData([.edit(data), .deleteButton])
-            }
-            view.enableDoneButton(sticker.isValid)
+        // Build usage text
+        let goals = repository.goalsUsedStamp(sticker.id)
+        var usageText = ""
+        if goals.count == 0 {
+            usageText = "You haven't created a goal yet with this sticker."
+        } else if goals.count == 1 {
+            usageText = "Sticker is used in \'\(goals.first?.name ?? "")\' goal."
         } else {
-            // Build usage text
-            let goals = repository.goalsUsedStamp(sticker.id)
-            var usageText = ""
-            if goals.count == 0 {
-                usageText = "You haven't created a goal yet with this sticker."
-            } else if goals.count == 1 {
-                usageText = "Sticker is used in \'\(goals.first?.name ?? "")\' goal."
-            } else {
-                let text = goals.map({ "'\($0.name)'" }).sentence
-                usageText = "Sticker is used in \(text) goals."
-            }
-
-            let data = StickerViewData(
-                sticker: sticker,
-                statistics: sticker.statsDescription,
-                usage: usageText
-            )
-            view.loadStickerData([.view(data)])
+            let text = goals.map({ "'\($0.name)'" }).sentence
+            usageText = "Sticker is used in \(text) goals."
         }
+        
+        let data = StickerViewData(
+            sticker: sticker,
+            statistics: sticker.statsDescription,
+            usage: usageText
+        )
+        var cells: [StickerDetailsElement] = [.view(data)]
+        if goals.count == 0 {
+            cells.append(.newGoalButton)
+        }
+        view.loadData(cells)
+    }
+
+    // Form is in editing mode
+    private func loadViewDataEditing() {
+        guard let view = view else { return }
+
+        let data = StickerEditData(
+            sticker: sticker
+        )
+
+        if presentationMode == .modal {
+            view.loadData([.edit(data)])
+            // For newly created emoji - help user understand what needs to be done
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                view.focusOnEmoji()
+            })
+        } else {
+            view.loadData([.edit(data), .deleteButton])
+        }
+        
+        view.enableDoneButton(sticker.isValid)
     }
 }

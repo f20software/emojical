@@ -12,4 +12,5 @@ enum StickerDetailsElement: Hashable {
     case view(StickerViewData)
     case edit(StickerEditData)
     case deleteButton
+    case newGoalButton
 }

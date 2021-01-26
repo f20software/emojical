@@ -144,7 +144,11 @@ extension StickerDetailsEditCell: UITextFieldDelegate {
 
     // Limit emoji text field to a single character
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        textField.text = String(string.first ?? " ")
+        if let character = string.first {
+            textField.text = String(character)
+        } else {
+            textField.text = ""
+        }
         onValueChanged?()
         return false
     }

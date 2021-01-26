@@ -24,6 +24,9 @@ protocol StickerViewProtocol: AnyObject {
     /// User tapped on the delete button
     var onDeleteTapped: (() -> Void)? { get set }
 
+    /// User tapped on new goal button
+    var onNewGoalTapped: (() -> Void)? { get set }
+
     /// User tapped on list of stickers to select
     var onSelectStickersTapped: (() -> Void)? { get set }
 
@@ -51,7 +54,7 @@ protocol StickerViewProtocol: AnyObject {
     func enableDoneButton(_ enabled: Bool)
 
     /// Loads Sticker data
-    func loadStickerData(_ data: [StickerDetailsElement])
+    func loadData(_ data: [StickerDetailsElement])
 
     /// Update Sticker data from the UI
     func update(to: inout Stamp)

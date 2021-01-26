@@ -9,7 +9,7 @@
 import UIKit
 
 class StickerCoordinator: StickerCoordinatorProtocol {
-    
+
     // MARK: - DI
 
     private weak var parentController: UINavigationController?
@@ -23,24 +23,34 @@ class StickerCoordinator: StickerCoordinatorProtocol {
         self.repository = repository
     }
 
-    // Navigate to SelectStickers screen
-//    func selectStickers(_ selectedStickersIds: [Int64], onChange: @escaping ([Int64]) -> Void) {
-//
-//        guard let stickers = Storyboard.SelectStickers.initialViewController() as? SelectStickersViewController else {
-//            assertionFailure("Failed to initialize SelectStickersViewController")
-//            return
-//        }
-//        
-//        stickers.presenter = SelectStickersPresenter(
-//            view: stickers,
-//            repository: repository,
-//            selectedStickers: selectedStickersIds
-//        )
-//        // Whenever selected stickers changed, notify caller via callback
-//        stickers.presenter.onChange = { updatedIds in
-//            onChange(updatedIds)
-//        }
-//
-//        parentController?.pushViewController(stickers, animated: true)
-//    }
+    /// Shows modal form to create new goal
+    func newGoal(with stickerId: Int64) {
+        // Instantiate GoalViewController from the storyboard file
+        guard let nav: UINavigationController = Storyboard.Goal.initialViewController(),
+              let view = nav.viewControllers.first as? GoalViewController else {
+            assertionFailure("Failed to initialize GoalViewController")
+            return
+        }
+
+        var goal = Goal.new
+        goal.stamps = [stickerId]
+        
+        let coordinator = GoalCoordinator(
+            parent: nav,
+            repository: repository,
+            awardManager: AwardManager.shared)
+        
+        // Hook up GoalPresenter and tie it together to a view controller
+        view.presenter = GoalPresenter(
+            view: view,
+            coordinator: coordinator,
+            awardManager: AwardManager.shared,
+            repository: repository,
+            goal: goal,
+            presentation: .modal,
+            editing: true
+        )
+
+        parentController?.present(nav, animated: true)
+    }
 }

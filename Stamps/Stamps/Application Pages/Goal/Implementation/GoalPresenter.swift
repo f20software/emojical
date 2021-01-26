@@ -50,7 +50,8 @@ class GoalPresenter: GoalPresenterProtocol {
         awardManager: AwardManager,
         repository: DataRepository,
         goal: Goal?,
-        presentation: PresentationMode
+        presentation: PresentationMode,
+        editing: Bool
     ) {
         self.view = view
         self.coordinator = coordinator
@@ -58,7 +59,7 @@ class GoalPresenter: GoalPresenterProtocol {
         self.repository = repository
         self.goal = goal ?? Goal.new
         self.presentationMode = presentation
-        self.isEditing = (goal == nil)
+        self.isEditing = editing
     }
 
     // MARK: - State

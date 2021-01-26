@@ -52,14 +52,12 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     
     /// Push to edit sticker form
     func editSticker(_ sticker: Stamp) {
-//        navigateToSticker(sticker)
-        navigateToSticker2(mode: .push, sticker: sticker)
+        navigateToSticker(mode: .push, sticker: sticker)
     }
 
     /// Shows modal form to create new sticker
     func newSticker() {
-//        navigateToSticker(nil)
-        navigateToSticker2(mode: .modal, sticker: nil)
+        navigateToSticker(mode: .modal, sticker: nil)
     }
 
     // MARK: - Private helpers
@@ -87,7 +85,8 @@ class StickersCoordinator: StickersCoordinatorProtocol {
             awardManager: awardManager,
             repository: repository,
             goal: goal,
-            presentation: mode
+            presentation: mode,
+            editing: (goal == nil)
         )
 
         switch mode {
@@ -98,30 +97,9 @@ class StickersCoordinator: StickersCoordinatorProtocol {
         }
     }
 
-    // Navigate to Sticker edit / create screen - if `sticker` object is passed will
-    // push StickerViewController, otherwise - present as modal
-    private func navigateToSticker(_ sticker: Stamp?) {
-        // Instantiate GoalViewController from the storyboard file
-        guard let nav: UINavigationController = Storyboard.Sticker2.initialViewController(),
-              let stickerVC = nav.viewControllers.first as? StampViewController else {
-            assertionFailure("Failed to initialize StampViewController")
-            return
-        }
-
-        if let sticker = sticker {
-            stickerVC.stamp = sticker
-            stickerVC.presentationMode = .push
-            parentController?.pushViewController(stickerVC, animated: true)
-        } else {
-            stickerVC.stamp = Stamp.new
-            stickerVC.presentationMode = .modal
-            parentController?.present(nav, animated: true)
-        }
-    }
-    
     // Navigate to Sticker edit / create screen - if `goal` object is passed will
     // push StickerViewController, otherwise - present as modal
-    private func navigateToSticker2(mode: PresentationMode, sticker: Stamp?) {
+    private func navigateToSticker(mode: PresentationMode, sticker: Stamp?) {
 
         // Instantiate StickerViewController from the storyboard file
         guard let nav: UINavigationController = Storyboard.Sticker.initialViewController(),

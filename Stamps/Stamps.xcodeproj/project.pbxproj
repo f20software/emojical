@@ -63,7 +63,7 @@
 		F247542523E734CE006A13C3 /* AwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542423E734CE006A13C3 /* AwardManager.swift */; };
 		F247542723E74C49006A13C3 /* StoredAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247542623E74C49006A13C3 /* StoredAward.swift */; };
 		F24B07C624C547B500FFD798 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24B07C524C547B500FFD798 /* Today.storyboard */; };
-		F251F8B925BFB8F20042B1DA /* SelectStickerCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F251F8B825BFB8F20042B1DA /* SelectStickerCell2.xib */; };
+		F251F8B925BFB8F20042B1DA /* SelectStickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F251F8B825BFB8F20042B1DA /* SelectStickerCell.xib */; };
 		F251F8BD25BFBBEC0042B1DA /* SelectStickerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F251F8BC25BFBBEC0042B1DA /* SelectStickerElement.swift */; };
 		F26596ED2596AF1300B10B76 /* AwardRecapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E22596AF1300B10B76 /* AwardRecapCell.swift */; };
 		F26596EE2596AF1300B10B76 /* Recap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26596E32596AF1300B10B76 /* Recap.storyboard */; };
@@ -168,7 +168,6 @@
 		F2FD4DBD25BC88C6005819A0 /* SelectStickersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD4DB725BC88C6005819A0 /* SelectStickersView.swift */; };
 		F2FD4DBE25BC88C6005819A0 /* SelectStickersPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD4DB825BC88C6005819A0 /* SelectStickersPresenterProtocol.swift */; };
 		F2FD4DC225BC8B01005819A0 /* SelectStickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD4DC125BC8B01005819A0 /* SelectStickerData.swift */; };
-		F2FD4DC625BC8EA3005819A0 /* SelectStickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FD4DC525BC8EA3005819A0 /* SelectStickerCell.xib */; };
 		F2FD4DCC25BCB869005819A0 /* GoalCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD4DCB25BCB868005819A0 /* GoalCoordinatorProtocol.swift */; };
 		F2FD4DD025BCB89C005819A0 /* GoalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD4DCF25BCB89C005819A0 /* GoalCoordinator.swift */; };
 		F2FD4DF325BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FD4DF125BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib */; };
@@ -257,7 +256,7 @@
 		F247542423E734CE006A13C3 /* AwardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardManager.swift; sourceTree = "<group>"; };
 		F247542623E74C49006A13C3 /* StoredAward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredAward.swift; sourceTree = "<group>"; };
 		F24B07C524C547B500FFD798 /* Today.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
-		F251F8B825BFB8F20042B1DA /* SelectStickerCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectStickerCell2.xib; sourceTree = "<group>"; };
+		F251F8B825BFB8F20042B1DA /* SelectStickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectStickerCell.xib; sourceTree = "<group>"; };
 		F251F8BC25BFBBEC0042B1DA /* SelectStickerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickerElement.swift; sourceTree = "<group>"; };
 		F26596E22596AF1300B10B76 /* AwardRecapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardRecapCell.swift; sourceTree = "<group>"; };
 		F26596E32596AF1300B10B76 /* Recap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recap.storyboard; sourceTree = "<group>"; };
@@ -362,7 +361,6 @@
 		F2FD4DB725BC88C6005819A0 /* SelectStickersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickersView.swift; sourceTree = "<group>"; };
 		F2FD4DB825BC88C6005819A0 /* SelectStickersPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickersPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2FD4DC125BC8B01005819A0 /* SelectStickerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickerData.swift; sourceTree = "<group>"; };
-		F2FD4DC525BC8EA3005819A0 /* SelectStickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectStickerCell.xib; sourceTree = "<group>"; };
 		F2FD4DCB25BCB868005819A0 /* GoalCoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F2FD4DCF25BCB89C005819A0 /* GoalCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCoordinator.swift; sourceTree = "<group>"; };
 		F2FD4DF125BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalDetailsDeleteButtonCell.xib; sourceTree = "<group>"; };
@@ -959,8 +957,7 @@
 		F2FD4DAF25BC88C6005819A0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F2FD4DC525BC8EA3005819A0 /* SelectStickerCell.xib */,
-				F251F8B825BFB8F20042B1DA /* SelectStickerCell2.xib */,
+				F251F8B825BFB8F20042B1DA /* SelectStickerCell.xib */,
 				F2FD4DB025BC88C6005819A0 /* SelectStickerCell.swift */,
 			);
 			path = Cells;
@@ -1169,7 +1166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F251F8B925BFB8F20042B1DA /* SelectStickerCell2.xib in Resources */,
+				F251F8B925BFB8F20042B1DA /* SelectStickerCell.xib in Resources */,
 				F23CF3CD2582A95F0048BA74 /* StickerCell.xib in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
 				F2FD4E1925BDCD42005819A0 /* StickerDetailsDeleteButtonCell.xib in Resources */,
@@ -1187,7 +1184,6 @@
 				F24B07C624C547B500FFD798 /* Today.storyboard in Resources */,
 				F2A93FA8258130DB006C88F8 /* WeekHeaderCell.xib in Resources */,
 				F295334525B4D87D003CA002 /* NoAwardsCell.xib in Resources */,
-				F2FD4DC625BC8EA3005819A0 /* SelectStickerCell.xib in Resources */,
 				F2A21C12244271130030A117 /* Options.storyboard in Resources */,
 				F295339A25B64098003CA002 /* GoalDetailsCell.xib in Resources */,
 				F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */,

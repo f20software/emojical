@@ -64,7 +64,7 @@ class SelectStickersViewController : UIViewController, SelectStickersView {
     
     private func registerCells() {
         stickers.register(
-            UINib(nibName: "SelectStickerCell2", bundle: .main),
+            UINib(nibName: "SelectStickerCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.sticker
         )
         stickers.register(

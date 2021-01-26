@@ -49,7 +49,7 @@ class StickerPresenter: StickerPresenterProtocol {
 
     // MARK: - State
 
-    // Goal object
+    // Sticker object
     private var sticker: Stamp!
     
     // Presentation mode (pushed or popped as modal)
@@ -172,16 +172,17 @@ class StickerPresenter: StickerPresenterProtocol {
             usageText = "Sticker is used in \(text) goals."
         }
         
-        let data = StickerViewData(
-            sticker: sticker,
-            statistics: sticker.statsDescription,
-            usage: usageText
-        )
-        var cells: [StickerDetailsElement] = [.view(data)]
+        var data: [StickerDetailsElement] = [.view(
+            StickerViewData(
+                sticker: sticker,
+                statistics: sticker.statsDescription,
+                usage: usageText
+            )
+        )]
         if goals.count == 0 {
-            cells.append(.newGoalButton)
+            data.append(.newGoalButton)
         }
-        view.loadData(cells)
+        view.loadData(data)
     }
 
     // Form is in editing mode

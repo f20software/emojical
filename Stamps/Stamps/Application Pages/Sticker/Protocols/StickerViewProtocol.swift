@@ -37,9 +37,15 @@ protocol StickerViewProtocol: AnyObject {
 
     /// Set / reset editing mode
     func setEditing(_ editing: Bool, animated: Bool)
+    
+    /// When creating new sticker we want to bring emoji keyboard immediately
+    func focusOnEmoji()
 
     /// Set form title
     func updateTitle(_ text: String)
+
+    /// Set form title
+    func updateIcon(_ sticker: Stamp)
 
     /// Enable / disable Done button data
     func enableDoneButton(_ enabled: Bool)

@@ -81,6 +81,9 @@ extension StoredStamp {
         self.name = stamp.name
         self.label = stamp.label
         self.color = stamp.color.hex
+        self.favorite = stamp.favorite
         self.deleted = stamp.deleted
+        self.count = stamp.count
+        self.lastUsed = stamp.lastUsed?.databaseKey ?? ""
     }
 }

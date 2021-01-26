@@ -14,13 +14,16 @@ class GoalCoordinator: GoalCoordinatorProtocol {
 
     private weak var parentController: UINavigationController?
     private var repository: DataRepository!
+    private var awardManager: AwardManager!
 
     init(
         parent: UINavigationController?,
-        repository: DataRepository)
+        repository: DataRepository,
+        awardManager: AwardManager)
     {
         self.parentController = parent
         self.repository = repository
+        self.awardManager = awardManager
     }
 
     // Navigate to SelectStickers screen
@@ -34,6 +37,8 @@ class GoalCoordinator: GoalCoordinatorProtocol {
         stickers.presenter = SelectStickersPresenter(
             view: stickers,
             repository: repository,
+            stampsListener: Storage.shared.stampsListener(),
+            coordinator: self,
             selectedStickers: selectedStickersIds
         )
         // Whenever selected stickers changed, notify caller via callback
@@ -43,4 +48,30 @@ class GoalCoordinator: GoalCoordinatorProtocol {
 
         parentController?.pushViewController(stickers, animated: true)
     }
+    
+    func createSticker() {
+        // Instantiate StickerViewController from the storyboard file
+        guard let nav: UINavigationController = Storyboard.Sticker.initialViewController(),
+              let view = nav.viewControllers.first as? StickerViewController else {
+            assertionFailure("Failed to initialize StickerViewController")
+            return
+        }
+
+        let coordinator = StickerCoordinator(
+            parent: nav,
+            repository: repository)
+        
+        // Hook up GoalPresenter and tie it together to a view controller
+        view.presenter = StickerPresenter(
+            view: view,
+            coordinator: coordinator,
+            awardManager: awardManager,
+            repository: repository,
+            sticker: nil,
+            presentation: .modal
+        )
+
+        parentController?.present(nav, animated: true)
+    }
+
 }

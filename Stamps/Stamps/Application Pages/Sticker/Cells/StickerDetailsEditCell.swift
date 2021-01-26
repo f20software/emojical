@@ -12,6 +12,11 @@ class StickerDetailsEditCell: UICollectionViewCell {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var stickerIcon: StickerView!
+    @IBOutlet weak var previewPlate: UIView!
+    @IBOutlet weak var stickerBackground: UIView!
+    @IBOutlet weak var previewLabel: UILabel!
+
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var emoji: EmojiTextField!
@@ -41,6 +46,7 @@ class StickerDetailsEditCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         configureViews()
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
@@ -52,11 +58,10 @@ class StickerDetailsEditCell: UICollectionViewCell {
     func configure(for data: StickerEditData) {
         name.text = data.sticker.name
         emoji.text = data.sticker.label
-        
-        if let index = allColorViews.firstIndex(where: {
-            print($0.backgroundColor?.hex, data.sticker.color.hex)
-            return $0.backgroundColor?.hex == data.sticker.color.hex
-        }) {
+        stickerIcon.text = data.sticker.label
+        stickerIcon.color = data.sticker.color
+
+        if let index = allColorViews.firstIndex(where: { $0.backgroundColor?.hex == data.sticker.color.hex }) {
             setSelectedColorIndex(index)
         }
     }
@@ -93,7 +98,7 @@ class StickerDetailsEditCell: UICollectionViewCell {
             view.layer.borderWidth = 0.0
         }
         
-        let labels: [UILabel] = [nameLabel, emojiLabel]
+        let labels: [UILabel] = [nameLabel, emojiLabel, previewLabel]
         for label in labels {
             label.font = Theme.shared.fonts.formFieldCaption
             label.textColor = Theme.shared.colors.secondaryText
@@ -106,6 +111,16 @@ class StickerDetailsEditCell: UICollectionViewCell {
         emojiLabel.text = "Emoji:"
         emoji.backgroundColor = UIColor.systemGray6
         emoji.font = Theme.shared.fonts.listBody
+        emoji.delegate = self
+        emoji.placeholder = ""
+        
+        previewLabel.text = "Preview:"
+        previewPlate.backgroundColor = UIColor.systemGray6
+        previewPlate.layer.cornerRadius = Specs.cornerRadius
+        previewPlate.clipsToBounds = true
+
+        stickerBackground.backgroundColor = UIColor.systemBackground
+        stickerBackground.layer.cornerRadius = 10.0
     }
     
     @IBAction func textChanged(_ sender: Any) {
@@ -113,12 +128,32 @@ class StickerDetailsEditCell: UICollectionViewCell {
     }
 
     @objc func viewTapped(sender: UITapGestureRecognizer) {
-        let loc = sender.location(in: self.stackView)
-        let index = Int(ceil(loc.x / (self.stackView.frame.width / 7))) - 1
+        let loc = sender.location(in: stackView)
+        guard stackView.bounds.contains(loc) else { return }
+        
+        let index = Int(ceil(loc.x / (stackView.frame.width / 7))) - 1
         
         if index >= 0 && index < 7 {
-            onColorSelected?(index)
             setSelectedColorIndex(index)
+            onColorSelected?(index)
         }
     }
 }
+
+extension StickerDetailsEditCell: UITextFieldDelegate {
+
+    // Limit emoji text field to a single character
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        textField.text = String(string.first ?? " ")
+        onValueChanged?()
+        return false
+    }
+}
+
+// MARK: - Specs
+fileprivate struct Specs {
+    
+    /// Background corner radius
+    static let cornerRadius: CGFloat = 8.0
+}
+

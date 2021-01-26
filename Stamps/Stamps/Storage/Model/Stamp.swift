@@ -45,6 +45,10 @@ struct Stamp: Equatable, Hashable {
     }
     
     static var new: Stamp {
-        return Stamp(id: nil, name: "Gold Star", label: "⭐️", color: UIColor(hex: UIColor.defaultStickerColor))
+        return Stamp(
+            id: nil,
+            name: "",
+            label: "",
+            color: Theme.shared.colors.pallete.first ?? Theme.shared.colors.tint)
     }
 }

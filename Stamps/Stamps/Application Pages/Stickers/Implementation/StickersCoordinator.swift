@@ -15,6 +15,13 @@ enum PresentationMode {
     case push
 }
 
+enum ViewMode {
+    /// Form is in view mode
+    case view
+    /// Form is in edit mode
+    case edit
+}
+
 class StickersCoordinator: StickersCoordinatorProtocol {
     
     // MARK: - DI
@@ -45,8 +52,8 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     
     /// Push to edit sticker form
     func editSticker(_ sticker: Stamp) {
-        navigateToSticker(sticker)
-//        navigateToSticker2(mode: .push, sticker: sticker)
+//        navigateToSticker(sticker)
+        navigateToSticker2(mode: .push, sticker: sticker)
     }
 
     /// Shows modal form to create new sticker
@@ -70,7 +77,8 @@ class StickersCoordinator: StickersCoordinatorProtocol {
 
         let coordinator = GoalCoordinator(
             parent: mode == .modal ? nav : parentController,
-            repository: repository)
+            repository: repository,
+            awardManager: awardManager)
         
         // Hook up GoalPresenter and tie it together to a view controller
         view.presenter = GoalPresenter(
@@ -94,7 +102,7 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     // push StickerViewController, otherwise - present as modal
     private func navigateToSticker(_ sticker: Stamp?) {
         // Instantiate GoalViewController from the storyboard file
-        guard let nav: UINavigationController = Storyboard.Sticker.initialViewController(),
+        guard let nav: UINavigationController = Storyboard.Sticker2.initialViewController(),
               let stickerVC = nav.viewControllers.first as? StampViewController else {
             assertionFailure("Failed to initialize StampViewController")
             return

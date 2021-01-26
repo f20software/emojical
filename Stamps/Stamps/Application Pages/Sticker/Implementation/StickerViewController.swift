@@ -73,9 +73,24 @@ class StickerViewController : UIViewController, StickerViewProtocol {
         configureBarButtons(animated: animated)
     }
 
+    /// When creating new sticker we want to bring emoji keyboard immediately
+    func focusOnEmoji() {
+        DispatchQueue.main.async {
+            self.detailsEditView?.emoji.becomeFirstResponder()
+        }
+    }
+    
     /// Set form title
     func updateTitle(_ text: String) {
         title = text
+    }
+
+    /// Set form title
+    func updateIcon(_ sticker: Stamp) {
+        guard let view = detailsEditView else { return }
+        view.stickerIcon.color = sticker.color
+        view.stickerIcon.text = sticker.label
+        view.stickerIcon.setNeedsDisplay()
     }
 
     /// Loads Sticker data
@@ -95,6 +110,8 @@ class StickerViewController : UIViewController, StickerViewProtocol {
         guard let details = detailsEditView else { return }
         
         to.name = (details.name.text ?? to.name).trimmingCharacters(in: CharacterSet(charactersIn: " "))
+        to.label = details.emoji.text ?? ""
+        to.color = Theme.shared.colors.pallete[details.selectedColorIndex]
 //        to.limit = Int.init(details.limit.text ?? "0") ?? 0
 //        to.direction = Direction(rawValue: details.direction.selectedSegmentIndex) ?? .positive
 //        to.period = Period(rawValue: details.period.selectedSegmentIndex) ?? .week
@@ -228,7 +245,7 @@ extension StickerViewController: UICollectionViewDelegate {
                 self?.onStickerChanged?()
             }
             cell.onColorSelected = { [weak self] index in
-                // self?.onSelectStickersTapped?()
+                self?.onStickerChanged?()
             }
             detailsEditView = cell
             return cell

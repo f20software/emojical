@@ -40,7 +40,9 @@ class StickerDetailsDeleteButtonCell: UICollectionViewCell {
         plate.backgroundColor = UIColor.clear
         footer.font = Theme.shared.fonts.footer
         footer.textColor = Theme.shared.colors.secondaryText
-        footer.text = "If you update or delete the goal, all previously earned awards will remain unchanged."
+        footer.text = nil
+        
+        deleteButton.setTitle("Delete Sticker", for: .normal)
         deleteButton.titleLabel?.font = Theme.shared.fonts.listBody
     }
 }

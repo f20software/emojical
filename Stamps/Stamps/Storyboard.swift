@@ -16,6 +16,7 @@ enum Storyboard: String {
     case Recap
     case Goal
     case Sticker
+    case Sticker2
     case SelectStickers
 
     var instance: UIStoryboard {

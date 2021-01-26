@@ -12,4 +12,6 @@ protocol GoalCoordinatorProtocol: AnyObject {
 
     /// Select stickers for goal
     func selectStickers(_ selectedStickersIds: [Int64], onChange: @escaping ([Int64]) -> Void)
+    
+    func createSticker()
 }

@@ -12,6 +12,9 @@ extension Stamp {
     
     // Sticker editing validation
     var isValid: Bool {
+        // Should have some emoji
+        guard self.label.lengthOfBytes(using: .utf8) > 0 else { return false }
+        
         return true
     }
 }
@@ -135,6 +138,7 @@ class StickerPresenter: StickerPresenterProtocol {
 
         view.update(to: &sticker)
         view.updateTitle(sticker.name)
+        view.updateIcon(sticker)
         view.enableDoneButton(sticker.isValid)
     }
     
@@ -142,34 +146,41 @@ class StickerPresenter: StickerPresenterProtocol {
     private func loadViewData() {
         guard let view = view else { return }
 
-        let goals = repository.goalsUsedStamp(sticker.id)
-        var usageText = ""
-        if goals.count == 0 {
-            usageText = "You haven't created a goal yet with this sticker."
-        } else if goals.count == 1 {
-            usageText = "Sticker is used in \'\(goals.first?.name ?? "")\' goal."
-        } else {
-            let text = goals.map({ "'\($0.name)'" }).sentence
-            usageText = "Sticker is used in \(text) goals."
-        }
-        
+        // First set title in both edit and view mode
+        view.updateTitle(sticker.name)
+
         if isEditing {
             let data = StickerEditData(
                 sticker: sticker
             )
             if presentationMode == .modal {
                 view.loadStickerData([.edit(data)])
+                // For newly created emoji - help user understand what needs to be done
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                    view.focusOnEmoji()
+                })
             } else {
                 view.loadStickerData([.edit(data), .deleteButton])
             }
             view.enableDoneButton(sticker.isValid)
         } else {
+            // Build usage text
+            let goals = repository.goalsUsedStamp(sticker.id)
+            var usageText = ""
+            if goals.count == 0 {
+                usageText = "You haven't created a goal yet with this sticker."
+            } else if goals.count == 1 {
+                usageText = "Sticker is used in \'\(goals.first?.name ?? "")\' goal."
+            } else {
+                let text = goals.map({ "'\($0.name)'" }).sentence
+                usageText = "Sticker is used in \(text) goals."
+            }
+
             let data = StickerViewData(
                 sticker: sticker,
                 statistics: sticker.statsDescription,
                 usage: usageText
             )
-            view.updateTitle(sticker.name)
             view.loadStickerData([.view(data)])
         }
     }

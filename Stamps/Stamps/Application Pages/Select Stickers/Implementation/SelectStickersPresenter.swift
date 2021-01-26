@@ -14,6 +14,8 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
 
     private weak var view: SelectStickersView?
     private let repository: DataRepository
+    private let stampsListener: StampsListener
+    private let coordinator: GoalCoordinatorProtocol
 
     // MARK: - State
     
@@ -24,10 +26,14 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
     init(
         view: SelectStickersView,
         repository: DataRepository,
+        stampsListener: StampsListener,
+        coordinator: GoalCoordinatorProtocol,
         selectedStickers: [Int64]
     ) {
         self.view = view
         self.repository = repository
+        self.stampsListener = stampsListener
+        self.coordinator = coordinator
         self.selectedStickers = selectedStickers
     }
 
@@ -39,6 +45,14 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
     /// Called when view finished initial loading.
     func onViewDidLoad() {
         setupView()
+
+        // Subscribe to stamp listener in case stamps array ever changes
+        stampsListener.startListening(onError: { error in
+            fatalError("Unexpected error: \(error)")
+        },
+        onChange: { [weak self] stamps in
+            self?.loadViewData()
+        })
     }
     
     func onViewWillAppear() {
@@ -51,17 +65,23 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
         view?.onStickerTapped = { [weak self] stickerId in
             self?.toggleSelectedSticker(with: stickerId)
         }
+        view?.onNewStickerTapped = { [weak self] in
+            self?.coordinator.createSticker()
+        }
     }
     
     private func loadViewData() {
         let allStickers = repository.allStamps()
-        let data: [SelectStickerData] = allStickers.map {
-            return SelectStickerData(
-                sticker: $0,
-                selected: selectedStickers.contains($0.id ?? -1)
+        var data: [SelectStickerElement] = allStickers.map {
+            return SelectStickerElement.sticker(
+                SelectStickerData(
+                    sticker: $0,
+                    selected: selectedStickers.contains($0.id ?? -1)
+                )
             )
         }
         
+        data.append(.newSticker)
         view?.loadData(data)
         onChange?(selectedStickers)
     }

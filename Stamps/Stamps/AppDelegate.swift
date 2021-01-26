@@ -37,6 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         NotificationManager.shared.requestAuthorization()
         UNUserNotificationCenter.current().delegate = self
         
+//      Un-deleting specific stamp that I deleted accidentaly
+//        let repo = Storage.shared.repository
+//        var sticker = repo.stampById(15)
+//        sticker?.deleted = false
+//        try! repo.save(stamp: sticker!)
+        
         UIView.appearance().tintColor = UIColor.appTintColor
         return true
     }

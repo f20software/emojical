@@ -12,7 +12,7 @@ class SelectStickerCell: UICollectionViewCell {
     
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var sticker: StickerView!
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var name: UILabel?
     @IBOutlet weak var selectedMark: UIImageView!
 
     override func awakeFromNib() {
@@ -31,13 +31,13 @@ class SelectStickerCell: UICollectionViewCell {
         
         sticker.text = data.sticker.label
         sticker.color = data.sticker.color
-        name.text = data.sticker.name
+        name?.text = data.sticker.name
         selectedMark.isHidden = !data.selected
     }
     
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
-        name.font = Theme.shared.fonts.listTitle
+        name?.font = Theme.shared.fonts.listTitle
         selectedMark.tintColor = Theme.shared.colors.tint
     }
 }

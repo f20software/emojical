@@ -15,8 +15,11 @@ protocol SelectStickersView: AnyObject {
     /// User tapped on sticker (select / deselect)
     var onStickerTapped: ((Int64) -> Void)? { get set }
 
+    /// User tapped on create new sticker
+    var onNewStickerTapped: (() -> Void)? { get set }
+
     // MARK: - Updates
 
     /// Loads stickers data
-    func loadData(_ data: [SelectStickerData])
+    func loadData(_ data: [SelectStickerElement])
 }

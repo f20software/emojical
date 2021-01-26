@@ -13,8 +13,8 @@ class GoalCoordinator: GoalCoordinatorProtocol {
     // MARK: - DI
 
     private weak var parentController: UINavigationController?
-    private var repository: DataRepository!
-    private var awardManager: AwardManager!
+    private var repository: DataRepository
+    private var awardManager: AwardManager
 
     init(
         parent: UINavigationController?,
@@ -70,8 +70,6 @@ class GoalCoordinator: GoalCoordinatorProtocol {
             sticker: nil,
             presentation: .modal
         )
-
         parentController?.present(nav, animated: true)
     }
-
 }

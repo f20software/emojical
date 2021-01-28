@@ -43,6 +43,9 @@ protocol DataRepository: class {
     /// Stamp Ids for a day (will be stored in Diary table)
     func stampsIdsForDay(_ day: Date) -> [Int64]
     
+    /// Stamps for a day
+    func stampsFor(_ day: Date) -> [Stamp]
+
     /// Only favorites stamps - used in day view
     func favoriteStamps() -> [Stamp]
     
@@ -85,9 +88,6 @@ protocol DataRepository: class {
     
     /// Last 10 awards
     func recentAwards() -> [Award]
-    
-    /// Names of stamps used at specific date
-    func stampsNamesForDay(_ day: Date) -> [String]
     
     // MARK: - Saving
     

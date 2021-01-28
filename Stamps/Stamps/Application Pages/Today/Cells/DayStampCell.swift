@@ -61,7 +61,6 @@ class DayStampCell: UICollectionViewCell {
         
         selectionView.isHidden = true
         badgeView.isHidden = true
-        
     }
 }
 

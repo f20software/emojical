@@ -30,6 +30,7 @@ class SelectStickerCell: UICollectionViewCell {
         
         sticker.text = data.sticker.label
         sticker.color = data.sticker.color
+        
         selectedMark.isHidden = !data.selected
     }
     

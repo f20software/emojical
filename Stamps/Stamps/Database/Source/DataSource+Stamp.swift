@@ -87,18 +87,10 @@ extension DataSource {
         return []
     }
 
-    // Stamp names for a day
-    func stampsNamesForDay(_ day: Date) -> [String] {
+    /// Stamps for a day
+    func stampsFor(_ day: Date) -> [Stamp] {
         let ids = stampsIdsForDay(day)
-        var result = [String]()
-        
-        for id in ids {
-            if let name = stampById(id)?.name {
-                result.append(name)
-            }
-        }
-        
-        return result
+        return ids.compactMap({ stampById($0) })
     }
 
     // Recalculate count and lastUsed in Stamp object

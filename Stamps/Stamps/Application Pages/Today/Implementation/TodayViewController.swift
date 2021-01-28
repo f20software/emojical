@@ -151,6 +151,13 @@ class TodayViewController: UIViewController {
     }
     
     private func configureViews() {
+
+        let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
+        for day in dayViews {
+            day.stickerSize = floor(day0.bounds.width)
+        }
+
+
         // Hide buttons initially
         adjustButtonConstraintsForState(.hidden)
 

@@ -113,7 +113,10 @@ class NotificationManager {
             nextNotificationDate = nextNotificationDate.byAddingDays(1)
         }
         else {
-            content = todayReminderContent(todayStamps: Storage.shared.repository.stampsNamesForDay(Date()))
+            let stickers = Storage.shared.repository.stampsFor(Date())
+            content = todayReminderContent(todayStamps: stickers.map({
+                return $0.name.isEmpty ? $0.label : $0.name
+            }))
         }
         
         let comps = Calendar.current.dateComponents([.day, .year, .month, .hour, .minute], from: nextNotificationDate)

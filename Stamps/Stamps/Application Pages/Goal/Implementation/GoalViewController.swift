@@ -79,7 +79,7 @@ class GoalViewController : UIViewController, GoalView {
     }
 
     /// Loads Goal data
-    func loadGoalData(_ data: [GoalDetailsElement]) {
+    func loadData(_ data: [GoalDetailsElement]) {
 
         // Reset old reference
         detailsEditView = nil

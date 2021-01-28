@@ -165,6 +165,7 @@ extension StampSelectorView: UICollectionViewDelegate {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.newSticker, for: path
             ) as? NewStickerCell else { return UICollectionViewCell() }
+            cell.configure(iconRatio: 0.9)
             return cell
         }
     }

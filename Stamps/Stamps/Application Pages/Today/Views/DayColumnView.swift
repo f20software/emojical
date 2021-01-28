@@ -14,6 +14,13 @@ class DayColumnView : UIView {
     
     @IBOutlet weak var column: UICollectionView!
     
+    var stickerSize: CGFloat = 44.0 {
+        didSet {
+            // Recalculate collection view layout to ensure we accomodate for `stickerSize`
+            column.collectionViewLayout = dayColumnLayout()
+        }
+    }
+    
     // MARK: - State
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StickerData>!
@@ -94,7 +101,7 @@ class DayColumnView : UIView {
         )
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
+                widthDimension: .absolute(stickerSize),
                 heightDimension: .fractionalHeight(1.0)
             ),
             subitems: [item]

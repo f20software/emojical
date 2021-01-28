@@ -19,6 +19,9 @@ extension Theme {
             tint: UIColor(r: 13, g: 15, b: 45),
 
             ///
+            text: UIColor.label,
+
+            ///
             secondaryText: UIColor.secondaryLabel,
             
             pallete: [
@@ -36,6 +39,8 @@ extension Theme {
             /// Main application tint color
             tint: UIColor(r: 13, g: 15, b: 45),
             
+            text: UIColor.label,
+
             ///
             secondaryText: UIColor.lightGray,
 

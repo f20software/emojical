@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         /// Setup data storage. Change this line to swap to another data storage mechanism.
         Storage.shared = GRDBDataProvider(app: application)
         
+        // Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")
+        
         /// Setup calendar helper
         CalendarHelper.shared = CalendarHelper()
         AwardManager.shared.recalculateOnAppResume()

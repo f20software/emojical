@@ -41,11 +41,12 @@ class StickerDetailsCell: UICollectionViewCell {
         plate.clipsToBounds = true
         
         stickerBackground.backgroundColor = UIColor.systemBackground
-        stickerBackground.layer.cornerRadius = 10.0
+        stickerBackground.layer.cornerRadius = Specs.cornerRadius
         
         statistics.font = Theme.shared.fonts.listBody
         usage.font = Theme.shared.fonts.listBody
     }
+    
 }
 
 // MARK: - Specs
@@ -53,11 +54,5 @@ fileprivate struct Specs {
     
     /// Background corner radius
     static let cornerRadius: CGFloat = 8.0
-
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 4.0
-    
-    /// Emoji font size for award icon
-    static let emojiFontSize: CGFloat = 50.0
 }
 

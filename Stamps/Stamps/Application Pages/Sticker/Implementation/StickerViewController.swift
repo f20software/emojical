@@ -114,7 +114,9 @@ class StickerViewController : UIViewController, StickerViewProtocol {
         
         to.name = (details.name.text ?? to.name).trimmingCharacters(in: CharacterSet(charactersIn: " "))
         to.label = details.emoji.text ?? ""
-        to.color = Theme.shared.colors.pallete[details.selectedColorIndex]
+        if details.selectedColorIndex >= 0 {
+            to.color = Theme.shared.colors.pallete[details.selectedColorIndex]
+        }
     }
 
     /// Dismisses view if it was presented modally

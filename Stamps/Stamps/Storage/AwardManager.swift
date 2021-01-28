@@ -10,12 +10,10 @@ import Foundation
 import UIKit
 
 class AwardManager {
-    struct AwardUpdate {
-        let add: [Award]
-        let delete: [Award]
-    }
     
-    let repository: DataRepository
+    // MARK: - Internal state
+
+    private let repository: DataRepository
     
     // Singleton instance
     static let shared = AwardManager(repository: Storage.shared.repository)
@@ -30,8 +28,10 @@ class AwardManager {
     // we reach Sunday
     func recalculateOnAppResume() {
         recalculateMonthlyGoals()
-        if recalculateWeeklyGoals() > 1 {
-            NotificationCenter.default.post(name: .weekClosed, object: nil)
+        if recalculateWeeklyGoals() > 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                NotificationCenter.default.post(name: .weekClosed, object: nil)
+            })
         }
     }
     

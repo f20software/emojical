@@ -9,5 +9,7 @@
 import Foundation
 
 protocol GoalsListener {
+    
+    /// Start listening to changes in the Goals table
     func startListening(onError: @escaping (Error) -> Void, onChange: @escaping ([Goal]) -> Void)
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,15 +20,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="74" height="78"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.app" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Rha-Cl-k3r">
-                                <rect key="frame" x="5" y="6.5" width="64" height="65"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
+                                <rect key="frame" x="0.0" y="3.5" width="74" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rha-Cl-k3r" secondAttribute="height" id="n7k-Xf-KpP"/>
+                                </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Rha-Cl-k3r" secondAttribute="bottom" priority="999" constant="5" id="Kmz-Bd-pAD"/>
-                            <constraint firstItem="Rha-Cl-k3r" firstAttribute="top" secondItem="ChH-rG-WsF" secondAttribute="top" constant="5" id="ahd-Pw-jm4"/>
-                            <constraint firstAttribute="trailing" secondItem="Rha-Cl-k3r" secondAttribute="trailing" priority="999" constant="5" id="my0-3p-zIF"/>
-                            <constraint firstItem="Rha-Cl-k3r" firstAttribute="leading" secondItem="ChH-rG-WsF" secondAttribute="leading" constant="5" id="xoF-Xx-Ifn"/>
+                            <constraint firstItem="Rha-Cl-k3r" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="Vzo-Cu-Z5m"/>
+                            <constraint firstItem="Rha-Cl-k3r" firstAttribute="centerX" secondItem="ChH-rG-WsF" secondAttribute="centerX" id="ker-or-aro"/>
+                            <constraint firstAttribute="width" secondItem="Rha-Cl-k3r" secondAttribute="width" id="pFJ-5F-7sb"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -43,6 +45,8 @@
             <size key="customSize" width="74" height="78"/>
             <connections>
                 <outlet property="border" destination="ChH-rG-WsF" id="Qr0-pp-Lst"/>
+                <outlet property="icon" destination="Rha-Cl-k3r" id="8pV-Qf-YqT"/>
+                <outlet property="ratio" destination="pFJ-5F-7sb" id="ZGO-Rp-LdE"/>
             </connections>
             <point key="canvasLocation" x="59.420289855072468" y="138.61607142857142"/>
         </collectionViewCell>

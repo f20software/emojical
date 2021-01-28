@@ -75,6 +75,9 @@ final class Theme {
         let tint: UIColor
 
         ///
+        let text: UIColor
+
+        ///
         let secondaryText: UIColor
         
         ///

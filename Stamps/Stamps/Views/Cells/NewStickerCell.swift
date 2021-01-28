@@ -13,6 +13,8 @@ class NewStickerCell: UICollectionViewCell {
     // MARK: - Outlets
 
     @IBOutlet weak var border: UIView!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var ratio: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,23 +23,14 @@ class NewStickerCell: UICollectionViewCell {
     
     // MARK: - Public view interface
 
-    func configure() {
+    func configure(iconRatio: CGFloat = 1.0) {
+        ratio.constant = border.bounds.width * (1 - iconRatio)
     }
 
     // MARK: - Private helpers
 
     private func configureViews() {
-        border.layer.cornerRadius = Specs.cornerRadius
         border.backgroundColor = UIColor.clear
-        border.layer.borderWidth = 2.0
-        border.layer.borderColor = UIColor.systemGray6.cgColor
-        border.clipsToBounds = true
+        icon.image = UIImage(systemName: "plus.square", withConfiguration: UIImage.SymbolConfiguration(weight: .light))
     }
-}
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
 }

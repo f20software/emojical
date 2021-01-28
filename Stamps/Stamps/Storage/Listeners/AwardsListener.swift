@@ -9,5 +9,7 @@
 import Foundation
 
 protocol AwardsListener {
+    
+    /// Start listening to changes in the Awards table
     func startListening(onChange: @escaping () -> Void)
 }

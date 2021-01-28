@@ -28,9 +28,10 @@
 		BC56440F246B30BF00942066 /* StampsDataSourceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56440E246B30BF00942066 /* StampsDataSourceListener.swift */; };
 		BCF2300F2473222F001E8844 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF2300E2473222F001E8844 /* DateTests.swift */; };
 		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
-		F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView.swift */; };
+		F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView_Old.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20E403A2443E5BC008759D1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
+		F21F150325C107A900DE5C1B /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F150225C107A800DE5C1B /* StickerView.swift */; };
 		F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */; };
 		F23CF369258271750048BA74 /* YearBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF368258271750048BA74 /* YearBoxView.swift */; };
 		F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF36C258271BE0048BA74 /* YearBoxData.swift */; };
@@ -135,7 +136,6 @@
 		F2B4762B23DBDFEF0076BFDC /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F2B4762A23DBDFEF0076BFDC /* GRDB */; };
 		F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762C23DC1B440076BFDC /* AppDatabase.swift */; };
 		F2B4763023DCF9DE0076BFDC /* StoredDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */; };
-		F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */; };
 		F2B7D35F244C9B3A00C94E63 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D35E244C9B3A00C94E63 /* StringExtensions.swift */; };
 		F2C493242430172D00E997BD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493232430172D00E997BD /* NotificationManager.swift */; };
 		F2C493262430179500E997BD /* LocalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493252430179500E997BD /* LocalSettings.swift */; };
@@ -223,7 +223,8 @@
 		BC56440E246B30BF00942066 /* StampsDataSourceListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsDataSourceListener.swift; sourceTree = "<group>"; };
 		BCF2300E2473222F001E8844 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
-		F20D1F9424142A1700FB5000 /* StickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
+		F20D1F9424142A1700FB5000 /* StickerView_Old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView_Old.swift; sourceTree = "<group>"; };
+		F21F150225C107A800DE5C1B /* StickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataBuilder.swift; sourceTree = "<group>"; };
 		F23CF368258271750048BA74 /* YearBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxView.swift; sourceTree = "<group>"; };
 		F23CF36C258271BE0048BA74 /* YearBoxData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxData.swift; sourceTree = "<group>"; };
@@ -326,7 +327,6 @@
 		F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverList.swift; sourceTree = "<group>"; };
 		F2B4762C23DC1B440076BFDC /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredDiary.swift; sourceTree = "<group>"; };
-		F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomStickerCell.xib; sourceTree = "<group>"; };
 		F2B7D35E244C9B3A00C94E63 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		F2C493232430172D00E997BD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		F2C493252430179500E997BD /* LocalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
@@ -484,7 +484,9 @@
 		F20D1F9724142A1D00FB5000 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F20D1F9424142A1700FB5000 /* StickerView.swift */,
+				F24E23ED25C24DFC00669134 /* Cells */,
+				F20D1F9424142A1700FB5000 /* StickerView_Old.swift */,
+				F21F150225C107A800DE5C1B /* StickerView.swift */,
 				F23CF44E25851C140048BA74 /* GoalAwardView.swift */,
 			);
 			path = Views;
@@ -526,14 +528,10 @@
 		F23CF38325829B500048BA74 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F23CF3F62582E86E0048BA74 /* NewGoalCell.xib */,
-				F23CF3F72582E86E0048BA74 /* NewGoalCell.swift */,
 				F23CF3D22582A9FB0048BA74 /* GoalCell.xib */,
 				F23CF3D32582A9FB0048BA74 /* GoalCell.swift */,
 				F23CF4222583E8720048BA74 /* NoGoalsCell.xib */,
 				F23CF4232583E8720048BA74 /* NoGoalsCell.swift */,
-				F23CF3FC2582EC8B0048BA74 /* NewStickerCell.xib */,
-				F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */,
 				F23CF3CB2582A95F0048BA74 /* StickerCell.xib */,
 				F23CF3CA2582A95F0048BA74 /* StickerCell.swift */,
 			);
@@ -588,6 +586,17 @@
 				F2F3BE73257DD2C100A926E9 /* Implementation */,
 			);
 			path = Today;
+			sourceTree = "<group>";
+		};
+		F24E23ED25C24DFC00669134 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F23CF3FC2582EC8B0048BA74 /* NewStickerCell.xib */,
+				F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */,
+				F23CF3F62582E86E0048BA74 /* NewGoalCell.xib */,
+				F23CF3F72582E86E0048BA74 /* NewGoalCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F26596DF2596AF1300B10B76 /* Recap */ = {
@@ -1006,7 +1015,6 @@
 		F2FD4E0425BDCD41005819A0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F2B7D35C244B4C9A00C94E63 /* CustomStickerCell.xib */,
 				F2FD4E0925BDCD41005819A0 /* StickerDetailsCell.xib */,
 				F2FD4E0625BDCD41005819A0 /* StickerDetailsCell.swift */,
 				F2FD4E0525BDCD41005819A0 /* StickerDetailsEditCell.xib */,
@@ -1177,7 +1185,6 @@
 				F295336625B60CEB003CA002 /* Sticker.storyboard in Resources */,
 				F2FD4DF325BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib in Resources */,
 				F2FD4DBA25BC88C6005819A0 /* SelectStickers.storyboard in Resources */,
-				F2B7D35D244B4C9A00C94E63 /* CustomStickerCell.xib in Resources */,
 				F2FD4E1725BDCD42005819A0 /* StickerDetailsEditCell.xib in Resources */,
 				F23CF3D42582A9FB0048BA74 /* GoalCell.xib in Resources */,
 				F2FD4E1B25BDCD42005819A0 /* StickerDetailsCell.xib in Resources */,
@@ -1296,6 +1303,7 @@
 				BC564409246B2F3900942066 /* GoalListener.swift in Sources */,
 				BC5643EC246B0E2900942066 /* DataRepository.swift in Sources */,
 				F295337425B61522003CA002 /* GoalPresenterProtocol.swift in Sources */,
+				F21F150325C107A900DE5C1B /* StickerView.swift in Sources */,
 				F27968F1240C127900EA9436 /* StoredParam.swift in Sources */,
 				F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */,
 				BC1E1EFD246C59B000E05C8A /* Storage.swift in Sources */,
@@ -1331,7 +1339,7 @@
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
 				F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */,
 				F27BC99725B7DF7E00B58087 /* Theme+Main.swift in Sources */,
-				F20D1F9624142A1700FB5000 /* StickerView.swift in Sources */,
+				F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */,
 				F23CF3B225829B510048BA74 /* StickersPresenterProtocol.swift in Sources */,
 				F251F8BD25BFBBEC0042B1DA /* SelectStickerElement.swift in Sources */,
 				F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */,
@@ -1560,7 +1568,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.4;
+				CURRENT_PROJECT_VERSION = 1.1.5;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1581,7 +1589,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.4;
+				CURRENT_PROJECT_VERSION = 1.1.5;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

@@ -140,15 +140,21 @@ class StickerPresenter: StickerPresenterProtocol {
         guard let view = view else { return }
 
         view.update(to: &sticker)
-        view.updateTitle(sticker.name)
+        updateTitle()
         view.updateIcon(sticker)
         view.enableDoneButton(sticker.isValid)
+    }
+    
+    private func updateTitle() {
+        let title = (sticker.name.isEmpty && presentationMode == .modal)  ? "New Sticker" : sticker.name
+        view?.updateTitle(title)
     }
     
     // Create a load view data based on editing mode
     private func loadViewData() {
         // First set title and then check whether we're in edit or viewing mode
-        view?.updateTitle(sticker.name)
+        updateTitle()
+        
         if isEditing {
             loadViewDataEditing()
         } else {
@@ -196,7 +202,7 @@ class StickerPresenter: StickerPresenterProtocol {
         if presentationMode == .modal {
             view.loadData([.edit(data)])
             // For newly created emoji - help user understand what needs to be done
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 view.focusOnEmoji()
             })
         } else {

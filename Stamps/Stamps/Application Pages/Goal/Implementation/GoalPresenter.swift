@@ -156,10 +156,15 @@ class GoalPresenter: GoalPresenterProtocol {
         guard let view = view else { return }
 
         view.update(to: &goal)
-        view.updateTitle(goal.name)
+        updateTitle()
         view.enableDoneButton(goal.isValid)
     }
     
+    private func updateTitle() {
+        let title = (goal.name.isEmpty && presentationMode == .modal)  ? "New Goal" : goal.name
+        view?.updateTitle(title)
+    }
+
     // Create a load view data based on editing mode
     private func loadViewData() {
         guard let view = view else { return }
@@ -176,6 +181,8 @@ class GoalPresenter: GoalPresenterProtocol {
             stamp: stamp
         )
 
+        updateTitle()
+
         if isEditing {
             let data = GoalEditData(
                 goal: goal,
@@ -183,9 +190,9 @@ class GoalPresenter: GoalPresenterProtocol {
                 award: award
             )
             if presentationMode == .modal {
-                view.loadGoalData([.edit(data)])
+                view.loadData([.edit(data)])
             } else {
-                view.loadGoalData([.edit(data), .deleteButton])
+                view.loadData([.edit(data), .deleteButton])
             }
             view.enableDoneButton(goal.isValid)
         } else {
@@ -197,8 +204,7 @@ class GoalPresenter: GoalPresenterProtocol {
                 award: award,
                 progress: currentProgress
             )
-            view.updateTitle(goal.name)
-            view.loadGoalData([.view(data)])
+            view.loadData([.view(data)])
         }
     }
     

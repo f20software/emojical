@@ -9,5 +9,7 @@
 import Foundation
 
 protocol StampsListener {
+
+    /// Start listening to changes in the Stamps table
     func startListening(onError: @escaping (Error) -> Void, onChange: @escaping ([Stamp]) -> Void)
 }

@@ -45,7 +45,7 @@ protocol GoalView: AnyObject {
     func enableDoneButton(_ enabled: Bool)
 
     /// Loads Goal data
-    func loadGoalData(_ data: [GoalDetailsElement])
+    func loadData(_ data: [GoalDetailsElement])
 
     /// Update Goal data from the UI
     func update(to: inout Goal)

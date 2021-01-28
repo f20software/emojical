@@ -484,6 +484,7 @@
 		F20D1F9724142A1D00FB5000 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F24E23ED25C24DFC00669134 /* Cells */,
 				F20D1F9424142A1700FB5000 /* StickerView_Old.swift */,
 				F21F150225C107A800DE5C1B /* StickerView.swift */,
 				F23CF44E25851C140048BA74 /* GoalAwardView.swift */,
@@ -527,14 +528,10 @@
 		F23CF38325829B500048BA74 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F23CF3F62582E86E0048BA74 /* NewGoalCell.xib */,
-				F23CF3F72582E86E0048BA74 /* NewGoalCell.swift */,
 				F23CF3D22582A9FB0048BA74 /* GoalCell.xib */,
 				F23CF3D32582A9FB0048BA74 /* GoalCell.swift */,
 				F23CF4222583E8720048BA74 /* NoGoalsCell.xib */,
 				F23CF4232583E8720048BA74 /* NoGoalsCell.swift */,
-				F23CF3FC2582EC8B0048BA74 /* NewStickerCell.xib */,
-				F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */,
 				F23CF3CB2582A95F0048BA74 /* StickerCell.xib */,
 				F23CF3CA2582A95F0048BA74 /* StickerCell.swift */,
 			);
@@ -589,6 +586,17 @@
 				F2F3BE73257DD2C100A926E9 /* Implementation */,
 			);
 			path = Today;
+			sourceTree = "<group>";
+		};
+		F24E23ED25C24DFC00669134 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F23CF3FC2582EC8B0048BA74 /* NewStickerCell.xib */,
+				F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */,
+				F23CF3F62582E86E0048BA74 /* NewGoalCell.xib */,
+				F23CF3F72582E86E0048BA74 /* NewGoalCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F26596DF2596AF1300B10B76 /* Recap */ = {

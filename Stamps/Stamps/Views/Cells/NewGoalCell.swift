@@ -29,10 +29,13 @@ class NewGoalCell: UICollectionViewCell {
 
     private func configureViews() {
         plate.layer.cornerRadius = Specs.cornerRadius
+        plate.layer.borderWidth = Specs.borderWidth
         plate.backgroundColor = UIColor.clear
-        plate.layer.borderWidth = 2.0
         plate.layer.borderColor = UIColor.systemGray6.cgColor
         plate.clipsToBounds = true
+
+        title.font = Theme.shared.fonts.buttons
+        title.text = "Create Goal"
     }
 }
 
@@ -41,4 +44,7 @@ fileprivate struct Specs {
     
     /// Background corner radius
     static let cornerRadius: CGFloat = 8.0
+
+    /// Border width
+    static let borderWidth: CGFloat = 2.0
 }

@@ -153,6 +153,10 @@ class TodayViewController: UIViewController {
     private func configureViews() {
 
         let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
+        // We want to pass exact same width to all daily columns. Otherwise,
+        // if we just rely on the auto-layout, there will be some fraction difference
+        // between them, and that would make vertical spacing between stickers
+        // not even and visible for the user. 
         for day in dayViews {
             day.stickerSize = floor(day0.bounds.width)
         }

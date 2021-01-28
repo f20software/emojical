@@ -40,7 +40,10 @@ class GoalDetailsDeleteButtonCell: UICollectionViewCell {
         plate.backgroundColor = UIColor.clear
         footer.font = Theme.shared.fonts.footer
         footer.textColor = Theme.shared.colors.secondaryText
+        
         footer.text = "If you update or delete the goal, all previously earned awards will remain unchanged."
-        deleteButton.titleLabel?.font = Theme.shared.fonts.listBody
+        
+        deleteButton.setTitle("Delete Goal", for: .normal)
+        deleteButton.titleLabel?.font = Theme.shared.fonts.buttons
     }
 }

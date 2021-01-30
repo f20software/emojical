@@ -298,11 +298,11 @@
                                 <rect key="frame" x="16" y="541" width="382" height="168"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NDs-gn-bub">
-                                        <rect key="frame" x="20" y="20" width="342" height="128"/>
+                                        <rect key="frame" x="41" y="20" width="300" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="C41-p1-nrs"/>
-                                            <constraint firstAttribute="width" constant="342" id="sNn-66-SUN"/>
+                                            <constraint firstAttribute="width" constant="300" id="sNn-66-SUN"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j7b-h6-9eX">
                                             <size key="itemSize" width="128" height="128"/>
@@ -325,8 +325,6 @@
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="NDs-gn-bub" firstAttribute="centerX" secondItem="kD0-4R-gft" secondAttribute="centerX" id="4Ys-sR-GLx"/>
-                                    <constraint firstItem="NDs-gn-bub" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kD0-4R-gft" secondAttribute="leading" constant="20" id="MGP-Xx-dTw"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NDs-gn-bub" secondAttribute="trailing" constant="20" id="OT7-Sb-tST"/>
                                     <constraint firstItem="NDs-gn-bub" firstAttribute="top" secondItem="kD0-4R-gft" secondAttribute="top" constant="20" id="OgK-3N-db1"/>
                                     <constraint firstAttribute="bottom" secondItem="NDs-gn-bub" secondAttribute="bottom" constant="20" id="Omi-Ux-WGe"/>
                                     <constraint firstItem="kmW-aD-5IS" firstAttribute="top" secondItem="kD0-4R-gft" secondAttribute="top" constant="6" id="YB9-sH-siC"/>

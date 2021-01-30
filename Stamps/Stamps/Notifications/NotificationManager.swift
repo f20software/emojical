@@ -17,7 +17,7 @@ class NotificationManager {
     
     // If application is running withing 120 minutes from reminder time, we will not show reminder
     // today but will schedule it for tomorrow
-    let reminderGap: Int = 120
+    private let reminderGap: Int = 120
     
     var userNotificationCenter: UNUserNotificationCenter {
         return UNUserNotificationCenter.current()
@@ -94,6 +94,11 @@ class NotificationManager {
             userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [existingId])
         }
         
+        // Don't schedule anything if user opted out
+        if !settings.reminderEnabled {
+            return
+        }
+
         let notification = createNextNotification()
         settings.todayNotificationId = notification.identifier
         userNotificationCenter.add(notification) { (error) in

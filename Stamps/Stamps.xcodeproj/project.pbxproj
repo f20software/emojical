@@ -76,6 +76,12 @@
 		F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
 		F273E29B259699BD0037BEDA /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273E29A259699BD0037BEDA /* TodayCoordinator.swift */; };
 		F273E2A125969BF50037BEDA /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273E2A025969BF50037BEDA /* Storyboard.swift */; };
+		F27782F725C501E300C68F7A /* OptionsTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27782ED25C501E300C68F7A /* OptionsTableModel.swift */; };
+		F27782F925C501E300C68F7A /* OptionsCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27782F025C501E300C68F7A /* OptionsCoordinatorProtocol.swift */; };
+		F27782FA25C501E300C68F7A /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27782F125C501E300C68F7A /* OptionsView.swift */; };
+		F27782FB25C501E300C68F7A /* OptionsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27782F225C501E300C68F7A /* OptionsPresenterProtocol.swift */; };
+		F27782FD25C501E300C68F7A /* OptionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27782F525C501E300C68F7A /* OptionsPresenter.swift */; };
+		F27782FE25C501E300C68F7A /* OptionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27782F625C501E300C68F7A /* OptionsCoordinator.swift */; };
 		F27968F1240C127900EA9436 /* StoredParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F0240C127900EA9436 /* StoredParam.swift */; };
 		F27968F3240C12C700EA9436 /* DataSource+Param.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27968F2240C12C700EA9436 /* DataSource+Param.swift */; };
 		F27B0451241EBD7A006E5175 /* EmojicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27B0450241EBD7A006E5175 /* EmojicalTests.swift */; };
@@ -144,6 +150,11 @@
 		F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944023D2CBC800EAF9CC /* Main.storyboard */; };
 		F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */; };
 		F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */; };
+		F2EE4AA825C5AD64004FB0F2 /* OptionsButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AA725C5AD64004FB0F2 /* OptionsButtonCell.swift */; };
+		F2EE4AAD25C5AECC004FB0F2 /* OptionsNavigateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAB25C5AECC004FB0F2 /* OptionsNavigateCell.swift */; };
+		F2EE4AAE25C5AECC004FB0F2 /* OptionsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAC25C5AECC004FB0F2 /* OptionsTextCell.swift */; };
+		F2EE4AB825C5B3B9004FB0F2 /* OptionsSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AB725C5B3B9004FB0F2 /* OptionsSwitchCell.swift */; };
+		F2EE4ABE25C5BABF004FB0F2 /* OptionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4ABD25C5BABF004FB0F2 /* OptionsDataSource.swift */; };
 		F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260EC2408BB4400F5CCB9 /* DataSource+Stamp.swift */; };
 		F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */; };
 		F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */; };
@@ -269,6 +280,12 @@
 		F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		F273E29A259699BD0037BEDA /* TodayCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
 		F273E2A025969BF50037BEDA /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		F27782ED25C501E300C68F7A /* OptionsTableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTableModel.swift; sourceTree = "<group>"; };
+		F27782F025C501E300C68F7A /* OptionsCoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		F27782F125C501E300C68F7A /* OptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		F27782F225C501E300C68F7A /* OptionsPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsPresenterProtocol.swift; sourceTree = "<group>"; };
+		F27782F525C501E300C68F7A /* OptionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsPresenter.swift; sourceTree = "<group>"; };
+		F27782F625C501E300C68F7A /* OptionsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCoordinator.swift; sourceTree = "<group>"; };
 		F27968F0240C127900EA9436 /* StoredParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredParam.swift; sourceTree = "<group>"; };
 		F27968F2240C12C700EA9436 /* DataSource+Param.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Param.swift"; sourceTree = "<group>"; };
 		F27B044E241EBD7A006E5175 /* EmojicalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojicalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,6 +354,11 @@
 		F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2C4944623D2CBCA00EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2C4944823D2CBCA00EAF9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2EE4AA725C5AD64004FB0F2 /* OptionsButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsButtonCell.swift; sourceTree = "<group>"; };
+		F2EE4AAB25C5AECC004FB0F2 /* OptionsNavigateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsNavigateCell.swift; sourceTree = "<group>"; };
+		F2EE4AAC25C5AECC004FB0F2 /* OptionsTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTextCell.swift; sourceTree = "<group>"; };
+		F2EE4AB725C5B3B9004FB0F2 /* OptionsSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsSwitchCell.swift; sourceTree = "<group>"; };
+		F2EE4ABD25C5BABF004FB0F2 /* OptionsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsDataSource.swift; sourceTree = "<group>"; };
 		F2F260EC2408BB4400F5CCB9 /* DataSource+Stamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Stamp.swift"; sourceTree = "<group>"; };
 		F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Goal.swift"; sourceTree = "<group>"; };
 		F2F260F02408C3E400F5CCB9 /* DataSource+Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Diary.swift"; sourceTree = "<group>"; };
@@ -655,6 +677,35 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F27782EC25C501E300C68F7A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4ABD25C5BABF004FB0F2 /* OptionsDataSource.swift */,
+				F27782ED25C501E300C68F7A /* OptionsTableModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F27782EF25C501E300C68F7A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F27782F125C501E300C68F7A /* OptionsView.swift */,
+				F27782F025C501E300C68F7A /* OptionsCoordinatorProtocol.swift */,
+				F27782F225C501E300C68F7A /* OptionsPresenterProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F27782F325C501E300C68F7A /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				F2A99D282439346900D3CF1D /* OptionsViewController.swift */,
+				F27782F525C501E300C68F7A /* OptionsPresenter.swift */,
+				F27782F625C501E300C68F7A /* OptionsCoordinator.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
 		F27B044F241EBD7A006E5175 /* EmojicalTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -802,7 +853,10 @@
 			isa = PBXGroup;
 			children = (
 				F2A21C11244271130030A117 /* Options.storyboard */,
-				F2A99D282439346900D3CF1D /* OptionsViewController.swift */,
+				F27782EC25C501E300C68F7A /* Models */,
+				F2EE4AA625C5AD64004FB0F2 /* Cells */,
+				F27782EF25C501E300C68F7A /* Protocols */,
+				F27782F325C501E300C68F7A /* Implementation */,
 			);
 			path = Options;
 			sourceTree = "<group>";
@@ -878,6 +932,17 @@
 				F2C4944823D2CBCA00EAF9CC /* Info.plist */,
 			);
 			path = Stamps;
+			sourceTree = "<group>";
+		};
+		F2EE4AA625C5AD64004FB0F2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F2EE4AAC25C5AECC004FB0F2 /* OptionsTextCell.swift */,
+				F2EE4AA725C5AD64004FB0F2 /* OptionsButtonCell.swift */,
+				F2EE4AAB25C5AECC004FB0F2 /* OptionsNavigateCell.swift */,
+				F2EE4AB725C5B3B9004FB0F2 /* OptionsSwitchCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F2F260F42408D96700F5CCB9 /* Database */ = {
@@ -1273,6 +1338,7 @@
 				F2FD4E2425BDCD42005819A0 /* StickerPresenterProtocol.swift in Sources */,
 				F295337B25B6165C003CA002 /* GoalViewController.swift in Sources */,
 				F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */,
+				F27782FB25C501E300C68F7A /* OptionsPresenterProtocol.swift in Sources */,
 				F2A93FB625813668006C88F8 /* WeekLineView.swift in Sources */,
 				F2FD4DD025BCB89C005819A0 /* GoalCoordinator.swift in Sources */,
 				F2FD4E2525BDCD42005819A0 /* StickerViewProtocol.swift in Sources */,
@@ -1280,8 +1346,11 @@
 				BC564407246B2D0E00942066 /* AwardsDataSourceListener.swift in Sources */,
 				F2FD4DB925BC88C6005819A0 /* SelectStickerCell.swift in Sources */,
 				F2B7D35F244C9B3A00C94E63 /* StringExtensions.swift in Sources */,
+				F27782FD25C501E300C68F7A /* OptionsPresenter.swift in Sources */,
+				F27782FE25C501E300C68F7A /* OptionsCoordinator.swift in Sources */,
 				F2FD4E2125BDCD42005819A0 /* StickerViewController.swift in Sources */,
 				F23CF3DE2582BB0E0048BA74 /* StickersHeaderView.swift in Sources */,
+				F27782F725C501E300C68F7A /* OptionsTableModel.swift in Sources */,
 				F295337A25B6165C003CA002 /* GoalPresenter.swift in Sources */,
 				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
@@ -1324,12 +1393,14 @@
 				F273E29B259699BD0037BEDA /* TodayCoordinator.swift in Sources */,
 				F23CF441258417A60048BA74 /* TodayCoordinatorProtocol.swift in Sources */,
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
+				F2EE4AA825C5AD64004FB0F2 /* OptionsButtonCell.swift in Sources */,
 				F2A93F90258128E5006C88F8 /* StatsViewController.swift in Sources */,
 				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */,
 				F26596F32596AF1300B10B76 /* RecapPresenterProtocol.swift in Sources */,
 				F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */,
 				F2FD4E2325BDCD42005819A0 /* StickerCoordinatorProtocol.swift in Sources */,
+				F2EE4ABE25C5BABF004FB0F2 /* OptionsDataSource.swift in Sources */,
 				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
 				F247542523E734CE006A13C3 /* AwardManager.swift in Sources */,
 				F284F9AD257EFA8E0016D1C6 /* GoalAwardData.swift in Sources */,
@@ -1345,6 +1416,7 @@
 				F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */,
 				F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */,
 				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
+				F2EE4AB825C5B3B9004FB0F2 /* OptionsSwitchCell.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */,
@@ -1360,16 +1432,20 @@
 				F2A93F92258128E5006C88F8 /* StatsPresenterProtocol.swift in Sources */,
 				F23CF44F25851C150048BA74 /* GoalAwardView.swift in Sources */,
 				F295337525B61522003CA002 /* GoalView.swift in Sources */,
+				F27782FA25C501E300C68F7A /* OptionsView.swift in Sources */,
+				F2EE4AAD25C5AECC004FB0F2 /* OptionsNavigateCell.swift in Sources */,
 				F23CF3F92582E86E0048BA74 /* NewGoalCell.swift in Sources */,
 				F2FD4E2225BDCD42005819A0 /* StickerPresenter.swift in Sources */,
 				F23CF3B325829B510048BA74 /* StickersView.swift in Sources */,
 				F27BC98525B68D7F00B58087 /* GoalEditData.swift in Sources */,
+				F27782F925C501E300C68F7A /* OptionsCoordinatorProtocol.swift in Sources */,
 				F2FD4E1C25BDCD42005819A0 /* StickerDetailsDeleteButtonCell.swift in Sources */,
 				F26596F22596AF1300B10B76 /* RecapView.swift in Sources */,
 				F23CF3D52582A9FB0048BA74 /* GoalCell.swift in Sources */,
 				BC56440F246B30BF00942066 /* StampsDataSourceListener.swift in Sources */,
 				F2F3BE18257C267900A926E9 /* DayColumnView.swift in Sources */,
 				BC1E1EFF246C5B5000E05C8A /* DataSource+Repository.swift in Sources */,
+				F2EE4AAE25C5AECC004FB0F2 /* OptionsTextCell.swift in Sources */,
 				F295339325B63DB1003CA002 /* GoalDetailsCell.swift in Sources */,
 				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,
 			);

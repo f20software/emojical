@@ -73,6 +73,12 @@ final class Theme {
     struct Colors {
         /// Main application tint color
         let tint: UIColor
+        
+        
+        let background: UIColor
+
+
+        let secondaryBackround: UIColor
 
         ///
         let text: UIColor

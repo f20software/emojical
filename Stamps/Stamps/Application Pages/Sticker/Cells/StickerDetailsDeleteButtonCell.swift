@@ -43,6 +43,6 @@ class StickerDetailsDeleteButtonCell: UICollectionViewCell {
         footer.text = "If you delete the sticker, all previous usage of that sticker would remain unchanged."
         
         deleteButton.setTitle("Delete Sticker", for: .normal)
-        deleteButton.titleLabel?.font = Theme.shared.fonts.buttons
+        deleteButton.titleLabel?.font = Theme.shared.fonts.boldButtons
     }
 }

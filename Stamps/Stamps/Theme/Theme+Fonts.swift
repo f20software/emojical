@@ -34,11 +34,15 @@ extension Theme {
             font(ofSize: 14, weight: .regular, style: .body)
         }()
         
-        /// Buttons text font
-        lazy var buttons: UIFont = {
+        /// Bold buttons text font
+        lazy var boldButtons: UIFont = {
             font(ofSize: 20, weight: .semibold, style: .body)
         }()
 
+        /// Buttons text font
+        lazy var buttons: UIFont = {
+            font(ofSize: 20, weight: .regular, style: .body)
+        }()
 
         /// Returns a base font scaled according to current system font size.
         ///

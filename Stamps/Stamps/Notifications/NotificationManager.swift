@@ -92,6 +92,7 @@ class NotificationManager {
     @objc func refreshNotifications() {
         if let existingId = settings.todayNotificationId {
             userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [existingId])
+            settings.todayNotificationId = nil
         }
         
         // Don't schedule anything if user opted out

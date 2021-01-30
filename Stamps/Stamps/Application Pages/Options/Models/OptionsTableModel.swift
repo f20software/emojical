@@ -16,7 +16,7 @@ struct OptionsSection {
 }
 
 enum OptionsCell {
-    case text(String)
+    case text(String?, String? = nil)
     case `switch`(String, Bool, ((Bool) -> Void)?)
     case navigate(String, (() -> Void)?)
     case button(String, (() -> Void)?)
@@ -24,23 +24,23 @@ enum OptionsCell {
 
 extension OptionsCell: Equatable, Hashable {
     
-    var hashValue: Int {
+    func hash(into hasher: inout Hasher) {
         switch self {
-        case .text(let value):
-            return value.hashValue
+        case .text(let name, let value):
+            return "\(name ?? "")\(value ?? "")".hash(into: &hasher)
         case .`switch`(let value, _, _):
-            return value.hashValue
+            return value.hash(into: &hasher)
         case .navigate(let value, _):
-            return value.hashValue
+            return value.hash(into: &hasher)
         case .button(let value, _):
-            return value.hashValue
+            return value.hash(into: &hasher)
         }
     }
 
     static func ==(lhs: OptionsCell, rhs: OptionsCell) -> Bool {
         switch (lhs, rhs) {
-        case (.text(let lhsValue), .text(let rhsValue)):
-            return lhsValue == rhsValue
+        case (.text(let lhsValue1, let lhsValue2), .text(let rhsValue1, let rhsValue2)):
+            return (lhsValue1 == rhsValue1) && (lhsValue2 == rhsValue2)
         case (.`switch`(let lhsValue, _, _), .`switch`(let rhsValue, _, _)):
             return lhsValue == rhsValue
         case (.navigate(let lhsValue, _), .navigate(let rhsValue, _)):

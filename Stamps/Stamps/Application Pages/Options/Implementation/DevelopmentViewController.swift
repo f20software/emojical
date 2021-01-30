@@ -1,34 +1,28 @@
 //
-//  OptionsViewController.swift
+//  DevelopmentViewController.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 1/17/20.
-//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//  Created by Vladimir Svidersky on 1/30/21.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import UIKit
 
-class OptionsViewController: BaseTableViewController, OptionsView {
+class DevelopmentViewController: BaseTableViewController, DevelopmentView {
 
     // MARK: - DI
 
-    var presenter: OptionsPresenterProtocol!
-
-    lazy var coordinator: OptionsCoordinatorProtocol = {
-        OptionsCoordinator(
-            parent: self.navigationController!
-        )
-    }()
+    var presenter: DevelopmentPresenterProtocol!
 
     // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = OptionsPresenter(
+        presenter = DevelopmentPresenter(
             view: self,
-            settings: LocalSettings.shared,
-            coordinator: coordinator)
+            settings: LocalSettings.shared
+        )
         
         configureViews()
         presenter.onViewDidLoad()

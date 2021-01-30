@@ -22,7 +22,20 @@ class OptionsCoordinator: OptionsCoordinatorProtocol {
 
     /// Navigate to Developer Options
     func developerOptions() {
+        // Instantiate DevelopmentViewController from the storyboard file
+        guard let dev: DevelopmentViewController = Storyboard.Development.initialViewController() else {
+            assertionFailure("Failed to initialize DevelopmentViewController")
+            return
+        }
         
+        // Hook up presenter
+        let presenter = DevelopmentPresenter(
+            view: dev,
+            settings: LocalSettings.shared
+        )
+        dev.presenter = presenter
+
+        parentController?.pushViewController(dev, animated: true)
     }
 
     // MARK: - Private helpers

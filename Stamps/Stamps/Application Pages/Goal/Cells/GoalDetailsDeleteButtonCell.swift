@@ -44,6 +44,6 @@ class GoalDetailsDeleteButtonCell: UICollectionViewCell {
         footer.text = "If you update or delete the goal, all previously earned awards will remain unchanged."
         
         deleteButton.setTitle("Delete Goal", for: .normal)
-        deleteButton.titleLabel?.font = Theme.shared.fonts.buttons
+        deleteButton.titleLabel?.font = Theme.shared.fonts.boldButtons
     }
 }

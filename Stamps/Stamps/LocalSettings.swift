@@ -1,6 +1,6 @@
 //
 //  LocalSettings.swift
-//  Stamps
+//  Emojical
 //
 //  Created by Vladimir Svidersky on 2/8/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
@@ -27,9 +27,7 @@ class LocalSettings {
             return stringDefault(todayNotificationIdKey)
         }
         set {
-            if newValue != nil {
-                setStringDefault(newValue!, key: todayNotificationIdKey)
-            }
+            setStringDefault(newValue, key: todayNotificationIdKey)
         }
     }
 
@@ -50,7 +48,7 @@ class LocalSettings {
         return defaults.string(forKey: key)
     }
     
-    private func setStringDefault(_ value: String, key: String) {
+    private func setStringDefault(_ value: String?, key: String) {
         let defaults = UserDefaults.standard
         defaults.set(value, forKey: key)
     }

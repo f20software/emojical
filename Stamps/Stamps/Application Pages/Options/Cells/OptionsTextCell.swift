@@ -17,14 +17,16 @@ class OptionsTextCell: UITableViewCell {
     
     // MARK: - Public view interface
 
-    func configure(for data: String) {
-        textLabel?.text = data
+    func configure(for text: String?, value: String?) {
+        textLabel?.text = text
+        detailTextLabel?.text = value
     }
 
     // MARK: - Private helpers
 
     private func configureViews() {
         textLabel?.font = Theme.shared.fonts.listBody
+        detailTextLabel?.font = Theme.shared.fonts.listBody
         backgroundColor = Theme.shared.colors.secondaryBackround
     }
 }

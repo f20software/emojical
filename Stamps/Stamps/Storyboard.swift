@@ -16,8 +16,9 @@ enum Storyboard: String {
     case Recap
     case Goal
     case Sticker
-    case Sticker2
     case SelectStickers
+    case Development
+    case Options
 
     var instance: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)

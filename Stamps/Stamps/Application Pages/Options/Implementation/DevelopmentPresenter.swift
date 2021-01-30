@@ -1,8 +1,8 @@
 //
-//  OptionsPresenter.swift
+//  DevelopmentPresenter.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 1/29/21.
+//  Created by Vladimir Svidersky on 1/30/21.
 //  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
@@ -10,26 +10,23 @@ import Foundation
 import UIKit
 import MessageUI
 
-class OptionsPresenter: NSObject, OptionsPresenterProtocol {
+class DevelopmentPresenter: NSObject, DevelopmentPresenterProtocol {
 
     // MARK: - DI
 
-    private weak var view: OptionsView?
+    private weak var view: DevelopmentView?
     private weak var settings: LocalSettings!
-    private weak var coordinator: OptionsCoordinatorProtocol?
     
     // MARK: - State
 
     // MARK: - Lifecycle
 
     init(
-        view: OptionsView,
-        settings: LocalSettings,
-        coordinator: OptionsCoordinatorProtocol
+        view: DevelopmentView,
+        settings: LocalSettings
     ) {
         self.view = view
         self.settings = settings
-        self.coordinator = coordinator
     }
 
     /// Called when view finished initial loading.
@@ -50,50 +47,46 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     private func loadViewData() {
         let data: [OptionsSection] = [
             OptionsSection(
-                header: "Notifications",
-                footer: "We will remind you every day around 9pm to fill your entry for the day.",
-                cells: [
-                    .switch("Remind Me", settings.reminderEnabled, { [weak self] newValue in
-                        self?.settings.reminderEnabled = newValue
-                        // Force notification manager to update reminder
-                        NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
-                    })
-                ]
-            ),
-            OptionsSection(
                 header: nil,
                 footer: nil,
                 cells: [
-                    .button("Backup Data...", { [weak self] in
-                        self?.emailDataBackup()
+                    .text("Notifications", settings.reminderEnabled ? "On" : "Off"),
+                    .text("Id", settings.todayNotificationId ?? "-"),
+                ]
+            ),
+            OptionsSection(
+                header: "Testing Notifications",
+                footer: nil,
+                cells: [
+                    .button("Significant Time Change", {
+                        NotificationCenter.default.post(
+                            name: UIApplication.significantTimeChangeNotification, object: nil)
                     }),
-                    .button("Send Feedback...", { [weak self] in
-                        self?.sendFeedback()
+                    .button("Navigate to Today", {
+                        NotificationCenter.default.post(
+                            name: .navigateToToday, object: nil)
+                    }),
+                    .button("Week Recap is Ready", {
+                        NotificationCenter.default.post(
+                            name: .weekClosed, object: nil)
                     }),
                 ]
             ),
             OptionsSection(
-                header: nil,
+                header: "Log File",
                 footer: nil,
                 cells: [
-                    .navigate("Development Options", { [weak self] in
-                        self?.coordinator?.developerOptions()
-                    })
+                    .button("Email Log File...", { [weak self] in
+                        self?.emailLogFile()
+                    }),
                 ]
-            )
+            ),
         ]
         
         view?.loadData(data)
     }
 
-    private func sendFeedback() {
-        sendFeedbackEmail(
-            to: "feedback@emojical.app",
-            subject: "Emojical Feedback"
-        )
-    }
-
-    private func emailDataBackup() {
+    private func emailLogFile() {
         let repository = Storage.shared.repository
         let backupFileName = repository.deviceBackupFileName
         
@@ -108,7 +101,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     
 // MARK: - MFMailComposeViewControllerDelegate
 
-extension OptionsPresenter: MFMailComposeViewControllerDelegate {
+extension DevelopmentPresenter: MFMailComposeViewControllerDelegate {
     
     private var mailComposer: MFMailComposeViewController? {
         guard MFMailComposeViewController.canSendMail() else {

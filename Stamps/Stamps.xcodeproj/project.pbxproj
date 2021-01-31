@@ -150,10 +150,10 @@
 		F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944023D2CBC800EAF9CC /* Main.storyboard */; };
 		F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */; };
 		F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */; };
-		F2EE4AA825C5AD64004FB0F2 /* OptionsButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AA725C5AD64004FB0F2 /* OptionsButtonCell.swift */; };
-		F2EE4AAD25C5AECC004FB0F2 /* OptionsNavigateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAB25C5AECC004FB0F2 /* OptionsNavigateCell.swift */; };
-		F2EE4AAE25C5AECC004FB0F2 /* OptionsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAC25C5AECC004FB0F2 /* OptionsTextCell.swift */; };
-		F2EE4AB825C5B3B9004FB0F2 /* OptionsSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AB725C5B3B9004FB0F2 /* OptionsSwitchCell.swift */; };
+		F2EE4AA825C5AD64004FB0F2 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AA725C5AD64004FB0F2 /* ButtonCell.swift */; };
+		F2EE4AAD25C5AECC004FB0F2 /* NavigateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAB25C5AECC004FB0F2 /* NavigateCell.swift */; };
+		F2EE4AAE25C5AECC004FB0F2 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAC25C5AECC004FB0F2 /* TextCell.swift */; };
+		F2EE4AB825C5B3B9004FB0F2 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AB725C5B3B9004FB0F2 /* SwitchCell.swift */; };
 		F2EE4ABE25C5BABF004FB0F2 /* OptionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4ABD25C5BABF004FB0F2 /* OptionsDataSource.swift */; };
 		F2EE4AC425C5CBC9004FB0F2 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4AC325C5CBC9004FB0F2 /* Developer.storyboard */; };
 		F2EE4AC825C5CC17004FB0F2 /* DeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AC725C5CC17004FB0F2 /* DeveloperViewController.swift */; };
@@ -360,10 +360,10 @@
 		F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2C4944623D2CBCA00EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2C4944823D2CBCA00EAF9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2EE4AA725C5AD64004FB0F2 /* OptionsButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsButtonCell.swift; sourceTree = "<group>"; };
-		F2EE4AAB25C5AECC004FB0F2 /* OptionsNavigateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsNavigateCell.swift; sourceTree = "<group>"; };
-		F2EE4AAC25C5AECC004FB0F2 /* OptionsTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTextCell.swift; sourceTree = "<group>"; };
-		F2EE4AB725C5B3B9004FB0F2 /* OptionsSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsSwitchCell.swift; sourceTree = "<group>"; };
+		F2EE4AA725C5AD64004FB0F2 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		F2EE4AAB25C5AECC004FB0F2 /* NavigateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateCell.swift; sourceTree = "<group>"; };
+		F2EE4AAC25C5AECC004FB0F2 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
+		F2EE4AB725C5B3B9004FB0F2 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		F2EE4ABD25C5BABF004FB0F2 /* OptionsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsDataSource.swift; sourceTree = "<group>"; };
 		F2EE4AC325C5CBC9004FB0F2 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
 		F2EE4AC725C5CC17004FB0F2 /* DeveloperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperViewController.swift; sourceTree = "<group>"; };
@@ -955,10 +955,10 @@
 		F2EE4AA625C5AD64004FB0F2 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F2EE4AAC25C5AECC004FB0F2 /* OptionsTextCell.swift */,
-				F2EE4AA725C5AD64004FB0F2 /* OptionsButtonCell.swift */,
-				F2EE4AAB25C5AECC004FB0F2 /* OptionsNavigateCell.swift */,
-				F2EE4AB725C5B3B9004FB0F2 /* OptionsSwitchCell.swift */,
+				F2EE4AAC25C5AECC004FB0F2 /* TextCell.swift */,
+				F2EE4AA725C5AD64004FB0F2 /* ButtonCell.swift */,
+				F2EE4AAB25C5AECC004FB0F2 /* NavigateCell.swift */,
+				F2EE4AB725C5B3B9004FB0F2 /* SwitchCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1414,7 +1414,7 @@
 				F273E29B259699BD0037BEDA /* TodayCoordinator.swift in Sources */,
 				F23CF441258417A60048BA74 /* TodayCoordinatorProtocol.swift in Sources */,
 				F2F260F12408C3E400F5CCB9 /* DataSource+Diary.swift in Sources */,
-				F2EE4AA825C5AD64004FB0F2 /* OptionsButtonCell.swift in Sources */,
+				F2EE4AA825C5AD64004FB0F2 /* ButtonCell.swift in Sources */,
 				F2A93F90258128E5006C88F8 /* StatsViewController.swift in Sources */,
 				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */,
@@ -1438,7 +1438,7 @@
 				F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */,
 				F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */,
 				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
-				F2EE4AB825C5B3B9004FB0F2 /* OptionsSwitchCell.swift in Sources */,
+				F2EE4AB825C5B3B9004FB0F2 /* SwitchCell.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */,
@@ -1455,7 +1455,7 @@
 				F23CF44F25851C150048BA74 /* GoalAwardView.swift in Sources */,
 				F295337525B61522003CA002 /* GoalView.swift in Sources */,
 				F27782FA25C501E300C68F7A /* OptionsView.swift in Sources */,
-				F2EE4AAD25C5AECC004FB0F2 /* OptionsNavigateCell.swift in Sources */,
+				F2EE4AAD25C5AECC004FB0F2 /* NavigateCell.swift in Sources */,
 				F23CF3F92582E86E0048BA74 /* NewGoalCell.swift in Sources */,
 				F2FD4E2225BDCD42005819A0 /* StickerPresenter.swift in Sources */,
 				F23CF3B325829B510048BA74 /* StickersView.swift in Sources */,
@@ -1469,7 +1469,7 @@
 				F2EE4AD025C5CCB0004FB0F2 /* DeveloperPresenterProtocol.swift in Sources */,
 				BC1E1EFF246C5B5000E05C8A /* DataSource+Repository.swift in Sources */,
 				F2EE4AC825C5CC17004FB0F2 /* DeveloperViewController.swift in Sources */,
-				F2EE4AAE25C5AECC004FB0F2 /* OptionsTextCell.swift in Sources */,
+				F2EE4AAE25C5AECC004FB0F2 /* TextCell.swift in Sources */,
 				F295339325B63DB1003CA002 /* GoalDetailsCell.swift in Sources */,
 				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,
 			);

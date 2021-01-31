@@ -1,5 +1,5 @@
 //
-//  OptionsButtonCell.swift
+//  SwitchCell.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 1/30/21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionsSwitchCell: UITableViewCell {
+class SwitchCell: UITableViewCell {
 
     // MARK: - Outlets
 
@@ -30,13 +30,13 @@ class OptionsSwitchCell: UITableViewCell {
         switchControl.isOn = value
     }
 
-    // MARK: - Private helpers
-
     // MARK: - Actions
     
     @IBAction func valueChanged(_ sender: Any) {
         onValueChanged?(switchControl.isOn)
     }
+
+    // MARK: - Private helpers
 
     private func configureViews() {
         switchText.font = Theme.shared.fonts.listBody

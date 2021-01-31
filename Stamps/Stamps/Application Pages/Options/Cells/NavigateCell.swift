@@ -1,5 +1,5 @@
 //
-//  OptionsTextCell.swift
+//  NavigateCell.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 1/30/21.
@@ -8,7 +8,10 @@
 
 import UIKit
 
-class OptionsTextCell: UITableViewCell {
+class NavigateCell: UITableViewCell {
+
+    /// User selected cell
+    var onSelected: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,16 +20,14 @@ class OptionsTextCell: UITableViewCell {
     
     // MARK: - Public view interface
 
-    func configure(for text: String?, value: String?) {
-        textLabel?.text = text
-        detailTextLabel?.text = value
+    func configure(for data: String) {
+        textLabel?.text  = data
     }
 
     // MARK: - Private helpers
-
+    
     private func configureViews() {
         textLabel?.font = Theme.shared.fonts.listBody
-        detailTextLabel?.font = Theme.shared.fonts.listBody
         backgroundColor = Theme.shared.colors.secondaryBackground
     }
 }

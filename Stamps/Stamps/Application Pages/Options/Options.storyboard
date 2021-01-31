@@ -14,7 +14,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textCell" textLabel="8uY-kJ-sCj" detailTextLabel="jK6-jg-XIc" style="IBUITableViewCellStyleValue1" id="4T7-mu-2pV" customClass="OptionsTextCell" customModule="Emojical" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textCell" textLabel="8uY-kJ-sCj" detailTextLabel="jK6-jg-XIc" style="IBUITableViewCellStyleValue1" id="4T7-mu-2pV" customClass="TextCell" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4T7-mu-2pV" id="TMW-Kw-HaF">
@@ -38,7 +38,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCell" id="xfm-Ki-2nc" customClass="OptionsButtonCell" customModule="Emojical" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCell" id="xfm-Ki-2nc" customClass="ButtonCell" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="20" y="99" width="374" height="50.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xfm-Ki-2nc" id="DEy-Ou-3FH">
@@ -64,7 +64,7 @@
                                     <outlet property="button" destination="jLD-ox-m9F" id="qHX-JN-msM"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="navigationCell" textLabel="dvz-nr-w5X" style="IBUITableViewCellStyleDefault" id="d9N-qn-B3A" customClass="OptionsNavigateCell" customModule="Emojical" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="navigationCell" textLabel="dvz-nr-w5X" style="IBUITableViewCellStyleDefault" id="d9N-qn-B3A" customClass="NavigateCell" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="20" y="149.5" width="374" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d9N-qn-B3A" id="H7Y-xR-rqI">
@@ -81,7 +81,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="switchCell" id="HFr-BX-37D" customClass="OptionsSwitchCell" customModule="Emojical" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="switchCell" id="HFr-BX-37D" customClass="SwitchCell" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="20" y="193" width="374" height="51.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HFr-BX-37D" id="xKK-lJ-BNt">

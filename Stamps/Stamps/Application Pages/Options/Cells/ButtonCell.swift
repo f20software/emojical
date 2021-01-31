@@ -1,5 +1,5 @@
 //
-//  OptionsButtonCell.swift
+//  ButtonCell.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 1/30/21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionsButtonCell: UITableViewCell {
+class ButtonCell: UITableViewCell {
 
     // MARK: - Outlets
 

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /// Overriding header and footer getters for diffable table data source
-class OptionsDataSource: UITableViewDiffableDataSource<OptionsSection, OptionsCell> {
+class OptionsDataSource: UITableViewDiffableDataSource<Section, Cell> {
 
     override func tableView(_ tableView: UITableView,
         titleForHeaderInSection section: Int) -> String?

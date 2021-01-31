@@ -17,5 +17,5 @@ protocol OptionsView: AnyObject {
     // MARK: - Updates
 
     /// Load view data
-    func loadData(_ sections: [OptionsSection])
+    func loadData(_ sections: [Section])
 }

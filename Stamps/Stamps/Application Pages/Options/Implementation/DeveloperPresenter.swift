@@ -60,8 +60,8 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
         let lastWeek = repository.lastWeekUpdate != nil ? repository.lastWeekUpdate!.databaseKey : "-"
         let lastMonth = repository.lastMonthUpdate != nil ? repository.lastMonthUpdate!.databaseKey : "-"
 
-        let data: [OptionsSection] = [
-            OptionsSection(
+        let data: [Section] = [
+            Section(
                 header: nil,
                 footer: nil,
                 cells: [
@@ -69,7 +69,7 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                     .text("Id", settings.todayNotificationId ?? "-"),
                 ]
             ),
-            OptionsSection(
+            Section(
                 header: "Database",
                 footer: nil,
                 cells: [
@@ -81,7 +81,7 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                     .text("Awards", "\(awardsCount)"),
                 ]
             ),
-            OptionsSection(
+            Section(
                 header: "Testing Notifications",
                 footer: nil,
                 cells: [
@@ -99,7 +99,7 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                     }),
                 ]
             ),
-            OptionsSection(
+            Section(
                 header: "Log File",
                 footer: nil,
                 cells: [

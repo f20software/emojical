@@ -55,8 +55,8 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
         let key = kCFBundleVersionKey as String
         let version = Bundle.main.object(forInfoDictionaryKey: key) as? String ?? "N/A"
         
-        let data: [OptionsSection] = [
-            OptionsSection(
+        let data: [Section] = [
+            Section(
                 header: "Reminder",
                 footer: "Remind every day around 9pm to fill your entry for that day if you haven't done so already.",
                 cells: [
@@ -67,7 +67,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                     })
                 ]
             ),
-            OptionsSection(
+            Section(
                 header: "Backup / Restore",
                 footer: "Email yourself JSON file with all your data.",
                 cells: [
@@ -76,7 +76,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                     }),
                 ]
             ),
-            OptionsSection(
+            Section(
                 header: nil,
                 footer: "Emojical, \(version), © 2021",
                 cells: [

@@ -36,9 +36,9 @@ class DeveloperViewController: BaseTableViewController, DeveloperView {
     }
     
     /// Load view data
-    func loadData(_ sections: [OptionsSection]) {
+    func loadData(_ sections: [Section]) {
         self.sections = sections
-        var snapshot = NSDiffableDataSourceSnapshot<OptionsSection, OptionsCell>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Cell>()
         for section in sections {
             snapshot.appendSections([section])
             snapshot.appendItems(section.cells)

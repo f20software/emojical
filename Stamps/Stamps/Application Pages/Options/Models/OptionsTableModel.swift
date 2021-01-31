@@ -1,5 +1,5 @@
 //
-//  GoalData.swift
+//  OptionsTableModel.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/10/2020.
@@ -9,20 +9,20 @@
 import Foundation
 import UIKit
 
-struct OptionsSection {
+struct Section {
     let header: String?
     let footer: String?
-    let cells: [OptionsCell]
+    let cells: [Cell]
 }
 
-enum OptionsCell {
+enum Cell {
     case text(String?, String? = nil)
     case `switch`(String, Bool, ((Bool) -> Void)?)
     case navigate(String, (() -> Void)?)
     case button(String, (() -> Void)?)
 }
 
-extension OptionsCell: Equatable, Hashable {
+extension Cell: Equatable, Hashable {
     
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -37,7 +37,7 @@ extension OptionsCell: Equatable, Hashable {
         }
     }
 
-    static func ==(lhs: OptionsCell, rhs: OptionsCell) -> Bool {
+    static func ==(lhs: Cell, rhs: Cell) -> Bool {
         switch (lhs, rhs) {
         case (.text(let lhsValue1, let lhsValue2), .text(let rhsValue1, let rhsValue2)):
             return (lhsValue1 == rhsValue1) && (lhsValue2 == rhsValue2)
@@ -53,4 +53,4 @@ extension OptionsCell: Equatable, Hashable {
     }
 }
 
-extension OptionsSection: Equatable, Hashable {}
+extension Section: Equatable, Hashable {}

@@ -14,7 +14,7 @@ class BaseTableViewController: UITableViewController {
 
     // MARK: - Data source
     
-    var sections = [OptionsSection]()
+    var sections = [Section]()
 
     func configureTableView() {
         dataSource = OptionsDataSource(
@@ -37,38 +37,38 @@ extension BaseTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        if let cell = tableView.cellForRow(at: indexPath) as? OptionsNavigateCell {
+        if let cell = tableView.cellForRow(at: indexPath) as? NavigateCell {
             cell.onSelected?()
-        } else if let cell = tableView.cellForRow(at: indexPath) as? OptionsButtonCell {
+        } else if let cell = tableView.cellForRow(at: indexPath) as? ButtonCell {
             cell.onButtonTapped?()
         }
     }
     
-    private func cell(for path: IndexPath, model: OptionsCell, tableView: UITableView) -> UITableViewCell? {
+    private func cell(for path: IndexPath, model: Cell, tableView: UITableView) -> UITableViewCell? {
         switch model {
         case .text(let text, let value):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Specs.Cells.textCell)
-                as? OptionsTextCell else { return UITableViewCell() }
+                as? TextCell else { return UITableViewCell() }
             cell.configure(for: text, value: value)
             return cell
             
         case .button(let text, let callback):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Specs.Cells.buttonCell)
-                as? OptionsButtonCell else { return UITableViewCell() }
+                as? ButtonCell else { return UITableViewCell() }
             cell.configure(for: text)
             cell.onButtonTapped = callback
             return cell
             
         case .navigate(let text, let callback):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Specs.Cells.navigationCell)
-                as? OptionsNavigateCell else { return UITableViewCell() }
+                as? NavigateCell else { return UITableViewCell() }
             cell.configure(for: text)
             cell.onSelected = callback
             return cell
 
         case .`switch`(let text, let value, let callback):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Specs.Cells.switchCell)
-                as? OptionsSwitchCell else { return UITableViewCell() }
+                as? SwitchCell else { return UITableViewCell() }
             cell.configure(for: text, value: value)
             cell.onValueChanged = callback
             return cell

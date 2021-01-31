@@ -175,7 +175,7 @@ class TodayPresenter: TodayPresenterProtocol {
 
     /// Reacting to significate time change event - updating data to current date and refreshing view
     @objc func significantTimeChange() {
-        print("Significant Time Change")
+        NSLog("Significant Time Change")
         
         // Initial data configuration for the current date
         initializeDataFor(date: Date())

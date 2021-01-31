@@ -34,7 +34,7 @@ extension DataSource {
         }
     }
 
-    // All awards
+    /// All awards
     func allAwards() -> [Award] {
         allStoredAwards().map { $0.toModel() }
     }
@@ -49,40 +49,6 @@ extension DataSource {
             notifyAwardsOnChangeObservers()
         }
         catch { }
-    }
-
-    // Recent awards
-    func recentAwards() -> [Award] {
-        do {
-            return try dbQueue.read { db -> [StoredAward] in
-                let request = StoredAward.order(StoredAward.Columns.date.desc).limit(10)
-                return try request.fetchAll(db)
-            }.map { $0.toModel() }
-        }
-        catch { }
-        return []
-    }
-    
-    func awardsGroupedByMonth(_ awards: [Award]) -> [[Award]] {
-        var result = [[Award]]()
-        var month = [Award]()
-        
-        for i in 0..<awards.count {
-            if month.count == 0 {
-                month.append(awards[i])
-            }
-            else if month[0].date.monthKey == awards[i].date.monthKey {
-                month.append(awards[i])
-            }
-            else {
-                result.append(month)
-                month = [Award]()
-                month.append(awards[i])
-            }
-        }
-        
-        result.append(month)
-        return result
     }
 
     // Awards for date interval

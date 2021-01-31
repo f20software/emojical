@@ -1,6 +1,6 @@
 //
 //  LocalSettings.swift
-//  Stamps
+//  Emojical
 //
 //  Created by Vladimir Svidersky on 2/8/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.
@@ -10,8 +10,9 @@ import Foundation
 
 class LocalSettings {
     
-    private let todayNotification = "todayNotification"
-    
+    private let todayNotificationIdKey = "todayNotificationId"
+    private let reminderEnabledKey = "reminderEnabled"
+
     // Singleton instance
     static let shared = LocalSettings()
 
@@ -20,15 +21,23 @@ class LocalSettings {
 
     // MARK: - Public properties
     
-    // Daily calories limit
+    /// Today notification Id - to ensure we only schedule one reminder notification
     var todayNotificationId: String? {
         get {
-            return stringDefault(todayNotification)
+            return stringDefault(todayNotificationIdKey)
         }
         set {
-            if newValue != nil {
-                setStringDefault(newValue!, key: todayNotification)
-            }
+            setStringDefault(newValue, key: todayNotificationIdKey)
+        }
+    }
+
+    /// Is today entry reminder enabled?
+    var reminderEnabled: Bool {
+        get {
+            return boolDefault(reminderEnabledKey) ?? false
+        }
+        set {
+            setBoolDefault(newValue, key: reminderEnabledKey)
         }
     }
 
@@ -39,7 +48,7 @@ class LocalSettings {
         return defaults.string(forKey: key)
     }
     
-    private func setStringDefault(_ value: String, key: String) {
+    private func setStringDefault(_ value: String?, key: String) {
         let defaults = UserDefaults.standard
         defaults.set(value, forKey: key)
     }
@@ -50,6 +59,16 @@ class LocalSettings {
     }
     
     private func setIntegerDefault(_ value: Int, key: String) {
+        let defaults = UserDefaults.standard
+        defaults.set(value, forKey: key)
+    }
+
+    private func boolDefault(_ key: String) -> Bool? {
+        let defaults = UserDefaults.standard
+        return defaults.bool(forKey: key)
+    }
+    
+    private func setBoolDefault(_ value: Bool, key: String) {
         let defaults = UserDefaults.standard
         defaults.set(value, forKey: key)
     }

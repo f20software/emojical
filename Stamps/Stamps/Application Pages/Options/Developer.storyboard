@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WFy-OT-yXN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Y1-v5-Mb4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Options-->
+        <!--Developer Options-->
         <scene sceneID="UDL-NG-REr">
             <objects>
-                <tableViewController id="8Y1-v5-Mb4" customClass="OptionsViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8Y1-v5-Mb4" customClass="DeveloperViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="GsV-B4-RwM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textCell" textLabel="8uY-kJ-sCj" detailTextLabel="jK6-jg-XIc" style="IBUITableViewCellStyleValue1" id="4T7-mu-2pV" customClass="TextCell" customModule="Emojical" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textCell" textLabel="8uY-kJ-sCj" detailTextLabel="hKW-zc-YRj" style="IBUITableViewCellStyleValue1" id="4T7-mu-2pV" customClass="TextCell" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4T7-mu-2pV" id="TMW-Kw-HaF">
@@ -28,7 +28,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jK6-jg-XIc">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hKW-zc-YRj">
                                             <rect key="frame" x="310" y="12" width="44" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -123,33 +123,13 @@
                             <outlet property="delegate" destination="8Y1-v5-Mb4" id="Ifh-ns-xMP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Options" id="HEI-Hx-fAJ"/>
+                    <navigationItem key="navigationItem" title="Developer Options" id="HEI-Hx-fAJ"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hya-Xv-EM5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1883" y="428"/>
         </scene>
-        <!--Options-->
-        <scene sceneID="yvk-80-mnz">
-            <objects>
-                <navigationController id="WFy-OT-yXN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Options" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="Zjf-zI-32P"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vx6-Fe-HE0">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="8Y1-v5-Mb4" kind="relationship" relationship="rootViewController" id="ZnO-Qa-Sdd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DFH-4K-bUe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="966" y="428"/>
-        </scene>
     </scenes>
-    <resources>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
-    </resources>
 </document>

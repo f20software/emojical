@@ -23,15 +23,36 @@ extension NSNotification.Name {
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
+    /// Full path to the application.txt log file
+    static var applicationLogFile: String? {
+        do {
+            let documentDirectoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            return documentDirectoryURL.appendingPathComponent("application.txt").path
+        } catch {
+            return nil
+        }
+    }
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        /// Setup data storage. Change this line to swap to another data storage mechanism.
+        // Redirect stderr to log file
+        #if !targetEnvironment(simulator)
+        if let file = AppDelegate.applicationLogFile {
+            freopen(file, "a", stderr)
+        }
+        #endif
+        
+        let version = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) ?? "Unknown"
+        NSLog("STARTING UP... VERSION \(version)")
+        NSLog("didFinishLaunchingWithOptions")
+
+        // Setup data storage. Change this line to swap to another data storage mechanism.
         Storage.shared = GRDBDataProvider(app: application)
         
         // Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")
         
-        /// Setup calendar helper
+        // Setup calendar helper
         CalendarHelper.shared = CalendarHelper()
         AwardManager.shared.recalculateOnAppResume()
 

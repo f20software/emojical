@@ -67,9 +67,6 @@ protocol DataRepository: class {
     /// Date of the last diary entry
     func getLastDiaryDate() -> Date?
     
-    /// List of lists of awards grouped by the same month
-    func awardsGroupedByMonth(_ awards: [Award]) -> [[Award]]
-    
     /// Goal with specified ID
     func goalById(_ identifier: Int64) -> Goal?
     
@@ -86,8 +83,8 @@ protocol DataRepository: class {
     /// All created stamps
     func allStamps(includeDeleted: Bool) -> [Stamp]
     
-    /// Last 10 awards
-    func recentAwards() -> [Award]
+    /// All awards
+    func allAwards() -> [Award]
     
     // MARK: - Saving
     

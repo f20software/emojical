@@ -17,7 +17,7 @@ class NotificationManager {
     
     // If application is running withing 120 minutes from reminder time, we will not show reminder
     // today but will schedule it for tomorrow
-    let reminderGap: Int = 120
+    private let reminderGap: Int = 120
     
     var userNotificationCenter: UNUserNotificationCenter {
         return UNUserNotificationCenter.current()
@@ -92,8 +92,14 @@ class NotificationManager {
     @objc func refreshNotifications() {
         if let existingId = settings.todayNotificationId {
             userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [existingId])
+            settings.todayNotificationId = nil
         }
         
+        // Don't schedule anything if user opted out
+        if !settings.reminderEnabled {
+            return
+        }
+
         let notification = createNextNotification()
         settings.todayNotificationId = notification.identifier
         userNotificationCenter.add(notification) { (error) in
@@ -122,7 +128,7 @@ class NotificationManager {
         let comps = Calendar.current.dateComponents([.day, .year, .month, .hour, .minute], from: nextNotificationDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
 
-        print("Reminder (\"\(content.body)\") is set to \(nextNotificationDate.databaseKeyWithTime)")
+        NSLog("Reminder (\"\(content.body)\") is set to \(nextNotificationDate.databaseKeyWithTime)")
         
         // Create the request
         return UNNotificationRequest(

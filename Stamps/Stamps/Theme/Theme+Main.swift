@@ -18,6 +18,9 @@ extension Theme {
             /// Main application tint color
             tint: UIColor(r: 13, g: 15, b: 45),
 
+            background: UIColor.systemBackground,
+            
+            secondaryBackground: UIColor.systemGray6,
             ///
             text: UIColor.label,
 
@@ -37,8 +40,10 @@ extension Theme {
 
         let dark = Colors(
             /// Main application tint color
-            tint: UIColor(r: 13, g: 15, b: 45),
+            tint: UIColor(r: 66, g: 77, b: 227),
             
+            background: UIColor.systemBackground,
+            secondaryBackground: UIColor.systemGray6,
             text: UIColor.label,
 
             ///

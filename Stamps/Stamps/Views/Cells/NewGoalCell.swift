@@ -34,7 +34,7 @@ class NewGoalCell: UICollectionViewCell {
         plate.layer.borderColor = UIColor.systemGray6.cgColor
         plate.clipsToBounds = true
 
-        title.font = Theme.shared.fonts.buttons
+        title.font = Theme.shared.fonts.boldButtons
         title.text = "Create Goal"
     }
 }

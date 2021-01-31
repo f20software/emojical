@@ -95,6 +95,7 @@ class StickersViewController: UIViewController, StickersView {
         }
         snapshot.appendItems([.newGoal])
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+        title = "Goals"
     }
 
     // MARK: - Actions

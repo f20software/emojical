@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Stickers-->
+        <!--Goals-->
         <scene sceneID="Nhp-AX-zr1">
             <objects>
                 <navigationController id="WLj-Ww-rrq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stickers" image="circles.hexagongrid" catalog="system" selectedImage="circles.hexagongrid.fill" id="EZq-nL-bxE"/>
+                    <tabBarItem key="tabBarItem" title="Goals" image="circles.hexagongrid" catalog="system" selectedImage="circles.hexagongrid.fill" id="EZq-nL-bxE"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9Zl-nN-HyQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="859" y="-333"/>
         </scene>
-        <!--Stickers-->
+        <!--Goals-->
         <scene sceneID="GBJ-Bt-waW">
             <objects>
                 <viewController id="tvO-pK-EYQ" customClass="StickersViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,7 +55,7 @@
                             <constraint firstItem="NcW-C8-Csq" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="mGr-Eg-KBU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stickers" id="yvL-kP-cnY">
+                    <navigationItem key="navigationItem" title="Goals" id="yvL-kP-cnY">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="E5E-UQ-oFi">
                             <connections>
                                 <action selector="addButtonTapped:" destination="tvO-pK-EYQ" id="bKK-Nd-9S4"/>

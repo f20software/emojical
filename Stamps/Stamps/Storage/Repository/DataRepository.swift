@@ -104,6 +104,17 @@ protocol DataRepository: class {
     
     /// Saves database content to a specified file URL
     func backupDatabase(to file: URL) -> Bool
+    
+    // MARK: - Maintenance
+    
+    /// Delete all records from the database
+    func clearDatabase()
+    
+    /// Create demo database entires
+    func createDemoEntries(from date: Date)
+    
+    /// Find stamp by its label (returns first matching or nil
+    func stampByLabel(label: String) -> Stamp?
 }
 
 extension DataRepository {

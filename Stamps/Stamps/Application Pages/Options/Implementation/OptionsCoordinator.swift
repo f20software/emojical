@@ -35,10 +35,6 @@ class OptionsCoordinator: OptionsCoordinatorProtocol {
             settings: LocalSettings.shared
         )
         dev.presenter = presenter
-
         parentController?.pushViewController(dev, animated: true)
     }
-
-    // MARK: - Private helpers
-    
 }

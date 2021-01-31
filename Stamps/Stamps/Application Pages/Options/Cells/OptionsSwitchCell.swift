@@ -41,6 +41,6 @@ class OptionsSwitchCell: UITableViewCell {
     private func configureViews() {
         switchText.font = Theme.shared.fonts.listBody
         switchControl.onTintColor = Theme.shared.colors.tint
-        backgroundColor = Theme.shared.colors.secondaryBackround
+        backgroundColor = Theme.shared.colors.secondaryBackground
     }
 }

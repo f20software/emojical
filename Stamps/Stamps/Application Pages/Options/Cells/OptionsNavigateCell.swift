@@ -28,6 +28,6 @@ class OptionsNavigateCell: UITableViewCell {
     
     private func configureViews() {
         textLabel?.font = Theme.shared.fonts.listBody
-        backgroundColor = Theme.shared.colors.secondaryBackround
+        backgroundColor = Theme.shared.colors.secondaryBackground
     }
 }

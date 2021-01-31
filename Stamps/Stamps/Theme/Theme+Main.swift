@@ -20,7 +20,7 @@ extension Theme {
 
             background: UIColor.systemBackground,
             
-            secondaryBackround: UIColor.systemGray6,
+            secondaryBackground: UIColor.systemGray6,
             ///
             text: UIColor.label,
 
@@ -43,7 +43,7 @@ extension Theme {
             tint: UIColor(r: 66, g: 77, b: 227),
             
             background: UIColor.systemBackground,
-            secondaryBackround: UIColor.systemGray6,
+            secondaryBackground: UIColor.systemGray6,
             text: UIColor.label,
 
             ///

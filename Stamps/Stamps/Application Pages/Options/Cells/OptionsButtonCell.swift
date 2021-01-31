@@ -28,16 +28,16 @@ class OptionsButtonCell: UITableViewCell {
         button.setTitle(data, for: .normal)
     }
 
-    // MARK: - Private helpers
-
     // MARK: - Actions
     
     @IBAction func buttonTapped(_ sender: Any) {
         onButtonTapped?()
     }
 
+    // MARK: - Private helpers
+
     private func configureViews() {
         button.titleLabel?.font = Theme.shared.fonts.buttons
-        backgroundColor = Theme.shared.colors.secondaryBackround
+        backgroundColor = Theme.shared.colors.secondaryBackground
     }
 }

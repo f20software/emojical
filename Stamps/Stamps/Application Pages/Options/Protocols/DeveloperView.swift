@@ -9,13 +9,5 @@
 import Foundation
 import UIKit
 
-protocol DeveloperView: AnyObject {
-
-    /// Return UIViewController instance (so we can present and mail stuff from Presenter class)
-    var viewController: UIViewController? { get }
-    
-    // MARK: - Updates
-
-    /// Load view data
-    func loadData(_ sections: [OptionsSection])
-}
+/// DeveloperView protocol is identical to OptionsView since they both use same dynamic table data store
+typealias DeveloperView = OptionsView

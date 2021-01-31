@@ -16,6 +16,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
 
     private weak var view: OptionsView?
     private weak var settings: LocalSettings!
+    private weak var repository: DataRepository!
     private weak var coordinator: OptionsCoordinatorProtocol?
     
     // MARK: - State
@@ -24,10 +25,12 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
 
     init(
         view: OptionsView,
+        repository: DataRepository,
         settings: LocalSettings,
         coordinator: OptionsCoordinatorProtocol
     ) {
         self.view = view
+        self.repository = repository
         self.settings = settings
         self.coordinator = coordinator
     }
@@ -49,7 +52,6 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     }
     
     private func loadViewData() {
-        
         let key = kCFBundleVersionKey as String
         let version = Bundle.main.object(forInfoDictionaryKey: key) as? String ?? "N/A"
         
@@ -99,9 +101,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     }
 
     private func emailDataBackup() {
-        let repository = Storage.shared.repository
         let backupFileName = repository.deviceBackupFileName
-        
         if repository.backupDatabase(to: backupFileName) {
             sendBackupEmail(
                 attachment: backupFileName,
@@ -153,20 +153,3 @@ extension OptionsPresenter: MFMailComposeViewControllerDelegate {
         controller.dismiss(animated: true)
     }
 }
-
-
-    
-    //private func confirmAddAction() {
-//        let confirm = UIAlertController(title: "Create New...", message: nil, preferredStyle: .actionSheet)
-//        confirm.addAction(UIAlertAction(title: "Sticker", style: .default, handler: { (_) in
-//            self.coordinator?.newSticker()
-//        }))
-//        confirm.addAction(UIAlertAction(title: "Goal", style: .default, handler: { (_) in
-//            self.coordinator?.newGoal()
-//        }))
-//        confirm.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
-//            confirm.dismiss(animated: true, completion: nil)
-//        }))
-//        (view as! UIViewController).present(confirm, animated: true, completion: nil)
-    //}
-//}

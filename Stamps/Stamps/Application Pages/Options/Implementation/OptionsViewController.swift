@@ -27,6 +27,7 @@ class OptionsViewController: BaseTableViewController, OptionsView {
 
         presenter = OptionsPresenter(
             view: self,
+            repository: Storage.shared.repository,
             settings: LocalSettings.shared,
             coordinator: coordinator)
         

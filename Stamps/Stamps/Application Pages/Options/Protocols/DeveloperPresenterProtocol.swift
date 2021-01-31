@@ -8,11 +8,5 @@
 
 import Foundation
 
-protocol DeveloperPresenterProtocol: NSObject {
-    
-    /// Called when view finished initial loading
-    func onViewDidLoad()
-
-    /// Called when view about to appear on the screen
-    func onViewWillAppear()
-}
+/// DeveloperPresenterProtocol protocol is identical to OptionsPresenterProtocol since they both use same dynamic table data store
+typealias DeveloperPresenterProtocol = OptionsPresenterProtocol

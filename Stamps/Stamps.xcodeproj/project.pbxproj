@@ -155,11 +155,11 @@
 		F2EE4AAE25C5AECC004FB0F2 /* OptionsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAC25C5AECC004FB0F2 /* OptionsTextCell.swift */; };
 		F2EE4AB825C5B3B9004FB0F2 /* OptionsSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AB725C5B3B9004FB0F2 /* OptionsSwitchCell.swift */; };
 		F2EE4ABE25C5BABF004FB0F2 /* OptionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4ABD25C5BABF004FB0F2 /* OptionsDataSource.swift */; };
-		F2EE4AC425C5CBC9004FB0F2 /* Development.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4AC325C5CBC9004FB0F2 /* Development.storyboard */; };
-		F2EE4AC825C5CC17004FB0F2 /* DevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AC725C5CC17004FB0F2 /* DevelopmentViewController.swift */; };
-		F2EE4ACC25C5CC44004FB0F2 /* DevelopmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4ACB25C5CC44004FB0F2 /* DevelopmentView.swift */; };
-		F2EE4AD025C5CCB0004FB0F2 /* DevelopmentPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4ACF25C5CCB0004FB0F2 /* DevelopmentPresenterProtocol.swift */; };
-		F2EE4AD425C5CCC2004FB0F2 /* DevelopmentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AD325C5CCC2004FB0F2 /* DevelopmentPresenter.swift */; };
+		F2EE4AC425C5CBC9004FB0F2 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2EE4AC325C5CBC9004FB0F2 /* Developer.storyboard */; };
+		F2EE4AC825C5CC17004FB0F2 /* DeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AC725C5CC17004FB0F2 /* DeveloperViewController.swift */; };
+		F2EE4ACC25C5CC44004FB0F2 /* DeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4ACB25C5CC44004FB0F2 /* DeveloperView.swift */; };
+		F2EE4AD025C5CCB0004FB0F2 /* DeveloperPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4ACF25C5CCB0004FB0F2 /* DeveloperPresenterProtocol.swift */; };
+		F2EE4AD425C5CCC2004FB0F2 /* DeveloperPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AD325C5CCC2004FB0F2 /* DeveloperPresenter.swift */; };
 		F2EE4ADA25C5F84A004FB0F2 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AD925C5F84A004FB0F2 /* BaseTableViewController.swift */; };
 		F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260EC2408BB4400F5CCB9 /* DataSource+Stamp.swift */; };
 		F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */; };
@@ -365,11 +365,11 @@
 		F2EE4AAC25C5AECC004FB0F2 /* OptionsTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTextCell.swift; sourceTree = "<group>"; };
 		F2EE4AB725C5B3B9004FB0F2 /* OptionsSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsSwitchCell.swift; sourceTree = "<group>"; };
 		F2EE4ABD25C5BABF004FB0F2 /* OptionsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsDataSource.swift; sourceTree = "<group>"; };
-		F2EE4AC325C5CBC9004FB0F2 /* Development.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Development.storyboard; sourceTree = "<group>"; };
-		F2EE4AC725C5CC17004FB0F2 /* DevelopmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevelopmentViewController.swift; sourceTree = "<group>"; };
-		F2EE4ACB25C5CC44004FB0F2 /* DevelopmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevelopmentView.swift; sourceTree = "<group>"; };
-		F2EE4ACF25C5CCB0004FB0F2 /* DevelopmentPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevelopmentPresenterProtocol.swift; sourceTree = "<group>"; };
-		F2EE4AD325C5CCC2004FB0F2 /* DevelopmentPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevelopmentPresenter.swift; sourceTree = "<group>"; };
+		F2EE4AC325C5CBC9004FB0F2 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
+		F2EE4AC725C5CC17004FB0F2 /* DeveloperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperViewController.swift; sourceTree = "<group>"; };
+		F2EE4ACB25C5CC44004FB0F2 /* DeveloperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperView.swift; sourceTree = "<group>"; };
+		F2EE4ACF25C5CCB0004FB0F2 /* DeveloperPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperPresenterProtocol.swift; sourceTree = "<group>"; };
+		F2EE4AD325C5CCC2004FB0F2 /* DeveloperPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperPresenter.swift; sourceTree = "<group>"; };
 		F2EE4AD925C5F84A004FB0F2 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		F2F260EC2408BB4400F5CCB9 /* DataSource+Stamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Stamp.swift"; sourceTree = "<group>"; };
 		F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Goal.swift"; sourceTree = "<group>"; };
@@ -701,8 +701,8 @@
 		F27782EF25C501E300C68F7A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				F2EE4ACB25C5CC44004FB0F2 /* DevelopmentView.swift */,
-				F2EE4ACF25C5CCB0004FB0F2 /* DevelopmentPresenterProtocol.swift */,
+				F2EE4ACB25C5CC44004FB0F2 /* DeveloperView.swift */,
+				F2EE4ACF25C5CCB0004FB0F2 /* DeveloperPresenterProtocol.swift */,
 				F27782F125C501E300C68F7A /* OptionsView.swift */,
 				F27782F025C501E300C68F7A /* OptionsCoordinatorProtocol.swift */,
 				F27782F225C501E300C68F7A /* OptionsPresenterProtocol.swift */,
@@ -714,8 +714,8 @@
 			isa = PBXGroup;
 			children = (
 				F2EE4AD925C5F84A004FB0F2 /* BaseTableViewController.swift */,
-				F2EE4AC725C5CC17004FB0F2 /* DevelopmentViewController.swift */,
-				F2EE4AD325C5CCC2004FB0F2 /* DevelopmentPresenter.swift */,
+				F2EE4AC725C5CC17004FB0F2 /* DeveloperViewController.swift */,
+				F2EE4AD325C5CCC2004FB0F2 /* DeveloperPresenter.swift */,
 				F2A99D282439346900D3CF1D /* OptionsViewController.swift */,
 				F27782F525C501E300C68F7A /* OptionsPresenter.swift */,
 				F27782F625C501E300C68F7A /* OptionsCoordinator.swift */,
@@ -870,7 +870,7 @@
 			isa = PBXGroup;
 			children = (
 				F2A21C11244271130030A117 /* Options.storyboard */,
-				F2EE4AC325C5CBC9004FB0F2 /* Development.storyboard */,
+				F2EE4AC325C5CBC9004FB0F2 /* Developer.storyboard */,
 				F27782EC25C501E300C68F7A /* Models */,
 				F2EE4AA625C5AD64004FB0F2 /* Cells */,
 				F27782EF25C501E300C68F7A /* Protocols */,
@@ -1279,7 +1279,7 @@
 				F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */,
 				F23CF3FE2582EC8B0048BA74 /* NewStickerCell.xib in Resources */,
 				F2A93FD2258164B2006C88F8 /* MonthBoxCell.xib in Resources */,
-				F2EE4AC425C5CBC9004FB0F2 /* Development.storyboard in Resources */,
+				F2EE4AC425C5CBC9004FB0F2 /* Developer.storyboard in Resources */,
 				F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */,
 				F23CF3F82582E86E0048BA74 /* NewGoalCell.xib in Resources */,
 				F295333A25B3CA6A003CA002 /* AwardRecapCell.xib in Resources */,
@@ -1319,7 +1319,7 @@
 				F26596F02596AF1300B10B76 /* RecapViewController.swift in Sources */,
 				F29533A225B6611B003CA002 /* GoalDetailsEditCell.swift in Sources */,
 				F2FD4DC225BC8B01005819A0 /* SelectStickerData.swift in Sources */,
-				F2EE4AD425C5CCC2004FB0F2 /* DevelopmentPresenter.swift in Sources */,
+				F2EE4AD425C5CCC2004FB0F2 /* DeveloperPresenter.swift in Sources */,
 				F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */,
 				F26596F12596AF1300B10B76 /* AwardRecapData.swift in Sources */,
 				F2FD4DF425BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.swift in Sources */,
@@ -1389,7 +1389,7 @@
 				F27BC99025B7DF3A00B58087 /* Theme+Fonts.swift in Sources */,
 				BC1E1EF8246C532300E05C8A /* DataProvider.swift in Sources */,
 				F2FD4E1A25BDCD42005819A0 /* StickerDetailsEditCell.swift in Sources */,
-				F2EE4ACC25C5CC44004FB0F2 /* DevelopmentView.swift in Sources */,
+				F2EE4ACC25C5CC44004FB0F2 /* DeveloperView.swift in Sources */,
 				BC564409246B2F3900942066 /* GoalListener.swift in Sources */,
 				BC5643EC246B0E2900942066 /* DataRepository.swift in Sources */,
 				F295337425B61522003CA002 /* GoalPresenterProtocol.swift in Sources */,
@@ -1466,9 +1466,9 @@
 				F23CF3D52582A9FB0048BA74 /* GoalCell.swift in Sources */,
 				BC56440F246B30BF00942066 /* StampsDataSourceListener.swift in Sources */,
 				F2F3BE18257C267900A926E9 /* DayColumnView.swift in Sources */,
-				F2EE4AD025C5CCB0004FB0F2 /* DevelopmentPresenterProtocol.swift in Sources */,
+				F2EE4AD025C5CCB0004FB0F2 /* DeveloperPresenterProtocol.swift in Sources */,
 				BC1E1EFF246C5B5000E05C8A /* DataSource+Repository.swift in Sources */,
-				F2EE4AC825C5CC17004FB0F2 /* DevelopmentViewController.swift in Sources */,
+				F2EE4AC825C5CC17004FB0F2 /* DeveloperViewController.swift in Sources */,
 				F2EE4AAE25C5AECC004FB0F2 /* OptionsTextCell.swift in Sources */,
 				F295339325B63DB1003CA002 /* GoalDetailsCell.swift in Sources */,
 				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,

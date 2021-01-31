@@ -45,15 +45,20 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
+    
     }
     
     private func loadViewData() {
+        
+        let key = kCFBundleVersionKey as String
+        let version = Bundle.main.object(forInfoDictionaryKey: key) as? String ?? "N/A"
+        
         let data: [OptionsSection] = [
             OptionsSection(
-                header: "Notifications",
-                footer: "We will remind you every day around 9pm to fill your entry for the day.",
+                header: "Reminder",
+                footer: "Remind every day around 9pm to fill your entry for that day if you haven't done so already.",
                 cells: [
-                    .switch("Remind Me", settings.reminderEnabled, { [weak self] newValue in
+                    .switch("Daily Reminder", settings.reminderEnabled, { [weak self] newValue in
                         self?.settings.reminderEnabled = newValue
                         // Force notification manager to update reminder
                         NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
@@ -61,26 +66,26 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                 ]
             ),
             OptionsSection(
-                header: nil,
-                footer: nil,
+                header: "Backup / Restore",
+                footer: "Email yourself JSON file with all your data.",
                 cells: [
-                    .button("Backup Data...", { [weak self] in
+                    .button("Export Your Data...", { [weak self] in
                         self?.emailDataBackup()
-                    }),
-                    .button("Send Feedback...", { [weak self] in
-                        self?.sendFeedback()
                     }),
                 ]
             ),
             OptionsSection(
                 header: nil,
-                footer: nil,
+                footer: "Emojical, \(version), © 2021",
                 cells: [
-                    .navigate("Development Options", { [weak self] in
+                    .button("Feedback...", { [weak self] in
+                        self?.sendFeedback()
+                    }),
+                    .navigate("Developer Options", { [weak self] in
                         self?.coordinator?.developerOptions()
-                    })
+                    }),
                 ]
-            )
+            ),
         ]
         
         view?.loadData(data)
@@ -131,7 +136,6 @@ extension OptionsPresenter: MFMailComposeViewControllerDelegate {
         }
         catch {}
 
-        mail.setMessageBody("Here is backup of your data", isHTML: false)
         view?.viewController?.present(mail, animated: true)
     }
 

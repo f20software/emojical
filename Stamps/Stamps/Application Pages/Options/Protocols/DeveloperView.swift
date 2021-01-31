@@ -1,5 +1,5 @@
 //
-//  DevelopmentView.swift
+//  DeveloperView.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 1/30/21.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol DevelopmentView: AnyObject {
+protocol DeveloperView: AnyObject {
 
     /// Return UIViewController instance (so we can present and mail stuff from Presenter class)
     var viewController: UIViewController? { get }

@@ -1,5 +1,5 @@
 //
-//  DevelopmentViewController.swift
+//  DeveloperViewController.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 1/30/21.
@@ -8,22 +8,17 @@
 
 import UIKit
 
-class DevelopmentViewController: BaseTableViewController, DevelopmentView {
+class DeveloperViewController: BaseTableViewController, DeveloperView {
 
     // MARK: - DI
 
-    var presenter: DevelopmentPresenterProtocol!
+    var presenter: DeveloperPresenterProtocol!
 
     // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = DevelopmentPresenter(
-            view: self,
-            settings: LocalSettings.shared
-        )
-        
         configureViews()
         presenter.onViewDidLoad()
     }

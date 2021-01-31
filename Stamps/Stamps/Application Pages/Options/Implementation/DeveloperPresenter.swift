@@ -1,5 +1,5 @@
 //
-//  DevelopmentPresenter.swift
+//  DeveloperPresenter.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 1/30/21.
@@ -10,22 +10,25 @@ import Foundation
 import UIKit
 import MessageUI
 
-class DevelopmentPresenter: NSObject, DevelopmentPresenterProtocol {
+class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
 
     // MARK: - DI
 
-    private weak var view: DevelopmentView?
+    private weak var view: DeveloperView?
     private weak var settings: LocalSettings!
-    
+    private weak var repository: DataRepository!
+
     // MARK: - State
 
     // MARK: - Lifecycle
 
     init(
-        view: DevelopmentView,
+        view: DeveloperView,
+        repository: DataRepository,
         settings: LocalSettings
     ) {
         self.view = view
+        self.repository = repository
         self.settings = settings
     }
 
@@ -42,16 +45,40 @@ class DevelopmentPresenter: NSObject, DevelopmentPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
+        
     }
     
     private func loadViewData() {
+        let stickersCount = repository.allStamps().count
+        let stickersDeletedCount = repository.allStamps(includeDeleted: true).count - stickersCount
+        let goalsCount = repository.allGoals().count
+        let goalsDeletedCount = repository.allGoals(includeDeleted: true).count - goalsCount
+        let diaryCount = repository.diaryForDateInterval(
+            from: repository.getFirstDiaryDate() ?? Date(),
+            to: repository.getLastDiaryDate() ?? Date()).count
+        let awardsCount = repository.allAwards().count
+        let lastWeek = repository.lastWeekUpdate != nil ? repository.lastWeekUpdate!.databaseKey : "-"
+        let lastMonth = repository.lastMonthUpdate != nil ? repository.lastMonthUpdate!.databaseKey : "-"
+
         let data: [OptionsSection] = [
             OptionsSection(
                 header: nil,
                 footer: nil,
                 cells: [
-                    .text("Notifications", settings.reminderEnabled ? "On" : "Off"),
+                    .text("Reminder", settings.reminderEnabled ? "On" : "Off"),
                     .text("Id", settings.todayNotificationId ?? "-"),
+                ]
+            ),
+            OptionsSection(
+                header: "Database",
+                footer: nil,
+                cells: [
+                    .text("Last Week Closed", "\(lastWeek)"),
+                    .text("Last Month Closed", "\(lastMonth)"),
+                    .text("Stickers (Deleted)", "\(stickersCount) (\(stickersDeletedCount))"),
+                    .text("Goals (Deleted)", "\(goalsCount) (\(goalsDeletedCount))"),
+                    .text("Stickers Used", "\(diaryCount)"),
+                    .text("Awards", "\(awardsCount)"),
                 ]
             ),
             OptionsSection(
@@ -87,21 +114,17 @@ class DevelopmentPresenter: NSObject, DevelopmentPresenterProtocol {
     }
 
     private func emailLogFile() {
-        let repository = Storage.shared.repository
-        let backupFileName = repository.deviceBackupFileName
-        
-        if repository.backupDatabase(to: backupFileName) {
-            sendBackupEmail(
-                attachment: backupFileName,
-                fileName: "emojical-backup-\(Date().databaseKey).json"
-            )
-        }
+        guard let file = AppDelegate.applicationLogFile else { return }
+        emailFile(
+            attachment: URL(fileURLWithPath: file),
+            fileName: "application.log"
+        )
     }
 }
     
 // MARK: - MFMailComposeViewControllerDelegate
 
-extension DevelopmentPresenter: MFMailComposeViewControllerDelegate {
+extension DeveloperPresenter: MFMailComposeViewControllerDelegate {
     
     private var mailComposer: MFMailComposeViewController? {
         guard MFMailComposeViewController.canSendMail() else {
@@ -113,7 +136,7 @@ extension DevelopmentPresenter: MFMailComposeViewControllerDelegate {
         return mail
     }
     
-    private func sendBackupEmail(attachment: URL, fileName: String) {
+    private func emailFile(attachment: URL, fileName: String) {
         guard let mail = mailComposer else {
             return
         }
@@ -124,17 +147,6 @@ extension DevelopmentPresenter: MFMailComposeViewControllerDelegate {
         }
         catch {}
 
-        mail.setMessageBody("Here is backup of your data", isHTML: false)
-        view?.viewController?.present(mail, animated: true)
-    }
-
-    private func sendFeedbackEmail(to: String, subject: String) {
-        guard let mail = mailComposer else {
-            return
-        }
-
-        mail.setSubject(subject)
-        mail.setToRecipients([to])
         view?.viewController?.present(mail, animated: true)
     }
 
@@ -142,20 +154,3 @@ extension DevelopmentPresenter: MFMailComposeViewControllerDelegate {
         controller.dismiss(animated: true)
     }
 }
-
-
-    
-    //private func confirmAddAction() {
-//        let confirm = UIAlertController(title: "Create New...", message: nil, preferredStyle: .actionSheet)
-//        confirm.addAction(UIAlertAction(title: "Sticker", style: .default, handler: { (_) in
-//            self.coordinator?.newSticker()
-//        }))
-//        confirm.addAction(UIAlertAction(title: "Goal", style: .default, handler: { (_) in
-//            self.coordinator?.newGoal()
-//        }))
-//        confirm.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
-//            confirm.dismiss(animated: true, completion: nil)
-//        }))
-//        (view as! UIViewController).present(confirm, animated: true, completion: nil)
-    //}
-//}

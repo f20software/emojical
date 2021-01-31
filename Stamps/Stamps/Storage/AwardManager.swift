@@ -59,7 +59,7 @@ class AwardManager {
         
         guard var last = lastUpdated else { return 0 }
         while (last.databaseKey < Date().databaseKey) {
-            print("Last week update set \(last.databaseKey)")
+            NSLog("Last week update set \(last.databaseKey)")
             repository.lastWeekUpdate = last
             last = last.byAddingWeek(1)
             closedWeeks += 1
@@ -85,7 +85,7 @@ class AwardManager {
 
         guard var last = lastUpdated else { return }
         while (last.databaseKey < Date().databaseKey) {
-            print("Last month update set \(last.databaseKey)")
+            NSLog("Last month update set \(last.databaseKey)")
             repository.lastMonthUpdate = last
             last = last.lastOfMonth.byAddingMonth(1)
             recalculateAwardsForMonth(last)
@@ -97,7 +97,7 @@ class AwardManager {
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
         
-        print("Recalculating monthly awards for \(date.databaseKey)")
+        NSLog("Recalculating monthly awards for \(date.databaseKey)")
 
         let end = date.lastOfMonth
         let start = date.firstOfMonth
@@ -145,7 +145,7 @@ class AwardManager {
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
 
-        print("Recalculating weekly awards for \(date.databaseKey)")
+        NSLog("Recalculating weekly awards for \(date.databaseKey)")
 
         let end = date.lastOfWeek
         let start = end.byAddingDays(-6)

@@ -1,5 +1,5 @@
 //
-//  DevelopmentPresenterProtocol.swift
+//  DeveloperPresenterProtocol.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 1/30/21.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DevelopmentPresenterProtocol: NSObject {
+protocol DeveloperPresenterProtocol: NSObject {
     
     /// Called when view finished initial loading
     func onViewDidLoad()

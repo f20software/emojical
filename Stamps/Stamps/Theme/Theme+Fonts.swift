@@ -41,7 +41,7 @@ extension Theme {
 
         /// Buttons text font
         lazy var buttons: UIFont = {
-            font(ofSize: 20, weight: .regular, style: .body)
+            font(ofSize: 18, weight: .regular, style: .body)
         }()
 
         /// Returns a base font scaled according to current system font size.

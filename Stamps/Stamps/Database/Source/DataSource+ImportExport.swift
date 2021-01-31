@@ -58,7 +58,7 @@ extension DataSource {
             try String(data: json, encoding: .utf8)?.write(to: file, atomically: true, encoding: .utf8)
         }
         catch {
-            print("Failed to backup database")
+            NSLog("Failed to backup database")
             result = false
         }
         
@@ -74,7 +74,7 @@ extension DataSource {
             dump = try decoder.decode(DatabaseDump.self, from: Data(contentsOf: file, options: .alwaysMapped))
         }
         catch {
-            print("Failed to read database. Import will not proceed.")
+            NSLog("Failed to read database. Import will not proceed.")
         }
         
         guard dump != nil else { return }

@@ -128,7 +128,7 @@ class NotificationManager {
         let comps = Calendar.current.dateComponents([.day, .year, .month, .hour, .minute], from: nextNotificationDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
 
-        print("Reminder (\"\(content.body)\") is set to \(nextNotificationDate.databaseKeyWithTime)")
+        NSLog("Reminder (\"\(content.body)\") is set to \(nextNotificationDate.databaseKeyWithTime)")
         
         // Create the request
         return UNNotificationRequest(

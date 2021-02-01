@@ -52,23 +52,33 @@
 
 // Current goal progress
 
-"week_positive_goal_not_reached" = "You've got %d stickers this week. %d to go.";
+"you_got_0_stickers_week" = "You've got no stickers so far this week";
+
+"you_got_1_sticker_week" = "You've got 1 sticker this week";
+
+"you_got_x_stickers_week" = "You've got %d stickers this week";
+
+"you_got_0_stickers_month" = "You've got no stickers so far this month";
+
+"you_got_1_sticker_month" = "You've got 1 sticker this month";
+
+"you_got_x_stickers_month" = "You've got %d stickers this month";
+
+"positive_goal_not_reached" = "%@. %d to go.";
+
+"positive_goal_not_reached_0" = "%@. The goal is %d.";
+
+"negative_goal_not_reached" = "%@. You still can get %d more.";
+
+"negative_goal_not_reached_0" = "%@. You can get up to %d.";
+
+"negative_goal_reached" = "%@. You will break this goal if you get one more.";
 
 "week_positive_goal_reached" = "You've reached the goal this week by getting %d stickers. Great job!";
 
-"week_negative_goal_not_reached" = "You've got %d stickers this week. You still can get %d more.";
-
-"week_negative_goal_reached" = "You've got %d stickers this week. You will break this goal if you get one more.";
-
 "week_negative_goal_breached" = "You've broken the goal by getting %d stickers this week.";
 
-"month_positive_goal_not_reached" = "You've got %d stickers this month. %d to go.";
-
 "month_positive_goal_reached" = "You've reached the goal this month by getting %d stickers. Great job!";
-
-"month_negative_goal_not_reached" = "You've got %d stickers this month. You still can get %d more.";
-
-"month_negative_goal_reached" = "You've got %d stickers this month. You will break this goal if you get one more.";
 
 "month_negative_goal_breached" = "You've broken the goal by getting %d stickers this month.";
 

@@ -56,48 +56,67 @@ class Language {
         limit: Int
     ) -> String {
         
+        var progressText = ""
         switch period {
         case .week:
-            switch direction {
-            case .positive:
-                if progress < limit {
-                    return "week_positive_goal_not_reached".localized(progress, (limit-progress))
-                } else {
-                    return "week_positive_goal_reached".localized(progress)
-                }
-
-            case .negative:
-                if progress < limit {
-                    return "week_positive_goal_not_reached".localized(progress, (limit-progress))
-                } else if progress == limit {
-                    return "week_positive_goal_reached".localized(progress)
-                } else {
-                    return "week_positive_goal_breached".localized(progress)
-                }
+            if progress == 0 {
+                progressText = "you_got_0_stickers_week".localized
+            } else if progress == 1 {
+                progressText = "you_got_1_sticker_week".localized
+            } else {
+                progressText = "you_got_x_stickers_week".localized(progress)
             }
-            
-        case .month:
-            switch direction {
-            case .positive:
-                if progress < limit {
-                    return "month_positive_goal_not_reached".localized(progress, (limit-progress))
-                } else {
-                    return "month_positive_goal_reached".localized(progress)
-                }
 
-            case .negative:
-                if progress < limit {
-                    return "month_positive_goal_not_reached".localized(progress, (limit-progress))
-                } else if progress == limit {
-                    return "month_positive_goal_reached".localized(progress)
-                } else {
-                    return "month_positive_goal_breached".localized(progress)
-                }
+        case .month:
+            if progress == 0 {
+                progressText = "you_got_0_stickers_month".localized
+            } else if progress == 1 {
+                progressText = "you_got_1_sticker_month".localized
+            } else {
+                progressText = "you_got_x_stickers_month".localized(progress)
             }
 
         default:
             assertionFailure("Not implemented")
             return ""
+        }
+        
+        switch direction {
+        case .positive:
+            if progress == 0 {
+                return "positive_goal_not_reached_0".localized(progressText, limit)
+            } else if progress < limit {
+                return "positive_goal_not_reached".localized(progressText, (limit-progress))
+            } else {
+                switch period {
+                case .week:
+                    return "week_positive_goal_reached".localized(progress)
+                case .month:
+                    return "month_positive_goal_reached".localized(progress)
+                default:
+                    assertionFailure("Not implemented")
+                    return ""
+                }
+            }
+
+        case .negative:
+            if progress == 0 {
+                return "negative_goal_not_reached_0".localized(progressText, limit)
+            } else if progress < limit {
+                return "negative_goal_not_reached".localized(progressText, (limit-progress))
+            } else if progress == limit {
+                return "negative_goal_reached".localized(progressText)
+            } else {
+                switch period {
+                case .week:
+                    return "week_negative_goal_breached".localized(progress)
+                case .month:
+                    return "week_negative_goal_breached".localized(progress)
+                default:
+                    assertionFailure("Not implemented")
+                    return ""
+                }
+            }
         }
     }
     

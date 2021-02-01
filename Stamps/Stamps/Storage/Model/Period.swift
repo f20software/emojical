@@ -13,17 +13,4 @@ enum Period: Int {
     case month
     case year // not used
     case total // not used
-    
-    var name: String {
-        switch self {
-        case .week:
-            return "Weekly"
-        case .month:
-            return "Monthly"
-        case .year:
-            return "Annual"
-        case .total:
-            return "Overall"
-        }
-    }
 }

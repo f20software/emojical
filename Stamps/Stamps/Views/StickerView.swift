@@ -55,6 +55,7 @@ class StickerView : UIView {
     // Configure text and color and other parameters for the emoji subview
     private func configureViews() {
         labelView?.font = UIFont.systemFont(ofSize: bounds.width * emojiSizeRatio)
+        // labelView?.font = UIFont(name: "AppleColorEmoji", size: bounds.width * emojiSizeRatio)
         labelView?.backgroundColor = color.withAlphaComponent(0.25)
         labelView?.text = text
         labelView?.layer.cornerRadius = cornerRadius

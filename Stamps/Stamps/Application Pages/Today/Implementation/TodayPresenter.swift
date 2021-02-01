@@ -320,7 +320,7 @@ class TodayPresenter: TodayPresenterProtocol {
             )
         })
         
-        if data.count < 5 {
+        if data.count < 10 {
             data.append(.newStamp)
         }
         

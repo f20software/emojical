@@ -44,7 +44,7 @@ class GoalDetailsCell: UICollectionViewCell {
         fullIcon = data.award
         
         goalDescription.text = data.details
-        statistics.text = data.statis
+        statistics.text = data.statistics
         stickers.text = "Stickers: \(data.stickers.joined(separator: ", "))"
         currentProgress.text = data.progressText
         

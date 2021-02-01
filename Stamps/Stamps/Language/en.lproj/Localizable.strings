@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  Stamps
+
+  Created by Vladimir Svidersky on 1/31/21.
+  Copyright © 2021 Vladimir Svidersky. All rights reserved.
+*/
+
+// Goal reaching
+
+"goal_not_reached_yet" = "Goal hasn't been reached yet.";
+
+"goal_reached_x_times" = "Goal has been reached %d times";
+
+"goal_reached_1_time" = "Goal has been reached once";
+
+"last_time_date" = "last time - %@.";
+
+"current_streak_x" = "Current streak - %d times in a row.";
+
+// Goal description
+
+"week_positive_x" = "Weekly goal, %d times or more.";
+
+"week_negative_x" = "Weekly goal, %d times or less.";
+
+"week_no_limit" = "Weekly goal, no limit.";
+
+"month_positive_x" = "Monthly goal, %d times or more.";
+
+"month_negative_x" = "Monthly goal, %d times or less.";
+
+"month_no_limit" = "Monthly goal, no limit.";
+
+// Current goal progress
+
+"week_positive_goal_not_reached" = "You've got %d stickers this week. %d to go.";
+
+"week_positive_goal_reached" = "You've reached the goal this week by getting %d stickers. Great job!";
+
+"week_negative_goal_not_reached" = "You've got %d stickers this week. You still can get %d more.";
+
+"week_negative_goal_reached" = "You've got %d stickers this week. You will break this goal if you get one more.";
+
+"week_negative_goal_breached" = "You've broken the goal by getting %d stickers this week.";
+
+"month_positive_goal_not_reached" = "You've got %d stickers this month. %d to go.";
+
+"month_positive_goal_reached" = "You've reached the goal this month by getting %d stickers. Great job!";
+
+"month_negative_goal_not_reached" = "You've got %d stickers this month. You still can get %d more.";
+
+"month_negative_goal_reached" = "You've got %d stickers this month. You will break this goal if you get one more.";
+
+"month_negative_goal_breached" = "You've broken the goal by getting %d stickers this month.";

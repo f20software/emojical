@@ -41,6 +41,7 @@ class GoalPresenter: GoalPresenterProtocol {
     private let awardManager: AwardManager
     private let coordinator: GoalCoordinatorProtocol
     private let repository: DataRepository
+    private let dataBuilder: CalendarDataBuilder
 
     // MARK: - Lifecycle
 
@@ -60,6 +61,11 @@ class GoalPresenter: GoalPresenterProtocol {
         self.goal = goal ?? Goal.new
         self.presentationMode = presentation
         self.isEditing = editing
+        
+        self.dataBuilder = CalendarDataBuilder(
+            repository: repository,
+            calendar: CalendarHelper.shared
+        )
     }
 
     // MARK: - State
@@ -121,7 +127,10 @@ class GoalPresenter: GoalPresenterProtocol {
     
     private func confirmGoalDelete() {
         if goal.count > 0 {
-            let confirm = UIAlertController(title: "Woah!", message: "\(goal.statsDescription) Are you sure you want to delete it?", preferredStyle: .actionSheet)
+            let description = Language.goalHistory(
+                count: goal.count, lastDate: goal.lastUsed, streak: 0)
+            
+            let confirm = UIAlertController(title: "Woah!", message: "\(description) Are you sure you want to delete it?", preferredStyle: .actionSheet)
             confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
                 self.deleteAndDismiss()
             }))
@@ -196,11 +205,20 @@ class GoalPresenter: GoalPresenterProtocol {
             }
             view.enableDoneButton(goal.isValid)
         } else {
+            let history = dataBuilder.goalHistory(forGoal: goal.id!)
             let data = GoalViewData(
-                details: goal.details,
-                statis: goal.statsDescription,
+                details: Language.goalDescription(goal),
+                statistics: Language.goalHistory(
+                    count: goal.count,
+                    lastDate: goal.lastUsed,
+                    streak: history?.streak ?? 0),
                 stickers: repository.stampLabelsFor(goal),
-                progressText: goal.descriptionForCurrentProgress(progress),
+                progressText: Language.goalCurrentProgress(
+                    period: goal.period,
+                    direction: goal.direction,
+                    progress: progress,
+                    limit: goal.limit
+                ),
                 award: award,
                 progress: currentProgress
             )

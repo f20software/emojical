@@ -116,6 +116,11 @@
 		F295339A25B64098003CA002 /* GoalDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F295339925B64097003CA002 /* GoalDetailsCell.xib */; };
 		F29533A125B6611B003CA002 /* GoalDetailsEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */; };
 		F29533A225B6611B003CA002 /* GoalDetailsEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29533A025B6611B003CA002 /* GoalDetailsEditCell.swift */; };
+		F298049F25C7464000952AAF /* joypixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F298049E25C7464000952AAF /* joypixel.ttf */; };
+		F29804C725C79A5F00952AAF /* GoalHistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804C625C79A5F00952AAF /* GoalHistoryData.swift */; };
+		F29804CC25C7A52500952AAF /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804CB25C7A52500952AAF /* Language.swift */; };
+		F29804D325C7B28500952AAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F29804D525C7B28500952AAF /* Localizable.strings */; };
+		F29804D925C7B2E600952AAF /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804D825C7B2E600952AAF /* Localizer.swift */; };
 		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
@@ -326,6 +331,11 @@
 		F295339925B64097003CA002 /* GoalDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalDetailsCell.xib; sourceTree = "<group>"; };
 		F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalDetailsEditCell.xib; sourceTree = "<group>"; };
 		F29533A025B6611B003CA002 /* GoalDetailsEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDetailsEditCell.swift; sourceTree = "<group>"; };
+		F298049E25C7464000952AAF /* joypixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = joypixel.ttf; sourceTree = "<group>"; };
+		F29804C625C79A5F00952AAF /* GoalHistoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalHistoryData.swift; sourceTree = "<group>"; };
+		F29804CB25C7A52500952AAF /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		F29804D425C7B28500952AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F29804D825C7B2E600952AAF /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -754,6 +764,7 @@
 				F295338825B62F3A003CA002 /* GoalDetailsElement.swift */,
 				F27BC98425B68D7F00B58087 /* GoalEditData.swift */,
 				F295337E25B6168D003CA002 /* GoalViewData.swift */,
+				F29804C625C79A5F00952AAF /* GoalHistoryData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -789,6 +800,16 @@
 				F2FD4DF225BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F29804CA25C7A52500952AAF /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				F29804CB25C7A52500952AAF /* Language.swift */,
+				F29804D825C7B2E600952AAF /* Localizer.swift */,
+				F29804D525C7B28500952AAF /* Localizable.strings */,
+			);
+			path = Language;
 			sourceTree = "<group>";
 		};
 		F2A5256023D4CED000C3E0F3 /* Calendar */ = {
@@ -940,6 +961,7 @@
 				F20E40382443E598008759D1 /* Extensions */,
 				F2C493222430171000E997BD /* Notifications */,
 				F26B273823D80CB000B8D0F9 /* Resources */,
+				F29804CA25C7A52500952AAF /* Language */,
 				F2A5256023D4CED000C3E0F3 /* Calendar */,
 				F20D1F9724142A1D00FB5000 /* Views */,
 				F2FF7EAB23D671050033D9DC /* Theme */,
@@ -1158,6 +1180,7 @@
 		F2FF7EAB23D671050033D9DC /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				F298049E25C7464000952AAF /* joypixel.ttf */,
 				F247541C23E5DF6B006A13C3 /* Palette.swift */,
 				F27BC98F25B7DF3A00B58087 /* Theme.swift */,
 				F27BC99625B7DF7E00B58087 /* Theme+Main.swift */,
@@ -1260,6 +1283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F298049F25C7464000952AAF /* joypixel.ttf in Resources */,
 				F251F8B925BFB8F20042B1DA /* SelectStickerCell.xib in Resources */,
 				F23CF3CD2582A95F0048BA74 /* StickerCell.xib in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
@@ -1269,6 +1293,7 @@
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
 				F295336625B60CEB003CA002 /* Sticker.storyboard in Resources */,
+				F29804D325C7B28500952AAF /* Localizable.strings in Resources */,
 				F2FD4DF325BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib in Resources */,
 				F2FD4DBA25BC88C6005819A0 /* SelectStickers.storyboard in Resources */,
 				F2FD4E1725BDCD42005819A0 /* StickerDetailsEditCell.xib in Resources */,
@@ -1362,6 +1387,7 @@
 				F295337B25B6165C003CA002 /* GoalViewController.swift in Sources */,
 				F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */,
 				F27782FB25C501E300C68F7A /* OptionsPresenterProtocol.swift in Sources */,
+				F29804D925C7B2E600952AAF /* Localizer.swift in Sources */,
 				F2A93FB625813668006C88F8 /* WeekLineView.swift in Sources */,
 				F2FD4DD025BCB89C005819A0 /* GoalCoordinator.swift in Sources */,
 				F2FD4E2525BDCD42005819A0 /* StickerViewProtocol.swift in Sources */,
@@ -1444,6 +1470,7 @@
 				F2EE4AB825C5B3B9004FB0F2 /* SwitchCell.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
+				F29804C725C79A5F00952AAF /* GoalHistoryData.swift in Sources */,
 				F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */,
 				F23CF369258271750048BA74 /* YearBoxView.swift in Sources */,
 				F2A93FD825816709006C88F8 /* StatsMode.swift in Sources */,
@@ -1452,6 +1479,7 @@
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2FD4E2025BDCD42005819A0 /* StickerCoordinator.swift in Sources */,
 				F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */,
+				F29804CC25C7A52500952AAF /* Language.swift in Sources */,
 				BC1E1EFA246C58F500E05C8A /* GRDBDataProvider.swift in Sources */,
 				F2C847A125C727DB00A2C2F2 /* DataSource+Demo.swift in Sources */,
 				F2FD4DBD25BC88C6005819A0 /* SelectStickersView.swift in Sources */,
@@ -1490,6 +1518,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F29804D525C7B28500952AAF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F29804D425C7B28500952AAF /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F2C4944023D2CBC800EAF9CC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1672,7 +1708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.6;
+				CURRENT_PROJECT_VERSION = 1.1.7;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1693,7 +1729,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.6;
+				CURRENT_PROJECT_VERSION = 1.1.7;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

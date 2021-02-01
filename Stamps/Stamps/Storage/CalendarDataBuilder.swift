@@ -225,6 +225,60 @@ class CalendarDataBuilder {
             completion(bits)
         }
     }
+    
+    func goalHistory(forGoal id: Int64) -> GoalHistoryData? {
+        guard let goal = repository.goalById(id) else { return nil }
+        guard let firstEntryDate = repository.getFirstDiaryDate() else { return nil }
+        
+        let historyLimit = 20
+        var history = [GoalHistoryPoint]()
+        var week = CalendarHelper.Week(Date().byAddingWeek(-1))
+        var streak = 0
+        var streakRunning = true
+        
+        while (history.count < historyLimit) && (week.lastDay > firstEntryDate) {
+            if let award = repository.awardsForDateInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id }) {
+                history.append(
+                    GoalHistoryPoint(
+                        weekStart: week.firstDay,
+                        total: award.count,
+                        limit: award.limit,
+                        reached: award.reached
+                    )
+                )
+                if award.reached && streakRunning {
+                    streak = streak + 1
+                } else if !award.reached {
+                    streakRunning = false
+                }
+            } else {
+                history.append(
+                    GoalHistoryPoint(
+                        weekStart: week.firstDay,
+                        total: 0,
+                        limit: goal.limit,
+                        reached: false)
+                )
+                streakRunning = false
+            }
+            
+            week = CalendarHelper.Week(week.firstDay.byAddingWeek(-1))
+        }
+        
+        // Check current week to see if we need to increase the streak
+        week = CalendarHelper.Week(Date())
+        if (repository.awardsForDateInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id && $0.reached == true }) != nil) {
+            streak += 1
+        }
+        
+        return GoalHistoryData(
+            count: goal.count,
+            lastGotten: goal.lastUsed,
+            streak: streak,
+            history: history
+        )
+    }
+    
 
     // MARK: - Helpers
     

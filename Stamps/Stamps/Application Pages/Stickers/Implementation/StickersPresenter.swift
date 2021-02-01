@@ -121,7 +121,7 @@ class StickersPresenter: StickersPresenterProtocol {
             return GoalData(
                 goalId: goalId,
                 name: $0.name,
-                details: $0.details,
+                details: Language.goalDescription($0),
                 count: $0.count,
                 progress: GoalAwardData(
                     goal: $0,

@@ -20,17 +20,21 @@
 
 // Goal description
 
-"week_positive_x" = "Weekly goal, %d times or more.";
+"weekly_goal" = "weekly goal";
 
-"week_negative_x" = "Weekly goal, %d times or less.";
+"monthly_goal" = "monthly goal";
 
-"week_no_limit" = "Weekly goal, no limit.";
+"week_positive_x" = "Weekly, %d times or more.";
 
-"month_positive_x" = "Monthly goal, %d times or more.";
+"week_negative_x" = "Weekly, %d times or less.";
 
-"month_negative_x" = "Monthly goal, %d times or less.";
+"week_no_limit" = "Weekly, no limit.";
 
-"month_no_limit" = "Monthly goal, no limit.";
+"month_positive_x" = "Monthly, %d times or more.";
+
+"month_negative_x" = "Monthly, %d times or less.";
+
+"month_no_limit" = "Monthly, no limit.";
 
 // Current goal progress
 
@@ -53,3 +57,15 @@
 "month_negative_goal_reached" = "You've got %d stickers this month. You will break this goal if you get one more.";
 
 "month_negative_goal_breached" = "You've broken the goal by getting %d stickers this month.";
+
+// Award reached / not reached state
+
+"award_earned_on" = "Earned on %@.";
+
+"award_positive_reached" = "Earned on %@, by getting %d stickers.";
+
+"award_positive_not_reached" = "%@ not reached. Got %d stickers (needed %d).";
+
+"award_negative_reached" = "Earned on %@. You had %d stickers (limit was %d).";
+
+"award_negative_not_reached" = "%@ not reached. Got %d stickers (limit was %d).";

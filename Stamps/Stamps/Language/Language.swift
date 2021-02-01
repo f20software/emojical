@@ -1,17 +1,29 @@
 //
-//  CalendarHelper.swift
-//  Stamps
+//  Language.swift
+//  Emojical
 //
-//  Created by Vladimir Svidersky on 2/8/20.
-//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//  Created by Vladimir Svidersky on 1/31/21.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import Foundation
 
+/// Conviniece extension to String to capitalize first letter
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
+
+/// This class provides support for building various human readable descriptions for goals, awards etc
 class Language {
 
     /// Description for the goal current progress
-    /// for example "You've got 5 stickers this week. You still can get 2 more."
+    /// For example - "You've got 5 stickers this week. You still can get 2 more."
     static func goalCurrentProgress(
         period: Period,
         direction: Direction,
@@ -65,7 +77,7 @@ class Language {
     }
     
     /// Description of how many times goal has been reached and how long the streak is
-    /// For example: "Goal has been reached 5 times, las time - Jan 1, 2021. Current streak - 2 times in a row".
+    /// For example - "Goal has been reached 5 times, las time - Jan 1, 2021. Current streak - 2 times in a row".
     static func goalHistory(count: Int, lastDate: Date?, streak: Int) -> String {
         guard count > 0 else {
             return "goal_not_reached_yet".localized
@@ -95,7 +107,7 @@ class Language {
     }
 
     /// Goal description
-    /// For example: "Weekly goal. 5 times or more."
+    /// For example - "Weekly goal. 5 times or more."
     static func goalDescription(_ goal: Goal) -> String {
         switch goal.period {
         case .week:
@@ -125,6 +137,50 @@ class Language {
         default:
             assertionFailure("Not implemented")
             return ""
+        }
+    }
+    
+    /// Goal with period
+    /// For example - "weekly goal"
+    static func goalWithPeriod(_ period: Period) -> String {
+        switch period {
+        case .week:
+            return "weekly_goal".localized
+            
+        case .month:
+            return "monthly_goal".localized
+            
+        default:
+            assertionFailure("Not implemented")
+            return ""
+        }
+    }
+    
+    /// Award reached state description
+    /// For example: "Earned on Jan 1, 2021, by getting 5 stickers."
+    static func awardDescription(
+        reached: Bool,
+        direction: Direction,
+        date: String,
+        count: Int,
+        limit: Int,
+        period: Period
+    ) -> String {
+        let goal = goalWithPeriod(period).capitalizingFirstLetter()
+        switch direction {
+        case .positive:
+            if reached {
+                return "award_positive_reached".localized(date, count)
+            } else {
+                return "award_positive_not_reached".localized(goal, count, limit)
+            }
+
+        case .negative:
+            if reached {
+                return "award_negative_reached".localized(date, count, limit)
+            } else {
+                return "award_negative_not_reached".localized(goal, count, limit)
+            }
         }
     }
 }

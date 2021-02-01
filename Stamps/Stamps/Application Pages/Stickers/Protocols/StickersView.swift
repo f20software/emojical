@@ -7,9 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 protocol StickersView: AnyObject {
 
+    /// Return UIViewController instance (so we can present alert stuff from Presenter class)
+    var viewController: UIViewController? { get }
+    
     /// User tapped on the sticker
     var onStickerTapped: ((Int64) -> Void)? { get set }
 

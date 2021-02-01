@@ -147,16 +147,37 @@ class StickersPresenter: StickersPresenterProtocol {
     }
     
     private func confirmAddAction() {
-        let confirm = UIAlertController(title: "Create New...", message: nil, preferredStyle: .actionSheet)
-        confirm.addAction(UIAlertAction(title: "Sticker", style: .default, handler: { (_) in
-            self.coordinator?.newSticker()
-        }))
-        confirm.addAction(UIAlertAction(title: "Goal", style: .default, handler: { (_) in
-            self.coordinator?.newGoal()
-        }))
-        confirm.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
-            confirm.dismiss(animated: true, completion: nil)
-        }))
-        (view as! UIViewController).present(confirm, animated: true, completion: nil)
+        
+        let confirm = UIAlertController(
+            title: "create_new_title".localized,
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        
+        confirm.addAction(
+            UIAlertAction(
+                title: "sticker_title".localized, style: .default,
+                handler: { (_) in
+                    self.coordinator?.newSticker()
+                }
+            )
+        )
+        confirm.addAction(
+            UIAlertAction(
+                title: "goal_title".localized, style: .default,
+                handler: { (_) in
+                    self.coordinator?.newGoal()
+                }
+            )
+        )
+        confirm.addAction(
+            UIAlertAction(
+                title: "dismiss_title".localized, style: .cancel,
+                handler: { (_) in
+                    confirm.dismiss(animated: true, completion: nil)
+                }
+            )
+        )
+        view?.viewController?.present(confirm, animated: true, completion: nil)
     }
 }

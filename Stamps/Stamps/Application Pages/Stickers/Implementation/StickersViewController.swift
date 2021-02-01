@@ -67,6 +67,11 @@ class StickersViewController: UIViewController, StickersView {
     
     // MARK: - StickersView
     
+    /// Return UIViewController instance (so we can present alert stuff from Presenter class)
+    var viewController: UIViewController? {
+        return self
+    }
+
     /// User tapped on the sticker
     var onStickerTapped: ((Int64) -> Void)?
 

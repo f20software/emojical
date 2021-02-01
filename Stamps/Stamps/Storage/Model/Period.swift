@@ -9,8 +9,15 @@
 import Foundation
 
 enum Period: Int {
+    /// Weekly goals
     case week
+    
+    /// Monthly goals
     case month
-    case year // not used
+    
+    /// Annual goals - NOT IMPLEMENTED
+    case year
+    
+    /// Overall goals - NOT IMPLEMENTED
     case total // not used
 }

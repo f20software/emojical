@@ -6,6 +6,22 @@
   Copyright © 2021 Vladimir Svidersky. All rights reserved.
 */
 
+// Sticker usage
+
+"sticker_not_used_yet" = "Sticker hasn't been used yet.";
+
+"sticker_used_x_times" = "Sticker has been used %d times";
+
+"sticker_used_1_time" = "Sticker has been used once";
+
+"last_time_date" = "last time - %@.";
+
+"sticker_used_no_goal" = "You haven't created a goal yet with this sticker.";
+
+"sticker_used_1_goal" = "Sticker is used in the \'%@\' goal.";
+
+"sticker_used_x_goals" = "Sticker is used in %@ goals.";
+
 // Goal reaching
 
 "goal_not_reached_yet" = "Goal hasn't been reached yet.";
@@ -13,8 +29,6 @@
 "goal_reached_x_times" = "Goal has been reached %d times";
 
 "goal_reached_1_time" = "Goal has been reached once";
-
-"last_time_date" = "last time - %@.";
 
 "current_streak_x" = "Current streak - %d times in a row.";
 
@@ -69,3 +83,9 @@
 "award_negative_reached" = "Earned on %@. You had %d stickers (limit was %d).";
 
 "award_negative_not_reached" = "%@ not reached. Got %d stickers (limit was %d).";
+
+// Titles
+
+"new_goal_title" = "New Goal";
+
+"new_sticker_title" = "Mew Sticker";

@@ -22,6 +22,31 @@ extension String {
 /// This class provides support for building various human readable descriptions for goals, awards etc
 class Language {
 
+    /// Sticker usage description
+    /// For example - "Sticker has been used 100 times. Last time - January 1"
+    static func stickerUsageDescription(_ sticker: Stamp) -> String {
+        guard sticker.count > 0 else {
+            return "sticker_not_user_yet".localized
+        }
+
+        var result = ""
+        if sticker.count > 1 {
+            result += "sticker_used_x_times".localized(sticker.count)
+        } else {
+            result += "sticker_used_1_time".localized
+        }
+            
+        if let last = sticker.lastUsed {
+            let df = DateFormatter()
+            df.dateStyle = .medium
+            result += ", " + "last_time_date".localized(df.string(from: last))
+        } else {
+            result += "."
+        }
+
+        return result
+    }
+    
     /// Description for the goal current progress
     /// For example - "You've got 5 stickers this week. You still can get 2 more."
     static func goalCurrentProgress(
@@ -78,20 +103,19 @@ class Language {
     
     /// Description of how many times goal has been reached and how long the streak is
     /// For example - "Goal has been reached 5 times, las time - Jan 1, 2021. Current streak - 2 times in a row".
-    static func goalHistory(count: Int, lastDate: Date?, streak: Int) -> String {
-        guard count > 0 else {
+    static func goalHistoryDescription(_ goal: Goal, streak: Int? = nil) -> String {
+        guard goal.count > 0 else {
             return "goal_not_reached_yet".localized
         }
 
         var result = ""
-        if count > 1 {
-            result += "goal_reached_x_times".localized(count)
-        }
-        else {
+        if goal.count > 1 {
+            result += "goal_reached_x_times".localized(goal.count)
+        } else {
             result += "goal_reached_1_time".localized
         }
             
-        if let last = lastDate {
+        if let last = goal.lastUsed {
             let df = DateFormatter()
             df.dateStyle = .medium
             result += ", " + "last_time_date".localized(df.string(from: last))
@@ -99,8 +123,8 @@ class Language {
             result += "."
         }
         
-        if streak > 1 {
-            result += " " + "current_streak_x".localized(streak)
+        if streak != nil && streak! > 0 {
+            result += " " + "current_streak_x".localized(streak!)
         }
             
         return result
@@ -181,6 +205,19 @@ class Language {
             } else {
                 return "award_negative_not_reached".localized(goal, count, limit)
             }
+        }
+    }
+    
+    /// Sticker used in goals description
+    /// For example - "Sticker used in the 'Do Good' goal."
+    static func stickerUsedInGoals(_ goals: [Goal]) -> String {
+        if goals.count == 0 {
+            return "sticker_used_no_goal".localized
+        } else if goals.count == 1 {
+            return "sticker_used_1_goal".localized(goals.first?.name ?? "")
+        } else {
+            let text = goals.map({ "'\($0.name)'" }).sentence
+            return "sticker_used_x_goals".localized(text)
         }
     }
 }

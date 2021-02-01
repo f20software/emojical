@@ -127,9 +127,7 @@ class GoalPresenter: GoalPresenterProtocol {
     
     private func confirmGoalDelete() {
         if goal.count > 0 {
-            let description = Language.goalHistory(
-                count: goal.count, lastDate: goal.lastUsed, streak: 0)
-            
+            let description = Language.goalHistoryDescription(goal)
             let confirm = UIAlertController(title: "Woah!", message: "\(description) Are you sure you want to delete it?", preferredStyle: .actionSheet)
             confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
                 self.deleteAndDismiss()
@@ -170,7 +168,8 @@ class GoalPresenter: GoalPresenterProtocol {
     }
     
     private func updateTitle() {
-        let title = (goal.name.isEmpty && presentationMode == .modal)  ? "New Goal" : goal.name
+        let title = (goal.name.isEmpty && presentationMode == .modal) ?
+            "new_goal_title".localized : goal.name
         view?.updateTitle(title)
     }
 
@@ -208,10 +207,7 @@ class GoalPresenter: GoalPresenterProtocol {
             let history = dataBuilder.goalHistory(forGoal: goal.id!)
             let data = GoalViewData(
                 details: Language.goalDescription(goal),
-                statistics: Language.goalHistory(
-                    count: goal.count,
-                    lastDate: goal.lastUsed,
-                    streak: history?.streak ?? 0),
+                statistics: Language.goalHistoryDescription(goal, streak: history?.streak),
                 stickers: repository.stampLabelsFor(goal),
                 progressText: Language.goalCurrentProgress(
                     period: goal.period,

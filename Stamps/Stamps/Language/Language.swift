@@ -123,7 +123,7 @@ class Language {
             result += "."
         }
         
-        if streak != nil && streak! > 0 {
+        if streak != nil && streak! > 1 {
             result += " " + "current_streak_x".localized(streak!)
         }
             

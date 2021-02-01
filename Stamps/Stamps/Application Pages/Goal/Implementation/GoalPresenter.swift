@@ -204,7 +204,7 @@ class GoalPresenter: GoalPresenterProtocol {
             }
             view.enableDoneButton(goal.isValid)
         } else {
-            let history = dataBuilder.goalHistory(forGoal: goal.id!)
+            var history = dataBuilder.goalHistory(forGoal: goal.id!)
             let data = GoalViewData(
                 details: Language.goalDescription(goal),
                 statistics: Language.goalHistoryDescription(goal, streak: history?.streak),

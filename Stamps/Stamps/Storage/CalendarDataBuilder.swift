@@ -230,43 +230,77 @@ class CalendarDataBuilder {
         guard let goal = repository.goalById(id) else { return nil }
         guard let firstEntryDate = repository.getFirstDiaryDate() else { return nil }
         
-        let historyLimit = 20
         var history = [GoalHistoryPoint]()
-        var week = CalendarHelper.Week(Date().byAddingWeek(-1))
+        let historyLimit = 20
         var streak = 0
         var streakRunning = true
         
-        while (history.count < historyLimit) && (week.lastDay > firstEntryDate) {
-            if let award = repository.awardsForDateInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id }) {
-                history.append(
-                    GoalHistoryPoint(
-                        weekStart: week.firstDay,
-                        total: award.count,
-                        limit: award.limit,
-                        reached: award.reached
+        switch goal.period {
+        case .week:
+            var week = CalendarHelper.Week(Date().byAddingWeek(-1))
+            while (history.count < historyLimit) && (week.lastDay > firstEntryDate) {
+                if let award = repository.awardsForDateInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id }) {
+                    history.append(
+                        GoalHistoryPoint(
+                            weekStart: week.firstDay,
+                            total: award.count,
+                            limit: award.limit,
+                            reached: award.reached
+                        )
                     )
-                )
-                if award.reached && streakRunning {
-                    streak = streak + 1
-                } else if !award.reached {
+                    if award.reached && streakRunning {
+                        streak = streak + 1
+                    } else if !award.reached {
+                        streakRunning = false
+                    }
+                } else {
+                    history.append(
+                        GoalHistoryPoint(
+                            weekStart: week.firstDay,
+                            total: 0,
+                            limit: goal.limit,
+                            reached: false)
+                    )
                     streakRunning = false
                 }
-            } else {
-                history.append(
-                    GoalHistoryPoint(
-                        weekStart: week.firstDay,
-                        total: 0,
-                        limit: goal.limit,
-                        reached: false)
-                )
-                streakRunning = false
+                week = CalendarHelper.Week(week.firstDay.byAddingWeek(-1))
             }
             
-            week = CalendarHelper.Week(week.firstDay.byAddingWeek(-1))
+        case .month:
+            var month = CalendarHelper.Month(Date().byAddingMonth(-1))
+            while (history.count < historyLimit) && (month.lastDay > firstEntryDate) {
+                if let award = repository.awardsForDateInterval(from: month.firstDay, to: month.lastDay).first(where: { $0.goalId == goal.id }) {
+                    history.append(
+                        GoalHistoryPoint(
+                            weekStart: month.firstDay,
+                            total: award.count,
+                            limit: award.limit,
+                            reached: award.reached
+                        )
+                    )
+                    if award.reached && streakRunning {
+                        streak = streak + 1
+                    } else if !award.reached {
+                        streakRunning = false
+                    }
+                } else {
+                    history.append(
+                        GoalHistoryPoint(
+                            weekStart: month.firstDay,
+                            total: 0,
+                            limit: goal.limit,
+                            reached: false)
+                    )
+                    streakRunning = false
+                }
+                month = CalendarHelper.Month(month.firstDay.byAddingMonth(-1))
+            }
+        default:
+            break
         }
         
         // Check current week to see if we need to increase the streak
-        week = CalendarHelper.Week(Date())
+        let week = CalendarHelper.Week(Date())
         if (repository.awardsForDateInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id && $0.reached == true }) != nil) {
             streak += 1
         }
@@ -278,7 +312,6 @@ class CalendarDataBuilder {
             history: history
         )
     }
-    
 
     // MARK: - Helpers
     

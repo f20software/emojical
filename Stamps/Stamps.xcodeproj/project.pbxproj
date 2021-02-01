@@ -116,7 +116,6 @@
 		F295339A25B64098003CA002 /* GoalDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F295339925B64097003CA002 /* GoalDetailsCell.xib */; };
 		F29533A125B6611B003CA002 /* GoalDetailsEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */; };
 		F29533A225B6611B003CA002 /* GoalDetailsEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29533A025B6611B003CA002 /* GoalDetailsEditCell.swift */; };
-		F298049F25C7464000952AAF /* joypixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F298049E25C7464000952AAF /* joypixel.ttf */; };
 		F29804C725C79A5F00952AAF /* GoalHistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804C625C79A5F00952AAF /* GoalHistoryData.swift */; };
 		F29804CC25C7A52500952AAF /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804CB25C7A52500952AAF /* Language.swift */; };
 		F29804D325C7B28500952AAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F29804D525C7B28500952AAF /* Localizable.strings */; };
@@ -331,7 +330,6 @@
 		F295339925B64097003CA002 /* GoalDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalDetailsCell.xib; sourceTree = "<group>"; };
 		F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalDetailsEditCell.xib; sourceTree = "<group>"; };
 		F29533A025B6611B003CA002 /* GoalDetailsEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDetailsEditCell.swift; sourceTree = "<group>"; };
-		F298049E25C7464000952AAF /* joypixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = joypixel.ttf; sourceTree = "<group>"; };
 		F29804C625C79A5F00952AAF /* GoalHistoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalHistoryData.swift; sourceTree = "<group>"; };
 		F29804CB25C7A52500952AAF /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		F29804D425C7B28500952AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1180,7 +1178,6 @@
 		F2FF7EAB23D671050033D9DC /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				F298049E25C7464000952AAF /* joypixel.ttf */,
 				F247541C23E5DF6B006A13C3 /* Palette.swift */,
 				F27BC98F25B7DF3A00B58087 /* Theme.swift */,
 				F27BC99625B7DF7E00B58087 /* Theme+Main.swift */,
@@ -1283,7 +1280,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F298049F25C7464000952AAF /* joypixel.ttf in Resources */,
 				F251F8B925BFB8F20042B1DA /* SelectStickerCell.xib in Resources */,
 				F23CF3CD2582A95F0048BA74 /* StickerCell.xib in Resources */,
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,

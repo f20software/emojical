@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct GoalHistoryData {
+struct GoalReachedData {
     // Text information to be displayed on the Goal details in view mode
     let count: Int
-    let lastGotten: Date?
+    let lastUsed: Date?
     let streak: Int
     let history: [GoalHistoryPoint]
 }
@@ -24,4 +24,4 @@ struct GoalHistoryPoint {
 }
 
 extension GoalHistoryPoint: Equatable, Hashable {}
-extension GoalHistoryData: Equatable, Hashable {}
+extension GoalReachedData: Equatable, Hashable {}

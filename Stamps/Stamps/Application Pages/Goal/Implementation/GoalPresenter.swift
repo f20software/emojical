@@ -127,8 +127,7 @@ class GoalPresenter: GoalPresenterProtocol {
     
     private func confirmGoalDelete() {
         if goal.count > 0 {
-            let description = Language.goalHistoryDescription(goal)
-            let confirm = UIAlertController(title: "Woah!", message: "\(description) Are you sure you want to delete it?", preferredStyle: .actionSheet)
+            let confirm = UIAlertController(title: "Woah!", message: "This goal has been reached few times. Are you sure you want to delete it?", preferredStyle: .actionSheet)
             confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
                 self.deleteAndDismiss()
             }))
@@ -204,10 +203,10 @@ class GoalPresenter: GoalPresenterProtocol {
             }
             view.enableDoneButton(goal.isValid)
         } else {
-            var history = dataBuilder.goalHistory(forGoal: goal.id!)
+            let history = dataBuilder.goalHistory(forGoal: goal.id!)
+
             let data = GoalViewData(
                 details: Language.goalDescription(goal),
-                statistics: Language.goalHistoryDescription(goal, streak: history?.streak),
                 stickers: repository.stampLabelsFor(goal),
                 progressText: Language.goalCurrentProgress(
                     period: goal.period,
@@ -218,7 +217,13 @@ class GoalPresenter: GoalPresenterProtocol {
                 award: award,
                 progress: currentProgress
             )
-            view.loadData([.view(data)])
+            
+            var cells: [GoalDetailsElement] = [.view(data)]
+            if history != nil {
+                cells.append(.reached(history!))
+            }
+            
+            view.loadData(cells)
         }
     }
     

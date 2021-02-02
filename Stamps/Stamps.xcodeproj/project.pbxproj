@@ -31,6 +31,8 @@
 		F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView_Old.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20E403A2443E5BC008759D1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
+		F21162C625C9FD6700E4D3AD /* GoalReachedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */; };
+		F21162C725C9FD6700E4D3AD /* GoalReachedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */; };
 		F21F150325C107A900DE5C1B /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F150225C107A800DE5C1B /* StickerView.swift */; };
 		F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */; };
 		F23CF369258271750048BA74 /* YearBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF368258271750048BA74 /* YearBoxView.swift */; };
@@ -246,6 +248,8 @@
 		BCF2300E2473222F001E8844 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView_Old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView_Old.swift; sourceTree = "<group>"; };
+		F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalReachedCell.swift; sourceTree = "<group>"; };
+		F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalReachedCell.xib; sourceTree = "<group>"; };
 		F21F150225C107A800DE5C1B /* StickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataBuilder.swift; sourceTree = "<group>"; };
 		F23CF368258271750048BA74 /* YearBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxView.swift; sourceTree = "<group>"; };
@@ -793,6 +797,8 @@
 			children = (
 				F295339925B64097003CA002 /* GoalDetailsCell.xib */,
 				F295339125B63DB1003CA002 /* GoalDetailsCell.swift */,
+				F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */,
+				F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */,
 				F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */,
 				F29533A025B6611B003CA002 /* GoalDetailsEditCell.swift */,
 				F2FD4DF125BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib */,
@@ -1290,6 +1296,7 @@
 				F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */,
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
+				F21162C725C9FD6700E4D3AD /* GoalReachedCell.xib in Resources */,
 				F295336625B60CEB003CA002 /* Sticker.storyboard in Resources */,
 				F29804D325C7B28500952AAF /* Localizable.strings in Resources */,
 				F2FD4DF325BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib in Resources */,
@@ -1446,6 +1453,7 @@
 				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */,
 				F2EE4ADA25C5F84A004FB0F2 /* BaseTableViewController.swift in Sources */,
+				F21162C625C9FD6700E4D3AD /* GoalReachedCell.swift in Sources */,
 				F26596F32596AF1300B10B76 /* RecapPresenterProtocol.swift in Sources */,
 				F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */,
 				F2FD4E2325BDCD42005819A0 /* StickerCoordinatorProtocol.swift in Sources */,

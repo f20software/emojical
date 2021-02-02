@@ -17,7 +17,6 @@ class GoalDetailsCell: UICollectionViewCell {
     @IBOutlet weak var goalIcon: GoalAwardView!
     @IBOutlet weak var goalBackground: UIView!
     @IBOutlet weak var stickers: UILabel!
-    @IBOutlet weak var statistics: UILabel!
     @IBOutlet weak var currentProgress: UILabel!
 
     /// User tapped on the Delete button
@@ -44,7 +43,6 @@ class GoalDetailsCell: UICollectionViewCell {
         fullIcon = data.award
         
         goalDescription.text = data.details
-        statistics.text = data.statistics
         stickers.text = "stickers_title".localized + ": \(data.stickers.joined(separator: ", "))"
         currentProgress.text = data.progressText
         
@@ -96,7 +94,6 @@ class GoalDetailsCell: UICollectionViewCell {
         goalBackground.layer.cornerRadius = goalBackground.bounds.width / 2.0
         
         goalDescription.font = Theme.shared.fonts.listBody
-        statistics.font = Theme.shared.fonts.listBody
         stickers.font = Theme.shared.fonts.listBody
         currentProgress.font = Theme.shared.fonts.listBody
     }

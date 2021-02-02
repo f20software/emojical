@@ -226,7 +226,7 @@ class CalendarDataBuilder {
         }
     }
     
-    func goalHistory(forGoal id: Int64) -> GoalHistoryData? {
+    func goalHistory(forGoal id: Int64) -> GoalReachedData? {
         guard let goal = repository.goalById(id) else { return nil }
         guard let firstEntryDate = repository.getFirstDiaryDate() else { return nil }
         
@@ -305,9 +305,9 @@ class CalendarDataBuilder {
             streak += 1
         }
         
-        return GoalHistoryData(
+        return GoalReachedData(
             count: goal.count,
-            lastGotten: goal.lastUsed,
+            lastUsed: goal.lastUsed,
             streak: streak,
             history: history
         )

@@ -122,31 +122,28 @@ class Language {
     
     /// Description of how many times goal has been reached and how long the streak is
     /// For example - "Goal has been reached 5 times, las time - Jan 1, 2021. Current streak - 2 times in a row".
-    static func goalHistoryDescription(_ goal: Goal, streak: Int? = nil) -> String {
-        guard goal.count > 0 else {
-            return "goal_not_reached_yet".localized
+    static func goalReachedDescription(_ count: Int, lastUsed: Date?) -> String {
+        guard count > 0,
+            let lastDate = lastUsed else {
+            return "goal_reached_0_text".localized
         }
 
-        var result = ""
-        if goal.count > 1 {
-            result += "goal_reached_x_times".localized(goal.count)
+        let df = DateFormatter()
+        df.dateStyle = .medium
+
+        if count > 1 {
+            return "goal_reached_x_text".localized(count, df.string(from: lastDate))
         } else {
-            result += "goal_reached_1_time".localized
+            return "goal_reached_1_text".localized(count, df.string(from: lastDate))
         }
-            
-        if let last = goal.lastUsed {
-            let df = DateFormatter()
-            df.dateStyle = .medium
-            result += ", " + "last_time_date".localized(df.string(from: last))
+    }
+    
+    static func goalStreakDescription(_ streak: Int) -> String {
+        if streak > 0 {
+            return "current_streak_x".localized(streak)
         } else {
-            result += "."
+            return "current_streak_0".localized
         }
-        
-        if streak != nil && streak! > 1 {
-            result += " " + "current_streak_x".localized(streak!)
-        }
-            
-        return result
     }
 
     /// Goal description

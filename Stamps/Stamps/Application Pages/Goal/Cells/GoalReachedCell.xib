@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoalReachedCell" id="7y9-Gf-xbO" customClass="GoalReachedCell" customModule="Emojical" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="142"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="142"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErJ-gD-7GI">
+                        <rect key="frame" x="0.0" y="20" width="300" height="122"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGJ-op-WRM" userLabel="Separator Vertical">
+                                <rect key="frame" x="149.5" y="20" width="1" height="82"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="imo-vJ-jOD"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZz-NO-Nj8">
+                                <rect key="frame" x="15" y="20" width="124.5" height="82"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Reached">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="5 times">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="24"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="24"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+Last - September 20</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw9-nb-P8p">
+                                <rect key="frame" x="160.5" y="20" width="124.5" height="90"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Reached">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="5 times">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="24"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="24"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+Last - September 20</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DGJ-op-WRM" firstAttribute="top" secondItem="mZz-NO-Nj8" secondAttribute="top" id="1cj-1c-80J"/>
+                            <constraint firstItem="tw9-nb-P8p" firstAttribute="top" secondItem="mZz-NO-Nj8" secondAttribute="top" id="38Z-lh-Y6Y"/>
+                            <constraint firstItem="DGJ-op-WRM" firstAttribute="centerX" secondItem="ErJ-gD-7GI" secondAttribute="centerX" id="6wE-Mx-UYq"/>
+                            <constraint firstItem="mZz-NO-Nj8" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" constant="15" id="GYf-Na-H9v"/>
+                            <constraint firstAttribute="bottom" secondItem="mZz-NO-Nj8" secondAttribute="bottom" constant="20" id="Gbq-ms-RGg"/>
+                            <constraint firstItem="DGJ-op-WRM" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" constant="20" id="Gro-t8-tlx"/>
+                            <constraint firstItem="DGJ-op-WRM" firstAttribute="leading" secondItem="mZz-NO-Nj8" secondAttribute="trailing" constant="10" id="MIa-ws-JZo"/>
+                            <constraint firstAttribute="trailing" secondItem="tw9-nb-P8p" secondAttribute="trailing" constant="15" id="SQf-Oc-lKT"/>
+                            <constraint firstItem="tw9-nb-P8p" firstAttribute="leading" secondItem="DGJ-op-WRM" secondAttribute="trailing" constant="10" id="vwu-SI-8N0"/>
+                            <constraint firstAttribute="bottom" secondItem="DGJ-op-WRM" secondAttribute="bottom" constant="20" id="ztv-wZ-H1k"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="0Jf-aO-hI9"/>
+            <constraints>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="leading" secondItem="7y9-Gf-xbO" secondAttribute="leading" id="Vlm-nP-CF7"/>
+                <constraint firstAttribute="trailing" secondItem="ErJ-gD-7GI" secondAttribute="trailing" priority="999" id="cCk-yV-ErB"/>
+                <constraint firstItem="ErJ-gD-7GI" firstAttribute="top" secondItem="7y9-Gf-xbO" secondAttribute="top" constant="20" id="h9a-WB-9ms"/>
+                <constraint firstAttribute="bottom" secondItem="ErJ-gD-7GI" secondAttribute="bottom" priority="999" id="pQi-uY-Es9"/>
+            </constraints>
+            <size key="customSize" width="308" height="88"/>
+            <connections>
+                <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
+                <outlet property="statistics" destination="mZz-NO-Nj8" id="t1B-Q3-413"/>
+                <outlet property="streak" destination="tw9-nb-P8p" id="jvF-9R-FMs"/>
+            </connections>
+            <point key="canvasLocation" x="7.2463768115942031" y="-73.660714285714278"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

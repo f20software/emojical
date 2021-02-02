@@ -24,13 +24,15 @@
 
 // Goal reaching
 
-"goal_not_reached_yet" = "Goal hasn't been reached yet.";
+"goal_reached_0_text" = "Goal reached|never";
 
-"goal_reached_x_times" = "Goal has been reached %d times";
+"goal_reached_1_text" = "Goal reached|%d time|last time:\n%@";
 
-"goal_reached_1_time" = "Goal has been reached once";
+"goal_reached_x_text" = "Goal reached|%d times|last time:\n%@";
 
-"current_streak_x" = "Current streak - %d times in a row.";
+"current_streak_0" = "Current streak|-";
+
+"current_streak_x" = "Current streak|%d";
 
 // Goal description
 

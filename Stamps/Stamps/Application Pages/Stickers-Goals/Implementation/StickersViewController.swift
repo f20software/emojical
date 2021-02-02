@@ -12,8 +12,8 @@ class StickersViewController: UIViewController, StickersView {
 
     // List of sections
     enum Section: String, CaseIterable {
-        case stickers = "Stickers"
-        case goals = "Goals"
+        case stickers = "stickers_title"
+        case goals = "goals_title"
     }
 
     // MARK: - Outlets
@@ -87,6 +87,11 @@ class StickersViewController: UIViewController, StickersView {
     /// User tapped on Add button
     var onAddButtonTapped: (() -> Void)?
 
+    /// Update page title
+    func updateTitle(_ text: String) {
+        title = text
+    }
+
     /// Load data
     func loadData(stickers: [StickerData], goals: [GoalData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
@@ -100,7 +105,6 @@ class StickersViewController: UIViewController, StickersView {
         }
         snapshot.appendItems([.newGoal])
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
-        title = "Goals"
     }
 
     // MARK: - Actions
@@ -236,7 +240,7 @@ extension StickersViewController: UICollectionViewDelegate {
             withReuseIdentifier: Specs.Cells.header,
             for: path) as? StickersHeaderView else { return UICollectionReusableView() }
 
-        header.configure(Section.allCases[path.section].rawValue)
+        header.configure(Section.allCases[path.section].rawValue.localized)
         return header
     }
 }

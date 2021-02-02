@@ -35,7 +35,7 @@ class NewGoalCell: UICollectionViewCell {
         plate.clipsToBounds = true
 
         title.font = Theme.shared.fonts.boldButtons
-        title.text = "Create Goal"
+        title.text = "create_goal_button".localized
     }
 }
 

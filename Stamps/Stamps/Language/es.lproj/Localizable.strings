@@ -10,7 +10,7 @@
 
 "sticker_not_used_yet" = "Sticker hasn't been used yet.";
 
-"sticker_used_x_times" = "Sticker has been used %d times";
+"sticker_used_x_times" = "La pegatina se ha utilizado %d veces";
 
 "sticker_used_1_time" = "Sticker has been used once";
 
@@ -139,3 +139,5 @@
 "delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker would remain unchanged.";
 
 "delete_sticker_button" = "Delete Sticker";
+
+

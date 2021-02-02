@@ -23,6 +23,9 @@ protocol StatsView: AnyObject {
 
     // MARK: - Updates
 
+    /// Update page title
+    func updateTitle(_ text: String)
+
     /// Update page header
     func setHeader(to text: String)
 

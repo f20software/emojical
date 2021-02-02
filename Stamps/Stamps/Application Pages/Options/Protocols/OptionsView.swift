@@ -16,6 +16,9 @@ protocol OptionsView: AnyObject {
     
     // MARK: - Updates
 
+    /// Update page title
+    func updateTitle(_ text: String)
+
     /// Load view data
     func loadData(_ sections: [Section])
 }

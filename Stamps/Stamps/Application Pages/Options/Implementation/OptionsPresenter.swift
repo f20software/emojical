@@ -90,6 +90,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
             ),
         ]
         
+        view?.updateTitle("options_title".localized)
         view?.loadData(data)
     }
 

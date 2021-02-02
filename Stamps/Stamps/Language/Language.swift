@@ -26,7 +26,7 @@ class Language {
     /// For example - "Sticker has been used 100 times. Last time - January 1"
     static func stickerUsageDescription(_ sticker: Stamp) -> String {
         guard sticker.count > 0 else {
-            return "sticker_not_user_yet".localized
+            return "sticker_not_used_yet".localized
         }
 
         var result = ""

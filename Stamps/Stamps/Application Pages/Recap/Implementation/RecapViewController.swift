@@ -12,8 +12,8 @@ class RecapViewController : UIViewController, RecapView {
 
     // List of sections
     enum Section: String, CaseIterable {
-        case reached = "Reached goals"
-        case notReached = "Not reached goals"
+        case reached = "reached_goals_title"
+        case notReached = "not_reached_goals_title"
     }
 
     // MARK: - UI Outlets
@@ -69,7 +69,7 @@ class RecapViewController : UIViewController, RecapView {
             snapshot.appendItems(notReached)
         }
         
-        title = "Weekly Recap"
+        title = "weekly_recap_title".localized
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -181,7 +181,7 @@ extension RecapViewController: UICollectionViewDelegate {
             withReuseIdentifier: Specs.Cells.header,
             for: path) as? StickersHeaderView else { return UICollectionReusableView() }
 
-        header.configure(Section.allCases[path.section].rawValue)
+        header.configure(Section.allCases[path.section].rawValue.localized)
         return header
     }
 }

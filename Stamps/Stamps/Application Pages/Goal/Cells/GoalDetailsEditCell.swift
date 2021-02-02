@@ -55,7 +55,7 @@ class GoalDetailsEditCell: UICollectionViewCell {
         if stickersText.lengthOfBytes(using: .utf8) > 0 {
             stickers.text = stickersText
         } else {
-            stickers.text = "Select one or more"
+            stickers.text = "select_stickers_instructions".localized
         }
         direction.selectedSegmentIndex = data.goal.direction.rawValue
         period.selectedSegmentIndex = data.goal.period.rawValue

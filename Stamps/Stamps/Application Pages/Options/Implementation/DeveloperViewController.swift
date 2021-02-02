@@ -35,6 +35,11 @@ class DeveloperViewController: BaseTableViewController, DeveloperView {
         return self
     }
     
+    /// Update page title
+    func updateTitle(_ text: String) {
+        title = text
+    }
+    
     /// Load view data
     func loadData(_ sections: [Section]) {
         self.sections = sections

@@ -370,6 +370,7 @@
 		F2C4944623D2CBCA00EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2C4944823D2CBCA00EAF9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C847A025C727DB00A2C2F2 /* DataSource+Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Demo.swift"; sourceTree = "<group>"; };
+		F2E906EC25C89B59007CE699 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F2EE4AA725C5AD64004FB0F2 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		F2EE4AAB25C5AECC004FB0F2 /* NavigateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateCell.swift; sourceTree = "<group>"; };
 		F2EE4AAC25C5AECC004FB0F2 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
@@ -557,7 +558,7 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		F23CF38225829B500048BA74 /* Stickers */ = {
+		F23CF38225829B500048BA74 /* Stickers-Goals */ = {
 			isa = PBXGroup;
 			children = (
 				F23CF39625829B500048BA74 /* Stickers.storyboard */,
@@ -567,7 +568,7 @@
 				F23CF39B25829B500048BA74 /* Protocols */,
 				F23CF39325829B500048BA74 /* Implementation */,
 			);
-			path = Stickers;
+			path = "Stickers-Goals";
 			sourceTree = "<group>";
 		};
 		F23CF38325829B500048BA74 /* Cells */ = {
@@ -916,7 +917,7 @@
 				F20E403B2443E681008759D1 /* Main */,
 				F24B07C724C547C300FFD798 /* Today */,
 				F26596DF2596AF1300B10B76 /* Recap */,
-				F23CF38225829B500048BA74 /* Stickers */,
+				F23CF38225829B500048BA74 /* Stickers-Goals */,
 				F295336D25B61522003CA002 /* Goal */,
 				F2FD4DAE25BC88C6005819A0 /* Select Stickers */,
 				F2FD4E0325BDCD41005819A0 /* Sticker */,
@@ -1253,6 +1254,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = F2C4942C23D2CBC700EAF9CC;
 			packageReferences = (
@@ -1518,6 +1520,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F29804D425C7B28500952AAF /* en */,
+				F2E906EC25C89B59007CE699 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1587,6 +1590,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1648,6 +1652,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

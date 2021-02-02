@@ -31,6 +31,9 @@ protocol StickersView: AnyObject {
 
     // MARK: - Updates
 
+    /// Update page title
+    func updateTitle(_ text: String)
+
     /// Load stats for the month
     func loadData(stickers: [StickerData], goals: [GoalData])
 }

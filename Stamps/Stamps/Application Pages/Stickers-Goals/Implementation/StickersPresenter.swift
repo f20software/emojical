@@ -105,6 +105,7 @@ class StickersPresenter: StickersPresenterProtocol {
     }
     
     private func loadViewData() {
+        view?.updateTitle("goals_title".localized)
         let newStampsData = repository.allStamps().map({
             StickerData(
                 stampId: $0.id,
@@ -147,36 +148,24 @@ class StickersPresenter: StickersPresenterProtocol {
     }
     
     private func confirmAddAction() {
-        
         let confirm = UIAlertController(
-            title: "create_new_title".localized,
-            message: nil,
-            preferredStyle: .actionSheet
+            title: "create_new_title".localized, message: nil, preferredStyle: .actionSheet
         )
         
         confirm.addAction(
-            UIAlertAction(
-                title: "sticker_title".localized, style: .default,
-                handler: { (_) in
-                    self.coordinator?.newSticker()
-                }
-            )
+            UIAlertAction(title: "sticker_title".localized, style: .default, handler: { (_) in
+                self.coordinator?.newSticker()
+            })
         )
         confirm.addAction(
-            UIAlertAction(
-                title: "goal_title".localized, style: .default,
-                handler: { (_) in
-                    self.coordinator?.newGoal()
-                }
-            )
+            UIAlertAction(title: "goal_title".localized, style: .default, handler: { (_) in
+                self.coordinator?.newGoal()
+            })
         )
         confirm.addAction(
-            UIAlertAction(
-                title: "dismiss_title".localized, style: .cancel,
-                handler: { (_) in
-                    confirm.dismiss(animated: true, completion: nil)
-                }
-            )
+            UIAlertAction(title: "dismiss_title".localized, style: .cancel, handler: { (_) in
+                confirm.dismiss(animated: true, completion: nil)
+            })
         )
         view?.viewController?.present(confirm, animated: true, completion: nil)
     }

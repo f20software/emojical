@@ -67,6 +67,11 @@ class StatsViewController: UIViewController, StatsView {
     /// User tapped on the next week button
     var onNextButtonTapped: (() -> Void)? 
 
+    /// Update page title
+    func updateTitle(_ text: String) {
+        title = text
+    }
+
     /// Update page header
     func setHeader(to text: String) {
         header.text = text
@@ -145,7 +150,7 @@ class StatsViewController: UIViewController, StatsView {
     // MARK: - Private helpers
     
     private func configureViews() {
-        
+
         configureCollectionView()
         registerCells()
         

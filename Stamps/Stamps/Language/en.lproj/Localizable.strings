@@ -136,6 +136,28 @@
 
 "select_stickers_instructions" = "Select one or more";
 
+"name_label" = "Name:";
+
+"stickers_label" = "Stickers:";
+
+"goal_label" = "Goal:";
+
+"limit_label" = "Limit:";
+
+"goal_period_label" = "Goal Period:";
+
+"direction_label" = "Direction:";
+
+"positive" = "positive";
+
+"negative" = "negative";
+
+"week" = "week";
+
+"month" = "month";
+
+"select_stickers_title" = "Select Stickers";
+
 // Sticker Editing
 
 "delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker would remain unchanged.";

@@ -74,7 +74,7 @@ class GoalDetailsEditCell: UICollectionViewCell {
 
     @IBAction func directionChanged(_ sender: Any) {
         let positive = direction.selectedSegmentIndex == 0
-        limitLabel.text = positive ? "Goal:" : "Limit:"
+        limitLabel.text = positive ? "goal_label".localized : "limit_label".localized
         limitExplanation2.text = positive ? "or more" : "or fewer"
         onValueChanged?()
     }
@@ -97,22 +97,27 @@ class GoalDetailsEditCell: UICollectionViewCell {
             label?.textColor = Theme.shared.colors.text
         }
 
-        nameLabel.text = "Name:"
+        nameLabel.text = "name_label".localized
         name.backgroundColor = UIColor.systemGray6
         name.font = Theme.shared.fonts.listBody
         
-        stickersLabel.text = "Stickers:"
+        stickersLabel.text = "stickers_label".localized
         stickers.font = Theme.shared.fonts.listBody
         
-        limitLabel.text = "Goal:"
+        limitLabel.text = "goal_label".localized
         limitExplanation1.text = "get"
         limitExplanation2.text = "or more"
         
         limit.backgroundColor = UIColor.systemGray6
         limit.font = Theme.shared.fonts.listBody
         
-        periodLabel.text = "Goal Period:"
-        directionLabel.text = "Direction:"
+        periodLabel.text = "goal_period_label".localized
+        period.setTitle("week".localized.capitalizingFirstLetter(), forSegmentAt: 0)
+        period.setTitle("month".localized.capitalizingFirstLetter(), forSegmentAt: 1)
+
+        directionLabel.text = "direction_label".localized
+        direction.setTitle("positive".localized.capitalizingFirstLetter(), forSegmentAt: 0)
+        direction.setTitle("negative".localized.capitalizingFirstLetter(), forSegmentAt: 1)
     }
     
     @IBAction func textChanged(_ sender: Any) {

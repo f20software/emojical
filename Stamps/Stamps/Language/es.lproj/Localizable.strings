@@ -90,11 +90,11 @@
 
 "award_positive_reached" = "Obtenido el %@, obteniendo %d pegatinas.";
 
-"award_positive_not_reached" = "%@ not reached. Got %d stickers (needed %d).";
+"award_positive_not_reached" = "No se alcanzó la %@. Tengo %d pegatinas (se necesitan %d).";
 
-"award_negative_reached" = "Earned on %@. You had %d stickers (limit was %d).";
+"award_negative_reached" = "Obtenida el %@. Tenías %d pegatinas (el límite era %d).";
 
-"award_negative_not_reached" = "%@ not reached. Got %d stickers (limit was %d).";
+"award_negative_not_reached" = "No se alcanzó la %@. Tengo %d pegatinas (el límite era %d).";
 
 // Titles / Tabs / Section Name
 
@@ -128,18 +128,40 @@
 
 // Goal Editing
 
-"delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
+"delete_goal_description" = "Si actualiza o elimina la meta, todos los premios obtenidos anteriormente se mantendrán sin cambios.";
 
 "create_goal_button" = "Crear meta";
 
 "delete_goal_button" = "Eliminar meta";
 
-"select_stickers_instructions" = "Select one or more";
+"select_stickers_instructions" = "Seleccione uno o más";
+
+"name_label" = "Nombre:";
+
+"stickers_label" = "Pegatinas:";
+
+"goal_label" = "Meta:";
+
+"limit_label" = "Límite:";
+
+"goal_period_label" = "Período meta:";
+
+"direction_label" = "Dirección:";
+
+"positive" = "positivo";
+
+"negative" = "negativo";
+
+"week" = "semana";
+
+"month" = "mes";
+
+"select_stickers_title" = "Seleccionar pegatinas";
 
 // Sticker Editing
 
-"delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker would remain unchanged.";
+"delete_sticker_description" = "Si elimina la pegatina, todo el uso anterior de esa etiqueta permanecerá sin cambios.";
 
-"delete_sticker_button" = "Delete Sticker";
+"delete_sticker_button" = "Eliminar pegatina";
 
 

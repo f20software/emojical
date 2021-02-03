@@ -82,6 +82,7 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
         }
         
         data.append(.newSticker)
+        view?.updateTitle("select_stickers_title".localized)
         view?.loadData(data)
         onChange?(selectedStickers)
     }

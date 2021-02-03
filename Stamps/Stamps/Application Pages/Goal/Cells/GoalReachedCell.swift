@@ -36,7 +36,7 @@ class GoalReachedCell: UICollectionViewCell {
             string.append(NSAttributedString(
                 string: "\(lines[0])\n",
                 attributes: [
-                    .font: UIFont.systemFont(ofSize: 18),
+                    .font: Theme.shared.fonts.listBody,
                     .foregroundColor: Theme.shared.colors.secondaryText,
                     .paragraphStyle: parStyle
                 ])
@@ -47,7 +47,7 @@ class GoalReachedCell: UICollectionViewCell {
             string.append(NSAttributedString(
                 string: lines[1],
                 attributes: [
-                    .font: UIFont.systemFont(ofSize: 32, weight: .bold),
+                    .font: Theme.shared.fonts.largeStats,
                     .foregroundColor: Theme.shared.colors.text,
                     .paragraphStyle: parStyle
                 ])
@@ -58,7 +58,7 @@ class GoalReachedCell: UICollectionViewCell {
             string.append(NSAttributedString(
                 string: "\n\(lines[2])",
                 attributes: [
-                    .font: UIFont.systemFont(ofSize: 18),
+                    .font: Theme.shared.fonts.listBody,
                     .foregroundColor: Theme.shared.colors.secondaryText
                 ])
             )

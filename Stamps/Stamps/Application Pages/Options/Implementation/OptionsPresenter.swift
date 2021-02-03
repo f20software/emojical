@@ -55,7 +55,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
         let key = kCFBundleVersionKey as String
         let version = Bundle.main.object(forInfoDictionaryKey: key) as? String ?? "N/A"
         
-        let data: [Section] = [
+        var data: [Section] = [
             Section(
                 header: "Reminder",
                 footer: "Remind every day around 9pm to fill your entry for that day if you haven't done so already.",
@@ -83,13 +83,16 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                     .button("Feedback...", { [weak self] in
                         self?.sendFeedback()
                     }),
-                    .navigate("Developer Options", { [weak self] in
-                        self?.coordinator?.developerOptions()
-                    }),
                 ]
             ),
         ]
-        
+
+        #if targetEnvironment(simulator)
+        data[2].cells.append(
+            .navigate("Developer Options", { [weak self] in
+                self?.coordinator?.developerOptions()
+            }))
+        #endif
         view?.updateTitle("options_title".localized)
         view?.loadData(data)
     }

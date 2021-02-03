@@ -8,87 +8,87 @@
 
 // Sticker usage
 
-"sticker_not_used_yet" = "Sticker hasn't been used yet.";
+"sticker_not_used_yet" = "La pegatina aún no se ha utilizado.";
 
 "sticker_used_x_times" = "La pegatina se ha utilizado %d veces";
 
-"sticker_used_1_time" = "Sticker has been used once";
+"sticker_used_1_time" = "La pegatina se ha utilizado una vez";
 
-"last_time_date" = "last time - %@.";
+"last_time_date" = "última vez - %@.";
 
-"sticker_used_no_goal" = "You haven't created a goal yet with this sticker.";
+"sticker_used_no_goal" = "Aún no has creado un meta con esta pegatina.";
 
-"sticker_used_1_goal" = "Sticker is used in the \'%@\' goal.";
+"sticker_used_1_goal" = "La pegatina se utiliza en el meta \'%@\'.";
 
-"sticker_used_x_goals" = "Sticker is used in %@ goals.";
+"sticker_used_x_goals" = "La pegatina se utiliza en los metas %@.";
 
 // Goal reaching
 
-"goal_reached_0_text" = "Goal reached|never";
+"goal_reached_0_text" = "Meta alcanzada|nunca";
 
-"goal_reached_1_text" = "Goal reached|%d time|last time:\n%@";
+"goal_reached_1_text" = "Meta alcanzada|%d vez|ultima vez:\n%@";
 
-"goal_reached_x_text" = "Goal reached|%d times|last time:\n%@";
+"goal_reached_x_text" = "Meta alcanzada|%d veces|ultima vez:\n%@";
 
-"current_streak_0" = "Current streak|-";
+"current_streak_0" = "Racha actual|-";
 
-"current_streak_x" = "Current streak|%d";
+"current_streak_x" = "Racha actual|%d";
 
 // Goal description
 
-"weekly_goal" = "weekly goal";
+"weekly_goal" = "meta semanal";
 
-"monthly_goal" = "monthly goal";
+"monthly_goal" = "meta mensual";
 
-"week_positive_x" = "Weekly, %d times or more.";
+"week_positive_x" = "Semanalmente, %d veces o más.";
 
-"week_negative_x" = "Weekly, %d times or less.";
+"week_negative_x" = "Semanalmente, %d veces o menos.";
 
-"week_no_limit" = "Weekly, no limit.";
+"week_no_limit" = "Semanalmente, sin límite.";
 
-"month_positive_x" = "Monthly, %d times or more.";
+"month_positive_x" = "Mensualmente, %d veces o más.";
 
-"month_negative_x" = "Monthly, %d times or less.";
+"month_negative_x" = "Mensualmente, %d veces o menos.";
 
-"month_no_limit" = "Monthly, no limit.";
+"month_no_limit" = "Mensualmente, sin límite.";
 
 // Current goal progress
 
-"you_got_0_stickers_week" = "You've got no stickers so far this week";
+"you_got_0_stickers_week" = "No tienes pegatinas hasta ahora esta semana";
 
-"you_got_1_sticker_week" = "You've got 1 sticker this week";
+"you_got_1_sticker_week" = "Tienes 1 pegatina esta semana";
 
-"you_got_x_stickers_week" = "You've got %d stickers this week";
+"you_got_x_stickers_week" = "Tienes %d pegatinas esta semana";
 
-"you_got_0_stickers_month" = "You've got no stickers so far this month";
+"you_got_0_stickers_month" = "No tienes pegatinas en lo que va de mes";
 
-"you_got_1_sticker_month" = "You've got 1 sticker this month";
+"you_got_1_sticker_month" = "Tienes 1 pegatina este mes";
 
-"you_got_x_stickers_month" = "You've got %d stickers this month";
+"you_got_x_stickers_month" = "Tienes %d pegatinas este mes";
 
-"positive_goal_not_reached" = "%@. %d to go.";
+"positive_goal_not_reached" = "%@. %d para ir.";
 
-"positive_goal_not_reached_0" = "%@. The goal is %d.";
+"positive_goal_not_reached_0" = "%@. El meta es %d.";
 
-"negative_goal_not_reached" = "%@. You still can get %d more.";
+"negative_goal_not_reached" = "%@. Todavía puedes conseguir %d más.";
 
-"negative_goal_not_reached_0" = "%@. You can get up to %d.";
+"negative_goal_not_reached_0" = "%@. Puede obtener hasta %d.";
 
-"negative_goal_reached" = "%@. You will break this goal if you get one more.";
+"negative_goal_reached" = "%@. Romperás este meta si consigues uno más.";
 
-"week_positive_goal_reached" = "You've reached the goal this week by getting %d stickers. Great job!";
+"week_positive_goal_reached" = "Has alcanzado la meta esta semana al recibir %d pegatinas. ¡Gran trabajo!";
 
-"week_negative_goal_breached" = "You've broken the goal by getting %d stickers this week.";
+"week_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas esta semana.";
 
-"month_positive_goal_reached" = "You've reached the goal this month by getting %d stickers. Great job!";
+"month_positive_goal_reached" = "Has alcanzado la meta este mes al recibir %d pegatinas. ¡Gran trabajo!";
 
-"month_negative_goal_breached" = "You've broken the goal by getting %d stickers this month.";
+"month_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas este mes.";
 
 // Award reached / not reached state
 
-"award_earned_on" = "Earned on %@.";
+"award_earned_on" = "Obtenido el %@.";
 
-"award_positive_reached" = "Earned on %@, by getting %d stickers.";
+"award_positive_reached" = "Obtenido el %@, obteniendo %d pegatinas.";
 
 "award_positive_not_reached" = "%@ not reached. Got %d stickers (needed %d).";
 
@@ -98,41 +98,41 @@
 
 // Titles / Tabs / Section Name
 
-"new_goal_title" = "New Goal";
+"new_goal_title" = "Nuevo meta";
 
-"new_sticker_title" = "New Sticker";
+"new_sticker_title" = "Nueva pegatina";
 
-"create_new_title" = "Create New";
+"create_new_title" = "Crear nueva";
 
-"sticker_title" = "Sticker...";
+"sticker_title" = "Pegatina...";
 
-"goal_title" = "Goal...";
+"goal_title" = "Meta...";
 
-"dismiss_title" = "Dismiss";
+"dismiss_title" = "Descartar";
 
-"weekly_recap_title" = "Weekly Recap";
+"weekly_recap_title" = "Resumen semanal";
 
-"reached_goals_title" = "Reached Goals";
+"reached_goals_title" = "Metas alcanzadas";
 
-"not_reached_goals_title" = "Not Reached Goals";
+"not_reached_goals_title" = "Metas no alcanzadas";
 
-"today_title" = "Today";
+"today_title" = "Hoy";
 
-"goals_title" = "Goals";
+"goals_title" = "Metas";
 
-"stats_title" = "Stats";
+"stats_title" = "Estadísticas";
 
-"options_title" = "Options";
+"options_title" = "Opciones";
 
-"stickers_title" = "Stickers";
+"stickers_title" = "Pegatinas";
 
 // Goal Editing
 
 "delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
 
-"create_goal_button" = "Create Goal";
+"create_goal_button" = "Crear meta";
 
-"delete_goal_button" = "Delete Goal";
+"delete_goal_button" = "Eliminar meta";
 
 "select_stickers_instructions" = "Select one or more";
 

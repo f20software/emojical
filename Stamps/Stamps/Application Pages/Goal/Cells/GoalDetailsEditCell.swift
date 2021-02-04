@@ -104,7 +104,8 @@ class GoalDetailsEditCell: UICollectionViewCell {
         }
 
         nameLabel.text = "name_label".localized
-        name.backgroundColor = UIColor.systemGray6
+        name.placeholder = "goal_name_placeholder".localized
+        name.backgroundColor = Theme.shared.colors.secondaryBackground
         name.font = Theme.shared.fonts.listBody
         
         stickersLabel.text = "stickers_label".localized
@@ -114,7 +115,7 @@ class GoalDetailsEditCell: UICollectionViewCell {
         limitExplanation1.text = "get_x_or_more".localized.components(separatedBy: "|").first
         limitExplanation2.text = "get_x_or_more".localized.components(separatedBy: "|").last
         
-        limit.backgroundColor = UIColor.systemGray6
+        limit.backgroundColor = Theme.shared.colors.secondaryBackground
         limit.font = Theme.shared.fonts.listBody
         
         periodLabel.text = "goal_period_label".localized

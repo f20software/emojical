@@ -32,7 +32,7 @@ class DayHeaderCell: UICollectionViewCell {
             dayNum.textColor = UIColor.white
             dayName.textColor = UIColor.white
         } else {
-            dayPlate.backgroundColor = UIColor.systemGray6
+            dayPlate.backgroundColor = Theme.shared.colors.secondaryBackground
             dayNum.textColor = data.isWeekend ? UIColor.red : UIColor.label
             dayName.textColor = data.isWeekend ? UIColor.red : UIColor.label
         }

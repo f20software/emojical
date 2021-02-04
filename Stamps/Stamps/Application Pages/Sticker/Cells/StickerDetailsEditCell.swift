@@ -105,22 +105,22 @@ class StickerDetailsEditCell: UICollectionViewCell {
         }
 
         nameLabel.text = "name_label".localized
-        name.backgroundColor = UIColor.systemGray6
+        name.backgroundColor = Theme.shared.colors.secondaryBackground
         name.font = Theme.shared.fonts.listBody
         name.placeholder = "sticker_name_placeholder".localized
 
         emojiLabel.text = "emoji_label".localized
-        emoji.backgroundColor = UIColor.systemGray6
+        emoji.backgroundColor = Theme.shared.colors.secondaryBackground
         emoji.font = Theme.shared.fonts.listBody
         emoji.delegate = self
         emoji.placeholder = ""
         
         previewLabel.text = "preview_label".localized
-        previewPlate.backgroundColor = UIColor.systemGray6
+        previewPlate.backgroundColor = Theme.shared.colors.secondaryBackground
         previewPlate.layer.cornerRadius = Specs.cornerRadius
         previewPlate.clipsToBounds = true
 
-        stickerBackground.backgroundColor = UIColor.systemBackground
+        stickerBackground.backgroundColor = Theme.shared.colors.background
         stickerBackground.layer.cornerRadius = Specs.stickerCornerRadius
     }
     

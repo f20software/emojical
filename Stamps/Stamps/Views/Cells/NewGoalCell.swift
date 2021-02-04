@@ -31,7 +31,7 @@ class NewGoalCell: UICollectionViewCell {
         plate.layer.cornerRadius = Specs.cornerRadius
         plate.layer.borderWidth = Specs.borderWidth
         plate.backgroundColor = UIColor.clear
-        plate.layer.borderColor = UIColor.systemGray6.cgColor
+        plate.layer.borderColor = Theme.shared.colors.secondaryBackground.cgColor
         plate.clipsToBounds = true
 
         title.font = Theme.shared.fonts.boldButtons

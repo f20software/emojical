@@ -142,6 +142,8 @@
 
 "goal_label" = "Meta:";
 
+"goal_name_placeholder" = "Nombre de la meta";
+
 "limit_label" = "Límite:";
 
 "goal_period_label" = "Período meta:";

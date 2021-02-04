@@ -138,6 +138,8 @@
 
 "name_label" = "Name:";
 
+"goals_name_placeholder" = "Goal Name";
+
 "stickers_label" = "Stickers:";
 
 "goal_label" = "Goal:";

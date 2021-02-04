@@ -207,7 +207,7 @@ class TodayViewController: UIViewController {
         plusButton.layer.shadowColor = UIColor.gray.cgColor
         plusButton.layer.shadowOffset = Specs.shadowOffset
         plusButton.layer.cornerRadius = Specs.miniButtonCornerRadius
-        plusButton.backgroundColor = UIColor.systemGray6
+        plusButton.backgroundColor = Theme.shared.colors.secondaryBackground
     }
 }
 

@@ -51,7 +51,7 @@ class GoalCell: UICollectionViewCell {
 
     private func configureViews() {
         plate.layer.cornerRadius = Specs.cornerRadius
-        plate.backgroundColor = UIColor.systemGray6
+        plate.backgroundColor = Theme.shared.colors.secondaryBackground
         plate.clipsToBounds = true
         
         count.layer.cornerRadius = count.font.pointSize * 0.6

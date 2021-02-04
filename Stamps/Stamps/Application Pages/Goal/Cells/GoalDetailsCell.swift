@@ -83,14 +83,14 @@ class GoalDetailsCell: UICollectionViewCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        plate.backgroundColor = UIColor.systemGray6
+        plate.backgroundColor = Theme.shared.colors.secondaryBackground
         plate.layer.cornerRadius = Specs.cornerRadius
         plate.clipsToBounds = true
         
         goalIcon.progressLineWidth = Specs.progressLineWidth
         goalIcon.emojiFontSize = Specs.emojiFontSize
         
-        goalBackground.backgroundColor = UIColor.systemBackground
+        goalBackground.backgroundColor = Theme.shared.colors.background
         goalBackground.layer.cornerRadius = goalBackground.bounds.width / 2.0
         
         goalDescription.font = Theme.shared.fonts.listBody

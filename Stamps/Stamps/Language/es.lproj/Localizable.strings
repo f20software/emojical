@@ -168,8 +168,26 @@
 
 "preview_label" = "Avance:";
 
+"sticker_name_placeholder" = "Nombre de la pegatina";
+
 "delete_sticker_description" = "Si elimina la pegatina, todo el uso anterior de esa etiqueta permanecerá sin cambios.";
 
 "delete_sticker_button" = "Eliminar pegatina";
+
+// Options Page
+
+"reminder_title" = "Recordatorio";
+
+"reminder_option" = "Recordatorio diario";
+
+"reminder_footer" = "Recuerde todos los días alrededor de las 9 p.m. para completar su entrada para ese día si aún no lo ha hecho.";
+
+"backup_title" = "Copia de seguridad";
+
+"backup_button" = "Exporta tus datos...";
+
+"backup_footer" = "Envíe un correo electrónico a sí mismo con un archivo JSON con todos sus datos.";
+
+"feedback_button" = "Realimentación...";
 
 

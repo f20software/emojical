@@ -168,6 +168,27 @@
 
 "preview_label" = "Preview:";
 
+"sticker_name_placeholder" = "Sticker Name";
+
 "delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker would remain unchanged.";
 
 "delete_sticker_button" = "Delete Sticker";
+
+// Options Page
+
+"reminder_title" = "Reminder";
+
+"reminder_option" = "Daily Reminder";
+
+"reminder_footer" = "Remind every day around 9pm to fill your entry for that day if you haven't done so already.";
+
+"backup_title" = "Backup / Restore";
+
+"backup_button" = "Export Your Data...";
+
+"backup_footer" = "Email yourself JSON file with all your data.";
+
+"feedback_button" = "Feedback...";
+
+
+

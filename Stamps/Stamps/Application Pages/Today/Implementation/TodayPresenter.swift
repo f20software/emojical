@@ -451,8 +451,8 @@ class TodayPresenter: TodayPresenterProtocol {
 fileprivate struct Specs {
     
     /// Editing days back from today (when it's further in the past - entries will become read-only)
-    static let editingBackDays = 1
+    static let editingBackDays = 3
 
     /// Editing days forward from today (when it's further in the future - entries will become read-only)
-    static let editingForwardDays = 2
+    static let editingForwardDays = 3
 }

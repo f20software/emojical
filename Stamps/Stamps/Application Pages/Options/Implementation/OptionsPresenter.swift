@@ -57,10 +57,10 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
         
         var data: [Section] = [
             Section(
-                header: "Reminder",
-                footer: "Remind every day around 9pm to fill your entry for that day if you haven't done so already.",
+                header: "reminder_title".localized,
+                footer: "reminder_footer".localized,
                 cells: [
-                    .switch("Daily Reminder", settings.reminderEnabled, { [weak self] newValue in
+                    .switch("reminder_option".localized, settings.reminderEnabled, { [weak self] newValue in
                         self?.settings.reminderEnabled = newValue
                         // Force notification manager to update reminder
                         NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
@@ -68,10 +68,10 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                 ]
             ),
             Section(
-                header: "Backup / Restore",
-                footer: "Email yourself JSON file with all your data.",
+                header: "backup_title".localized,
+                footer: "backup_footer".localized,
                 cells: [
-                    .button("Export Your Data...", { [weak self] in
+                    .button("backup_button".localized, { [weak self] in
                         self?.emailDataBackup()
                     }),
                 ]
@@ -80,7 +80,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                 header: nil,
                 footer: "Emojical, \(version), © 2021",
                 cells: [
-                    .button("Feedback...", { [weak self] in
+                    .button("feedback_button".localized, { [weak self] in
                         self?.sendFeedback()
                     }),
                 ]

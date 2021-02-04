@@ -163,7 +163,7 @@ class StickersPresenter: StickersPresenterProtocol {
             })
         )
         confirm.addAction(
-            UIAlertAction(title: "dismiss_title".localized, style: .cancel, handler: { (_) in
+            UIAlertAction(title: "dismiss_button".localized, style: .cancel, handler: { (_) in
                 confirm.dismiss(animated: true, completion: nil)
             })
         )

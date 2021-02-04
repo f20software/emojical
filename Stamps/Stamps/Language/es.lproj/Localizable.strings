@@ -108,7 +108,7 @@
 
 "goal_title" = "Meta...";
 
-"dismiss_title" = "Descartar";
+"dismiss_button" = "Descartar";
 
 "weekly_recap_title" = "Resumen semanal";
 
@@ -191,5 +191,23 @@
 "backup_footer" = "Envíe un correo electrónico a sí mismo con un archivo JSON con todos sus datos.";
 
 "feedback_button" = "Realimentación...";
+
+// Messages
+
+"week_recap_title" = "El resumen de la semana está listo";
+
+"week_recap_message" = "Has alcanzado algunas metas y fallaste en otras. ¿Revisar la semana pasada?";
+
+"review_button" = "Repaso";
+
+"woah_title" = "¡Woah!";
+
+"goal_delete_confirmation" = "Este objetivo se ha alcanzado pocas veces. ¿Estás seguro de que quieres eliminarlo?";
+
+"delete_button" = "Eliminar";
+
+"cancel_button" = "Cancelar";
+
+"sticker_delete_confirmation" = "%@ ¿Estás seguro de que quieres eliminarlo?";
 
 

@@ -106,11 +106,20 @@ class StickerPresenter: StickerPresenterProtocol {
     private func confirmGoalDelete() {
         if sticker.count > 0 {
             let description = Language.stickerUsageDescription(sticker)
-            let confirm = UIAlertController(title: "Woah!", message: "\(description) Are you sure you want to delete it?", preferredStyle: .actionSheet)
-            confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            let confirm = UIAlertController(
+                title: "woah_title".localized,
+                message: "sticker_delete_confirmation".localized(description),
+                preferredStyle: .actionSheet)
+            
+            confirm.addAction(UIAlertAction(
+                title: "delete_button".localized,
+                style: .destructive, handler: { (_) in
                 self.deleteAndDismiss()
             }))
-            confirm.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+            confirm.addAction(UIAlertAction(
+                title: "cancel_button".localized,
+                style: .cancel, handler: { (_) in
                 confirm.dismiss(animated: true, completion: nil)
             }))
             (view as! UIViewController).present(confirm, animated: true, completion: nil)

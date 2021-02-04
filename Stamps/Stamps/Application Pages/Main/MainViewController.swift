@@ -55,15 +55,29 @@ extension MainViewController {
     }
     
     @objc func weekReady() {
+        
+        // Move to Today page
         selectedIndex = 0
-        let alert = UIAlertController(title: "Week recap is ready", message: "You've reached some goals and failed others", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Review", style: .default, handler: { (_) in
+        
+        let alert = UIAlertController(
+            title: "week_recap_title".localized,
+            message: "week_recap_message".localized,
+            preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(
+            title: "review_button".localized,
+            style: .default,
+            handler: { (_) in
             // Show week recap for the previous week
             DispatchQueue.main.async {
                 self.todayPresenter?.showWeekRecapFor(Date().byAddingWeek(-1))
             }
         }))
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+        
+        alert.addAction(UIAlertAction(
+            title: "dismiss_button".localized,
+            style: .cancel,
+            handler: { (_) in
             alert.dismiss(animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: nil)

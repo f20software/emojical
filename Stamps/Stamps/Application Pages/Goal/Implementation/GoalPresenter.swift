@@ -127,11 +127,20 @@ class GoalPresenter: GoalPresenterProtocol {
     
     private func confirmGoalDelete() {
         if goal.count > 0 {
-            let confirm = UIAlertController(title: "Woah!", message: "This goal has been reached few times. Are you sure you want to delete it?", preferredStyle: .actionSheet)
-            confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            let confirm = UIAlertController(
+                title: "woah_title".localized,
+                message: "goal_delete_confirmation".localized,
+                preferredStyle: .actionSheet)
+            
+            confirm.addAction(UIAlertAction(
+                title: "delete_button".localized,
+                style: .destructive, handler: { (_) in
                 self.deleteAndDismiss()
             }))
-            confirm.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+            confirm.addAction(UIAlertAction(
+                title: "cancel_button".localized,
+                style: .cancel, handler: { (_) in
                 confirm.dismiss(animated: true, completion: nil)
             }))
             (view as! UIViewController).present(confirm, animated: true, completion: nil)

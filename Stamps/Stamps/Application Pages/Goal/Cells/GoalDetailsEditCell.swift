@@ -74,8 +74,14 @@ class GoalDetailsEditCell: UICollectionViewCell {
 
     @IBAction func directionChanged(_ sender: Any) {
         let positive = direction.selectedSegmentIndex == 0
-        limitLabel.text = positive ? "goal_label".localized : "limit_label".localized
-        limitExplanation2.text = positive ? "or more" : "or fewer"
+        limitLabel.text = positive ?
+            "goal_label".localized :
+            "limit_label".localized
+        
+        limitExplanation2.text = positive ?
+            "get_x_or_more".localized.components(separatedBy: "|").last :
+            "get_x_or_fewer".localized.components(separatedBy: "|").last
+        
         onValueChanged?()
     }
     
@@ -105,8 +111,8 @@ class GoalDetailsEditCell: UICollectionViewCell {
         stickers.font = Theme.shared.fonts.listBody
         
         limitLabel.text = "goal_label".localized
-        limitExplanation1.text = "get"
-        limitExplanation2.text = "or more"
+        limitExplanation1.text = "get_x_or_more".localized.components(separatedBy: "|").first
+        limitExplanation2.text = "get_x_or_more".localized.components(separatedBy: "|").last
         
         limit.backgroundColor = UIColor.systemGray6
         limit.font = Theme.shared.fonts.listBody

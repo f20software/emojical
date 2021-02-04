@@ -156,6 +156,9 @@ class StatsViewController: UIViewController, StatsView {
         
         prevButton.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextButton.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        
+        modeSelector.setTitle("week".localized.capitalizingFirstLetter(), forSegmentAt: 0)
+        modeSelector.setTitle("month".localized.capitalizingFirstLetter(), forSegmentAt: 1)
     }
     
     private func configureCollectionView() {

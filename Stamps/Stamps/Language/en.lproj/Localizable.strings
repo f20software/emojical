@@ -152,6 +152,10 @@
 
 "negative" = "negative";
 
+"get_x_or_more" = "get|or more";
+
+"get_x_or_fewer" = "get|or fewer";
+
 "week" = "week";
 
 "month" = "month";
@@ -159,6 +163,10 @@
 "select_stickers_title" = "Select Stickers";
 
 // Sticker Editing
+
+"emoji_label" = "Emoji:";
+
+"preview_label" = "Preview:";
 
 "delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker would remain unchanged.";
 

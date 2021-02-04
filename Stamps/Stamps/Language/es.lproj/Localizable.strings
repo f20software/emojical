@@ -152,6 +152,10 @@
 
 "negative" = "negativo";
 
+"get_x_or_more" = "consigue|o más";
+
+"get_x_or_fewer" = "consigue|o menos";
+
 "week" = "semana";
 
 "month" = "mes";
@@ -159,6 +163,10 @@
 "select_stickers_title" = "Seleccionar pegatinas";
 
 // Sticker Editing
+
+"emoji_label" = "Emoji:";
+
+"preview_label" = "Avance:";
 
 "delete_sticker_description" = "Si elimina la pegatina, todo el uso anterior de esa etiqueta permanecerá sin cambios.";
 

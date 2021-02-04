@@ -15,18 +15,23 @@ extension Theme {
     static func main() -> Theme {
 
         let light = Colors(
+            
             /// Main application tint color
             tint: UIColor(r: 13, g: 15, b: 45),
 
+            /// Main application background
             background: UIColor.systemBackground,
             
+            /// Second background (used for cell plates, dates etc)
             secondaryBackground: UIColor.systemGray6,
-            ///
+            
+            /// Main text color
             text: UIColor.label,
 
-            ///
+            /// Secondary (lighter text color)
             secondaryText: UIColor.secondaryLabel,
             
+            /// Application color pallete
             pallete: [
                 UIColor(hex: "EF476F"), // red
                 UIColor(hex: "D671DB"), // violet
@@ -42,13 +47,19 @@ extension Theme {
             /// Main application tint color
             tint: UIColor(r: 66, g: 77, b: 227),
             
+            /// Main application background
             background: UIColor.systemBackground,
+            
+            /// Second background (used for cell plates, dates etc)
             secondaryBackground: UIColor.systemGray6,
+            
+            /// Main text color
             text: UIColor.label,
 
-            ///
+            /// Secondary (lighter text color)
             secondaryText: UIColor.lightGray,
 
+            /// Application color pallete
             pallete: [
                 UIColor(hex: "EF476F"), // red
                 UIColor(hex: "D671DB"), // violet

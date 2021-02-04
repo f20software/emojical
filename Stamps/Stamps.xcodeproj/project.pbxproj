@@ -31,6 +31,8 @@
 		F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView_Old.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20E403A2443E5BC008759D1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
+		F21162C625C9FD6700E4D3AD /* GoalReachedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */; };
+		F21162C725C9FD6700E4D3AD /* GoalReachedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */; };
 		F21F150325C107A900DE5C1B /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F150225C107A800DE5C1B /* StickerView.swift */; };
 		F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */; };
 		F23CF369258271750048BA74 /* YearBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF368258271750048BA74 /* YearBoxView.swift */; };
@@ -116,6 +118,10 @@
 		F295339A25B64098003CA002 /* GoalDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F295339925B64097003CA002 /* GoalDetailsCell.xib */; };
 		F29533A125B6611B003CA002 /* GoalDetailsEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */; };
 		F29533A225B6611B003CA002 /* GoalDetailsEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29533A025B6611B003CA002 /* GoalDetailsEditCell.swift */; };
+		F29804C725C79A5F00952AAF /* GoalHistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804C625C79A5F00952AAF /* GoalHistoryData.swift */; };
+		F29804CC25C7A52500952AAF /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804CB25C7A52500952AAF /* Language.swift */; };
+		F29804D325C7B28500952AAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F29804D525C7B28500952AAF /* Localizable.strings */; };
+		F29804D925C7B2E600952AAF /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804D825C7B2E600952AAF /* Localizer.swift */; };
 		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
@@ -150,6 +156,7 @@
 		F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944023D2CBC800EAF9CC /* Main.storyboard */; };
 		F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */; };
 		F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */; };
+		F2C847A125C727DB00A2C2F2 /* DataSource+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C847A025C727DB00A2C2F2 /* DataSource+Demo.swift */; };
 		F2EE4AA825C5AD64004FB0F2 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AA725C5AD64004FB0F2 /* ButtonCell.swift */; };
 		F2EE4AAD25C5AECC004FB0F2 /* NavigateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAB25C5AECC004FB0F2 /* NavigateCell.swift */; };
 		F2EE4AAE25C5AECC004FB0F2 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAC25C5AECC004FB0F2 /* TextCell.swift */; };
@@ -241,6 +248,8 @@
 		BCF2300E2473222F001E8844 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView_Old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView_Old.swift; sourceTree = "<group>"; };
+		F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalReachedCell.swift; sourceTree = "<group>"; };
+		F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalReachedCell.xib; sourceTree = "<group>"; };
 		F21F150225C107A800DE5C1B /* StickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataBuilder.swift; sourceTree = "<group>"; };
 		F23CF368258271750048BA74 /* YearBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxView.swift; sourceTree = "<group>"; };
@@ -325,6 +334,10 @@
 		F295339925B64097003CA002 /* GoalDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalDetailsCell.xib; sourceTree = "<group>"; };
 		F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalDetailsEditCell.xib; sourceTree = "<group>"; };
 		F29533A025B6611B003CA002 /* GoalDetailsEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDetailsEditCell.swift; sourceTree = "<group>"; };
+		F29804C625C79A5F00952AAF /* GoalHistoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalHistoryData.swift; sourceTree = "<group>"; };
+		F29804CB25C7A52500952AAF /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		F29804D425C7B28500952AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F29804D825C7B2E600952AAF /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -360,6 +373,8 @@
 		F2C4944323D2CBCA00EAF9CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2C4944623D2CBCA00EAF9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2C4944823D2CBCA00EAF9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2C847A025C727DB00A2C2F2 /* DataSource+Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Demo.swift"; sourceTree = "<group>"; };
+		F2E906EC25C89B59007CE699 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F2EE4AA725C5AD64004FB0F2 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		F2EE4AAB25C5AECC004FB0F2 /* NavigateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateCell.swift; sourceTree = "<group>"; };
 		F2EE4AAC25C5AECC004FB0F2 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
@@ -494,6 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				F2FF7EA223D66F030033D9DC /* DataSource.swift */,
+				F2C847A025C727DB00A2C2F2 /* DataSource+Demo.swift */,
 				F2F7A4AF243A9DCC005277B2 /* DataSource+ImportExport.swift */,
 				F27968F2240C12C700EA9436 /* DataSource+Param.swift */,
 				F2F260EE2408BCCB00F5CCB9 /* DataSource+Goal.swift */,
@@ -546,7 +562,7 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		F23CF38225829B500048BA74 /* Stickers */ = {
+		F23CF38225829B500048BA74 /* Stickers-Goals */ = {
 			isa = PBXGroup;
 			children = (
 				F23CF39625829B500048BA74 /* Stickers.storyboard */,
@@ -556,7 +572,7 @@
 				F23CF39B25829B500048BA74 /* Protocols */,
 				F23CF39325829B500048BA74 /* Implementation */,
 			);
-			path = Stickers;
+			path = "Stickers-Goals";
 			sourceTree = "<group>";
 		};
 		F23CF38325829B500048BA74 /* Cells */ = {
@@ -751,6 +767,7 @@
 				F295338825B62F3A003CA002 /* GoalDetailsElement.swift */,
 				F27BC98425B68D7F00B58087 /* GoalEditData.swift */,
 				F295337E25B6168D003CA002 /* GoalViewData.swift */,
+				F29804C625C79A5F00952AAF /* GoalHistoryData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -780,12 +797,24 @@
 			children = (
 				F295339925B64097003CA002 /* GoalDetailsCell.xib */,
 				F295339125B63DB1003CA002 /* GoalDetailsCell.swift */,
+				F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */,
+				F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */,
 				F295339F25B6611B003CA002 /* GoalDetailsEditCell.xib */,
 				F29533A025B6611B003CA002 /* GoalDetailsEditCell.swift */,
 				F2FD4DF125BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib */,
 				F2FD4DF225BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F29804CA25C7A52500952AAF /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				F29804CB25C7A52500952AAF /* Language.swift */,
+				F29804D825C7B2E600952AAF /* Localizer.swift */,
+				F29804D525C7B28500952AAF /* Localizable.strings */,
+			);
+			path = Language;
 			sourceTree = "<group>";
 		};
 		F2A5256023D4CED000C3E0F3 /* Calendar */ = {
@@ -894,7 +923,7 @@
 				F20E403B2443E681008759D1 /* Main */,
 				F24B07C724C547C300FFD798 /* Today */,
 				F26596DF2596AF1300B10B76 /* Recap */,
-				F23CF38225829B500048BA74 /* Stickers */,
+				F23CF38225829B500048BA74 /* Stickers-Goals */,
 				F295336D25B61522003CA002 /* Goal */,
 				F2FD4DAE25BC88C6005819A0 /* Select Stickers */,
 				F2FD4E0325BDCD41005819A0 /* Sticker */,
@@ -937,6 +966,7 @@
 				F20E40382443E598008759D1 /* Extensions */,
 				F2C493222430171000E997BD /* Notifications */,
 				F26B273823D80CB000B8D0F9 /* Resources */,
+				F29804CA25C7A52500952AAF /* Language */,
 				F2A5256023D4CED000C3E0F3 /* Calendar */,
 				F20D1F9724142A1D00FB5000 /* Views */,
 				F2FF7EAB23D671050033D9DC /* Theme */,
@@ -1230,6 +1260,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = F2C4942C23D2CBC700EAF9CC;
 			packageReferences = (
@@ -1265,7 +1296,9 @@
 				F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */,
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
+				F21162C725C9FD6700E4D3AD /* GoalReachedCell.xib in Resources */,
 				F295336625B60CEB003CA002 /* Sticker.storyboard in Resources */,
+				F29804D325C7B28500952AAF /* Localizable.strings in Resources */,
 				F2FD4DF325BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib in Resources */,
 				F2FD4DBA25BC88C6005819A0 /* SelectStickers.storyboard in Resources */,
 				F2FD4E1725BDCD42005819A0 /* StickerDetailsEditCell.xib in Resources */,
@@ -1359,6 +1392,7 @@
 				F295337B25B6165C003CA002 /* GoalViewController.swift in Sources */,
 				F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */,
 				F27782FB25C501E300C68F7A /* OptionsPresenterProtocol.swift in Sources */,
+				F29804D925C7B2E600952AAF /* Localizer.swift in Sources */,
 				F2A93FB625813668006C88F8 /* WeekLineView.swift in Sources */,
 				F2FD4DD025BCB89C005819A0 /* GoalCoordinator.swift in Sources */,
 				F2FD4E2525BDCD42005819A0 /* StickerViewProtocol.swift in Sources */,
@@ -1419,6 +1453,7 @@
 				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */,
 				F2EE4ADA25C5F84A004FB0F2 /* BaseTableViewController.swift in Sources */,
+				F21162C625C9FD6700E4D3AD /* GoalReachedCell.swift in Sources */,
 				F26596F32596AF1300B10B76 /* RecapPresenterProtocol.swift in Sources */,
 				F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */,
 				F2FD4E2325BDCD42005819A0 /* StickerCoordinatorProtocol.swift in Sources */,
@@ -1441,6 +1476,7 @@
 				F2EE4AB825C5B3B9004FB0F2 /* SwitchCell.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
+				F29804C725C79A5F00952AAF /* GoalHistoryData.swift in Sources */,
 				F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */,
 				F23CF369258271750048BA74 /* YearBoxView.swift in Sources */,
 				F2A93FD825816709006C88F8 /* StatsMode.swift in Sources */,
@@ -1449,7 +1485,9 @@
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2FD4E2025BDCD42005819A0 /* StickerCoordinator.swift in Sources */,
 				F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */,
+				F29804CC25C7A52500952AAF /* Language.swift in Sources */,
 				BC1E1EFA246C58F500E05C8A /* GRDBDataProvider.swift in Sources */,
+				F2C847A125C727DB00A2C2F2 /* DataSource+Demo.swift in Sources */,
 				F2FD4DBD25BC88C6005819A0 /* SelectStickersView.swift in Sources */,
 				F2A93F92258128E5006C88F8 /* StatsPresenterProtocol.swift in Sources */,
 				F23CF44F25851C150048BA74 /* GoalAwardView.swift in Sources */,
@@ -1486,6 +1524,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F29804D525C7B28500952AAF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F29804D425C7B28500952AAF /* en */,
+				F2E906EC25C89B59007CE699 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F2C4944023D2CBC800EAF9CC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1551,6 +1598,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1612,6 +1660,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1668,7 +1717,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1676,7 +1725,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
 				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;
@@ -1689,7 +1738,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Stamps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1697,7 +1746,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
 				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;

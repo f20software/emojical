@@ -9,21 +9,15 @@
 import Foundation
 
 enum Period: Int {
+    /// Weekly goals
     case week
-    case month
-    case year // not used
-    case total // not used
     
-    var name: String {
-        switch self {
-        case .week:
-            return "Weekly"
-        case .month:
-            return "Monthly"
-        case .year:
-            return "Annual"
-        case .total:
-            return "Overall"
-        }
-    }
+    /// Monthly goals
+    case month
+    
+    /// Annual goals - NOT IMPLEMENTED
+    case year
+    
+    /// Overall goals - NOT IMPLEMENTED
+    case total // not used
 }

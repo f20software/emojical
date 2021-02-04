@@ -86,11 +86,12 @@ extension DataSource {
     // MARK: - Private helpers
     
     // Remove everything from the database
-    private func clearDatabase() {
+    func clearDatabase() {
         deleteAllStamps()
         deleteAllGoals()
         deleteAllAwards()
         deleteAllDiary()
+        deleteAllParams()
     }
     
     // Recreate database from the DatabaseDump structure

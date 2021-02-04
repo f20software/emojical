@@ -44,6 +44,11 @@ extension Theme {
             font(ofSize: 18, weight: .regular, style: .body)
         }()
 
+        /// Large stats text font
+        lazy var largeStats: UIFont = {
+            font(ofSize: 32, weight: .bold, style: .body)
+        }()
+
         /// Returns a base font scaled according to current system font size.
         ///
         /// - parameters:

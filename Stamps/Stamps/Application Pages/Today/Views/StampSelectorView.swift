@@ -67,7 +67,7 @@ class StampSelectorView : UIView {
     
     private func setupViews() {
         // Background view
-        backgroundColor = UIColor.systemGray6
+        backgroundColor = Theme.shared.colors.secondaryBackground
         layer.cornerRadius = Specs.plateCornerRadius
         
         layer.shadowRadius = Specs.shadowRadius

@@ -1,0 +1,213 @@
+/* 
+  Localizable.strings
+  Stamps
+
+  Created by Vladimir Svidersky on 1/31/21.
+  Copyright © 2021 Vladimir Svidersky. All rights reserved.
+*/
+
+// Sticker usage
+
+"sticker_not_used_yet" = "La pegatina aún no se ha utilizado.";
+
+"sticker_used_x_times" = "La pegatina se ha utilizado %d veces";
+
+"sticker_used_1_time" = "La pegatina se ha utilizado una vez";
+
+"last_time_date" = "última vez - %@.";
+
+"sticker_used_no_goal" = "Aún no has creado un meta con esta pegatina.";
+
+"sticker_used_1_goal" = "La pegatina se utiliza en el meta \'%@\'.";
+
+"sticker_used_x_goals" = "La pegatina se utiliza en los metas %@.";
+
+// Goal reaching
+
+"goal_reached_0_text" = "Meta alcanzada|nunca";
+
+"goal_reached_1_text" = "Meta alcanzada|%d vez|ultima vez:\n%@";
+
+"goal_reached_x_text" = "Meta alcanzada|%d veces|ultima vez:\n%@";
+
+"current_streak_0" = "Racha actual|-";
+
+"current_streak_x" = "Racha actual|%d";
+
+// Goal description
+
+"weekly_goal" = "meta semanal";
+
+"monthly_goal" = "meta mensual";
+
+"week_positive_x" = "Semanalmente, %d veces o más.";
+
+"week_negative_x" = "Semanalmente, %d veces o menos.";
+
+"week_no_limit" = "Semanalmente, sin límite.";
+
+"month_positive_x" = "Mensualmente, %d veces o más.";
+
+"month_negative_x" = "Mensualmente, %d veces o menos.";
+
+"month_no_limit" = "Mensualmente, sin límite.";
+
+// Current goal progress
+
+"you_got_0_stickers_week" = "No tienes pegatinas hasta ahora esta semana";
+
+"you_got_1_sticker_week" = "Tienes 1 pegatina esta semana";
+
+"you_got_x_stickers_week" = "Tienes %d pegatinas esta semana";
+
+"you_got_0_stickers_month" = "No tienes pegatinas en lo que va de mes";
+
+"you_got_1_sticker_month" = "Tienes 1 pegatina este mes";
+
+"you_got_x_stickers_month" = "Tienes %d pegatinas este mes";
+
+"positive_goal_not_reached" = "%@. %d para ir.";
+
+"positive_goal_not_reached_0" = "%@. El meta es %d.";
+
+"negative_goal_not_reached" = "%@. Todavía puedes conseguir %d más.";
+
+"negative_goal_not_reached_0" = "%@. Puede obtener hasta %d.";
+
+"negative_goal_reached" = "%@. Romperás este meta si consigues uno más.";
+
+"week_positive_goal_reached" = "Has alcanzado la meta esta semana al recibir %d pegatinas. ¡Gran trabajo!";
+
+"week_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas esta semana.";
+
+"month_positive_goal_reached" = "Has alcanzado la meta este mes al recibir %d pegatinas. ¡Gran trabajo!";
+
+"month_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas este mes.";
+
+// Award reached / not reached state
+
+"award_earned_on" = "Obtenido el %@.";
+
+"award_positive_reached" = "Obtenido el %@, obteniendo %d pegatinas.";
+
+"award_positive_not_reached" = "No se alcanzó la %@. Tengo %d pegatinas (se necesitan %d).";
+
+"award_negative_reached" = "Obtenida el %@. Tenías %d pegatinas (el límite era %d).";
+
+"award_negative_not_reached" = "No se alcanzó la %@. Tengo %d pegatinas (el límite era %d).";
+
+// Titles / Tabs / Section Name
+
+"new_goal_title" = "Nuevo meta";
+
+"new_sticker_title" = "Nueva pegatina";
+
+"create_new_title" = "Crear nueva";
+
+"sticker_title" = "Pegatina...";
+
+"goal_title" = "Meta...";
+
+"dismiss_button" = "Descartar";
+
+"weekly_recap_title" = "Resumen semanal";
+
+"reached_goals_title" = "Metas alcanzadas";
+
+"not_reached_goals_title" = "Metas no alcanzadas";
+
+"today_title" = "Hoy";
+
+"goals_title" = "Metas";
+
+"stats_title" = "Estadísticas";
+
+"options_title" = "Opciones";
+
+"stickers_title" = "Pegatinas";
+
+// Goal Editing
+
+"delete_goal_description" = "Si actualiza o elimina la meta, todos los premios obtenidos anteriormente se mantendrán sin cambios.";
+
+"create_goal_button" = "Crear meta";
+
+"delete_goal_button" = "Eliminar meta";
+
+"select_stickers_instructions" = "Seleccione uno o más";
+
+"name_label" = "Nombre:";
+
+"stickers_label" = "Pegatinas:";
+
+"goal_label" = "Meta:";
+
+"goal_name_placeholder" = "Nombre de la meta";
+
+"limit_label" = "Límite:";
+
+"goal_period_label" = "Período meta:";
+
+"direction_label" = "Dirección:";
+
+"positive" = "positivo";
+
+"negative" = "negativo";
+
+"get_x_or_more" = "consigue|o más";
+
+"get_x_or_fewer" = "consigue|o menos";
+
+"week" = "semana";
+
+"month" = "mes";
+
+"select_stickers_title" = "Seleccionar pegatinas";
+
+// Sticker Editing
+
+"emoji_label" = "Emoji:";
+
+"preview_label" = "Avance:";
+
+"sticker_name_placeholder" = "Nombre de la pegatina";
+
+"delete_sticker_description" = "Si elimina la pegatina, todo el uso anterior de esa etiqueta permanecerá sin cambios.";
+
+"delete_sticker_button" = "Eliminar pegatina";
+
+// Options Page
+
+"reminder_title" = "Recordatorio";
+
+"reminder_option" = "Recordatorio diario";
+
+"reminder_footer" = "Recuerde todos los días alrededor de las 9 p.m. para completar su entrada para ese día si aún no lo ha hecho.";
+
+"backup_title" = "Copia de seguridad";
+
+"backup_button" = "Exporta tus datos...";
+
+"backup_footer" = "Envíe un correo electrónico a sí mismo con un archivo JSON con todos sus datos.";
+
+"feedback_button" = "Realimentación...";
+
+// Confirmation / Alert / Messages
+
+"week_recap_title" = "El resumen de la semana está listo";
+
+"week_recap_message" = "Has alcanzado algunas metas y fallaste en otras. ¿Revisar la semana pasada?";
+
+"review_button" = "Repaso";
+
+"woah_title" = "¡Woah!";
+
+"goal_delete_confirmation" = "Este objetivo se ha alcanzado pocas veces. ¿Estás seguro de que quieres eliminarlo?";
+
+"delete_button" = "Eliminar";
+
+"cancel_button" = "Cancelar";
+
+"sticker_delete_confirmation" = "%@ ¿Estás seguro de que quieres eliminarlo?";
+
+

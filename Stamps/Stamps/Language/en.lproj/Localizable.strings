@@ -1,0 +1,213 @@
+/* 
+  Localizable.strings
+  Stamps
+
+  Created by Vladimir Svidersky on 1/31/21.
+  Copyright © 2021 Vladimir Svidersky. All rights reserved.
+*/
+
+// Sticker usage
+
+"sticker_not_used_yet" = "Sticker hasn't been used yet.";
+
+"sticker_used_x_times" = "Sticker has been used %d times";
+
+"sticker_used_1_time" = "Sticker has been used once";
+
+"last_time_date" = "last time - %@.";
+
+"sticker_used_no_goal" = "You haven't created a goal yet with this sticker.";
+
+"sticker_used_1_goal" = "Sticker is used in the \'%@\' goal.";
+
+"sticker_used_x_goals" = "Sticker is used in %@ goals.";
+
+// Goal reaching
+
+"goal_reached_0_text" = "Goal reached|never";
+
+"goal_reached_1_text" = "Goal reached|%d time|last time:\n%@";
+
+"goal_reached_x_text" = "Goal reached|%d times|last time:\n%@";
+
+"current_streak_0" = "Current streak|-";
+
+"current_streak_x" = "Current streak|%d";
+
+// Goal description
+
+"weekly_goal" = "weekly goal";
+
+"monthly_goal" = "monthly goal";
+
+"week_positive_x" = "Weekly, %d times or more.";
+
+"week_negative_x" = "Weekly, %d times or less.";
+
+"week_no_limit" = "Weekly, no limit.";
+
+"month_positive_x" = "Monthly, %d times or more.";
+
+"month_negative_x" = "Monthly, %d times or less.";
+
+"month_no_limit" = "Monthly, no limit.";
+
+// Current goal progress
+
+"you_got_0_stickers_week" = "You've got no stickers so far this week";
+
+"you_got_1_sticker_week" = "You've got 1 sticker this week";
+
+"you_got_x_stickers_week" = "You've got %d stickers this week";
+
+"you_got_0_stickers_month" = "You've got no stickers so far this month";
+
+"you_got_1_sticker_month" = "You've got 1 sticker this month";
+
+"you_got_x_stickers_month" = "You've got %d stickers this month";
+
+"positive_goal_not_reached" = "%@. %d to go.";
+
+"positive_goal_not_reached_0" = "%@. The goal is %d.";
+
+"negative_goal_not_reached" = "%@. You still can get %d more.";
+
+"negative_goal_not_reached_0" = "%@. You can get up to %d.";
+
+"negative_goal_reached" = "%@. You will break this goal if you get one more.";
+
+"week_positive_goal_reached" = "You've reached the goal this week by getting %d stickers. Great job!";
+
+"week_negative_goal_breached" = "You've broken the goal by getting %d stickers this week.";
+
+"month_positive_goal_reached" = "You've reached the goal this month by getting %d stickers. Great job!";
+
+"month_negative_goal_breached" = "You've broken the goal by getting %d stickers this month.";
+
+// Award reached / not reached state
+
+"award_earned_on" = "Earned on %@.";
+
+"award_positive_reached" = "Earned on %@, by getting %d stickers.";
+
+"award_positive_not_reached" = "%@ not reached. Got %d stickers (needed %d).";
+
+"award_negative_reached" = "Earned on %@. You had %d stickers (limit was %d).";
+
+"award_negative_not_reached" = "%@ not reached. Got %d stickers (limit was %d).";
+
+// Titles / Tabs / Section Name
+
+"new_goal_title" = "New Goal";
+
+"new_sticker_title" = "New Sticker";
+
+"create_new_title" = "Create New";
+
+"sticker_title" = "Sticker...";
+
+"goal_title" = "Goal...";
+
+"dismiss_button" = "Dismiss";
+
+"weekly_recap_title" = "Weekly Recap";
+
+"reached_goals_title" = "Reached Goals";
+
+"not_reached_goals_title" = "Not Reached Goals";
+
+"today_title" = "Today";
+
+"goals_title" = "Goals";
+
+"stats_title" = "Stats";
+
+"options_title" = "Options";
+
+"stickers_title" = "Stickers";
+
+// Goal Editing
+
+"delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
+
+"create_goal_button" = "Create Goal";
+
+"delete_goal_button" = "Delete Goal";
+
+"select_stickers_instructions" = "Select one or more";
+
+"name_label" = "Name:";
+
+"goal_name_placeholder" = "Goal Name";
+
+"stickers_label" = "Stickers:";
+
+"goal_label" = "Goal:";
+
+"limit_label" = "Limit:";
+
+"goal_period_label" = "Goal Period:";
+
+"direction_label" = "Direction:";
+
+"positive" = "positive";
+
+"negative" = "negative";
+
+"get_x_or_more" = "get|or more";
+
+"get_x_or_fewer" = "get|or fewer";
+
+"week" = "week";
+
+"month" = "month";
+
+"select_stickers_title" = "Select Stickers";
+
+// Sticker Editing
+
+"emoji_label" = "Emoji:";
+
+"preview_label" = "Preview:";
+
+"sticker_name_placeholder" = "Sticker Name";
+
+"delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker would remain unchanged.";
+
+"delete_sticker_button" = "Delete Sticker";
+
+// Options Page
+
+"reminder_title" = "Reminder";
+
+"reminder_option" = "Daily Reminder";
+
+"reminder_footer" = "Remind every day around 9pm to fill your entry for that day if you haven't done so already.";
+
+"backup_title" = "Backup / Restore";
+
+"backup_button" = "Export Your Data...";
+
+"backup_footer" = "Email yourself JSON file with all your data.";
+
+"feedback_button" = "Feedback...";
+
+// Confirmation / Alert / Messages
+
+"week_recap_title" = "Week Recap is Ready";
+
+"week_recap_message" = "You've reached some goals and failed others. Review last week?";
+
+"review_button" = "Review";
+
+"woah_title" = "Woah!";
+
+"goal_delete_confirmation" = "This goal has been reached few times. Are you sure you want to delete it?";
+
+"delete_button" = "Delete";
+
+"cancel_button" = "Cancel";
+
+"sticker_delete_confirmation" = "%@ Are you sure you want to delete it?";
+
+

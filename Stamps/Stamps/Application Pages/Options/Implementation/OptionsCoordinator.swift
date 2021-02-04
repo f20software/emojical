@@ -32,6 +32,7 @@ class OptionsCoordinator: OptionsCoordinatorProtocol {
         let presenter = DeveloperPresenter(
             view: dev,
             repository: Storage.shared.repository,
+            awards: AwardManager.shared,
             settings: LocalSettings.shared
         )
         dev.presenter = presenter

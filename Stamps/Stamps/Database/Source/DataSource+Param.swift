@@ -62,4 +62,15 @@ extension DataSource {
         }
         catch { }
     }
+    
+    // Delete all stamps from the database
+    func deleteAllParams() {
+        do {
+            _ = try dbQueue.write { db in
+                try StoredParam.deleteAll(db)
+            }
+        }
+        catch { }
+    }
+
 }

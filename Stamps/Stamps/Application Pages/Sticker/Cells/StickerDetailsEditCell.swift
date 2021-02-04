@@ -74,7 +74,7 @@ class StickerDetailsEditCell: UICollectionViewCell {
             allColorViews[selectedColorIndex].layer.borderWidth = 0.0
         }
      
-        allColorViews[index].layer.borderWidth = 3.0
+        allColorViews[index].layer.borderWidth = Specs.colorsBorderWidth
         selectedColorIndex = index
     }
 
@@ -91,7 +91,7 @@ class StickerDetailsEditCell: UICollectionViewCell {
         allColorViews = [color0, color1, color2, color3, color4, color5, color6]
         // Round corners will not be visible anywhere but on today's day
         for view in allColorViews {
-            view.layer.cornerRadius = 10
+            view.layer.cornerRadius = Specs.colorsCornerRadius
             view.clipsToBounds = true
             view.backgroundColor = UIColor.systemBackground
             view.layer.borderColor = UIColor.black.cgColor
@@ -104,23 +104,24 @@ class StickerDetailsEditCell: UICollectionViewCell {
             label.textColor = Theme.shared.colors.secondaryText
         }
 
-        nameLabel.text = "Name:"
-        name.backgroundColor = UIColor.systemGray6
+        nameLabel.text = "name_label".localized
+        name.backgroundColor = Theme.shared.colors.secondaryBackground
         name.font = Theme.shared.fonts.listBody
+        name.placeholder = "sticker_name_placeholder".localized
 
-        emojiLabel.text = "Emoji:"
-        emoji.backgroundColor = UIColor.systemGray6
+        emojiLabel.text = "emoji_label".localized
+        emoji.backgroundColor = Theme.shared.colors.secondaryBackground
         emoji.font = Theme.shared.fonts.listBody
         emoji.delegate = self
         emoji.placeholder = ""
         
-        previewLabel.text = "Preview:"
-        previewPlate.backgroundColor = UIColor.systemGray6
+        previewLabel.text = "preview_label".localized
+        previewPlate.backgroundColor = Theme.shared.colors.secondaryBackground
         previewPlate.layer.cornerRadius = Specs.cornerRadius
         previewPlate.clipsToBounds = true
 
-        stickerBackground.backgroundColor = UIColor.systemBackground
-        stickerBackground.layer.cornerRadius = 10.0
+        stickerBackground.backgroundColor = Theme.shared.colors.background
+        stickerBackground.layer.cornerRadius = Specs.stickerCornerRadius
     }
     
     @IBAction func textChanged(_ sender: Any) {
@@ -157,7 +158,17 @@ extension StickerDetailsEditCell: UITextFieldDelegate {
 // MARK: - Specs
 fileprivate struct Specs {
     
+    /// Sticker corner radius
+    static let stickerCornerRadius: CGFloat = 8.0
+    
     /// Background corner radius
     static let cornerRadius: CGFloat = 8.0
+    
+    /// Color selector corner radius
+    static let colorsCornerRadius: CGFloat = 10.0
+    
+    /// Color selector thikness
+    static let colorsBorderWidth: CGFloat = 3.0
+
 }
 

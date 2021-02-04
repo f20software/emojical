@@ -151,7 +151,7 @@ class TodayViewController: UIViewController {
     }
     
     private func configureViews() {
-
+        
         let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
         // We want to pass exact same width to all daily columns. Otherwise,
         // if we just rely on the auto-layout, there will be some fraction difference
@@ -207,7 +207,7 @@ class TodayViewController: UIViewController {
         plusButton.layer.shadowColor = UIColor.gray.cgColor
         plusButton.layer.shadowOffset = Specs.shadowOffset
         plusButton.layer.cornerRadius = Specs.miniButtonCornerRadius
-        plusButton.backgroundColor = UIColor.systemGray6
+        plusButton.backgroundColor = Theme.shared.colors.secondaryBackground
     }
 }
 

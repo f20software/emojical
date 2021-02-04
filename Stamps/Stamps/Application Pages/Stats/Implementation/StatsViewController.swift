@@ -67,6 +67,11 @@ class StatsViewController: UIViewController, StatsView {
     /// User tapped on the next week button
     var onNextButtonTapped: (() -> Void)? 
 
+    /// Update page title
+    func updateTitle(_ text: String) {
+        title = text
+    }
+
     /// Update page header
     func setHeader(to text: String) {
         header.text = text
@@ -145,12 +150,15 @@ class StatsViewController: UIViewController, StatsView {
     // MARK: - Private helpers
     
     private func configureViews() {
-        
+
         configureCollectionView()
         registerCells()
         
         prevButton.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextButton.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        
+        modeSelector.setTitle("week".localized.capitalizingFirstLetter(), forSegmentAt: 0)
+        modeSelector.setTitle("month".localized.capitalizingFirstLetter(), forSegmentAt: 1)
     }
     
     private func configureCollectionView() {

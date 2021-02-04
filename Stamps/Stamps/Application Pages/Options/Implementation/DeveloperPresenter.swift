@@ -17,6 +17,7 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
     private weak var view: DeveloperView?
     private weak var settings: LocalSettings!
     private weak var repository: DataRepository!
+    private weak var awards: AwardManager!
 
     // MARK: - State
 
@@ -25,10 +26,12 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
     init(
         view: DeveloperView,
         repository: DataRepository,
+        awards: AwardManager,
         settings: LocalSettings
     ) {
         self.view = view
         self.repository = repository
+        self.awards = awards
         self.settings = settings
     }
 
@@ -79,6 +82,13 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                     .text("Goals (Deleted)", "\(goalsCount) (\(goalsDeletedCount))"),
                     .text("Stickers Used", "\(diaryCount)"),
                     .text("Awards", "\(awardsCount)"),
+                    .button("Clear Database", {
+                        self.confirmAndDeleteDatabase()
+                    }),
+                    .button("Create Demo Database", {
+                        self.createDemoDatabase()
+                        self.loadViewData()
+                    }),
                 ]
             ),
             Section(
@@ -103,8 +113,8 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                 header: "Log File",
                 footer: nil,
                 cells: [
-                    .button("Email Log File...", { [weak self] in
-                        self?.emailLogFile()
+                    .button("Email Log File...", {
+                        self.emailLogFile()
                     }),
                 ]
             ),
@@ -119,6 +129,24 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
             attachment: URL(fileURLWithPath: file),
             fileName: "application.log"
         )
+    }
+    
+    private func confirmAndDeleteDatabase() {
+        let alert = UIAlertController(title: "Confirm", message: "This is cannot be undone. Please confirm that you want to delelte all records from the databas.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            self.repository.clearDatabase()
+            self.loadViewData()
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        view?.viewController?.present(alert, animated: true, completion: nil)
+    }
+
+    private func createDemoDatabase() {
+        repository.createDemoEntries(
+            from: Date())
+        awards.recalculateOnAppResume()
     }
 }
     

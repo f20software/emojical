@@ -100,6 +100,7 @@ class StatsPresenter: StatsPresenterProtocol {
     }
     
     private func loadViewData() {
+        view?.updateTitle("stats_title".localized)
         switch mode {
         case .week:
             view?.setHeader(to: selectedWeek.label)

@@ -40,9 +40,8 @@ class StickerDetailsDeleteButtonCell: UICollectionViewCell {
         plate.backgroundColor = UIColor.clear
         footer.font = Theme.shared.fonts.footer
         footer.textColor = Theme.shared.colors.secondaryText
-        footer.text = "If you delete the sticker, all previous usage of that sticker would remain unchanged."
-        
-        deleteButton.setTitle("Delete Sticker", for: .normal)
+        footer.text = "delete_sticker_description".localized
+        deleteButton.setTitle("delete_sticker_button".localized, for: .normal)
         deleteButton.titleLabel?.font = Theme.shared.fonts.boldButtons
     }
 }

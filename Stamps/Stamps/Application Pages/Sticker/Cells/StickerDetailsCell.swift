@@ -36,11 +36,11 @@ class StickerDetailsCell: UICollectionViewCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        plate.backgroundColor = UIColor.systemGray6
+        plate.backgroundColor = Theme.shared.colors.secondaryBackground
         plate.layer.cornerRadius = Specs.cornerRadius
         plate.clipsToBounds = true
         
-        stickerBackground.backgroundColor = UIColor.systemBackground
+        stickerBackground.backgroundColor = Theme.shared.colors.background
         stickerBackground.layer.cornerRadius = Specs.cornerRadius
         
         statistics.font = Theme.shared.fonts.listBody

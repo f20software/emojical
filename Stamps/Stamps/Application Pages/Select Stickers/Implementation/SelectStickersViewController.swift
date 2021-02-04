@@ -48,6 +48,11 @@ class SelectStickersViewController : UIViewController, SelectStickersView {
     /// User tapped on create new sticker
     var onNewStickerTapped: (() -> Void)?
 
+    /// Update page title
+    func updateTitle(_ text: String) {
+        title = text
+    }
+
     /// Loads stickers data
     func loadData(_ data: [SelectStickerElement]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, SelectStickerElement>()
@@ -59,7 +64,6 @@ class SelectStickersViewController : UIViewController, SelectStickersView {
     // MARK: - Private helpers
     
     private func configureViews() {
-        title = "Select Stickers"
     }
     
     private func registerCells() {

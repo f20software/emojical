@@ -12,7 +12,7 @@ import UIKit
 struct Section {
     let header: String?
     let footer: String?
-    let cells: [Cell]
+    var cells: [Cell]
 }
 
 enum Cell {

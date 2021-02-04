@@ -17,7 +17,6 @@ class GoalDetailsCell: UICollectionViewCell {
     @IBOutlet weak var goalIcon: GoalAwardView!
     @IBOutlet weak var goalBackground: UIView!
     @IBOutlet weak var stickers: UILabel!
-    @IBOutlet weak var statistics: UILabel!
     @IBOutlet weak var currentProgress: UILabel!
 
     /// User tapped on the Delete button
@@ -44,8 +43,7 @@ class GoalDetailsCell: UICollectionViewCell {
         fullIcon = data.award
         
         goalDescription.text = data.details
-        statistics.text = data.statis
-        stickers.text = "Stickers: \(data.stickers.joined(separator: ", "))"
+        stickers.text = "stickers_title".localized + ": \(data.stickers.joined(separator: ", "))"
         currentProgress.text = data.progressText
         
         updateIcon()
@@ -85,18 +83,17 @@ class GoalDetailsCell: UICollectionViewCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        plate.backgroundColor = UIColor.systemGray6
+        plate.backgroundColor = Theme.shared.colors.secondaryBackground
         plate.layer.cornerRadius = Specs.cornerRadius
         plate.clipsToBounds = true
         
         goalIcon.progressLineWidth = Specs.progressLineWidth
         goalIcon.emojiFontSize = Specs.emojiFontSize
         
-        goalBackground.backgroundColor = UIColor.systemBackground
+        goalBackground.backgroundColor = Theme.shared.colors.background
         goalBackground.layer.cornerRadius = goalBackground.bounds.width / 2.0
         
         goalDescription.font = Theme.shared.fonts.listBody
-        statistics.font = Theme.shared.fonts.listBody
         stickers.font = Theme.shared.fonts.listBody
         currentProgress.font = Theme.shared.fonts.listBody
     }

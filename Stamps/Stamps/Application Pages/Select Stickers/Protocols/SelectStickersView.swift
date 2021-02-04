@@ -20,6 +20,9 @@ protocol SelectStickersView: AnyObject {
 
     // MARK: - Updates
 
+    /// Update page title
+    func updateTitle(_ text: String)
+
     /// Loads stickers data
     func loadData(_ data: [SelectStickerElement])
 }

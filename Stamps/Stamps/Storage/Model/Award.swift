@@ -28,7 +28,7 @@ struct Award {
     var oldStyleDescription: String {
         let df = DateFormatter()
         df.dateFormat = "EEEE"
-        return "Earned on \(df.string(from: date))"
+        return "award_earned_on".localized(df.string(from: date))
     }
     
     var descriptionText: String {
@@ -39,21 +39,16 @@ struct Award {
         
         let df = DateFormatter()
         df.dateFormat = "MMMM d"
-        switch direction {
-        case .positive:
-            if reached {
-                return "Earned on \(df.string(from: date)), by getting \(count) stickers."
-            } else {
-                return "\(period.name) goal not reached. Got \(count) stickers (needed \(limit))."
-            }
-
-        case .negative:
-            if reached {
-                return "Earned on \(df.string(from: date)). You had \(count) stickers (limit was \(limit))."
-            } else {
-                return "\(period.name) goal not reached. Got \(count) stickers (limit was \(limit))."
-            }
-        }
+        let dateReached = df.string(from: date)
+        
+        return Language.awardDescription(
+            reached: reached,
+            direction: direction,
+            date: dateReached,
+            count: count,
+            limit: limit,
+            period: period
+        )
     }
 }
 

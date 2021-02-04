@@ -67,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        try! repo.save(stamp: sticker!)
         
         UIView.appearance().tintColor = UIColor.appTintColor
+        
         return true
     }
     

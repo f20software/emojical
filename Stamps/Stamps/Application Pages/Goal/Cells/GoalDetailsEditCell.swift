@@ -55,7 +55,7 @@ class GoalDetailsEditCell: UICollectionViewCell {
         if stickersText.lengthOfBytes(using: .utf8) > 0 {
             stickers.text = stickersText
         } else {
-            stickers.text = "Select one or more"
+            stickers.text = "select_stickers_instructions".localized
         }
         direction.selectedSegmentIndex = data.goal.direction.rawValue
         period.selectedSegmentIndex = data.goal.period.rawValue
@@ -74,8 +74,14 @@ class GoalDetailsEditCell: UICollectionViewCell {
 
     @IBAction func directionChanged(_ sender: Any) {
         let positive = direction.selectedSegmentIndex == 0
-        limitLabel.text = positive ? "Goal:" : "Limit:"
-        limitExplanation2.text = positive ? "or more" : "or fewer"
+        limitLabel.text = positive ?
+            "goal_label".localized :
+            "limit_label".localized
+        
+        limitExplanation2.text = positive ?
+            "get_x_or_more".localized.components(separatedBy: "|").last :
+            "get_x_or_fewer".localized.components(separatedBy: "|").last
+        
         onValueChanged?()
     }
     
@@ -97,22 +103,28 @@ class GoalDetailsEditCell: UICollectionViewCell {
             label?.textColor = Theme.shared.colors.text
         }
 
-        nameLabel.text = "Name:"
-        name.backgroundColor = UIColor.systemGray6
+        nameLabel.text = "name_label".localized
+        name.placeholder = "goal_name_placeholder".localized
+        name.backgroundColor = Theme.shared.colors.secondaryBackground
         name.font = Theme.shared.fonts.listBody
         
-        stickersLabel.text = "Stickers:"
+        stickersLabel.text = "stickers_label".localized
         stickers.font = Theme.shared.fonts.listBody
         
-        limitLabel.text = "Goal:"
-        limitExplanation1.text = "get"
-        limitExplanation2.text = "or more"
+        limitLabel.text = "goal_label".localized
+        limitExplanation1.text = "get_x_or_more".localized.components(separatedBy: "|").first
+        limitExplanation2.text = "get_x_or_more".localized.components(separatedBy: "|").last
         
-        limit.backgroundColor = UIColor.systemGray6
+        limit.backgroundColor = Theme.shared.colors.secondaryBackground
         limit.font = Theme.shared.fonts.listBody
         
-        periodLabel.text = "Goal Period:"
-        directionLabel.text = "Direction:"
+        periodLabel.text = "goal_period_label".localized
+        period.setTitle("week".localized.capitalizingFirstLetter(), forSegmentAt: 0)
+        period.setTitle("month".localized.capitalizingFirstLetter(), forSegmentAt: 1)
+
+        directionLabel.text = "direction_label".localized
+        direction.setTitle("positive".localized.capitalizingFirstLetter(), forSegmentAt: 0)
+        direction.setTitle("negative".localized.capitalizingFirstLetter(), forSegmentAt: 1)
     }
     
     @IBAction func textChanged(_ sender: Any) {

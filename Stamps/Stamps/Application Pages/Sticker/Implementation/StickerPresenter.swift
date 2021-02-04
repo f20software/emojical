@@ -105,11 +105,21 @@ class StickerPresenter: StickerPresenterProtocol {
     
     private func confirmGoalDelete() {
         if sticker.count > 0 {
-            let confirm = UIAlertController(title: "Woah!", message: "\(sticker.statsDescription) Are you sure you want to delete it?", preferredStyle: .actionSheet)
-            confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            let description = Language.stickerUsageDescription(sticker)
+            let confirm = UIAlertController(
+                title: "woah_title".localized,
+                message: "sticker_delete_confirmation".localized(description),
+                preferredStyle: .actionSheet)
+            
+            confirm.addAction(UIAlertAction(
+                title: "delete_button".localized,
+                style: .destructive, handler: { (_) in
                 self.deleteAndDismiss()
             }))
-            confirm.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+            confirm.addAction(UIAlertAction(
+                title: "cancel_button".localized,
+                style: .cancel, handler: { (_) in
                 confirm.dismiss(animated: true, completion: nil)
             }))
             (view as! UIViewController).present(confirm, animated: true, completion: nil)
@@ -146,7 +156,8 @@ class StickerPresenter: StickerPresenterProtocol {
     }
     
     private func updateTitle() {
-        let title = (sticker.name.isEmpty && presentationMode == .modal)  ? "New Sticker" : sticker.name
+        let title = (sticker.name.isEmpty && presentationMode == .modal) ?
+            "new_sticker_title".localized : sticker.name
         view?.updateTitle(title)
     }
     
@@ -166,28 +177,20 @@ class StickerPresenter: StickerPresenterProtocol {
     private func loadViewDataViewing() {
         guard let view = view else { return }
 
-        // Build usage text
         let goals = repository.goalsUsedStamp(sticker.id)
-        var usageText = ""
-        if goals.count == 0 {
-            usageText = "You haven't created a goal yet with this sticker."
-        } else if goals.count == 1 {
-            usageText = "Sticker is used in \'\(goals.first?.name ?? "")\' goal."
-        } else {
-            let text = goals.map({ "'\($0.name)'" }).sentence
-            usageText = "Sticker is used in \(text) goals."
-        }
-        
         var data: [StickerDetailsElement] = [.view(
             StickerViewData(
                 sticker: sticker,
-                statistics: sticker.statsDescription,
-                usage: usageText
+                statistics: Language.stickerUsageDescription(sticker),
+                usage: Language.stickerUsedInGoals(goals)
             )
         )]
+
+        // If no goals - add a button to create a Goal from Sticker screen
         if goals.count == 0 {
             data.append(.newGoalButton)
         }
+
         view.loadData(data)
     }
 

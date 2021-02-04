@@ -10,20 +10,29 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
-    var todayTab: TodayViewController?
-    var goalsTab: UIViewController!
-    var statsTab: UIViewController!
-    var optionsTab: UIViewController!
+    var todayTab: UINavigationController?
+    var todayPresenter: TodayPresenter? {
+        return (todayTab?.viewControllers.first as? TodayViewController)?.presenter as? TodayPresenter
+    }
+    
+    var goalsTab: UINavigationController?
+    var statsTab: UINavigationController?
+    var optionsTab: UINavigationController?
 
     private var newAwardCounter = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        todayTab = ((viewControllers?[0] as? UINavigationController)?.viewControllers[0] as? TodayViewController)
-        goalsTab = viewControllers![1]
-        statsTab = viewControllers![2]
-        optionsTab = viewControllers![3]
+        todayTab = viewControllers?[0] as? UINavigationController
+        goalsTab = viewControllers?[1] as? UINavigationController
+        statsTab = viewControllers?[2] as? UINavigationController
+        optionsTab = viewControllers?[3] as? UINavigationController
+
+        todayTab?.tabBarItem.title = "today_title".localized
+        goalsTab?.tabBarItem.title = "goals_title".localized
+        statsTab?.tabBarItem.title = "stats_title".localized
+        optionsTab?.tabBarItem.title = "options_title".localized
 
         // Add handlers to app wide notifications
         NotificationCenter.default.addObserver(
@@ -42,19 +51,33 @@ extension MainViewController {
         selectedIndex = 0
         
         // And navigate to current day
-        todayTab?.presenter?.navigateTo(Date())
+        todayPresenter?.navigateTo(Date())
     }
     
     @objc func weekReady() {
+        
+        // Move to Today page
         selectedIndex = 0
-        let alert = UIAlertController(title: "Week recap is ready", message: "You've reached some goals and failed others", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Review", style: .default, handler: { (_) in
+        
+        let alert = UIAlertController(
+            title: "week_recap_title".localized,
+            message: "week_recap_message".localized,
+            preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(
+            title: "review_button".localized,
+            style: .default,
+            handler: { (_) in
             // Show week recap for the previous week
             DispatchQueue.main.async {
-                self.todayTab?.presenter?.showWeekRecapFor(Date().byAddingWeek(-1))
+                self.todayPresenter?.showWeekRecapFor(Date().byAddingWeek(-1))
             }
         }))
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+        
+        alert.addAction(UIAlertAction(
+            title: "dismiss_button".localized,
+            style: .cancel,
+            handler: { (_) in
             alert.dismiss(animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: nil)

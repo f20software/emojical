@@ -41,6 +41,7 @@ class GoalPresenter: GoalPresenterProtocol {
     private let awardManager: AwardManager
     private let coordinator: GoalCoordinatorProtocol
     private let repository: DataRepository
+    private let dataBuilder: CalendarDataBuilder
 
     // MARK: - Lifecycle
 
@@ -60,6 +61,11 @@ class GoalPresenter: GoalPresenterProtocol {
         self.goal = goal ?? Goal.new
         self.presentationMode = presentation
         self.isEditing = editing
+        
+        self.dataBuilder = CalendarDataBuilder(
+            repository: repository,
+            calendar: CalendarHelper.shared
+        )
     }
 
     // MARK: - State
@@ -121,11 +127,20 @@ class GoalPresenter: GoalPresenterProtocol {
     
     private func confirmGoalDelete() {
         if goal.count > 0 {
-            let confirm = UIAlertController(title: "Woah!", message: "\(goal.statsDescription) Are you sure you want to delete it?", preferredStyle: .actionSheet)
-            confirm.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            let confirm = UIAlertController(
+                title: "woah_title".localized,
+                message: "goal_delete_confirmation".localized,
+                preferredStyle: .actionSheet)
+            
+            confirm.addAction(UIAlertAction(
+                title: "delete_button".localized,
+                style: .destructive, handler: { (_) in
                 self.deleteAndDismiss()
             }))
-            confirm.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+            confirm.addAction(UIAlertAction(
+                title: "cancel_button".localized,
+                style: .cancel, handler: { (_) in
                 confirm.dismiss(animated: true, completion: nil)
             }))
             (view as! UIViewController).present(confirm, animated: true, completion: nil)
@@ -161,7 +176,8 @@ class GoalPresenter: GoalPresenterProtocol {
     }
     
     private func updateTitle() {
-        let title = (goal.name.isEmpty && presentationMode == .modal)  ? "New Goal" : goal.name
+        let title = (goal.name.isEmpty && presentationMode == .modal) ?
+            "new_goal_title".localized : goal.name
         view?.updateTitle(title)
     }
 
@@ -196,15 +212,27 @@ class GoalPresenter: GoalPresenterProtocol {
             }
             view.enableDoneButton(goal.isValid)
         } else {
+            let history = dataBuilder.goalHistory(forGoal: goal.id!)
+
             let data = GoalViewData(
-                details: goal.details,
-                statis: goal.statsDescription,
+                details: Language.goalDescription(goal),
                 stickers: repository.stampLabelsFor(goal),
-                progressText: goal.descriptionForCurrentProgress(progress),
+                progressText: Language.goalCurrentProgress(
+                    period: goal.period,
+                    direction: goal.direction,
+                    progress: progress,
+                    limit: goal.limit
+                ),
                 award: award,
                 progress: currentProgress
             )
-            view.loadData([.view(data)])
+            
+            var cells: [GoalDetailsElement] = [.view(data)]
+            if history != nil {
+                cells.append(.reached(history!))
+            }
+            
+            view.loadData(cells)
         }
     }
     

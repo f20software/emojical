@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F2C4943423D2CBC800EAF9CC"
                BuildableName = "Emojical.app"
-               BlueprintName = "Stamps"
-               ReferencedContainer = "container:Stamps.xcodeproj">
+               BlueprintName = "Emojical"
+               ReferencedContainer = "container:Emojical.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "F27B044D241EBD7A006E5175"
                BuildableName = "EmojicalTests.xctest"
                BlueprintName = "EmojicalTests"
-               ReferencedContainer = "container:Stamps.xcodeproj">
+               ReferencedContainer = "container:Emojical.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -56,8 +56,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F2C4943423D2CBC800EAF9CC"
             BuildableName = "Emojical.app"
-            BlueprintName = "Stamps"
-            ReferencedContainer = "container:Stamps.xcodeproj">
+            BlueprintName = "Emojical"
+            ReferencedContainer = "container:Emojical.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -73,8 +73,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F2C4943423D2CBC800EAF9CC"
             BuildableName = "Emojical.app"
-            BlueprintName = "Stamps"
-            ReferencedContainer = "container:Stamps.xcodeproj">
+            BlueprintName = "Emojical"
+            ReferencedContainer = "container:Emojical.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

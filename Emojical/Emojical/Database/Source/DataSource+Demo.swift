@@ -39,12 +39,12 @@ extension DataSource {
     func createDemoEntries(from date: Date) {
         // Stickers
         let stickers = [
-            ("⚽️", "Soccer Game", Theme.shared.colors.palette[4]),
-            ("🧘🏻‍♀️", "Yoga", Theme.shared.colors.palette[5]),
-            ("💦", "Drink Water", Theme.shared.colors.palette[5]),
-            ("👍", "Good Day", Theme.shared.colors.palette[2]),
-            ("🌲", "Hike", Theme.shared.colors.palette[4]),
-            ("📕", "Read Book", Theme.shared.colors.palette[0]),
+            ("⚽️", "Soccer Game", Theme.main.colors.palette[4]),
+            ("🧘🏻‍♀️", "Yoga", Theme.main.colors.palette[5]),
+            ("💦", "Drink Water", Theme.main.colors.palette[5]),
+            ("👍", "Good Day", Theme.main.colors.palette[2]),
+            ("🌲", "Hike", Theme.main.colors.palette[4]),
+            ("📕", "Read Book", Theme.main.colors.palette[0]),
         ]
         
         let goals = [

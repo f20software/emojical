@@ -29,28 +29,28 @@ class DayHeaderCell: ThemeObservingCollectionCell {
         
         if data.isHighlighted {
             dayPlate.backgroundColor = data.isToday ?
-                Theme.shared.colors.calendarTodayBackground :
-                Theme.shared.colors.calendarHighlightedBackground
+                Theme.main.colors.calendarTodayBackground :
+                Theme.main.colors.calendarHighlightedBackground
             
             // TODO: Review? - seems arbitrary
             dayNum.textColor = UIColor.white
             dayName.textColor = UIColor.white
         } else {
-            dayPlate.backgroundColor = Theme.shared.colors.secondaryBackground
+            dayPlate.backgroundColor = Theme.main.colors.secondaryBackground
             dayNum.textColor = data.isWeekend ?
-                Theme.shared.colors.weekendText :
-                Theme.shared.colors.text
+                Theme.main.colors.weekendText :
+                Theme.main.colors.text
             
             dayName.textColor = data.isWeekend ?
-                Theme.shared.colors.weekendText :
-                Theme.shared.colors.text
+                Theme.main.colors.weekendText :
+                Theme.main.colors.text
         }
     }
 
     // MARK: - Private helpers
 
     private func configureViews() {
-        dayPlate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+        dayPlate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         dayPlate.clipsToBounds = true
     }
 }

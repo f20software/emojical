@@ -40,8 +40,8 @@ class StickersHeaderView: UICollectionReusableView {
             label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Specs.margin)
         ])
         
-        label.font = Theme.shared.fonts.sectionHeaderTitle
-        label.textColor = Theme.shared.colors.sectionHeaderText
+        label.font = Theme.main.fonts.sectionHeaderTitle
+        label.textColor = Theme.main.colors.sectionHeaderText
     }
 }
 

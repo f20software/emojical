@@ -28,18 +28,18 @@ class NewGoalCell: ThemeObservingCollectionCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        plate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+        plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.layer.borderWidth = Specs.borderWidth
         plate.backgroundColor = UIColor.clear
         plate.clipsToBounds = true
 
-        title.font = Theme.shared.fonts.boldButtons
+        title.font = Theme.main.fonts.boldButtons
         title.text = "create_goal_button".localized
         updateColors()
     }
     
     override func updateColors() {
-        plate.layer.borderColor = Theme.shared.colors.secondaryBackground.cgColor
+        plate.layer.borderColor = Theme.main.colors.secondaryBackground.cgColor
     }
 }
 

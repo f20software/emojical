@@ -39,8 +39,8 @@ class SwitchCell: UITableViewCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        switchText.font = Theme.shared.fonts.listBody
-        switchControl.onTintColor = Theme.shared.colors.tint
-        backgroundColor = Theme.shared.colors.secondaryBackground
+        switchText.font = Theme.main.fonts.listBody
+        switchControl.onTintColor = Theme.main.colors.tint
+        backgroundColor = Theme.main.colors.secondaryBackground
     }
 }

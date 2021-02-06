@@ -30,6 +30,6 @@ class NoAwardsCell: ThemeObservingCollectionCell {
     }
     
     override func updateFonts() {
-        textLabel.font = Theme.shared.fonts.cellDescription
+        textLabel.font = Theme.main.fonts.cellDescription
     }
 }

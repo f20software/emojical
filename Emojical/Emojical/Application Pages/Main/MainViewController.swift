@@ -57,8 +57,8 @@ extension MainViewController {
     }
     
     private func updateColors() {
-        UIView.appearance().tintColor = Theme.shared.colors.tint
-        tabBar.tintColor = Theme.shared.colors.tint
+        UIView.appearance().tintColor = Theme.main.colors.tint
+        tabBar.tintColor = Theme.main.colors.tint
     }
 
     @objc func weekReady() {

@@ -212,10 +212,10 @@ class TodayViewController: UIViewController {
     private func updateColors() {
         plusButton.layer.shadowRadius = Specs.shadowRadius
         plusButton.layer.shadowOpacity = Specs.shadowOpacity
-        plusButton.layer.shadowColor = Theme.shared.colors.shadow.cgColor
+        plusButton.layer.shadowColor = Theme.main.colors.shadow.cgColor
         plusButton.layer.shadowOffset = Specs.shadowOffset
         plusButton.layer.cornerRadius = Specs.miniButtonCornerRadius
-        plusButton.backgroundColor = Theme.shared.colors.secondaryBackground
+        plusButton.backgroundColor = Theme.main.colors.secondaryBackground
     }
 }
 

@@ -25,8 +25,8 @@ class TextCell: UITableViewCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        textLabel?.font = Theme.shared.fonts.listBody
-        detailTextLabel?.font = Theme.shared.fonts.listBody
-        backgroundColor = Theme.shared.colors.secondaryBackground
+        textLabel?.font = Theme.main.fonts.listBody
+        detailTextLabel?.font = Theme.main.fonts.listBody
+        backgroundColor = Theme.main.colors.secondaryBackground
     }
 }

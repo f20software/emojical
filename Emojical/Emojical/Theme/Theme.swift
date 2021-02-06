@@ -42,12 +42,12 @@ final class Theme {
     }
 
     /// Shared instance.
-    private(set) static var shared: Theme = Theme()
+    private(set) static var main: Theme = Theme()
 
     // MARK: - Theme values.
 
     /// List of theme Specs
-    let specs: Specs
+    private(set) var specs: Specs
 
     /// List of theme fonts.
     private(set) var fonts: Fonts

@@ -38,7 +38,7 @@ class GoalDetailsDeleteButtonCell: ThemeObservingCollectionCell {
 
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
-        footer.textColor = Theme.shared.colors.secondaryText
+        footer.textColor = Theme.main.colors.secondaryText
         
         footer.text = "delete_goal_description".localized
         deleteButton.setTitle("delete_goal_button".localized, for: .normal)
@@ -47,7 +47,7 @@ class GoalDetailsDeleteButtonCell: ThemeObservingCollectionCell {
     }
     
     override func updateFonts() {
-        footer.font = Theme.shared.fonts.footer
-        deleteButton.titleLabel?.font = Theme.shared.fonts.boldButtons
+        footer.font = Theme.main.fonts.footer
+        deleteButton.titleLabel?.font = Theme.main.fonts.boldButtons
     }
 }

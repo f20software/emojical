@@ -39,16 +39,16 @@ class StickerDetailsDeleteButtonCell: ThemeObservingCollectionCell {
 
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
-        footer.textColor = Theme.shared.colors.secondaryText
+        footer.textColor = Theme.main.colors.secondaryText
         footer.text = "delete_sticker_description".localized
         deleteButton.setTitle("delete_sticker_button".localized, for: .normal)
-        separator.backgroundColor = Theme.shared.colors.separator
+        separator.backgroundColor = Theme.main.colors.separator
 
         updateFonts()
     }
     
     override func updateFonts() {
-        footer.font = Theme.shared.fonts.footer
-        deleteButton.titleLabel?.font = Theme.shared.fonts.boldButtons
+        footer.font = Theme.main.fonts.footer
+        deleteButton.titleLabel?.font = Theme.main.fonts.boldButtons
     }
 }

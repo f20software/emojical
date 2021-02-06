@@ -37,7 +37,7 @@ class ButtonCell: UITableViewCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        button.titleLabel?.font = Theme.shared.fonts.buttons
-        backgroundColor = Theme.shared.colors.secondaryBackground
+        button.titleLabel?.font = Theme.main.fonts.buttons
+        backgroundColor = Theme.main.colors.secondaryBackground
     }
 }

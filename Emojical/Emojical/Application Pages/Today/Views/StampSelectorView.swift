@@ -67,16 +67,16 @@ class StampSelectorView : ThemeObservingView {
     
     private func setupViews() {
         // Background view
-        backgroundColor = Theme.shared.colors.secondaryBackground
-        layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+        backgroundColor = Theme.main.colors.secondaryBackground
+        layer.cornerRadius = Theme.main.specs.platesCornerRadius
         layer.shadowRadius = Specs.shadowRadius
         layer.shadowOpacity = Specs.shadowOpacity
-        layer.shadowColor = Theme.shared.colors.shadow.cgColor
+        layer.shadowColor = Theme.main.colors.shadow.cgColor
         layer.shadowOffset = Specs.shadowOffset
         dragIndicator.layer.cornerRadius = dragIndicator.bounds.height / 2
         dragIndicator.layer.opacity = 0.8
         dragIndicator.clipsToBounds = true
-        dragIndicator.backgroundColor = Theme.shared.colors.tint
+        dragIndicator.backgroundColor = Theme.main.colors.tint
 
         // Collection view for stamps
         configureCollectionView()
@@ -84,7 +84,7 @@ class StampSelectorView : ThemeObservingView {
     }
     
     override func updateColors() {
-        layer.shadowColor = Theme.shared.colors.shadow.cgColor
+        layer.shadowColor = Theme.main.colors.shadow.cgColor
     }
     
     private func registerCells() {

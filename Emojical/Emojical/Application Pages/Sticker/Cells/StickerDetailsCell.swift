@@ -36,19 +36,19 @@ class StickerDetailsCell: ThemeObservingCollectionCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        plate.backgroundColor = Theme.shared.colors.secondaryBackground
-        plate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+        plate.backgroundColor = Theme.main.colors.secondaryBackground
+        plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true
         
-        stickerBackground.backgroundColor = Theme.shared.colors.background
-        stickerBackground.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+        stickerBackground.backgroundColor = Theme.main.colors.background
+        stickerBackground.layer.cornerRadius = Theme.main.specs.platesCornerRadius
 
         updateFonts()
     }
     
     override func updateFonts() {
-        statistics.font = Theme.shared.fonts.listBody
-        usage.font = Theme.shared.fonts.listBody
+        statistics.font = Theme.main.fonts.listBody
+        usage.font = Theme.main.fonts.listBody
     }
     
 }

@@ -36,7 +36,7 @@ class SelectStickerCell: UICollectionViewCell {
     
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
-        selectedMark.tintColor = Theme.shared.colors.tint
+        selectedMark.tintColor = Theme.main.colors.tint
     }
 }
 

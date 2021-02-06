@@ -25,7 +25,7 @@ struct Stamp {
             id: nil,
             name: "",
             label: "",
-            color: Theme.shared.colors.palette.first!
+            color: Theme.main.colors.palette.first!
         )
     }
 }

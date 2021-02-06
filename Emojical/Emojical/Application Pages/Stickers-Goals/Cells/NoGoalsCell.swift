@@ -30,7 +30,7 @@ class NoGoalsCell: UICollectionViewCell {
 
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
-        text.font = Theme.shared.fonts.listBody
-        text.textColor = Theme.shared.colors.secondaryText
+        text.font = Theme.main.fonts.listBody
+        text.textColor = Theme.main.colors.secondaryText
     }
 }

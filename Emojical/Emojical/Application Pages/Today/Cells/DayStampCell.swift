@@ -50,6 +50,6 @@ class DayStampCell: UICollectionViewCell {
     func setupViews() {
         badgeView.layer.cornerRadius = badgeView.bounds.width / 2.0
         badgeView.isHidden = true
-        badgeView.backgroundColor = Theme.shared.colors.tint
+        badgeView.backgroundColor = Theme.main.colors.tint
     }
 }

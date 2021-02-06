@@ -236,4 +236,28 @@ class Language {
             return "sticker_used_x_goals".localized(text)
         }
     }
+    
+    /// Week recap message based on number on goals and number of reached goals
+    static func weekRecapForGoals(total: Int, reached: Int) -> String {
+        
+        // Single goal?
+        if total == 1 {
+            if reached == 0 {
+                return "week_recap_message_0_1".localized
+            } else /* if reachedGoals == 1 */ {
+                return "week_recap_message_1_1".localized
+            }
+        }
+        
+        // Multiple goals
+        if reached == 0 {
+            return "week_recap_message_0_x".localized
+        } else if reached == 1 {
+            return "week_recap_message_1_x".localized
+        } else if reached < total {
+            return "week_recap_message_x_y".localized(reached)
+        } else {
+            return "week_recap_message_x_x".localized
+        }
+    }
 }

@@ -28,7 +28,7 @@ class AwardManager {
     // we reach Sunday
     func recalculateOnAppResume() {
         recalculateMonthlyGoals()
-        if recalculateWeeklyGoals() > 0 {
+        if recalculateWeeklyGoals() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
                 NotificationCenter.default.post(name: .weekClosed, object: nil)
             })
@@ -43,8 +43,8 @@ class AwardManager {
     }
     
     // Recalculate weekly goals and update last-week-update parameter in the database
-    // Return number of weeks we actually "closed" and need to notify user
-    private func recalculateWeeklyGoals() -> Int {
+    // Return 'true' if we actually "closed" one or more week and need to notify user
+    private func recalculateWeeklyGoals() -> Bool {
         // Count weeks we just closed
         var closedWeeks = 0
         
@@ -57,7 +57,7 @@ class AwardManager {
             lastUpdated = firstEntryDate.lastOfWeek.byAddingWeek(-1)
         }
         
-        guard var last = lastUpdated else { return 0 }
+        guard var last = lastUpdated else { return false }
         while (last.databaseKey < Date().databaseKey) {
             NSLog("Last week update set \(last.databaseKey)")
             repository.lastWeekUpdate = last
@@ -68,7 +68,7 @@ class AwardManager {
         
         // closedWeeks will always be at least 1, but if we actually close it one
         // we will return it here
-        return closedWeeks - 1
+        return (closedWeeks > 1)
     }
     
     // Recalculate monthly goals and update last-month-update parameter in the database

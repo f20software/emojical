@@ -27,7 +27,7 @@ class NavigateCell: UITableViewCell {
     // MARK: - Private helpers
     
     private func configureViews() {
-        textLabel?.font = Theme.shared.fonts.listBody
-        backgroundColor = Theme.shared.colors.secondaryBackground
+        textLabel?.font = Theme.main.fonts.listBody
+        backgroundColor = Theme.main.colors.secondaryBackground
     }
 }

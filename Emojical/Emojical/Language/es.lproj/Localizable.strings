@@ -200,7 +200,17 @@
 
 "week_recap_title" = "El resumen de la semana está listo";
 
-"week_recap_message" = "Has alcanzado algunas metas y fallaste en otras. ¿Revisar la semana pasada?";
+"week_recap_message_0_1" = "No has alcanzado tu meta. Esperemos que esta semana sea mejor.";
+
+"week_recap_message_0_x" = "No has alcanzado ninguna de tus metas. Esperemos que esta semana sea mejor.";
+
+"week_recap_message_1_1" = "Has alcanzado tu meta. ¡Gran trabajo!";
+
+"week_recap_message_1_x" = "Ha alcanzado uno de sus metas. ¡Seguid así!";
+
+"week_recap_message_x_x" = "Has alcanzado todos tus metas. ¡Esto es increíble!";
+
+"week_recap_message_x_y" = "Has alcanzado %d de tus metas. ¡Gran trabajo!";
 
 "review_button" = "Repaso";
 

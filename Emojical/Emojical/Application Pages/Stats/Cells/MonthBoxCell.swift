@@ -98,20 +98,20 @@ class MonthBoxCell: ThemeObservingCollectionCell {
         
         border.backgroundColor = UIColor.clear
         border.layer.borderWidth = Specs.borderWidth
-        border.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+        border.layer.cornerRadius = Theme.main.specs.platesCornerRadius
 
         days = [day0, day1, day2, day3, day4, day5, day6]
         for day in days {
             day.font = UIFont.systemFont(ofSize: 12.0, weight: .medium)
-            day.backgroundColor = Theme.shared.colors.background
-            day.textColor = Theme.shared.colors.secondaryText
+            day.backgroundColor = Theme.main.colors.background
+            day.textColor = Theme.main.colors.secondaryText
         }
         header.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
         updateColors()
     }
     
     override func updateColors() {
-        border.layer.borderColor = Theme.shared.colors.separator.cgColor
+        border.layer.borderColor = Theme.main.colors.separator.cgColor
     }
 }
 

@@ -36,8 +36,8 @@ class GoalReachedCell: UICollectionViewCell {
             string.append(NSAttributedString(
                 string: "\(lines[0])\n",
                 attributes: [
-                    .font: Theme.shared.fonts.listBody,
-                    .foregroundColor: Theme.shared.colors.secondaryText,
+                    .font: Theme.main.fonts.listBody,
+                    .foregroundColor: Theme.main.colors.secondaryText,
                     .paragraphStyle: parStyle
                 ])
             )
@@ -47,8 +47,8 @@ class GoalReachedCell: UICollectionViewCell {
             string.append(NSAttributedString(
                 string: lines[1],
                 attributes: [
-                    .font: Theme.shared.fonts.largeStats,
-                    .foregroundColor: Theme.shared.colors.text,
+                    .font: Theme.main.fonts.largeStats,
+                    .foregroundColor: Theme.main.colors.text,
                     .paragraphStyle: parStyle
                 ])
             )
@@ -58,8 +58,8 @@ class GoalReachedCell: UICollectionViewCell {
             string.append(NSAttributedString(
                 string: "\n\(lines[2])",
                 attributes: [
-                    .font: Theme.shared.fonts.listBody,
-                    .foregroundColor: Theme.shared.colors.secondaryText
+                    .font: Theme.main.fonts.listBody,
+                    .foregroundColor: Theme.main.colors.secondaryText
                 ])
             )
         }
@@ -79,8 +79,8 @@ class GoalReachedCell: UICollectionViewCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        plate.backgroundColor = Theme.shared.colors.secondaryBackground
-        plate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+        plate.backgroundColor = Theme.main.colors.secondaryBackground
+        plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true
     }
 }

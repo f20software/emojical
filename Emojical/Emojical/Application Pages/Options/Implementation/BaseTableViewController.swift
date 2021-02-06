@@ -26,7 +26,7 @@ class BaseTableViewController: UITableViewController {
         
         tableView.dataSource = dataSource
         tableView.delegate = self
-        tableView.backgroundColor = Theme.shared.colors.background
+        tableView.backgroundColor = Theme.main.colors.background
     }
 }
 

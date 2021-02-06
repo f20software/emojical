@@ -50,24 +50,24 @@ class GoalCell: ThemeObservingCollectionCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        plate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+        plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true
         
         count.layer.cornerRadius = count.font.pointSize * 0.6
         count.clipsToBounds = true
         goalIcon.progressLineWidth = Specs.progressLineWidth
         
-        plate.backgroundColor = Theme.shared.colors.secondaryBackground
-        count.backgroundColor = Theme.shared.colors.tint
-        count.textColor = Theme.shared.colors.background
-        title.textColor = Theme.shared.colors.text
-        subTitle.textColor = Theme.shared.colors.secondaryText
+        plate.backgroundColor = Theme.main.colors.secondaryBackground
+        count.backgroundColor = Theme.main.colors.tint
+        count.textColor = Theme.main.colors.background
+        title.textColor = Theme.main.colors.text
+        subTitle.textColor = Theme.main.colors.secondaryText
         updateFonts()
     }
     
     override func updateFonts() {
-        title.font = Theme.shared.fonts.listTitle
-        subTitle.font = Theme.shared.fonts.listBody
+        title.font = Theme.main.fonts.listTitle
+        subTitle.font = Theme.main.fonts.listBody
     }
 }
 

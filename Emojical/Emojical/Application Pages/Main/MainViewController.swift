@@ -57,18 +57,32 @@ extension MainViewController {
     }
     
     private func updateColors() {
-        UIView.appearance().tintColor = Theme.shared.colors.tint
-        tabBar.tintColor = Theme.shared.colors.tint
+        UIView.appearance().tintColor = Theme.main.colors.tint
+        tabBar.tintColor = Theme.main.colors.tint
     }
 
     @objc func weekReady() {
         
         // Move to Today page
         selectedIndex = 0
+
+        let dataBuilder = CalendarDataBuilder(
+            repository: Storage.shared.repository,
+            calendar: CalendarHelper.shared
+        )
+
+        let awards = dataBuilder.awards(for: CalendarHelper.Week(Date().byAddingWeek(-1)))
+        let totalCount = awards.count
+        if totalCount == 0 {
+            return
+        }
+
+        let reachedCount = awards.filter({ $0.reached }).count
+        let message = Language.weekRecapForGoals(total: totalCount, reached: reachedCount)
         
         let alert = UIAlertController(
             title: "week_recap_title".localized,
-            message: "week_recap_message".localized,
+            message: message,
             preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(

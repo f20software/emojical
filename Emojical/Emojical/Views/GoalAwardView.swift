@@ -14,7 +14,7 @@ class GoalAwardView : UIView {
     // MARK: - Inspectable public properties
     
     @IBInspectable
-    var progressColor: UIColor = Theme.shared.colors.tint { didSet { setupView() }}
+    var progressColor: UIColor = Theme.main.colors.tint { didSet { setupView() }}
 
     @IBInspectable
     var clockwise: Bool = true { didSet { setupView() }}

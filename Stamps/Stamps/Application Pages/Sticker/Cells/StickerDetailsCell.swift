@@ -42,7 +42,7 @@ class StickerDetailsCell: ThemeObservingCollectionCell {
         
         stickerBackground.backgroundColor = Theme.shared.colors.background
         stickerBackground.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
-        
+
         updateFonts()
     }
     

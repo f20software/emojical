@@ -62,6 +62,7 @@ class GoalCell: ThemeObservingCollectionCell {
         count.textColor = Theme.shared.colors.background
         title.textColor = Theme.shared.colors.text
         subTitle.textColor = Theme.shared.colors.secondaryText
+        updateFonts()
     }
     
     override func updateFonts() {

@@ -25,6 +25,8 @@ class NoAwardsCell: ThemeObservingCollectionCell {
     
     func configure(for data: String) {
         textLabel.text = data
+
+        updateFonts()
     }
     
     override func updateFonts() {

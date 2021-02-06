@@ -42,7 +42,7 @@ class GoalDetailsDeleteButtonCell: ThemeObservingCollectionCell {
         
         footer.text = "delete_goal_description".localized
         deleteButton.setTitle("delete_goal_button".localized, for: .normal)
-        
+
         updateFonts()
     }
     

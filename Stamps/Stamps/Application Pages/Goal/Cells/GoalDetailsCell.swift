@@ -92,7 +92,7 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
         
         goalBackground.backgroundColor = Theme.shared.colors.background
         goalBackground.layer.cornerRadius = goalBackground.bounds.width / 2.0
-        
+
         updateFonts()
     }
     

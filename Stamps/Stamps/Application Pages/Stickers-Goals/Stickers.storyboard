@@ -62,6 +62,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="E5E-UQ-oFi" id="re8-WS-fXH"/>
                         <outlet property="collectionView" destination="NcW-C8-Csq" id="dEj-WI-ibo"/>

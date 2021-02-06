@@ -150,11 +150,11 @@ class TodayViewController: UIViewController {
     private func adjustButtonConstraintsForState(_ state: SelectorState) {
         stampSelectorBottomContstraint.constant = (state == .fullSelector) ?
             Specs.bottomButtonsMargin :
-            -(stampSelector.bounds.height + Specs.bottomButtonsMargin)
+            -(stampSelector.bounds.height + Specs.bottomButtonsMargin + 50)
         
         plusButtonBottomContstraint.constant = (state == .miniButton) ?
             Specs.bottomButtonsMargin :
-            -(plusButton.bounds.height + Specs.bottomButtonsMargin)
+            -(plusButton.bounds.height + Specs.bottomButtonsMargin + 50)
         view.layoutIfNeeded()
     }
     

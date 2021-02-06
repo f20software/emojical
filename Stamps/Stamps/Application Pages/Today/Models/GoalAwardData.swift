@@ -40,31 +40,33 @@ extension GoalAwardData: Equatable, Hashable {}
 
 extension GoalAwardData {
 
-    // Build GoalAwardData model for already received award
+    /// Builds GoalAwardData model for already received award for reached goal
+    /// Used: Goal editing screen to show how reached award will look like
     init(goal: Goal, stamp: Stamp?) {
         self.init(
             goalId: goal.id,
             emoji: stamp?.label,
-            backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.5),
+            backgroundColor: (stamp?.color ?? Theme.shared.colors.tint).withAlphaComponent(0.5),
             direction: goal.direction,
             period: goal.period,
             progress: 1.0,
-            progressColor: UIColor.darkGray,
+            progressColor: Theme.shared.colors.goalReachedBorder,
             isReached: true
         )
     }
             
-    // Build GoalAwardData model for already received award whether goal was reached or not
+    /// Build GoalAwardData model for already received award whether goal was reached or not
+    /// Used: Displaying past goals on Today screen and on RecapWeek view
     init(award: Award, goal: Goal, stamp: Stamp?) {
         if award.reached {
             self.init(
                 goalId: goal.id,
                 emoji: stamp?.label,
-                backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.5),
+                backgroundColor: (stamp?.color ?? Theme.shared.colors.tint).withAlphaComponent(0.5),
                 direction: goal.direction,
                 period: goal.period,
                 progress: 1.0,
-                progressColor: UIColor.darkGray,
+                progressColor: Theme.shared.colors.goalReachedBorder,
                 isReached: true
             )
         } else {
@@ -73,20 +75,22 @@ extension GoalAwardData {
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
+                    backgroundColor: Theme.shared.colors.failedGoalBackground,
                     direction: .positive,
                     period: award.period,
                     progress: Float(award.count) / Float(award.limit) + Specs.zeroProgressMock,
-                    progressColor: UIColor.positiveGoalNotReached,
+                    progressColor: Theme.shared.colors.positiveGoalProgress,
                     isReached: false
                 )
             case .negative:
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
+                    backgroundColor: Theme.shared.colors.failedGoalBackground,
                     direction: award.direction,
                     period: award.period,
+                    // Not reached negative goal means actual count was larger than the limit
+                    // so we don't show "progress" (it will be >100%), instead showing clear border
                     progress: 0.0,
                     progressColor: UIColor.clear,
                     isReached: false
@@ -95,7 +99,8 @@ extension GoalAwardData {
         }
     }
     
-    // Build GoalAwardData model from the Goal, progress and Stamp object
+    /// Builds GoalAwardData model from the Goal, progress and Stamp object
+    /// Used: Current goas in Today view
     init(goal: Goal, progress: Int, stamp: Stamp?) {
 
         switch goal.direction {
@@ -105,11 +110,11 @@ extension GoalAwardData {
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.5),
+                    backgroundColor: (stamp?.color ?? Theme.shared.colors.tint).withAlphaComponent(0.5),
                     direction: .positive,
                     period: goal.period,
                     progress: 1.0,
-                    progressColor: UIColor.darkGray,
+                    progressColor: Theme.shared.colors.goalReachedBorder,
                     isReached: true
                 )
             } else {
@@ -117,12 +122,12 @@ extension GoalAwardData {
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
+                    backgroundColor: Theme.shared.colors.failedGoalBackground,
                     direction: .positive,
                     period: goal.period,
                     progress: Float(progress) / Float(goal.limit) +
                         (progress == 0 ? Specs.zeroProgressMock : 0),
-                    progressColor: UIColor.positiveGoalNotReached,
+                    progressColor: Theme.shared.colors.positiveGoalProgress,
                     isReached: false
                 )
             }
@@ -132,7 +137,7 @@ extension GoalAwardData {
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: UIColor.systemGray.withAlphaComponent(0.2),
+                    backgroundColor: Theme.shared.colors.failedGoalBackground,
                     direction: .negative,
                     period: goal.period,
                     progress: 0.0,
@@ -147,11 +152,11 @@ extension GoalAwardData {
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: (stamp?.color ?? UIColor.appTintColor).withAlphaComponent(0.3),
+                    backgroundColor: (stamp?.color ?? Theme.shared.colors.tint).withAlphaComponent(0.3),
                     direction: .negative,
                     period: goal.period,
                     progress: percent,
-                    progressColor: UIColor.negativeGoalNotReached,
+                    progressColor: Theme.shared.colors.negativeGoalProgress,
                     isReached: false
                 )
             }

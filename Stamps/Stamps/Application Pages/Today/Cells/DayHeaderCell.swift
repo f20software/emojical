@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DayHeaderCell: UICollectionViewCell {
+class DayHeaderCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
@@ -28,27 +28,29 @@ class DayHeaderCell: UICollectionViewCell {
         dayName.text = data.dayName
         
         if data.isHighlighted {
-            dayPlate.backgroundColor = data.isToday ? UIColor.red : UIColor.darkGray
+            dayPlate.backgroundColor = data.isToday ?
+                Theme.shared.colors.calendarTodayBackground :
+                Theme.shared.colors.calendarHighlightedBackground
+            
+            // TODO: Review? - seems arbitrary
             dayNum.textColor = UIColor.white
             dayName.textColor = UIColor.white
         } else {
             dayPlate.backgroundColor = Theme.shared.colors.secondaryBackground
-            dayNum.textColor = data.isWeekend ? UIColor.red : UIColor.label
-            dayName.textColor = data.isWeekend ? UIColor.red : UIColor.label
+            dayNum.textColor = data.isWeekend ?
+                Theme.shared.colors.weekendText :
+                Theme.shared.colors.text
+            
+            dayName.textColor = data.isWeekend ?
+                Theme.shared.colors.weekendText :
+                Theme.shared.colors.text
         }
     }
 
     // MARK: - Private helpers
 
     private func configureViews() {
-        dayPlate.layer.cornerRadius = Specs.cornerRadius
+        dayPlate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
         dayPlate.clipsToBounds = true
     }
-}
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
 }

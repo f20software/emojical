@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoalDetailsDeleteButtonCell: UICollectionViewCell {
+class GoalDetailsDeleteButtonCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
@@ -38,11 +38,16 @@ class GoalDetailsDeleteButtonCell: UICollectionViewCell {
 
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
-        footer.font = Theme.shared.fonts.footer
         footer.textColor = Theme.shared.colors.secondaryText
         
         footer.text = "delete_goal_description".localized
         deleteButton.setTitle("delete_goal_button".localized, for: .normal)
+        
+        updateFonts()
+    }
+    
+    override func updateFonts() {
+        footer.font = Theme.shared.fonts.footer
         deleteButton.titleLabel?.font = Theme.shared.fonts.boldButtons
     }
 }

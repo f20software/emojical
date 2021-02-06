@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoalCell: UICollectionViewCell {
+class GoalCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
@@ -50,15 +50,21 @@ class GoalCell: UICollectionViewCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        plate.layer.cornerRadius = Specs.cornerRadius
-        plate.backgroundColor = Theme.shared.colors.secondaryBackground
+        plate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
         plate.clipsToBounds = true
         
         count.layer.cornerRadius = count.font.pointSize * 0.6
         count.clipsToBounds = true
-        count.backgroundColor = UIColor.appTintColor
         goalIcon.progressLineWidth = Specs.progressLineWidth
-
+        
+        plate.backgroundColor = Theme.shared.colors.secondaryBackground
+        count.backgroundColor = Theme.shared.colors.tint
+        count.textColor = Theme.shared.colors.background
+        title.textColor = Theme.shared.colors.text
+        subTitle.textColor = Theme.shared.colors.secondaryText
+    }
+    
+    override func updateFonts() {
         title.font = Theme.shared.fonts.listTitle
         subTitle.font = Theme.shared.fonts.listBody
     }
@@ -67,9 +73,6 @@ class GoalCell: UICollectionViewCell {
 // MARK: - Specs
 fileprivate struct Specs {
     
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
-
     /// Line width for the progress around award icon
     static let progressLineWidth: CGFloat = 3.0
 }

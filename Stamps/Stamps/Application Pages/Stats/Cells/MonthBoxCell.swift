@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MonthBoxCell: UICollectionViewCell {
+class MonthBoxCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
@@ -91,23 +91,27 @@ class MonthBoxCell: UICollectionViewCell {
     // MARK: - Private helpers
     
     func setupViews() {
-        dots.backgroundColor = UIColor.clear
         dots.lineWidth = Specs.lineWidth
         dots.cornerRadius = Specs.cornerRadius
         dots.boxesRatio = Specs.boxesRatio
+        dots.backgroundColor = UIColor.clear
         
         border.backgroundColor = UIColor.clear
         border.layer.borderWidth = Specs.borderWidth
-        border.layer.borderColor = UIColor.separator.withAlphaComponent(0.3).cgColor
-        border.layer.cornerRadius = Specs.borderCornerRadius
+        border.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
 
         days = [day0, day1, day2, day3, day4, day5, day6]
         for day in days {
-            day.backgroundColor = UIColor.clear
-            day.textColor = UIColor.gray
             day.font = UIFont.systemFont(ofSize: 12.0, weight: .medium)
+            day.backgroundColor = Theme.shared.colors.background
+            day.textColor = Theme.shared.colors.secondaryText
         }
         header.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+        updateColors()
+    }
+    
+    override func updateColors() {
+        border.layer.borderColor = Theme.shared.colors.separator.cgColor
     }
 }
 
@@ -125,7 +129,4 @@ fileprivate struct Specs {
 
     /// Border width
     static let borderWidth: CGFloat = 1.0
-    
-    /// Border corner radius
-    static let borderCornerRadius: CGFloat = 8.0
 }

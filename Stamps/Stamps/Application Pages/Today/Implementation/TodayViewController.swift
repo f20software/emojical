@@ -67,9 +67,17 @@ class TodayViewController: UIViewController {
             coordinator: coordinator)
         
         configureViews()
+        updateColors()
         presenter.onViewDidLoad()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateColors()
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.onViewWillAppear()
@@ -151,7 +159,6 @@ class TodayViewController: UIViewController {
     }
     
     private func configureViews() {
-        
         let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
         // We want to pass exact same width to all daily columns. Otherwise,
         // if we just rely on the auto-layout, there will be some fraction difference
@@ -160,7 +167,6 @@ class TodayViewController: UIViewController {
         for day in dayViews {
             day.stickerSize = floor(day0.bounds.width)
         }
-
 
         // Hide buttons initially
         adjustButtonConstraintsForState(.hidden)
@@ -201,10 +207,12 @@ class TodayViewController: UIViewController {
         stampSelector.onNewStickerTapped = { () in
             self.onNewStickerTapped?()
         }
-        
+    }
+    
+    private func updateColors() {
         plusButton.layer.shadowRadius = Specs.shadowRadius
         plusButton.layer.shadowOpacity = Specs.shadowOpacity
-        plusButton.layer.shadowColor = UIColor.gray.cgColor
+        plusButton.layer.shadowColor = Theme.shared.colors.shadow.cgColor
         plusButton.layer.shadowOffset = Specs.shadowOffset
         plusButton.layer.cornerRadius = Specs.miniButtonCornerRadius
         plusButton.backgroundColor = Theme.shared.colors.secondaryBackground

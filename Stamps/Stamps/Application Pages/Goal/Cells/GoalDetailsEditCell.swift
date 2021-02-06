@@ -15,21 +15,26 @@ class GoalDetailsEditCell: UICollectionViewCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var separator1: UIView!
 
     @IBOutlet weak var limitLabel: UILabel!
     @IBOutlet weak var limit: UITextField!
     @IBOutlet weak var limitExplanation1: UILabel!
     @IBOutlet weak var limitExplanation2: UILabel!
+    @IBOutlet weak var separator2: UIView!
 
     @IBOutlet weak var stickersLabel: UILabel!
     @IBOutlet weak var stickers: UILabel!
     @IBOutlet weak var selectStickersButton: UIButton!
+    @IBOutlet weak var separator3: UIView!
 
     @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var direction: UISegmentedControl!
+    @IBOutlet weak var separator4: UIView!
 
     @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var period: UISegmentedControl!
+    @IBOutlet weak var separator5: UIView!
 
     /// User changed any value
     var onValueChanged: (() -> Void)?
@@ -107,9 +112,11 @@ class GoalDetailsEditCell: UICollectionViewCell {
         name.placeholder = "goal_name_placeholder".localized
         name.backgroundColor = Theme.shared.colors.secondaryBackground
         name.font = Theme.shared.fonts.listBody
+        separator1.backgroundColor = Theme.shared.colors.separator
         
         stickersLabel.text = "stickers_label".localized
         stickers.font = Theme.shared.fonts.listBody
+        separator2.backgroundColor = Theme.shared.colors.separator
         
         limitLabel.text = "goal_label".localized
         limitExplanation1.text = "get_x_or_more".localized.components(separatedBy: "|").first
@@ -117,14 +124,17 @@ class GoalDetailsEditCell: UICollectionViewCell {
         
         limit.backgroundColor = Theme.shared.colors.secondaryBackground
         limit.font = Theme.shared.fonts.listBody
+        separator3.backgroundColor = Theme.shared.colors.separator
         
         periodLabel.text = "goal_period_label".localized
         period.setTitle("week".localized.capitalizingFirstLetter(), forSegmentAt: 0)
         period.setTitle("month".localized.capitalizingFirstLetter(), forSegmentAt: 1)
+        separator4.backgroundColor = Theme.shared.colors.separator
 
         directionLabel.text = "direction_label".localized
         direction.setTitle("positive".localized.capitalizingFirstLetter(), forSegmentAt: 0)
         direction.setTitle("negative".localized.capitalizingFirstLetter(), forSegmentAt: 1)
+        separator5.backgroundColor = Theme.shared.colors.separator
     }
     
     @IBAction func textChanged(_ sender: Any) {

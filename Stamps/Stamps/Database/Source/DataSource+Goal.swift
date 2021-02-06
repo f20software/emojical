@@ -109,17 +109,6 @@ extension DataSource {
         return result
     }
     
-    // Get color for a goal. Currently we just check the goal this award was given for
-    // and get color of the first stamp on that goal
-    func colorForGoal(_ goalId: Int64) -> UIColor {
-        if let goal = goalById(goalId),
-            let stamp = stampById(goal.stamps.first) {
-            return stamp.color
-        }
-        
-        return Award.defaultColor
-    }
-
     // MARK: - Saving
     
     @discardableResult func save(goal: Goal) throws -> Goal {

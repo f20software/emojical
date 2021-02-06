@@ -1,9 +1,9 @@
 //
 //  Theme.swift
-//  FMClient
+//  Emojical
 //
-//  Created by Alexander Rogachev on 01.06.2020.
-//  Copyright © 2020 Feed Me LLC. All rights reserved.
+//  Created by Vladimit Svidersky on 02/06/21.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import Foundation
@@ -11,6 +11,7 @@ import UIKit
 
 // MARK: - Theme changing notifications
 extension Notification.Name {
+    
     /// Notification will be send by Theme default instance when text size is changed for the device
     static let fontChanged = Notification.Name("com.svidersky.emojical.notifications.SystemFontSizeChanged")
 }
@@ -19,11 +20,10 @@ extension Notification.Name {
 final class Theme {
 
     // Hiding init
-    init(lightColors: Colors, darkColors: Colors) {
-        self.lightColors = lightColors
-        self.darkColors = darkColors
-//        self.specs = Specs()
+    init() {
+        self.specs = Specs()
         self.fonts = Fonts()
+        self.colors = Colors()
 
         NotificationCenter.default.addObserver(
             self,
@@ -42,53 +42,18 @@ final class Theme {
     }
 
     /// Shared instance.
-    private(set) static var shared: Theme = Theme.main()
+    private(set) static var shared: Theme = Theme()
 
     // MARK: - Theme values.
 
-    /// Is Dark Mode enabled
-    private var isDarkMode: Bool {
-        UIScreen.main.traitCollection.userInterfaceStyle == .dark
-    }
-    
-    /// List of colors for the Light Mode
-    private let lightColors: Colors
-    
-    /// List of colors for the Dark Mode
-    private let darkColors: Colors
-    
-    /// Public list of color (will return proper set of colors based on light / dark mode)
-    var colors: Colors {
-        return isDarkMode ? darkColors : lightColors
-    }
-
     /// List of theme Specs
-//    let specs: Specs
+    let specs: Specs
 
     /// List of theme fonts.
     private(set) var fonts: Fonts
 
-    // MARK: - Definitions
-
-    struct Colors {
-        /// Main application tint color
-        let tint: UIColor
-        
-        
-        let background: UIColor
-
-
-        let secondaryBackground: UIColor
-
-        ///
-        let text: UIColor
-
-        ///
-        let secondaryText: UIColor
-        
-        ///
-        let pallete: [UIColor]
-    }
+    /// List of theme colors.
+    private(set) var colors: Colors
 
     // MARK: - Private
 

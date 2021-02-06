@@ -40,6 +40,8 @@ class MainViewController: UITabBarController {
 
         NotificationCenter.default.addObserver(
             self, selector: #selector(weekReady), name: .weekClosed, object: nil)
+        
+        updateColors()
     }
 }
 
@@ -54,6 +56,11 @@ extension MainViewController {
         todayPresenter?.navigateTo(Date())
     }
     
+    private func updateColors() {
+        UIView.appearance().tintColor = Theme.shared.colors.tint
+        tabBar.tintColor = Theme.shared.colors.tint
+    }
+
     @objc func weekReady() {
         
         // Move to Today page

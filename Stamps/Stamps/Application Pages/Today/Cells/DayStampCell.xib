@@ -55,7 +55,6 @@
             <size key="customSize" width="50" height="50"/>
             <connections>
                 <outlet property="badgeView" destination="Ma3-8W-bGA" id="C8c-6T-TZY"/>
-                <outlet property="selectionView" destination="glV-Hm-xGi" id="TSo-AZ-Hms"/>
                 <outlet property="sticker" destination="Zrd-LK-ZF1" id="HQ8-Ki-gYR"/>
                 <outlet property="stickerAndSelectionSizeDelta" destination="s05-Yv-32B" id="9DV-q6-UHj"/>
             </connections>

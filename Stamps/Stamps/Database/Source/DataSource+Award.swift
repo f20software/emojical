@@ -110,17 +110,6 @@ extension DataSource {
         ).filter({ goalIds.contains( $0.goalId )})
     }
     
-    // Get color for an award. Currently we just check the goal this award was given for
-    // and get color of the first stamp on that goal
-    func colorForAward(_ award: Award) -> UIColor {
-        if let goal = goalById(award.goalId),
-            let stamp = stampById(goal.stamps.first) {
-            return stamp.color
-        }
-        
-        return Award.defaultColor
-    }
-    
     // MARK: - Private helpers
     
     func storedAward(withId id: Int64) -> StoredAward? {

@@ -34,6 +34,8 @@
 
 "current_streak_x" = "Current streak|%d";
 
+"no_goals_reahed_week" = "No goals were reached this week";
+
 // Goal description
 
 "weekly_goal" = "weekly goal";
@@ -127,6 +129,8 @@
 "stickers_title" = "Stickers";
 
 // Goal Editing
+
+"no_goals_description" = "There are no goals yet. We can help you to make yourself better, just create new goal and track your progress.";
 
 "delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
 

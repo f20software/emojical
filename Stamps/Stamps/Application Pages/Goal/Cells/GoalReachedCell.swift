@@ -80,21 +80,7 @@ class GoalReachedCell: UICollectionViewCell {
 
     private func configureViews() {
         plate.backgroundColor = Theme.shared.colors.secondaryBackground
-        plate.layer.cornerRadius = Specs.cornerRadius
+        plate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
         plate.clipsToBounds = true
     }
 }
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
-
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 4.0
-    
-    /// Emoji font size for award icon
-    static let emojiFontSize: CGFloat = 50.0
-}
-

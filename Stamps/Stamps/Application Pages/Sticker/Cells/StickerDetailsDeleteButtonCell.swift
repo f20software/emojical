@@ -8,13 +8,14 @@
 
 import UIKit
 
-class StickerDetailsDeleteButtonCell: UICollectionViewCell {
+class StickerDetailsDeleteButtonCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var footer: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var separator: UIView!
 
     /// User tapped on the Delete button
     var onDeleteTapped: (() -> Void)?
@@ -38,10 +39,16 @@ class StickerDetailsDeleteButtonCell: UICollectionViewCell {
 
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
-        footer.font = Theme.shared.fonts.footer
         footer.textColor = Theme.shared.colors.secondaryText
         footer.text = "delete_sticker_description".localized
         deleteButton.setTitle("delete_sticker_button".localized, for: .normal)
+        separator.backgroundColor = Theme.shared.colors.separator
+
+        updateFonts()
+    }
+    
+    override func updateFonts() {
+        footer.font = Theme.shared.fonts.footer
         deleteButton.titleLabel?.font = Theme.shared.fonts.boldButtons
     }
 }

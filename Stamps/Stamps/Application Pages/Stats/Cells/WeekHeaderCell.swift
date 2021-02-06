@@ -48,7 +48,7 @@ class WeekHeaderCell: UICollectionViewCell {
         days = [day0, day1, day2, day3, day4, day5, day6]
         for day in days {
             day.backgroundColor = UIColor.clear
-            day.textColor = UIColor.gray
+            day.textColor = Theme.shared.colors.secondaryText
             day.font = UIFont.systemFont(ofSize: 16.0, weight: .medium)
         }
     }

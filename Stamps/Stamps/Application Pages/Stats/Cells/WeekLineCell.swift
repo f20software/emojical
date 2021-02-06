@@ -19,7 +19,6 @@ class WeekLineCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupViews()
-        // self.backgroundColor = UIColor.red
     }
     
     override func prepareForReuse() {
@@ -42,7 +41,6 @@ class WeekLineCell: UICollectionViewCell {
     
     func setupViews() {
         dots.backgroundColor = UIColor.clear
-        // dots.tintColor = UIColor.darkGray
         dots.lineWidth = Specs.lineWidth
         dots.cornerRadius = Specs.cornerRadius
     }

@@ -80,7 +80,6 @@ class RecapViewController : UIViewController, RecapView {
         }
         cell.isHighlighted = highlight
     }
-
     
     // MARK: - Private helpers
     

@@ -11,7 +11,7 @@
             <objects>
                 <tableViewController id="8Y1-v5-Mb4" customClass="OptionsViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="GsV-B4-RwM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textCell" textLabel="8uY-kJ-sCj" detailTextLabel="jK6-jg-XIc" style="IBUITableViewCellStyleValue1" id="4T7-mu-2pV" customClass="TextCell" customModule="Emojical" customModuleProvider="target">
@@ -124,6 +124,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Options" id="HEI-Hx-fAJ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hya-Xv-EM5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,7 +136,7 @@
                 <navigationController id="WFy-OT-yXN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Options" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="Zjf-zI-32P"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vx6-Fe-HE0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Vx6-Fe-HE0">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

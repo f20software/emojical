@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErJ-gD-7GI">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="133"/>
                         <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qv-Xw-iWs" userLabel="Separator 3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qv-Xw-iWs" userLabel="Separator 3">
                                 <rect key="frame" x="5" y="5" width="280" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
@@ -70,6 +70,7 @@
                 <outlet property="deleteButton" destination="BPp-jC-Rgy" id="906-3T-jPg"/>
                 <outlet property="footer" destination="IUW-Px-7ns" id="1bC-dt-8ag"/>
                 <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
+                <outlet property="separator" destination="6Qv-Xw-iWs" id="swM-vL-Cqa"/>
             </connections>
             <point key="canvasLocation" x="7.2463768115942031" y="-76.674107142857139"/>
         </collectionViewCell>

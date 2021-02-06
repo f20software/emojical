@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StampSelectorView : UIView {
+class StampSelectorView : ThemeObservingView {
 
     // MARK: - UI Outlets
     
@@ -68,21 +68,23 @@ class StampSelectorView : UIView {
     private func setupViews() {
         // Background view
         backgroundColor = Theme.shared.colors.secondaryBackground
-        layer.cornerRadius = Specs.plateCornerRadius
-        
+        layer.cornerRadius = Theme.shared.specs.platesCornerRadius
         layer.shadowRadius = Specs.shadowRadius
         layer.shadowOpacity = Specs.shadowOpacity
-        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowColor = Theme.shared.colors.shadow.cgColor
         layer.shadowOffset = Specs.shadowOffset
-        
         dragIndicator.layer.cornerRadius = dragIndicator.bounds.height / 2
-        dragIndicator.backgroundColor = UIColor.appTintColor
-        dragIndicator.layer.opacity = 0.7
+        dragIndicator.layer.opacity = 0.8
         dragIndicator.clipsToBounds = true
+        dragIndicator.backgroundColor = Theme.shared.colors.tint
 
         // Collection view for stamps
         configureCollectionView()
         registerCells()
+    }
+    
+    override func updateColors() {
+        layer.shadowColor = Theme.shared.colors.shadow.cgColor
     }
     
     private func registerCells() {
@@ -195,9 +197,6 @@ fileprivate struct Specs {
 
     /// Gap between sticker and selection border
     static let stickerSelectionGap: CGFloat = 4.0
-
-    /// Background plate corner radius
-    static let plateCornerRadius: CGFloat = 8.0
 
     /// Shadow radius
     static let shadowRadius: CGFloat = 15.0

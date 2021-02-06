@@ -45,7 +45,7 @@ class WeeklyAwardsView : UIView {
             snapshot.appendItems(data.map({ TodayAwardElement.award($0) }))
             empty = false
         } else {
-            snapshot.appendItems([.noAwards("No goals were reached this week")])
+            snapshot.appendItems([.noAwards("no_goals_reahed_week".localized)])
             empty = true
         }
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)

@@ -115,7 +115,7 @@ class StickerViewController : UIViewController, StickerViewProtocol {
         to.name = (details.name.text ?? to.name).trimmingCharacters(in: CharacterSet(charactersIn: " "))
         to.label = details.emoji.text ?? ""
         if details.selectedColorIndex >= 0 {
-            to.color = Theme.shared.colors.pallete[details.selectedColorIndex]
+            to.color = Theme.shared.colors.palette[details.selectedColorIndex]
         }
     }
 
@@ -255,7 +255,7 @@ extension StickerViewController: UICollectionViewDelegate {
                 withReuseIdentifier: Specs.Cells.edit, for: path
             ) as? StickerDetailsEditCell else { return UICollectionViewCell() }
             
-            cell.setColors(Theme.shared.colors.pallete)
+            cell.setColors(Theme.shared.colors.palette)
             cell.configure(for: data)
             cell.onValueChanged = { [weak self] in
                 // WTF???? - for some reason previous reference to detailsEditView will

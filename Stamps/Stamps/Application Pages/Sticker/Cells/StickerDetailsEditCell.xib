@@ -37,21 +37,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gz6-Ti-SPo" userLabel="Separator 1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gz6-Ti-SPo" userLabel="Separator 1">
                                 <rect key="frame" x="5" y="60.5" width="334" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Bx5-0p-UYO"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPV-Bk-ngu" userLabel="Separator 2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPV-Bk-ngu" userLabel="Separator 2">
                                 <rect key="frame" x="5" y="141.5" width="334" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="aDD-bu-XHw"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91X-AM-rHO" userLabel="Separator 3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91X-AM-rHO" userLabel="Separator 3">
                                 <rect key="frame" x="5" y="278" width="334" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
@@ -216,6 +216,9 @@
                 <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
                 <outlet property="previewLabel" destination="sDc-SW-Xmk" id="STG-Rb-p86"/>
                 <outlet property="previewPlate" destination="JeA-ND-ZdK" id="dVQ-co-0mo"/>
+                <outlet property="separator1" destination="Gz6-Ti-SPo" id="Vwi-P8-GSB"/>
+                <outlet property="separator2" destination="bPV-Bk-ngu" id="Wlk-sZ-RLK"/>
+                <outlet property="separator3" destination="91X-AM-rHO" id="4B1-IQ-HTF"/>
                 <outlet property="stackView" destination="fND-s5-WzS" id="vAz-um-uNd"/>
                 <outlet property="stickerBackground" destination="0A9-VE-bxC" id="yrF-Jl-Cia"/>
                 <outlet property="stickerIcon" destination="XL4-Ar-ojX" id="ilN-Nm-m57"/>

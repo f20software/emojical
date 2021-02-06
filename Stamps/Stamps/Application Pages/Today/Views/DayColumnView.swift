@@ -117,15 +117,12 @@ class DayColumnView : UIView {
 }
 
 extension DayColumnView: UICollectionViewDelegate {
-    
+
+
+    // TODO: This is not being used, but if we want to disable handling taps on
+    // empty space below stickers, we would need to use this instead of handleTap method
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            onDayTapped?()
-        } else {
-            onDayTapped?()
-            // guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else { return }
-            // onStampTapped?(Int64(stampId))
-        }
+        onDayTapped?()
     }
     
     private func cell(for path: IndexPath, model: StickerData, collectionView: UICollectionView) -> UICollectionViewCell? {

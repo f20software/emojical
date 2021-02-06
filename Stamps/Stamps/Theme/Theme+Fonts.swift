@@ -1,9 +1,9 @@
 //
 //  Theme+Fonts.swift
-//  FMClient
+//  Emojical
 //
-//  Created by Alexander Rogachev on 23.06.2020.
-//  Copyright © 2020 Feed Me LLC. All rights reserved.
+//  Created by Vladimit Svidersky on 02/06/21.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import Foundation
@@ -47,6 +47,16 @@ extension Theme {
         /// Large stats text font
         lazy var largeStats: UIFont = {
             font(ofSize: 32, weight: .bold, style: .body)
+        }()
+
+        /// Empty cells ("no goals...") description text
+        lazy var cellDescription: UIFont = {
+            font(ofSize: 16, weight: .semibold, style: .body)
+        }()
+
+        /// Section header title
+        lazy var sectionHeaderTitle: UIFont = {
+            font(ofSize: 15, weight: .bold, style: .body)
         }()
 
         /// Returns a base font scaled according to current system font size.

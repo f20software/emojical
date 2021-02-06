@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewGoalCell: UICollectionViewCell {
+class NewGoalCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
@@ -28,22 +28,23 @@ class NewGoalCell: UICollectionViewCell {
     // MARK: - Private helpers
 
     private func configureViews() {
-        plate.layer.cornerRadius = Specs.cornerRadius
+        plate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
         plate.layer.borderWidth = Specs.borderWidth
         plate.backgroundColor = UIColor.clear
-        plate.layer.borderColor = Theme.shared.colors.secondaryBackground.cgColor
         plate.clipsToBounds = true
 
         title.font = Theme.shared.fonts.boldButtons
         title.text = "create_goal_button".localized
+        updateColors()
+    }
+    
+    override func updateColors() {
+        plate.layer.borderColor = Theme.shared.colors.secondaryBackground.cgColor
     }
 }
 
 // MARK: - Specs
 fileprivate struct Specs {
-    
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
 
     /// Border width
     static let borderWidth: CGFloat = 2.0

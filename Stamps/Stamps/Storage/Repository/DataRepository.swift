@@ -36,10 +36,6 @@ protocol DataRepository: class {
     /// Awards for date interval
     func awardsForDateInterval(from: Date, to: Date) -> [Award]
     
-    /// Get color for an award. Currently we just check the goal this award was given for
-    /// and get color of the first stamp on that goal
-    func colorForAward(_ award: Award) -> UIColor
-    
     /// Stamp Ids for a day (will be stored in Diary table)
     func stampsIdsForDay(_ day: Date) -> [Int64]
     
@@ -69,10 +65,6 @@ protocol DataRepository: class {
     
     /// Goal with specified ID
     func goalById(_ identifier: Int64) -> Goal?
-    
-    /// Get color for a goal. Currently we just check the goal this award was given for
-    /// and get color of the first stamp on that goal
-    func colorForGoal(_ goalId: Int64) -> UIColor
     
     /// List of goals particular stamp is used in
     func goalsUsedStamp(_ stampId: Int64?) -> [Goal]

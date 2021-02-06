@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StickerDetailsEditCell: UICollectionViewCell {
+class StickerDetailsEditCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
@@ -16,6 +16,9 @@ class StickerDetailsEditCell: UICollectionViewCell {
     @IBOutlet weak var previewPlate: UIView!
     @IBOutlet weak var stickerBackground: UIView!
     @IBOutlet weak var previewLabel: UILabel!
+    @IBOutlet weak var separator1: UIView!
+    @IBOutlet weak var separator2: UIView!
+    @IBOutlet weak var separator3: UIView!
 
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var emojiLabel: UILabel!
@@ -93,8 +96,8 @@ class StickerDetailsEditCell: UICollectionViewCell {
         for view in allColorViews {
             view.layer.cornerRadius = Specs.colorsCornerRadius
             view.clipsToBounds = true
-            view.backgroundColor = UIColor.systemBackground
-            view.layer.borderColor = UIColor.black.cgColor
+            view.backgroundColor = Theme.shared.colors.background
+            view.layer.borderColor = Theme.shared.colors.text.cgColor
             view.layer.borderWidth = 0.0
         }
         
@@ -108,20 +111,30 @@ class StickerDetailsEditCell: UICollectionViewCell {
         name.backgroundColor = Theme.shared.colors.secondaryBackground
         name.font = Theme.shared.fonts.listBody
         name.placeholder = "sticker_name_placeholder".localized
+        separator1.backgroundColor = Theme.shared.colors.separator
 
         emojiLabel.text = "emoji_label".localized
         emoji.backgroundColor = Theme.shared.colors.secondaryBackground
         emoji.font = Theme.shared.fonts.listBody
         emoji.delegate = self
         emoji.placeholder = ""
-        
+        separator2.backgroundColor = Theme.shared.colors.separator
+
         previewLabel.text = "preview_label".localized
         previewPlate.backgroundColor = Theme.shared.colors.secondaryBackground
-        previewPlate.layer.cornerRadius = Specs.cornerRadius
+        previewPlate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
         previewPlate.clipsToBounds = true
+        separator3.backgroundColor = Theme.shared.colors.separator
 
         stickerBackground.backgroundColor = Theme.shared.colors.background
-        stickerBackground.layer.cornerRadius = Specs.stickerCornerRadius
+        stickerBackground.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+    }
+    
+    override func updateColors() {
+        allColorViews = [color0, color1, color2, color3, color4, color5, color6]
+        for view in allColorViews {
+            view.layer.borderColor = Theme.shared.colors.text.cgColor
+        }
     }
     
     @IBAction func textChanged(_ sender: Any) {
@@ -158,17 +171,10 @@ extension StickerDetailsEditCell: UITextFieldDelegate {
 // MARK: - Specs
 fileprivate struct Specs {
     
-    /// Sticker corner radius
-    static let stickerCornerRadius: CGFloat = 8.0
-    
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
-    
     /// Color selector corner radius
     static let colorsCornerRadius: CGFloat = 10.0
     
     /// Color selector thikness
     static let colorsBorderWidth: CGFloat = 3.0
-
 }
 

@@ -101,7 +101,7 @@ class StickersViewController: UIViewController, StickersView {
         snapshot.appendSections([1])
         snapshot.appendItems(goals.map({ StickersElement.goal($0) }))
         if goals.count == 0 {
-            snapshot.appendItems([.noGoals("There are no goals yet. We can help you to make yourself better, create new goals and track your progress.")])
+            snapshot.appendItems([.noGoals("no_goals_description".localized)])
         }
         snapshot.appendItems([.newGoal])
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)

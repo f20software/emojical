@@ -34,6 +34,8 @@
 
 "current_streak_x" = "Racha actual|%d";
 
+"no_goals_reahed_week" = "No se alcanzaron metas esta semana";
+
 // Goal description
 
 "weekly_goal" = "meta semanal";
@@ -127,6 +129,8 @@
 "stickers_title" = "Pegatinas";
 
 // Goal Editing
+
+"no_goals_description" = "Aún no hay metas. Podemos ayudarlo a mejorar, simplemente cree un nuevo objetivo y realice un seguimiento de su progreso.";
 
 "delete_goal_description" = "Si actualiza o elimina la meta, todos los premios obtenidos anteriormente se mantendrán sin cambios.";
 

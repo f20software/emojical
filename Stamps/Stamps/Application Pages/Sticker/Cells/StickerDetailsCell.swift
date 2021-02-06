@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StickerDetailsCell: UICollectionViewCell {
+class StickerDetailsCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
@@ -37,22 +37,18 @@ class StickerDetailsCell: UICollectionViewCell {
 
     private func configureViews() {
         plate.backgroundColor = Theme.shared.colors.secondaryBackground
-        plate.layer.cornerRadius = Specs.cornerRadius
+        plate.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
         plate.clipsToBounds = true
         
         stickerBackground.backgroundColor = Theme.shared.colors.background
-        stickerBackground.layer.cornerRadius = Specs.cornerRadius
-        
+        stickerBackground.layer.cornerRadius = Theme.shared.specs.platesCornerRadius
+
+        updateFonts()
+    }
+    
+    override func updateFonts() {
         statistics.font = Theme.shared.fonts.listBody
         usage.font = Theme.shared.fonts.listBody
     }
     
 }
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Background corner radius
-    static let cornerRadius: CGFloat = 8.0
-}
-

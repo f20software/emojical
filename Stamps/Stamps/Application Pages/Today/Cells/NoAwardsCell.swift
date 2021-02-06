@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoAwardsCell: UICollectionViewCell {
+class NoAwardsCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
@@ -25,5 +25,11 @@ class NoAwardsCell: UICollectionViewCell {
     
     func configure(for data: String) {
         textLabel.text = data
+
+        updateFonts()
+    }
+    
+    override func updateFonts() {
+        textLabel.font = Theme.shared.fonts.cellDescription
     }
 }

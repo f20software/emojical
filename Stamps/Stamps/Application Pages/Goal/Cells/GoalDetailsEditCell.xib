@@ -37,7 +37,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gz6-Ti-SPo" userLabel="Separator 1">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gz6-Ti-SPo" userLabel="Separator 1">
                                 <rect key="frame" x="5" y="65.5" width="280" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
@@ -62,28 +62,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPV-Bk-ngu" userLabel="Separator 2">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPV-Bk-ngu" userLabel="Separator 2">
                                 <rect key="frame" x="5" y="127" width="280" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="aDD-bu-XHw"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91X-AM-rHO" userLabel="Separator 3">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91X-AM-rHO" userLabel="Separator 3">
                                 <rect key="frame" x="5" y="188.5" width="280" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="B9O-Lc-wMT"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTQ-yw-a5M" userLabel="Separator 4">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTQ-yw-a5M" userLabel="Separator 4">
                                 <rect key="frame" x="5" y="250" width="280" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="lIt-7x-VHh"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rc-Yj-6KA" userLabel="Separator 5">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rc-Yj-6KA" userLabel="Separator 5">
                                 <rect key="frame" x="5" y="338" width="280" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
@@ -231,6 +231,11 @@
                 <outlet property="periodLabel" destination="CdS-kf-A8r" id="uXx-Im-kzh"/>
                 <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
                 <outlet property="selectStickersButton" destination="qVV-u2-xnY" id="xkU-jM-ZmX"/>
+                <outlet property="separator1" destination="Gz6-Ti-SPo" id="cbX-P2-ETf"/>
+                <outlet property="separator2" destination="bPV-Bk-ngu" id="JIn-LL-3eP"/>
+                <outlet property="separator3" destination="91X-AM-rHO" id="fR3-tL-dXU"/>
+                <outlet property="separator4" destination="NTQ-yw-a5M" id="CMS-ek-MFz"/>
+                <outlet property="separator5" destination="7rc-Yj-6KA" id="gn4-9H-w2p"/>
                 <outlet property="stickers" destination="8pC-rq-yBj" id="aRw-wF-xR3"/>
                 <outlet property="stickersLabel" destination="iyT-yu-Vhi" id="L7w-kI-Ekb"/>
             </connections>

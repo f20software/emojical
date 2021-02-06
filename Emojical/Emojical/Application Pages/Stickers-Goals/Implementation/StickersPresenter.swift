@@ -90,7 +90,8 @@ class StickersPresenter: StickersPresenterProtocol {
             self?.coordinator?.editGoal(goal)
         }
         view?.onNewGoalTapped = { [weak self] in
-            self?.coordinator?.newGoal()
+            // self?.coordinator?.newGoal()
+            self?.coordinator?.newGoalFromExamples()
         }
         view?.onStickerTapped = { [weak self] stickerId in
             guard let sticker = self?.repository.stampById(stickerId) else { return }

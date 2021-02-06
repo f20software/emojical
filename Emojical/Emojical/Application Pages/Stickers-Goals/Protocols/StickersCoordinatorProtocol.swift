@@ -21,4 +21,7 @@ protocol StickersCoordinatorProtocol: AnyObject {
 
     /// Shows modal form to create new sticker
     func newSticker()
+
+    /// Shows modal form to select a goal from example library
+    func newGoalFromExamples()
 }

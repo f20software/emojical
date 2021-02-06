@@ -59,6 +59,12 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     func newSticker() {
         navigateToSticker(mode: .modal, sticker: nil)
     }
+    
+    /// Shows modal form to select a goal from example library
+    func newGoalFromExamples() {
+        navigateToGoalsLibrary()
+    }
+
 
     // MARK: - Private helpers
     
@@ -123,5 +129,23 @@ class StickersCoordinator: StickersCoordinatorProtocol {
         case .push:
             parentController?.pushViewController(view, animated: true)
         }
+    }
+    
+    // Navigate to Select Goal from Examples screen
+    private func navigateToGoalsLibrary() {
+
+        // Instantiate GoalsLibraryViewController from the storyboard file
+        guard let nav: UINavigationController = Storyboard.GoalsLibrary.initialViewController(),
+              let view = nav.viewControllers.first as? GoalsLibraryViewController else {
+            assertionFailure("Failed to initialize GoalsLibraryViewController")
+            return
+        }
+
+        view.presenter = GoalsLibraryPresenter(
+            repository: Storage.shared.repository,
+            view: view
+        )
+        
+        parentController?.present(nav, animated: true)
     }
 }

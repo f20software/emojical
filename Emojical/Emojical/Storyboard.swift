@@ -17,6 +17,7 @@ enum Storyboard: String {
     case Goal
     case Sticker
     case SelectStickers
+    case GoalsLibrary
     case Developer
     case Options
 

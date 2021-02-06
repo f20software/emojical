@@ -1,15 +1,14 @@
 //
-//  YearBoxView.swift
+//  StickersHeaderView.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/10/20.
-//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//  Created by Vladimir Svidersky on 2/6/21.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import UIKit
 
-import UIKit
-
+/// This view is used to display section header
 class StickersHeaderView: UICollectionReusableView {
 
     private let label = UILabel()

@@ -87,12 +87,12 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
             ),
         ]
 
-        #if targetEnvironment(simulator)
+        //#if targetEnvironment(simulator)
         data[2].cells.append(
             .navigate("Developer Options", { [weak self] in
                 self?.coordinator?.developerOptions()
             }))
-        #endif
+        //#endif
         view?.updateTitle("options_title".localized)
         view?.loadData(data)
     }

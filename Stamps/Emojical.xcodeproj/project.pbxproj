@@ -895,9 +895,8 @@
 				F2A93FCB25816249006C88F8 /* MonthBoxView.swift */,
 				F23CF368258271750048BA74 /* YearBoxView.swift */,
 			);
-			name = Views;
-			path = "Stamps/Application Pages/Stats/Views";
-			sourceTree = SOURCE_ROOT;
+			path = Views;
+			sourceTree = "<group>";
 		};
 		F2A99D2A2439346C00D3CF1D /* Options */ = {
 			isa = PBXGroup;
@@ -917,9 +916,8 @@
 			children = (
 				F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */,
 			);
-			name = Tools;
-			path = Stamps/Tools;
-			sourceTree = SOURCE_ROOT;
+			path = Tools;
+			sourceTree = "<group>";
 		};
 		F2B4763423DE3C300076BFDC /* Application Pages */ = {
 			isa = PBXGroup;
@@ -1125,9 +1123,8 @@
 				F2FD4E1325BDCD41005819A0 /* Protocols */,
 				F2FD4E0F25BDCD41005819A0 /* Implementation */,
 			);
-			name = Sticker;
-			path = "Stamps/Application Pages/Sticker";
-			sourceTree = SOURCE_ROOT;
+			path = Sticker;
+			sourceTree = "<group>";
 		};
 		F2FD4E0425BDCD41005819A0 /* Cells */ = {
 			isa = PBXGroup;
@@ -1220,9 +1217,9 @@
 			productReference = F27B044E241EBD7A006E5175 /* EmojicalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F2C4943423D2CBC800EAF9CC /* Stamps */ = {
+		F2C4943423D2CBC800EAF9CC /* Emojical */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F2C4944B23D2CBCA00EAF9CC /* Build configuration list for PBXNativeTarget "Stamps" */;
+			buildConfigurationList = F2C4944B23D2CBCA00EAF9CC /* Build configuration list for PBXNativeTarget "Emojical" */;
 			buildPhases = (
 				F2C4943123D2CBC800EAF9CC /* Sources */,
 				F2C4943223D2CBC800EAF9CC /* Frameworks */,
@@ -1232,7 +1229,7 @@
 			);
 			dependencies = (
 			);
-			name = Stamps;
+			name = Emojical;
 			packageProductDependencies = (
 				F2B4762A23DBDFEF0076BFDC /* GRDB */,
 			);
@@ -1259,7 +1256,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F2C4943023D2CBC700EAF9CC /* Build configuration list for PBXProject "Stamps" */;
+			buildConfigurationList = F2C4943023D2CBC700EAF9CC /* Build configuration list for PBXProject "Emojical" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1276,7 +1273,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F2C4943423D2CBC800EAF9CC /* Stamps */,
+				F2C4943423D2CBC800EAF9CC /* Emojical */,
 				F27B044D241EBD7A006E5175 /* EmojicalTests */,
 			);
 		};
@@ -1526,7 +1523,7 @@
 /* Begin PBXTargetDependency section */
 		F27B0454241EBD7A006E5175 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F2C4943423D2CBC800EAF9CC /* Stamps */;
+			target = F2C4943423D2CBC800EAF9CC /* Emojical */;
 			targetProxy = F27B0453241EBD7A006E5175 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1727,7 +1724,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.2.3;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
-				INFOPLIST_FILE = Stamps/Info.plist;
+				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1748,7 +1745,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.2.3;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
-				INFOPLIST_FILE = Stamps/Info.plist;
+				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1774,7 +1771,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F2C4943023D2CBC700EAF9CC /* Build configuration list for PBXProject "Stamps" */ = {
+		F2C4943023D2CBC700EAF9CC /* Build configuration list for PBXProject "Emojical" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F2C4944923D2CBCA00EAF9CC /* Debug */,
@@ -1783,7 +1780,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F2C4944B23D2CBCA00EAF9CC /* Build configuration list for PBXNativeTarget "Stamps" */ = {
+		F2C4944B23D2CBCA00EAF9CC /* Build configuration list for PBXNativeTarget "Emojical" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F2C4944C23D2CBCA00EAF9CC /* Debug */,

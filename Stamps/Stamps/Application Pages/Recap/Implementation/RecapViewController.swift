@@ -45,13 +45,6 @@ class RecapViewController : UIViewController, RecapView {
         presenter.onViewWillAppear()
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            updateColors()
-        }
-    }
-
     // MARK: - RecapView
     
     /// User tapped on the award
@@ -159,11 +152,6 @@ class RecapViewController : UIViewController, RecapView {
         )
         
         return UICollectionViewCompositionalLayout(section: section)
-    }
-    
-    private func updateColors() {
-        navigationController?.navigationBar.tintColor = Theme.shared.colors.tint
-        navigationController?.navigationItem.backBarButtonItem?.tintColor = Theme.shared.colors.tint
     }
 }
 

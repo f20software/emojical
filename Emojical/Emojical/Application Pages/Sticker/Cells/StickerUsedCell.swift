@@ -72,14 +72,8 @@ class StickerUsedCell: UICollectionViewCell {
             Language.stickerUsageDescription(
                 data.count, lastUsed: data.lastUsed).components(separatedBy: "|"))
         
-        let formatted = (data.average > 0) ?
-            String(format: "%.1f", data.average) :
-            "-"
-        
         average.attributedText = threeLinesDescription(
-            ["On average", formatted, data.averagePeriod]
-//            Language.goalStreakDescription(data.streak).components(separatedBy: "|")
-        )
+            data.onAverage.components(separatedBy: "|"))
     }
     
     // MARK: - Private helpers

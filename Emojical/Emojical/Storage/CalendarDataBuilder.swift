@@ -233,25 +233,23 @@ class CalendarDataBuilder {
               let sticker = repository.stampBy(id: id),
               let first = repository.getFirstDateFor(sticker: id) else { return nil }
         
-        let fromToday = abs(Date().distance(to: first) / (7 * 24 * 60 * 60))
-        
-        var average = Double(sticker.count) / fromToday
-        var period = "per week"
-        
-        if fromToday < 2 {
-            // Don't report average until we have 2+ weeks of data
-            average = -1.0
-            period = ""
+        let weeksFromToday = abs(Date().distance(to: first) / (7 * 24 * 60 * 60))
+
+        var average = Double(sticker.count) / weeksFromToday
+        var averageText = "sticker_average_per_week".localized(String(format: "%.1f", average))
+
+        if weeksFromToday < 2 {
+            averageText = "sticker_average_too_early".localized
         } else if average < 1 {
+            // Update from weekly average to monthly
             average = average * (30 / 7)
-            period = "per month"
+            averageText = "sticker_average_per_month".localized(String(format: "%.1f", average))
         }
         
         return StickerUsedData(
             count: sticker.count,
             lastUsed: sticker.lastUsed,
-            average: Float(average),
-            averagePeriod: period
+            onAverage: averageText
         )
     }
 

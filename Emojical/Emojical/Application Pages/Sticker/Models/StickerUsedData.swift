@@ -12,8 +12,7 @@ struct StickerUsedData {
     // Usage information to be displayed on the Sticker details in view mode
     let count: Int
     let lastUsed: Date?
-    let average: Float
-    let averagePeriod: String
+    let onAverage: String // localized string in a format "on averaga|xx|per week"
 }
 
 extension StickerUsedData: Equatable, Hashable {}

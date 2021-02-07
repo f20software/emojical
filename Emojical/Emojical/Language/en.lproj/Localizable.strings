@@ -20,6 +20,12 @@
 
 "sticker_used_x_goals" = "Sticker is used in %@ goals.";
 
+"sticker_average_too_early" = "On average|-";
+
+"sticker_average_per_week" = "On average|%@|per week";
+
+"sticker_average_per_month" = "On average|%@|per month";
+
 // Goal reaching
 
 "goal_reached_0_text" = "Goal reached|never";

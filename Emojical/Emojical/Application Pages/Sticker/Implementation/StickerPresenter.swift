@@ -27,6 +27,7 @@ class StickerPresenter: StickerPresenterProtocol {
     private let awardManager: AwardManager
     private let coordinator: StickerCoordinatorProtocol
     private let repository: DataRepository
+    private let dataBuilder: CalendarDataBuilder
 
     // MARK: - Lifecycle
 
@@ -42,6 +43,11 @@ class StickerPresenter: StickerPresenterProtocol {
         self.coordinator = coordinator
         self.awardManager = awardManager
         self.repository = repository
+        self.dataBuilder = CalendarDataBuilder(
+            repository: repository,
+            calendar: CalendarHelper.shared
+        )
+
         self.sticker = sticker ?? Stamp.new
         self.presentationMode = presentation
         self.isEditing = (sticker == nil)
@@ -92,7 +98,7 @@ class StickerPresenter: StickerPresenterProtocol {
             }
         }
         view?.onDeleteTapped = { [weak self] in
-            self?.confirmGoalDelete()
+            self?.confirmStickerDelete()
         }
         view?.onNewGoalTapped = { [weak self] in
             guard let id = self?.sticker.id else { return }
@@ -103,30 +109,28 @@ class StickerPresenter: StickerPresenterProtocol {
         }
     }
     
-    private func confirmGoalDelete() {
-        if sticker.count > 0 {
-            let description = Language.stickerUsageDescription(sticker)
-            let confirm = UIAlertController(
-                title: "woah_title".localized,
-                message: "sticker_delete_confirmation".localized(description),
-                preferredStyle: .actionSheet)
-            
-            confirm.addAction(UIAlertAction(
-                title: "delete_button".localized,
-                style: .destructive, handler: { (_) in
-                self.deleteAndDismiss()
-            }))
-            
-            confirm.addAction(UIAlertAction(
-                title: "cancel_button".localized,
-                style: .cancel, handler: { (_) in
-                confirm.dismiss(animated: true, completion: nil)
-            }))
-            (view as! UIViewController).present(confirm, animated: true, completion: nil)
-        }
-        else {
+    private func confirmStickerDelete() {
+        if sticker.count <= 0 {
             deleteAndDismiss()
         }
+        
+        let confirm = UIAlertController(
+            title: "woah_title".localized,
+            message: "sticker_delete_confirmation".localized,
+            preferredStyle: .actionSheet)
+        
+        confirm.addAction(UIAlertAction(
+            title: "delete_button".localized,
+            style: .destructive, handler: { (_) in
+            self.deleteAndDismiss()
+        }))
+        
+        confirm.addAction(UIAlertAction(
+            title: "cancel_button".localized,
+            style: .cancel, handler: { (_) in
+            confirm.dismiss(animated: true, completion: nil)
+        }))
+        (view as! UIViewController).present(confirm, animated: true, completion: nil)
     }
     
     private func deleteAndDismiss() {
@@ -181,15 +185,16 @@ class StickerPresenter: StickerPresenterProtocol {
         var data: [StickerDetailsElement] = [.view(
             StickerViewData(
                 sticker: sticker,
-                statistics: Language.stickerUsageDescription(sticker),
                 usage: Language.stickerUsedInGoals(goals)
             )
         )]
 
-        // If no goals - add a button to create a Goal from Sticker screen
-        if goals.count == 0 {
-            data.append(.newGoalButton)
+        if let history = dataBuilder.historyFor(sticker: sticker.id) {
+            data.append(.used(history))
         }
+        
+        data.append(.deleteButton(
+            sticker.count > 1 ? "delete_sticker_description".localized : nil))
 
         view.loadData(data)
     }
@@ -209,7 +214,9 @@ class StickerPresenter: StickerPresenterProtocol {
                 view.focusOnEmoji()
             })
         } else {
-            view.loadData([.edit(data), .deleteButton])
+            view.loadData([
+                .edit(data),
+                .deleteButton("delete_sticker_description".localized)])
         }
         
         view.enableDoneButton(sticker.isValid)

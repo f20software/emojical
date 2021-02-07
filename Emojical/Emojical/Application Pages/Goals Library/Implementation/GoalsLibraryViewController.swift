@@ -59,7 +59,7 @@ class GoalsLibraryViewController: UIViewController, GoalsLibraryView {
     // MARK: - GoalsLibraryView
     
     /// User tapped on the goal
-    var onGoalTapped: ((Int64) -> Void)?
+    var onGoalTapped: ((String) -> Void)?
 
     /// User tapped on the Cancel button
     var onCancelTapped: (() -> Void)?
@@ -135,9 +135,9 @@ class GoalsLibraryViewController: UIViewController, GoalsLibraryView {
 extension GoalsLibraryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let tag = collectionView.cellForItem(at: indexPath)?.tag else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? GoalExampleCell else { return }
         
-        onGoalTapped?(Int64(tag))
+        onGoalTapped?(cell.title.text ?? "")
     }
 
     private func cell(for path: IndexPath, model: GoalExampleData, collectionView: UICollectionView) -> UICollectionViewCell? {

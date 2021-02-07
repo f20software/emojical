@@ -15,7 +15,7 @@ class StickerDetailsDeleteButtonCell: ThemeObservingCollectionCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var footer: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var separator: UIView!
+    @IBOutlet weak var constraint: NSLayoutConstraint!
 
     /// User tapped on the Delete button
     var onDeleteTapped: (() -> Void)?
@@ -29,6 +29,11 @@ class StickerDetailsDeleteButtonCell: ThemeObservingCollectionCell {
         super.prepareForReuse()
     }
     
+    func configure(for descr: String?) {
+        footer.text = descr
+        constraint.constant = descr != nil ? 30 : 0
+    }
+
     // MARK: - Actions
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
@@ -40,10 +45,7 @@ class StickerDetailsDeleteButtonCell: ThemeObservingCollectionCell {
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
         footer.textColor = Theme.main.colors.secondaryText
-        footer.text = "delete_sticker_description".localized
         deleteButton.setTitle("delete_sticker_button".localized, for: .normal)
-        separator.backgroundColor = Theme.main.colors.separator
-
         updateFonts()
     }
     

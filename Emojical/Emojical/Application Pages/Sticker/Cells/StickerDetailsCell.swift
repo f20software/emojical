@@ -15,7 +15,6 @@ class StickerDetailsCell: ThemeObservingCollectionCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var stickerIcon: StickerView!
     @IBOutlet weak var stickerBackground: UIView!
-    @IBOutlet weak var statistics: UILabel!
     @IBOutlet weak var usage: UILabel!
 
     override func awakeFromNib() {
@@ -26,7 +25,6 @@ class StickerDetailsCell: ThemeObservingCollectionCell {
     // MARK: - Public view interface
 
     func configure(for data: StickerViewData) {
-        statistics.text = data.statistics
         usage.text = data.usage
 
         stickerIcon.text = data.sticker.label
@@ -47,7 +45,6 @@ class StickerDetailsCell: ThemeObservingCollectionCell {
     }
     
     override func updateFonts() {
-        statistics.font = Theme.main.fonts.listBody
         usage.font = Theme.main.fonts.listBody
     }
     

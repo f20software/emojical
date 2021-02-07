@@ -90,8 +90,7 @@ class StickersPresenter: StickersPresenterProtocol {
             self?.coordinator?.editGoal(goal)
         }
         view?.onNewGoalTapped = { [weak self] in
-            // self?.coordinator?.newGoal()
-            self?.coordinator?.newGoalFromExamples()
+            self?.coordinator?.newGoal()
         }
         view?.onStickerTapped = { [weak self] stickerId in
             guard let sticker = self?.repository.stampById(stickerId) else { return }
@@ -161,6 +160,11 @@ class StickersPresenter: StickersPresenterProtocol {
         confirm.addAction(
             UIAlertAction(title: "goal_title".localized, style: .default, handler: { (_) in
                 self.coordinator?.newGoal()
+            })
+        )
+        confirm.addAction(
+            UIAlertAction(title: "create_goal_from_library_title".localized, style: .default, handler: { (_) in
+                self.coordinator?.newGoalFromExamples()
             })
         )
         confirm.addAction(

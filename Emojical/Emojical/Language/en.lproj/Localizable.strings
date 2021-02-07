@@ -8,15 +8,13 @@
 
 // Sticker usage
 
-"sticker_not_used_yet" = "Sticker hasn't been used yet.";
+"sticker_used_0_text" = "Sticker used|never";
 
-"sticker_used_x_times" = "Sticker has been used %d times";
+"sticker_used_1_text" = "Sticker used|once|on %@";
 
-"sticker_used_1_time" = "Sticker has been used once";
+"sticker_used_x_text" = "Sticker used|%d times|last time:\n%@";
 
-"last_time_date" = "last time - %@.";
-
-"sticker_used_no_goal" = "You haven't created a goal yet with this sticker.";
+"sticker_used_no_goal" = "This sticker is not directly assigned to any goal.";
 
 "sticker_used_1_goal" = "Sticker is used in the \'%@\' goal.";
 
@@ -110,6 +108,8 @@
 
 "goal_title" = "Goal...";
 
+"create_goal_from_library_title" = "Create Goal from Library...";
+
 "dismiss_button" = "Dismiss";
 
 "weekly_recap_title" = "Weekly Recap";
@@ -121,6 +121,8 @@
 "today_title" = "Today";
 
 "goals_title" = "Goals";
+
+"goals_library_title" = "Goals Library";
 
 "stats_title" = "Stats";
 
@@ -222,6 +224,6 @@
 
 "cancel_button" = "Cancel";
 
-"sticker_delete_confirmation" = "%@ Are you sure you want to delete it?";
+"sticker_delete_confirmation" = "This sticker has been used few times. Are you sure you want to delete it?";
 
 

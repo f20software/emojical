@@ -11,7 +11,7 @@ import Foundation
 protocol GoalsLibraryView: AnyObject {
 
     /// User tapped on the goal
-    var onGoalTapped: ((Int64) -> Void)? { get set }
+    var onGoalTapped: ((String) -> Void)? { get set }
 
     /// User tapped on the Cancel button
     var onCancelTapped: (() -> Void)? { get set }

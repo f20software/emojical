@@ -26,15 +26,16 @@ class GoalExampleCell: ThemeObservingCollectionCell {
 
     func configure(for data: GoalExampleData) {
         title.text = data.name
-//        subTitle.text = data.details
-//        tag = Int(data.goalId)
-//        
-//        goalIcon.text = data.progress.emoji
-//        goalIcon.labelColor = data.progress.backgroundColor
-//        goalIcon.clockwise = (data.progress.direction == .positive)
-//        goalIcon.progress = CGFloat(data.progress.progress)
-//        goalIcon.progressColor = data.progress.progressColor
-//        goalIcon.setNeedsDisplay()
+        subTitle.text = data.description
+        
+        if let sticker = data.stickers.first {
+            goalIcon.text = sticker.emoji
+            goalIcon.labelColor = UIColor(hex: sticker.color.rawValue).withAlphaComponent(0.5)
+            goalIcon.clockwise = true
+            goalIcon.progress = 1.0
+            goalIcon.progressColor = Theme.main.colors.goalReachedBorder
+            goalIcon.setNeedsDisplay()
+        }
     }
 
     // MARK: - Private helpers

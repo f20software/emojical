@@ -60,6 +60,9 @@ protocol DataRepository: class {
     /// Date of the first diary entry
     func getFirstDiaryDate() -> Date?
     
+    /// Date of the first time sticker has been used
+    func getFirstDateFor(sticker id: Int64) -> Date?
+    
     /// Date of the last diary entry
     func getLastDiaryDate() -> Date?
     

@@ -7,14 +7,11 @@
 */
 
 // Sticker usage
+"sticker_used_0_text" = "La pegatina usada|nunca";
 
-"sticker_not_used_yet" = "La pegatina aún no se ha utilizado.";
+"sticker_used_1_text" = "La pegatina usada|una vez|el %@";
 
-"sticker_used_x_times" = "La pegatina se ha utilizado %d veces";
-
-"sticker_used_1_time" = "La pegatina se ha utilizado una vez";
-
-"last_time_date" = "última vez - %@.";
+"sticker_used_x_text" = "La pegatina usada|%d veces|última vez:\n%@";
 
 "sticker_used_no_goal" = "Aún no has creado un meta con esta pegatina.";
 
@@ -216,12 +213,12 @@
 
 "woah_title" = "¡Woah!";
 
-"goal_delete_confirmation" = "Este objetivo se ha alcanzado pocas veces. ¿Estás seguro de que quieres eliminarlo?";
+"goal_delete_confirmation" = "Este objetivo se ha logrado varias veces. ¿Estás seguro de que quieres eliminarlo?";
 
 "delete_button" = "Eliminar";
 
 "cancel_button" = "Cancelar";
 
-"sticker_delete_confirmation" = "%@ ¿Estás seguro de que quieres eliminarlo?";
+"sticker_delete_confirmation" = "Esta pegatina se ha utilizado varias veces. ¿Estás seguro de que quieres eliminarlo?";
 
 

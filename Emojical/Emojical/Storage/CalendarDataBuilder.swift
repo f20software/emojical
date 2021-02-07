@@ -226,9 +226,39 @@ class CalendarDataBuilder {
         }
     }
     
-    func goalHistory(forGoal id: Int64) -> GoalReachedData? {
-        guard let goal = repository.goalById(id) else { return nil }
-        guard let firstEntryDate = repository.getFirstDiaryDate() else { return nil }
+    /// Builds history for a given sticker (including how many time it's been reached and what is the average
+    func historyFor(sticker id: Int64?) -> StickerUsedData? {
+        guard let id = id,
+              let sticker = repository.stampById(id),
+              let first = repository.getFirstDateFor(sticker: id) else { return nil }
+        
+        let fromToday = abs(Date().distance(to: first) / (7 * 24 * 60 * 60))
+        
+        var average = Double(sticker.count) / fromToday
+        var period = "per week"
+        
+        if fromToday < 2 {
+            // Don't report average until we have 2+ weeks of data
+            average = -1.0
+            period = ""
+        } else if average < 1 {
+            average = average * (30 / 7)
+            period = "per month"
+        }
+        
+        return StickerUsedData(
+            count: sticker.count,
+            lastUsed: sticker.lastUsed,
+            average: Float(average),
+            averagePeriod: period
+        )
+    }
+
+    /// Builds history for a give goal (including how many time it's been reached and what is the current streak
+    func historyFor(goal id: Int64?) -> GoalReachedData? {
+        guard let id = id,
+            let goal = repository.goalById(id),
+            let first = repository.getFirstDiaryDate() else { return nil }
         
         var history = [GoalHistoryPoint]()
         let historyLimit = 20
@@ -238,7 +268,7 @@ class CalendarDataBuilder {
         switch goal.period {
         case .week:
             var week = CalendarHelper.Week(Date().byAddingWeek(-1))
-            while (history.count < historyLimit) && (week.lastDay > firstEntryDate) {
+            while (history.count < historyLimit) && (week.lastDay > first) {
                 if let award = repository.awardsForDateInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id }) {
                     history.append(
                         GoalHistoryPoint(
@@ -268,7 +298,7 @@ class CalendarDataBuilder {
             
         case .month:
             var month = CalendarHelper.Month(Date().byAddingMonth(-1))
-            while (history.count < historyLimit) && (month.lastDay > firstEntryDate) {
+            while (history.count < historyLimit) && (month.lastDay > first) {
                 if let award = repository.awardsForDateInterval(from: month.firstDay, to: month.lastDay).first(where: { $0.goalId == goal.id }) {
                     history.append(
                         GoalHistoryPoint(

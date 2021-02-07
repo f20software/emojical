@@ -19,6 +19,7 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell {
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!
     @IBOutlet weak var separator3: UIView!
+    @IBOutlet weak var separator4: UIView!
 
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var emojiLabel: UILabel!
@@ -128,6 +129,7 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell {
 
         stickerBackground.backgroundColor = Theme.main.colors.background
         stickerBackground.layer.cornerRadius = Theme.main.specs.platesCornerRadius
+        separator4.backgroundColor = Theme.main.colors.separator
     }
     
     override func updateColors() {

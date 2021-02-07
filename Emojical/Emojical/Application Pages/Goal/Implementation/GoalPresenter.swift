@@ -58,14 +58,14 @@ class GoalPresenter: GoalPresenterProtocol {
         self.coordinator = coordinator
         self.awardManager = awardManager
         self.repository = repository
-        self.goal = goal ?? Goal.new
-        self.presentationMode = presentation
-        self.isEditing = editing
-        
         self.dataBuilder = CalendarDataBuilder(
             repository: repository,
             calendar: CalendarHelper.shared
         )
+
+        self.goal = goal ?? Goal.new
+        self.presentationMode = presentation
+        self.isEditing = editing
     }
 
     // MARK: - State
@@ -126,28 +126,27 @@ class GoalPresenter: GoalPresenterProtocol {
     }
     
     private func confirmGoalDelete() {
-        if goal.count > 0 {
-            let confirm = UIAlertController(
-                title: "woah_title".localized,
-                message: "goal_delete_confirmation".localized,
-                preferredStyle: .actionSheet)
-            
-            confirm.addAction(UIAlertAction(
-                title: "delete_button".localized,
-                style: .destructive, handler: { (_) in
-                self.deleteAndDismiss()
-            }))
-            
-            confirm.addAction(UIAlertAction(
-                title: "cancel_button".localized,
-                style: .cancel, handler: { (_) in
-                confirm.dismiss(animated: true, completion: nil)
-            }))
-            (view as! UIViewController).present(confirm, animated: true, completion: nil)
-        }
-        else {
+        if goal.count <= 0 {
             deleteAndDismiss()
         }
+        
+        let confirm = UIAlertController(
+            title: "woah_title".localized,
+            message: "goal_delete_confirmation".localized,
+            preferredStyle: .actionSheet)
+        
+        confirm.addAction(UIAlertAction(
+            title: "delete_button".localized,
+            style: .destructive, handler: { (_) in
+            self.deleteAndDismiss()
+        }))
+        
+        confirm.addAction(UIAlertAction(
+            title: "cancel_button".localized,
+            style: .cancel, handler: { (_) in
+            confirm.dismiss(animated: true, completion: nil)
+        }))
+        (view as! UIViewController).present(confirm, animated: true, completion: nil)
     }
     
     private func deleteAndDismiss() {
@@ -212,8 +211,6 @@ class GoalPresenter: GoalPresenterProtocol {
             }
             view.enableDoneButton(goal.isValid)
         } else {
-            let history = dataBuilder.goalHistory(forGoal: goal.id!)
-
             let data = GoalViewData(
                 details: Language.goalDescription(goal),
                 stickers: repository.stampLabelsFor(goal),
@@ -228,8 +225,8 @@ class GoalPresenter: GoalPresenterProtocol {
             )
             
             var cells: [GoalDetailsElement] = [.view(data)]
-            if history != nil {
-                cells.append(.reached(history!))
+            if let history = dataBuilder.historyFor(goal: goal.id) {
+                cells.append(.reached(history))
             }
             
             view.loadData(cells)

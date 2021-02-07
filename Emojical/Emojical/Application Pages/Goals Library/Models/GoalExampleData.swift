@@ -8,9 +8,22 @@
 
 import Foundation
 
+struct StickerExampleData {
+    let emoji: String
+    let name: String
+    let color: Theme.Palette
+}
+
 struct GoalExampleData {
     let category: String
     let name: String
+    let description: String
+    let direction: Direction
+    let period: Period
+    let limit: Int
+    let stickers: [StickerExampleData]
+    let extra: [StickerExampleData]
 }
 
+extension StickerExampleData: Equatable, Hashable {}
 extension GoalExampleData: Equatable, Hashable {}

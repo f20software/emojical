@@ -11,6 +11,7 @@ import Foundation
 enum StickerDetailsElement: Hashable {
     case view(StickerViewData)
     case edit(StickerEditData)
-    case deleteButton
+    case deleteButton(String?)
     case newGoalButton
+    case used(StickerUsedData)
 }

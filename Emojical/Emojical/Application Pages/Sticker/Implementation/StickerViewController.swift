@@ -171,6 +171,10 @@ class StickerViewController : UIViewController, StickerViewProtocol {
             UINib(nibName: "NewGoalCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.newGoal
         )
+        details.register(
+            UINib(nibName: "StickerUsedCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.used
+        )
     }
 
     private func configureBarButtons(animated: Bool) {
@@ -217,7 +221,6 @@ class StickerViewController : UIViewController, StickerViewProtocol {
         )
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = Specs.margin
         section.contentInsets = NSDirectionalEdgeInsets(
             top: Specs.margin, leading: Specs.margin,
             bottom: Specs.margin, trailing: Specs.margin
@@ -241,6 +244,13 @@ extension StickerViewController: UICollectionViewDelegate {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.details, for: path
             ) as? StickerDetailsCell else { return UICollectionViewCell() }
+            cell.configure(for: data)
+            return cell
+
+        case .used(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.used, for: path
+            ) as? StickerUsedCell else { return UICollectionViewCell() }
             cell.configure(for: data)
             return cell
 
@@ -269,10 +279,11 @@ extension StickerViewController: UICollectionViewDelegate {
             detailsEditView = cell
             return cell
             
-        case .deleteButton:
+        case .deleteButton(let data):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.delete, for: path
             ) as? StickerDetailsDeleteButtonCell else { return UICollectionViewCell() }
+            cell.configure(for: data)
             cell.onDeleteTapped = { [weak self] in
                 self?.onDeleteTapped?()
             }
@@ -298,6 +309,9 @@ fileprivate struct Specs {
 
         /// New Goal button cell
         static let newGoal = "NewGoalCell"
+
+        /// Sticker usage cell
+        static let used = "StickerUsedCell"
     }
     
     /// Left/right and bottom margin for the collection view cells

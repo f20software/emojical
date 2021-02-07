@@ -150,8 +150,20 @@ class GoalPresenter: GoalPresenterProtocol {
     }
     
     private func deleteAndDismiss() {
-        goal.deleted = true
-        try! repository.save(goal: goal)
+        guard let id = goal.id else { return }
+
+        do {
+            // Mark goal as deleted
+            goal.deleted = true
+            try repository.save(goal: goal)
+            
+            // Remove any awards that were given for this goal in the current week,
+            // since week is not closed yet
+            let week = CalendarHelper.Week(Date())
+            repository.deleteAwards(from: week.firstDay, to: week.lastDay, goalId: id)
+        }
+        catch {}
+
         view?.dismiss(from: presentationMode)
     }
 
@@ -185,7 +197,7 @@ class GoalPresenter: GoalPresenterProtocol {
         guard let view = view else { return }
         
         let progress = awardManager.currentProgressFor(goal)
-        let stamp = repository.stampById(goal.stamps.first)
+        let stamp = repository.stampBy(id: goal.stamps.first)
         let currentProgress = GoalAwardData(
             goal: goal,
             progress: progress,
@@ -201,7 +213,7 @@ class GoalPresenter: GoalPresenterProtocol {
         if isEditing {
             let data = GoalEditData(
                 goal: goal,
-                stickers: repository.stampLabelsFor(goal),
+                stickers: repository.stampLabelsFor(goal: goal),
                 award: award
             )
             if presentationMode == .modal {
@@ -213,7 +225,7 @@ class GoalPresenter: GoalPresenterProtocol {
         } else {
             let data = GoalViewData(
                 details: Language.goalDescription(goal),
-                stickers: repository.stampLabelsFor(goal),
+                stickers: repository.stampLabelsFor(goal: goal),
                 progressText: Language.goalCurrentProgress(
                     period: goal.period,
                     direction: goal.direction,

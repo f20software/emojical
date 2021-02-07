@@ -45,19 +45,18 @@ extension DataSource {
             _ = try dbQueue.write { db in
                 try StoredAward.deleteAll(db)
             }
-
-            notifyAwardsOnChangeObservers()
         }
         catch { }
+        notifyAwardsOnChangeObservers()
     }
 
     // Awards for date interval
-    func awardsForDateInterval(from: Date, to: Date) -> [Award] {
+    func awardsInInterval(from: Date, to: Date) -> [Award] {
         do {
             return try dbQueue.read { db -> [StoredAward] in
                 let request = StoredAward
                     .filter(StoredAward.Columns.date >= from.databaseKey && StoredAward.Columns.date <= to.databaseKey)
-                    .order(StoredDiary.Columns.date)
+                    .order(StoredAward.Columns.date)
                 return try request.fetchAll(db)
             }.map { $0.toModel() }
         }
@@ -89,27 +88,22 @@ extension DataSource {
         notifyAwardsOnChangeObservers()
         updateStatsForGoals(ids)
     }
-    
-    /// Retrieves list of monthly awards for a given time interval
-    func monthlyAwardsForInterval(start: Date, end: Date) -> [Award] {
-        return awardsOf(period: .month, from: start, to: end)
+
+    /// Deletes awards for a given goal and given time internal
+    func deleteAwards(from: Date, to: Date, goalId: Int64) {
+        do {
+            _ = try dbQueue.write { db in
+                try StoredAward
+                    .filter(StoredAward.Columns.goalId == goalId &&
+                        StoredAward.Columns.date >= from.databaseKey &&
+                        StoredAward.Columns.date <= to.databaseKey)
+                    .deleteAll(db)
+            }
+        }
+        catch { }
+        notifyAwardsOnChangeObservers()
     }
-    
-    /// Retrieves list of weekly awards for a given time interval
-    func weeklyAwardsForInterval(start: Date, end: Date) -> [Award] {
-        return awardsOf(period: .week, from: start, to: end)
-    }
-    
-    /// Retrieves list awards for specific period for a given time interval
-    private func awardsOf(period: Period, from start: Date, to end: Date) -> [Award] {
-        // Load weekly goals so we can filter awards by their Ids
-        let goalIds = goalsByPeriod(period).compactMap({ $0.id })
-        return awardsForDateInterval(
-            from: start,
-            to: end
-        ).filter({ goalIds.contains( $0.goalId )})
-    }
-    
+
     // MARK: - Private helpers
     
     func storedAward(withId id: Int64) -> StoredAward? {

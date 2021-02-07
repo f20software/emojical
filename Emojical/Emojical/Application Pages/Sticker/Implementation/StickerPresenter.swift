@@ -134,8 +134,18 @@ class StickerPresenter: StickerPresenterProtocol {
     }
     
     private func deleteAndDismiss() {
+        guard let id = sticker.id else { return }
+
+        // Mark sticker as deleted
         sticker.deleted = true
-        try! repository.save(stamp: sticker)
+        do {
+            let goalIds = repository.goalsUsedStamp(id).compactMap({ $0.id })
+            try repository.save(stamp: sticker)
+            // Remove this sticker from all goals that it was assigned to
+            repository.removeSticker(id, from: goalIds)
+        }
+        catch {}
+
         view?.dismiss(from: presentationMode)
     }
 
@@ -194,7 +204,7 @@ class StickerPresenter: StickerPresenterProtocol {
         }
         
         data.append(.deleteButton(
-            sticker.count > 1 ? "delete_sticker_description".localized : nil))
+            sticker.count > 0 ? "delete_sticker_description".localized : nil))
 
         view.loadData(data)
     }

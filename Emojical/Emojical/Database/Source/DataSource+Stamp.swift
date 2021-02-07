@@ -11,9 +11,9 @@ import GRDB
 // MARK: - Stamps Helper Methods
 extension DataSource {
 
-    // Single stamp object
-    func stampById(_ identifier: Int64?) -> Stamp? {
-        guard let id = identifier else { return nil }
+    /// Stamp by a given Id
+    func stampBy(id: Int64?) -> Stamp? {
+        guard let id = id else { return nil }
         return storedStamp(withId: id)?.toModel()
     }
     
@@ -43,20 +43,6 @@ extension DataSource {
         return nil
     }
 
-    // Only favorites stamps - used in day view
-    func favoriteStamps() -> [Stamp] {
-        do {
-            return try dbQueue.read { db -> [StoredStamp] in
-                let request = StoredStamp
-                    .filter(StoredStamp.Columns.favorite == true && StoredStamp.Columns.deleted == false)
-                    .order(StoredStamp.Columns.name)
-                return try request.fetchAll(db)
-            }.map { $0.toModel() }
-        }
-        catch { }
-        return []
-    }
-
     // All stamps
     func allStamps(includeDeleted: Bool = false) -> [Stamp] {
         allStoredStamps(includeDeleted: includeDeleted).map { $0.toModel() }
@@ -72,8 +58,8 @@ extension DataSource {
         catch { }
     }
 
-    // Stamp Ids for a day (will be stored in Diary table)
-    func stampsIdsForDay(_ day: Date) -> [Int64] {
+    /// Stamp Ids for a day from Diary table
+    func stampsIdsFor(day: Date) -> [Int64] {
         do {
             return try dbQueue.read { db in
                 let request = StoredDiary
@@ -88,9 +74,9 @@ extension DataSource {
     }
 
     /// Stamps for a day
-    func stampsFor(_ day: Date) -> [Stamp] {
-        let ids = stampsIdsForDay(day)
-        return ids.compactMap({ stampById($0) })
+    func stampsFor(day: Date) -> [Stamp] {
+        return stampsIdsFor(day: day)
+            .compactMap({ stampBy(id: $0) })
     }
 
     // Recalculate count and lastUsed in Stamp object
@@ -115,7 +101,7 @@ extension DataSource {
         updateStatsForStamps(stamps.map({ $0.id! }))
     }
 
-    // List of goals particular stamp is used in
+    /// List of goals particular stamp is used in
     func goalsUsedStamp(_ stampId: Int64?) -> [Goal] {
         guard let id = stampId else { return [] }
         return self.allGoals().filter { $0.stamps.contains(id) }

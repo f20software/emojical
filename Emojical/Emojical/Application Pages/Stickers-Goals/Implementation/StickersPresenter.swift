@@ -102,6 +102,9 @@ class StickersPresenter: StickersPresenterProtocol {
         view?.onAddButtonTapped = { [weak self] in
             self?.confirmAddAction()
         }
+        view?.onGoalsExamplesTapped = { [weak self] in
+            self?.coordinator?.newGoalFromExamples()
+        }
     }
     
     private func loadViewData() {

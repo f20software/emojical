@@ -7,6 +7,7 @@
 */
 
 // Sticker usage
+
 "sticker_used_0_text" = "La pegatina usada|nunca";
 
 "sticker_used_1_text" = "La pegatina usada|una vez|el %@";
@@ -18,6 +19,12 @@
 "sticker_used_1_goal" = "La pegatina se utiliza en el meta \'%@\'.";
 
 "sticker_used_x_goals" = "La pegatina se utiliza en los metas %@.";
+
+"sticker_average_too_early" = "En promedio|-";
+
+"sticker_average_per_week" = "En promedio|%@|por semana";
+
+"sticker_average_per_month" = "En promedio|%@|por mes";
 
 // Goal reaching
 
@@ -129,9 +136,13 @@
 
 "no_goals_description" = "Aún no hay metas. Podemos ayudarlo a mejorar, simplemente cree un nuevo objetivo y realice un seguimiento de su progreso.";
 
+"looking_for_examples" = "Si no está seguro de qué objetivos puede crear, eche un vistazo a algunos ejemplos que reunimos.";
+
 "delete_goal_description" = "Si actualiza o elimina la meta, todos los premios obtenidos anteriormente se mantendrán sin cambios.";
 
 "create_goal_button" = "Crear meta";
+
+"goals_examples_button" = "Goals Examples";
 
 "delete_goal_button" = "Eliminar meta";
 

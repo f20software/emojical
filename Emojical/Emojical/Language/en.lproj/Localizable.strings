@@ -140,9 +140,13 @@
 
 "no_goals_description" = "There are no goals yet. We can help you to make yourself better, just create new goal and track your progress.";
 
+"looking_for_examples" = "If you're not sure which goals you can create, take a look at few examples we put together.";
+
 "delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
 
 "create_goal_button" = "Create Goal";
+
+"goals_examples_button" = "Goals Examples";
 
 "delete_goal_button" = "Delete Goal";
 

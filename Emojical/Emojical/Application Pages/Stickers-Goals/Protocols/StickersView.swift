@@ -29,6 +29,9 @@ protocol StickersView: AnyObject {
     /// User tapped on Add button
     var onAddButtonTapped: (() -> Void)? { get set }
 
+    /// User tapped on Goals Examples button
+    var onGoalsExamplesTapped: (() -> Void)? { get set }
+
     // MARK: - Updates
 
     /// Update page title

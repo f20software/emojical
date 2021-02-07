@@ -93,6 +93,8 @@
 		F27E552725D0418700B78A95 /* StickerUsedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27E552525D0418700B78A95 /* StickerUsedCell.swift */; };
 		F27E552825D0418700B78A95 /* StickerUsedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F27E552625D0418700B78A95 /* StickerUsedCell.xib */; };
 		F27E552C25D041DB00B78A95 /* StickerUsedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27E552B25D041DB00B78A95 /* StickerUsedData.swift */; };
+		F27E554925D0B06B00B78A95 /* GoalsLibraryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F27E554725D0B06B00B78A95 /* GoalsLibraryCell.xib */; };
+		F27E554A25D0B06B00B78A95 /* GoalsLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27E554825D0B06B00B78A95 /* GoalsLibraryCell.swift */; };
 		F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280878C24C6BD00003E864E /* TodayViewController.swift */; };
 		F282B4E32591A856000BC92B /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F282B4E62591A875000BC92B /* DayHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */; };
@@ -324,6 +326,8 @@
 		F27E552525D0418700B78A95 /* StickerUsedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerUsedCell.swift; sourceTree = "<group>"; };
 		F27E552625D0418700B78A95 /* StickerUsedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StickerUsedCell.xib; sourceTree = "<group>"; };
 		F27E552B25D041DB00B78A95 /* StickerUsedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerUsedData.swift; sourceTree = "<group>"; };
+		F27E554725D0B06B00B78A95 /* GoalsLibraryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalsLibraryCell.xib; sourceTree = "<group>"; };
+		F27E554825D0B06B00B78A95 /* GoalsLibraryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryCell.swift; sourceTree = "<group>"; };
 		F280878C24C6BD00003E864E /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		F282B4F925928FB9000BC92B /* DaysHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysHeaderView.swift; sourceTree = "<group>"; };
 		F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyAwardsView.swift; sourceTree = "<group>"; };
@@ -663,6 +667,8 @@
 				F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */,
 				F23CF3F62582E86E0048BA74 /* NewGoalCell.xib */,
 				F23CF3F72582E86E0048BA74 /* NewGoalCell.swift */,
+				F27E554725D0B06B00B78A95 /* GoalsLibraryCell.xib */,
+				F27E554825D0B06B00B78A95 /* GoalsLibraryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1392,6 +1398,7 @@
 				F2F3BE20257C831000A926E9 /* DayHeaderCell.xib in Resources */,
 				F29533A125B6611B003CA002 /* GoalDetailsEditCell.xib in Resources */,
 				F295338D25B62F7D003CA002 /* Goal.storyboard in Resources */,
+				F27E554925D0B06B00B78A95 /* GoalsLibraryCell.xib in Resources */,
 				F23CF4242583E8720048BA74 /* NoGoalsCell.xib in Resources */,
 				F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */,
 			);
@@ -1478,6 +1485,7 @@
 				F2FD4E2125BDCD42005819A0 /* StickerViewController.swift in Sources */,
 				F23CF3DE2582BB0E0048BA74 /* StickersHeaderView.swift in Sources */,
 				F27782F725C501E300C68F7A /* OptionsTableModel.swift in Sources */,
+				F27E554A25D0B06B00B78A95 /* GoalsLibraryCell.swift in Sources */,
 				F295337A25B6165C003CA002 /* GoalPresenter.swift in Sources */,
 				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,

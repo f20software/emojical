@@ -46,6 +46,22 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
                 StickerExampleData(emoji: "🏓", name: "Ping-pong", color: .green),
             ],
             extra: []
+        ),
+        GoalExampleData(
+            category: "Food",
+            name: "Eat Less Red Meat",
+            description: "Record food you eat - 🥩,🐣,🐟,🥦. And try to have 3 of fewer red meats per week.",
+            direction: .negative,
+            period: .week,
+            limit: 3,
+            stickers: [
+                StickerExampleData(emoji: "🥩", name: "Steak", color: .red),
+            ],
+            extra: [
+                StickerExampleData(emoji: "🐣", name: "Chicken", color: .green),
+                StickerExampleData(emoji: "🐟", name: "Fish", color: .green),
+                StickerExampleData(emoji: "🥦", name: "Veggies", color: .lightGreen),
+            ]
         )
     ]
     
@@ -83,30 +99,34 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
     
     private func loadViewData() {
         view?.updateTitle("goals_library_title".localized)
-        view?.loadData(sections: data.map({ $0.category }), goals: data)
+        let sections = Array(Set(data.map({ $0.category })))
+        view?.loadData(sections: sections, goals: data)
+    }
+    
+    private func createSticker(_ data: StickerExampleData) -> Int64? {
+        if let found = repository.stampByLabel(label: data.emoji) {
+            return found.id
+        }
+
+        do {
+            let new = Stamp(
+                name: data.name,
+                label: data.emoji,
+                color: UIColor(hex: data.color.rawValue)
+            )
+            let saved = try repository.save(stamp: new)
+            return saved.id
+        }
+        catch {}
+        
+        return nil
     }
     
     private func createGoal(_ name: String) {
         guard let goal = data.first(where: { $0.name == name }) else { return }
 
-        var stickerIds = [Int64]()
-        for sticker in goal.stickers {
-            let found = repository.stampByLabel(label: sticker.emoji)
-            if let id = found?.id {
-                stickerIds.append(id)
-            } else {
-                do {
-                    let new = Stamp(
-                        name: sticker.name,
-                        label: sticker.emoji,
-                        color: UIColor(hex: sticker.color.rawValue)
-                    )
-                    let saved = try repository.save(stamp: new)
-                    stickerIds.append(saved.id!)
-                }
-                catch {}
-            }
-        }
+        let stickerIds = goal.stickers.compactMap({ createSticker($0) })
+        _ = goal.extra.map({ createSticker($0) })
         
         do {
             let new = Goal(

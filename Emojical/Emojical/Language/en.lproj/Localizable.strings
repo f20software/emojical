@@ -114,7 +114,7 @@
 
 "goal_title" = "Goal...";
 
-"create_goal_from_library_title" = "Create Goal from Library...";
+"create_goal_from_examples_title" = "Create Goal from Examples...";
 
 "dismiss_button" = "Dismiss";
 
@@ -128,7 +128,7 @@
 
 "goals_title" = "Goals";
 
-"goals_library_title" = "Goals Library";
+"goals_library_title" = "Goals Examples";
 
 "stats_title" = "Stats";
 

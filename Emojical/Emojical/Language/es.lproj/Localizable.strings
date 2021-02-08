@@ -114,6 +114,8 @@
 
 "goal_title" = "Meta...";
 
+"create_goal_from_examples_title" = "Crear meta a partir de ejemplos...";
+
 "dismiss_button" = "Descartar";
 
 "weekly_recap_title" = "Resumen semanal";

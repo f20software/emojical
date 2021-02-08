@@ -166,7 +166,7 @@ class StickersPresenter: StickersPresenterProtocol {
             })
         )
         confirm.addAction(
-            UIAlertAction(title: "create_goal_from_library_title".localized, style: .default, handler: { (_) in
+            UIAlertAction(title: "create_goal_from_examples_title".localized, style: .default, handler: { (_) in
                 self.coordinator?.newGoalFromExamples()
             })
         )

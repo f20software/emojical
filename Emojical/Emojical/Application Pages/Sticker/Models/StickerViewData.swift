@@ -10,8 +10,6 @@ import Foundation
 
 struct StickerViewData {
     let sticker: Stamp
-    // Text information to be displayed on the Goal details in view mode
-    let statistics: String
     let usage: String
 }
 

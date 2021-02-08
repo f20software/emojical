@@ -8,19 +8,23 @@
 
 // Sticker usage
 
-"sticker_not_used_yet" = "La pegatina aún no se ha utilizado.";
+"sticker_used_0_text" = "La pegatina usada|nunca";
 
-"sticker_used_x_times" = "La pegatina se ha utilizado %d veces";
+"sticker_used_1_text" = "La pegatina usada|una vez|el %@";
 
-"sticker_used_1_time" = "La pegatina se ha utilizado una vez";
-
-"last_time_date" = "última vez - %@.";
+"sticker_used_x_text" = "La pegatina usada|%d veces|última vez:\n%@";
 
 "sticker_used_no_goal" = "Aún no has creado un meta con esta pegatina.";
 
 "sticker_used_1_goal" = "La pegatina se utiliza en el meta \'%@\'.";
 
 "sticker_used_x_goals" = "La pegatina se utiliza en los metas %@.";
+
+"sticker_average_too_early" = "En promedio|-";
+
+"sticker_average_per_week" = "En promedio|%@|por semana";
+
+"sticker_average_per_month" = "En promedio|%@|por mes";
 
 // Goal reaching
 
@@ -110,6 +114,8 @@
 
 "goal_title" = "Meta...";
 
+"create_goal_from_examples_title" = "Crear meta a partir de ejemplos...";
+
 "dismiss_button" = "Descartar";
 
 "weekly_recap_title" = "Resumen semanal";
@@ -132,9 +138,13 @@
 
 "no_goals_description" = "Aún no hay metas. Podemos ayudarlo a mejorar, simplemente cree un nuevo objetivo y realice un seguimiento de su progreso.";
 
+"looking_for_examples" = "Si no está seguro de qué objetivos puede crear, eche un vistazo a algunos ejemplos que reunimos.";
+
 "delete_goal_description" = "Si actualiza o elimina la meta, todos los premios obtenidos anteriormente se mantendrán sin cambios.";
 
 "create_goal_button" = "Crear meta";
+
+"goals_examples_button" = "Goals Examples";
 
 "delete_goal_button" = "Eliminar meta";
 
@@ -216,12 +226,12 @@
 
 "woah_title" = "¡Woah!";
 
-"goal_delete_confirmation" = "Este objetivo se ha alcanzado pocas veces. ¿Estás seguro de que quieres eliminarlo?";
+"goal_delete_confirmation" = "Este objetivo se ha logrado varias veces. ¿Estás seguro de que quieres eliminarlo?";
 
 "delete_button" = "Eliminar";
 
 "cancel_button" = "Cancelar";
 
-"sticker_delete_confirmation" = "%@ ¿Estás seguro de que quieres eliminarlo?";
+"sticker_delete_confirmation" = "Esta pegatina se ha utilizado varias veces. ¿Estás seguro de que quieres eliminarlo?";
 
 

@@ -11,6 +11,16 @@ import UIKit
 
 extension Theme {
 
+    enum Palette : String {
+        case red = "EF476F"
+        case violet = "D671DB"
+        case yellow = "FFE175"
+        case lightGreen = "83D483"
+        case green = "049F70"
+        case lightBlue = "118AB2"
+        case blue = "202674"
+    }
+    
     class Colors {
     
         /// Main application tint color

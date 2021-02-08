@@ -87,6 +87,9 @@ class StickersViewController: UIViewController, StickersView {
     /// User tapped on Add button
     var onAddButtonTapped: (() -> Void)?
 
+    /// User tapped on Goals Examples button
+    var onGoalsExamplesTapped: (() -> Void)?
+
     /// Update page title
     func updateTitle(_ text: String) {
         title = text
@@ -104,6 +107,10 @@ class StickersViewController: UIViewController, StickersView {
             snapshot.appendItems([.noGoals("no_goals_description".localized)])
         }
         snapshot.appendItems([.newGoal])
+        if goals.count == 0 {
+            snapshot.appendItems([.noGoals("looking_for_examples".localized)])
+            snapshot.appendItems([.fromLibrary])
+        }
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -162,6 +169,10 @@ class StickersViewController: UIViewController, StickersView {
             forCellWithReuseIdentifier: Specs.Cells.noGoalsCell
         )
         collectionView.register(
+            UINib(nibName: "GoalsLibraryCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.goalsExamplesCell
+        )
+        collectionView.register(
             StickersHeaderView.self,
             forSupplementaryViewOfKind: Specs.Cells.header,
             withReuseIdentifier: Specs.Cells.header
@@ -172,22 +183,17 @@ class StickersViewController: UIViewController, StickersView {
 extension StickersViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let tag = collectionView.cellForItem(at: indexPath)?.tag else { return }
-        
-        let section = Section.allCases[indexPath.section]
-        switch (section) {
-        case .stickers:
-            if tag > 0 {
-                onStickerTapped?(Int64(tag))
-            } else {
-                onNewStickerTapped?()
-            }
-        case .goals:
-            if tag > 0 {
-                onGoalTapped?(Int64(tag))
-            } else {
-                onNewGoalTapped?()
-            }
+
+        if let cell = collectionView.cellForItem(at: indexPath) as? StickerCell {
+            onStickerTapped?(Int64(cell.tag))
+        } else if (collectionView.cellForItem(at: indexPath) as? NewStickerCell) != nil {
+            onNewStickerTapped?()
+        } else if let cell = collectionView.cellForItem(at: indexPath) as? GoalCell {
+            onGoalTapped?(Int64(cell.tag))
+        } else if (collectionView.cellForItem(at: indexPath) as? NewGoalCell) != nil {
+            onNewGoalTapped?()
+        } else if (collectionView.cellForItem(at: indexPath) as? GoalsLibraryCell) != nil {
+            onGoalsExamplesTapped?()
         }
     }
 
@@ -228,6 +234,12 @@ extension StickersViewController: UICollectionViewDelegate {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.newGoalCell, for: path
             ) as? NewGoalCell else { return UICollectionViewCell() }
+            return cell
+
+        case .fromLibrary:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.goalsExamplesCell, for: path
+            ) as? GoalsLibraryCell else { return UICollectionViewCell() }
             return cell
         }
     }
@@ -364,6 +376,9 @@ fileprivate struct Specs {
 
         /// No goals cell identifier
         static let noGoalsCell = "NoGoalsCell"
+
+        /// Goals examples cell identifier
+        static let goalsExamplesCell = "GoalsLibraryCell"
 
         /// Custom supplementary header identifier and kind
         static let header = "stickers-header-element"

@@ -24,27 +24,20 @@ class Language {
 
     /// Sticker usage description
     /// For example - "Sticker has been used 100 times. Last time - January 1"
-    static func stickerUsageDescription(_ sticker: Stamp) -> String {
-        guard sticker.count > 0 else {
-            return "sticker_not_used_yet".localized
+    static func stickerUsageDescription(_ count: Int, lastUsed: Date?) -> String {
+        guard count > 0,
+            let lastDate = lastUsed else {
+            return "sticker_used_0_text".localized
         }
 
-        var result = ""
-        if sticker.count > 1 {
-            result += "sticker_used_x_times".localized(sticker.count)
-        } else {
-            result += "sticker_used_1_time".localized
-        }
-            
-        if let last = sticker.lastUsed {
-            let df = DateFormatter()
-            df.dateStyle = .medium
-            result += ", " + "last_time_date".localized(df.string(from: last))
-        } else {
-            result += "."
-        }
+        let df = DateFormatter()
+        df.dateStyle = .medium
 
-        return result
+        if count > 1 {
+            return "sticker_used_x_text".localized(count, df.string(from: lastDate))
+        } else {
+            return "sticker_used_1_text".localized(df.string(from: lastDate))
+        }
     }
     
     /// Description for the goal current progress

@@ -90,6 +90,11 @@
 		F27BC98525B68D7F00B58087 /* GoalEditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC98425B68D7F00B58087 /* GoalEditData.swift */; };
 		F27BC99025B7DF3A00B58087 /* Theme+Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC98E25B7DF3A00B58087 /* Theme+Fonts.swift */; };
 		F27BC99125B7DF3A00B58087 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC98F25B7DF3A00B58087 /* Theme.swift */; };
+		F27E552725D0418700B78A95 /* StickerUsedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27E552525D0418700B78A95 /* StickerUsedCell.swift */; };
+		F27E552825D0418700B78A95 /* StickerUsedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F27E552625D0418700B78A95 /* StickerUsedCell.xib */; };
+		F27E552C25D041DB00B78A95 /* StickerUsedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27E552B25D041DB00B78A95 /* StickerUsedData.swift */; };
+		F27E554925D0B06B00B78A95 /* GoalsLibraryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F27E554725D0B06B00B78A95 /* GoalsLibraryCell.xib */; };
+		F27E554A25D0B06B00B78A95 /* GoalsLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27E554825D0B06B00B78A95 /* GoalsLibraryCell.swift */; };
 		F280878D24C6BD00003E864E /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280878C24C6BD00003E864E /* TodayViewController.swift */; };
 		F282B4E32591A856000BC92B /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F282B4E62591A875000BC92B /* DayHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */; };
@@ -150,6 +155,14 @@
 		F2B4762B23DBDFEF0076BFDC /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F2B4762A23DBDFEF0076BFDC /* GRDB */; };
 		F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762C23DC1B440076BFDC /* AppDatabase.swift */; };
 		F2B4763023DCF9DE0076BFDC /* StoredDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */; };
+		F2B5F46B25CF58CF0051E8C9 /* GoalExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F45725CF58CF0051E8C9 /* GoalExampleCell.swift */; };
+		F2B5F46C25CF58CF0051E8C9 /* GoalExampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B5F45825CF58CF0051E8C9 /* GoalExampleCell.xib */; };
+		F2B5F46D25CF58CF0051E8C9 /* GoalExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F45A25CF58CF0051E8C9 /* GoalExampleData.swift */; };
+		F2B5F46F25CF58CF0051E8C9 /* GoalsLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F45D25CF58CF0051E8C9 /* GoalsLibraryViewController.swift */; };
+		F2B5F47025CF58CF0051E8C9 /* GoalsLibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F45E25CF58CF0051E8C9 /* GoalsLibraryPresenter.swift */; };
+		F2B5F47225CF58CF0051E8C9 /* GoalsLibrary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B5F46025CF58CF0051E8C9 /* GoalsLibrary.storyboard */; };
+		F2B5F47525CF58CF0051E8C9 /* GoalsLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */; };
+		F2B5F47625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */; };
 		F2B7D35F244C9B3A00C94E63 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D35E244C9B3A00C94E63 /* StringExtensions.swift */; };
 		F2C493242430172D00E997BD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493232430172D00E997BD /* NotificationManager.swift */; };
 		F2C493262430179500E997BD /* LocalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493252430179500E997BD /* LocalSettings.swift */; };
@@ -310,6 +323,11 @@
 		F27BC98425B68D7F00B58087 /* GoalEditData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalEditData.swift; sourceTree = "<group>"; };
 		F27BC98E25B7DF3A00B58087 /* Theme+Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Fonts.swift"; sourceTree = "<group>"; };
 		F27BC98F25B7DF3A00B58087 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		F27E552525D0418700B78A95 /* StickerUsedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerUsedCell.swift; sourceTree = "<group>"; };
+		F27E552625D0418700B78A95 /* StickerUsedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StickerUsedCell.xib; sourceTree = "<group>"; };
+		F27E552B25D041DB00B78A95 /* StickerUsedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerUsedData.swift; sourceTree = "<group>"; };
+		F27E554725D0B06B00B78A95 /* GoalsLibraryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalsLibraryCell.xib; sourceTree = "<group>"; };
+		F27E554825D0B06B00B78A95 /* GoalsLibraryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryCell.swift; sourceTree = "<group>"; };
 		F280878C24C6BD00003E864E /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		F282B4F925928FB9000BC92B /* DaysHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysHeaderView.swift; sourceTree = "<group>"; };
 		F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyAwardsView.swift; sourceTree = "<group>"; };
@@ -367,6 +385,14 @@
 		F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverList.swift; sourceTree = "<group>"; };
 		F2B4762C23DC1B440076BFDC /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredDiary.swift; sourceTree = "<group>"; };
+		F2B5F45725CF58CF0051E8C9 /* GoalExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalExampleCell.swift; sourceTree = "<group>"; };
+		F2B5F45825CF58CF0051E8C9 /* GoalExampleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalExampleCell.xib; sourceTree = "<group>"; };
+		F2B5F45A25CF58CF0051E8C9 /* GoalExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalExampleData.swift; sourceTree = "<group>"; };
+		F2B5F45D25CF58CF0051E8C9 /* GoalsLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryViewController.swift; sourceTree = "<group>"; };
+		F2B5F45E25CF58CF0051E8C9 /* GoalsLibraryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryPresenter.swift; sourceTree = "<group>"; };
+		F2B5F46025CF58CF0051E8C9 /* GoalsLibrary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoalsLibrary.storyboard; sourceTree = "<group>"; };
+		F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryView.swift; sourceTree = "<group>"; };
+		F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2B7D35E244C9B3A00C94E63 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		F2C493232430172D00E997BD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		F2C493252430179500E997BD /* LocalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
@@ -542,6 +568,7 @@
 				F20D1F9424142A1700FB5000 /* StickerView_Old.swift */,
 				F21F150225C107A800DE5C1B /* StickerView.swift */,
 				F23CF44E25851C140048BA74 /* GoalAwardView.swift */,
+				F23CF3DD2582BB0E0048BA74 /* StickersHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -571,7 +598,6 @@
 			children = (
 				F23CF39625829B500048BA74 /* Stickers.storyboard */,
 				F23CF38C25829B500048BA74 /* Models */,
-				F23CF3DC2582BB0E0048BA74 /* Views */,
 				F23CF38325829B500048BA74 /* Cells */,
 				F23CF39B25829B500048BA74 /* Protocols */,
 				F23CF39325829B500048BA74 /* Implementation */,
@@ -621,14 +647,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		F23CF3DC2582BB0E0048BA74 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F23CF3DD2582BB0E0048BA74 /* StickersHeaderView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		F24B07C724C547C300FFD798 /* Today */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +667,8 @@
 				F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */,
 				F23CF3F62582E86E0048BA74 /* NewGoalCell.xib */,
 				F23CF3F72582E86E0048BA74 /* NewGoalCell.swift */,
+				F27E554725D0B06B00B78A95 /* GoalsLibraryCell.xib */,
+				F27E554825D0B06B00B78A95 /* GoalsLibraryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -927,12 +947,60 @@
 				F26596DF2596AF1300B10B76 /* Recap */,
 				F23CF38225829B500048BA74 /* Stickers-Goals */,
 				F295336D25B61522003CA002 /* Goal */,
+				F2B5F45125CF58CF0051E8C9 /* Goals Library */,
 				F2FD4DAE25BC88C6005819A0 /* Select Stickers */,
 				F2FD4E0325BDCD41005819A0 /* Sticker */,
 				F2A93F8325812881006C88F8 /* Stats */,
 				F2A99D2A2439346C00D3CF1D /* Options */,
 			);
 			path = "Application Pages";
+			sourceTree = "<group>";
+		};
+		F2B5F45125CF58CF0051E8C9 /* Goals Library */ = {
+			isa = PBXGroup;
+			children = (
+				F2B5F46025CF58CF0051E8C9 /* GoalsLibrary.storyboard */,
+				F2B5F45925CF58CF0051E8C9 /* Models */,
+				F2B5F45225CF58CF0051E8C9 /* Cells */,
+				F2B5F46325CF58CF0051E8C9 /* Protocols */,
+				F2B5F45C25CF58CF0051E8C9 /* Implementation */,
+			);
+			path = "Goals Library";
+			sourceTree = "<group>";
+		};
+		F2B5F45225CF58CF0051E8C9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F2B5F45825CF58CF0051E8C9 /* GoalExampleCell.xib */,
+				F2B5F45725CF58CF0051E8C9 /* GoalExampleCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F2B5F45925CF58CF0051E8C9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F2B5F45A25CF58CF0051E8C9 /* GoalExampleData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F2B5F45C25CF58CF0051E8C9 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				F2B5F45D25CF58CF0051E8C9 /* GoalsLibraryViewController.swift */,
+				F2B5F45E25CF58CF0051E8C9 /* GoalsLibraryPresenter.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		F2B5F46325CF58CF0051E8C9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */,
+				F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		F2C493222430171000E997BD /* Notifications */ = {
@@ -1133,6 +1201,8 @@
 				F2FD4E0625BDCD41005819A0 /* StickerDetailsCell.swift */,
 				F2FD4E0525BDCD41005819A0 /* StickerDetailsEditCell.xib */,
 				F2FD4E0825BDCD41005819A0 /* StickerDetailsEditCell.swift */,
+				F27E552625D0418700B78A95 /* StickerUsedCell.xib */,
+				F27E552525D0418700B78A95 /* StickerUsedCell.swift */,
 				F2FD4E0725BDCD41005819A0 /* StickerDetailsDeleteButtonCell.xib */,
 				F2FD4E0A25BDCD41005819A0 /* StickerDetailsDeleteButtonCell.swift */,
 			);
@@ -1143,6 +1213,7 @@
 			isa = PBXGroup;
 			children = (
 				F2FD4E0C25BDCD41005819A0 /* StickerDetailsElement.swift */,
+				F27E552B25D041DB00B78A95 /* StickerUsedData.swift */,
 				F2FD4E0D25BDCD41005819A0 /* StickerViewData.swift */,
 				F2FD4E0E25BDCD41005819A0 /* StickerEditData.swift */,
 			);
@@ -1299,6 +1370,8 @@
 				F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */,
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
+				F27E552825D0418700B78A95 /* StickerUsedCell.xib in Resources */,
+				F2B5F47225CF58CF0051E8C9 /* GoalsLibrary.storyboard in Resources */,
 				F21162C725C9FD6700E4D3AD /* GoalReachedCell.xib in Resources */,
 				F295336625B60CEB003CA002 /* Sticker.storyboard in Resources */,
 				F29804D325C7B28500952AAF /* Localizable.strings in Resources */,
@@ -1315,6 +1388,7 @@
 				F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */,
 				F23CF3FE2582EC8B0048BA74 /* NewStickerCell.xib in Resources */,
 				F2A93FD2258164B2006C88F8 /* MonthBoxCell.xib in Resources */,
+				F2B5F46C25CF58CF0051E8C9 /* GoalExampleCell.xib in Resources */,
 				F2EE4AC425C5CBC9004FB0F2 /* Developer.storyboard in Resources */,
 				F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */,
 				F23CF3F82582E86E0048BA74 /* NewGoalCell.xib in Resources */,
@@ -1324,6 +1398,7 @@
 				F2F3BE20257C831000A926E9 /* DayHeaderCell.xib in Resources */,
 				F29533A125B6611B003CA002 /* GoalDetailsEditCell.xib in Resources */,
 				F295338D25B62F7D003CA002 /* Goal.storyboard in Resources */,
+				F27E554925D0B06B00B78A95 /* GoalsLibraryCell.xib in Resources */,
 				F23CF4242583E8720048BA74 /* NoGoalsCell.xib in Resources */,
 				F2C4944223D2CBC800EAF9CC /* Main.storyboard in Resources */,
 			);
@@ -1356,6 +1431,7 @@
 				F29533A225B6611B003CA002 /* GoalDetailsEditCell.swift in Sources */,
 				F2FD4DC225BC8B01005819A0 /* SelectStickerData.swift in Sources */,
 				F2EE4AD425C5CCC2004FB0F2 /* DeveloperPresenter.swift in Sources */,
+				F2B5F47025CF58CF0051E8C9 /* GoalsLibraryPresenter.swift in Sources */,
 				F2F260ED2408BB4500F5CCB9 /* DataSource+Stamp.swift in Sources */,
 				F29B43A025CEFFBF0005ADF5 /* Theme+Colors.swift in Sources */,
 				F26596F12596AF1300B10B76 /* AwardRecapData.swift in Sources */,
@@ -1392,6 +1468,7 @@
 				BC5643FB246B1C8300942066 /* Direction.swift in Sources */,
 				F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */,
 				F2FD4E2425BDCD42005819A0 /* StickerPresenterProtocol.swift in Sources */,
+				F27E552C25D041DB00B78A95 /* StickerUsedData.swift in Sources */,
 				F295337B25B6165C003CA002 /* GoalViewController.swift in Sources */,
 				F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */,
 				F27782FB25C501E300C68F7A /* OptionsPresenterProtocol.swift in Sources */,
@@ -1408,6 +1485,7 @@
 				F2FD4E2125BDCD42005819A0 /* StickerViewController.swift in Sources */,
 				F23CF3DE2582BB0E0048BA74 /* StickersHeaderView.swift in Sources */,
 				F27782F725C501E300C68F7A /* OptionsTableModel.swift in Sources */,
+				F27E554A25D0B06B00B78A95 /* GoalsLibraryCell.swift in Sources */,
 				F295337A25B6165C003CA002 /* GoalPresenter.swift in Sources */,
 				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
@@ -1416,6 +1494,7 @@
 				BC5643F1246B0F1900942066 /* Goal.swift in Sources */,
 				F247542723E74C49006A13C3 /* StoredAward.swift in Sources */,
 				F2A93FB12581314C006C88F8 /* WeekLineData.swift in Sources */,
+				F2B5F46B25CF58CF0051E8C9 /* GoalExampleCell.swift in Sources */,
 				F2FD4E1F25BDCD42005819A0 /* StickerEditData.swift in Sources */,
 				BC5643FF246B1E1F00942066 /* StoredDirection.swift in Sources */,
 				F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */,
@@ -1427,6 +1506,7 @@
 				BC1E1EF8246C532300E05C8A /* DataProvider.swift in Sources */,
 				F2FD4E1A25BDCD42005819A0 /* StickerDetailsEditCell.swift in Sources */,
 				F2EE4ACC25C5CC44004FB0F2 /* DeveloperView.swift in Sources */,
+				F2B5F47625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift in Sources */,
 				BC564409246B2F3900942066 /* GoalListener.swift in Sources */,
 				BC5643EC246B0E2900942066 /* DataRepository.swift in Sources */,
 				F295337425B61522003CA002 /* GoalPresenterProtocol.swift in Sources */,
@@ -1456,10 +1536,12 @@
 				F2A93F90258128E5006C88F8 /* StatsViewController.swift in Sources */,
 				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */,
+				F2B5F47525CF58CF0051E8C9 /* GoalsLibraryView.swift in Sources */,
 				F2EE4ADA25C5F84A004FB0F2 /* BaseTableViewController.swift in Sources */,
 				F21162C625C9FD6700E4D3AD /* GoalReachedCell.swift in Sources */,
 				F26596F32596AF1300B10B76 /* RecapPresenterProtocol.swift in Sources */,
 				F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */,
+				F27E552725D0418700B78A95 /* StickerUsedCell.swift in Sources */,
 				F2FD4E2325BDCD42005819A0 /* StickerCoordinatorProtocol.swift in Sources */,
 				F2EE4ABE25C5BABF004FB0F2 /* OptionsDataSource.swift in Sources */,
 				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
@@ -1470,6 +1552,7 @@
 				F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
 				F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */,
+				F2B5F46F25CF58CF0051E8C9 /* GoalsLibraryViewController.swift in Sources */,
 				F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */,
 				F23CF3B225829B510048BA74 /* StickersPresenterProtocol.swift in Sources */,
 				F251F8BD25BFBBEC0042B1DA /* SelectStickerElement.swift in Sources */,
@@ -1490,6 +1573,7 @@
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2FD4E2025BDCD42005819A0 /* StickerCoordinator.swift in Sources */,
 				F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */,
+				F2B5F46D25CF58CF0051E8C9 /* GoalExampleData.swift in Sources */,
 				F29804CC25C7A52500952AAF /* Language.swift in Sources */,
 				BC1E1EFA246C58F500E05C8A /* GRDBDataProvider.swift in Sources */,
 				F2C847A125C727DB00A2C2F2 /* DataSource+Demo.swift in Sources */,
@@ -1722,7 +1806,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.3;
+				CURRENT_PROJECT_VERSION = 1.2.4;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1743,7 +1827,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.3;
+				CURRENT_PROJECT_VERSION = 1.2.4;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

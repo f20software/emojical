@@ -119,7 +119,7 @@ class NotificationManager {
             nextNotificationDate = nextNotificationDate.byAddingDays(1)
         }
         else {
-            let stickers = Storage.shared.repository.stampsFor(Date())
+            let stickers = Storage.shared.repository.stampsFor(day: Date())
             content = todayReminderContent(todayStamps: stickers.map({
                 return $0.name.isEmpty ? $0.label : $0.name
             }))

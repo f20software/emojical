@@ -27,7 +27,7 @@ extension DataSource {
     func stampByLabel(label: String) -> Stamp? {
         do {
             return try dbQueue.read { db -> StoredStamp? in
-                let request = StoredStamp.filter(StoredStamp.Columns.label == label)
+                let request = StoredStamp.filter(StoredStamp.Columns.label == label && StoredStamp.Columns.deleted == false)
                 return try request.fetchOne(db)
             }?.toModel()
         }
@@ -153,5 +153,12 @@ extension DataSource {
             }
             catch {}
         }
+
+        // Update statistics for each sticker
+        let stickersIds: [Int64] = stickers.compactMap({
+            return stampByLabel(label: String($0.0))?.id
+        })
+        
+        updateStatsForStamps(stickersIds)
     }
 }

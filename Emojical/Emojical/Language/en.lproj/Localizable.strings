@@ -8,19 +8,23 @@
 
 // Sticker usage
 
-"sticker_not_used_yet" = "Sticker hasn't been used yet.";
+"sticker_used_0_text" = "Sticker used|never";
 
-"sticker_used_x_times" = "Sticker has been used %d times";
+"sticker_used_1_text" = "Sticker used|once|on %@";
 
-"sticker_used_1_time" = "Sticker has been used once";
+"sticker_used_x_text" = "Sticker used|%d times|last time:\n%@";
 
-"last_time_date" = "last time - %@.";
-
-"sticker_used_no_goal" = "You haven't created a goal yet with this sticker.";
+"sticker_used_no_goal" = "This sticker is not directly assigned to any goal.";
 
 "sticker_used_1_goal" = "Sticker is used in the \'%@\' goal.";
 
 "sticker_used_x_goals" = "Sticker is used in %@ goals.";
+
+"sticker_average_too_early" = "On average|-";
+
+"sticker_average_per_week" = "On average|%@|per week";
+
+"sticker_average_per_month" = "On average|%@|per month";
 
 // Goal reaching
 
@@ -110,6 +114,8 @@
 
 "goal_title" = "Goal...";
 
+"create_goal_from_examples_title" = "Create Goal from Examples...";
+
 "dismiss_button" = "Dismiss";
 
 "weekly_recap_title" = "Weekly Recap";
@@ -122,6 +128,8 @@
 
 "goals_title" = "Goals";
 
+"goals_library_title" = "Goals Examples";
+
 "stats_title" = "Stats";
 
 "options_title" = "Options";
@@ -132,9 +140,13 @@
 
 "no_goals_description" = "There are no goals yet. We can help you to make yourself better, just create new goal and track your progress.";
 
+"looking_for_examples" = "If you're not sure which goals you can create, take a look at few examples we put together.";
+
 "delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
 
 "create_goal_button" = "Create Goal";
+
+"goals_examples_button" = "Goals Examples";
 
 "delete_goal_button" = "Delete Goal";
 
@@ -222,6 +234,6 @@
 
 "cancel_button" = "Cancel";
 
-"sticker_delete_confirmation" = "%@ Are you sure you want to delete it?";
+"sticker_delete_confirmation" = "This sticker has been used few times. Are you sure you want to delete it?";
 
 

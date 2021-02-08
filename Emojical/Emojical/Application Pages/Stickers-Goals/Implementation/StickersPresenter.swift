@@ -86,14 +86,14 @@ class StickersPresenter: StickersPresenterProtocol {
 
     private func setupView() {
         view?.onGoalTapped = { [weak self] goalId in
-            guard let goal = self?.repository.goalById(goalId) else { return }
+            guard let goal = self?.repository.goalBy(id: goalId) else { return }
             self?.coordinator?.editGoal(goal)
         }
         view?.onNewGoalTapped = { [weak self] in
             self?.coordinator?.newGoal()
         }
         view?.onStickerTapped = { [weak self] stickerId in
-            guard let sticker = self?.repository.stampById(stickerId) else { return }
+            guard let sticker = self?.repository.stampBy(id: stickerId) else { return }
             self?.coordinator?.editSticker(sticker)
         }
         view?.onNewStickerTapped = { [weak self] in
@@ -101,6 +101,9 @@ class StickersPresenter: StickersPresenterProtocol {
         }
         view?.onAddButtonTapped = { [weak self] in
             self?.confirmAddAction()
+        }
+        view?.onGoalsExamplesTapped = { [weak self] in
+            self?.coordinator?.newGoalFromExamples()
         }
     }
     
@@ -118,7 +121,7 @@ class StickersPresenter: StickersPresenterProtocol {
         let newGoalsData: [GoalData] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }
 
-            let stamp = self.repository.stampById($0.stamps.first)
+            let stamp = self.repository.stampBy(id: $0.stamps.first)
             return GoalData(
                 goalId: goalId,
                 name: $0.name,
@@ -160,6 +163,11 @@ class StickersPresenter: StickersPresenterProtocol {
         confirm.addAction(
             UIAlertAction(title: "goal_title".localized, style: .default, handler: { (_) in
                 self.coordinator?.newGoal()
+            })
+        )
+        confirm.addAction(
+            UIAlertAction(title: "create_goal_from_examples_title".localized, style: .default, handler: { (_) in
+                self.coordinator?.newGoalFromExamples()
             })
         )
         confirm.addAction(

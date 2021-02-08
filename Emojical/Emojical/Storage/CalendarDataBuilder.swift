@@ -36,7 +36,8 @@ class CalendarDataBuilder {
 
     /// Retrieve monthly and weeky awards for the week
     func awards(for week: CalendarHelper.Week) -> [Award] {
-        return monthAwards(forWeek: week) + weekAwards(forWeek: week)
+        return repository
+            .awardsInInterval(from: week.firstDay, to: week.lastDay)
     }
     
     // MARK: - Navigation viability
@@ -226,9 +227,36 @@ class CalendarDataBuilder {
         }
     }
     
-    func goalHistory(forGoal id: Int64) -> GoalReachedData? {
-        guard let goal = repository.goalById(id) else { return nil }
-        guard let firstEntryDate = repository.getFirstDiaryDate() else { return nil }
+    /// Builds history for a given sticker (including how many time it's been reached and what is the average
+    func historyFor(sticker id: Int64?) -> StickerUsedData? {
+        guard let id = id,
+              let sticker = repository.stampBy(id: id),
+              let first = repository.getFirstDateFor(sticker: id) else { return nil }
+        
+        let weeksFromToday = abs(Date().distance(to: first) / (7 * 24 * 60 * 60))
+
+        var average = Double(sticker.count) / weeksFromToday
+        var averageText = "sticker_average_per_week".localized(String(format: "%.1f", average))
+
+        if weeksFromToday < 2 {
+            averageText = "sticker_average_too_early".localized
+        } else if average < 1 {
+            // Update from weekly average to monthly
+            average = average * (30 / 7)
+            averageText = "sticker_average_per_month".localized(String(format: "%.1f", average))
+        }
+        
+        return StickerUsedData(
+            count: sticker.count,
+            lastUsed: sticker.lastUsed,
+            onAverage: averageText
+        )
+    }
+
+    /// Builds history for a give goal (including how many time it's been reached and what is the current streak
+    func historyFor(goal id: Int64?) -> GoalReachedData? {
+        guard let goal = repository.goalBy(id: id),
+            let first = repository.getFirstDiaryDate() else { return nil }
         
         var history = [GoalHistoryPoint]()
         let historyLimit = 20
@@ -238,8 +266,8 @@ class CalendarDataBuilder {
         switch goal.period {
         case .week:
             var week = CalendarHelper.Week(Date().byAddingWeek(-1))
-            while (history.count < historyLimit) && (week.lastDay > firstEntryDate) {
-                if let award = repository.awardsForDateInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id }) {
+            while (history.count < historyLimit) && (week.lastDay > first) {
+                if let award = repository.awardsInInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id }) {
                     history.append(
                         GoalHistoryPoint(
                             weekStart: week.firstDay,
@@ -268,8 +296,8 @@ class CalendarDataBuilder {
             
         case .month:
             var month = CalendarHelper.Month(Date().byAddingMonth(-1))
-            while (history.count < historyLimit) && (month.lastDay > firstEntryDate) {
-                if let award = repository.awardsForDateInterval(from: month.firstDay, to: month.lastDay).first(where: { $0.goalId == goal.id }) {
+            while (history.count < historyLimit) && (month.lastDay > first) {
+                if let award = repository.awardsInInterval(from: month.firstDay, to: month.lastDay).first(where: { $0.goalId == goal.id }) {
                     history.append(
                         GoalHistoryPoint(
                             weekStart: month.firstDay,
@@ -301,7 +329,7 @@ class CalendarDataBuilder {
         
         // Check current week to see if we need to increase the streak
         let week = CalendarHelper.Week(Date())
-        if (repository.awardsForDateInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id && $0.reached == true }) != nil) {
+        if (repository.awardsInInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id && $0.reached == true }) != nil) {
             streak += 1
         }
         
@@ -319,29 +347,8 @@ class CalendarDataBuilder {
     func weekStickers(week: CalendarHelper.Week) -> [[Stamp]] {
         return (0...6)
         .map({
-//            return Date(year: week.year, month: week.month, weekOfYear: week.weekOfYear, weekDay: $0)
-//                .byAddingDays(CalendarHelper.weekStartMonday ? 1 : 0)
-            return week.firstDay.byAddingDays($0)
+            let date = week.firstDay.byAddingDays($0)
+            return repository.stampsFor(day: date)
         })
-        .map({ date in
-            repository.stampsIdsForDay(date).compactMap { repository.stampById($0) }
-        })
-    }
-    
-    // Returns a list of awards earned on a given week
-    private func monthAwards(forWeek week: CalendarHelper.Week) -> [Award] {
-        return repository
-            .monthlyAwardsForInterval(start: week.firstDay, end: week.lastDay)
-            .sorted { (a1, a2) -> Bool in
-                return a1.goalId < a2.goalId
-            }
-    }
-    
-    private func weekAwards(forWeek week: CalendarHelper.Week) -> [Award] {
-        return repository
-            .weeklyAwardsForInterval(start: week.firstDay, end: week.lastDay)
-            .sorted { (a1, a2) -> Bool in
-                return a1.goalId < a2.goalId
-            }
     }
 }

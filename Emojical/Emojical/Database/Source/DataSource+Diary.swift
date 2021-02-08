@@ -25,6 +25,21 @@ extension DataSource {
         return nil
     }
 
+    /// Date of the first time sticker has been used
+    func getFirstDateFor(sticker id: Int64) -> Date? {
+        do {
+            let diary = try dbQueue.read { db -> StoredDiary? in
+                let request = StoredDiary.filter(StoredDiary.Columns.stampId == id).order(StoredDiary.Columns.date)
+                return try request.fetchOne(db)
+            }
+            if diary != nil {
+                return Date(yyyyMmDd: diary!.date)
+            }
+        }
+        catch { }
+        return nil
+    }
+
     func getLastDiaryDate() -> Date? {
         do {
             let diary = try dbQueue.read { db -> StoredDiary? in

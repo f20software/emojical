@@ -31,40 +31,34 @@ protocol DataRepository: class {
     func diaryForDateInterval(from: Date, to: Date, stampId: Int64) -> [Diary]
 
     /// Goals by period
-    func goalsByPeriod(_ period: Period) -> [Goal]
+    func goalsBy(period: Period) -> [Goal]
     
     /// Awards for date interval
-    func awardsForDateInterval(from: Date, to: Date) -> [Award]
+    func awardsInInterval(from: Date, to: Date) -> [Award]
     
-    /// Stamp Ids for a day (will be stored in Diary table)
-    func stampsIdsForDay(_ day: Date) -> [Int64]
+    /// Stamp Ids for a day from Diary table
+    func stampsIdsFor(day: Date) -> [Int64]
     
     /// Stamps for a day
-    func stampsFor(_ day: Date) -> [Stamp]
+    func stampsFor(day: Date) -> [Stamp]
 
-    /// Only favorites stamps - used in day view
-    func favoriteStamps() -> [Stamp]
-    
-    /// Stamp with given ID
-    func stampById(_ id: Int64?) -> Stamp?
-    
-    /// Retrieves list of monthly awards for a given time interval
-    func monthlyAwardsForInterval(start: Date, end: Date) -> [Award]
-    
-    /// Retrieves list of weekly awards for a given time interval
-    func weeklyAwardsForInterval(start: Date, end: Date) -> [Award]
+    /// Stamp by a given Id
+    func stampBy(id: Int64?) -> Stamp?
     
     /// Collect all stamp labels by iterating through Ids stored in the goal object
-    func stampLabelsFor(_ goal: Goal) -> [String]
+    func stampLabelsFor(goal: Goal) -> [String]
     
     /// Date of the first diary entry
     func getFirstDiaryDate() -> Date?
     
+    /// Date of the first time sticker has been used
+    func getFirstDateFor(sticker id: Int64) -> Date?
+    
     /// Date of the last diary entry
     func getLastDiaryDate() -> Date?
     
-    /// Goal with specified ID
-    func goalById(_ identifier: Int64) -> Goal?
+    /// Goal by specified Id
+    func goalBy(id: Int64?) -> Goal?
     
     /// List of goals particular stamp is used in
     func goalsUsedStamp(_ stampId: Int64?) -> [Goal]
@@ -92,6 +86,12 @@ protocol DataRepository: class {
     /// Update array of stamps for a given day
     func setStampsForDay(_ day: Date, stamps: [Int64])
     
+    /// Remove sticker from list of goals
+    func removeSticker(_ stampId: Int64, from goalIds: [Int64])
+
+    /// Deletes awards for a given goal and given time internal
+    func deleteAwards(from: Date, to: Date, goalId: Int64)
+
     // MARK: - Backup
     
     /// Saves database content to a specified file URL
@@ -110,6 +110,7 @@ protocol DataRepository: class {
 }
 
 extension DataRepository {
+    
     func allStamps() -> [Stamp] {
         allStamps(includeDeleted: false)
     }

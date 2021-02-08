@@ -93,7 +93,7 @@ class AwardManager {
     }
 
     func recalculateAwardsForMonth(_ date: Date) {
-        let goals = repository.goalsByPeriod(.month)
+        let goals = repository.goalsBy(period: .month)
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
         
@@ -130,7 +130,7 @@ class AwardManager {
             
         // Load existing awards from the database
         let deleteAwards =
-            repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
+            repository.awardsInInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
 
@@ -141,7 +141,7 @@ class AwardManager {
     }
 
     func recalculateAwardsForWeek(_ date: Date) {
-        let goals = repository.goalsByPeriod(.week)
+        let goals = repository.goalsBy(period: .week)
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
 
@@ -178,7 +178,7 @@ class AwardManager {
             
         // Load existing awards from the database
         let deleteAwards =
-            repository.awardsForDateInterval(from: start, to: end).filter { (a) -> Bool in
+            repository.awardsInInterval(from: start, to: end).filter { (a) -> Bool in
             return goalIds.contains(a.goalId)
         }
 

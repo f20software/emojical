@@ -102,7 +102,7 @@ class TodayPresenter: TodayPresenterProtocol {
                 (untilToday < -Specs.editingBackDays)
 
             // Update current day stamps from the repository
-            selectedDayStickers = repository.stampsIdsForDay(selectedDay)
+            selectedDayStickers = repository.stampsIdsFor(day: selectedDay)
         }
     }
 
@@ -329,9 +329,9 @@ class TodayPresenter: TodayPresenterProtocol {
     
     private func recapData() -> [AwardRecapData] {
         return awards.compactMap({
-            guard let goal = repository.goalById($0.goalId) else { return nil }
+            guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
 
-            let stamp = repository.stampById(goal.stamps.first)
+            let stamp = repository.stampBy(id: goal.stamps.first)
             let goalAwardData = GoalAwardData(
                 award: $0,
                 goal: goal,
@@ -357,7 +357,7 @@ class TodayPresenter: TodayPresenterProtocol {
         var data = [GoalAwardData]()
         if week.isCurrentWeek {
             data = goals.compactMap({
-                let stamp = repository.stampById($0.stamps.first)
+                let stamp = repository.stampBy(id: $0.stamps.first)
                 return GoalAwardData(
                     goal: $0,
                     progress: awardManager.currentProgressFor($0),
@@ -369,8 +369,8 @@ class TodayPresenter: TodayPresenterProtocol {
         } else {
             data = awards.compactMap({
                 guard $0.reached == true else { return nil }
-                guard let goal = repository.goalById($0.goalId) else { return nil }
-                let stamp = repository.stampById(goal.stamps.first)
+                guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
+                let stamp = repository.stampBy(id: goal.stamps.first)
                 return GoalAwardData(
                     award: $0,
                     goal: goal,

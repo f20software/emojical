@@ -85,11 +85,6 @@ class TodayViewController: UIViewController {
     
     // MARK: - TodayView callback properties
     
-    /// Return UIViewController instance (so we can present alert stuff from Presenter class)
-    var viewController: UIViewController? {
-        return self
-    }
-    
     /// Is called when user tapped on the stamp in the bottom stamp selector
     var onStampInSelectorTapped: ((Int64) -> Void)?
 

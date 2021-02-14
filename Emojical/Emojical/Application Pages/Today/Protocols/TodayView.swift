@@ -11,9 +11,6 @@ import UIKit
 
 protocol TodayView: AnyObject {
 
-    /// Return UIViewController instance (so we can present alert stuff from Presenter class)
-    var viewController: UIViewController? { get }
-
     // MARK: - Callbacks
     
     /// User tapped on the stamp in the bottom stamp selector

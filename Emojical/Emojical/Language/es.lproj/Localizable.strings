@@ -206,6 +206,18 @@
 
 "feedback_button" = "Realimentación...";
 
+// Cheer messages when goal is reached
+
+"awesome_title" = "¡Increíble!";
+
+"goal_reached_name" = "Alcanzaste tu meta \"%@\".";
+
+"goal_reached_no_name" = "Has alcanzado tu meta.";
+
+"award_streak_count_description" = "¡Ahora ha ganado este premio %d veces en total y %d veces seguidas! ¡Mantén esa racha!";
+
+"award_count_description" = "Ahora ha ganado este premio %d veces. ¡Intenta repetir esto la próxima semana y comienza una racha!";
+
 // Confirmation / Alert / Messages
 
 "week_recap_title" = "El resumen de la semana está listo";

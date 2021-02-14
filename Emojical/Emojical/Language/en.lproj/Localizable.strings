@@ -208,6 +208,18 @@
 
 "feedback_button" = "Feedback...";
 
+// Cheer messages when goal is reached
+
+"awesome_title" = "Awesome!";
+
+"goal_reached_name" = "You've reached your \"%@\" goal.";
+
+"goal_reached_no_name" = "You've reached your goal.";
+
+"award_streak_count_description" = "You now have earned this award %d times total and %d times in a row! Keep that streak going!";
+
+"award_count_description" = "You now have earned this award %d times. Try to repeat this next week and start a streak!";
+
 // Confirmation / Alert / Messages
 
 "week_recap_title" = "Week Recap is Ready";

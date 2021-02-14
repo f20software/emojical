@@ -8,17 +8,6 @@
 
 import Foundation
 
-/// Conviniece extension to String to capitalize first letter
-extension String {
-    func capitalizingFirstLetter() -> String {
-        return prefix(1).capitalized + dropFirst()
-    }
-
-    mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
-    }
-}
-
 /// This class provides support for building various human readable descriptions for goals, awards etc
 class Language {
 
@@ -252,5 +241,24 @@ class Language {
         } else {
             return "week_recap_message_x_x".localized
         }
+    }
+    
+    /// Positive cheer message when goal is reached. Including award history
+    /// e.g. You've reached your "Goal Name" goal. You now have earned this award 10 times total and 3 times in a row! Keep that streak going!
+    static func positiveCheerMessage(goalName: String?, streak: Int?, count: Int?) -> String {
+        var text = ""
+        if let name = goalName {
+            text = "goal_reached_name".localized(name)
+        } else {
+            text = "goal_reached_no_name".localized
+        }
+
+        if (streak ?? 0) > 1 && (count ?? 0) > 0 {
+            text = text + " " + "award_streak_count_description".localized(count ?? 0, streak ?? 0)
+        } else if (count ?? 0) > 1 {
+            text = text + " " + "award_count_description".localized(count ?? 0)
+        }
+        
+        return text
     }
 }

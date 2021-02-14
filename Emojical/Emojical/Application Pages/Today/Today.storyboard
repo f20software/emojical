@@ -401,11 +401,6 @@
                         <action selector="handleStampSelectorPanning:" destination="tvO-pK-EYQ" id="o5M-2h-XQp"/>
                     </connections>
                 </panGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="has-Jp-hOE">
-                    <connections>
-                        <action selector="handleAwardsRecapPanning:" destination="tvO-pK-EYQ" id="mgW-GX-Rgo"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1715.9420289855075" y="-333.48214285714283"/>
         </scene>
@@ -415,7 +410,7 @@
                 <viewControllerPlaceholder storyboardName="Sticker" referencedIdentifier="newSticker" id="DIf-UA-VLm" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dsR-MV-yLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2314" y="-55"/>
+            <point key="canvasLocation" x="2390" y="-333"/>
         </scene>
     </scenes>
     <resources>

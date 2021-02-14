@@ -1,0 +1,145 @@
+//
+//  CongratsViewController.swift
+//  Emojical
+//
+//  Created by Vladimir Svidersky on 2/13/21.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
+//
+
+import UIKit
+
+class CongratsViewController : UIViewController, CongratsView {
+
+    // MARK: - UI Outlets
+    
+    @IBOutlet weak var plate: UIView!
+    @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var icon: GoalAwardView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+
+    // MARK: - DI
+
+    var presenter: CongratsPresenterProtocol!
+
+    // MARK: - State
+    
+    // MARK: - View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        presenter.onViewDidLoad()
+        configureViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.onViewWillAppear()
+    }
+    
+    // MARK: - CongratsView
+    
+    /// Dismiss button tapped
+    var onDismiss: (() -> Void)? 
+
+    /// Loads awards recap data
+    func loadData(data: CongratsData) {
+        
+        textLabel.text = data.text
+        titleLabel.text = data.title
+
+        icon.text = data.icon.emoji
+        icon.labelColor = data.icon.backgroundColor
+        icon.clockwise = (data.icon.direction == .positive)
+        icon.progress = CGFloat(data.icon.progress)
+        icon.progressColor = data.icon.progressColor
+        icon.setNeedsDisplay()
+    }
+
+    // MARK: - Actions
+    
+    @IBAction func dismissTapped(_ sender: Any) {
+        onDismiss?()
+    }
+
+    // Handling panning gesture for the CongratsView to allow for manual dismiss
+    @IBAction func handlePanning(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.view)
+
+        // Move view down / up if necessary - x coordinate is ignored
+        bottomConstraint.constant = Specs.bottomButtonsMargin - translation.y
+        
+        // When gesture ended - see if passed threshold - dismiss the view otherwise
+        // roll back to the initial state
+        if gesture.state == .ended {
+            if translation.y > Specs.dismissThreshold {
+                onDismiss?()
+            } else {
+                // Rollback and show full stamp selector
+                bounceToInitialState()
+            }
+        }
+    }
+
+    // MARK: - Private helpers
+    
+    private func configureViews() {
+        
+        view.backgroundColor = UIColor.clear
+        
+        dismissButton.setTitle("dismiss_button".localized, for: .normal)
+        dismissButton.titleLabel?.font = Theme.main.fonts.boldButtons
+        
+        titleLabel.font = Theme.main.fonts.listTitle
+        textLabel.font = Theme.main.fonts.listBody
+        
+        plate.backgroundColor = Theme.main.colors.background
+        plate.layer.cornerRadius = 20.0
+
+        plate.layer.shadowRadius = Specs.shadowRadius
+        plate.layer.shadowOpacity = Specs.shadowOpacity
+        plate.layer.shadowColor = Theme.main.colors.shadow.cgColor
+        plate.layer.shadowOffset = Specs.shadowOffset
+
+        icon.progressLineWidth = Specs.progressLineWidth
+        icon.emojiFontSize = Specs.emojiFontSize
+    }
+    
+    func bounceToInitialState() {
+        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
+            options: [.curveEaseInOut], animations:
+        {
+            self.bottomConstraint.constant = Specs.bottomButtonsMargin
+            self.view.layoutIfNeeded()
+        })
+    }
+
+}
+
+// MARK: - Specs
+fileprivate struct Specs {
+    
+    /// Bottom constraint for the initial modal view position
+    static let bottomButtonsMargin: CGFloat = 160.0
+    
+    /// Panning threshold after which view will be dismissed
+    static let dismissThreshold: CGFloat = 250.0
+    
+    /// Shadow radius
+    static let shadowRadius: CGFloat = 8.0
+    
+    /// Shadow opacity
+    static let shadowOpacity: Float = 0.4
+    
+    /// Shadow offset
+    static let shadowOffset = CGSize.zero
+
+    /// Line width for the progress around award icon
+    static let progressLineWidth: CGFloat = 4.0
+    
+    /// Emoji font size for award icon
+    static let emojiFontSize: CGFloat = 48.0
+}

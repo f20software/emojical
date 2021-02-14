@@ -97,7 +97,7 @@ class CongratsViewController : UIViewController, CongratsView {
         textLabel.font = Theme.main.fonts.listBody
         
         plate.backgroundColor = Theme.main.colors.background
-        plate.layer.cornerRadius = 20.0
+        plate.layer.cornerRadius = Specs.modalCornerRadius
 
         plate.layer.shadowRadius = Specs.shadowRadius
         plate.layer.shadowOpacity = Specs.shadowOpacity
@@ -127,6 +127,9 @@ fileprivate struct Specs {
     
     /// Panning threshold after which view will be dismissed
     static let dismissThreshold: CGFloat = 250.0
+    
+    /// Modal corner radius
+    static let modalCornerRadius: CGFloat = 20.0
     
     /// Shadow radius
     static let shadowRadius: CGFloat = 8.0

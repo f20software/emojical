@@ -217,10 +217,8 @@ class TodayPresenter: TodayPresenterProtocol {
             guard let self = self else { return }
 
             let newAwards = self.dataBuilder.awards(for: self.week)
-            
-            // Calculate the different between old and new ones
-//            let oldAs = self.awards.map({ DiffAward(from: $0) })
-//            let newAs = newAwards.map({ DiffAward(from: $0 )})
+            // If this is not initial update when self.awards is empty,
+            // check if new awards were given so we need to show Congrats window
             if self.awards.count > 0 {
                 self.didWeGetAnAward(old: self.awards, new: newAwards)
             }
@@ -449,14 +447,16 @@ class TodayPresenter: TodayPresenterProtocol {
     // congratulate user
     private func didWeGetAnAward(old: [Award], new: [Award]) {
         
-        let newReachedAwards = new.filter({ $0.reached == true })
-        let needCongratulate = newReachedAwards.filter { award in
+        let needCongratulate = new
+            .filter({ $0.reached == true })
+            .filter { award in
             return (old.contains(where: {
                 $0.reached == award.reached && $0.goalId == award.goalId
             }) == false)
         }
         
         guard needCongratulate.count > 0 else { return }
+        // TODO: Add support for when multiple awards are given at the same time
         coordinator?.showCongratsWindow(data: needCongratulate.first!)
     }
 }

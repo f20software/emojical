@@ -15,4 +15,7 @@ protocol TodayCoordinatorProtocol: AnyObject {
 
     /// Navigates to goals / awards recap window
     func showAwardsRecap(data: [AwardRecapData])
+
+    /// Show congratulation window
+    func showCongratsWindow(data: Award)
 }

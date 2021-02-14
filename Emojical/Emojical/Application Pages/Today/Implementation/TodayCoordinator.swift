@@ -61,4 +61,32 @@ class TodayCoordinator: TodayCoordinatorProtocol {
         // Navigate to AwardsRecapViewController
         parentController?.pushViewController(awardsView, animated: true)
     }
+
+    /// Show congratulation window
+    func showCongratsWindow(data: Award) {
+
+        // Instantiate AwardsRecapViewController from the storyboard file
+        guard let congratsView: CongratsViewController = Storyboard.Congrats.initialViewController() else {
+            assertionFailure("Failed to initialize CongratsViewController")
+            return
+        }
+        
+        // Hook up presenter
+        let presenter = CongratsPresenter(
+            data: data,
+            view: congratsView,
+            repository: Storage.shared.repository
+        )
+        congratsView.presenter = presenter
+        congratsView.onDismiss = {
+            congratsView.dismiss(animated: true, completion: nil)
+        }
+        congratsView.modalPresentationStyle = .overFullScreen
+        congratsView.modalTransitionStyle = .flipHorizontal
+
+        // Navigate to AwardsRecapViewController
+        parentController?.present(congratsView, animated: true) {
+            congratsView.modalTransitionStyle = .coverVertical
+        }
+    }
 }

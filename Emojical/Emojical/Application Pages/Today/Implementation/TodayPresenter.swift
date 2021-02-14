@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import AudioToolbox
 
 class TodayPresenter: TodayPresenterProtocol {
 
@@ -218,13 +217,12 @@ class TodayPresenter: TodayPresenterProtocol {
             guard let self = self else { return }
 
             let newAwards = self.dataBuilder.awards(for: self.week)
-            if newAwards.count > self.awards.count {
-                if self.firstTime {
-                    self.firstTime = false
-                } else {
-                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                }
+            // If this is not initial update when self.awards is empty,
+            // check if new awards were given so we need to show Congrats window
+            if self.awards.count > 0 {
+                self.didWeGetAnAward(old: self.awards, new: newAwards)
             }
+            
             self.awards = newAwards
             self.loadAwardsData()
         })
@@ -385,7 +383,6 @@ class TodayPresenter: TodayPresenterProtocol {
     
     private func stampToggled(stampId: Int64) {
         guard locked == false else {
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             return
         }
         
@@ -444,6 +441,23 @@ class TodayPresenter: TodayPresenterProtocol {
         
         // Update view
         loadViewData()
+    }
+    
+    // Handle the situation when new awards are potentially given and
+    // congratulate user
+    private func didWeGetAnAward(old: [Award], new: [Award]) {
+        
+        let needCongratulate = new
+            .filter({ $0.reached == true })
+            .filter { award in
+            return (old.contains(where: {
+                $0.reached == award.reached && $0.goalId == award.goalId
+            }) == false)
+        }
+        
+        guard needCongratulate.count > 0 else { return }
+        // TODO: Add support for when multiple awards are given at the same time
+        coordinator?.showCongratsWindow(data: needCongratulate.first!)
     }
 }
 

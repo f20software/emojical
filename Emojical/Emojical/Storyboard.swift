@@ -20,6 +20,7 @@ enum Storyboard: String {
     case GoalsLibrary
     case Developer
     case Options
+    case Congrats
 
     var instance: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)

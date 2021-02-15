@@ -45,7 +45,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPV-Bk-ngu" userLabel="Separator 2">
-                                <rect key="frame" x="5" y="141.5" width="334" height="1"/>
+                                <rect key="frame" x="5" y="139" width="334" height="1"/>
                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="aDD-bu-XHw"/>
@@ -59,43 +59,47 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJp-yZ-ULG">
-                                <rect key="frame" x="5" y="162.5" width="49.5" height="143.5"/>
+                                <rect key="frame" x="5" y="160" width="49.5" height="146"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fND-s5-WzS">
-                                <rect key="frame" x="5" y="81.5" width="328" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fND-s5-WzS">
+                                <rect key="frame" x="5" y="81.5" width="334" height="37.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ei6-1d-uh6">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="37.5"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ei6-1d-uh6" secondAttribute="height" multiplier="1:1" id="9dU-Nn-mXv"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brh-h2-kaR">
-                                        <rect key="frame" x="48" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="42.5" y="0.0" width="37.5" height="37.5"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cg0-At-bVZ">
-                                        <rect key="frame" x="96" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="85" y="0.0" width="37" height="37.5"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZO7-F1-ab4">
-                                        <rect key="frame" x="144" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="127" y="0.0" width="37.5" height="37.5"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="te6-91-LF1">
-                                        <rect key="frame" x="192" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="169.5" y="0.0" width="37.5" height="37.5"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4Y-h3-Llb">
-                                        <rect key="frame" x="240" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="212" y="0.0" width="37.5" height="37.5"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7M-lo-MNK">
-                                        <rect key="frame" x="288" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="254.5" y="0.0" width="37" height="37.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wid-3d-Hx8" userLabel="Color7" customClass="GradientView" customModule="Emojical" customModuleProvider="target">
+                                        <rect key="frame" x="296.5" y="0.0" width="37.5" height="37.5"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     </view>
                                 </subviews>
@@ -111,13 +115,14 @@
                                     <constraint firstItem="v4Y-h3-Llb" firstAttribute="height" secondItem="ei6-1d-uh6" secondAttribute="height" id="gMB-e4-eDh"/>
                                     <constraint firstItem="brh-h2-kaR" firstAttribute="width" secondItem="ei6-1d-uh6" secondAttribute="width" id="hiy-YM-anY"/>
                                     <constraint firstItem="cg0-At-bVZ" firstAttribute="height" secondItem="ei6-1d-uh6" secondAttribute="height" id="klA-cB-oad"/>
-                                    <constraint firstAttribute="height" constant="40" id="n7b-Rd-VVK"/>
+                                    <constraint firstItem="wid-3d-Hx8" firstAttribute="width" secondItem="ei6-1d-uh6" secondAttribute="width" id="nt2-DE-kJg"/>
                                     <constraint firstItem="cg0-At-bVZ" firstAttribute="width" secondItem="ei6-1d-uh6" secondAttribute="width" id="sd1-33-QP3"/>
                                     <constraint firstItem="ZO7-F1-ab4" firstAttribute="height" secondItem="ei6-1d-uh6" secondAttribute="height" id="uwU-sy-OqC"/>
+                                    <constraint firstItem="wid-3d-Hx8" firstAttribute="height" secondItem="ei6-1d-uh6" secondAttribute="height" id="uy2-pf-b8l"/>
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sticker Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mag-nW-imb">
-                                <rect key="frame" x="104.5" y="216.5" width="234.5" height="36"/>
+                                <rect key="frame" x="104.5" y="215" width="234.5" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="d9W-7Y-VI6"/>
                                 </constraints>
@@ -194,6 +199,7 @@
                             <constraint firstItem="Mag-nW-imb" firstAttribute="trailing" secondItem="Gz6-Ti-SPo" secondAttribute="trailing" id="dFm-VW-GUm"/>
                             <constraint firstItem="lJp-yZ-ULG" firstAttribute="top" secondItem="bPV-Bk-ngu" secondAttribute="bottom" constant="20" id="dKL-LW-fwM"/>
                             <constraint firstItem="JeA-ND-ZdK" firstAttribute="leading" secondItem="Mag-nW-imb" secondAttribute="leading" id="e7B-gT-v6S"/>
+                            <constraint firstItem="Gz6-Ti-SPo" firstAttribute="trailing" secondItem="fND-s5-WzS" secondAttribute="trailing" id="gas-NP-CmX"/>
                             <constraint firstItem="fND-s5-WzS" firstAttribute="top" secondItem="Gz6-Ti-SPo" secondAttribute="bottom" constant="20" id="rp4-zM-tVM"/>
                             <constraint firstItem="JeA-ND-ZdK" firstAttribute="top" secondItem="91X-AM-rHO" secondAttribute="bottom" constant="10" id="uiW-rM-Zhh"/>
                             <constraint firstItem="IcB-0G-7eP" firstAttribute="centerY" secondItem="9A5-ln-Jli" secondAttribute="centerY" id="v6e-70-iBt"/>
@@ -219,9 +225,10 @@
                 <outlet property="color4" destination="te6-91-LF1" id="nns-qA-jL6"/>
                 <outlet property="color5" destination="v4Y-h3-Llb" id="qFL-vR-yHZ"/>
                 <outlet property="color6" destination="d7M-lo-MNK" id="g0Y-Jf-Oai"/>
-                <outlet property="emoji" destination="IcB-0G-7eP" id="8mF-mk-Yaz"/>
+                <outlet property="customColor" destination="wid-3d-Hx8" id="reR-4D-LG1"/>
+                <outlet property="emojiField" destination="IcB-0G-7eP" id="aGG-fA-PWK"/>
                 <outlet property="emojiLabel" destination="9A5-ln-Jli" id="yS3-1r-aml"/>
-                <outlet property="name" destination="Mag-nW-imb" id="NtJ-j0-wX5"/>
+                <outlet property="nameField" destination="Mag-nW-imb" id="ncK-KF-eK3"/>
                 <outlet property="nameLabel" destination="lJp-yZ-ULG" id="qa3-B4-wqe"/>
                 <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
                 <outlet property="previewLabel" destination="sDc-SW-Xmk" id="STG-Rb-p86"/>

@@ -113,7 +113,6 @@ class StickerViewController : UIViewController, StickerViewProtocol {
 
     /// Dismisses view if it was presented modally
     func dismiss(from mode: PresentationMode) {
-        print("dismiss from presenter")
         switch mode {
         case .modal:
             dismiss(animated: true, completion: nil)
@@ -263,7 +262,7 @@ extension StickerViewController: UICollectionViewDelegate {
             editView?.setPaletteColors(Theme.main.colors.palette)
             editView?.configure(for: data)
             editView?.onValueChanged = { [weak self] in
-                // WTF???? - for some reason previous reference to detailsEditView will
+                // WTF???? - for some reason previous reference to editView will
                 // point to something else...
                 self?.editView = cell
                 self?.onStickerChanged?()

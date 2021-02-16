@@ -63,11 +63,11 @@ class CongratsPresenter: CongratsPresenterProtocol {
             stamp: stamp
         )
 
-        let history = dataBuilder.historyFor(goal: goal.id)
+        let history = dataBuilder.historyFor(goal: goal.id, limit: 12)
         let text = Language.positiveCheerMessage(
             goalName: award.goalName,
-            streak: history?.streak,
-            count: history?.count
+            streak: history?.reached.streak,
+            count: history?.reached.count
         )
         
         view?.loadData(data: CongratsData(

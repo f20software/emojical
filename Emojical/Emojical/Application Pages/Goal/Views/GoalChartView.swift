@@ -10,7 +10,7 @@ import UIKit
 
 class GoalChartView : UIView {
     
-    var data = [GoalHistoryPoint]() {
+    var data = [GoalChartPoint]() {
         didSet {
             setNeedsDisplay()
         }

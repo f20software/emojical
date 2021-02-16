@@ -25,14 +25,14 @@ class GoalChartCell: UICollectionViewCell {
 
     // MARK: - Public view interface
 
-    func configure(for data: [GoalHistoryPoint]) {
+    func configure(for data: GoalChartData) {
         
-        chart.data = data
-        chart.dataMax = data.map({ $0.total }).max() ?? 0
-        chart.dataThreshold = data.first?.limit ?? 0
+        chart.data = data.points
+        chart.dataMax = data.points.map({ $0.total }).max() ?? 0
+        chart.dataThreshold = data.points.first?.limit ?? 0
         chart.count = 12
         
-        header.text = "Last 12 weeks".uppercased()
+        header.text = data.header.uppercased()
     }
     
     // MARK: - Private helpers

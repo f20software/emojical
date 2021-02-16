@@ -16,6 +16,10 @@ class GoalChartView : UIView {
         }
     }
     
+    /// Graph line color
+    @IBInspectable
+    var lineColor: UIColor = UIColor.black
+
     /// Graph line width
     @IBInspectable
     var lineWidth: CGFloat = 3.0
@@ -61,7 +65,7 @@ class GoalChartView : UIView {
         let thresholdLine = UIBezierPath()
         thresholdLine.lineWidth = 1.0
         thresholdLine.setLineDash([3.0, 1.0], count: 1, phase: 0)
-        tintColor.withAlphaComponent(0.5).setStroke()
+        lineColor.withAlphaComponent(0.5).setStroke()
 
         let y = chartRect.maxY - (chartRect.height / CGFloat(dataMax) * CGFloat(dataThreshold))
         thresholdLine.move(to: CGPoint(x: 0, y: y))
@@ -79,7 +83,7 @@ class GoalChartView : UIView {
         let graph = UIBezierPath()
         graph.lineWidth = lineWidth
         graph.lineJoinStyle = .round
-        tintColor.setStroke()
+        lineColor.setStroke()
         
         points.forEach({
             if graph.isEmpty {
@@ -100,14 +104,14 @@ class GoalChartView : UIView {
 
             /// Optionally fill circle
             if dataPoint.reached {
-                tintColor.setFill()
+                lineColor.setFill()
             } else {
                 backgroundColor?.setFill()
             }
             path.fill()
 
             /// Rectangle Drawing
-            tintColor.setStroke()
+            lineColor.setStroke()
             path.lineWidth = lineWidth
             path.lineJoinStyle = .round
             path.stroke()

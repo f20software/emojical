@@ -594,6 +594,7 @@
 				F23CF44E25851C140048BA74 /* GoalAwardView.swift */,
 				F23CF3DD2582BB0E0048BA74 /* StickersHeaderView.swift */,
 				F27E708025D9E133004E49FB /* GradientView.swift */,
+				F27E709925DB2724004E49FB /* GoalChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -834,20 +835,11 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		F27E709825DB2724004E49FB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F27E709925DB2724004E49FB /* GoalChartView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		F295336D25B61522003CA002 /* Goal */ = {
 			isa = PBXGroup;
 			children = (
 				F295338C25B62F7D003CA002 /* Goal.storyboard */,
 				F295336E25B61522003CA002 /* Models */,
-				F27E709825DB2724004E49FB /* Views */,
 				F295339025B63DB1003CA002 /* Cells */,
 				F295337125B61522003CA002 /* Protocols */,
 				F295336F25B61522003CA002 /* Implementation */,

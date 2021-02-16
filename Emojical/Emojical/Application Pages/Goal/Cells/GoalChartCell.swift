@@ -42,6 +42,7 @@ class GoalChartCell: UICollectionViewCell {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true
         chart.backgroundColor = Theme.main.colors.secondaryBackground
+        chart.lineColor = Theme.main.colors.tint
         
         header.font = Theme.main.fonts.sectionHeaderTitle
         header.textColor = Theme.main.colors.sectionHeaderText

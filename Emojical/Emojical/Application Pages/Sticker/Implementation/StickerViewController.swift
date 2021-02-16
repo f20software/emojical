@@ -270,12 +270,8 @@ extension StickerViewController: UICollectionViewDelegate {
             editView?.onColorSelected = { [weak self] index in
                 self?.onStickerChanged?()
             }
-            editView?.onCustomColorTapped = {
-                let picker = UIColorPickerViewController()
-                picker.delegate = self
-                picker.supportsAlpha = false
-                picker.selectedColor = data.sticker.color
-                self.present(picker, animated: true, completion: nil)
+            editView?.onCustomColorTapped = { [weak self] in
+                self?.showCustomColorPicker(selectedColor: data.sticker.color)
             }
             return cell
             
@@ -293,6 +289,14 @@ extension StickerViewController: UICollectionViewDelegate {
 }
 
 extension StickerViewController: UIColorPickerViewControllerDelegate {
+    
+    func showCustomColorPicker(selectedColor: UIColor) {
+        let picker = UIColorPickerViewController()
+        picker.delegate = self
+        picker.supportsAlpha = false
+        picker.selectedColor = selectedColor
+        present(picker, animated: true, completion: nil)
+    }
     
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
         editView?.setCustomColor(viewController.selectedColor)

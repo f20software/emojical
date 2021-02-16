@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StickerDetailsEditCell: ThemeObservingCollectionCell {
+class StickerDetailsEditCell: ThemeObservingCollectionCell, StickerDetailEditViewProtocol {
 
     // MARK: - Outlets
 
@@ -23,10 +23,10 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell {
 
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var emojiLabel: UILabel!
-    @IBOutlet weak var emoji: EmojiTextField!
+    @IBOutlet weak var emojiField: EmojiTextField!
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var nameField: UITextField!
 
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var color0: UIView!
@@ -36,17 +36,20 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell {
     @IBOutlet var color4: UIView!
     @IBOutlet var color5: UIView!
     @IBOutlet var color6: UIView!
+    @IBOutlet var customColor: GradientView!
 
     // MARK: - State
     
-    var selectedColorIndex = -1
-    var allColorViews: [UIView]!
+    /// Save off references to all color views for easy access
+    private var allColorViews: [UIView]!
 
-    /// User changed any value
-    var onValueChanged: (() -> Void)?
+    /// Currently selected color view
+    private var selectedColorIndex: Int = -1
+    
+    /// Last color view will be used for custom color configuration
+    private let customColorIndex = 7
 
-    /// User tapped on list of stickers
-    var onColorSelected: ((Int) -> Void)?
+    // MARK: - View lifecycle
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -57,24 +60,79 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell {
         addGestureRecognizer(tap)
     }
     
+    // MARK: - StickerDetailsEditViewProtocol implementation
+    
+    /// Currently selected color
+    var selectedColor: UIColor {
+        guard selectedColorIndex >= 0 && selectedColorIndex < allColorViews.count else {
+            return Theme.main.colors.tint
+        }
+        return allColorViews[selectedColorIndex].backgroundColor!
+    }
+
+    /// Sticker name value
+    var name: String? { return nameField.text }
+    
+    /// Sticker emoji value
+    var emoji: String? { return emojiField.text }
+
+    /// User changed any value
+    var onValueChanged: (() -> Void)?
+
+    /// User tapped on list of stickers
+    var onColorSelected: ((Int) -> Void)?
+
+    /// User tapped on last color selection
+    var onCustomColorTapped: (() -> Void)?
+
     // MARK: - Public view interface
 
     func configure(for data: StickerEditData) {
-        name.text = data.sticker.name
-        emoji.text = data.sticker.label
+        nameField.text = data.sticker.name
+        emojiField.text = data.sticker.label
         stickerIcon.text = data.sticker.label
         stickerIcon.color = data.sticker.color
 
-        if let index = allColorViews.firstIndex(where: { $0.backgroundColor?.hex == data.sticker.color.hex }) {
+        if let index = allColorViews.firstIndex(where: {
+            $0.backgroundColor?.hex == data.sticker.color.hex }) {
             setSelectedColorIndex(index)
+        } else {
+            setCustomColor(data.sticker.color)
         }
     }
     
+    /// Set emoji field to first responder and bring the keyboard up
+    func focusOnEmojiField() {
+        emojiField.becomeFirstResponder()
+    }
+    
+    /// Update preview icon
+    func updatePreview(label: String, color: UIColor) {
+        stickerIcon.color = color
+        stickerIcon.text = label
+        stickerIcon.setNeedsDisplay()
+    }
+
+    /// Sets custom color value
+    func setCustomColor(_ color: UIColor) {
+        setSelectedColorIndex(customColorIndex)
+        customColor.customColor = color
+        onValueChanged?()
+    }
+
+    /// Sets color palette (7 built-in colors)
+    func setPaletteColors(_ colors: [UIColor]) {
+        guard colors.count == 7 else { return }
+        for i in 0..<colors.count {
+            allColorViews[i].backgroundColor = colors[i]
+        }
+    }
+
     // MARK: - Private helpers
 
-    func setSelectedColorIndex(_ index: Int) {
+    private func setSelectedColorIndex(_ index: Int) {
         // Clear previous value
-        if selectedColorIndex >= 0 {
+        if selectedColorIndex >= 0 && selectedColorIndex < allColorViews.count {
             allColorViews[selectedColorIndex].layer.borderWidth = 0.0
         }
      
@@ -82,17 +140,10 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell {
         selectedColorIndex = index
     }
 
-    func setColors(_ colors: [UIColor]) {
-        guard colors.count >= allColorViews.count else { return }
-        for i in 0..<allColorViews.count {
-            allColorViews[i].backgroundColor = colors[i]
-        }
-    }
-
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
 
-        allColorViews = [color0, color1, color2, color3, color4, color5, color6]
+        allColorViews = [color0, color1, color2, color3, color4, color5, color6, customColor]
         // Round corners will not be visible anywhere but on today's day
         for view in allColorViews {
             view.layer.cornerRadius = Specs.colorsCornerRadius
@@ -109,16 +160,16 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell {
         }
 
         nameLabel.text = "name_label".localized
-        name.backgroundColor = Theme.main.colors.secondaryBackground
-        name.font = Theme.main.fonts.listBody
-        name.placeholder = "sticker_name_placeholder".localized
+        nameField.backgroundColor = Theme.main.colors.secondaryBackground
+        nameField.font = Theme.main.fonts.listBody
+        nameField.placeholder = "sticker_name_placeholder".localized
         separator1.backgroundColor = Theme.main.colors.separator
 
         emojiLabel.text = "emoji_label".localized
-        emoji.backgroundColor = Theme.main.colors.secondaryBackground
-        emoji.font = Theme.main.fonts.listBody
-        emoji.delegate = self
-        emoji.placeholder = ""
+        emojiField.backgroundColor = Theme.main.colors.secondaryBackground
+        emojiField.font = Theme.main.fonts.listBody
+        emojiField.delegate = self
+        emojiField.placeholder = ""
         separator2.backgroundColor = Theme.main.colors.separator
 
         previewLabel.text = "preview_label".localized
@@ -133,7 +184,7 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell {
     }
     
     override func updateColors() {
-        allColorViews = [color0, color1, color2, color3, color4, color5, color6]
+        allColorViews = [color0, color1, color2, color3, color4, color5, color6, customColor]
         for view in allColorViews {
             view.layer.borderColor = Theme.main.colors.text.cgColor
         }
@@ -147,11 +198,13 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell {
         let loc = sender.location(in: stackView)
         guard stackView.bounds.contains(loc) else { return }
         
-        let index = Int(ceil(loc.x / (stackView.frame.width / 7))) - 1
+        let index = Int(ceil(loc.x / (stackView.frame.width / 8))) - 1
         
         if index >= 0 && index < 7 {
             setSelectedColorIndex(index)
             onColorSelected?(index)
+        } else if index == customColorIndex {
+            onCustomColorTapped?()
         }
     }
 }

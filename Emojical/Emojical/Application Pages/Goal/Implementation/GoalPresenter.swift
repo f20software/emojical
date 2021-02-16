@@ -237,8 +237,11 @@ class GoalPresenter: GoalPresenterProtocol {
             )
             
             var cells: [GoalDetailsElement] = [.view(data)]
-            if let history = dataBuilder.historyFor(goal: goal.id) {
-                cells.append(.reached(history))
+            if let history = dataBuilder.historyFor(goal: goal.id, limit: 12) {
+                cells.append(.reached(history.reached))
+                if history.chart.points.count > 2 {
+                    cells.append(.chart(history.chart))
+                }
             }
             
             view.loadData(cells)

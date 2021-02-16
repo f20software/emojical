@@ -39,11 +39,15 @@ extension UIColor {
 
     public var hex: String {
         if let componets = cgColor.components {
-            return String(
-                format: "%02lX%02lX%02lX",
-                lroundf(Float(componets[0]) * 255),
-                lroundf(Float(componets[1]) * 255),
-                lroundf(Float(componets[2]) * 255))
+            if componets.count > 2 {
+                return String(
+                    format: "%02lX%02lX%02lX",
+                    lroundf(Float(componets[0]) * 255),
+                    lroundf(Float(componets[1]) * 255),
+                    lroundf(Float(componets[2]) * 255))
+            } else {
+                return "000000"
+            }
         } else {
             return "000000"
         }

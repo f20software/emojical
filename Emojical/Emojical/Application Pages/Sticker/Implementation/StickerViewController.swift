@@ -28,7 +28,7 @@ class StickerViewController : UIViewController, StickerViewProtocol {
     private var dataSource: UICollectionViewDiffableDataSource<Int, StickerDetailsElement>!
     
     /// Details cell
-    private weak var detailsEditView: StickerDetailsEditCell?
+    private weak var editView: StickerDetailEditViewProtocol?
 
     // MARK: - View lifecycle
     
@@ -78,9 +78,7 @@ class StickerViewController : UIViewController, StickerViewProtocol {
 
     /// When creating new sticker we want to bring emoji keyboard immediately
     func focusOnEmoji() {
-        DispatchQueue.main.async {
-            self.detailsEditView?.emoji.becomeFirstResponder()
-        }
+        editView?.focusOnEmojiField()
     }
     
     /// Set form title
@@ -88,19 +86,16 @@ class StickerViewController : UIViewController, StickerViewProtocol {
         title = text
     }
 
-    /// Set form title
+    /// Update preview icon
     func updateIcon(_ sticker: Stamp) {
-        guard let view = detailsEditView else { return }
-        view.stickerIcon.color = sticker.color
-        view.stickerIcon.text = sticker.label
-        view.stickerIcon.setNeedsDisplay()
+        editView?.updatePreview(label: sticker.label, color: sticker.color)
     }
 
     /// Loads Sticker data
     func loadData(_ data: [StickerDetailsElement]) {
 
         // Reset old reference
-        detailsEditView = nil
+        editView = nil
         
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickerDetailsElement>()
         snapshot.appendSections([0])
@@ -110,13 +105,10 @@ class StickerViewController : UIViewController, StickerViewProtocol {
     
     /// Update Goal data from the UI
     func update(to: inout Stamp) {
-        guard let details = detailsEditView else { return }
-        
-        to.name = (details.name.text ?? to.name).trimmingCharacters(in: CharacterSet(charactersIn: " "))
-        to.label = details.emoji.text ?? ""
-        if details.selectedColorIndex >= 0 {
-            to.color = Theme.main.colors.palette[details.selectedColorIndex]
-        }
+        guard let details = editView else { return }
+        to.name = (details.name ?? to.name).trimmingCharacters(in: CharacterSet(charactersIn: " "))
+        to.label = details.emoji ?? ""
+        to.color = details.selectedColor
     }
 
     /// Dismisses view if it was presented modally
@@ -265,18 +257,22 @@ extension StickerViewController: UICollectionViewDelegate {
                 withReuseIdentifier: Specs.Cells.edit, for: path
             ) as? StickerDetailsEditCell else { return UICollectionViewCell() }
             
-            cell.setColors(Theme.main.colors.palette)
-            cell.configure(for: data)
-            cell.onValueChanged = { [weak self] in
-                // WTF???? - for some reason previous reference to detailsEditView will
+            editView = cell
+
+            editView?.setPaletteColors(Theme.main.colors.palette)
+            editView?.configure(for: data)
+            editView?.onValueChanged = { [weak self] in
+                // WTF???? - for some reason previous reference to editView will
                 // point to something else...
-                self?.detailsEditView = cell
+                self?.editView = cell
                 self?.onStickerChanged?()
             }
-            cell.onColorSelected = { [weak self] index in
+            editView?.onColorSelected = { [weak self] index in
                 self?.onStickerChanged?()
             }
-            detailsEditView = cell
+            editView?.onCustomColorTapped = { [weak self] in
+                self?.showCustomColorPicker(selectedColor: data.sticker.color)
+            }
             return cell
             
         case .deleteButton(let data):
@@ -289,6 +285,21 @@ extension StickerViewController: UICollectionViewDelegate {
             }
             return cell
         }
+    }
+}
+
+extension StickerViewController: UIColorPickerViewControllerDelegate {
+    
+    func showCustomColorPicker(selectedColor: UIColor) {
+        let picker = UIColorPickerViewController()
+        picker.delegate = self
+        picker.supportsAlpha = false
+        picker.selectedColor = selectedColor
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        editView?.setCustomColor(viewController.selectedColor)
     }
 }
 

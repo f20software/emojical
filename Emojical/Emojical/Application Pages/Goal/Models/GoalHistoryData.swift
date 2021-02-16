@@ -8,20 +8,16 @@
 
 import Foundation
 
+struct GoalHistoryData {
+    let reached: GoalReachedData
+    let chart: GoalChartData
+}
+
 struct GoalReachedData {
     // Text information to be displayed on the Goal details in view mode
     let count: Int
     let lastUsed: Date?
     let streak: Int
-    let history: [GoalHistoryPoint]
 }
 
-struct GoalHistoryPoint {
-    let weekStart: Date
-    let total: Int
-    let limit: Int
-    let reached: Bool
-}
-
-extension GoalHistoryPoint: Equatable, Hashable {}
 extension GoalReachedData: Equatable, Hashable {}

@@ -145,6 +145,10 @@ class GoalViewController : UIViewController, GoalView {
             forCellWithReuseIdentifier: Specs.Cells.reached
         )
         details.register(
+            UINib(nibName: "GoalChartCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.chart
+        )
+        details.register(
             UINib(nibName: "GoalDetailsEditCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.edit
         )
@@ -228,6 +232,13 @@ extension GoalViewController: UICollectionViewDelegate {
             cell.configure(for: data)
             return cell
 
+        case .chart(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.chart, for: path
+            ) as? GoalChartCell else { return UICollectionViewCell() }
+            cell.configure(for: data)
+            return cell
+
         case .edit(let data):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.edit, for: path
@@ -269,6 +280,9 @@ fileprivate struct Specs {
 
         /// Goal reached details cell
         static let reached = "GoalReachedCell"
+
+        /// Goal chart  cell
+        static let chart = "GoalChartCell"
 
         /// Goal editing cell
         static let edit = "GoalDetailsEditCell"

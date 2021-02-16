@@ -8,11 +8,12 @@
 
 import UIKit
 
-/// Custom view to draw horizontal rectangular gradient - either from white to black or full RGB color spectr
+/// Custom view to draw conical gradient
 class GradientView : UIView {
     
     // MARK: - Inspectable public properties
     
+    /// Background color - setting it up will disable drawing gradient and just draw a backgroud color
     @IBInspectable
     var customColor: UIColor? = nil { didSet { configureViews() }}
     
@@ -70,18 +71,4 @@ class GradientView : UIView {
     private func setupView() {
         configureViews()
     }
-}
-
-// MARK: - Specs
-
-fileprivate struct Specs {
-    
-    /// Default ratio for Emoji font size to the view width
-    static let emojiSizeRatio: CGFloat = 0.5
-
-    /// Default corner radius
-    static let cornerRadius: CGFloat = 8.0
-    
-    /// Default border width
-    static let borderWidth: CGFloat = 2.0
 }

@@ -58,6 +58,10 @@
 
 "month_no_limit" = "Mensualmente, sin límite.";
 
+"last_x_weeks" = "Últimas %d semanas";
+
+"last_x_months" = "Últimos %d meses";
+
 // Current goal progress
 
 "you_got_0_stickers_week" = "No tienes pegatinas hasta ahora esta semana";

@@ -267,7 +267,7 @@ class CalendarDataBuilder {
         
         switch goal.period {
         case .week:
-            headerText = "Last \(limit) weeks"
+            headerText = "last_x_weeks".localized(limit)
             var week = CalendarHelper.Week(Date().byAddingWeek(-1))
             while (points.count < limit) && (week.lastDay > first) {
                 if let award = repository.awardsInInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id }) {
@@ -296,7 +296,7 @@ class CalendarDataBuilder {
             }
             
         case .month:
-            headerText = "Last \(limit) month"
+            headerText = "last_x_months".localized(limit)
             var month = CalendarHelper.Month(Date().byAddingMonth(-1))
             while (points.count < limit) && (month.lastDay > first) {
                 if let award = repository.awardsInInterval(from: month.firstDay, to: month.lastDay).first(where: { $0.goalId == goal.id }) {

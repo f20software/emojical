@@ -58,6 +58,10 @@
 
 "month_no_limit" = "Monthly, no limit.";
 
+"last_x_weeks" = "Last %d weeks";
+
+"last_x_months" = "Last %d months";
+
 // Current goal progress
 
 "you_got_0_stickers_week" = "You've got no stickers so far this week";

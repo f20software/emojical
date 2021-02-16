@@ -263,9 +263,11 @@ class CalendarDataBuilder {
         var points = [GoalChartPoint]()
         var streak = 0
         var streakRunning = true
+        var headerText = ""
         
         switch goal.period {
         case .week:
+            headerText = "Last \(limit) weeks"
             var week = CalendarHelper.Week(Date().byAddingWeek(-1))
             while (points.count < limit) && (week.lastDay > first) {
                 if let award = repository.awardsInInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id }) {
@@ -294,6 +296,7 @@ class CalendarDataBuilder {
             }
             
         case .month:
+            headerText = "Last \(limit) month"
             var month = CalendarHelper.Month(Date().byAddingMonth(-1))
             while (points.count < limit) && (month.lastDay > first) {
                 if let award = repository.awardsInInterval(from: month.firstDay, to: month.lastDay).first(where: { $0.goalId == goal.id }) {
@@ -337,8 +340,7 @@ class CalendarDataBuilder {
                 streak: streak
             ),
             chart: GoalChartData(
-                header: "last 12 weeks",
-                footer: "",
+                header: headerText,
                 points: points
             )
         )

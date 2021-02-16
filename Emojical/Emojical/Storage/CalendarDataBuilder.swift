@@ -255,8 +255,10 @@ class CalendarDataBuilder {
 
     /// Builds history for a give goal (including how many time it's been reached and what is the current streak
     func historyFor(goal id: Int64?) -> GoalReachedData? {
-        guard let goal = repository.goalBy(id: id),
-            let first = repository.getFirstDiaryDate() else { return nil }
+        guard let goal = repository.goalBy(id: id) else { return nil }
+        
+        let stickerFirstDates = goal.stamps.compactMap({ return repository.getFirstDateFor(sticker: $0) })
+        guard let first = stickerFirstDates.min() else { return nil }
         
         var history = [GoalHistoryPoint]()
         let historyLimit = 20
@@ -271,9 +273,8 @@ class CalendarDataBuilder {
                     history.append(
                         GoalHistoryPoint(
                             weekStart: week.firstDay,
-                            total: award.count,
-                            limit: award.limit,
-                            reached: award.reached
+                            award: award,
+                            goal: goal
                         )
                     )
                     if award.reached && streakRunning {
@@ -285,9 +286,8 @@ class CalendarDataBuilder {
                     history.append(
                         GoalHistoryPoint(
                             weekStart: week.firstDay,
-                            total: 0,
-                            limit: goal.limit,
-                            reached: false)
+                            goal: goal
+                        )
                     )
                     streakRunning = false
                 }
@@ -301,9 +301,8 @@ class CalendarDataBuilder {
                     history.append(
                         GoalHistoryPoint(
                             weekStart: month.firstDay,
-                            total: award.count,
-                            limit: award.limit,
-                            reached: award.reached
+                            award: award,
+                            goal: goal
                         )
                     )
                     if award.reached && streakRunning {
@@ -315,9 +314,8 @@ class CalendarDataBuilder {
                     history.append(
                         GoalHistoryPoint(
                             weekStart: month.firstDay,
-                            total: 0,
-                            limit: goal.limit,
-                            reached: false)
+                            goal: goal
+                        )
                     )
                     streakRunning = false
                 }

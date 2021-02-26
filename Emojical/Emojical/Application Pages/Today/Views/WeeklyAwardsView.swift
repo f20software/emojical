@@ -25,7 +25,7 @@ class WeeklyAwardsView : UIView {
     // MARK: - Callbacks
     
     // Called when user tapped on the award cell
-    var onAwardTapped: (() -> Void)?
+    var onAwardTapped: ((Int64) -> Void)?
 
     // MARK: - View lifecycle
     
@@ -126,7 +126,10 @@ class WeeklyAwardsView : UIView {
 extension WeeklyAwardsView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        onAwardTapped?()
+        guard let cell = collectionView.cellForItem(at: indexPath) else {
+            return
+        }
+        onAwardTapped?(Int64(cell.tag))
     }
 
     private func cell(for path: IndexPath, model: TodayAwardElement, collectionView: UICollectionView) -> UICollectionViewCell? {
@@ -164,7 +167,7 @@ fileprivate struct Specs {
     }
     
     /// Award cell size
-    static let awardSize: CGFloat = 50.0
+    static let awardSize: CGFloat = 55.0
     
     /// Margin around award icons
     static let awardMargin: CGFloat = 3.0

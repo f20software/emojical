@@ -206,10 +206,7 @@ class TodayPresenter: TodayPresenterProtocol {
             fatalError("Unexpected error: \(error)")
         },
         onChange: { [weak self] stamps in
-            guard let self = self else { return }
-            
-            self.allStamps = self.repository.allStamps()
-            self.loadStampSelectorData()
+            self?.initializeDataFor(date: self!.selectedDay)
         })
         
         // When awards are updated
@@ -268,14 +265,16 @@ class TodayPresenter: TodayPresenterProtocol {
         view?.onCloseStampSelector = { [weak self] in
             self?.selectorState = .miniButton
         }
-        view?.onAwardTapped = { [weak self] in
+        view?.onAwardTapped = { [weak self] goalId in
             guard let self = self else { return }
             
             // We should show recap window only for the past weeks
             // Presumably list of goals/awards on the top for the future will be empty,
             // so this callback won't be possible to call for the future weeks
             // Disabling current week should be enough.
-            if !self.week.isCurrentWeek {
+            if self.week.isCurrentWeek {
+                self.coordinator?.showGoal(self.repository.goalBy(id: goalId)!)
+            } else {
                 self.coordinator?.showAwardsRecap(data: self.recapData())
             }
         }

@@ -34,7 +34,7 @@ protocol TodayView: AnyObject {
     var onCloseStampSelector: (() -> Void)? { get set }
 
     /// User tapped on the award icon on the top
-    var onAwardTapped: (() -> Void)? { get set }
+    var onAwardTapped: ((Int64) -> Void)? { get set }
 
     // MARK: - Updates
 

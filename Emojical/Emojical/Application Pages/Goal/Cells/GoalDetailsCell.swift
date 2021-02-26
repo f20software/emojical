@@ -14,7 +14,8 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
 
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var goalDescription: UILabel!
-    @IBOutlet weak var goalIcon: GoalAwardView!
+    @IBOutlet weak var goal: GoalAwardView!
+    @IBOutlet weak var award: AwardView!
     @IBOutlet weak var goalBackground: UIView!
     @IBOutlet weak var stickers: UILabel!
     @IBOutlet weak var currentProgress: UILabel!
@@ -23,10 +24,11 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
     var onIconTapped: (() -> Void)?
     
     // MARK: - State
-    private var showCurrentProgress: Bool = false
-    
-    private var progressIcon: GoalAwardData!
-    private var fullIcon: GoalAwardData!
+
+    private var animating = false
+
+    private var progressIcon: GoalIconData!
+    private var fullIcon: AwardIconData!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,47 +37,63 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         addGestureRecognizer(tap)
     }
-
+    
     // MARK: - Public view interface
 
     func configure(for data: GoalViewData) {
-        progressIcon = data.progress
-        fullIcon = data.award
+        progressIcon = data.goalIcon
+        fullIcon = data.awardIcon
         
         goalDescription.text = data.details
         stickers.text = "stickers_title".localized + ": \(data.stickers.joined(separator: ", "))"
         currentProgress.text = data.progressText
+
+        award.isHidden = false
+        award.alpha = 1
+        goal.isHidden = true
+        goal.alpha = 1
         
-        updateIcon()
+        goal.text = progressIcon.emoji
+        goal.labelColor = progressIcon.backgroundColor
+        goal.clockwise = (progressIcon.direction == .positive)
+        goal.progressLineGap = 2.0
+        goal.progressColor = progressIcon.progressColor
+
+        award.labelText = fullIcon.emoji
+        award.labelBackgroundColor = fullIcon.backgroundColor
+        award.borderColor = fullIcon.borderColor
     }
     
-    func toggleState() {
-        showCurrentProgress = !showCurrentProgress
-        updateIcon()
+    func animateIcon() {
+        guard animating == false else { return }
+        animating = true
+
+        award.isHidden = true
+        goal.isHidden = false
+        goal.progress = (progressIcon.direction == .positive) ? 0.0 : 1.0
+
+        goal.animateProgress(to: CGFloat(progressIcon.progress), duration: Specs.animation.progress, completion: {
+            
+            self.award.alpha = 0
+            self.award.isHidden = false
+            
+            UIView.animate(withDuration: Specs.animation.transitionToAward, delay: Specs.animation.delayBeforeAward, options: [.curveLinear], animations: {
+                self.award.alpha = 1
+                self.goal.alpha = 0
+            }, completion: {_ in
+                self.award.isHidden = false
+                self.goal.isHidden = true
+                self.goal.alpha = 1
+                self.animating = false
+            })
+        })
     }
 
     // MARK: - Private helpers
 
-    private func updateIcon() {
-        if showCurrentProgress {
-            goalIcon.text = progressIcon.emoji
-            goalIcon.labelColor = progressIcon.backgroundColor
-            goalIcon.clockwise = (progressIcon.direction == .positive)
-            goalIcon.progress = CGFloat(progressIcon.progress)
-            goalIcon.progressColor = progressIcon.progressColor
-        } else {
-            goalIcon.text = fullIcon.emoji
-            goalIcon.labelColor = fullIcon.backgroundColor
-            goalIcon.clockwise = (fullIcon.direction == .positive)
-            goalIcon.progress = CGFloat(fullIcon.progress)
-            goalIcon.progressColor = fullIcon.progressColor
-        }
-        goalIcon.setNeedsDisplay()
-    }
-    
     @objc func viewTapped(sender: UITapGestureRecognizer) {
-        let loc = sender.location(in: goalIcon)
-        if goalIcon.bounds.contains(loc) {
+        let loc = sender.location(in: goal)
+        if goal.bounds.contains(loc) {
             onIconTapped?()
         }
     }
@@ -87,9 +105,12 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true
         
-        goalIcon.progressLineWidth = Specs.progressLineWidth
-        goalIcon.emojiFontSize = Specs.emojiFontSize
-        
+        goal.progressLineWidth = Specs.progressLineWidth
+        goal.emojiFontSize = Specs.emojiFontSize
+        award.borderWidth = Specs.progressLineWidth
+        award.emojiFontSize = Specs.emojiFontSize
+        award.isHidden = true
+
         goalBackground.backgroundColor = Theme.main.colors.background
         goalBackground.layer.cornerRadius = goalBackground.bounds.width / 2.0
 
@@ -111,5 +132,18 @@ fileprivate struct Specs {
     
     /// Emoji font size for award icon
     static let emojiFontSize: CGFloat = 50.0
+
+    /// Animation durations
+    struct animation {
+
+        /// Filling up progress circle duration
+        static let progress: TimeInterval = 1.0
+
+        /// Delaty before transition to award icon duration
+        static let delayBeforeAward: TimeInterval = 0.5
+
+        /// Transition to award icon duration
+        static let transitionToAward: TimeInterval = 0.5
+    }
 }
 

@@ -21,19 +21,23 @@ class TodayAwardCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        awardIcon.labelColor = UIColor.clear
-        awardIcon.text = nil
-        awardIcon.progress = 0.0
-        awardIcon.progressColor = UIColor.clear
-        awardIcon.setNeedsDisplay()
+//        awardIcon.labelColor = UIColor.clear
+//        awardIcon.text = nil
+//        awardIcon.progress = 0.0
+//        awardIcon.progressLineGap = 1.0
+//        awardIcon.clockwise = true
+//        awardIcon.progressColor = UIColor.clear
+//        awardIcon.setNeedsDisplay()
     }
     
     // MARK: - Public view interface
     
     func configure(for data: GoalAwardData) {
+        tag = Int(data.goalId ?? 0)
         awardIcon.text = data.emoji
         awardIcon.labelColor = data.backgroundColor
         awardIcon.progress = CGFloat(data.progress)
+        awardIcon.progressLineGap = data.progress >= 1.0 ? -0.5 : 1.0
         awardIcon.progressColor = data.progressColor
         awardIcon.clockwise = (data.direction == .positive)
         awardIcon.setNeedsDisplay()

@@ -27,6 +27,7 @@
 		BC56440D246B309700942066 /* StampsListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56440C246B309700942066 /* StampsListener.swift */; };
 		BC56440F246B30BF00942066 /* StampsDataSourceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56440E246B30BF00942066 /* StampsDataSourceListener.swift */; };
 		BCF2300F2473222F001E8844 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF2300E2473222F001E8844 /* DateTests.swift */; };
+		F204473F25E8C7E9003318C6 /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204473E25E8C7E9003318C6 /* AwardView.swift */; };
 		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView_Old.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
@@ -273,6 +274,7 @@
 		BC56440C246B309700942066 /* StampsListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsListener.swift; sourceTree = "<group>"; };
 		BC56440E246B30BF00942066 /* StampsDataSourceListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsDataSourceListener.swift; sourceTree = "<group>"; };
 		BCF2300E2473222F001E8844 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
+		F204473E25E8C7E9003318C6 /* AwardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView_Old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView_Old.swift; sourceTree = "<group>"; };
 		F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalReachedCell.swift; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 				F24E23ED25C24DFC00669134 /* Cells */,
 				F20D1F9424142A1700FB5000 /* StickerView_Old.swift */,
 				F21F150225C107A800DE5C1B /* StickerView.swift */,
+				F204473E25E8C7E9003318C6 /* AwardView.swift */,
 				F23CF44E25851C140048BA74 /* GoalAwardView.swift */,
 				F23CF3DD2582BB0E0048BA74 /* StickersHeaderView.swift */,
 				F27E708025D9E133004E49FB /* GradientView.swift */,
@@ -1594,6 +1597,7 @@
 				BC5643F7246B10B500942066 /* Diary.swift in Sources */,
 				F273E2A125969BF50037BEDA /* Storyboard.swift in Sources */,
 				F295334C25B4DA03003CA002 /* TodayAwardElement.swift in Sources */,
+				F204473F25E8C7E9003318C6 /* AwardView.swift in Sources */,
 				F26596ED2596AF1300B10B76 /* AwardRecapCell.swift in Sources */,
 				F2FD4DBC25BC88C6005819A0 /* SelectStickersPresenter.swift in Sources */,
 				F282B4FA25928FB9000BC92B /* DaysHeaderView.swift in Sources */,
@@ -1886,7 +1890,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.0;
+				CURRENT_PROJECT_VERSION = 1.3.1;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1907,7 +1911,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.0;
+				CURRENT_PROJECT_VERSION = 1.3.1;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

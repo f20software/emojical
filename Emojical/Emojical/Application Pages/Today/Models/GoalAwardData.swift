@@ -31,7 +31,12 @@ struct GoalAwardData {
             return lhs.period.rawValue < rhs.period.rawValue
         }
         
-        // Rest - use Ids to compare 
+        // Then compare directions - positive first
+        if lhs.direction != rhs.direction {
+            return lhs.direction.rawValue < rhs.direction.rawValue
+        }
+
+        // Rest - use Ids to compare
         return ((lhs.goalId ?? 0) < (rhs.goalId ?? 0))
     }
 }

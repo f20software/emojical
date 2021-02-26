@@ -232,8 +232,8 @@ class GoalPresenter: GoalPresenterProtocol {
                     progress: progress,
                     limit: goal.limit
                 ),
-                award: award,
-                progress: currentProgress
+                awardIcon: AwardIconData(stamp: stamp),
+                goalIcon: GoalIconData(stamp: stamp, goal: goal, progress: progress)
             )
             
             var cells: [GoalDetailsElement] = [.view(data)]

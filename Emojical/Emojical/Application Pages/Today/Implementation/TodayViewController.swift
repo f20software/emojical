@@ -107,7 +107,7 @@ class TodayViewController: UIViewController {
     var onCloseStampSelector: (() -> Void)?
 
     /// User tapped on the award icon on the top
-    var onAwardTapped: (() -> Void)?
+    var onAwardTapped: ((Int64) -> Void)?
 
     /// User wants to dismiss Awards Recap view (by dragging it down)
     var onAwardsRecapDismiss: (() -> Void)?
@@ -174,8 +174,8 @@ class TodayViewController: UIViewController {
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
 
-        awards.onAwardTapped = { () in
-            self.onAwardTapped?()
+        awards.onAwardTapped = { (goalId) in
+            self.onAwardTapped?(goalId)
         }
         daysHeader.onDayTapped = { (index) in
             self.onDayHeaderTapped?(index)

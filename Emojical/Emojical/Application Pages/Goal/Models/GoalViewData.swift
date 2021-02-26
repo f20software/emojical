@@ -15,8 +15,8 @@ struct GoalViewData {
     let progressText: String
     
     // Final award data and current progress data
-    let award: GoalAwardData
-    let progress: GoalAwardData
+    let awardIcon: AwardIconData
+    let goalIcon: GoalIconData
 }
 
 extension GoalViewData: Equatable, Hashable {}

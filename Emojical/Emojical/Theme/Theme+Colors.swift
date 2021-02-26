@@ -24,12 +24,7 @@ extension Theme {
     class Colors {
     
         /// Main application tint color
-        lazy var tint: UIColor = {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                return UITraitCollection.userInterfaceStyle == .light ?
-                    UIColor(hex: "202674") : UIColor(hex: "C3D9FA")
-            }
-        }()
+        let tint = UIColor(named: "tint")!
 
         // MARK: - Backgrounds
         

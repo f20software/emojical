@@ -20,6 +20,7 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
     // MARK: - State
     
     private var selectedStickers: [Int64]
+    private var allStickers: [Stamp]
 
     // MARK: - Lifecycle
 
@@ -35,6 +36,7 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
         self.stampsListener = stampsListener
         self.coordinator = coordinator
         self.selectedStickers = selectedStickers
+        self.allStickers = [Stamp]()
     }
 
     // MARK: - SelectStickersPresenterProtocol
@@ -71,7 +73,22 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
     }
     
     private func loadViewData() {
-        let allStickers = repository.allStamps()
+        let newStickers = repository.allStamps()
+
+        // If the difference between old and new stickers are only 1 and it was added
+        // - it means user tapped on "+" and created new sticker, let's select it
+        // automatically
+        let diff = newStickers.difference(from: self.allStickers)
+        if diff.count == 1 {
+            switch diff.first {
+            case .insert(_, let stamp, _):
+                selectedStickers.append(stamp.id ?? 0)
+            default:
+                break
+            }
+        }
+
+        allStickers = newStickers
         var data: [SelectStickerElement] = allStickers.map {
             return SelectStickerElement.sticker(
                 SelectStickerData(

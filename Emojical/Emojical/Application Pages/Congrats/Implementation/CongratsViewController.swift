@@ -16,7 +16,8 @@ class CongratsViewController : UIViewController, CongratsView {
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var icon: GoalAwardView!
+    @IBOutlet weak var goal: GoalAwardView!
+    @IBOutlet weak var award: AwardView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
     // MARK: - DI
@@ -40,6 +41,12 @@ class CongratsViewController : UIViewController, CongratsView {
         presenter.onViewWillAppear()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        animateIcon()
+    }
+    
     // MARK: - CongratsView
     
     /// Dismiss button tapped
@@ -47,16 +54,22 @@ class CongratsViewController : UIViewController, CongratsView {
 
     /// Loads awards recap data
     func loadData(data: CongratsData) {
-        
         textLabel.text = data.text
         titleLabel.text = data.title
 
-        icon.text = data.icon.emoji
-        icon.labelColor = data.icon.backgroundColor
-        icon.clockwise = (data.icon.direction == .positive)
-        icon.progress = CGFloat(data.icon.progress)
-        icon.progressColor = data.icon.progressColor
-        icon.setNeedsDisplay()
+        goal.text = data.goalIcon.emoji
+        goal.labelColor = data.goalIcon.backgroundColor
+        // TODO: Add support for negative goals here?
+        goal.clockwise = true // (data.goalIcon.direction == .positive)
+        goal.progress = 0
+        goal.progressColor = data.goalIcon.progressColor
+        goal.willAnimate = false
+        goal.isHidden = false
+
+        award.labelText = data.awardIcon.emoji
+        award.labelBackgroundColor = data.awardIcon.backgroundColor
+        award.borderColor = data.awardIcon.borderColor
+        award.isHidden = true
     }
 
     // MARK: - Actions
@@ -86,6 +99,27 @@ class CongratsViewController : UIViewController, CongratsView {
 
     // MARK: - Private helpers
     
+    // Animate progress on the goal icon from 0 to 1.0 and then show award icon
+    private func animateIcon() {
+        
+        goal.animateProgress(to: 1.0, duration: Specs.animation.progressDuration) { [weak self] in
+            // Upon completion - animate hiding goal view and showing award view
+            self?.award.alpha = 0
+            self?.award.isHidden = false
+            
+            UIView.animate(
+                withDuration: Specs.animation.transitionToAwardDuration,
+                delay: 0.0, options: [.curveLinear], animations:
+            {
+                self?.award.alpha = 1
+                self?.goal.alpha = 0
+            }, completion: { [weak self] _ in
+                self?.award.isHidden = false
+                self?.goal.isHidden = true
+            })
+        }
+    }
+    
     private func configureViews() {
         
         view.backgroundColor = UIColor.clear
@@ -104,8 +138,11 @@ class CongratsViewController : UIViewController, CongratsView {
         plate.layer.shadowColor = Theme.main.colors.shadow.cgColor
         plate.layer.shadowOffset = Specs.shadowOffset
 
-        icon.progressLineWidth = Specs.progressLineWidth
-        icon.emojiFontSize = Specs.emojiFontSize
+        goal.emojiFontSize = Specs.emojiFontSize
+        goal.progressLineWidth = Specs.progressLineWidth
+        goal.progressLineGap = Specs.progressLineGap
+        award.emojiFontSize = Specs.emojiFontSize
+        award.borderWidth = Specs.progressLineWidth
     }
     
     func bounceToInitialState() {
@@ -143,6 +180,18 @@ fileprivate struct Specs {
     /// Line width for the progress around award icon
     static let progressLineWidth: CGFloat = 4.0
     
+    /// Gap between progress line and emoji icon
+    static let progressLineGap: CGFloat = 2.0
+    
     /// Emoji font size for award icon
     static let emojiFontSize: CGFloat = 48.0
+    
+    struct animation {
+
+        /// Emoji font size for award icon
+        static let progressDuration: TimeInterval = 1.0
+
+        /// Emoji font size for award icon
+        static let transitionToAwardDuration: TimeInterval = 0.5
+    }
 }

@@ -12,8 +12,8 @@ class TodayAwardCell: UICollectionViewCell {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var goal: GoalAwardView!
-    @IBOutlet weak var award: AwardView!
+    @IBOutlet weak var goal: GoalIconView!
+    @IBOutlet weak var award: AwardIconView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,10 +38,9 @@ class TodayAwardCell: UICollectionViewCell {
             award.borderColor = awardData.borderColor
 
         case .goal(let goalData):
-            // tag = Int(goalData.goalId ?? 0)
             goal.isHidden = false
-            goal.text = goalData.emoji
-            goal.labelColor = goalData.backgroundColor
+            goal.labelText = goalData.emoji
+            goal.labelBackgroundColor = goalData.backgroundColor
             goal.progress = CGFloat(goalData.progress)
             goal.progressColor = goalData.progressColor
             goal.clockwise = (goalData.direction == .positive)
@@ -51,18 +50,8 @@ class TodayAwardCell: UICollectionViewCell {
     // MARK: - Private helpers
     
     private func configureViews() {
-        goal.progressLineWidth = Specs.progressLineWidth
-        goal.progressLineGap = Specs.progressLineGap
-        award.borderWidth = Specs.progressLineWidth
+        goal.progressLineWidth = Theme.main.specs.progressWidthSmall
+        goal.progressLineGap = Theme.main.specs.progressGapSmall
+        award.borderWidth = Theme.main.specs.progressWidthSmall
     }
-}
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 3.0
-
-    /// Gap between progress line and the icon
-    static let progressLineGap: CGFloat = 1.0
 }

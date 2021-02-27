@@ -1,5 +1,5 @@
 //
-//  GoalAwardView.swift
+//  GoalIconView.swift
 //  Stamps
 //
 //  Created by Vladimir Svidersky on 1/20/20.
@@ -8,25 +8,28 @@
 
 import UIKit
 
-/// Custom view to draw goal with progress or reached award (when progress is 100%)
-class GoalAwardView : UIView {
+/// Custom view to draw goal with progress
+class GoalIconView : ThemeObservingView {
     
     // MARK: - Inspectable public properties
     
     @IBInspectable
-    var progressColor: UIColor = UIColor.blue { didSet { configureViews() }}
+    var labelText: String? { didSet { configureViews() }}
+
+    @IBInspectable
+    var labelBackgroundColor: UIColor = UIColor.clear { didSet { configureViews() }}
+
+    @IBInspectable
+    var emojiFontSize: CGFloat = 24.0 { didSet { configureViews() }}
 
     @IBInspectable
     var clockwise: Bool = true { didSet { configureViews() }}
 
     @IBInspectable
-    var labelColor: UIColor = UIColor.clear { didSet { configureViews() }}
-    
-    @IBInspectable
     var progress: CGFloat = 0.5 { didSet { configureViews() }}
 
     @IBInspectable
-    var emojiFontSize: CGFloat = 24.0 { didSet { configureViews() }}
+    var progressColor: UIColor = UIColor.blue { didSet { configureViews() }}
 
     @IBInspectable
     var progressLineWidth: CGFloat = 2.0 { didSet { configureViews() }}
@@ -34,9 +37,6 @@ class GoalAwardView : UIView {
     @IBInspectable
     var progressLineGap: CGFloat = 1.0 { didSet { configureViews() }}
 
-    @IBInspectable
-    var text: String? { didSet { configureViews() }}
-    
     // MARK: - Private state
     
     // Emoji label
@@ -88,14 +88,20 @@ class GoalAwardView : UIView {
         circleLayer.strokeEnd = progress
         
         labelView.font = UIFont.systemFont(ofSize: emojiFontSize)
-        labelView.backgroundColor = labelColor
-        labelView.text = text
+        labelView.backgroundColor = labelBackgroundColor
+        labelView.text = labelText
         setupConstraints()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         setupConstraints()
+    }
+
+    // Since CGColor is not dynamic,
+    // need to update layer border color when appearance changed
+    override func updateColors() {
+        circleLayer.strokeColor = progressColor.cgColor
     }
 
     private func setupConstraints() {

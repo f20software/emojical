@@ -1,5 +1,5 @@
 //
-//  GoalAwardView.swift
+//  AwardIconView.swift
 //  Stamps
 //
 //  Created by Vladimir Svidersky on 1/20/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-/// Custom view to draw goal with progress or reached award (when progress is 100%)
-class AwardView : ThemeObservingView {
+/// Custom view to draw award icon (emoji + circle border around it)
+class AwardIconView : ThemeObservingView {
     
     // MARK: - Inspectable public properties
     
@@ -78,7 +78,8 @@ class AwardView : ThemeObservingView {
         setupConstraints()
     }
 
-    // Since CGColor is not dynamic, need to update layer border color when appearance changed
+    // Since CGColor is not dynamic,
+    // need to update layer border color when appearance changed
     override func updateColors() {
         labelView.layer.borderColor = borderColor.cgColor
     }

@@ -16,5 +16,23 @@ extension Theme {
     
         /// Corner radius for the cells on all lists
         let platesCornerRadius: CGFloat = 8.0
+        
+        /// Line width for the progress around award icon (small size - used in most of lists)
+        let progressWidthSmall: CGFloat = 3.0
+
+        /// Gap between progress line and icon background (for small borders)
+        let progressGapSmall: CGFloat = 2.0
+
+        /// Line width for the progress around award icon (medium size - used in details screens and cheers messages)
+        let progressWidthMedium: CGFloat = 4.0
+
+        /// Gap between progress line and icon background (for medium borders)
+        let progressGapMedium: CGFloat = 3.0
+
+        /// Line width for the progress around award icon (large size - used in Recap)
+        let progressWidthLarge: CGFloat = 6.0
+
+        /// Gap between progress line and icon background (for large borders)
+        let progressGapLarge: CGFloat = 2.0
     }
 }

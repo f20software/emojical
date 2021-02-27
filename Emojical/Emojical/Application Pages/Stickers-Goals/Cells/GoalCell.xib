@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -37,7 +36,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MN2-nT-Okg" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MN2-nT-Okg" customClass="GoalIconView" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="15" y="15" width="48" height="48"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>
@@ -57,7 +56,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="A"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yec-v2-KqA" customClass="AwardView" customModule="Emojical" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yec-v2-KqA" customClass="AwardIconView" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="15" y="15" width="48" height="48"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>

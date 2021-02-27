@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j3j-M2-yeB">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,14 +12,14 @@
             <objects>
                 <viewController id="j3j-M2-yeB" customClass="CongratsViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ht8-id-w0T">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNN-La-7ca">
-                                <rect key="frame" x="30" y="311" width="354" height="342"/>
+                                <rect key="frame" x="30" y="69.5" width="540" height="321.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckC-kz-3sP">
-                                        <rect key="frame" x="150" y="302" width="54" height="30"/>
+                                        <rect key="frame" x="243" y="281.5" width="54" height="30"/>
                                         <state key="normal" title="Dismiss">
                                             <color key="titleColor" red="1" green="0.1764705882" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -29,22 +28,22 @@
                                         </connections>
                                     </button>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4M4-Pq-hxM">
-                                        <rect key="frame" x="0.0" y="51" width="354" height="1"/>
+                                        <rect key="frame" x="0.0" y="51" width="540" height="1"/>
                                         <color key="backgroundColor" systemColor="separatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="qZn-XS-T8b"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dh9-po-dDY" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="127" y="77" width="100" height="100"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dh9-po-dDY" customClass="GoalIconView" customModule="Emojical" customModuleProvider="target">
+                                        <rect key="frame" x="220" y="77" width="100" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="jeb-Uc-Xh4"/>
                                             <constraint firstAttribute="width" constant="100" id="wg8-yc-TN4"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD6-99-KtQ" customClass="AwardView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="127" y="77" width="100" height="100"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD6-99-KtQ" customClass="AwardIconView" customModule="Emojical" customModuleProvider="target">
+                                        <rect key="frame" x="220" y="77" width="100" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="616-yp-wRp"/>
@@ -52,26 +51,26 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etm-gE-9qH">
-                                        <rect key="frame" x="20" y="15" width="314" height="21"/>
+                                        <rect key="frame" x="20" y="15" width="500" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've reached your weekly goal &quot;Goal Name goes here&quot;!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMV-Bz-EPp">
-                                        <rect key="frame" x="20" y="207" width="314" height="41"/>
+                                        <rect key="frame" x="20" y="207" width="500" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7U-G8-aCQ">
-                                        <rect key="frame" x="94" y="291" width="260" height="1"/>
+                                        <rect key="frame" x="94" y="270.5" width="446" height="1"/>
                                         <color key="backgroundColor" systemColor="separatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="i4L-T2-PDU"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smiley" translatesAutoresizingMaskIntoConstraints="NO" id="Qis-QQ-LvU">
-                                        <rect key="frame" x="20" y="258" width="64" height="64"/>
+                                        <rect key="frame" x="20" y="237.5" width="64" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="GYW-kW-IgN"/>
                                             <constraint firstAttribute="width" secondItem="Qis-QQ-LvU" secondAttribute="height" id="LUo-Ta-Cxw"/>

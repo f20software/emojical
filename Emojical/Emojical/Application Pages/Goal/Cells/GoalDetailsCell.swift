@@ -14,8 +14,8 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
 
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var goalDescription: UILabel!
-    @IBOutlet weak var goal: GoalAwardView!
-    @IBOutlet weak var award: AwardView!
+    @IBOutlet weak var goal: GoalIconView!
+    @IBOutlet weak var award: AwardIconView!
     @IBOutlet weak var goalBackground: UIView!
     @IBOutlet weak var stickers: UILabel!
     @IBOutlet weak var currentProgress: UILabel!
@@ -53,10 +53,9 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
         goal.isHidden = true
         goal.alpha = 1
         
-        goal.text = progressIcon.emoji
-        goal.labelColor = progressIcon.backgroundColor
+        goal.labelText = progressIcon.emoji
+        goal.labelBackgroundColor = progressIcon.backgroundColor
         goal.clockwise = (progressIcon.direction == .positive)
-        goal.progressLineGap = 2.0
         goal.progressColor = progressIcon.progressColor
 
         award.labelText = fullIcon.emoji
@@ -106,10 +105,11 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
         plate.clipsToBounds = true
         
         goal.emojiFontSize = Specs.emojiFontSize
-        goal.progressLineWidth = Specs.progressLineWidth
+        goal.progressLineWidth = Theme.main.specs.progressWidthMedium
+        goal.progressLineGap = Theme.main.specs.progressGapMedium
         
         award.emojiFontSize = Specs.emojiFontSize
-        award.borderWidth = Specs.progressLineWidth
+        award.borderWidth = Theme.main.specs.progressWidthMedium
         award.isHidden = true
 
         goalBackground.backgroundColor = Theme.main.colors.background
@@ -127,9 +127,6 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
 
 // MARK: - Specs
 fileprivate struct Specs {
-    
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 4.0
     
     /// Emoji font size for award icon
     static let emojiFontSize: CGFloat = 50.0

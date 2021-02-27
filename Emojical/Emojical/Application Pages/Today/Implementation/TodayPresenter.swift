@@ -334,14 +334,9 @@ class TodayPresenter: TodayPresenterProtocol {
             guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
 
             let stamp = repository.stampBy(id: goal.stamps.first)
-            let goalAwardData = GoalAwardData(
-                award: $0,
-                goal: goal,
-                stamp: stamp
-            )
             return AwardRecapData(
                 title: $0.descriptionText,
-                progress: goalAwardData
+                progress: GoalOrAwardIconData(award: $0, goal: goal, stamp: stamp)
             )
         })
     }

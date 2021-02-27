@@ -1,5 +1,5 @@
 //
-//  StickersHeaderView.swift
+//  CollectionHeaderView.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 2/6/21.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-/// This view is used to display section header
-class StickersHeaderView: UICollectionReusableView {
+/// This view is used to display section header for Stickers/Goals, Recap and Examples collection views
+class CollectionHeaderView: UICollectionReusableView {
 
     private let label = UILabel()
 

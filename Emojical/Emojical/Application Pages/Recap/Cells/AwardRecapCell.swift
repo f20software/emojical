@@ -13,13 +13,18 @@ class AwardRecapCell: UICollectionViewCell {
     // MARK: - Outlets
 
     @IBOutlet weak var plate: UIView!
-    @IBOutlet weak var goalIcon: GoalAwardView!
+    @IBOutlet weak var goal: GoalIconView!
+    @IBOutlet weak var award: AwardIconView!
     @IBOutlet weak var details: UILabel!
 
+    // MARK: - State
+    
+    private var visibleView: UIView?
+    
     /// When cell is selected we show details text instead of award icon
     override var isHighlighted: Bool {
         didSet {
-            goalIcon.isHidden = isHighlighted
+            visibleView?.isHidden = isHighlighted
             details.isHidden = !isHighlighted
         }
     }
@@ -32,17 +37,31 @@ class AwardRecapCell: UICollectionViewCell {
     // MARK: - Public view interface
 
     func configure(for data: AwardRecapData) {
-        tag = Int(data.progress.goalId ?? 0)
+        // tag = Int(data.progress.goalId ?? 0)
         
         details.text = data.title
         details.isHidden = !isHighlighted
         
-        goalIcon.text = data.progress.emoji
-        goalIcon.labelColor = data.progress.backgroundColor
-        goalIcon.clockwise = (data.progress.direction == .positive)
-        goalIcon.progress = CGFloat(data.progress.progress)
-        goalIcon.progressColor = data.progress.progressColor
-        goalIcon.setNeedsDisplay()
+        goal.isHidden = true
+        award.isHidden = true
+        
+        switch data.progress {
+        case .award(let awardData):
+            award.isHidden = false
+            visibleView = award
+            award.labelText = awardData.emoji
+            award.labelBackgroundColor = awardData.backgroundColor
+            award.borderColor = awardData.borderColor
+
+        case.goal(let goalData):
+            goal.isHidden = false
+            visibleView = goal
+            goal.labelText = goalData.emoji
+            goal.labelBackgroundColor = goalData.backgroundColor
+            goal.clockwise = (goalData.direction == .positive)
+            goal.progress = CGFloat(goalData.progress)
+            goal.progressColor = goalData.progressColor
+        }
     }
     
     override func prepareForReuse() {
@@ -54,16 +73,18 @@ class AwardRecapCell: UICollectionViewCell {
 
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
-        goalIcon.progressLineWidth = Specs.progressLineWidth
-        goalIcon.emojiFontSize = Specs.emojiFontSize
+
+        goal.progressLineWidth = Theme.main.specs.progressWidthLarge
+        goal.progressLineGap = Theme.main.specs.progressGapLarge
+        award.borderWidth = Theme.main.specs.progressWidthLarge
+        
+        goal.emojiFontSize = Specs.emojiFontSize
+        award.emojiFontSize = Specs.emojiFontSize
     }
 }
 
 // MARK: - Specs
 fileprivate struct Specs {
-    
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 6.0
     
     /// Emoji font size for award icon
     static let emojiFontSize: CGFloat = 52.0

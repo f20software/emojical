@@ -16,8 +16,8 @@ class CongratsViewController : UIViewController, CongratsView {
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var goal: GoalAwardView!
-    @IBOutlet weak var award: AwardView!
+    @IBOutlet weak var goal: GoalIconView!
+    @IBOutlet weak var award: AwardIconView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
     // MARK: - DI
@@ -57,8 +57,8 @@ class CongratsViewController : UIViewController, CongratsView {
         textLabel.text = data.text
         titleLabel.text = data.title
 
-        goal.text = data.goalIcon.emoji
-        goal.labelColor = data.goalIcon.backgroundColor
+        goal.labelText = data.goalIcon.emoji
+        goal.labelBackgroundColor = data.goalIcon.backgroundColor
         // TODO: Add support for negative goals here?
         goal.clockwise = true // (data.goalIcon.direction == .positive)
         goal.progress = 0
@@ -138,10 +138,10 @@ class CongratsViewController : UIViewController, CongratsView {
         plate.layer.shadowOffset = Specs.shadowOffset
 
         goal.emojiFontSize = Specs.emojiFontSize
-        goal.progressLineWidth = Specs.progressLineWidth
-        goal.progressLineGap = Specs.progressLineGap
+        goal.progressLineWidth = Theme.main.specs.progressWidthMedium
+        goal.progressLineGap = Theme.main.specs.progressGapMedium
         award.emojiFontSize = Specs.emojiFontSize
-        award.borderWidth = Specs.progressLineWidth
+        award.borderWidth = Theme.main.specs.progressWidthMedium
     }
     
     func bounceToInitialState() {
@@ -176,12 +176,6 @@ fileprivate struct Specs {
     /// Shadow offset
     static let shadowOffset = CGSize.zero
 
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 4.0
-    
-    /// Gap between progress line and emoji icon
-    static let progressLineGap: CGFloat = 2.0
-    
     /// Emoji font size for award icon
     static let emojiFontSize: CGFloat = 48.0
     

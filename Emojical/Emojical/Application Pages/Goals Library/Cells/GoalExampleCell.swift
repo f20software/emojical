@@ -15,7 +15,7 @@ class GoalExampleCell: ThemeObservingCollectionCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
-    @IBOutlet weak var goalIcon: GoalAwardView!
+    @IBOutlet weak var award: AwardIconView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,12 +29,9 @@ class GoalExampleCell: ThemeObservingCollectionCell {
         subTitle.text = data.description
         
         if let sticker = data.stickers.first {
-            goalIcon.text = sticker.emoji
-            goalIcon.labelColor = UIColor(hex: sticker.color.rawValue).withAlphaComponent(0.5)
-            goalIcon.clockwise = true
-            goalIcon.progress = 1.0
-            goalIcon.progressColor = Theme.main.colors.reachedGoalBorder
-            goalIcon.setNeedsDisplay()
+            award.labelText = sticker.emoji
+            award.labelBackgroundColor = UIColor(hex: sticker.color.rawValue).withAlphaComponent(0.5)
+            award.borderColor = Theme.main.colors.reachedGoalBorder
         }
     }
 
@@ -44,7 +41,7 @@ class GoalExampleCell: ThemeObservingCollectionCell {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true
         
-        goalIcon.progressLineWidth = Specs.progressLineWidth
+        award.borderWidth = Theme.main.specs.progressWidthSmall
         plate.backgroundColor = Theme.main.colors.secondaryBackground
         title.textColor = Theme.main.colors.text
         subTitle.textColor = Theme.main.colors.secondaryText
@@ -55,11 +52,4 @@ class GoalExampleCell: ThemeObservingCollectionCell {
         title.font = Theme.main.fonts.listTitle
         subTitle.font = Theme.main.fonts.listBody
     }
-}
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 3.0
 }

@@ -125,7 +125,7 @@ class GoalsLibraryViewController: UIViewController, GoalsLibraryView {
             forCellWithReuseIdentifier: Specs.Cells.goalExample
         )
         collectionView.register(
-            StickersHeaderView.self,
+            CollectionHeaderView.self,
             forSupplementaryViewOfKind: Specs.Cells.header,
             withReuseIdentifier: Specs.Cells.header
         )
@@ -156,7 +156,7 @@ extension GoalsLibraryViewController: UICollectionViewDelegate {
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: Specs.Cells.header,
-            for: path) as? StickersHeaderView else { return UICollectionReusableView() }
+            for: path) as? CollectionHeaderView else { return UICollectionReusableView() }
 
         header.configure(sections[path.section])
         return header

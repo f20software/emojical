@@ -15,8 +15,8 @@ class GoalCell: ThemeObservingCollectionCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
-    @IBOutlet weak var goal: GoalAwardView!
-    @IBOutlet weak var award: AwardView!
+    @IBOutlet weak var goal: GoalIconView!
+    @IBOutlet weak var award: AwardIconView!
     @IBOutlet weak var count: UILabel!
 
     override func awakeFromNib() {
@@ -35,8 +35,8 @@ class GoalCell: ThemeObservingCollectionCell {
         case .goal(let iconData):
             goal.isHidden = false
             award.isHidden = true
-            goal.text = iconData.emoji
-            goal.labelColor = iconData.backgroundColor
+            goal.labelText = iconData.emoji
+            goal.labelBackgroundColor = iconData.backgroundColor
             goal.clockwise = (iconData.direction == .positive)
             goal.progress = CGFloat(iconData.progress)
             goal.progressColor = iconData.progressColor
@@ -70,9 +70,9 @@ class GoalCell: ThemeObservingCollectionCell {
         count.layer.cornerRadius = count.font.pointSize * 0.6
         count.clipsToBounds = true
 
-        goal.progressLineWidth = Specs.progressLineWidth
-        goal.progressLineGap = 1.0
-        award.borderWidth = Specs.progressLineWidth
+        goal.progressLineWidth = Theme.main.specs.progressWidthSmall
+        goal.progressLineGap = Theme.main.specs.progressGapSmall
+        award.borderWidth = Theme.main.specs.progressWidthSmall
 
         plate.backgroundColor = Theme.main.colors.secondaryBackground
         count.backgroundColor = Theme.main.colors.tint
@@ -86,14 +86,4 @@ class GoalCell: ThemeObservingCollectionCell {
         title.font = Theme.main.fonts.listTitle
         subTitle.font = Theme.main.fonts.listBody
     }
-}
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 3.0
-    
-    /// Gap between progress bar and goal icon
-    static let progressLineGap: CGFloat = 1.0
 }

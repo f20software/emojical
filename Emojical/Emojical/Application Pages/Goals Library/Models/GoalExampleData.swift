@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 struct StickerExampleData {
     let emoji: String
     let name: String
-    let color: Theme.Palette
+    let color: UIColor
 }
 
 struct GoalExampleData {

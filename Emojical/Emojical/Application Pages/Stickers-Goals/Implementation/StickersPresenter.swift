@@ -127,10 +127,10 @@ class StickersPresenter: StickersPresenterProtocol {
                 name: $0.name,
                 details: Language.goalDescription($0),
                 count: $0.count,
-                progress: GoalAwardData(
+                icon: GoalOrAwardIconData(
+                    stamp: stamp,
                     goal: $0,
-                    progress: self.awardManager.currentProgressFor($0),
-                    stamp: stamp
+                    progress: self.awardManager.currentProgressFor($0)
                 )
             )
         })

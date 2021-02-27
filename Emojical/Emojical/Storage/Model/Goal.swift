@@ -21,6 +21,10 @@ struct Goal {
     var count: Int = 0
     var lastUsed: Date?
     
+    func isReached(progress: Int) -> Bool {
+        return direction == .positive && progress >= limit
+    }
+
     /// Default new empty goal
     static var new: Goal {
         return Goal(
@@ -34,4 +38,22 @@ struct Goal {
     }
 }
 
-extension Goal: Equatable, Hashable {}
+extension Goal: Equatable, Hashable {
+    
+    static func < (lhs: Goal, rhs: Goal) -> Bool {
+        
+        // Then compare period - weekly first
+        if lhs.period != rhs.period {
+            return lhs.period.rawValue < rhs.period.rawValue
+        }
+
+        // Then compare directions - positive first
+        if lhs.direction != rhs.direction {
+            return lhs.direction.rawValue < rhs.direction.rawValue
+        }
+
+        // Rest - use Ids to compare
+        return ((lhs.id ?? 0) < (rhs.id ?? 0))
+    }
+
+}

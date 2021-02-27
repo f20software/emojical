@@ -11,25 +11,10 @@ import UIKit
 
 extension Theme {
 
-    enum Palette : String {
-        case red = "EF476F"
-        case violet = "D671DB"
-        case yellow = "FFE175"
-        case lightGreen = "83D483"
-        case green = "049F70"
-        case lightBlue = "118AB2"
-        case blue = "202674"
-    }
-    
     class Colors {
     
         /// Main application tint color
-        lazy var tint: UIColor = {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                return UITraitCollection.userInterfaceStyle == .light ?
-                    UIColor(hex: "202674") : UIColor(hex: "C3D9FA")
-            }
-        }()
+        let tint = UIColor(named: "tint")!
 
         // MARK: - Backgrounds
         
@@ -46,20 +31,10 @@ extension Theme {
         let calendarTodayBackground = UIColor.systemRed
         
         /// Separator color
-        lazy var separator: UIColor = {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                return UITraitCollection.userInterfaceStyle == .light ?
-                    UIColor.separator.withAlphaComponent(0.1) : UIColor.separator
-            }
-        }()
+        let separator = UIColor(named: "formSeparator")!
         
         /// Shadow color for sticker selector and plus button on the Today screen
-        lazy var shadow: UIColor = {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                return UITraitCollection.userInterfaceStyle == .light ?
-                    UIColor.gray : UIColor.clear
-            }
-        }()
+        let shadow = UIColor(named: "plateShadow")!
 
         // MARK: - Text colors
         
@@ -79,35 +54,27 @@ extension Theme {
         
         /// Application color pallete
         let palette:[UIColor] = [
-            UIColor(hex: "EF476F"), // red
-            UIColor(hex: "D671DB"), // violet
-            UIColor(hex: "FFE175"), // yellow
-            UIColor(hex: "83D483"), // light green
-            UIColor(hex: "049F70"), // green
-            UIColor(hex: "118AB2"), // light blue
-            UIColor(hex: "202674")  // blue
+            UIColor(named: "emojiRed")!,
+            UIColor(named: "emojiViolet")!,
+            UIColor(named: "emojiYellow")!,
+            UIColor(named: "emojiLightGreen")!,
+            UIColor(named: "emojiGreen")!,
+            UIColor(named: "emojiLightBlue")!,
+            UIColor(named: "emojiBlue")!,
         ]
         
         // MARK: - Goals and awards colors
         
         /// Positive goal progress bar
-        let positiveGoalProgress = UIColor(hex: "83D483") // light green
+        let positiveGoalProgress = UIColor(named: "positiveGoalProgress")!
         
         /// Negative goal progress bar
-        let negativeGoalProgress = UIColor(hex: "118AB2") // light blue
+        let negativeGoalProgress = UIColor(named: "negativeGoalProgress")!
         
-        /// Goal reached border color
-        lazy var goalReachedBorder: UIColor = {
-            return self.tint.withAlphaComponent(0.8)
-        }()
+        /// Reached goal award border color
+        let reachedGoalBorder = UIColor(named: "reachedGoalBorder")!
         
-        /// Goal reached border color
-        lazy var failedGoalBackground: UIColor = {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                return UITraitCollection.userInterfaceStyle == .light ?
-                    UIColor.darkGray.withAlphaComponent(0.2) :
-                    UIColor.lightGray.withAlphaComponent(0.2)
-            }
-        }()
+        /// Unreached goal background (whether it's positive goal in progress or busted negative goal)
+        let unreachedGoalBackground = UIColor(named: "unreachedGoalBackground")!
     }
 }

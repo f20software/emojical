@@ -34,7 +34,7 @@ protocol TodayView: AnyObject {
     var onCloseStampSelector: (() -> Void)? { get set }
 
     /// User tapped on the award icon on the top
-    var onAwardTapped: (() -> Void)? { get set }
+    var onAwardTapped: ((Int) -> Void)? { get set }
 
     // MARK: - Updates
 
@@ -57,7 +57,7 @@ protocol TodayView: AnyObject {
     func loadStampSelector(data: [StampSelectorElement])
     
     /// Loads awards data
-    func loadAwards(data: [GoalAwardData])
+    func loadAwards(data: [GoalOrAwardIconData])
     
     /// Show/hide stamp selector and plus button
     func showStampSelector(_ state: SelectorState)

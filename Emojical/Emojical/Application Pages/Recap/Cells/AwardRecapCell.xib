@@ -20,11 +20,30 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErJ-gD-7GI">
                         <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9u-YB-NBN" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9u-YB-NBN" customClass="GoalIconView" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="p9u-YB-NBN" secondAttribute="height" id="XWy-dy-hes"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNP-lO-AKF" customClass="AwardIconView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MNP-lO-AKF" secondAttribute="height" id="8H6-Yi-bx6"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
@@ -49,11 +68,16 @@
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstItem="p9u-YB-NBN" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" id="0Kt-Oz-dQR"/>
+                            <constraint firstItem="MNP-lO-AKF" firstAttribute="trailing" secondItem="p9u-YB-NBN" secondAttribute="trailing" id="BzK-bS-vgb"/>
                             <constraint firstAttribute="bottom" secondItem="p9u-YB-NBN" secondAttribute="bottom" id="Cw0-Mw-rm6"/>
                             <constraint firstItem="JPb-sz-Xjn" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" id="DvE-oc-Ozf"/>
                             <constraint firstItem="p9u-YB-NBN" firstAttribute="leading" secondItem="ErJ-gD-7GI" secondAttribute="leading" id="Ivd-A4-mAf"/>
+                            <constraint firstItem="MNP-lO-AKF" firstAttribute="bottom" secondItem="p9u-YB-NBN" secondAttribute="bottom" id="KGL-b7-Rjr"/>
+                            <constraint firstItem="MNP-lO-AKF" firstAttribute="top" secondItem="p9u-YB-NBN" secondAttribute="top" id="UuR-xp-wU6"/>
                             <constraint firstAttribute="trailing" secondItem="p9u-YB-NBN" secondAttribute="trailing" id="feA-mo-Z3j"/>
                             <constraint firstItem="JPb-sz-Xjn" firstAttribute="top" secondItem="ErJ-gD-7GI" secondAttribute="top" id="h8p-P6-28o"/>
+                            <constraint firstItem="MNP-lO-AKF" firstAttribute="width" secondItem="MNP-lO-AKF" secondAttribute="height" id="i6z-om-mZB"/>
+                            <constraint firstItem="MNP-lO-AKF" firstAttribute="leading" secondItem="p9u-YB-NBN" secondAttribute="leading" id="lKM-fD-VD7"/>
                             <constraint firstAttribute="bottom" secondItem="JPb-sz-Xjn" secondAttribute="bottom" id="pwk-8w-ezG"/>
                             <constraint firstAttribute="trailing" secondItem="JPb-sz-Xjn" secondAttribute="trailing" id="qXy-lK-R27"/>
                         </constraints>
@@ -69,8 +93,9 @@
             </constraints>
             <size key="customSize" width="86" height="86"/>
             <connections>
+                <outlet property="award" destination="MNP-lO-AKF" id="sl4-0h-kj4"/>
                 <outlet property="details" destination="JPb-sz-Xjn" id="BKx-ar-iZt"/>
-                <outlet property="goalIcon" destination="p9u-YB-NBN" id="odB-Zt-dbu"/>
+                <outlet property="goal" destination="p9u-YB-NBN" id="odB-Zt-dbu"/>
                 <outlet property="plate" destination="ErJ-gD-7GI" id="u5y-pG-AKn"/>
             </connections>
             <point key="canvasLocation" x="-153.62318840579712" y="44.866071428571423"/>

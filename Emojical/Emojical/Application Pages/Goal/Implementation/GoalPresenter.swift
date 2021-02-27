@@ -198,23 +198,13 @@ class GoalPresenter: GoalPresenterProtocol {
         
         let progress = awardManager.currentProgressFor(goal)
         let stamp = repository.stampBy(id: goal.stamps.first)
-        let currentProgress = GoalAwardData(
-            goal: goal,
-            progress: progress,
-            stamp: stamp
-        )
-        let award = GoalAwardData(
-            goal: goal,
-            stamp: stamp
-        )
 
         updateTitle()
 
         if isEditing {
             let data = GoalEditData(
                 goal: goal,
-                stickers: repository.stampLabelsFor(goal: goal),
-                award: award
+                stickers: repository.stampLabelsFor(goal: goal)
             )
             if presentationMode == .modal {
                 view.loadData([.edit(data)])
@@ -232,8 +222,8 @@ class GoalPresenter: GoalPresenterProtocol {
                     progress: progress,
                     limit: goal.limit
                 ),
-                award: award,
-                progress: currentProgress
+                awardIcon: AwardIconData(stamp: stamp),
+                goalIcon: GoalIconData(stamp: stamp, goal: goal, progress: progress)
             )
             
             var cells: [GoalDetailsElement] = [.view(data)]

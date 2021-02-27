@@ -89,4 +89,30 @@ class TodayCoordinator: TodayCoordinatorProtocol {
             congratsView.modalTransitionStyle = .coverVertical
         }
     }
+    
+    /// Navigates to specific goal
+    func showGoal(_ goal: Goal) {
+
+        // Instantiate GoalViewController from the storyboard file
+        guard let nav: UINavigationController = Storyboard.Goal.initialViewController(),
+              let view = nav.viewControllers.first as? GoalViewController else {
+            assertionFailure("Failed to initialize GoalViewController")
+            return
+        }
+
+        let coordinator = GoalCoordinator(parent: parentController)
+        
+        // Hook up GoalPresenter and tie it together to a view controller
+        view.presenter = GoalPresenter(
+            view: view,
+            coordinator: coordinator,
+            awardManager: AwardManager.shared,
+            repository: Storage.shared.repository,
+            goal: goal,
+            presentation: .push,
+            editing: false
+        )
+
+        parentController?.pushViewController(view, animated: true)
+    }
 }

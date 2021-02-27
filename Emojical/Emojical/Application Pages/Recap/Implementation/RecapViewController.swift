@@ -53,8 +53,22 @@ class RecapViewController : UIViewController, RecapView {
     /// Loads awards recap data
     func loadRecapData(data: [AwardRecapData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, AwardRecapData>()
-        let reached = data.filter({ $0.progress.isReached == true })
-        let notReached = data.filter({ $0.progress.isReached == false })
+        let reached = data.filter({
+            switch $0.progress {
+            case .award(let awardData):
+                return awardData.reached
+            default:
+                return false
+            }
+        })
+        let notReached = data.filter({
+            switch $0.progress {
+            case .goal(_):
+                return true
+            case .award(let awardData):
+                return !awardData.reached
+            }
+        })
         
         // TODO: Fix this
         // Adding first section always, otherwise section header
@@ -85,7 +99,7 @@ class RecapViewController : UIViewController, RecapView {
     
     private func registerCells() {
         awards.register(
-            StickersHeaderView.self,
+            CollectionHeaderView.self,
             forSupplementaryViewOfKind: Specs.Cells.header,
             withReuseIdentifier: Specs.Cells.header
         )
@@ -178,7 +192,7 @@ extension RecapViewController: UICollectionViewDelegate {
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: Specs.Cells.header,
-            for: path) as? StickersHeaderView else { return UICollectionReusableView() }
+            for: path) as? CollectionHeaderView else { return UICollectionReusableView() }
 
         header.configure(Section.allCases[path.section].rawValue.localized)
         return header

@@ -9,7 +9,8 @@
 import Foundation
 
 struct CongratsData {
-    let icon: GoalAwardData
     let title: String
     let text: String
+    let goalIcon: GoalIconData
+    let awardIcon: AwardIconData
 }

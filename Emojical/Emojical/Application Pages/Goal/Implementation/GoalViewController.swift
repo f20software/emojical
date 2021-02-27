@@ -221,8 +221,11 @@ extension GoalViewController: UICollectionViewDelegate {
             ) as? GoalDetailsCell else { return UICollectionViewCell() }
             cell.configure(for: data)
             cell.onIconTapped = { () in
-                cell.toggleState()
+                cell.animateIcon()
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                cell.animateIcon()
+            })
             return cell
             
         case .reached(let data):

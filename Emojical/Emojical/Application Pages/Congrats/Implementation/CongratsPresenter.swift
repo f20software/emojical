@@ -55,14 +55,8 @@ class CongratsPresenter: CongratsPresenterProtocol {
     private func loadViewData() {
         guard let award = data,
               let goal = repository.goalBy(id: award.goalId) else { return }
-        
+            
         let stamp = repository.stampBy(id: goal.stamps.first)
-        let icon = GoalAwardData(
-            award: award,
-            goal: goal,
-            stamp: stamp
-        )
-
         let history = dataBuilder.historyFor(goal: goal.id, limit: 12)
         let text = Language.positiveCheerMessage(
             goalName: award.goalName,
@@ -71,9 +65,10 @@ class CongratsPresenter: CongratsPresenterProtocol {
         )
         
         view?.loadData(data: CongratsData(
-            icon: icon,
             title: "awesome_title".localized,
-            text: text
+            text: text,
+            goalIcon: GoalIconData(stamp: stamp, goal: goal, progress: 0 /* don't really care*/),
+            awardIcon: AwardIconData(stamp: stamp)
         ))
     }
 }

@@ -37,7 +37,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MN2-nT-Okg" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MN2-nT-Okg" customClass="AwardIconView" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="15" y="15" width="48" height="48"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>
@@ -80,7 +80,7 @@
             </constraints>
             <size key="customSize" width="395" height="78"/>
             <connections>
-                <outlet property="goalIcon" destination="MN2-nT-Okg" id="KEw-93-kCQ"/>
+                <outlet property="award" destination="MN2-nT-Okg" id="KEw-93-kCQ"/>
                 <outlet property="plate" destination="ChH-rG-WsF" id="a2m-f5-8am"/>
                 <outlet property="subTitle" destination="F74-qT-oTK" id="M00-cL-56U"/>
                 <outlet property="title" destination="lYa-hg-Szf" id="q7N-uS-jiZ"/>

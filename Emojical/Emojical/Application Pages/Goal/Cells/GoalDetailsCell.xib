@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -64,7 +63,15 @@
                         <rect key="frame" x="170" y="-5" width="110" height="110"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ote-mX-R31" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mjY-zh-Wni" userLabel="Award View" customClass="AwardIconView" customModule="Emojical" customModuleProvider="target">
+                        <rect key="frame" x="175" y="0.0" width="100" height="100"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="UMY-7N-h8c"/>
+                            <constraint firstAttribute="width" constant="100" id="byF-Re-1va"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ote-mX-R31" customClass="GoalIconView" customModule="Emojical" customModuleProvider="target">
                         <rect key="frame" x="175" y="0.0" width="100" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -78,6 +85,8 @@
             <constraints>
                 <constraint firstItem="0Jf-aO-hI9" firstAttribute="trailing" secondItem="um0-VU-eCP" secondAttribute="trailing" constant="20" id="2dy-As-AXM"/>
                 <constraint firstItem="ote-mX-R31" firstAttribute="top" secondItem="7y9-Gf-xbO" secondAttribute="top" id="6JQ-Vd-AeV"/>
+                <constraint firstItem="ote-mX-R31" firstAttribute="bottom" secondItem="mjY-zh-Wni" secondAttribute="bottom" id="DcE-E7-3ZJ"/>
+                <constraint firstItem="ote-mX-R31" firstAttribute="leading" secondItem="mjY-zh-Wni" secondAttribute="leading" id="Inz-Qa-wzE"/>
                 <constraint firstItem="ErJ-gD-7GI" firstAttribute="leading" secondItem="7y9-Gf-xbO" secondAttribute="leading" id="Vlm-nP-CF7"/>
                 <constraint firstItem="um0-VU-eCP" firstAttribute="width" secondItem="ote-mX-R31" secondAttribute="width" constant="10" id="az3-4k-6dq"/>
                 <constraint firstAttribute="trailing" secondItem="ErJ-gD-7GI" secondAttribute="trailing" priority="999" id="cCk-yV-ErB"/>
@@ -85,16 +94,19 @@
                 <constraint firstItem="um0-VU-eCP" firstAttribute="centerX" secondItem="ote-mX-R31" secondAttribute="centerX" id="eXv-3u-Ibn"/>
                 <constraint firstItem="ErJ-gD-7GI" firstAttribute="top" secondItem="ote-mX-R31" secondAttribute="bottom" constant="-60" id="ehq-1O-Jmo"/>
                 <constraint firstItem="sjk-mE-KPa" firstAttribute="top" secondItem="um0-VU-eCP" secondAttribute="bottom" constant="10" id="eyh-Ua-MfK"/>
+                <constraint firstItem="ote-mX-R31" firstAttribute="top" secondItem="mjY-zh-Wni" secondAttribute="top" id="l0R-0m-BV8"/>
+                <constraint firstItem="ote-mX-R31" firstAttribute="trailing" secondItem="mjY-zh-Wni" secondAttribute="trailing" id="owM-NE-5G2"/>
                 <constraint firstAttribute="bottom" secondItem="ErJ-gD-7GI" secondAttribute="bottom" priority="999" id="pQi-uY-Es9"/>
                 <constraint firstItem="um0-VU-eCP" firstAttribute="height" secondItem="ote-mX-R31" secondAttribute="height" constant="10" id="rB6-rj-8E3"/>
                 <constraint firstItem="um0-VU-eCP" firstAttribute="centerY" secondItem="ote-mX-R31" secondAttribute="centerY" id="zA7-Zq-vRA"/>
             </constraints>
             <size key="customSize" width="308" height="252"/>
             <connections>
+                <outlet property="award" destination="mjY-zh-Wni" id="HOw-uj-w6Y"/>
                 <outlet property="currentProgress" destination="coJ-52-QBf" id="aGW-mF-WDy"/>
+                <outlet property="goal" destination="ote-mX-R31" id="D8r-gw-kFk"/>
                 <outlet property="goalBackground" destination="um0-VU-eCP" id="INV-RW-mbz"/>
                 <outlet property="goalDescription" destination="Xju-ua-GfL" id="5X2-4u-zvR"/>
-                <outlet property="goalIcon" destination="ote-mX-R31" id="D8r-gw-kFk"/>
                 <outlet property="plate" destination="ErJ-gD-7GI" id="Lze-H8-022"/>
                 <outlet property="stickers" destination="sjk-mE-KPa" id="kqO-Oe-pq6"/>
             </connections>

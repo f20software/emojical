@@ -15,7 +15,8 @@ class GoalCell: ThemeObservingCollectionCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
-    @IBOutlet weak var goalIcon: GoalAwardView!
+    @IBOutlet weak var goal: GoalIconView!
+    @IBOutlet weak var award: AwardIconView!
     @IBOutlet weak var count: UILabel!
 
     override func awakeFromNib() {
@@ -30,11 +31,24 @@ class GoalCell: ThemeObservingCollectionCell {
         subTitle.text = data.details
         tag = Int(data.goalId)
         
-        goalIcon.text = data.progress.emoji
-        goalIcon.labelColor = data.progress.backgroundColor
-        goalIcon.clockwise = (data.progress.direction == .positive)
-        goalIcon.progress = CGFloat(data.progress.progress)
-        goalIcon.progressColor = data.progress.progressColor
+        switch data.icon {
+        case .goal(let iconData):
+            goal.isHidden = false
+            award.isHidden = true
+            goal.labelText = iconData.emoji
+            goal.labelBackgroundColor = iconData.backgroundColor
+            goal.clockwise = (iconData.direction == .positive)
+            goal.progress = CGFloat(iconData.progress)
+            goal.progressColor = iconData.progressColor
+            
+        case .award(let awardData):
+            award.isHidden = false
+            goal.isHidden = true
+            award.labelText = awardData.emoji
+            award.labelBackgroundColor = awardData.backgroundColor
+            award.borderColor = awardData.borderColor
+        }
+        
         
         if data.count > 0 {
             count.text = "  \(data.count)  "
@@ -44,7 +58,7 @@ class GoalCell: ThemeObservingCollectionCell {
             count.isHidden = true
         }
         
-        goalIcon.setNeedsDisplay()
+        goal.setNeedsDisplay()
     }
 
     // MARK: - Private helpers
@@ -55,8 +69,11 @@ class GoalCell: ThemeObservingCollectionCell {
         
         count.layer.cornerRadius = count.font.pointSize * 0.6
         count.clipsToBounds = true
-        goalIcon.progressLineWidth = Specs.progressLineWidth
-        
+
+        goal.progressLineWidth = Theme.main.specs.progressWidthSmall
+        goal.progressLineGap = Theme.main.specs.progressGapSmall
+        award.borderWidth = Theme.main.specs.progressWidthSmall
+
         plate.backgroundColor = Theme.main.colors.secondaryBackground
         count.backgroundColor = Theme.main.colors.tint
         count.textColor = Theme.main.colors.background
@@ -69,11 +86,4 @@ class GoalCell: ThemeObservingCollectionCell {
         title.font = Theme.main.fonts.listTitle
         subTitle.font = Theme.main.fonts.listBody
     }
-}
-
-// MARK: - Specs
-fileprivate struct Specs {
-    
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 3.0
 }

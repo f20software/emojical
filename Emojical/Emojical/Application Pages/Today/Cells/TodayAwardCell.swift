@@ -12,37 +12,46 @@ class TodayAwardCell: UICollectionViewCell {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var awardIcon: GoalAwardView!
+    @IBOutlet weak var goal: GoalIconView!
+    @IBOutlet weak var award: AwardIconView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        awardIcon.progressLineWidth = Specs.progressLineWidth
+        configureViews()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        awardIcon.labelColor = UIColor.clear
-        awardIcon.text = nil
-        awardIcon.progress = 0.0
-        awardIcon.progressColor = UIColor.clear
-        awardIcon.setNeedsDisplay()
     }
     
     // MARK: - Public view interface
     
-    func configure(for data: GoalAwardData) {
-        awardIcon.text = data.emoji
-        awardIcon.labelColor = data.backgroundColor
-        awardIcon.progress = CGFloat(data.progress)
-        awardIcon.progressColor = data.progressColor
-        awardIcon.clockwise = (data.direction == .positive)
-        awardIcon.setNeedsDisplay()
-    }
-}
+    func configure(for data: GoalOrAwardIconData) {
+        goal.isHidden = true
+        award.isHidden = true
 
-// MARK: - Specs
-fileprivate struct Specs {
+        switch data {
+        case .award(let awardData):
+            award.isHidden = false
+            award.labelText = awardData.emoji
+            award.labelBackgroundColor = awardData.backgroundColor
+            award.borderColor = awardData.borderColor
+
+        case .goal(let goalData):
+            goal.isHidden = false
+            goal.labelText = goalData.emoji
+            goal.labelBackgroundColor = goalData.backgroundColor
+            goal.progress = CGFloat(goalData.progress)
+            goal.progressColor = goalData.progressColor
+            goal.clockwise = (goalData.direction == .positive)
+        }
+    }
     
-    /// Line width for the progress around award icon
-    static let progressLineWidth: CGFloat = 3.0
+    // MARK: - Private helpers
+    
+    private func configureViews() {
+        goal.progressLineWidth = Theme.main.specs.progressWidthSmall
+        goal.progressLineGap = Theme.main.specs.progressGapSmall
+        award.borderWidth = Theme.main.specs.progressWidthSmall
+    }
 }

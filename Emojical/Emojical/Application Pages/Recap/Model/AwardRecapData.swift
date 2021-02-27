@@ -10,7 +10,7 @@ import Foundation
 
 struct AwardRecapData {
     let title: String
-    let progress: GoalAwardData
+    let progress: GoalOrAwardIconData
 }
 
 extension AwardRecapData: Equatable, Hashable {}

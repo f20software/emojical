@@ -82,7 +82,7 @@ class TodayPresenter: TodayPresenterProtocol {
             awards = dataBuilder.awards(for: week)
             
             if week.isCurrentWeek {
-                goals = repository.allGoals()
+                loadAndSortGoals()
             } else {
                 goals = []
             }
@@ -206,10 +206,7 @@ class TodayPresenter: TodayPresenterProtocol {
             fatalError("Unexpected error: \(error)")
         },
         onChange: { [weak self] stamps in
-            guard let self = self else { return }
-            
-            self.allStamps = self.repository.allStamps()
-            self.loadStampSelectorData()
+            self?.initializeDataFor(date: self!.selectedDay)
         })
         
         // When awards are updated
@@ -233,7 +230,7 @@ class TodayPresenter: TodayPresenterProtocol {
         },
         onChange: { [weak self] awards in
             guard let self = self else { return }
-            self.goals = self.repository.allGoals()
+            self.loadAndSortGoals()
             self.loadAwardsData()
         })
 
@@ -268,14 +265,21 @@ class TodayPresenter: TodayPresenterProtocol {
         view?.onCloseStampSelector = { [weak self] in
             self?.selectorState = .miniButton
         }
-        view?.onAwardTapped = { [weak self] in
+        view?.onAwardTapped = { [weak self] index in
             guard let self = self else { return }
             
             // We should show recap window only for the past weeks
             // Presumably list of goals/awards on the top for the future will be empty,
             // so this callback won't be possible to call for the future weeks
             // Disabling current week should be enough.
-            if !self.week.isCurrentWeek {
+            if self.week.isCurrentWeek {
+                let goalIndexes = self.goals.compactMap({ $0.id })
+                if goalIndexes.count > index {
+                    if let goal = self.repository.goalBy(id: goalIndexes[index]) {
+                        self.coordinator?.showGoal(goal)
+                    }
+                }
+            } else {
                 self.coordinator?.showAwardsRecap(data: self.recapData())
             }
         }
@@ -330,16 +334,24 @@ class TodayPresenter: TodayPresenterProtocol {
             guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
 
             let stamp = repository.stampBy(id: goal.stamps.first)
-            let goalAwardData = GoalAwardData(
-                award: $0,
-                goal: goal,
-                stamp: stamp
-            )
             return AwardRecapData(
                 title: $0.descriptionText,
-                progress: goalAwardData
+                progress: GoalOrAwardIconData(
+                    award: $0,
+                    goal: goal,
+                    stamp: stamp
+                )
             )
         })
+    }
+    
+    private func loadAndSortGoals() {
+        let allGoals = repository.allGoals().sorted(by: { $0 < $1 })
+        goals =
+            allGoals.filter({
+                $0.isReached(progress: awardManager.currentProgressFor($0)) == true }) +
+            allGoals.filter({
+                $0.isReached(progress: awardManager.currentProgressFor($0)) == false })
     }
     
     private func loadAwardsData() {
@@ -352,28 +364,22 @@ class TodayPresenter: TodayPresenterProtocol {
             return
         }
 
-        var data = [GoalAwardData]()
+        var data = [GoalOrAwardIconData]()
         if week.isCurrentWeek {
             data = goals.compactMap({
                 let stamp = repository.stampBy(id: $0.stamps.first)
-                return GoalAwardData(
+                return GoalOrAwardIconData(
+                    stamp: stamp,
                     goal: $0,
-                    progress: awardManager.currentProgressFor($0),
-                    stamp: stamp
+                    progress: awardManager.currentProgressFor($0)
                 )
             })
-            // Put goals that are already reached in front
-            data = data.sorted(by: { return $0 < $1 })
         } else {
             data = awards.compactMap({
                 guard $0.reached == true else { return nil }
                 guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
                 let stamp = repository.stampBy(id: goal.stamps.first)
-                return GoalAwardData(
-                    award: $0,
-                    goal: goal,
-                    stamp: stamp
-                )
+                return .award(data: AwardIconData(stamp: stamp))
             })
         }
 

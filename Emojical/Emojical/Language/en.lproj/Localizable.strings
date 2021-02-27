@@ -14,11 +14,11 @@
 
 "sticker_used_x_text" = "Sticker used|%d times|last time:\n%@";
 
-"sticker_used_no_goal" = "This sticker is not directly assigned to any goal.";
+"sticker_used_no_goal" = "This sticker has not been assigned to a goal.";
 
 "sticker_used_1_goal" = "Sticker is used in the \'%@\' goal.";
 
-"sticker_used_x_goals" = "Sticker is used in %@ goals.";
+"sticker_used_x_goals" = "Sticker is used in the %@ goals.";
 
 "sticker_average_too_early" = "On average|-";
 
@@ -58,25 +58,29 @@
 
 "month_no_limit" = "Monthly, no limit.";
 
+"last_x_weeks" = "Last %d weeks";
+
+"last_x_months" = "Last %d months";
+
 // Current goal progress
 
 "you_got_0_stickers_week" = "You've got no stickers so far this week";
 
-"you_got_1_sticker_week" = "You've got 1 sticker this week";
+"you_got_1_sticker_week" = "You got 1 sticker this week";
 
-"you_got_x_stickers_week" = "You've got %d stickers this week";
+"you_got_x_stickers_week" = "You got %d stickers this week";
 
 "you_got_0_stickers_month" = "You've got no stickers so far this month";
 
-"you_got_1_sticker_month" = "You've got 1 sticker this month";
+"you_got_1_sticker_month" = "You got 1 sticker this month";
 
-"you_got_x_stickers_month" = "You've got %d stickers this month";
+"you_got_x_stickers_month" = "You got %d stickers this month";
 
-"positive_goal_not_reached" = "%@. %d to go.";
+"positive_goal_not_reached" = "%@. %d more to go.";
 
 "positive_goal_not_reached_0" = "%@. The goal is %d.";
 
-"negative_goal_not_reached" = "%@. You still can get %d more.";
+"negative_goal_not_reached" = "%@. You can still get %d more.";
 
 "negative_goal_not_reached_0" = "%@. You can get up to %d.";
 
@@ -96,11 +100,11 @@
 
 "award_positive_reached" = "Earned on %@, by getting %d stickers.";
 
-"award_positive_not_reached" = "%@ not reached. Got %d stickers (needed %d).";
+"award_positive_not_reached" = "%@ not reached. You got %d stickers (needed %d).";
 
 "award_negative_reached" = "Earned on %@. You had %d stickers (limit was %d).";
 
-"award_negative_not_reached" = "%@ not reached. Got %d stickers (limit was %d).";
+"award_negative_not_reached" = "%@ not reached. You got %d stickers (limit was %d).";
 
 // Titles / Tabs / Section Name
 
@@ -128,7 +132,7 @@
 
 "goals_title" = "Goals";
 
-"goals_library_title" = "Goals Examples";
+"goals_library_title" = "Goal Examples";
 
 "stats_title" = "Stats";
 
@@ -138,15 +142,15 @@
 
 // Goal Editing
 
-"no_goals_description" = "There are no goals yet. We can help you to make yourself better, just create new goal and track your progress.";
+"no_goals_description" = "You have no goals yet. Emojical can help you improve yourself, just create a new goal and track your progress.";
 
-"looking_for_examples" = "If you're not sure which goals you can create, take a look at few examples we put together.";
+"looking_for_examples" = "If you're not sure which goals you can create, take a look at a few examples we put together.";
 
 "delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
 
 "create_goal_button" = "Create Goal";
 
-"goals_examples_button" = "Goals Examples";
+"goals_examples_button" = "Goal Examples";
 
 "delete_goal_button" = "Delete Goal";
 
@@ -172,7 +176,7 @@
 
 "get_x_or_more" = "get|or more";
 
-"get_x_or_fewer" = "get|or fewer";
+"get_x_or_fewer" = "get|or less";
 
 "week" = "week";
 
@@ -188,7 +192,7 @@
 
 "sticker_name_placeholder" = "Sticker Name";
 
-"delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker would remain unchanged.";
+"delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker will remain unchanged.";
 
 "delete_sticker_button" = "Delete Sticker";
 
@@ -198,7 +202,7 @@
 
 "reminder_option" = "Daily Reminder";
 
-"reminder_footer" = "Remind every day around 9pm to fill your entry for that day if you haven't done so already.";
+"reminder_footer" = "Remind yourself every day around 9pm to fill your entry for that day if you haven't done so already.";
 
 "backup_title" = "Backup / Restore";
 
@@ -216,13 +220,13 @@
 
 "goal_reached_no_name" = "You've reached your goal.";
 
-"award_streak_count_description" = "You now have earned this award %d times total and %d times in a row! Keep that streak going!";
+"award_streak_count_description" = "You have now earned this award %d times total and %d times in a row! Keep that streak going!";
 
-"award_count_description" = "You now have earned this award %d times. Try to repeat this next week and start a streak!";
+"award_count_description" = "You have now earned this award %d times. Try to do this again and start a streak!";
 
 // Confirmation / Alert / Messages
 
-"week_recap_title" = "Week Recap is Ready";
+"week_recap_title" = "Last Week Recap is Ready";
 
 "week_recap_message_0_1" = "You haven't reached your goal. Let's hope this week will be better.";
 
@@ -232,7 +236,7 @@
 
 "week_recap_message_1_x" = "You have reached one of your goals. Keep it up!";
 
-"week_recap_message_x_x" = "You have reached all your goals. This is incredible!";
+"week_recap_message_x_x" = "You have reached all your goals. That is incredible!";
 
 "week_recap_message_x_y" = "You have reached %d of your goals. Great job!";
 
@@ -240,12 +244,12 @@
 
 "woah_title" = "Woah!";
 
-"goal_delete_confirmation" = "This goal has been reached few times. Are you sure you want to delete it?";
+"goal_delete_confirmation" = "This goal has been reached a few times. Are you sure you want to delete it?";
 
 "delete_button" = "Delete";
 
 "cancel_button" = "Cancel";
 
-"sticker_delete_confirmation" = "This sticker has been used few times. Are you sure you want to delete it?";
+"sticker_delete_confirmation" = "This sticker has been used a few times. Are you sure you want to delete it?";
 
 

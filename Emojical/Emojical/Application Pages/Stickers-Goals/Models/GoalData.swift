@@ -14,7 +14,7 @@ struct GoalData {
     let name: String
     let details: String
     let count: Int
-    let progress: GoalAwardData
+    let icon: GoalOrAwardIconData
 }
 
 extension GoalData: Equatable, Hashable {}

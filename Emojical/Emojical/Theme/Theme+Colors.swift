@@ -86,23 +86,15 @@ extension Theme {
         // MARK: - Goals and awards colors
         
         /// Positive goal progress bar
-        let positiveGoalProgress = UIColor(hex: "83D483") // light green
+        let positiveGoalProgress = UIColor(named: "positiveGoalProgress")!
         
         /// Negative goal progress bar
-        let negativeGoalProgress = UIColor(hex: "118AB2") // light blue
+        let negativeGoalProgress = UIColor(named: "negativeGoalProgress")!
         
-        /// Goal reached border color
-        lazy var goalReachedBorder: UIColor = {
-            return self.tint.withAlphaComponent(0.8)
-        }()
+        /// Reached goal award border color
+        let reachedGoalBorder = UIColor(named: "reachedGoalBorder")!
         
-        /// Goal reached border color
-        lazy var failedGoalBackground: UIColor = {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                return UITraitCollection.userInterfaceStyle == .light ?
-                    UIColor.darkGray.withAlphaComponent(0.2) :
-                    UIColor.lightGray.withAlphaComponent(0.2)
-            }
-        }()
+        /// Unreached goal background (whether it's positive goal in progress or busted negative goal)
+        let unreachedGoalBackground = UIColor(named: "unreachedGoalBackground")!
     }
 }

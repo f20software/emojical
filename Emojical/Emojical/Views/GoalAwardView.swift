@@ -37,9 +37,6 @@ class GoalAwardView : UIView {
     @IBInspectable
     var text: String? { didSet { configureViews() }}
     
-    @IBInspectable
-    var willAnimate: Bool = false { didSet { configureViews() }}
-
     // MARK: - Private state
     
     // Emoji label
@@ -88,7 +85,7 @@ class GoalAwardView : UIView {
     func configureViews() {
         circleLayer.lineWidth = progressLineWidth
         circleLayer.strokeColor = progressColor.cgColor
-        circleLayer.strokeEnd = willAnimate ? 0 : progress
+        circleLayer.strokeEnd = progress
         
         labelView.font = UIFont.systemFont(ofSize: emojiFontSize)
         labelView.backgroundColor = labelColor

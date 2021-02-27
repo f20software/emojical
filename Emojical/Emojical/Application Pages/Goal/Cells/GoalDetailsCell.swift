@@ -105,10 +105,11 @@ class GoalDetailsCell: ThemeObservingCollectionCell {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true
         
-        goal.progressLineWidth = Specs.progressLineWidth
         goal.emojiFontSize = Specs.emojiFontSize
-        award.borderWidth = Specs.progressLineWidth
+        goal.progressLineWidth = Specs.progressLineWidth
+        
         award.emojiFontSize = Specs.emojiFontSize
+        award.borderWidth = Specs.progressLineWidth
         award.isHidden = true
 
         goalBackground.backgroundColor = Theme.main.colors.background

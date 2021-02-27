@@ -28,6 +28,9 @@
 		BC56440F246B30BF00942066 /* StampsDataSourceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56440E246B30BF00942066 /* StampsDataSourceListener.swift */; };
 		BCF2300F2473222F001E8844 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF2300E2473222F001E8844 /* DateTests.swift */; };
 		F204473F25E8C7E9003318C6 /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204473E25E8C7E9003318C6 /* AwardView.swift */; };
+		F204475225EA092B003318C6 /* GoalIconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204474F25EA092A003318C6 /* GoalIconData.swift */; };
+		F204475325EA092B003318C6 /* Goal+AwardIconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204475025EA092A003318C6 /* Goal+AwardIconData.swift */; };
+		F204475425EA092B003318C6 /* AwardIconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204475125EA092A003318C6 /* AwardIconData.swift */; };
 		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView_Old.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
@@ -275,6 +278,9 @@
 		BC56440E246B30BF00942066 /* StampsDataSourceListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsDataSourceListener.swift; sourceTree = "<group>"; };
 		BCF2300E2473222F001E8844 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		F204473E25E8C7E9003318C6 /* AwardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
+		F204474F25EA092A003318C6 /* GoalIconData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalIconData.swift; sourceTree = "<group>"; };
+		F204475025EA092A003318C6 /* Goal+AwardIconData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Goal+AwardIconData.swift"; sourceTree = "<group>"; };
+		F204475125EA092A003318C6 /* AwardIconData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardIconData.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView_Old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView_Old.swift; sourceTree = "<group>"; };
 		F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalReachedCell.swift; sourceTree = "<group>"; };
@@ -587,10 +593,21 @@
 			path = Listeners;
 			sourceTree = "<group>";
 		};
+		F204474A25EA08F0003318C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F204475125EA092A003318C6 /* AwardIconData.swift */,
+				F204474F25EA092A003318C6 /* GoalIconData.swift */,
+				F204475025EA092A003318C6 /* Goal+AwardIconData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F20D1F9724142A1D00FB5000 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				F24E23ED25C24DFC00669134 /* Cells */,
+				F204474A25EA08F0003318C6 /* Models */,
 				F20D1F9424142A1700FB5000 /* StickerView_Old.swift */,
 				F21F150225C107A800DE5C1B /* StickerView.swift */,
 				F204473E25E8C7E9003318C6 /* AwardView.swift */,
@@ -1559,6 +1576,7 @@
 				F27E709125DB1209004E49FB /* StickerDetailEditViewProtocol.swift in Sources */,
 				F27782FD25C501E300C68F7A /* OptionsPresenter.swift in Sources */,
 				F27782FE25C501E300C68F7A /* OptionsCoordinator.swift in Sources */,
+				F204475425EA092B003318C6 /* AwardIconData.swift in Sources */,
 				F2FD4E2125BDCD42005819A0 /* StickerViewController.swift in Sources */,
 				F23CF3DE2582BB0E0048BA74 /* StickersHeaderView.swift in Sources */,
 				F27782F725C501E300C68F7A /* OptionsTableModel.swift in Sources */,
@@ -1638,6 +1656,7 @@
 				F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */,
 				F23CF3B225829B510048BA74 /* StickersPresenterProtocol.swift in Sources */,
 				F251F8BD25BFBBEC0042B1DA /* SelectStickerElement.swift in Sources */,
+				F204475225EA092B003318C6 /* GoalIconData.swift in Sources */,
 				F29B439625CEECBD0005ADF5 /* Theme+Specs.swift in Sources */,
 				F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */,
 				F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */,
@@ -1683,6 +1702,7 @@
 				F2EE4AAE25C5AECC004FB0F2 /* TextCell.swift in Sources */,
 				F295339325B63DB1003CA002 /* GoalDetailsCell.swift in Sources */,
 				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,
+				F204475325EA092B003318C6 /* Goal+AwardIconData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

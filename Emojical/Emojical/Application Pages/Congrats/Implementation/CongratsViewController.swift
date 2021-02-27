@@ -63,7 +63,6 @@ class CongratsViewController : UIViewController, CongratsView {
         goal.clockwise = true // (data.goalIcon.direction == .positive)
         goal.progress = 0
         goal.progressColor = data.goalIcon.progressColor
-        goal.willAnimate = false
         goal.isHidden = false
 
         award.labelText = data.awardIcon.emoji

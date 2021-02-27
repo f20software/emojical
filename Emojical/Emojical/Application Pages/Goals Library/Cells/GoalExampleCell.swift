@@ -33,7 +33,7 @@ class GoalExampleCell: ThemeObservingCollectionCell {
             goalIcon.labelColor = UIColor(hex: sticker.color.rawValue).withAlphaComponent(0.5)
             goalIcon.clockwise = true
             goalIcon.progress = 1.0
-            goalIcon.progressColor = Theme.main.colors.goalReachedBorder
+            goalIcon.progressColor = Theme.main.colors.reachedGoalBorder
             goalIcon.setNeedsDisplay()
         }
     }

@@ -55,7 +55,7 @@ extension GoalAwardData {
             direction: goal.direction,
             period: goal.period,
             progress: 1.0,
-            progressColor: Theme.main.colors.goalReachedBorder,
+            progressColor: Theme.main.colors.reachedGoalBorder,
             isReached: true
         )
     }
@@ -71,7 +71,7 @@ extension GoalAwardData {
                 direction: goal.direction,
                 period: goal.period,
                 progress: 1.0,
-                progressColor: Theme.main.colors.goalReachedBorder,
+                progressColor: Theme.main.colors.reachedGoalBorder,
                 isReached: true
             )
         } else {
@@ -80,7 +80,7 @@ extension GoalAwardData {
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: Theme.main.colors.failedGoalBackground,
+                    backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: .positive,
                     period: award.period,
                     progress: Float(award.count) / Float(award.limit) + Specs.zeroProgressMock,
@@ -91,7 +91,7 @@ extension GoalAwardData {
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: Theme.main.colors.failedGoalBackground,
+                    backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: award.direction,
                     period: award.period,
                     // Not reached negative goal means actual count was larger than the limit
@@ -119,7 +119,7 @@ extension GoalAwardData {
                     direction: .positive,
                     period: goal.period,
                     progress: 1.0,
-                    progressColor: Theme.main.colors.goalReachedBorder,
+                    progressColor: Theme.main.colors.reachedGoalBorder,
                     isReached: true
                 )
             } else {
@@ -127,7 +127,7 @@ extension GoalAwardData {
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: Theme.main.colors.failedGoalBackground,
+                    backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: .positive,
                     period: goal.period,
                     progress: Float(progress) / Float(goal.limit) +
@@ -142,7 +142,7 @@ extension GoalAwardData {
                 self.init(
                     goalId: goal.id,
                     emoji: stamp?.label,
-                    backgroundColor: Theme.main.colors.failedGoalBackground,
+                    backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: .negative,
                     period: goal.period,
                     progress: 0.0,

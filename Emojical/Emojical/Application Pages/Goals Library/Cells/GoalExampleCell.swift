@@ -30,7 +30,7 @@ class GoalExampleCell: ThemeObservingCollectionCell {
         
         if let sticker = data.stickers.first {
             award.labelText = sticker.emoji
-            award.labelBackgroundColor = UIColor(hex: sticker.color.rawValue).withAlphaComponent(0.5)
+            award.labelBackgroundColor = sticker.color.withAlphaComponent(0.5)
             award.borderColor = Theme.main.colors.reachedGoalBorder
         }
     }

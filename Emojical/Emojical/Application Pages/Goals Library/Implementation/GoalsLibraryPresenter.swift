@@ -27,7 +27,7 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
             period: .week,
             limit: 3,
             stickers: [
-                StickerExampleData(emoji: "⚽️", name: "Soccer", color: .green)
+                StickerExampleData(emoji: "⚽️", name: "Soccer", color: UIColor(named: "emojiGreen")!)
             ],
             extra: []
         ),
@@ -39,11 +39,11 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
             period: .week,
             limit: 5,
             stickers: [
-                StickerExampleData(emoji: "🧘", name: "Yoga", color: .yellow),
-                StickerExampleData(emoji: "⚽️", name: "Soccer", color: .green),
-                StickerExampleData(emoji: "⛹🏻‍♀️", name: "Basketball", color: .lightGreen),
-                StickerExampleData(emoji: "🚴🏻", name: "Bike", color: .lightGreen),
-                StickerExampleData(emoji: "🏓", name: "Ping-pong", color: .green),
+                StickerExampleData(emoji: "🧘", name: "Yoga", color: UIColor(named: "emojiYellow")!),
+                StickerExampleData(emoji: "⚽️", name: "Soccer", color: UIColor(named: "emojiGreen")!),
+                StickerExampleData(emoji: "⛹🏻‍♀️", name: "Basketball", color: UIColor(named: "emojiLightGreen")!),
+                StickerExampleData(emoji: "🚴🏻", name: "Bike", color: UIColor(named: "emojiLightGreen")!),
+                StickerExampleData(emoji: "🏓", name: "Ping-pong", color: UIColor(named: "emojiGreen")!),
             ],
             extra: []
         ),
@@ -55,12 +55,12 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
             period: .week,
             limit: 3,
             stickers: [
-                StickerExampleData(emoji: "🥩", name: "Steak", color: .red),
+                StickerExampleData(emoji: "🥩", name: "Steak", color: UIColor(named: "emojiRed")!),
             ],
             extra: [
-                StickerExampleData(emoji: "🐣", name: "Chicken", color: .green),
-                StickerExampleData(emoji: "🐟", name: "Fish", color: .green),
-                StickerExampleData(emoji: "🥦", name: "Veggies", color: .lightGreen),
+                StickerExampleData(emoji: "🐣", name: "Chicken", color: UIColor(named: "emojiGreen")!),
+                StickerExampleData(emoji: "🐟", name: "Fish", color: UIColor(named: "emojiGreen")!),
+                StickerExampleData(emoji: "🥦", name: "Veggies", color: UIColor(named: "emojiLightGreen")!),
             ]
         )
     ]
@@ -112,7 +112,7 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
             let new = Stamp(
                 name: data.name,
                 label: data.emoji,
-                color: UIColor(hex: data.color.rawValue)
+                color: data.color
             )
             let saved = try repository.save(stamp: new)
             return saved.id

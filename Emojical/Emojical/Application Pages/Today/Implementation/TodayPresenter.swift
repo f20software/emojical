@@ -336,7 +336,11 @@ class TodayPresenter: TodayPresenterProtocol {
             let stamp = repository.stampBy(id: goal.stamps.first)
             return AwardRecapData(
                 title: $0.descriptionText,
-                progress: GoalOrAwardIconData(award: $0, goal: goal, stamp: stamp)
+                progress: GoalOrAwardIconData(
+                    award: $0,
+                    goal: goal,
+                    stamp: stamp
+                )
             )
         })
     }

@@ -11,16 +11,6 @@ import UIKit
 
 extension Theme {
 
-    enum Palette : String {
-        case red = "EF476F"
-        case violet = "D671DB"
-        case yellow = "FFE175"
-        case lightGreen = "83D483"
-        case green = "049F70"
-        case lightBlue = "118AB2"
-        case blue = "202674"
-    }
-    
     class Colors {
     
         /// Main application tint color
@@ -41,20 +31,10 @@ extension Theme {
         let calendarTodayBackground = UIColor.systemRed
         
         /// Separator color
-        lazy var separator: UIColor = {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                return UITraitCollection.userInterfaceStyle == .light ?
-                    UIColor.separator.withAlphaComponent(0.1) : UIColor.separator
-            }
-        }()
+        let separator = UIColor(named: "formSeparator")!
         
         /// Shadow color for sticker selector and plus button on the Today screen
-        lazy var shadow: UIColor = {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                return UITraitCollection.userInterfaceStyle == .light ?
-                    UIColor.gray : UIColor.clear
-            }
-        }()
+        let shadow = UIColor(named: "plateShadow")!
 
         // MARK: - Text colors
         
@@ -74,13 +54,13 @@ extension Theme {
         
         /// Application color pallete
         let palette:[UIColor] = [
-            UIColor(hex: "EF476F"), // red
-            UIColor(hex: "D671DB"), // violet
-            UIColor(hex: "FFE175"), // yellow
-            UIColor(hex: "83D483"), // light green
-            UIColor(hex: "049F70"), // green
-            UIColor(hex: "118AB2"), // light blue
-            UIColor(hex: "202674")  // blue
+            UIColor(named: "emojiRed")!,
+            UIColor(named: "emojiViolet")!,
+            UIColor(named: "emojiYellow")!,
+            UIColor(named: "emojiLightGreen")!,
+            UIColor(named: "emojiGreen")!,
+            UIColor(named: "emojiLightBlue")!,
+            UIColor(named: "emojiBlue")!,
         ]
         
         // MARK: - Goals and awards colors

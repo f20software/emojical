@@ -41,12 +41,12 @@ class GoalCell: ThemeObservingCollectionCell {
             goal.progress = CGFloat(iconData.progress)
             goal.progressColor = iconData.progressColor
             
-        case .award(let iconData):
+        case .award(let awardData):
             award.isHidden = false
             goal.isHidden = true
-            award.labelText = iconData.emoji
-            award.labelBackgroundColor = iconData.backgroundColor
-            award.borderColor = iconData.borderColor
+            award.labelText = awardData.emoji
+            award.labelBackgroundColor = awardData.backgroundColor
+            award.borderColor = awardData.borderColor
         }
         
         

@@ -222,7 +222,7 @@
 
 "award_streak_count_description" = "You have now earned this award %d times total and %d times in a row! Keep that streak going!";
 
-"award_count_description" = "You have now earned this award %d times. Try to repeat this next week and start a streak!";
+"award_count_description" = "You have now earned this award %d times. Try to do this again and start a streak!";
 
 // Confirmation / Alert / Messages
 

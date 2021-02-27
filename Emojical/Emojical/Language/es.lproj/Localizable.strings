@@ -220,7 +220,7 @@
 
 "award_streak_count_description" = "¡Ahora ha ganado este premio %d veces en total y %d veces seguidas! ¡Mantén esa racha!";
 
-"award_count_description" = "Ahora ha ganado este premio %d veces. ¡Intenta repetir esto la próxima semana y comienza una racha!";
+"award_count_description" = "Ahora ha ganado este premio %d veces. ¡Intenta hacer esto de nuevo y comienza una racha!";
 
 // Confirmation / Alert / Messages
 

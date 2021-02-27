@@ -107,7 +107,7 @@ class TodayViewController: UIViewController {
     var onCloseStampSelector: (() -> Void)?
 
     /// User tapped on the award icon on the top
-    var onAwardTapped: ((Int64) -> Void)?
+    var onAwardTapped: ((Int) -> Void)?
 
     /// User wants to dismiss Awards Recap view (by dragging it down)
     var onAwardsRecapDismiss: (() -> Void)?
@@ -249,7 +249,7 @@ extension TodayViewController: TodayView {
     }
 
     /// Loads awards data
-    func loadAwards(data: [GoalAwardData]) {
+    func loadAwards(data: [GoalOrAwardIconData]) {
         awards.loadData(data)
     }
 

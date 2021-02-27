@@ -25,7 +25,7 @@ class WeeklyAwardsView : UIView {
     // MARK: - Callbacks
     
     // Called when user tapped on the award cell
-    var onAwardTapped: ((Int64) -> Void)?
+    var onAwardTapped: ((Int) -> Void)?
 
     // MARK: - View lifecycle
     
@@ -36,7 +36,7 @@ class WeeklyAwardsView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(_ data: [GoalAwardData]) {
+    func loadData(_ data: [GoalOrAwardIconData]) {
         var empty = isDataSourceEmpty
         var snapshot = NSDiffableDataSourceSnapshot<Int, TodayAwardElement>()
         snapshot.appendSections([0])
@@ -126,10 +126,7 @@ class WeeklyAwardsView : UIView {
 extension WeeklyAwardsView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else {
-            return
-        }
-        onAwardTapped?(Int64(cell.tag))
+        onAwardTapped?(indexPath.row)
     }
 
     private func cell(for path: IndexPath, model: TodayAwardElement, collectionView: UICollectionView) -> UICollectionViewCell? {

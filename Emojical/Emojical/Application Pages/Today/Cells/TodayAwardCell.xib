@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VV-f6-HtA" customClass="AwardView" customModule="Emojical" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="1" green="0.1764705882" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftG-wh-ZRA" customClass="GoalAwardView" customModule="Emojical" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -28,14 +36,19 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="ftG-wh-ZRA" firstAttribute="bottom" secondItem="4VV-f6-HtA" secondAttribute="bottom" id="690-nC-Itb"/>
                 <constraint firstItem="ftG-wh-ZRA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="CTq-D9-J1C"/>
                 <constraint firstItem="ftG-wh-ZRA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Gep-Po-HzT"/>
                 <constraint firstAttribute="bottom" secondItem="ftG-wh-ZRA" secondAttribute="bottom" id="UmB-zH-m9E"/>
+                <constraint firstItem="ftG-wh-ZRA" firstAttribute="top" secondItem="4VV-f6-HtA" secondAttribute="top" id="XLJ-3E-Ra2"/>
                 <constraint firstAttribute="trailing" secondItem="ftG-wh-ZRA" secondAttribute="trailing" id="b3o-oh-ByG"/>
+                <constraint firstItem="ftG-wh-ZRA" firstAttribute="trailing" secondItem="4VV-f6-HtA" secondAttribute="trailing" id="jpk-r6-oyV"/>
+                <constraint firstItem="ftG-wh-ZRA" firstAttribute="leading" secondItem="4VV-f6-HtA" secondAttribute="leading" id="pxv-vC-WhY"/>
             </constraints>
             <size key="customSize" width="50" height="50"/>
             <connections>
-                <outlet property="awardIcon" destination="ftG-wh-ZRA" id="MCm-3l-pDi"/>
+                <outlet property="award" destination="4VV-f6-HtA" id="Ui4-YE-jPR"/>
+                <outlet property="goal" destination="ftG-wh-ZRA" id="MCm-3l-pDi"/>
             </connections>
             <point key="canvasLocation" x="42.028985507246382" y="131.25"/>
         </collectionViewCell>

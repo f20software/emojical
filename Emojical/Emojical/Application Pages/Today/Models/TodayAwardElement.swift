@@ -9,6 +9,6 @@
 import Foundation
 
 enum TodayAwardElement: Hashable {
-    case award(GoalAwardData)
+    case award(GoalOrAwardIconData)
     case noAwards(String)
 }

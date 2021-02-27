@@ -12,35 +12,48 @@ class TodayAwardCell: UICollectionViewCell {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var awardIcon: GoalAwardView!
+    @IBOutlet weak var goal: GoalAwardView!
+    @IBOutlet weak var award: AwardView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        awardIcon.progressLineWidth = Specs.progressLineWidth
+        configureViews()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        awardIcon.labelColor = UIColor.clear
-//        awardIcon.text = nil
-//        awardIcon.progress = 0.0
-//        awardIcon.progressLineGap = 1.0
-//        awardIcon.clockwise = true
-//        awardIcon.progressColor = UIColor.clear
-//        awardIcon.setNeedsDisplay()
     }
     
     // MARK: - Public view interface
     
-    func configure(for data: GoalAwardData) {
-        tag = Int(data.goalId ?? 0)
-        awardIcon.text = data.emoji
-        awardIcon.labelColor = data.backgroundColor
-        awardIcon.progress = CGFloat(data.progress)
-        awardIcon.progressLineGap = data.progress >= 1.0 ? -0.5 : 1.0
-        awardIcon.progressColor = data.progressColor
-        awardIcon.clockwise = (data.direction == .positive)
-        awardIcon.setNeedsDisplay()
+    func configure(for data: GoalOrAwardIconData) {
+        goal.isHidden = true
+        award.isHidden = true
+
+        switch data {
+        case .award(let awardData):
+            award.isHidden = false
+            award.labelText = awardData.emoji
+            award.labelBackgroundColor = awardData.backgroundColor
+            award.borderColor = awardData.borderColor
+
+        case .goal(let goalData):
+            // tag = Int(goalData.goalId ?? 0)
+            goal.isHidden = false
+            goal.text = goalData.emoji
+            goal.labelColor = goalData.backgroundColor
+            goal.progress = CGFloat(goalData.progress)
+            goal.progressColor = goalData.progressColor
+            goal.clockwise = (goalData.direction == .positive)
+        }
+    }
+    
+    // MARK: - Private helpers
+    
+    private func configureViews() {
+        goal.progressLineWidth = Specs.progressLineWidth
+        goal.progressLineGap = Specs.progressLineGap
+        award.borderWidth = Specs.progressLineWidth
     }
 }
 
@@ -49,4 +62,7 @@ fileprivate struct Specs {
     
     /// Line width for the progress around award icon
     static let progressLineWidth: CGFloat = 3.0
+
+    /// Gap between progress line and the icon
+    static let progressLineGap: CGFloat = 1.0
 }

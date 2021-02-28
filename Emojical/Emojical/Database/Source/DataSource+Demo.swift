@@ -35,6 +35,31 @@ extension DataSource {
         return nil
     }
 
+    /// Create initial database entires
+    func createInitialStickers() {
+        // Stickers
+        let stickers = [
+            ("⭐️", "Star", Theme.main.colors.palette[2]),
+            ("🏐", "Exercise", Theme.main.colors.palette[3]),
+            ("📖", "Read Book", Theme.main.colors.palette[5]),
+            ("🤩", "Good Day", Theme.main.colors.palette[2]),
+        ]
+
+        for (emoji, name, color) in stickers {
+            do {
+                try dbQueue.inDatabase { db in
+                    var stored = StoredStamp(
+                        name: name,
+                        label: emoji,
+                        color: color.hex)
+                    try stored.save(db)
+                }
+            }
+            catch {}
+        }
+    }
+
+    
     /// Create demo database entires
     func createDemoEntries(from date: Date) {
         // Stickers

@@ -96,19 +96,6 @@ struct AppDatabase {
             })
         }
 
-//        "B8B09B", "Gold",
-//        "7B92A3", "Grey",
-//        "6AB1D8", "Sky Blue",
-//        "0060A7", "Blue",
-//        "00BBB3", "Green",
-//        "57D3A3", "Mint",
-//        "FF6A00", "Orange",
-//        "BC83C9", "Purple",
-//        "F6323E", "Red",
-//        "ED8C6B", "Peach",
-//        "FFFFFF", "White",
-//        "F9BE00", "Yellow",
-//
         migrator.registerMigration("db-content0") { db in
             // Fill in default stamps
             for stamp in [

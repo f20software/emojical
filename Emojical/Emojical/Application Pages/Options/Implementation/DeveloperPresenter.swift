@@ -89,6 +89,10 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                         self.createDemoDatabase()
                         self.loadViewData()
                     }),
+                    .button("Create Initial Database", {
+                        self.createIinitialDatabase()
+                        self.loadViewData()
+                    }),
                 ]
             ),
             Section(
@@ -146,6 +150,11 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
     private func createDemoDatabase() {
         repository.createDemoEntries(
             from: Date())
+        awards.recalculateOnAppResume()
+    }
+
+    private func createIinitialDatabase() {
+        repository.createInitialStickers()
         awards.recalculateOnAppResume()
     }
 }

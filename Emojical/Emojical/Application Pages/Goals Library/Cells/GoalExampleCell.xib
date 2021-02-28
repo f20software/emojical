@@ -44,25 +44,12 @@
                                     <constraint firstAttribute="height" constant="48" id="Jae-Li-80O"/>
                                     <constraint firstAttribute="width" constant="48" id="PD1-tw-Rhk"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
-                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A"/>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstItem="JUk-G8-Nse" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="61R-lT-idr"/>
                             <constraint firstItem="JUk-G8-Nse" firstAttribute="top" secondItem="ChH-rG-WsF" secondAttribute="top" constant="15" id="6IB-5O-JwL"/>
-                            <constraint firstAttribute="bottom" secondItem="JUk-G8-Nse" secondAttribute="bottom" constant="15" id="Iq9-WJ-DqS"/>
+                            <constraint firstAttribute="bottom" secondItem="JUk-G8-Nse" secondAttribute="bottom" priority="999" constant="15" id="Iq9-WJ-DqS"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JUk-G8-Nse" secondAttribute="trailing" constant="15" id="O6Y-cE-fel"/>
                             <constraint firstItem="MN2-nT-Okg" firstAttribute="leading" secondItem="ChH-rG-WsF" secondAttribute="leading" priority="999" constant="15" id="Q1o-n7-1F2"/>
                             <constraint firstItem="MN2-nT-Okg" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="RLU-Ox-wEJ"/>

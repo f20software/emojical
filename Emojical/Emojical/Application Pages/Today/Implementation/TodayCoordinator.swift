@@ -19,6 +19,8 @@ class TodayCoordinator: TodayCoordinatorProtocol {
         self.parentController = parent
     }
 
+    // MARK: - Public
+    
     /// Shows modal form to create new sticker
     func newSticker() {
         // Instantiate StickerViewController from the storyboard file
@@ -28,12 +30,10 @@ class TodayCoordinator: TodayCoordinatorProtocol {
             return
         }
 
-        let coordinator = StickerCoordinator(parent: nav)
-        
         // Hook up GoalPresenter and tie it together to a view controller
         view.presenter = StickerPresenter(
             view: view,
-            coordinator: coordinator,
+            coordinator: StickerCoordinator(parent: nav),
             awardManager: AwardManager.shared,
             repository: Storage.shared.repository,
             sticker: nil,
@@ -52,42 +52,37 @@ class TodayCoordinator: TodayCoordinatorProtocol {
         }
         
         // Hook up presenter
-        let presenter = RecapPresenter(
+        awardsView.presenter = RecapPresenter(
             data: data,
             view: awardsView
         )
-        awardsView.presenter = presenter
-
-        // Navigate to AwardsRecapViewController
         parentController?.pushViewController(awardsView, animated: true)
     }
 
     /// Show congratulation window
     func showCongratsWindow(data: Award) {
 
-        // Instantiate AwardsRecapViewController from the storyboard file
+        // Instantiate CongratsViewController from the storyboard file
         guard let congratsView: CongratsViewController = Storyboard.Congrats.initialViewController() else {
             assertionFailure("Failed to initialize CongratsViewController")
             return
         }
         
         // Hook up presenter
-        let presenter = CongratsPresenter(
+        congratsView.presenter = CongratsPresenter(
             data: data,
             view: congratsView,
             repository: Storage.shared.repository
         )
-        congratsView.presenter = presenter
         congratsView.onDismiss = {
+            congratsView.modalTransitionStyle = .coverVertical
             congratsView.dismiss(animated: true, completion: nil)
         }
         congratsView.modalPresentationStyle = .overFullScreen
         congratsView.modalTransitionStyle = .flipHorizontal
 
-        // Navigate to AwardsRecapViewController
-        parentController?.present(congratsView, animated: true) {
-            congratsView.modalTransitionStyle = .coverVertical
-        }
+        // Navigate to CongratsViewController
+        parentController?.present(congratsView, animated: true)
     }
     
     /// Navigates to specific goal
@@ -100,19 +95,16 @@ class TodayCoordinator: TodayCoordinatorProtocol {
             return
         }
 
-        let coordinator = GoalCoordinator(parent: parentController)
-        
         // Hook up GoalPresenter and tie it together to a view controller
         view.presenter = GoalPresenter(
             view: view,
-            coordinator: coordinator,
+            coordinator: GoalCoordinator(parent: parentController),
             awardManager: AwardManager.shared,
             repository: Storage.shared.repository,
             goal: goal,
             presentation: .push,
             editing: false
         )
-
         parentController?.pushViewController(view, animated: true)
     }
 }

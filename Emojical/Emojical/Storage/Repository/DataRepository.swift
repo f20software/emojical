@@ -105,6 +105,9 @@ protocol DataRepository: class {
     /// Create demo database entires
     func createDemoEntries(from date: Date)
     
+    /// Create initial database entires
+    func createInitialStickers()
+
     /// Find stamp by its label (returns first matching or nil
     func stampByLabel(label: String) -> Stamp?
 }

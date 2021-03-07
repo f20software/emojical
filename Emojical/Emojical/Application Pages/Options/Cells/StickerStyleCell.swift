@@ -24,7 +24,6 @@ class StickerStyleCell: UITableViewCell {
     private var style: StickerStyle = .default {
         didSet {
             selectionPosition.constant = style == .default ? 8.0 : -53.0
-            onValueChanged?(style)
         }
     }
     
@@ -47,17 +46,6 @@ class StickerStyleCell: UITableViewCell {
         self.style = style
     }
 
-    // MARK: - Actions
-    
-    func toggleValue() {
-        switch style {
-        case .default:
-            style = .borderless
-        case .borderless:
-            style = .default
-        }
-    }
-    
     // MARK: - Private helpers
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -77,5 +65,21 @@ class StickerStyleCell: UITableViewCell {
         sticker2.style = .borderless
         
         selection.tintColor = Theme.main.colors.tint
+        
+        sticker1.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(sticker1Tapped)))
+        
+        sticker2.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(sticker2Tapped)))
+    }
+    
+    @objc private func sticker1Tapped() {
+        style = .default
+        onValueChanged?(style)
+    }
+
+    @objc private func sticker2Tapped() {
+        style = .borderless
+        onValueChanged?(style)
     }
 }

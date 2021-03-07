@@ -41,8 +41,6 @@ extension BaseTableViewController {
             cell.onSelected?()
         } else if let cell = tableView.cellForRow(at: indexPath) as? ButtonCell {
             cell.onButtonTapped?()
-        } else if let cell = tableView.cellForRow(at: indexPath) as? StickerStyleCell {
-            cell.toggleValue()
         }
     }
     

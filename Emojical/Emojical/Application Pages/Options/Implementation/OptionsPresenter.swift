@@ -68,6 +68,20 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                 ]
             ),
             Section(
+                header: "appearance_title".localized,
+                footer: "application_restart_required".localized,
+                cells: [
+                    .stickerStyle(
+                        "sticker_style".localized,
+                        repository.allStamps().first!,
+                        settings.stickerStyle
+                    ) { [weak self] newValue in
+                        self?.settings.stickerStyle = newValue
+                        self?.restartAppConfirmation()
+                    }
+                ]
+            ),
+            Section(
                 header: "backup_title".localized,
                 footer: "backup_footer".localized,
                 cells: [
@@ -87,12 +101,12 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
             ),
         ]
 
-        #if targetEnvironment(simulator)
+        // #if targetEnvironment(simulator)
         data[2].cells.append(
             .navigate("Developer Options", { [weak self] in
                 self?.coordinator?.developerOptions()
             }))
-        #endif
+        // #endif
         view?.updateTitle("options_title".localized)
         view?.loadData(data)
     }
@@ -112,6 +126,22 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                 fileName: "emojical-backup-\(Date().databaseKey).json"
             )
         }
+    }
+    
+    private func restartAppConfirmation() {
+
+        let alert = UIAlertController(
+            title: "sticker_style_restart".localized,
+            message: nil,
+            preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(
+            title: "restart_button".localized,
+            style: .destructive,
+            handler: { (_) in
+                abort()
+        }))
+        view?.viewController?.present(alert, animated: true, completion: nil)
     }
 }
     

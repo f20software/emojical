@@ -252,4 +252,21 @@
 
 "sticker_delete_confirmation" = "This sticker has been used a few times. Are you sure you want to delete it?";
 
+// Onboarding
 
+"welcome_title" = "Welcome to Emojical!";
+
+"welcome_description" = "Hello! Looks like you are new here. Let me show you around.\n\n
+This is a sticker. You can create and customize many of them. Use stickers to write your diary, recording events and activities during the day. Tap the sticker in the bottom panel to add it to a day, tap on it again to remove it. ";
+
+// Sticker Style
+
+"appearance_title" = "Appearance";
+
+"application_restart_required" = "Application restart is required.";
+
+"sticker_style" = "Sticker Style";
+
+"restart_button" = "Restart";
+
+"sticker_style_restart" = "Sticker style will be changed after you start application again.";

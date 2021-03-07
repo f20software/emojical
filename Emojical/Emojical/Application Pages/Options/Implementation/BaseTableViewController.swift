@@ -41,6 +41,8 @@ extension BaseTableViewController {
             cell.onSelected?()
         } else if let cell = tableView.cellForRow(at: indexPath) as? ButtonCell {
             cell.onButtonTapped?()
+        } else if let cell = tableView.cellForRow(at: indexPath) as? StickerStyleCell {
+            cell.toggleValue()
         }
     }
     
@@ -57,6 +59,13 @@ extension BaseTableViewController {
                 as? ButtonCell else { return UITableViewCell() }
             cell.configure(for: text)
             cell.onButtonTapped = callback
+            return cell
+            
+        case .stickerStyle(let text, let sticker, let style, let callback):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Specs.Cells.stickerStyleCell)
+                as? StickerStyleCell else { return UITableViewCell() }
+            cell.configure(for: text, sticker: sticker, style: style)
+            cell.onValueChanged = callback
             return cell
             
         case .navigate(let text, let callback):
@@ -82,16 +91,19 @@ fileprivate struct Specs {
     /// Cell identifiers
     struct Cells {
         
-        /// Sticker cell identifier
+        /// Simple text cell identifier
         static let textCell = "textCell"
         
-        /// Sticker cell identifier
+        /// Button cell identifier
         static let buttonCell = "buttonCell"
+        
+        /// Sticker style cell identifier
+        static let stickerStyleCell = "stickerStyleCell"
 
-        /// Sticker cell identifier
+        /// Switch cell identifier
         static let switchCell = "switchCell"
 
-        /// Sticker cell identifier
+        /// Navigation cell identifier
         static let navigationCell = "navigationCell"
     }
 }

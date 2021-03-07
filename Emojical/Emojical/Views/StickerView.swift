@@ -8,6 +8,15 @@
 
 import UIKit
 
+enum StickerStyle: Int {
+
+    /// Default sticker style with 0.25 opacity and a border
+    case `default` = 0
+    
+    /// Borderless style sticker - 0.5 opacity
+    case borderless = 1
+}
+
 /// Custom view to draw goal with progress or reached award (when progress is 100%)
 class StickerView : UIView {
     
@@ -17,16 +26,20 @@ class StickerView : UIView {
     var color: UIColor = UIColor.clear { didSet { configureViews() }}
     
     @IBInspectable
-    var emojiSizeRatio = Specs.emojiSizeRatio { didSet { configureViews() }}
+    var emojiSizeRatio = 1.0 { didSet { configureViews() }}
 
     @IBInspectable
-    var cornerRadius = Specs.cornerRadius { didSet { configureViews() }}
+    var cornerRadius = 0.0 { didSet { configureViews() }}
 
     @IBInspectable
-    var borderWidth = Specs.borderWidth { didSet { configureViews() }}
+    var borderWidth = 0.0 { didSet { configureViews() }}
 
     @IBInspectable
     var text: String? { didSet { configureViews() }}
+
+    /// Sticker style
+    /// TODO: Potentially can be done via proper DI, but for now we can stick with global setting
+    var style: StickerStyle = LocalSettings.shared.stickerStyle
     
     // MARK: - Private state
     
@@ -54,12 +67,11 @@ class StickerView : UIView {
     
     // Configure text and color and other parameters for the emoji subview
     private func configureViews() {
-        labelView?.font = UIFont.systemFont(ofSize: bounds.width * emojiSizeRatio)
-        // labelView?.font = UIFont(name: "AppleColorEmoji", size: bounds.width * emojiSizeRatio)
-        labelView?.backgroundColor = color.withAlphaComponent(0.25)
+        labelView?.font = UIFont.systemFont(ofSize: bounds.width * Specs[style]!.emojiSizeRatio)
+        labelView?.backgroundColor = color.withAlphaComponent(Specs[style]!.opacity)
         labelView?.text = text
-        labelView?.layer.cornerRadius = cornerRadius
-        labelView?.layer.borderWidth = borderWidth
+        labelView?.layer.cornerRadius = Specs[style]!.cornerRadius
+        labelView?.layer.borderWidth = Specs[style]!.borderWidth
         labelView?.layer.borderColor = color.cgColor
     }
     
@@ -88,14 +100,31 @@ class StickerView : UIView {
 
 // MARK: - Specs
 
-fileprivate struct Specs {
+fileprivate struct StickerSpecs {
+    /// Background opacity
+    let opacity: CGFloat
     
     /// Default ratio for Emoji font size to the view width
-    static let emojiSizeRatio: CGFloat = 0.5
+    let emojiSizeRatio: CGFloat
 
     /// Default corner radius
-    static let cornerRadius: CGFloat = 8.0
+    let cornerRadius: CGFloat
     
     /// Default border width
-    static let borderWidth: CGFloat = 2.0
+    let borderWidth: CGFloat
 }
+
+fileprivate let Specs: [StickerStyle: StickerSpecs] = [
+    .default: StickerSpecs(
+        opacity: 0.25,
+        emojiSizeRatio: 0.55,
+        cornerRadius: 8.0,
+        borderWidth: 2.0
+    ),
+    .borderless: StickerSpecs(
+        opacity: 0.4,
+        emojiSizeRatio: 0.6,
+        cornerRadius: 5.0,
+        borderWidth: 0.0
+    )
+]

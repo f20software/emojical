@@ -12,6 +12,7 @@ class LocalSettings {
     
     private let todayNotificationIdKey = "todayNotificationId"
     private let reminderEnabledKey = "reminderEnabled"
+    private let stickerStyleKey = "stickerStyle"
 
     // Singleton instance
     static let shared = LocalSettings()
@@ -38,6 +39,16 @@ class LocalSettings {
         }
         set {
             setBoolDefault(newValue, key: reminderEnabledKey)
+        }
+    }
+
+    /// Is today entry reminder enabled?
+    var stickerStyle: StickerStyle {
+        get {
+            return StickerStyle(rawValue: integerDefault(stickerStyleKey) ?? 1) ?? .borderless
+        }
+        set {
+            setIntegerDefault(newValue.rawValue, key: stickerStyleKey)
         }
     }
 

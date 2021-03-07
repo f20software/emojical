@@ -71,7 +71,7 @@ class StatsPresenter: StatsPresenterProtocol {
         onChange: { [weak self] stamps in
             guard let self = self else { return }
             
-            self.stamps = self.repository.allStamps()
+            self.stamps = self.repository.allStamps().sorted(by: { $0.count > $1.count })
             self.loadViewData()
         })
     }

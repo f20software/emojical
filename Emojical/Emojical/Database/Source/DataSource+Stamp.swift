@@ -134,10 +134,8 @@ extension DataSource {
         do {
             return try dbQueue.read { db -> [StoredStamp] in
                 let request = includeDeleted
-                    ? StoredStamp.order(StoredStamp.Columns.name)
-                    : StoredStamp
-                        .filter(StoredStamp.Columns.deleted == false)
-                        .order(StoredStamp.Columns.name)
+                    ? StoredStamp.all()
+                    : StoredStamp.filter(StoredStamp.Columns.deleted == false)
                 return try request.fetchAll(db)
             }
         }

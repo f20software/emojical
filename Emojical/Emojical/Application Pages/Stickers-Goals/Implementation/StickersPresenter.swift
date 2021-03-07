@@ -109,7 +109,7 @@ class StickersPresenter: StickersPresenterProtocol {
     
     private func loadViewData() {
         view?.updateTitle("goals_title".localized)
-        let newStampsData = repository.allStamps().map({
+        let newStampsData = repository.allStamps().sorted(by: { $0.count > $1.count }).map({
             StickerData(
                 stampId: $0.id,
                 label: $0.label,

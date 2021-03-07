@@ -187,7 +187,7 @@ class TodayPresenter: TodayPresenterProtocol {
     /// Initialize data objects based on the current date
     private func initializeDataFor(date: Date) {
         // Load set of all stamps
-        allStamps = repository.allStamps()
+        allStamps = repository.allStamps().sorted(by: { $0.count > $1.count })
 
         // Set date and week objects
         selectedDay = date

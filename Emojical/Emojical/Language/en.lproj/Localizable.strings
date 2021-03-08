@@ -130,7 +130,9 @@
 
 "today_title" = "Today";
 
-"goals_title" = "Goals";
+"goals_tab_title" = "Stickers & Goals";
+
+"goals_section_title" = "Goals";
 
 "goals_library_title" = "Goal Examples";
 

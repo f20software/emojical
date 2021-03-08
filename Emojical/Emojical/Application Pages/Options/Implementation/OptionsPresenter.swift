@@ -73,7 +73,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                 cells: [
                     .stickerStyle(
                         "sticker_style".localized,
-                        repository.allStamps().first!,
+                        repository.allStamps().sorted(by: { $0.count > $1.count }).first!,
                         settings.stickerStyle
                     ) { [weak self] newValue in
                         self?.settings.stickerStyle = newValue

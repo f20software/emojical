@@ -112,6 +112,10 @@ class TodayViewController: UIViewController {
     /// User wants to dismiss Awards Recap view (by dragging it down)
     var onAwardsRecapDismiss: (() -> Void)?
     
+    var stampSelectorTopEdge: Float {
+        return Float(stampSelector.frame.height + Specs.bottomButtonsMargin * 2)
+    }
+    
     // MARK: - Actions
     
     @IBAction func prevButtonTapped(_ sender: Any) {

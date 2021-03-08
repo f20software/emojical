@@ -13,7 +13,7 @@ class StickersViewController: UIViewController, StickersView {
     // List of sections
     enum Section: String, CaseIterable {
         case stickers = "stickers_title"
-        case goals = "goals_title"
+        case goals = "goals_section_title"
     }
 
     // MARK: - Outlets

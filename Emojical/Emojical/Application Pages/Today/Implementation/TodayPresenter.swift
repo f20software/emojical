@@ -172,6 +172,11 @@ class TodayPresenter: TodayPresenterProtocol {
 
     // MARK: - Private helpers
 
+    /// Start onboarding
+    @objc func startOnboarding() {
+        coordinator?.showOnboardingWindow(gap: view?.stampSelectorTopEdge ?? 150)
+    }
+
     /// Reacting to significate time change event - updating data to current date and refreshing view
     @objc func significantTimeChange() {
         NSLog("Significant Time Change")
@@ -237,6 +242,10 @@ class TodayPresenter: TodayPresenterProtocol {
         // Subscribe to significant time change notification
         NotificationCenter.default.addObserver(self, selector: #selector(significantTimeChange),
             name: UIApplication.significantTimeChangeNotification, object: nil)
+
+        // Subscribe to onboarding notification - temporary, need to come up with better approach
+        NotificationCenter.default.addObserver(self, selector: #selector(startOnboarding),
+            name: .startOnboarding, object: nil)
     }
 
     private func setupView() {

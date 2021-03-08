@@ -30,7 +30,7 @@ class MainViewController: UITabBarController {
         optionsTab = viewControllers?[3] as? UINavigationController
 
         todayTab?.tabBarItem.title = "today_title".localized
-        goalsTab?.tabBarItem.title = "goals_title".localized
+        goalsTab?.tabBarItem.title = "goals_tab_title".localized
         statsTab?.tabBarItem.title = "stats_title".localized
         optionsTab?.tabBarItem.title = "options_title".localized
 

@@ -85,6 +85,30 @@ class TodayCoordinator: TodayCoordinatorProtocol {
         parentController?.present(congratsView, animated: true)
     }
     
+    /// Shows onboarding window
+    func showOnboardingWindow(gap: Float) {
+        
+        // Instantiate CongratsViewController from the storyboard file
+        guard let welcomeView: WelcomeViewController = Storyboard.Onboarding2.initialViewController() else {
+            assertionFailure("Failed to initialize WelcomeViewController")
+            return
+        }
+        
+        // Hook up presenter
+        welcomeView.presenter = WelcomePresenter(
+            view: welcomeView
+        )
+        welcomeView.onDismiss = {
+            welcomeView.dismiss(animated: true, completion: nil)
+        }
+        welcomeView.modalPresentationStyle = .overFullScreen
+        welcomeView.modalTransitionStyle = .crossDissolve
+        welcomeView.gap = gap
+
+        // Navigate to WelcomeViewController
+        parentController?.present(welcomeView, animated: true)
+    }
+
     /// Navigates to specific goal
     func showGoal(_ goal: Goal) {
 

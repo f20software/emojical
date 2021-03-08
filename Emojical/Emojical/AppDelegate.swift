@@ -18,6 +18,9 @@ extension NSNotification.Name {
     
     /// Week is closed, awards were given
     static let weekClosed = NSNotification.Name("LastWeekClosed")
+
+    /// Start onboarding process
+    static let startOnboarding = NSNotification.Name("StartOnboarding")
 }
 
 @UIApplicationMain

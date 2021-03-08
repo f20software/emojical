@@ -111,6 +111,12 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                         NotificationCenter.default.post(
                             name: .weekClosed, object: nil)
                     }),
+                    .button("Start Onboarding", {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                            NotificationCenter.default.post(
+                                name: .startOnboarding, object: nil)
+                        })
+                    }),
                 ]
             ),
             Section(

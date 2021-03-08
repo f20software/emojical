@@ -61,4 +61,8 @@ protocol TodayView: AnyObject {
     
     /// Show/hide stamp selector and plus button
     func showStampSelector(_ state: SelectorState)
+    
+    // MARK: - Layout
+    
+    var stampSelectorTopEdge: Float { get }
 }

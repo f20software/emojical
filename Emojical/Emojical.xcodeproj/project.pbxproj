@@ -141,6 +141,7 @@
 		F29804CC25C7A52500952AAF /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804CB25C7A52500952AAF /* Language.swift */; };
 		F29804D325C7B28500952AAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F29804D525C7B28500952AAF /* Localizable.strings */; };
 		F29804D925C7B2E600952AAF /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804D825C7B2E600952AAF /* Localizer.swift */; };
+		F299DB0725F588C600B2BBC8 /* Onboarding2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F299DB0625F588C600B2BBC8 /* Onboarding2.storyboard */; };
 		F29B438E25CD05F70005ADF5 /* UICollectionViewCell+ThemeObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B438D25CD05F70005ADF5 /* UICollectionViewCell+ThemeObserving.swift */; };
 		F29B439225CD13660005ADF5 /* UIView+ThemeObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B439125CD13660005ADF5 /* UIView+ThemeObserving.swift */; };
 		F29B439625CEECBD0005ADF5 /* Theme+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B439525CEECBC0005ADF5 /* Theme+Specs.swift */; };
@@ -394,6 +395,7 @@
 		F29804CB25C7A52500952AAF /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		F29804D425C7B28500952AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F29804D825C7B2E600952AAF /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
+		F299DB0625F588C600B2BBC8 /* Onboarding2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding2.storyboard; sourceTree = "<group>"; };
 		F29B438D25CD05F70005ADF5 /* UICollectionViewCell+ThemeObserving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+ThemeObserving.swift"; sourceTree = "<group>"; };
 		F29B439125CD13660005ADF5 /* UIView+ThemeObserving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ThemeObserving.swift"; sourceTree = "<group>"; };
 		F29B439525CEECBC0005ADF5 /* Theme+Specs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Specs.swift"; sourceTree = "<group>"; };
@@ -951,6 +953,7 @@
 			isa = PBXGroup;
 			children = (
 				F2A829D225EBF4F300B323FB /* Onboarding.storyboard */,
+				F299DB0625F588C600B2BBC8 /* Onboarding2.storyboard */,
 				F2A829D625EBF4F300B323FB /* Model */,
 				F2A829D825EBF4F300B323FB /* Protocols */,
 				F2A829D325EBF4F300B323FB /* Implementation */,
@@ -1516,6 +1519,7 @@
 				F2FD4DF325BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib in Resources */,
 				F2FD4DBA25BC88C6005819A0 /* SelectStickers.storyboard in Resources */,
 				F2FD4E1725BDCD42005819A0 /* StickerDetailsEditCell.xib in Resources */,
+				F299DB0725F588C600B2BBC8 /* Onboarding2.storyboard in Resources */,
 				F23CF3D42582A9FB0048BA74 /* GoalCell.xib in Resources */,
 				F2FD4E1B25BDCD42005819A0 /* StickerDetailsCell.xib in Resources */,
 				F24B07C624C547B500FFD798 /* Today.storyboard in Resources */,

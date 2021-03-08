@@ -74,11 +74,13 @@ class StickerStyleCell: UITableViewCell {
     }
     
     @objc private func sticker1Tapped() {
+        guard style != .default else { return }
         style = .default
         onValueChanged?(style)
     }
 
     @objc private func sticker2Tapped() {
+        guard style != .borderless else { return }
         style = .borderless
         onValueChanged?(style)
     }

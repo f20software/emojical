@@ -21,4 +21,7 @@ protocol TodayCoordinatorProtocol: AnyObject {
 
     /// Navigates to specific goal
     func showGoal(_ goal: Goal)
+
+    /// Shows onboarding window
+    func showOnboardingWindow(gap: Float)
 }

@@ -73,16 +73,10 @@ class TodayCoordinator: TodayCoordinatorProtocol {
             message: message,
             view: view
         )
-        view.onDismiss = {
+        view.onDismiss = { needReview in
             view.modalTransitionStyle = .coverVertical
             view.dismiss(animated: true) {
-                completion?(false)
-            }
-        }
-        view.onReview = {
-            view.modalTransitionStyle = .coverVertical
-            view.dismiss(animated: true) {
-                completion?(true)
+                completion?(needReview)
             }
         }
         view.modalPresentationStyle = .overFullScreen

@@ -38,11 +38,8 @@ class RecapReadyViewController : UIViewController, RecapReadyView {
     
     // MARK: - CongratsView
     
-    /// Review button tapped
-    var onReview: (() -> Void)?
-
-    /// Dismiss button tapped
-    var onDismiss: (() -> Void)? 
+    /// Dismissing view button tapped. True will be passed when Review is tapped
+    var onDismiss: ((Bool) -> Void)?
 
     /// Loads awards recap data
     func loadData(data: RecapReadyData) {
@@ -53,11 +50,11 @@ class RecapReadyViewController : UIViewController, RecapReadyView {
     // MARK: - Actions
     
     @IBAction func dismissTapped(_ sender: Any) {
-        onDismiss?()
+        onDismiss?(false)
     }
 
     @IBAction func reviewTapped(_ sender: Any) {
-        onReview?()
+        onDismiss?(true)
     }
 
     // Handling panning gesture for the CongratsView to allow for manual dismiss
@@ -71,7 +68,7 @@ class RecapReadyViewController : UIViewController, RecapReadyView {
         // roll back to the initial state
         if gesture.state == .ended {
             if translation.y > Specs.dismissThreshold {
-                onDismiss?()
+                onDismiss?(false)
             } else {
                 // Rollback and show full stamp selector
                 bounceToInitialState()

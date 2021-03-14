@@ -12,11 +12,8 @@ protocol RecapReadyView: AnyObject {
 
     // MARK: - Callbacks
     
-    /// Dismiss button tapped
-    var onDismiss: (() -> Void)? { get set }
-
-    /// Review button tapped 
-    var onReview: (() -> Void)? { get set }
+    /// Dismissing view button tapped. True will be passed when Review is tapped
+    var onDismiss: ((Bool) -> Void)? { get set }
 
     // MARK: - Updates
 

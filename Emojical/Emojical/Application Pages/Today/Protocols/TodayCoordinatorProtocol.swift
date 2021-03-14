@@ -17,11 +17,15 @@ protocol TodayCoordinatorProtocol: AnyObject {
     func showAwardsRecap(data: [AwardRecapData])
 
     /// Shows congratulation window
-    func showCongratsWindow(data: Award)
+    func showCongratsWindow(data: Award, completion: (() -> Void)?)
 
     /// Navigates to specific goal
     func showGoal(_ goal: Goal)
 
     /// Shows onboarding window
-    func showOnboardingWindow(gap: Float)
+    func showOnboardingWindow(
+        message: ValetMessage,
+        bottomMargin: Float,
+        completion: (() -> Void)?
+    )
 }

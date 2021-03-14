@@ -19,4 +19,7 @@ protocol WelcomeView: AnyObject {
 
     /// Loads awards  data
     func loadData(data: WelcomeData)
+    
+    /// Configure layout
+    func setBottomMargin(margin: Float)
 }

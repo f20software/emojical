@@ -22,7 +22,6 @@ enum Storyboard: String {
     case Options
     case Congrats
     case Onboarding
-    case Onboarding2
 
     var instance: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)

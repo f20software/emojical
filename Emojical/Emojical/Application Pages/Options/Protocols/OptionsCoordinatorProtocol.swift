@@ -11,5 +11,5 @@ import Foundation
 protocol OptionsCoordinatorProtocol: AnyObject {
 
     /// Navigate to Developer Options
-    func developerOptions()
+    func developerOptions(main: MainCoordinatorProtocol?)
 }

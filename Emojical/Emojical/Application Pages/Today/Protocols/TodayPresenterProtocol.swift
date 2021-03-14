@@ -16,6 +16,9 @@ protocol TodayPresenterProtocol: AnyObject {
     /// Called when view about to appear on the screen
     func onViewWillAppear()
     
+    /// Called when view about to disappear from the screen
+    func onViewWillDisappear()
+
     /// Navigate Today view to specific date
     func navigateTo(_ date: Date)
     

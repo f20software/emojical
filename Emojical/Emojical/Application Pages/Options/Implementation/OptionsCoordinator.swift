@@ -21,7 +21,7 @@ class OptionsCoordinator: OptionsCoordinatorProtocol {
     }
 
     /// Navigate to Developer Options
-    func developerOptions() {
+    func developerOptions(main: MainCoordinatorProtocol?) {
         // Instantiate DevelopmentViewController from the storyboard file
         guard let dev: DeveloperViewController = Storyboard.Developer.initialViewController() else {
             assertionFailure("Failed to initialize DevelopmentViewController")
@@ -33,7 +33,8 @@ class OptionsCoordinator: OptionsCoordinatorProtocol {
             view: dev,
             repository: Storage.shared.repository,
             awards: AwardManager.shared,
-            settings: LocalSettings.shared
+            settings: LocalSettings.shared,
+            main: main
         )
         dev.presenter = presenter
         parentController?.pushViewController(dev, animated: true)

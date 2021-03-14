@@ -18,6 +18,7 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
     private weak var settings: LocalSettings!
     private weak var repository: DataRepository!
     private weak var awards: AwardManager!
+    private weak var main: MainCoordinatorProtocol?
 
     // MARK: - State
 
@@ -27,12 +28,14 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
         view: DeveloperView,
         repository: DataRepository,
         awards: AwardManager,
-        settings: LocalSettings
+        settings: LocalSettings,
+        main: MainCoordinatorProtocol?
     ) {
         self.view = view
         self.repository = repository
         self.awards = awards
         self.settings = settings
+        self.main = main
     }
 
     /// Called when view finished initial loading.
@@ -112,10 +115,8 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                             name: .weekClosed, object: nil)
                     }),
                     .button("Start Onboarding", {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-                            NotificationCenter.default.post(
-                                name: .startOnboarding, object: nil)
-                        })
+                        ValetManager.shared.mockMessage(.onboarding1)
+                        ValetManager.shared.mockMessage(.onboarding2)
                     }),
                 ]
             ),

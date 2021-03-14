@@ -18,15 +18,18 @@ class WelcomeViewController : UIViewController, WelcomeView {
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var text1Label: UILabel!
     @IBOutlet weak var text1Bubble: UIView!
-    @IBOutlet weak var text2Label: UILabel!
-    @IBOutlet weak var text2Bubble: UIView!
+    @IBOutlet weak var text2Label: UILabel?
+    @IBOutlet weak var text2Bubble: UIView?
+
+    @IBOutlet weak var focusView: UIView?
+    @IBOutlet weak var focusViewLeadingConstraint: NSLayoutConstraint!
 
 
     // MARK: - DI
 
     var presenter: WelcomePresenterProtocol!
     
-    var gap: Float = 10.0
+    // var gap: Float = 10.0
 
     // MARK: - State
     
@@ -54,10 +57,20 @@ class WelcomeViewController : UIViewController, WelcomeView {
     /// Dismiss button tapped
     var onDismiss: (() -> Void)? 
 
+    /// Configure layout
+    func setBottomMargin(margin: Float) {
+        bottomConstraint.constant = CGFloat(margin + 50.0 /* tabbar height */ + 16.0)
+    }
+
     /// Loads data
     func loadData(data: WelcomeData) {
-//      textLabel.text = data.text
-        // titleLabel?.text = data.title
+        if data.messages.count > 0 {
+            text1Label?.text = data.messages[0]
+        }
+        if data.messages.count > 1 {
+            text2Label?.text = data.messages[1]
+        }
+        dismissButton.setTitle(data.buttonText, for: .normal)
     }
 
     // MARK: - Actions
@@ -72,21 +85,25 @@ class WelcomeViewController : UIViewController, WelcomeView {
         
         view.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.3)
         
-        dismissButton.setTitle("Got it".localized, for: .normal)
         dismissButton.layer.cornerRadius = 15.0
         dismissButton.layer.shadowOffset = Specs.shadowOffset
         dismissButton.layer.shadowOpacity = Specs.shadowOpacity
         dismissButton.layer.shadowRadius = Specs.shadowRadius
         
         text1Label.font = Theme.main.fonts.listBody
-        text2Label.font = Theme.main.fonts.listBody
+        text2Label?.font = Theme.main.fonts.listBody
 
         text1Bubble.backgroundColor = Theme.main.colors.tint.withAlphaComponent(0.2)
         text1Bubble.layer.cornerRadius = 15.0
-        text2Bubble.backgroundColor = Theme.main.colors.tint.withAlphaComponent(0.2)
-        text2Bubble.layer.cornerRadius = 15.0
+        text2Bubble?.backgroundColor = Theme.main.colors.tint.withAlphaComponent(0.2)
+        text2Bubble?.layer.cornerRadius = 15.0
         
-        bottomConstraint.constant = CGFloat(gap + 50.0 /* tabbar height */)
+        focusView?.backgroundColor = UIColor.clear
+        focusView?.layer.borderWidth = 5.0
+        focusView?.layer.borderColor = Theme.main.colors.tint.cgColor
+        focusView?.layer.cornerRadius = (focusView?.bounds.width ?? 0) / 2.0
+        
+        focusViewLeadingConstraint?.constant = view.bounds.width / 4 * 1.5
     }
 }
 

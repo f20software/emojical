@@ -57,6 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // Setup calendar helper
         CalendarHelper.shared = CalendarHelper()
+
+        // Valet messages manager
+        ValetManager.shared = ValetManager(
+            awardListener: Storage.shared.awardsListener(),
+            repository: Storage.shared.repository
+        )
+
         AwardManager.shared.recalculateOnAppResume()
 
         // Initiate notification engine

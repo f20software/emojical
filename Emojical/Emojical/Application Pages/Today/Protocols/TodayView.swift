@@ -64,5 +64,6 @@ protocol TodayView: AnyObject {
     
     // MARK: - Layout
     
-    var stampSelectorTopEdge: Float { get }
+    /// Distance from the bottom of the screen to the top edge of Sticker Selector
+    var stickerSelectorSize: Float { get }
 }

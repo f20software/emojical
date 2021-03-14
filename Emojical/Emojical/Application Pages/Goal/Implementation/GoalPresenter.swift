@@ -222,7 +222,7 @@ class GoalPresenter: GoalPresenterProtocol {
                     progress: progress,
                     limit: goal.limit
                 ),
-                awardIcon: AwardIconData(stamp: stamp),
+                awardIcon: AwardIconData(goalId: goal.id!, stamp: stamp),
                 goalIcon: GoalIconData(stamp: stamp, goal: goal, progress: progress)
             )
             

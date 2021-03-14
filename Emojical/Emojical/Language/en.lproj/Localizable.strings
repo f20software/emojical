@@ -256,10 +256,13 @@
 
 // Onboarding
 
-"welcome_title" = "Welcome to Emojical!";
+"onboarding_1_1" = "Hello! Looks like you are new here. Let me show you around.";
 
-"welcome_description" = "Hello! Looks like you are new here. Let me show you around.\n\n
-This is a sticker. You can create and customize many of them. Use stickers to write your diary, recording events and activities during the day. Tap the sticker in the bottom panel to add it to a day, tap on it again to remove it. ";
+"onboarding_1_2" = "These are stickers. You can create and customize many of them. Use stickers to write your diary, record events and activities during the day. Tap the sticker in the bottom panel to add it to a day, tap on it again to remove it.";
+
+"onboarding_2" = "Wonderful! Once you figure out stickers, go to \"Stickers & Goals\" tab and setup some goals for yourself.";
+
+"got_it_button" = "Got it";
 
 // Sticker Style
 

@@ -68,7 +68,7 @@ class CongratsPresenter: CongratsPresenterProtocol {
             title: "awesome_title".localized,
             text: text,
             goalIcon: GoalIconData(stamp: stamp, goal: goal, progress: 0 /* don't really care*/),
-            awardIcon: AwardIconData(stamp: stamp)
+            awardIcon: AwardIconData(goalId: goal.id!, stamp: stamp)
         ))
     }
 }

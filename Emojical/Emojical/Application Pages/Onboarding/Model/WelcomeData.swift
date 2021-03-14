@@ -9,7 +9,6 @@
 import Foundation
 
 struct WelcomeData {
-    let title: String
-    let text: String
-    let bottomMargin: Float
+    let messages: [String]
+    let buttonText: String
 }

@@ -31,12 +31,15 @@
 		F204475225EA092B003318C6 /* GoalIconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204474F25EA092A003318C6 /* GoalIconData.swift */; };
 		F204475325EA092B003318C6 /* Goal+AwardIconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204475025EA092A003318C6 /* Goal+AwardIconData.swift */; };
 		F204475425EA092B003318C6 /* AwardIconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204475125EA092A003318C6 /* AwardIconData.swift */; };
+		F2049C2B25FE804300E432DB /* ValetManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C2825FE804300E432DB /* ValetManagerProtocol.swift */; };
+		F2049C2C25FE804300E432DB /* ValetMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C2A25FE804300E432DB /* ValetMessage.swift */; };
 		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView_Old.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20E403A2443E5BC008759D1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */; };
 		F21162C625C9FD6700E4D3AD /* GoalReachedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */; };
 		F21162C725C9FD6700E4D3AD /* GoalReachedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */; };
+		F216BEA525F72B6B00CBF58B /* MainCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216BEA225F72B6B00CBF58B /* MainCoordinatorProtocol.swift */; };
 		F21F150325C107A900DE5C1B /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F150225C107A800DE5C1B /* StickerView.swift */; };
 		F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */; };
 		F23CF369258271750048BA74 /* YearBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF368258271750048BA74 /* YearBoxView.swift */; };
@@ -141,7 +144,7 @@
 		F29804CC25C7A52500952AAF /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804CB25C7A52500952AAF /* Language.swift */; };
 		F29804D325C7B28500952AAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F29804D525C7B28500952AAF /* Localizable.strings */; };
 		F29804D925C7B2E600952AAF /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29804D825C7B2E600952AAF /* Localizer.swift */; };
-		F299DB0725F588C600B2BBC8 /* Onboarding2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F299DB0625F588C600B2BBC8 /* Onboarding2.storyboard */; };
+		F299DB0725F588C600B2BBC8 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F299DB0625F588C600B2BBC8 /* Onboarding.storyboard */; };
 		F29B438E25CD05F70005ADF5 /* UICollectionViewCell+ThemeObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B438D25CD05F70005ADF5 /* UICollectionViewCell+ThemeObserving.swift */; };
 		F29B439225CD13660005ADF5 /* UIView+ThemeObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B439125CD13660005ADF5 /* UIView+ThemeObserving.swift */; };
 		F29B439625CEECBD0005ADF5 /* Theme+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B439525CEECBC0005ADF5 /* Theme+Specs.swift */; };
@@ -149,7 +152,6 @@
 		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
-		F2A829DB25EBF4F400B323FB /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A829D225EBF4F300B323FB /* Onboarding.storyboard */; };
 		F2A829DC25EBF4F400B323FB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A829D425EBF4F300B323FB /* WelcomeViewController.swift */; };
 		F2A829DD25EBF4F400B323FB /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A829D525EBF4F300B323FB /* WelcomePresenter.swift */; };
 		F2A829DE25EBF4F400B323FB /* WelcomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A829D725EBF4F300B323FB /* WelcomeData.swift */; };
@@ -187,6 +189,8 @@
 		F2B5F47525CF58CF0051E8C9 /* GoalsLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */; };
 		F2B5F47625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */; };
 		F2B7D35F244C9B3A00C94E63 /* Language+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D35E244C9B3A00C94E63 /* Language+String.swift */; };
+		F2BB6F3E25F9D990009C4259 /* ValetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB6F3D25F9D990009C4259 /* ValetManager.swift */; };
+		F2BB6F4425FB20BB009C4259 /* ValetListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB6F4325FB20BB009C4259 /* ValetListener.swift */; };
 		F2C493242430172D00E997BD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493232430172D00E997BD /* NotificationManager.swift */; };
 		F2C493262430179500E997BD /* LocalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493252430179500E997BD /* LocalSettings.swift */; };
 		F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */; };
@@ -288,10 +292,13 @@
 		F204474F25EA092A003318C6 /* GoalIconData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalIconData.swift; sourceTree = "<group>"; };
 		F204475025EA092A003318C6 /* Goal+AwardIconData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Goal+AwardIconData.swift"; sourceTree = "<group>"; };
 		F204475125EA092A003318C6 /* AwardIconData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardIconData.swift; sourceTree = "<group>"; };
+		F2049C2825FE804300E432DB /* ValetManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValetManagerProtocol.swift; sourceTree = "<group>"; };
+		F2049C2A25FE804300E432DB /* ValetMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValetMessage.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView_Old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView_Old.swift; sourceTree = "<group>"; };
 		F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalReachedCell.swift; sourceTree = "<group>"; };
 		F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalReachedCell.xib; sourceTree = "<group>"; };
+		F216BEA225F72B6B00CBF58B /* MainCoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F21F150225C107A800DE5C1B /* StickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataBuilder.swift; sourceTree = "<group>"; };
 		F23CF368258271750048BA74 /* YearBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxView.swift; sourceTree = "<group>"; };
@@ -395,7 +402,7 @@
 		F29804CB25C7A52500952AAF /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		F29804D425C7B28500952AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F29804D825C7B2E600952AAF /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
-		F299DB0625F588C600B2BBC8 /* Onboarding2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding2.storyboard; sourceTree = "<group>"; };
+		F299DB0625F588C600B2BBC8 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		F29B438D25CD05F70005ADF5 /* UICollectionViewCell+ThemeObserving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+ThemeObserving.swift"; sourceTree = "<group>"; };
 		F29B439125CD13660005ADF5 /* UIView+ThemeObserving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ThemeObserving.swift"; sourceTree = "<group>"; };
 		F29B439525CEECBC0005ADF5 /* Theme+Specs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Specs.swift"; sourceTree = "<group>"; };
@@ -403,7 +410,6 @@
 		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
-		F2A829D225EBF4F300B323FB /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		F2A829D425EBF4F300B323FB /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F2A829D525EBF4F300B323FB /* WelcomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
 		F2A829D725EBF4F300B323FB /* WelcomeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeData.swift; sourceTree = "<group>"; };
@@ -440,6 +446,8 @@
 		F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryView.swift; sourceTree = "<group>"; };
 		F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2B7D35E244C9B3A00C94E63 /* Language+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Language+String.swift"; sourceTree = "<group>"; };
+		F2BB6F3D25F9D990009C4259 /* ValetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValetManager.swift; sourceTree = "<group>"; };
+		F2BB6F4325FB20BB009C4259 /* ValetListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValetListener.swift; sourceTree = "<group>"; };
 		F2C493232430172D00E997BD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		F2C493252430179500E997BD /* LocalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
 		F2C4943523D2CBC800EAF9CC /* Emojical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojical.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -617,6 +625,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F2049C2725FE804300E432DB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F2049C2825FE804300E432DB /* ValetManagerProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F2049C2925FE804300E432DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2049C2A25FE804300E432DB /* ValetMessage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F20D1F9724142A1D00FB5000 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,9 +671,26 @@
 			isa = PBXGroup;
 			children = (
 				F2C4944023D2CBC800EAF9CC /* Main.storyboard */,
-				F2F449232430291B005AD6B9 /* MainViewController.swift */,
+				F216BEA125F72B6B00CBF58B /* Protocols */,
+				F216BEA325F72B6B00CBF58B /* Implementation */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		F216BEA125F72B6B00CBF58B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F216BEA225F72B6B00CBF58B /* MainCoordinatorProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F216BEA325F72B6B00CBF58B /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				F2F449232430291B005AD6B9 /* MainViewController.swift */,
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 		F23CF38225829B500048BA74 /* Stickers-Goals */ = {
@@ -952,8 +993,7 @@
 		F2A829D125EBF4F300B323FB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				F2A829D225EBF4F300B323FB /* Onboarding.storyboard */,
-				F299DB0625F588C600B2BBC8 /* Onboarding2.storyboard */,
+				F299DB0625F588C600B2BBC8 /* Onboarding.storyboard */,
 				F2A829D625EBF4F300B323FB /* Model */,
 				F2A829D825EBF4F300B323FB /* Protocols */,
 				F2A829D325EBF4F300B323FB /* Implementation */,
@@ -1146,7 +1186,11 @@
 		F2C493222430171000E997BD /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				F2049C2925FE804300E432DB /* Model */,
+				F2049C2725FE804300E432DB /* Protocol */,
 				F2C493232430172D00E997BD /* NotificationManager.swift */,
+				F2BB6F4325FB20BB009C4259 /* ValetListener.swift */,
+				F2BB6F3D25F9D990009C4259 /* ValetManager.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1519,11 +1563,10 @@
 				F2FD4DF325BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.xib in Resources */,
 				F2FD4DBA25BC88C6005819A0 /* SelectStickers.storyboard in Resources */,
 				F2FD4E1725BDCD42005819A0 /* StickerDetailsEditCell.xib in Resources */,
-				F299DB0725F588C600B2BBC8 /* Onboarding2.storyboard in Resources */,
+				F299DB0725F588C600B2BBC8 /* Onboarding.storyboard in Resources */,
 				F23CF3D42582A9FB0048BA74 /* GoalCell.xib in Resources */,
 				F2FD4E1B25BDCD42005819A0 /* StickerDetailsCell.xib in Resources */,
 				F24B07C624C547B500FFD798 /* Today.storyboard in Resources */,
-				F2A829DB25EBF4F400B323FB /* Onboarding.storyboard in Resources */,
 				F2A93FA8258130DB006C88F8 /* WeekHeaderCell.xib in Resources */,
 				F295334525B4D87D003CA002 /* NoAwardsCell.xib in Resources */,
 				F2A21C12244271130030A117 /* Options.storyboard in Resources */,
@@ -1650,6 +1693,7 @@
 				F2A93FB12581314C006C88F8 /* WeekLineData.swift in Sources */,
 				F2B5F46B25CF58CF0051E8C9 /* GoalExampleCell.swift in Sources */,
 				F2FD4E1F25BDCD42005819A0 /* StickerEditData.swift in Sources */,
+				F2BB6F4425FB20BB009C4259 /* ValetListener.swift in Sources */,
 				BC5643FF246B1E1F00942066 /* StoredDirection.swift in Sources */,
 				F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */,
 				F26596EF2596AF1300B10B76 /* RecapPresenter.swift in Sources */,
@@ -1669,6 +1713,7 @@
 				F29B439225CD13660005ADF5 /* UIView+ThemeObserving.swift in Sources */,
 				F27968F1240C127900EA9436 /* StoredParam.swift in Sources */,
 				F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */,
+				F2049C2C25FE804300E432DB /* ValetMessage.swift in Sources */,
 				BC1E1EFD246C59B000E05C8A /* Storage.swift in Sources */,
 				BC5643F7246B10B500942066 /* Diary.swift in Sources */,
 				F273E2A125969BF50037BEDA /* Storyboard.swift in Sources */,
@@ -1708,6 +1753,7 @@
 				F2FD4DBB25BC88C6005819A0 /* SelectStickersViewController.swift in Sources */,
 				F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
+				F2049C2B25FE804300E432DB /* ValetManagerProtocol.swift in Sources */,
 				F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */,
 				F2B5F46F25CF58CF0051E8C9 /* GoalsLibraryViewController.swift in Sources */,
 				F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */,
@@ -1717,6 +1763,7 @@
 				F29B439625CEECBD0005ADF5 /* Theme+Specs.swift in Sources */,
 				F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */,
 				F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */,
+				F2BB6F3E25F9D990009C4259 /* ValetManager.swift in Sources */,
 				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
 				F2EE4AB825C5B3B9004FB0F2 /* SwitchCell.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,
@@ -1761,6 +1808,7 @@
 				F2EE4AC825C5CC17004FB0F2 /* DeveloperViewController.swift in Sources */,
 				F2EE4AAE25C5AECC004FB0F2 /* TextCell.swift in Sources */,
 				F295339325B63DB1003CA002 /* GoalDetailsCell.swift in Sources */,
+				F216BEA525F72B6B00CBF58B /* MainCoordinatorProtocol.swift in Sources */,
 				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,
 				F204475325EA092B003318C6 /* Goal+AwardIconData.swift in Sources */,
 			);

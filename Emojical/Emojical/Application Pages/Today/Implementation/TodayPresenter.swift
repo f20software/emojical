@@ -19,7 +19,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private let goalsListener: GoalsListener
     private let calendar: CalendarHelper
     private let awardManager: AwardManager
-    private let valetListener: ValetListener
+    private let coach: CoachListener
 
     private weak var view: TodayView?
     private weak var coordinator: TodayCoordinatorProtocol?
@@ -114,7 +114,7 @@ class TodayPresenter: TodayPresenterProtocol {
         awardsListener: AwardsListener,
         goalsListener: GoalsListener,
         awardManager: AwardManager,
-        valetListener: ValetListener,
+        coach: CoachListener,
         calendar: CalendarHelper,
         view: TodayView,
         coordinator: TodayCoordinatorProtocol
@@ -122,7 +122,7 @@ class TodayPresenter: TodayPresenterProtocol {
         self.repository = repository
         self.stampsListener = stampsListener
         self.awardsListener = awardsListener
-        self.valetListener = valetListener
+        self.coach = coach
         self.goalsListener = goalsListener
         self.awardManager = awardManager
         self.calendar = calendar
@@ -229,12 +229,9 @@ class TodayPresenter: TodayPresenterProtocol {
         })
         
         // Subscribe to various cheeers and onboarding messages
-        valetListener.startListening { message in
+        coach.startListening { message in
             self.messageQueue.addOperation(
-                MessageOperation(
-                    handler: self,
-                    message: message
-                )
+                MessageOperation(handler: self, message: message)
             )
         }
         
@@ -463,7 +460,7 @@ class TodayPresenter: TodayPresenterProtocol {
         loadViewData()
     }
     
-    func processMessage(_ message: ValetMessage, completion: (() -> Void)?) {
+    func processMessage(_ message: CoachMessage, completion: (() -> Void)?) {
         print("processMessage \(message)")
         guard let view = view else { return }
 
@@ -483,32 +480,12 @@ class TodayPresenter: TodayPresenterProtocol {
                 }
                 
             case .weekReady(let message):
-                
-                let alert = UIAlertController(
-                    title: "week_recap_title".localized,
-                    message: message,
-                    preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(
-                    title: "review_button".localized,
-                    style: .default) {_ in
-                        completion?()
-                        // Show week recap for the previous week
-                        DispatchQueue.main.async { [weak self] in
-                            self?.showWeekRecapFor(Date().byAddingWeek(-1))
-                        }
+                self.coordinator?.showRecapReady(message: message) { [weak self] showRecap in
+                    if showRecap {
+                        self?.showWeekRecapFor(Date().byAddingWeek(-1))
                     }
-                )
-                
-                alert.addAction(UIAlertAction(
-                    title: "dismiss_button".localized,
-                    style: .cancel) { _ in
-                        alert.dismiss(animated: true, completion: {
-                            completion?()
-                        })
-                    }
-                )
-                (view as! UIViewController).present(alert, animated: true, completion: nil)
+                    completion?()
+                }
             }
         }
     }
@@ -516,7 +493,7 @@ class TodayPresenter: TodayPresenterProtocol {
 
 class MessageOperation: Operation {
     
-    var message: ValetMessage
+    var message: CoachMessage
     var handler: TodayPresenter
     var shown: Bool
     
@@ -529,7 +506,7 @@ class MessageOperation: Operation {
         }
     }
     
-    init(handler: TodayPresenter, message: ValetMessage) {
+    init(handler: TodayPresenter, message: CoachMessage) {
         self.handler = handler
         self.message = message
         self.shown = false

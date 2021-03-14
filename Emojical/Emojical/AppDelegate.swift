@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         CalendarHelper.shared = CalendarHelper()
 
         // Valet messages manager
-        ValetManager.shared = ValetManager(
+        CoachMessageManager.shared = CoachMessageManager(
             awardListener: Storage.shared.awardsListener(),
             repository: Storage.shared.repository
         )

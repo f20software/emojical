@@ -62,7 +62,7 @@ class TodayViewController: UIViewController {
             awardsListener: Storage.shared.awardsListener(),
             goalsListener: Storage.shared.goalsListener(),
             awardManager: AwardManager.shared,
-            valetListener: ValetManager.shared.valetListener(),
+            coach: CoachMessageManager.shared.coachListener(),
             calendar: CalendarHelper.shared,
             view: self,
             coordinator: coordinator)

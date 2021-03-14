@@ -1,5 +1,5 @@
 //
-//  ValetManager.swift
+//  CoachMessageManager.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 3/14/21.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-class ValetManager {
+class CoachMessageManager {
     
     /// Singleton instance
-    static var shared: ValetManagerProtocol! {
+    static var shared: CoachProtocol! {
         willSet {
             if shared != nil {
-                assertionFailure("ValetManager should be initialized once per application launch")
+                assertionFailure("CoachMessageManager should be initialized once per application launch")
             }
         }
     }
@@ -33,7 +33,7 @@ class ValetManager {
     // MARK: - Internal state
     
     /// List of observers for awards change notification
-    private var onShowObservers = ObserverList<((ValetMessage) -> Void)>()
+    private var onShowObservers = ObserverList<((CoachMessage) -> Void)>()
     
     /// Internal queue to ensure that work with observers is done in a thread safe way
     private var queue: DispatchQueue!
@@ -56,7 +56,7 @@ class ValetManager {
             calendar: CalendarHelper.shared
         )
 
-        queue = DispatchQueue(label: "com.svidersky.Emojical.valet")
+        queue = DispatchQueue(label: "com.svidersky.Emojical.coach")
         awards = dataBuilder.awards(for: currentWeek)
             
         configureListeners()
@@ -65,7 +65,7 @@ class ValetManager {
 
     // MARK: - Observers
     
-    func addValetObserver(_ disposable: AnyObject, onShow: @escaping (ValetMessage) -> Void) {
+    func addValetObserver(_ disposable: AnyObject, onShow: @escaping (CoachMessage) -> Void) {
         queue.async { [weak self] in
             self?.onShowObservers.addObserver(disposable, onShow)
         }
@@ -90,7 +90,7 @@ class ValetManager {
             self, selector: #selector(weekReady), name: .weekClosed, object: nil)
     }
     
-    private func notifyObservers(message: ValetMessage) {
+    private func notifyObservers(message: CoachMessage) {
         NSLog("ValetManager: notifyObservers [\(onShowObservers.isEmpty)] \(message)")
         onShowObservers.forEach { observer in
             observer(message)
@@ -146,15 +146,15 @@ class ValetManager {
     }
 }
 
-extension ValetManager: ValetManagerProtocol {
+extension CoachMessageManager: CoachProtocol {
     
-    /// Valet listener instance
-    func valetListener() -> ValetListener {
-        return ValetListener(source: self)
+    /// Coach listener instance
+    func coachListener() -> CoachListener {
+        return CoachListener(source: self)
     }
 
-    /// Testing various messages sent by ValetManager
-    func mockMessage(_ message: ValetMessage) {
+    /// Testing various messages sent by CoachMessageManager
+    func mockMessage(_ message: CoachMessage) {
         notifyObservers(message: message)
     }
 }

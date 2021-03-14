@@ -45,9 +45,9 @@ class TodayCoordinator: TodayCoordinatorProtocol {
     /// Navigates to goals / awards recap window
     func showAwardsRecap(data: [AwardRecapData]) {
 
-        // Instantiate AwardsRecapViewController from the storyboard file
+        // Instantiate RecapViewController from the storyboard file
         guard let awardsView: RecapViewController = Storyboard.Recap.initialViewController() else {
-            assertionFailure("Failed to initialize item details controller")
+            assertionFailure("Failed to initialize RecapViewController")
             return
         }
         
@@ -57,6 +57,38 @@ class TodayCoordinator: TodayCoordinatorProtocol {
             view: awardsView
         )
         parentController?.pushViewController(awardsView, animated: true)
+    }
+
+    /// Navigates to goals / awards recap window
+    func showRecapReady(message: String, completion: ((Bool) -> Void)?) {
+
+        // Instantiate RecapReadyViewController from the storyboard file
+        guard let view: RecapReadyViewController = Storyboard.RecapReady.initialViewController() else {
+            assertionFailure("Failed to initialize RecapReadyViewController")
+            return
+        }
+        
+        // Hook up presenter
+        view.presenter = RecapReadyPresenter(
+            message: message,
+            view: view
+        )
+        view.onDismiss = {
+            view.modalTransitionStyle = .coverVertical
+            view.dismiss(animated: true) {
+                completion?(false)
+            }
+        }
+        view.onReview = {
+            view.modalTransitionStyle = .coverVertical
+            view.dismiss(animated: true) {
+                completion?(true)
+            }
+        }
+        view.modalPresentationStyle = .overFullScreen
+        view.modalTransitionStyle = .flipHorizontal
+
+        parentController?.present(view, animated: true)
     }
 
     /// Show congratulation window
@@ -89,7 +121,7 @@ class TodayCoordinator: TodayCoordinatorProtocol {
     
     /// Shows onboarding window
     func showOnboardingWindow(
-        message: ValetMessage,
+        message: CoachMessage,
         bottomMargin: Float,
         completion: (() -> Void)?)
     {

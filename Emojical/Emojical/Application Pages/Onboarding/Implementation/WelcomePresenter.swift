@@ -19,13 +19,13 @@ class WelcomePresenter: WelcomePresenterProtocol {
     // MARK: - Data
     
     private var bottomMargin: Float
-    private var content: ValetMessage
+    private var content: CoachMessage
 
     // MARK: - Lifecycle
 
     init(
         view: WelcomeView,
-        content: ValetMessage,
+        content: CoachMessage,
         bottomMargin: Float
     ) {
         self.view = view

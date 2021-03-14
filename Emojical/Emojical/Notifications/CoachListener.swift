@@ -9,19 +9,19 @@
 import Foundation
 import GRDB
 
-class ValetListener {
+class CoachListener {
     
     // MARK: - Private properties.
     
-    private var source: ValetManager
+    private var source: CoachMessageManager
     
     // MARK: - Lifecycle.
     
-    init(source: ValetManager) {
+    init(source: CoachMessageManager) {
         self.source = source
     }
     
-    func startListening(onShow: @escaping (ValetMessage) -> Void) {
+    func startListening(onShow: @escaping (CoachMessage) -> Void) {
         source.addValetObserver(self, onShow: { (message) in
             onShow(message)
         })

@@ -31,8 +31,14 @@
 		F204475225EA092B003318C6 /* GoalIconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204474F25EA092A003318C6 /* GoalIconData.swift */; };
 		F204475325EA092B003318C6 /* Goal+AwardIconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204475025EA092A003318C6 /* Goal+AwardIconData.swift */; };
 		F204475425EA092B003318C6 /* AwardIconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F204475125EA092A003318C6 /* AwardIconData.swift */; };
-		F2049C2B25FE804300E432DB /* ValetManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C2825FE804300E432DB /* ValetManagerProtocol.swift */; };
-		F2049C2C25FE804300E432DB /* ValetMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C2A25FE804300E432DB /* ValetMessage.swift */; };
+		F2049C2B25FE804300E432DB /* CoachProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C2825FE804300E432DB /* CoachProtocol.swift */; };
+		F2049C2C25FE804300E432DB /* CoachMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C2A25FE804300E432DB /* CoachMessage.swift */; };
+		F2049C3A25FE8B5800E432DB /* RecapReady.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2049C3925FE8B5800E432DB /* RecapReady.storyboard */; };
+		F2049C4125FE8CF300E432DB /* RecapReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C3F25FE8CF300E432DB /* RecapReadyView.swift */; };
+		F2049C4225FE8CF300E432DB /* RecapReadyPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C4025FE8CF300E432DB /* RecapReadyPresenterProtocol.swift */; };
+		F2049C4625FE8D2F00E432DB /* RecapReadyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C4525FE8D2F00E432DB /* RecapReadyData.swift */; };
+		F2049C4B25FE8D8D00E432DB /* RecapReadyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C4925FE8D8D00E432DB /* RecapReadyPresenter.swift */; };
+		F2049C4C25FE8D8D00E432DB /* RecapReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C4A25FE8D8D00E432DB /* RecapReadyViewController.swift */; };
 		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView_Old.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
@@ -189,8 +195,8 @@
 		F2B5F47525CF58CF0051E8C9 /* GoalsLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */; };
 		F2B5F47625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */; };
 		F2B7D35F244C9B3A00C94E63 /* Language+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D35E244C9B3A00C94E63 /* Language+String.swift */; };
-		F2BB6F3E25F9D990009C4259 /* ValetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB6F3D25F9D990009C4259 /* ValetManager.swift */; };
-		F2BB6F4425FB20BB009C4259 /* ValetListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB6F4325FB20BB009C4259 /* ValetListener.swift */; };
+		F2BB6F3E25F9D990009C4259 /* CoachMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB6F3D25F9D990009C4259 /* CoachMessageManager.swift */; };
+		F2BB6F4425FB20BB009C4259 /* CoachListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB6F4325FB20BB009C4259 /* CoachListener.swift */; };
 		F2C493242430172D00E997BD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493232430172D00E997BD /* NotificationManager.swift */; };
 		F2C493262430179500E997BD /* LocalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493252430179500E997BD /* LocalSettings.swift */; };
 		F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */; };
@@ -292,8 +298,14 @@
 		F204474F25EA092A003318C6 /* GoalIconData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalIconData.swift; sourceTree = "<group>"; };
 		F204475025EA092A003318C6 /* Goal+AwardIconData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Goal+AwardIconData.swift"; sourceTree = "<group>"; };
 		F204475125EA092A003318C6 /* AwardIconData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardIconData.swift; sourceTree = "<group>"; };
-		F2049C2825FE804300E432DB /* ValetManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValetManagerProtocol.swift; sourceTree = "<group>"; };
-		F2049C2A25FE804300E432DB /* ValetMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValetMessage.swift; sourceTree = "<group>"; };
+		F2049C2825FE804300E432DB /* CoachProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachProtocol.swift; sourceTree = "<group>"; };
+		F2049C2A25FE804300E432DB /* CoachMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachMessage.swift; sourceTree = "<group>"; };
+		F2049C3925FE8B5800E432DB /* RecapReady.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RecapReady.storyboard; sourceTree = "<group>"; };
+		F2049C3F25FE8CF300E432DB /* RecapReadyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapReadyView.swift; sourceTree = "<group>"; };
+		F2049C4025FE8CF300E432DB /* RecapReadyPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapReadyPresenterProtocol.swift; sourceTree = "<group>"; };
+		F2049C4525FE8D2F00E432DB /* RecapReadyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapReadyData.swift; sourceTree = "<group>"; };
+		F2049C4925FE8D8D00E432DB /* RecapReadyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapReadyPresenter.swift; sourceTree = "<group>"; };
+		F2049C4A25FE8D8D00E432DB /* RecapReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapReadyViewController.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView_Old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView_Old.swift; sourceTree = "<group>"; };
 		F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalReachedCell.swift; sourceTree = "<group>"; };
@@ -446,8 +458,8 @@
 		F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryView.swift; sourceTree = "<group>"; };
 		F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2B7D35E244C9B3A00C94E63 /* Language+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Language+String.swift"; sourceTree = "<group>"; };
-		F2BB6F3D25F9D990009C4259 /* ValetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValetManager.swift; sourceTree = "<group>"; };
-		F2BB6F4325FB20BB009C4259 /* ValetListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValetListener.swift; sourceTree = "<group>"; };
+		F2BB6F3D25F9D990009C4259 /* CoachMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachMessageManager.swift; sourceTree = "<group>"; };
+		F2BB6F4325FB20BB009C4259 /* CoachListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachListener.swift; sourceTree = "<group>"; };
 		F2C493232430172D00E997BD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		F2C493252430179500E997BD /* LocalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
 		F2C4943523D2CBC800EAF9CC /* Emojical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojical.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -628,7 +640,7 @@
 		F2049C2725FE804300E432DB /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				F2049C2825FE804300E432DB /* ValetManagerProtocol.swift */,
+				F2049C2825FE804300E432DB /* CoachProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -636,7 +648,7 @@
 		F2049C2925FE804300E432DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F2049C2A25FE804300E432DB /* ValetMessage.swift */,
+				F2049C2A25FE804300E432DB /* CoachMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -777,6 +789,7 @@
 			isa = PBXGroup;
 			children = (
 				F26596E32596AF1300B10B76 /* Recap.storyboard */,
+				F2049C3925FE8B5800E432DB /* RecapReady.storyboard */,
 				F26596E72596AF1300B10B76 /* Model */,
 				F26596E02596AF1300B10B76 /* Cells */,
 				F26596E92596AF1300B10B76 /* Protocols */,
@@ -797,8 +810,10 @@
 		F26596E42596AF1300B10B76 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				F26596E52596AF1300B10B76 /* RecapPresenter.swift */,
+				F2049C4A25FE8D8D00E432DB /* RecapReadyViewController.swift */,
+				F2049C4925FE8D8D00E432DB /* RecapReadyPresenter.swift */,
 				F26596E62596AF1300B10B76 /* RecapViewController.swift */,
+				F26596E52596AF1300B10B76 /* RecapPresenter.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -806,6 +821,7 @@
 		F26596E72596AF1300B10B76 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F2049C4525FE8D2F00E432DB /* RecapReadyData.swift */,
 				F26596E82596AF1300B10B76 /* AwardRecapData.swift */,
 			);
 			path = Model;
@@ -814,8 +830,10 @@
 		F26596E92596AF1300B10B76 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				F26596EB2596AF1300B10B76 /* RecapPresenterProtocol.swift */,
+				F2049C3F25FE8CF300E432DB /* RecapReadyView.swift */,
+				F2049C4025FE8CF300E432DB /* RecapReadyPresenterProtocol.swift */,
 				F26596EA2596AF1300B10B76 /* RecapView.swift */,
+				F26596EB2596AF1300B10B76 /* RecapPresenterProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1189,8 +1207,8 @@
 				F2049C2925FE804300E432DB /* Model */,
 				F2049C2725FE804300E432DB /* Protocol */,
 				F2C493232430172D00E997BD /* NotificationManager.swift */,
-				F2BB6F4325FB20BB009C4259 /* ValetListener.swift */,
-				F2BB6F3D25F9D990009C4259 /* ValetManager.swift */,
+				F2BB6F4325FB20BB009C4259 /* CoachListener.swift */,
+				F2BB6F3D25F9D990009C4259 /* CoachMessageManager.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1552,6 +1570,7 @@
 				F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */,
 				F2FD4E1925BDCD42005819A0 /* StickerDetailsDeleteButtonCell.xib in Resources */,
 				F26596EE2596AF1300B10B76 /* Recap.storyboard in Resources */,
+				F2049C3A25FE8B5800E432DB /* RecapReady.storyboard in Resources */,
 				F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */,
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
@@ -1627,7 +1646,9 @@
 				F2FD4DF425BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.swift in Sources */,
 				F2C493242430172D00E997BD /* NotificationManager.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* StoredStamp.swift in Sources */,
+				F2049C4B25FE8D8D00E432DB /* RecapReadyPresenter.swift in Sources */,
 				F2F3BE67257DD25800A926E9 /* TodayPresenterProtocol.swift in Sources */,
+				F2049C4625FE8D2F00E432DB /* RecapReadyData.swift in Sources */,
 				BC5643F9246B1C6200942066 /* Period.swift in Sources */,
 				F2FD4E1D25BDCD42005819A0 /* StickerDetailsElement.swift in Sources */,
 				F23CF3AC25829B500048BA74 /* StickersViewController.swift in Sources */,
@@ -1648,6 +1669,7 @@
 				BC5643F3246B0FCE00942066 /* Award.swift in Sources */,
 				F2F3BE1F257C831000A926E9 /* DayHeaderCell.swift in Sources */,
 				F2A93FD1258164B2006C88F8 /* MonthBoxCell.swift in Sources */,
+				F2049C4C25FE8D8D00E432DB /* RecapReadyViewController.swift in Sources */,
 				F295335E25B604A4003CA002 /* StickersCoordinator.swift in Sources */,
 				F2A829DF25EBF4F400B323FB /* WelcomePresenterProtocol.swift in Sources */,
 				F284F997257EF1720016D1C6 /* TodayAwardCell.swift in Sources */,
@@ -1686,6 +1708,7 @@
 				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
 				F23CF3CC2582A95F0048BA74 /* StickerCell.swift in Sources */,
+				F2049C4125FE8CF300E432DB /* RecapReadyView.swift in Sources */,
 				F2A829E025EBF4F400B323FB /* WelcomeView.swift in Sources */,
 				F2A93FC825816180006C88F8 /* MonthBoxData.swift in Sources */,
 				BC5643F1246B0F1900942066 /* Goal.swift in Sources */,
@@ -1693,7 +1716,7 @@
 				F2A93FB12581314C006C88F8 /* WeekLineData.swift in Sources */,
 				F2B5F46B25CF58CF0051E8C9 /* GoalExampleCell.swift in Sources */,
 				F2FD4E1F25BDCD42005819A0 /* StickerEditData.swift in Sources */,
-				F2BB6F4425FB20BB009C4259 /* ValetListener.swift in Sources */,
+				F2BB6F4425FB20BB009C4259 /* CoachListener.swift in Sources */,
 				BC5643FF246B1E1F00942066 /* StoredDirection.swift in Sources */,
 				F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */,
 				F26596EF2596AF1300B10B76 /* RecapPresenter.swift in Sources */,
@@ -1713,11 +1736,12 @@
 				F29B439225CD13660005ADF5 /* UIView+ThemeObserving.swift in Sources */,
 				F27968F1240C127900EA9436 /* StoredParam.swift in Sources */,
 				F2F7A4B0243A9DCC005277B2 /* DataSource+ImportExport.swift in Sources */,
-				F2049C2C25FE804300E432DB /* ValetMessage.swift in Sources */,
+				F2049C2C25FE804300E432DB /* CoachMessage.swift in Sources */,
 				BC1E1EFD246C59B000E05C8A /* Storage.swift in Sources */,
 				BC5643F7246B10B500942066 /* Diary.swift in Sources */,
 				F273E2A125969BF50037BEDA /* Storyboard.swift in Sources */,
 				F295334C25B4DA03003CA002 /* TodayAwardElement.swift in Sources */,
+				F2049C4225FE8CF300E432DB /* RecapReadyPresenterProtocol.swift in Sources */,
 				F204473F25E8C7E9003318C6 /* AwardIconView.swift in Sources */,
 				F26596ED2596AF1300B10B76 /* AwardRecapCell.swift in Sources */,
 				F2FD4DBC25BC88C6005819A0 /* SelectStickersPresenter.swift in Sources */,
@@ -1753,7 +1777,7 @@
 				F2FD4DBB25BC88C6005819A0 /* SelectStickersViewController.swift in Sources */,
 				F26B273723D6772400B8D0F9 /* UIColorExtensions.swift in Sources */,
 				F2FF7EA323D66F030033D9DC /* DataSource.swift in Sources */,
-				F2049C2B25FE804300E432DB /* ValetManagerProtocol.swift in Sources */,
+				F2049C2B25FE804300E432DB /* CoachProtocol.swift in Sources */,
 				F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */,
 				F2B5F46F25CF58CF0051E8C9 /* GoalsLibraryViewController.swift in Sources */,
 				F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */,
@@ -1763,7 +1787,7 @@
 				F29B439625CEECBD0005ADF5 /* Theme+Specs.swift in Sources */,
 				F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */,
 				F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */,
-				F2BB6F3E25F9D990009C4259 /* ValetManager.swift in Sources */,
+				F2BB6F3E25F9D990009C4259 /* CoachMessageManager.swift in Sources */,
 				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
 				F2EE4AB825C5B3B9004FB0F2 /* SwitchCell.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,

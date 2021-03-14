@@ -1,5 +1,5 @@
 //
-//  ValetMessage.swift
+//  CoachMessage.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 3/14/21.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum ValetMessage {
+enum CoachMessage {
+    
     /// First onboarding message about stickers
     case onboarding1
     

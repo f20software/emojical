@@ -115,8 +115,8 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                             name: .weekClosed, object: nil)
                     }),
                     .button("Start Onboarding", {
-                        ValetManager.shared.mockMessage(.onboarding1)
-                        ValetManager.shared.mockMessage(.onboarding2)
+                        CoachMessageManager.shared.mockMessage(.onboarding1)
+                        CoachMessageManager.shared.mockMessage(.onboarding2)
                     }),
                 ]
             ),

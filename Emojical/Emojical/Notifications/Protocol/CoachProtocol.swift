@@ -1,5 +1,5 @@
 //
-//  ValetManagerProtocol.swift
+//  CoachProtocol.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 3/14/21.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol ValetManagerProtocol {
+protocol CoachProtocol {
 
-    /// Valet listener instance
-    func valetListener() -> ValetListener
+    /// Coach listener instance
+    func coachListener() -> CoachListener
 
     /// Testing various messages sent by ValetManager
-    func mockMessage(_ message: ValetMessage)
+    func mockMessage(_ message: CoachMessage)
 }

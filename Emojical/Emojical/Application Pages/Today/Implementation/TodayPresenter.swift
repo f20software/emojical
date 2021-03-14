@@ -393,7 +393,7 @@ class TodayPresenter: TodayPresenterProtocol {
                 guard $0.reached == true else { return nil }
                 guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
                 let stamp = repository.stampBy(id: goal.stamps.first)
-                return .award(data: AwardIconData(goalId: goal.id!, stamp: stamp))
+                return .award(data: AwardIconData(stamp: stamp, goalId: goal.id))
             })
         }
 

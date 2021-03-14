@@ -11,7 +11,7 @@ import UIKit
 
 /// View model to show Award icon
 struct AwardIconData {
-    let goalId: Int64
+    let goalId: Int64?
     let emoji: String?
     let backgroundColor: UIColor
     let borderColor: UIColor
@@ -21,7 +21,7 @@ struct AwardIconData {
 extension AwardIconData {
     
     // Convinience constructor from Stamp object
-    init(goalId: Int64, stamp: Stamp?, busted: Bool = false) {
+    init(stamp: Stamp?, goalId: Int64?, busted: Bool = false) {
         
         if busted {
             self.init(

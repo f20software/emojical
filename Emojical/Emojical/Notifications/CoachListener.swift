@@ -2,32 +2,33 @@
 //  AwardsDataSourceListener.swift
 //  Stamps
 //
-//  Created by Alexander on 12.05.2020.
-//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//  Created by Vladimir Svidersky on 3/14/21.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import Foundation
-import GRDB
 
-class CoachListener {
+class CoachListener: CoachListenerProtocol {
     
     // MARK: - Private properties.
     
-    private var source: CoachMessageManager
+    private var source: CoachProtocol
     
-    // MARK: - Lifecycle.
+    // MARK: - Lifecycle
     
-    init(source: CoachMessageManager) {
+    init(source: CoachProtocol) {
         self.source = source
     }
     
+    /// Start listening for Coach messages
     func startListening(onShow: @escaping (CoachMessage) -> Void) {
-        source.addValetObserver(self, onShow: { (message) in
+        source.addObserver(self, onShow: { (message) in
             onShow(message)
         })
     }
     
+    /// Stop listening for Coach messages
     func stopListening() {
-        source.removeValetObserver(self)
+        source.removeObserver(self)
     }
 }

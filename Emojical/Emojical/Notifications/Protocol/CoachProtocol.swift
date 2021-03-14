@@ -10,9 +10,15 @@ import Foundation
 
 protocol CoachProtocol {
 
+    /// Add observer for Coach messages
+    func addObserver(_ disposable: AnyObject, onShow: @escaping (CoachMessage) -> Void)
+
+    /// Remove observer for Coach messages
+    func removeObserver(_ disposable: AnyObject)
+
     /// Coach listener instance
     func coachListener() -> CoachListener
 
-    /// Testing various messages sent by ValetManager
+    /// Testing various messages sent by CoachManager
     func mockMessage(_ message: CoachMessage)
 }

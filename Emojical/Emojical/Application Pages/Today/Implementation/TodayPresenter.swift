@@ -19,7 +19,8 @@ class TodayPresenter: TodayPresenterProtocol {
     private let goalsListener: GoalsListener
     private let calendar: CalendarHelper
     private let awardManager: AwardManager
-    private let coach: CoachListener
+    private let coach: CoachListenerProtocol
+    private let main: MainCoordinatorProtocol?
 
     private weak var view: TodayView?
     private weak var coordinator: TodayCoordinatorProtocol?
@@ -114,10 +115,11 @@ class TodayPresenter: TodayPresenterProtocol {
         awardsListener: AwardsListener,
         goalsListener: GoalsListener,
         awardManager: AwardManager,
-        coach: CoachListener,
+        coach: CoachListenerProtocol,
         calendar: CalendarHelper,
         view: TodayView,
-        coordinator: TodayCoordinatorProtocol
+        coordinator: TodayCoordinatorProtocol,
+        main: MainCoordinatorProtocol?
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
@@ -128,6 +130,7 @@ class TodayPresenter: TodayPresenterProtocol {
         self.calendar = calendar
         self.view = view
         self.coordinator = coordinator
+        self.main = main
         
         self.dataBuilder = CalendarDataBuilder(
             repository: repository,
@@ -461,7 +464,7 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     func processMessage(_ message: CoachMessage, completion: (() -> Void)?) {
-        print("processMessage \(message)")
+        NSLog("TodayPresenter: processMessage \(message)")
         guard let view = view else { return }
 
         DispatchQueue.main.async {
@@ -472,13 +475,21 @@ class TodayPresenter: TodayPresenterProtocol {
                     completion?()
                 }
             
-            case .onboarding1, .onboarding2:
+            case .onboarding1:
                 self.coordinator?.showOnboardingWindow(
                     message: message,
                     bottomMargin: view.stickerSelectorSize) {
                     completion?()
                 }
                 
+            case .onboarding2:
+                self.coordinator?.showOnboardingWindow(
+                    message: message,
+                    bottomMargin: view.stickerSelectorSize) {
+                    completion?()
+                    self.main?.navigateTo(.goals)
+                }
+
             case .weekReady(let message):
                 self.coordinator?.showRecapReady(message: message) { [weak self] showRecap in
                     if showRecap {

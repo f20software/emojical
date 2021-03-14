@@ -53,12 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Setup data storage. Change this line to swap to another data storage mechanism.
         Storage.shared = GRDBDataProvider(app: application)
         
-        // Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")
-        
         // Setup calendar helper
         CalendarHelper.shared = CalendarHelper()
 
-        // Valet messages manager
+        // Coach messages manager
         CoachMessageManager.shared = CoachMessageManager(
             awardListener: Storage.shared.awardsListener(),
             repository: Storage.shared.repository
@@ -70,14 +68,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         NotificationManager.shared.requestAuthorization()
         UNUserNotificationCenter.current().delegate = self
         
+//      Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")
+
 //      Un-deleting specific stamp that I deleted accidentaly
-//        let repo = Storage.shared.repository
-//        var sticker = repo.stampById(15)
-//        sticker?.deleted = false
-//        try! repo.save(stamp: sticker!)
+//      let repo = Storage.shared.repository
+//      var sticker = repo.stampById(15)
+//      sticker?.deleted = false
+//      try! repo.save(stamp: sticker!)
         
         UIView.appearance().tintColor = Theme.main.colors.tint
-        
         return true
     }
     

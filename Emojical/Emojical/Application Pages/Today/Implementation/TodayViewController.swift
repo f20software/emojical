@@ -65,7 +65,9 @@ class TodayViewController: UIViewController {
             coach: CoachMessageManager.shared.coachListener(),
             calendar: CalendarHelper.shared,
             view: self,
-            coordinator: coordinator)
+            coordinator: coordinator,
+            main: tabBarController as? MainCoordinatorProtocol
+        )
         
         configureViews()
         updateColors()

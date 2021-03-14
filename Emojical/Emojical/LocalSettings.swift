@@ -66,7 +66,11 @@ class LocalSettings {
 
     private func integerDefault(_ key: String) -> Int? {
         let defaults = UserDefaults.standard
-        return defaults.integer(forKey: key)
+        if defaults.string(forKey: key) != nil {
+            return defaults.integer(forKey: key)
+        } else {
+            return nil
+        }
     }
     
     private func setIntegerDefault(_ value: Int, key: String) {

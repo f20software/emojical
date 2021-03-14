@@ -27,6 +27,9 @@ class CoachMessageManager {
     /// Data repository
     private var repository: DataRepository!
 
+    /// Diary listener
+    private var diaryListener: DiaryListener!
+
     /// Private instance of the data builder
     private let dataBuilder: CalendarDataBuilder
 
@@ -55,26 +58,13 @@ class CoachMessageManager {
             repository: repository,
             calendar: CalendarHelper.shared
         )
+        self.diaryListener = Storage.shared.diaryListener()
 
         queue = DispatchQueue(label: "com.svidersky.Emojical.coach")
         awards = dataBuilder.awards(for: currentWeek)
             
         configureListeners()
         initialStatusCheck()
-    }
-
-    // MARK: - Observers
-    
-    func addValetObserver(_ disposable: AnyObject, onShow: @escaping (CoachMessage) -> Void) {
-        queue.async { [weak self] in
-            self?.onShowObservers.addObserver(disposable, onShow)
-        }
-    }
-
-    func removeValetObserver(_ disposable: AnyObject) {
-        queue.async { [weak self] in
-            self?.onShowObservers.removeObserver(disposable)
-        }
     }
 
     // MARK: - Private helpers
@@ -86,19 +76,23 @@ class CoachMessageManager {
             self?.checkNewAwards()
         }
 
+        diaryListener.startListening { [weak self] count in
+            self?.checkDiaryState(count)
+        }
+        
         NotificationCenter.default.addObserver(
             self, selector: #selector(weekReady), name: .weekClosed, object: nil)
     }
     
     private func notifyObservers(message: CoachMessage) {
-        NSLog("ValetManager: notifyObservers [\(onShowObservers.isEmpty)] \(message)")
+        NSLog("CoachMessageManager: notifyObservers [\(onShowObservers.isEmpty)] \(message)")
         onShowObservers.forEach { observer in
             observer(message)
         }
     }
     
     @objc private func weekReady() {
-        NSLog("ValetManager: weekReady")
+        NSLog("CoachMessageManager: weekReady")
 
         let awards = dataBuilder.awards(for: CalendarHelper.Week(Date().byAddingWeek(-1)))
         let totalCount = awards.count
@@ -114,7 +108,7 @@ class CoachMessageManager {
     
     // Check whether new awards given for the goals that just reached
     private func checkNewAwards() {
-        NSLog("ValetManager: checkNewAwards")
+        NSLog("CoachMessageManager: checkNewAwards")
 
         let new = dataBuilder.awards(for: currentWeek)
         let needCongratulate = new
@@ -144,10 +138,30 @@ class CoachMessageManager {
             })
         }
     }
+
+    private func checkDiaryState(_ total: Int) {
+        if total == 2 {
+            notifyObservers(message: .onboarding2)
+        }
+    }
 }
 
 extension CoachMessageManager: CoachProtocol {
     
+    /// Add observer for Coach messages
+    func addObserver(_ disposable: AnyObject, onShow: @escaping (CoachMessage) -> Void) {
+        queue.async { [weak self] in
+            self?.onShowObservers.addObserver(disposable, onShow)
+        }
+    }
+
+    /// Remove observer for Coach messages
+    func removeObserver(_ disposable: AnyObject) {
+        queue.async { [weak self] in
+            self?.onShowObservers.removeObserver(disposable)
+        }
+    }
+
     /// Coach listener instance
     func coachListener() -> CoachListener {
         return CoachListener(source: self)

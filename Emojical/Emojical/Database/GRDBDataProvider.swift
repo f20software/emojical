@@ -37,5 +37,8 @@ class GRDBDataProvider: DataProvider {
         StampsDataSourceListener(source: dataSource)
     }
     
-    
+    func diaryListener() -> DiaryListener {
+        DiaryDataSourceListener(source: dataSource)
+    }
+
 }

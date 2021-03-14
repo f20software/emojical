@@ -39,6 +39,9 @@
 		F2049C4625FE8D2F00E432DB /* RecapReadyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C4525FE8D2F00E432DB /* RecapReadyData.swift */; };
 		F2049C4B25FE8D8D00E432DB /* RecapReadyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C4925FE8D8D00E432DB /* RecapReadyPresenter.swift */; };
 		F2049C4C25FE8D8D00E432DB /* RecapReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C4A25FE8D8D00E432DB /* RecapReadyViewController.swift */; };
+		F2049C5225FEB20E00E432DB /* CoachListenerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C5125FEB20E00E432DB /* CoachListenerProtocol.swift */; };
+		F2049C5A25FEB4B800E432DB /* DiaryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C5925FEB4B800E432DB /* DiaryListener.swift */; };
+		F2049C5E25FEB4F700E432DB /* DiaryDataSourceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C5D25FEB4F700E432DB /* DiaryDataSourceListener.swift */; };
 		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView_Old.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
@@ -306,6 +309,9 @@
 		F2049C4525FE8D2F00E432DB /* RecapReadyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapReadyData.swift; sourceTree = "<group>"; };
 		F2049C4925FE8D8D00E432DB /* RecapReadyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapReadyPresenter.swift; sourceTree = "<group>"; };
 		F2049C4A25FE8D8D00E432DB /* RecapReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapReadyViewController.swift; sourceTree = "<group>"; };
+		F2049C5125FEB20E00E432DB /* CoachListenerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachListenerProtocol.swift; sourceTree = "<group>"; };
+		F2049C5925FEB4B800E432DB /* DiaryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryListener.swift; sourceTree = "<group>"; };
+		F2049C5D25FEB4F700E432DB /* DiaryDataSourceListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryDataSourceListener.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView_Old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView_Old.swift; sourceTree = "<group>"; };
 		F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalReachedCell.swift; sourceTree = "<group>"; };
@@ -588,6 +594,7 @@
 			children = (
 				BC564400246B2BEE00942066 /* AwardsListener.swift */,
 				BC564408246B2F3900942066 /* GoalListener.swift */,
+				F2049C5925FEB4B800E432DB /* DiaryListener.swift */,
 				BC56440C246B309700942066 /* StampsListener.swift */,
 			);
 			path = Listeners;
@@ -622,6 +629,7 @@
 			children = (
 				BC564406246B2D0E00942066 /* AwardsDataSourceListener.swift */,
 				BC56440A246B2F5D00942066 /* GoalsDataSourceListener.swift */,
+				F2049C5D25FEB4F700E432DB /* DiaryDataSourceListener.swift */,
 				BC56440E246B30BF00942066 /* StampsDataSourceListener.swift */,
 			);
 			path = Listeners;
@@ -640,6 +648,7 @@
 		F2049C2725FE804300E432DB /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				F2049C5125FEB20E00E432DB /* CoachListenerProtocol.swift */,
 				F2049C2825FE804300E432DB /* CoachProtocol.swift */,
 			);
 			path = Protocol;
@@ -1762,6 +1771,7 @@
 				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */,
 				F2B5F47525CF58CF0051E8C9 /* GoalsLibraryView.swift in Sources */,
+				F2049C5E25FEB4F700E432DB /* DiaryDataSourceListener.swift in Sources */,
 				F2EE4ADA25C5F84A004FB0F2 /* BaseTableViewController.swift in Sources */,
 				F21162C625C9FD6700E4D3AD /* GoalReachedCell.swift in Sources */,
 				F26596F32596AF1300B10B76 /* RecapPresenterProtocol.swift in Sources */,
@@ -1792,6 +1802,7 @@
 				F2EE4AB825C5B3B9004FB0F2 /* SwitchCell.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,
 				F27E703325D836E1004E49FB /* CongratsPresenter.swift in Sources */,
+				F2049C5225FEB20E00E432DB /* CoachListenerProtocol.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F29804C725C79A5F00952AAF /* GoalHistoryData.swift in Sources */,
 				F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */,
@@ -1803,6 +1814,7 @@
 				F29B438E25CD05F70005ADF5 /* UICollectionViewCell+ThemeObserving.swift in Sources */,
 				F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */,
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
+				F2049C5A25FEB4B800E432DB /* DiaryListener.swift in Sources */,
 				F2FD4E2025BDCD42005819A0 /* StickerCoordinator.swift in Sources */,
 				F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */,
 				F2B5F46D25CF58CF0051E8C9 /* GoalExampleData.swift in Sources */,

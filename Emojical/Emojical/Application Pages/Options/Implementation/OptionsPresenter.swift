@@ -18,7 +18,6 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     private weak var settings: LocalSettings!
     private weak var repository: DataRepository!
     private weak var coordinator: OptionsCoordinatorProtocol?
-    private weak var main: MainCoordinatorProtocol?
     
     // MARK: - State
 
@@ -28,14 +27,12 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
         view: OptionsView,
         repository: DataRepository,
         settings: LocalSettings,
-        coordinator: OptionsCoordinatorProtocol,
-        main: MainCoordinatorProtocol?
+        coordinator: OptionsCoordinatorProtocol
     ) {
         self.view = view
         self.repository = repository
         self.settings = settings
         self.coordinator = coordinator
-        self.main = main
     }
 
     /// Called when view finished initial loading.
@@ -107,7 +104,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
         // #if targetEnvironment(simulator)
         data[2].cells.append(
             .navigate("Developer Options", { [weak self] in
-                self?.coordinator?.developerOptions(main: self?.main)
+                self?.coordinator?.developerOptions()
             }))
         // #endif
         view?.updateTitle("options_title".localized)

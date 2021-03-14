@@ -29,8 +29,8 @@ class OptionsViewController: BaseTableViewController, OptionsView {
             view: self,
             repository: Storage.shared.repository,
             settings: LocalSettings.shared,
-            coordinator: coordinator,
-            main: tabBarController as? MainCoordinatorProtocol)
+            coordinator: coordinator
+        )
         
         configureViews()
         presenter.onViewDidLoad()

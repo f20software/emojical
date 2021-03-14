@@ -18,7 +18,6 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
     private weak var settings: LocalSettings!
     private weak var repository: DataRepository!
     private weak var awards: AwardManager!
-    private weak var main: MainCoordinatorProtocol?
 
     // MARK: - State
 
@@ -28,14 +27,12 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
         view: DeveloperView,
         repository: DataRepository,
         awards: AwardManager,
-        settings: LocalSettings,
-        main: MainCoordinatorProtocol?
+        settings: LocalSettings
     ) {
         self.view = view
         self.repository = repository
         self.awards = awards
         self.settings = settings
-        self.main = main
     }
 
     /// Called when view finished initial loading.

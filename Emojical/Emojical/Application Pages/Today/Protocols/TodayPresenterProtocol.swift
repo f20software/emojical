@@ -24,4 +24,7 @@ protocol TodayPresenterProtocol: AnyObject {
     
     /// Show week recap for the specific date (any daty in a week will do)
     func showWeekRecapFor(_ date: Date)
+    
+    /// Process single Coach message (could be onboarding message or cheers for reaching the goal or anything else)
+    func showCoachMessage(_ message: CoachMessage, completion: (() -> Void)?)
 }

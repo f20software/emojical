@@ -185,6 +185,46 @@ class TodayPresenter: TodayPresenterProtocol {
         coordinator?.showAwardsRecap(data: recapData())
     }
 
+    /// Process single Coach message (could be onboarding message or cheers for reaching the goal or anything else)
+    func showCoachMessage(_ message: CoachMessage, completion: (() -> Void)?) {
+        NSLog("TodayPresenter: processMessage \(message)")
+        guard let view = view else { return }
+
+        // All message handling will require some kind of navigation. Make sure we execute it
+        // in the main thread
+        DispatchQueue.main.async {
+            switch message {
+            case .cheerGoalReached(let award):
+                self.coordinator?.showCongratsWindow(data: award) {
+                    completion?()
+                }
+            
+            case .onboarding1:
+                self.coordinator?.showOnboardingWindow(
+                    message: message,
+                    bottomMargin: view.stickerSelectorSize) {
+                    completion?()
+                }
+                
+            case .onboarding2:
+                self.coordinator?.showOnboardingWindow(
+                    message: message,
+                    bottomMargin: view.stickerSelectorSize) {
+                    completion?()
+                    self.main?.navigateTo(.goals)
+                }
+
+            case .weekReady(let message):
+                self.coordinator?.showRecapReady(message: message) { [weak self] showRecap in
+                    if showRecap {
+                        self?.showWeekRecapFor(Date().byAddingWeek(-1))
+                    }
+                    completion?()
+                }
+            }
+        }
+    }
+    
     // MARK: - Private helpers
 
     /// Reacting to significate time change event - updating data to current date and refreshing view
@@ -234,7 +274,7 @@ class TodayPresenter: TodayPresenterProtocol {
         // Subscribe to various cheeers and onboarding messages
         coach.startListening { message in
             self.messageQueue.addOperation(
-                MessageOperation(handler: self, message: message)
+                CoachMessageOperation(handler: self, message: message)
             )
         }
         
@@ -462,74 +502,7 @@ class TodayPresenter: TodayPresenterProtocol {
         // Update view
         loadViewData()
     }
-    
-    func processMessage(_ message: CoachMessage, completion: (() -> Void)?) {
-        NSLog("TodayPresenter: processMessage \(message)")
-        guard let view = view else { return }
-
-        DispatchQueue.main.async {
-
-            switch message {
-            case .cheerGoalReached(let award):
-                self.coordinator?.showCongratsWindow(data: award) {
-                    completion?()
-                }
-            
-            case .onboarding1:
-                self.coordinator?.showOnboardingWindow(
-                    message: message,
-                    bottomMargin: view.stickerSelectorSize) {
-                    completion?()
-                }
-                
-            case .onboarding2:
-                self.coordinator?.showOnboardingWindow(
-                    message: message,
-                    bottomMargin: view.stickerSelectorSize) {
-                    completion?()
-                    self.main?.navigateTo(.goals)
-                }
-
-            case .weekReady(let message):
-                self.coordinator?.showRecapReady(message: message) { [weak self] showRecap in
-                    if showRecap {
-                        self?.showWeekRecapFor(Date().byAddingWeek(-1))
-                    }
-                    completion?()
-                }
-            }
-        }
-    }
 }
-
-class MessageOperation: Operation {
-    
-    var message: CoachMessage
-    var handler: TodayPresenter
-    var shown: Bool
-    
-    override var isFinished: Bool {
-        get { return shown }
-        set {
-            self.willChangeValue(forKey: "isFinished")
-            self.shown = newValue
-            self.didChangeValue(forKey: "isFinished")
-        }
-    }
-    
-    init(handler: TodayPresenter, message: CoachMessage) {
-        self.handler = handler
-        self.message = message
-        self.shown = false
-    }
-    
-    override func start() {
-        handler.processMessage(message) {
-            self.isFinished = true
-        }
-    }
-}
-
 
 // MARK: - Specs
 fileprivate struct Specs {

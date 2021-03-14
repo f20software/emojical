@@ -51,7 +51,8 @@ class WelcomeViewController : UIViewController, WelcomeView {
 
     /// Configure layout
     func setBottomMargin(margin: Float) {
-        bottomConstraint.constant = CGFloat(margin + 50.0 /* tabbar height */ + 16.0)
+        bottomConstraint.constant =
+            CGFloat(margin) + Specs.tabbarHeight + Specs.bottomMargin
     }
 
     /// Loads data
@@ -94,6 +95,12 @@ class WelcomeViewController : UIViewController, WelcomeView {
 // MARK: - Specs
 fileprivate struct Specs {
     
+    /// Accomodate for the height of tabbar
+    static let tabbarHeight: CGFloat = 50.0
+
+    /// Margin between bottom edge of sticker selector and lowest element of welcome screen
+    static let bottomMargin: CGFloat = 16.0
+
     /// Modal corner radius
     static let textBubbleRadius: CGFloat = 15.0
     

@@ -12,10 +12,10 @@ protocol RecapReadyView: AnyObject {
 
     // MARK: - Callbacks
     
-    /// Dismiss button tapped  stickers changed
+    /// Dismiss button tapped
     var onDismiss: (() -> Void)? { get set }
 
-    /// Review button tapped  stickers changed
+    /// Review button tapped 
     var onReview: (() -> Void)? { get set }
 
     // MARK: - Updates

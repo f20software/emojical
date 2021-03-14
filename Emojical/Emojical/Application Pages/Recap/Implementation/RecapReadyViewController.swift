@@ -1,5 +1,5 @@
 //
-//  CongratsViewController.swift
+//  RecapReadyViewController.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 2/13/21.
@@ -23,8 +23,6 @@ class RecapReadyViewController : UIViewController, RecapReadyView {
 
     var presenter: RecapReadyPresenterProtocol!
 
-    // MARK: - State
-    
     // MARK: - View lifecycle
     
     override func viewDidLoad() {

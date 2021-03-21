@@ -19,6 +19,14 @@ extension StoredDiary : Hashable { }
     
 // MARK: - Persistence
 
+// Define some useful player requests.
+// See https://github.com/groue/GRDB.swift/blob/master/README.md#requests
+extension StoredDiary {
+    static func orderedByDate() -> QueryInterfaceRequest<StoredDiary> {
+        return StoredDiary.order(Columns.date)
+    }
+}
+
 // Turn Player into a Codable Record.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#records
 extension StoredDiary: Codable, FetchableRecord, MutablePersistableRecord {

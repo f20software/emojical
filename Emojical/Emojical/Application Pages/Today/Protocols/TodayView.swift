@@ -61,4 +61,9 @@ protocol TodayView: AnyObject {
     
     /// Show/hide stamp selector and plus button
     func showStampSelector(_ state: SelectorState)
+    
+    // MARK: - Layout
+    
+    /// Distance from the bottom of the screen to the top edge of Sticker Selector
+    var stickerSelectorSize: Float { get }
 }

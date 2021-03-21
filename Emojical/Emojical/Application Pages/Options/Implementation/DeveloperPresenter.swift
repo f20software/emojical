@@ -111,6 +111,10 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                         NotificationCenter.default.post(
                             name: .weekClosed, object: nil)
                     }),
+                    .button("Start Onboarding", {
+                        CoachMessageManager.shared.mockMessage(.onboarding1)
+                        // CoachMessageManager.shared.mockMessage(.onboarding2)
+                    }),
                 ]
             ),
             Section(

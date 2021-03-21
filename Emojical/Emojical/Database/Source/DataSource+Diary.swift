@@ -11,6 +11,11 @@ import GRDB
 // MARK: - Diary Helper Methods
 extension DataSource {
 
+    /// Total count of all diary records
+    func allDiaryCount() -> Int {
+        return allStoredDiary().count
+    }
+    
     func getFirstDiaryDate() -> Date? {
         do {
             let diary = try dbQueue.read { db -> StoredDiary? in

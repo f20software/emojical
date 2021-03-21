@@ -12,7 +12,7 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell, StickerDetailEditVie
 
     // MARK: - Outlets
 
-    @IBOutlet weak var stickerIcon: StickerView!
+    @IBOutlet weak var sticker: StickerView!
     @IBOutlet weak var previewPlate: UIView!
     @IBOutlet weak var stickerBackground: UIView!
     @IBOutlet weak var previewLabel: UILabel!
@@ -90,8 +90,8 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell, StickerDetailEditVie
     func configure(for data: StickerEditData) {
         nameField.text = data.sticker.name
         emojiField.text = data.sticker.label
-        stickerIcon.text = data.sticker.label
-        stickerIcon.color = data.sticker.color
+        sticker.text = data.sticker.label
+        sticker.color = data.sticker.color
 
         if let index = allColorViews.firstIndex(where: {
             $0.backgroundColor?.hex == data.sticker.color.hex }) {
@@ -108,9 +108,9 @@ class StickerDetailsEditCell: ThemeObservingCollectionCell, StickerDetailEditVie
     
     /// Update preview icon
     func updatePreview(label: String, color: UIColor) {
-        stickerIcon.color = color
-        stickerIcon.text = label
-        stickerIcon.setNeedsDisplay()
+        sticker.color = color
+        sticker.text = label
+        sticker.setNeedsDisplay()
     }
 
     /// Sets custom color value

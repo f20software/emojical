@@ -30,10 +30,10 @@ class StatsPresenter: StatsPresenterProtocol {
     private var stamps = [Stamp]()
     
     /// Selected week
-    private var selectedWeek = CalendarHelper.Week(Date())
+    private var selectedWeek = CalendarHelper.Week(Date().byAddingDays(-6))
 
     /// Selected month
-    private var selectedMonth = CalendarHelper.Month(Date())
+    private var selectedMonth = CalendarHelper.Month(Date().byAddingDays(-20))
 
     /// Selected year
     private var selectedYear = CalendarHelper.Year(Date())
@@ -64,6 +64,7 @@ class StatsPresenter: StatsPresenterProtocol {
 
         // Load initial set of data
         stamps = repository.allStamps()
+        
         // Subscribe to stamp listner in case stamps array ever changes
         stampsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
@@ -71,7 +72,7 @@ class StatsPresenter: StatsPresenterProtocol {
         onChange: { [weak self] stamps in
             guard let self = self else { return }
             
-            self.stamps = self.repository.allStamps()
+            self.stamps = self.repository.allStamps().sorted(by: { $0.count > $1.count })
             self.loadViewData()
         })
     }

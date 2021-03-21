@@ -12,6 +12,8 @@ class LocalSettings {
     
     private let todayNotificationIdKey = "todayNotificationId"
     private let reminderEnabledKey = "reminderEnabled"
+    private let stickerStyleKey = "stickerStyle"
+    private let onboardingSeenKey = "onboardingSeen"
 
     // Singleton instance
     static let shared = LocalSettings()
@@ -20,7 +22,17 @@ class LocalSettings {
     }
 
     // MARK: - Public properties
+
+    /// Whether specific onboarding message has been shown or not
+    func isOnboardingSeen(_ message: String) -> Bool {
+        return boolDefault("\(onboardingSeenKey)-\(message)") ?? false
+    }
     
+    /// Record the fact that onboarding has been shown
+    func seenOnboarding(_ message: String) {
+        setBoolDefault(true, key: "\(onboardingSeenKey)-\(message)")
+    }
+
     /// Today notification Id - to ensure we only schedule one reminder notification
     var todayNotificationId: String? {
         get {
@@ -41,6 +53,16 @@ class LocalSettings {
         }
     }
 
+    /// Is today entry reminder enabled?
+    var stickerStyle: StickerStyle {
+        get {
+            return StickerStyle(rawValue: integerDefault(stickerStyleKey) ?? 1) ?? .borderless
+        }
+        set {
+            setIntegerDefault(newValue.rawValue, key: stickerStyleKey)
+        }
+    }
+
     // MARK: - Helper methods to wrap up NSUserDefaults
     
     private func stringDefault(_ key: String) -> String? {
@@ -55,7 +77,11 @@ class LocalSettings {
 
     private func integerDefault(_ key: String) -> Int? {
         let defaults = UserDefaults.standard
-        return defaults.integer(forKey: key)
+        if defaults.string(forKey: key) != nil {
+            return defaults.integer(forKey: key)
+        } else {
+            return nil
+        }
     }
     
     private func setIntegerDefault(_ value: Int, key: String) {

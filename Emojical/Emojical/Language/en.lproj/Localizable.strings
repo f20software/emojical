@@ -130,7 +130,9 @@
 
 "today_title" = "Today";
 
-"goals_title" = "Goals";
+"goals_tab_title" = "Stickers & Goals";
+
+"goals_section_title" = "Goals";
 
 "goals_library_title" = "Goal Examples";
 
@@ -252,4 +254,24 @@
 
 "sticker_delete_confirmation" = "This sticker has been used a few times. Are you sure you want to delete it?";
 
+// Onboarding
 
+"onboarding_1_1" = "Hello! Looks like you are new here. Let me show you around.";
+
+"onboarding_1_2" = "These are stickers. You can create and customize many of them. Use stickers to write your diary, record events and activities during the day. Tap the sticker in the bottom panel to add it to a day, tap on it again to remove it.";
+
+"onboarding_2" = "Wonderful! Once you figure out stickers, go to \"Stickers & Goals\" tab and setup some goals for yourself.";
+
+"got_it_button" = "Got it";
+
+// Sticker Style
+
+"appearance_title" = "Appearance";
+
+"application_restart_required" = "Application restart is required.";
+
+"sticker_style" = "Sticker Style";
+
+"restart_button" = "Restart";
+
+"sticker_style_restart" = "Sticker style will be changed after you start application again.";

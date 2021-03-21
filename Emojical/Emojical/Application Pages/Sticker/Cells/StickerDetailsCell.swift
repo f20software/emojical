@@ -13,7 +13,7 @@ class StickerDetailsCell: ThemeObservingCollectionCell {
     // MARK: - Outlets
 
     @IBOutlet weak var plate: UIView!
-    @IBOutlet weak var stickerIcon: StickerView!
+    @IBOutlet weak var sticker: StickerView!
     @IBOutlet weak var stickerBackground: UIView!
     @IBOutlet weak var usage: UILabel!
 
@@ -27,8 +27,8 @@ class StickerDetailsCell: ThemeObservingCollectionCell {
     func configure(for data: StickerViewData) {
         usage.text = data.usage
 
-        stickerIcon.text = data.sticker.label
-        stickerIcon.color = data.sticker.color
+        sticker.text = data.sticker.label
+        sticker.color = data.sticker.color
     }
 
     // MARK: - Private helpers

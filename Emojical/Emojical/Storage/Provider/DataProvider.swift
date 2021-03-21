@@ -22,4 +22,7 @@ protocol DataProvider: class {
     
     /// Returns a new instance of Stamp entity listener.
     func stampsListener() -> StampsListener
+
+    /// Returns a new instance of Diary entity listener.
+    func diaryListener() -> DiaryListener
 }

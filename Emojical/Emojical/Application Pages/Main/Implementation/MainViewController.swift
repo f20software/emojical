@@ -30,16 +30,13 @@ class MainViewController: UITabBarController {
         optionsTab = viewControllers?[3] as? UINavigationController
 
         todayTab?.tabBarItem.title = "today_title".localized
-        goalsTab?.tabBarItem.title = "goals_title".localized
+        goalsTab?.tabBarItem.title = "goals_tab_title".localized
         statsTab?.tabBarItem.title = "stats_title".localized
         optionsTab?.tabBarItem.title = "options_title".localized
 
         // Add handlers to app wide notifications
         NotificationCenter.default.addObserver(
             self, selector: #selector(navigateToCalendar), name: .navigateToToday, object: nil)
-
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(weekReady), name: .weekClosed, object: nil)
         
         updateColors()
     }
@@ -50,8 +47,8 @@ extension MainViewController {
 
     @objc func navigateToCalendar() {
         // Move to Today's tab
-        selectedIndex = 0
-        
+        navigateTo(.today)
+
         // And navigate to current day
         todayPresenter?.navigateTo(Date())
     }
@@ -60,47 +57,23 @@ extension MainViewController {
         UIView.appearance().tintColor = Theme.main.colors.tint
         tabBar.tintColor = Theme.main.colors.tint
     }
+}
 
-    @objc func weekReady() {
-        
-        // Move to Today page
-        selectedIndex = 0
+extension MainViewController: MainCoordinatorProtocol {
+ 
+    func navigateTo(_ page: Page) {
+        switch page {
+        case .today:
+            selectedIndex = 0
 
-        let dataBuilder = CalendarDataBuilder(
-            repository: Storage.shared.repository,
-            calendar: CalendarHelper.shared
-        )
-
-        let awards = dataBuilder.awards(for: CalendarHelper.Week(Date().byAddingWeek(-1)))
-        let totalCount = awards.count
-        if totalCount == 0 {
-            return
+        case .goals:
+            selectedIndex = 1
+            
+        case .stats:
+            selectedIndex = 2
+            
+        case .options:
+            selectedIndex = 3
         }
-
-        let reachedCount = awards.filter({ $0.reached }).count
-        let message = Language.weekRecapForGoals(total: totalCount, reached: reachedCount)
-        
-        let alert = UIAlertController(
-            title: "week_recap_title".localized,
-            message: message,
-            preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(
-            title: "review_button".localized,
-            style: .default,
-            handler: { (_) in
-            // Show week recap for the previous week
-            DispatchQueue.main.async {
-                self.todayPresenter?.showWeekRecapFor(Date().byAddingWeek(-1))
-            }
-        }))
-        
-        alert.addAction(UIAlertAction(
-            title: "dismiss_button".localized,
-            style: .cancel,
-            handler: { (_) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        present(alert, animated: true, completion: nil)
     }
 }

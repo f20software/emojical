@@ -20,6 +20,7 @@ enum Cell {
     case `switch`(String, Bool, ((Bool) -> Void)?)
     case navigate(String, (() -> Void)?)
     case button(String, (() -> Void)?)
+    case stickerStyle(String, Stamp, StickerStyle, ((StickerStyle) -> Void)?)
 }
 
 extension Cell: Equatable, Hashable {
@@ -34,6 +35,8 @@ extension Cell: Equatable, Hashable {
             return value.hash(into: &hasher)
         case .button(let value, _):
             return value.hash(into: &hasher)
+        case .stickerStyle(let value, _, _, _):
+            return value.hash(into: &hasher)
         }
     }
 
@@ -46,6 +49,8 @@ extension Cell: Equatable, Hashable {
         case (.navigate(let lhsValue, _), .navigate(let rhsValue, _)):
             return lhsValue == rhsValue
         case (.button(let lhsValue, _), .button(let rhsValue, _)):
+            return lhsValue == rhsValue
+        case (.stickerStyle(let lhsValue, _, _, _), .stickerStyle(let rhsValue, _, _, _)):
             return lhsValue == rhsValue
         default:
             return false

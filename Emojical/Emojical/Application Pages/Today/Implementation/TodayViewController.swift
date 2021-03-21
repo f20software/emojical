@@ -62,9 +62,12 @@ class TodayViewController: UIViewController {
             awardsListener: Storage.shared.awardsListener(),
             goalsListener: Storage.shared.goalsListener(),
             awardManager: AwardManager.shared,
+            coach: CoachMessageManager.shared.coachListener(),
             calendar: CalendarHelper.shared,
             view: self,
-            coordinator: coordinator)
+            coordinator: coordinator,
+            main: tabBarController as? MainCoordinatorProtocol
+        )
         
         configureViews()
         updateColors()
@@ -81,6 +84,11 @@ class TodayViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.onViewWillAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.onViewWillDisappear()
     }
     
     // MARK: - TodayView callback properties
@@ -111,6 +119,11 @@ class TodayViewController: UIViewController {
 
     /// User wants to dismiss Awards Recap view (by dragging it down)
     var onAwardsRecapDismiss: (() -> Void)?
+    
+    /// Distance from the bottom of the screen to the top edge of Sticker Selector
+    var stickerSelectorSize: Float {
+        return Float(stampSelector.frame.height + Specs.bottomButtonsMargin)
+    }
     
     // MARK: - Actions
     

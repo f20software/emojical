@@ -19,39 +19,14 @@ class TodayPresenter: TodayPresenterProtocol {
     private let goalsListener: GoalsListener
     private let calendar: CalendarHelper
     private let awardManager: AwardManager
+    private let coach: CoachListenerProtocol
+    private let main: MainCoordinatorProtocol?
 
     private weak var view: TodayView?
     private weak var coordinator: TodayCoordinatorProtocol?
 
-    // Private instance of the data builder
+    /// Private instance of the data builder
     private let dataBuilder: CalendarDataBuilder
-
-    // MARK: - Lifecycle
-
-    init(
-        repository: DataRepository,
-        stampsListener: StampsListener,
-        awardsListener: AwardsListener,
-        goalsListener: GoalsListener,
-        awardManager: AwardManager,
-        calendar: CalendarHelper,
-        view: TodayView,
-        coordinator: TodayCoordinatorProtocol
-    ) {
-        self.repository = repository
-        self.stampsListener = stampsListener
-        self.awardsListener = awardsListener
-        self.goalsListener = goalsListener
-        self.awardManager = awardManager
-        self.calendar = calendar
-        self.view = view
-        self.coordinator = coordinator
-        
-        self.dataBuilder = CalendarDataBuilder(
-            repository: repository,
-            calendar: calendar
-        )
-    }
 
     // MARK: - State
 
@@ -72,7 +47,10 @@ class TodayPresenter: TodayPresenterProtocol {
     
     // Current goals
     private var goals = [Goal]()
-    
+
+    // Queue of messages that needs to be displayed
+    private var messageQueue = OperationQueue()
+
     // Current week index
     private var week = CalendarHelper.Week(Date()) {
         didSet {
@@ -129,8 +107,39 @@ class TodayPresenter: TodayPresenterProtocol {
         }
     }
     
-    // To make sure we don't play sound on initial page load (when awards are updated)
-    private var firstTime: Bool = true
+    // MARK: - Lifecycle
+
+    init(
+        repository: DataRepository,
+        stampsListener: StampsListener,
+        awardsListener: AwardsListener,
+        goalsListener: GoalsListener,
+        awardManager: AwardManager,
+        coach: CoachListenerProtocol,
+        calendar: CalendarHelper,
+        view: TodayView,
+        coordinator: TodayCoordinatorProtocol,
+        main: MainCoordinatorProtocol?
+    ) {
+        self.repository = repository
+        self.stampsListener = stampsListener
+        self.awardsListener = awardsListener
+        self.coach = coach
+        self.goalsListener = goalsListener
+        self.awardManager = awardManager
+        self.calendar = calendar
+        self.view = view
+        self.coordinator = coordinator
+        self.main = main
+        
+        self.dataBuilder = CalendarDataBuilder(
+            repository: repository,
+            calendar: calendar
+        )
+        
+        // One message at a time
+        self.messageQueue.maxConcurrentOperationCount = 1
+    }
 
     /// Called when view finished initial loading.
     func onViewDidLoad() {
@@ -148,6 +157,12 @@ class TodayPresenter: TodayPresenterProtocol {
     /// Called when view about to appear on the screen
     func onViewWillAppear() {
         loadViewData()
+        messageQueue.isSuspended = false
+    }
+    
+    /// Called when view about to disappear from the screen
+    func onViewWillDisappear() {
+        messageQueue.isSuspended = true
     }
     
     /// Navigate Today view to specific date
@@ -170,6 +185,46 @@ class TodayPresenter: TodayPresenterProtocol {
         coordinator?.showAwardsRecap(data: recapData())
     }
 
+    /// Process single Coach message (could be onboarding message or cheers for reaching the goal or anything else)
+    func showCoachMessage(_ message: CoachMessage, completion: (() -> Void)?) {
+        NSLog("TodayPresenter: processMessage \(message)")
+        guard let view = view else { return }
+
+        // All message handling will require some kind of navigation. Make sure we execute it
+        // in the main thread
+        DispatchQueue.main.async {
+            switch message {
+            case .cheerGoalReached(let award):
+                self.coordinator?.showCongratsWindow(data: award) {
+                    completion?()
+                }
+            
+            case .onboarding1:
+                self.coordinator?.showOnboardingWindow(
+                    message: message,
+                    bottomMargin: view.stickerSelectorSize) {
+                    completion?()
+                }
+                
+            case .onboarding2:
+                self.coordinator?.showOnboardingWindow(
+                    message: message,
+                    bottomMargin: view.stickerSelectorSize) {
+                    completion?()
+                    self.main?.navigateTo(.goals)
+                }
+
+            case .weekReady(let message):
+                self.coordinator?.showRecapReady(message: message) { [weak self] showRecap in
+                    if showRecap {
+                        self?.showWeekRecapFor(Date().byAddingWeek(-1))
+                    }
+                    completion?()
+                }
+            }
+        }
+    }
+    
     // MARK: - Private helpers
 
     /// Reacting to significate time change event - updating data to current date and refreshing view
@@ -187,7 +242,7 @@ class TodayPresenter: TodayPresenterProtocol {
     /// Initialize data objects based on the current date
     private func initializeDataFor(date: Date) {
         // Load set of all stamps
-        allStamps = repository.allStamps()
+        allStamps = repository.allStamps().sorted(by: { $0.count > $1.count })
 
         // Set date and week objects
         selectedDay = date
@@ -212,17 +267,16 @@ class TodayPresenter: TodayPresenterProtocol {
         // When awards are updated
         awardsListener.startListening(onChange: { [weak self] in
             guard let self = self else { return }
-
-            let newAwards = self.dataBuilder.awards(for: self.week)
-            // If this is not initial update when self.awards is empty,
-            // check if new awards were given so we need to show Congrats window
-            if self.awards.count > 0 {
-                self.didWeGetAnAward(old: self.awards, new: newAwards)
-            }
-            
-            self.awards = newAwards
+            self.awards = self.dataBuilder.awards(for: self.week)
             self.loadAwardsData()
         })
+        
+        // Subscribe to various cheeers and onboarding messages
+        coach.startListening { message in
+            self.messageQueue.addOperation(
+                CoachMessageOperation(handler: self, message: message)
+            )
+        }
         
         // When goals are updated
         goalsListener.startListening(onError: { error in
@@ -379,7 +433,7 @@ class TodayPresenter: TodayPresenterProtocol {
                 guard $0.reached == true else { return nil }
                 guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
                 let stamp = repository.stampBy(id: goal.stamps.first)
-                return .award(data: AwardIconData(stamp: stamp))
+                return .award(data: AwardIconData(stamp: stamp, goalId: goal.id))
             })
         }
 
@@ -447,23 +501,6 @@ class TodayPresenter: TodayPresenterProtocol {
         
         // Update view
         loadViewData()
-    }
-    
-    // Handle the situation when new awards are potentially given and
-    // congratulate user
-    private func didWeGetAnAward(old: [Award], new: [Award]) {
-        
-        let needCongratulate = new
-            .filter({ $0.reached == true })
-            .filter { award in
-            return (old.contains(where: {
-                $0.reached == award.reached && $0.goalId == award.goalId
-            }) == false)
-        }
-        
-        guard needCongratulate.count > 0 else { return }
-        // TODO: Add support for when multiple awards are given at the same time
-        coordinator?.showCongratsWindow(data: needCongratulate.first!)
     }
 }
 

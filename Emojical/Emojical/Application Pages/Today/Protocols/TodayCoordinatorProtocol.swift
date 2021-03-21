@@ -17,8 +17,18 @@ protocol TodayCoordinatorProtocol: AnyObject {
     func showAwardsRecap(data: [AwardRecapData])
 
     /// Shows congratulation window
-    func showCongratsWindow(data: Award)
+    func showCongratsWindow(data: Award, completion: (() -> Void)?)
+
+    /// Navigates to goals / awards recap window
+    func showRecapReady(message: String, completion: ((Bool) -> Void)?)
 
     /// Navigates to specific goal
     func showGoal(_ goal: Goal)
+
+    /// Shows onboarding window
+    func showOnboardingWindow(
+        message: CoachMessage,
+        bottomMargin: Float,
+        completion: (() -> Void)?
+    )
 }

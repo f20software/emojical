@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smiley" translatesAutoresizingMaskIntoConstraints="NO" id="nu9-C7-BZF">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emojical-thumbs-up" translatesAutoresizingMaskIntoConstraints="NO" id="nu9-C7-BZF">
                                 <rect key="frame" x="103.5" y="444.5" width="207" height="207"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nu9-C7-BZF" secondAttribute="height" id="L7d-zI-xfs"/>
@@ -38,7 +38,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="smiley" width="750" height="750"/>
+        <image name="emojical-thumbs-up" width="750" height="750"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

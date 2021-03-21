@@ -130,7 +130,11 @@
 
 "today_title" = "Hoy";
 
-"goals_title" = "Metas";
+"goals_tab_title" = "Pegatinas y metas";
+
+"goals_section_title" = "Metas";
+
+"goals_library_title" = "Ejemplos de metas";
 
 "stats_title" = "Estadísticas";
 
@@ -250,4 +254,25 @@
 
 "sticker_delete_confirmation" = "Esta pegatina se ha utilizado varias veces. ¿Estás seguro de que quieres eliminarlo?";
 
+// Onboarding
+
+"onboarding_1_1" = "¡Hola! Parece que eres nuevo aquí. Déjame mostrarte el lugar.";
+
+"onboarding_1_2" = "Son pegatinas. Puede crear y personalizar muchos de ellos. Utilice pegatinas para escribir su diario, registrar eventos y actividades durante el día. Toque la pegatina en el panel inferior para agregarla a un día, vuelva a tocarla para quitarla.";
+
+"onboarding_2" = "¡Maravilloso! Una vez que descubra las pegatinas, vaya a la pestaña \"Pegatinas y metas \" y configure algunas metas para usted.";
+
+"got_it_button" = "Lo tengo";
+
+// Sticker Style
+
+"appearance_title" = "Apariencia";
+
+"application_restart_required" = "Es necesario reiniciar la aplicación.";
+
+"sticker_style" = "Estilo de pegatinas";
+
+"restart_button" = "Reiniciar";
+
+"sticker_style_restart" = "El estilo de las pegatinas se cambiará después de que vuelva a iniciar la aplicación.";
 

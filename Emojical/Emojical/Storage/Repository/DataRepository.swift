@@ -72,6 +72,9 @@ protocol DataRepository: class {
     /// All awards
     func allAwards() -> [Award]
     
+    /// Total count of all diary records
+    func allDiaryCount() -> Int
+
     // MARK: - Saving
     
     /// Save (update or create) a stamp

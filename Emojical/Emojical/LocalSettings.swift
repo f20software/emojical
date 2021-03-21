@@ -13,6 +13,7 @@ class LocalSettings {
     private let todayNotificationIdKey = "todayNotificationId"
     private let reminderEnabledKey = "reminderEnabled"
     private let stickerStyleKey = "stickerStyle"
+    private let onboardingSeenKey = "onboardingSeen"
 
     // Singleton instance
     static let shared = LocalSettings()
@@ -21,7 +22,17 @@ class LocalSettings {
     }
 
     // MARK: - Public properties
+
+    /// Whether specific onboarding message has been shown or not
+    func isOnboardingSeen(_ message: String) -> Bool {
+        return boolDefault("\(onboardingSeenKey)-\(message)") ?? false
+    }
     
+    /// Record the fact that onboarding has been shown
+    func seenOnboarding(_ message: String) {
+        setBoolDefault(true, key: "\(onboardingSeenKey)-\(message)")
+    }
+
     /// Today notification Id - to ensure we only schedule one reminder notification
     var todayNotificationId: String? {
         get {

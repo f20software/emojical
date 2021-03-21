@@ -10,6 +10,12 @@ import Foundation
 
 class CoachMessageManager {
     
+    /// Key to record that first onboarding message was shown in the LocalSettings
+    let messageWelcome = "onboarding-1"
+
+    /// Key to record that second onboarding message was shown in the LocalSettings
+    let messageGoals = "onboarding-2"
+
     /// Singleton instance
     static var shared: CoachProtocol! {
         willSet {
@@ -32,6 +38,9 @@ class CoachMessageManager {
 
     /// Private instance of the data builder
     private let dataBuilder: CalendarDataBuilder
+    
+    /// Private reference to the LocalSettings object
+    private let settings: LocalSettings
 
     // MARK: - Internal state
     
@@ -59,12 +68,12 @@ class CoachMessageManager {
             calendar: CalendarHelper.shared
         )
         self.diaryListener = Storage.shared.diaryListener()
+        self.settings = LocalSettings.shared
 
         queue = DispatchQueue(label: "com.svidersky.Emojical.coach")
         awards = dataBuilder.awards(for: currentWeek)
             
         configureListeners()
-        initialStatusCheck()
     }
 
     // MARK: - Private helpers
@@ -73,11 +82,11 @@ class CoachMessageManager {
     private func configureListeners() {
         // Subscribe to changes in Awards
         awardListener.startListening { [weak self] in
-            self?.checkNewAwards()
+            self?.checkAwards()
         }
 
         diaryListener.startListening { [weak self] count in
-            self?.checkDiaryState(count)
+            self?.checkDiary()
         }
         
         NotificationCenter.default.addObserver(
@@ -106,8 +115,8 @@ class CoachMessageManager {
         notifyObservers(message: .weekReady(message))
     }
     
-    // Check whether new awards given for the goals that just reached
-    private func checkNewAwards() {
+    /// Check whether new awards given for the goals that just reached
+    private func checkAwards() {
         NSLog("CoachMessageManager: checkNewAwards")
 
         let new = dataBuilder.awards(for: currentWeek)
@@ -129,19 +138,26 @@ class CoachMessageManager {
         })
     }
     
-    private func initialStatusCheck() {
-        // If we don't have any diary records (i.e. app launched probably first time
-        // generate event to show first onboarding message
-        if repository.getFirstDiaryDate() == nil {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                self.notifyObservers(message: .onboarding1)
-            })
+    /// Check the status of the Diary database to decide whether we need to show onboarding messages
+    private func checkDiary() {
+        let total = repository.allDiaryCount()
+        
+        if total == 0 {
+            if !settings.isOnboardingSeen(messageWelcome) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.notifyObservers(message: .onboarding1)
+                    self.settings.seenOnboarding(self.messageWelcome)
+                }
+            }
+            return
         }
-    }
-
-    private func checkDiaryState(_ total: Int) {
+        
         if total == 2 {
-            notifyObservers(message: .onboarding2)
+            if !settings.isOnboardingSeen(messageGoals) {
+                notifyObservers(message: .onboarding2)
+                settings.seenOnboarding(messageGoals)
+            }
+            return
         }
     }
 }

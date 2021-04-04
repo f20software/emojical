@@ -20,6 +20,8 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     private weak var coordinator: OptionsCoordinatorProtocol?
     
     // MARK: - State
+    
+    private var showDeveloperMenu = false
 
     // MARK: - Lifecycle
 
@@ -48,7 +50,10 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
-    
+        view?.onSecretTap = { [weak self] in
+            self?.showDeveloperMenu.toggle()
+            self?.loadViewData()
+        }
     }
     
     private func loadViewData() {
@@ -101,12 +106,13 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
             ),
         ]
 
-#if targetEnvironment(simulator)
-        data[2].cells.append(
-            .navigate("Developer Options", { [weak self] in
-                self?.coordinator?.developerOptions()
-            }))
-#endif
+        if showDeveloperMenu {
+            data[2].cells.append(
+                .navigate("Developer Options", { [weak self] in
+                    self?.coordinator?.developerOptions()
+                }))
+        }
+        
         view?.updateTitle("options_title".localized)
         view?.loadData(data)
     }

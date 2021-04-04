@@ -87,7 +87,11 @@ class AwardManager {
         while (last.databaseKey < Date().databaseKey) {
             NSLog("Last month update set \(last.databaseKey)")
             repository.lastMonthUpdate = last
-            last = last.lastOfMonth.byAddingMonth(1)
+            if last.databaseKey == last.lastOfMonth.databaseKey {
+                last = last.byAddingDays(1).lastOfMonth
+            } else {
+                last = last.lastOfMonth
+            }
             recalculateAwardsForMonth(last)
         }
     }

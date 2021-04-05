@@ -19,6 +19,10 @@ class OptionsViewController: BaseTableViewController, OptionsView {
             parent: self.navigationController!
         )
     }()
+    
+    // MARK: - Private state
+    
+    private var tapRecognizer: UITapGestureRecognizer!
 
     // MARK: - View lifecycle
     
@@ -43,6 +47,9 @@ class OptionsViewController: BaseTableViewController, OptionsView {
 
     // MARK: - OptionsView
     
+    /// User tapped 4 times on the screen - used to enable dev mode
+    var onSecretTap: (() -> Void)?
+
     /// Return UIViewController instance (so we can present and mail stuff from Presenter class)
     var viewController: UIViewController? {
         return self
@@ -68,5 +75,13 @@ class OptionsViewController: BaseTableViewController, OptionsView {
     
     private func configureViews() {
         configureTableView()
+        
+        tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapRecognizer.numberOfTapsRequired = 4
+        tableView.addGestureRecognizer(tapRecognizer!)
+    }
+    
+    @objc private func handleTap(sender: UITapGestureRecognizer) {
+        onSecretTap?()
     }
 }

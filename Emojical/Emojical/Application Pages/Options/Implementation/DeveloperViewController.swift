@@ -30,6 +30,9 @@ class DeveloperViewController: BaseTableViewController, DeveloperView {
 
     // MARK: - OptionsView
     
+    /// User tapped 4 times on the screen - used to enable dev mode - not used in this screen
+    var onSecretTap: (() -> Void)?
+
     /// Return UIViewController instance (so we can present and mail stuff from Presenter class)
     var viewController: UIViewController? {
         return self

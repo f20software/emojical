@@ -14,6 +14,7 @@ class StatsPresenter: StatsPresenterProtocol {
     // MARK: - DI
 
     private let repository: DataRepository
+    private let awardManager: AwardManager
     private let stampsListener: StampsListener
     private let calendar: CalendarHelper
     private weak var view: StatsView?
@@ -42,11 +43,13 @@ class StatsPresenter: StatsPresenterProtocol {
 
     init(
         repository: DataRepository,
+        awardManager: AwardManager,
         stampsListener: StampsListener,
         calendar: CalendarHelper,
         view: StatsView
     ) {
         self.repository = repository
+        self.awardManager = awardManager
         self.stampsListener = stampsListener
         self.calendar = calendar
         self.view = view
@@ -103,18 +106,18 @@ class StatsPresenter: StatsPresenterProtocol {
     private func loadViewData() {
         view?.updateTitle("stats_title".localized)
         switch mode {
-        case .week:
-            view?.setHeader(to: selectedWeek.label)
-            view?.showNextPrevButtons(
-                showPrev: dataBuilder.canMoveBackward(selectedWeek),
-                showNext: dataBuilder.canMoveForward(selectedWeek)
-            )
-
-            let data = dataBuilder.weeklyStats(for: selectedWeek, allStamps: stamps)
-            view?.loadWeekData(
-                header: WeekHeaderData(
-                    weekdayHeaders: selectedWeek.weekdayLettersForWeek()),
-                data: data)
+//        case .week:
+//            view?.setHeader(to: selectedWeek.label)
+//            view?.showNextPrevButtons(
+//                showPrev: dataBuilder.canMoveBackward(selectedWeek),
+//                showNext: dataBuilder.canMoveForward(selectedWeek)
+//            )
+//
+//            let data = dataBuilder.weeklyStats(for: selectedWeek, allStamps: stamps)
+//            view?.loadWeekData(
+//                header: WeekHeaderData(
+//                    weekdayHeaders: selectedWeek.weekdayLettersForWeek()),
+//                data: data)
 
         case .month:
             view?.setHeader(to: selectedMonth.label)
@@ -126,29 +129,60 @@ class StatsPresenter: StatsPresenterProtocol {
             let data = dataBuilder.emptyStatsData(for: selectedMonth, stamps: stamps)
             view?.loadMonthData(data: data)
 
-        case .year:
-            view?.setHeader(to: selectedYear.label)
+        case .goalStreak:
+            view?.setHeader(to: selectedMonth.label)
             view?.showNextPrevButtons(
-                showPrev: dataBuilder.canMoveBackward(selectedYear),
-                showNext: dataBuilder.canMoveForward(selectedYear)
+                showPrev: false,
+                showNext: false
             )
 
-            let data = dataBuilder.emptyStatsData(for: selectedYear, stamps: stamps)
-            view?.loadYearData(data: data)
+            let data: [GoalStreakData] = repository.allGoals().compactMap({
+                guard let goalId = $0.id else { return nil }
+
+                let stamp = self.repository.stampBy(id: $0.stamps.first)
+                let history = self.dataBuilder.historyFor(goal: goalId, limit: 12)
+                
+                return GoalStreakData(
+                    goalId: goalId,
+                    name: $0.name,
+                    details: Language.goalDescription($0),
+                    count: $0.count,
+                    history: history?.chart.points.map({ $0.reached }) ?? [],
+                    icon: GoalOrAwardIconData(
+                        stamp: stamp,
+                        goal: $0,
+                        progress: self.awardManager.currentProgressFor($0)
+                    )
+                )
+            })
+            view?.loadGoalStreaksData(data: data)
+
+//        case .year:
+//            view?.setHeader(to: selectedYear.label)
+//            view?.showNextPrevButtons(
+//                showPrev: dataBuilder.canMoveBackward(selectedYear),
+//                showNext: dataBuilder.canMoveForward(selectedYear)
+//            )
+//
+//            let data = dataBuilder.emptyStatsData(for: selectedYear, stamps: stamps)
+//            view?.loadYearData(data: data)
         }
     }
     
     // Move today's date one week to the past or one week to the future
     private func advancePeriod(by delta: Int) {
         switch mode {
-        case .week:
-            selectedWeek = CalendarHelper.Week(selectedWeek.firstDay.byAddingWeek(delta))
+//        case .week:
+//            selectedWeek = CalendarHelper.Week(selectedWeek.firstDay.byAddingWeek(delta))
             
         case .month:
             selectedMonth = CalendarHelper.Month(selectedMonth.firstDay.byAddingMonth(delta))
 
-        case .year:
-            selectedYear = CalendarHelper.Year(selectedYear.firstDay.byAddingMonth(delta*12))
+        case .goalStreak:
+            break
+
+//        case .year:
+//            selectedYear = CalendarHelper.Year(selectedYear.firstDay.byAddingMonth(delta*12))
         }
         
         // Update view

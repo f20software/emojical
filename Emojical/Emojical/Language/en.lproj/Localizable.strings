@@ -142,6 +142,10 @@
 
 "stickers_title" = "Stickers";
 
+"month_stickers" = "Monthly Stickers";
+
+"goal_streaks" = "Streaks";
+
 // Goal Editing
 
 "no_goals_description" = "You have no goals yet. Emojical can help you improve yourself, just create a new goal and track your progress.";

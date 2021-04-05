@@ -10,11 +10,14 @@ import Foundation
 
 enum StatsMode: Int, Hashable {
     /// Weekly stats by sticker
-    case week
+    // case week
     
     /// Monthly stats by sticker
     case month
 
     /// Yearly stats by sticker
-    case year
+    // case year
+    
+    /// List of goals with their streaks
+    case goalStreak
 }

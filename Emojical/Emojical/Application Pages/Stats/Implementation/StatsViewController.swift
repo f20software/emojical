@@ -38,6 +38,7 @@ class StatsViewController: UIViewController, StatsView {
 
         presenter = StatsPresenter(
             repository: Storage.shared.repository,
+            awardManager: AwardManager.shared,
             stampsListener: Storage.shared.stampsListener(),
             calendar: CalendarHelper.shared,
             view: self)
@@ -88,14 +89,17 @@ class StatsViewController: UIViewController, StatsView {
         dataSource.apply(snapshot, animatingDifferences: false)
         
         switch mode {
-        case .week:
-            self.stats.collectionViewLayout = self.weekLayout()
+//        case .week:
+//            self.stats.collectionViewLayout = self.weekLayout()
             
         case .month:
             self.stats.collectionViewLayout = self.monthLayout()
 
-        case .year:
-            self.stats.collectionViewLayout = self.weekLayout()
+//        case .year:
+//            self.stats.collectionViewLayout = self.weekLayout()
+
+        case .goalStreak:
+            self.stats.collectionViewLayout = self.goalStreaksLayout()
         }
     }
 
@@ -119,6 +123,14 @@ class StatsViewController: UIViewController, StatsView {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
         snapshot.appendSections([0])
         snapshot.appendItems(data.map({ StatsElement.monthBoxCell($0) }))
+        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+    }
+
+    /// Load stats for the goal streaks
+    func loadGoalStreaksData(data: [GoalStreakData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(data.map({ StatsElement.goalStreakCell($0) }))
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -157,8 +169,8 @@ class StatsViewController: UIViewController, StatsView {
         prevButton.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextButton.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         
-        modeSelector.setTitle("week".localized.capitalizingFirstLetter(), forSegmentAt: 0)
-        modeSelector.setTitle("month".localized.capitalizingFirstLetter(), forSegmentAt: 1)
+        modeSelector.setTitle("month_stickers".localized.capitalizingFirstLetter(), forSegmentAt: 0)
+        modeSelector.setTitle("goal_streaks".localized.capitalizingFirstLetter(), forSegmentAt: 1)
     }
     
     private func configureCollectionView() {
@@ -188,6 +200,10 @@ class StatsViewController: UIViewController, StatsView {
             forCellWithReuseIdentifier: Specs.Cells.monthStickerStatsCell
         )
         stats.register(
+            UINib(nibName: "GoalStreakCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.goalStreakCell
+        )
+        stats.register(
             UINib(nibName: "YearBoxCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.yearStickerStatsCell
         )
@@ -207,6 +223,27 @@ class StatsViewController: UIViewController, StatsView {
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
                 heightDimension: .estimated(50)
+            ),
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+
+    // Creates layout for goal streak stats - one line per goal
+    private func goalStreaksLayout() -> UICollectionViewCompositionalLayout {
+        let item = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(60)
+            )
+        )
+
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(60)
             ),
             subitems: [item]
         )
@@ -290,6 +327,14 @@ extension StatsViewController: UICollectionViewDelegate {
                 }
             })
             return cell
+
+        case .goalStreakCell(let model):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.goalStreakCell, for: path
+            ) as? GoalStreakCell else { return UICollectionViewCell() }
+            
+            cell.configure(for: model)
+            return cell
         }
     }
 }
@@ -311,6 +356,9 @@ fileprivate struct Specs {
 
         /// Year stat cell
         static let yearStickerStatsCell = "YearBoxCell"
+        
+        /// Goal streak cell
+        static let goalStreakCell = "GoalStreakCell"
     }
     
     /// Margins for monthly boxes (from left, right, and bottom)

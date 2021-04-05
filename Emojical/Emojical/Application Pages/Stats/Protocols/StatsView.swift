@@ -41,6 +41,9 @@ protocol StatsView: AnyObject {
     /// Load stats for the year
     func loadYearData(data: [YearBoxData])
 
+    /// Load stats for the goal streaks
+    func loadGoalStreaksData(data: [GoalStreakData])
+
     /// Show/hide next/prev button
     func showNextPrevButtons(showPrev: Bool, showNext: Bool)
 }

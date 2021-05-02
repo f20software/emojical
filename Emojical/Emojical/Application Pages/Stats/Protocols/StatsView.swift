@@ -36,13 +36,13 @@ protocol StatsView: AnyObject {
     func loadWeekData(header: WeekHeaderData, data: [WeekLineData])
     
     /// Load stats for the month
-    func loadMonthData(data: [MonthBoxData])
+    func loadMonthData(header: String, data: [MonthBoxData])
 
     /// Load stats for the year
     func loadYearData(data: [YearBoxData])
 
     /// Load stats for the goal streaks
-    func loadGoalStreaksData(data: [GoalStreakData])
+    func loadGoalStreaksData(data: [GoalStreakData2])
 
     /// Show/hide next/prev button
     func showNextPrevButtons(showPrev: Bool, showNext: Bool)

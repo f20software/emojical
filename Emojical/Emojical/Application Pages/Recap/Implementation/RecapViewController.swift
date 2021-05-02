@@ -194,7 +194,7 @@ extension RecapViewController: UICollectionViewDelegate {
             withReuseIdentifier: Specs.Cells.header,
             for: path) as? CollectionHeaderView else { return UICollectionReusableView() }
 
-        header.configure(Section.allCases[path.section].rawValue.localized)
+        header.configure(text: Section.allCases[path.section].rawValue.localized.uppercased())
         return header
     }
 }

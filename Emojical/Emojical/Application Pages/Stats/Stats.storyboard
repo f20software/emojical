@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="859" y="-333"/>
         </scene>
-        <!--Stats-->
+        <!--Stats View Controller-->
         <scene sceneID="GBJ-Bt-waW">
             <objects>
                 <viewController id="tvO-pK-EYQ" customClass="StatsViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,24 +34,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iza-3Z-HNb">
-                                <rect key="frame" x="80" y="16" width="254" height="32"/>
-                                <segments>
-                                    <segment title="Week"/>
-                                    <segment title="Month"/>
-                                </segments>
-                                <connections>
-                                    <action selector="modeChanged:" destination="tvO-pK-EYQ" eventType="valueChanged" id="fnW-2K-BJx"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 19 - 26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXJ-0G-7yc">
-                                <rect key="frame" x="20" y="63" width="131.5" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NcW-C8-Csq">
-                                <rect key="frame" x="0.0" y="100" width="414" height="625"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e25-Wg-mP0">
                                     <size key="itemSize" width="128" height="128"/>
@@ -65,23 +49,30 @@
                         <viewLayoutGuide key="safeArea" id="JNE-f6-5U0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iza-3Z-HNb" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="80" id="J4m-e2-9Hh"/>
-                            <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="iza-3Z-HNb" secondAttribute="trailing" constant="80" id="PgC-zj-l3Y"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="NcW-C8-Csq" secondAttribute="trailing" id="W2L-dB-PRn"/>
-                            <constraint firstItem="YXJ-0G-7yc" firstAttribute="top" secondItem="iza-3Z-HNb" secondAttribute="bottom" constant="16" id="X7Y-67-2zN"/>
-                            <constraint firstItem="iza-3Z-HNb" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="16" id="XMX-4g-Noq"/>
-                            <constraint firstItem="NcW-C8-Csq" firstAttribute="top" secondItem="YXJ-0G-7yc" secondAttribute="bottom" constant="8" symbolic="YES" id="eQa-p3-8fh"/>
-                            <constraint firstItem="YXJ-0G-7yc" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="20" id="kOL-fe-afs"/>
+                            <constraint firstItem="NcW-C8-Csq" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" id="Xkc-fu-btP"/>
                             <constraint firstItem="NcW-C8-Csq" firstAttribute="bottom" secondItem="JNE-f6-5U0" secondAttribute="bottom" id="lbF-Dl-OsC"/>
                             <constraint firstItem="NcW-C8-Csq" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="mGr-Eg-KBU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stats" id="yvL-kP-cnY">
+                    <navigationItem key="navigationItem" id="yvL-kP-cnY">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="YEL-wK-uce">
                             <connections>
                                 <action selector="prevButtonTapped:" destination="tvO-pK-EYQ" id="RZd-am-4s6"/>
                             </connections>
                         </barButtonItem>
+                        <view key="titleView" contentMode="scaleToFill" id="ZiJ-nE-lSB" customClass="ECSegmentedControl" customModule="Emojical" customModuleProvider="target">
+                            <rect key="frame" x="65" y="6" width="284" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="buttonTitles" value="Monthly Stickers,Goal Streaks"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="modeChanged:" destination="tvO-pK-EYQ" eventType="valueChanged" id="NIR-gj-CPn"/>
+                            </connections>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.right" catalog="system" id="ep7-Zj-mBI">
                             <connections>
                                 <action selector="nextButtonTapped:" destination="tvO-pK-EYQ" id="A46-Pv-ugR"/>
@@ -90,8 +81,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="header" destination="YXJ-0G-7yc" id="bb7-dp-8xH"/>
-                        <outlet property="modeSelector" destination="iza-3Z-HNb" id="Id6-or-fvv"/>
+                        <outlet property="modeSelector" destination="ZiJ-nE-lSB" id="ePm-GF-zfl"/>
                         <outlet property="nextButton" destination="ep7-Zj-mBI" id="WYu-5Y-dOU"/>
                         <outlet property="prevButton" destination="YEL-wK-uce" id="cYf-Yr-qvn"/>
                         <outlet property="stats" destination="NcW-C8-Csq" id="DXf-hy-FXM"/>

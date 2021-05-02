@@ -12,10 +12,10 @@ class StatsViewController: UIViewController, StatsView {
     
     // MARK: - Outlets
     
-    @IBOutlet var modeSelector: UISegmentedControl!
+    @IBOutlet var modeSelector: ECSegmentedControl!
     @IBOutlet var prevButton: UIBarButtonItem!
     @IBOutlet var nextButton: UIBarButtonItem!
-    @IBOutlet var header: UILabel!
+    // @IBOutlet var header: UILabel!
     @IBOutlet var stats: UICollectionView!
 
     // MARK: - DI
@@ -25,7 +25,15 @@ class StatsViewController: UIViewController, StatsView {
 
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, StatsElement>!
+    private var sections = [String]()
+    
+    private var maxCount: Float = 5.0
+    private var maxStreak: Float = 5.0
+    
+    private var sortByCount: Bool = true
+    private var goalsData = [GoalStreakData2]()
+    
+    private var dataSource: UICollectionViewDiffableDataSource<String, StatsElement>!
 
     // MARK: - Lifecycle
     
@@ -75,7 +83,7 @@ class StatsViewController: UIViewController, StatsView {
 
     /// Update page header
     func setHeader(to text: String) {
-        header.text = text
+        // header.text = text
     }
 
     /// Update collection view layout to appropriate mode
@@ -84,8 +92,8 @@ class StatsViewController: UIViewController, StatsView {
         modeSelector.selectedSegmentIndex = mode.rawValue
         
         // Clear existing data to eliminate animation glitches
-        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
-        snapshot.appendSections([0])
+        var snapshot = NSDiffableDataSourceSnapshot<String, StatsElement>()
+        snapshot.appendSections([""])
         dataSource.apply(snapshot, animatingDifferences: false)
         
         switch mode {
@@ -111,33 +119,58 @@ class StatsViewController: UIViewController, StatsView {
     
     /// Load stats for the week
     func loadWeekData(header: WeekHeaderData, data: [WeekLineData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
-        snapshot.appendSections([0])
+        var snapshot = NSDiffableDataSourceSnapshot<String, StatsElement>()
+        snapshot.appendSections(["Week Stats"])
         snapshot.appendItems([.weekHeaderCell(header)])
         snapshot.appendItems(data.map({ StatsElement.weekLineCell($0) }))
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
     
     /// Load stats for the month
-    func loadMonthData(data: [MonthBoxData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
-        snapshot.appendSections([0])
+    func loadMonthData(header: String, data: [MonthBoxData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<String, StatsElement>()
+        sections = [header]
+        snapshot.appendSections([header])
         snapshot.appendItems(data.map({ StatsElement.monthBoxCell($0) }))
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
     /// Load stats for the goal streaks
-    func loadGoalStreaksData(data: [GoalStreakData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(data.map({ StatsElement.goalStreakCell($0) }))
+    func loadGoalStreaksData(data: [GoalStreakData2]) {
+        var snapshot = NSDiffableDataSourceSnapshot<String, StatsElement>()
+        sections = []
+        
+        if sortByCount {
+            goalsData = data.sorted(by: { $0.count > $1.count })
+        } else {
+            goalsData = data.sorted(by: { $0.streak > $1.streak })
+        }
+        
+        maxCount = Float(goalsData.map({ $0.count }).max() ?? 0)
+        maxStreak = Float(goalsData.map({ $0.streak }).max() ?? 0)
+        if maxCount <= 1 { maxCount = 4 }
+        if maxStreak <= 1 { maxStreak = 4 }
+        
+        let weekly = data.filter({ $0.period == .week })
+        if weekly.count > 0 {
+            snapshot.appendSections(["Weekly Goals"])
+            sections.append("Weekly Goals")
+            snapshot.appendItems(weekly.map({ StatsElement.goalStreakCell($0) }))
+        }
+        
+        let monthly = data.filter({ $0.period == .month })
+        if monthly.count > 0 {
+            snapshot.appendSections(["Monthly Goals"])
+            sections.append("Monthly Goals")
+            snapshot.appendItems(monthly.map({ StatsElement.goalStreakCell($0) }))
+        }
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
     /// Load stats for the year
     func loadYearData(data: [YearBoxData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, StatsElement>()
-        snapshot.appendSections([0])
+        var snapshot = NSDiffableDataSourceSnapshot<String, StatsElement>()
+        snapshot.appendSections(["Year"])
         snapshot.appendItems(data.map({ StatsElement.yearBoxCell($0) }))
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
@@ -154,8 +187,7 @@ class StatsViewController: UIViewController, StatsView {
     }
     
     @IBAction func modeChanged(_ sender: Any) {
-        guard let control = sender as? UISegmentedControl,
-            let newMode = StatsMode(rawValue: control.selectedSegmentIndex) else { return }
+        guard let newMode = StatsMode(rawValue: modeSelector.selectedSegmentIndex ?? 0) else { return }
         onModeChanged?(newMode)
     }
     
@@ -169,20 +201,33 @@ class StatsViewController: UIViewController, StatsView {
         prevButton.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextButton.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         
-        modeSelector.setTitle("month_stickers".localized.capitalizingFirstLetter(), forSegmentAt: 0)
-        modeSelector.setTitle("goal_streaks".localized.capitalizingFirstLetter(), forSegmentAt: 1)
+        // Setup mode selector
+        modeSelector.buttonTitleColor = Theme.main.colors.secondaryText
+        modeSelector.buttonSelectedTitleColor = Theme.main.colors.background
+        modeSelector.buttonFont = Theme.main.fonts.sectionHeaderTitle
+        modeSelector.buttonColors = [Theme.main.colors.tint]
+        modeSelector.setTitles(to: [
+            "month_stickers".localized,
+            "goal_streaks".localized
+        ])
     }
     
     private func configureCollectionView() {
-        self.dataSource = UICollectionViewDiffableDataSource<Int, StatsElement>(
+        dataSource = UICollectionViewDiffableDataSource<String, StatsElement>(
             collectionView: stats,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
             }
         )
+        
+        dataSource.supplementaryViewProvider = { [weak self]
+            (collectionView, kind, indexPath) -> UICollectionReusableView? in
+            self?.header(for: indexPath, kind: kind, collectionView: collectionView)
+        }
+
         stats.dataSource = dataSource
         stats.delegate = self
-        stats.collectionViewLayout = weekLayout()
+        stats.collectionViewLayout = monthLayout()
         stats.backgroundColor = UIColor.clear
     }
     
@@ -204,8 +249,17 @@ class StatsViewController: UIViewController, StatsView {
             forCellWithReuseIdentifier: Specs.Cells.goalStreakCell
         )
         stats.register(
+            UINib(nibName: "GoalStreakCell2", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.goalStreakCell2
+        )
+        stats.register(
             UINib(nibName: "YearBoxCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.yearStickerStatsCell
+        )
+        stats.register(
+            CollectionHeaderView.self,
+            forSupplementaryViewOfKind: Specs.Cells.header,
+            withReuseIdentifier: Specs.Cells.header
         )
     }
 
@@ -248,7 +302,21 @@ class StatsViewController: UIViewController, StatsView {
             subitems: [item]
         )
 
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(44)),
+            elementKind: Specs.Cells.header,
+            alignment: .top
+        )
+
         let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [sectionHeader]
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: Specs.monthBoxesMargin,
+            bottom: 0, trailing: Specs.monthBoxesMargin
+        )
+
         return UICollectionViewCompositionalLayout(section: section)
     }
 
@@ -256,7 +324,7 @@ class StatsViewController: UIViewController, StatsView {
     private func monthLayout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.49),
+                widthDimension: .fractionalWidth(0.5),
                 heightDimension: .estimated(100)
             )
         )
@@ -268,14 +336,20 @@ class StatsViewController: UIViewController, StatsView {
             ),
             subitems: [item]
         )
-        group.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: Specs.monthBoxesMargin,
-            bottom: 0, trailing: Specs.monthBoxesMargin)
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(56)),
+            elementKind: Specs.Cells.header,
+            alignment: .top
+        )
 
         let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [sectionHeader]
         section.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 0,
-            bottom: Specs.monthBoxesMargin, trailing: 0)
+            top: 0, leading: Specs.monthBoxesMargin,
+            bottom: Specs.monthBoxesMargin, trailing: Specs.monthBoxesMargin - 10)
 
         return UICollectionViewCompositionalLayout(section: section)
     }
@@ -330,12 +404,39 @@ extension StatsViewController: UICollectionViewDelegate {
 
         case .goalStreakCell(let model):
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.goalStreakCell, for: path
-            ) as? GoalStreakCell else { return UICollectionViewCell() }
+                withReuseIdentifier: Specs.Cells.goalStreakCell2, for: path
+            ) as? GoalStreakCell2 else { return UICollectionViewCell() }
             
-            cell.configure(for: model)
+            if path.section == 0 {
+                cell.configure(for: model, maxTotal: maxCount, maxStreak: maxStreak)
+            } else {
+                cell.configure(for: model, maxTotal: maxCount / 4, maxStreak: maxStreak / 4)
+            }
+            cell.onCellTapped = { _ in
+                self.sortByCount = !self.sortByCount
+                self.loadGoalStreaksData(data: self.goalsData)
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                cell.animateProgress()
+            })
             return cell
         }
+    }
+    
+    private func header(for path: IndexPath, kind: String, collectionView: UICollectionView) ->
+        UICollectionReusableView? {
+        
+        guard let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: Specs.Cells.header,
+            for: path) as? CollectionHeaderView else { return UICollectionReusableView() }
+
+        header.configure(
+            text: sections[path.section],
+            font: Theme.main.fonts.statsSectionHeaderTitle,
+            textColor: Theme.main.colors.text
+        )
+        return header
     }
 }
 
@@ -345,6 +446,9 @@ fileprivate struct Specs {
     /// Cell identifiers
     struct Cells {
         
+        /// Custom supplementary header identifier and kind
+        static let header = "stats-header-element"
+
         /// Week header cell
         static let weekHeader = "WeekHeaderCell"
 
@@ -359,6 +463,9 @@ fileprivate struct Specs {
         
         /// Goal streak cell
         static let goalStreakCell = "GoalStreakCell"
+
+        /// Goal streak cell
+        static let goalStreakCell2 = "GoalStreakCell2"
     }
     
     /// Margins for monthly boxes (from left, right, and bottom)

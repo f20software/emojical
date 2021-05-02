@@ -22,12 +22,18 @@ class CollectionHeaderView: UICollectionReusableView {
         fatalError()
     }
     
-    func configure(_ text: String) {
-        label.text = text.uppercased()
+    func configure(
+        text: String,
+        font: UIFont = Theme.main.fonts.sectionHeaderTitle,
+        textColor: UIColor = Theme.main.colors.sectionHeaderText
+    ) {
+        label.font = font
+        label.textColor = textColor
+        label.text = text
     }
     
     func setupView() {
-        backgroundColor = .systemBackground
+        backgroundColor = Theme.main.colors.background
         addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
@@ -38,9 +44,6 @@ class CollectionHeaderView: UICollectionReusableView {
             label.topAnchor.constraint(equalTo: topAnchor, constant: Specs.margin),
             label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Specs.margin)
         ])
-        
-        label.font = Theme.main.fonts.sectionHeaderTitle
-        label.textColor = Theme.main.colors.sectionHeaderText
     }
 }
 

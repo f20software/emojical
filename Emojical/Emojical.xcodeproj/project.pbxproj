@@ -50,6 +50,9 @@
 		F21162C725C9FD6700E4D3AD /* GoalReachedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */; };
 		F216BEA525F72B6B00CBF58B /* MainCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216BEA225F72B6B00CBF58B /* MainCoordinatorProtocol.swift */; };
 		F21F150325C107A900DE5C1B /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F150225C107A800DE5C1B /* StickerView.swift */; };
+		F2338A8A261EB5BF001F3C5D /* ECSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2338A89261EB5BF001F3C5D /* ECSegmentedControl.swift */; };
+		F23CD120262145BD0003E4DF /* GoalStreakCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23CD11F262145BD0003E4DF /* GoalStreakCell2.xib */; };
+		F23CD124262145CC0003E4DF /* GoalStreakCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CD123262145CC0003E4DF /* GoalStreakCell2.swift */; };
 		F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */; };
 		F23CF369258271750048BA74 /* YearBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF368258271750048BA74 /* YearBoxView.swift */; };
 		F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF36C258271BE0048BA74 /* YearBoxData.swift */; };
@@ -323,6 +326,9 @@
 		F21162C525C9FD6700E4D3AD /* GoalReachedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalReachedCell.xib; sourceTree = "<group>"; };
 		F216BEA225F72B6B00CBF58B /* MainCoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F21F150225C107A800DE5C1B /* StickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
+		F2338A89261EB5BF001F3C5D /* ECSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSegmentedControl.swift; sourceTree = "<group>"; };
+		F23CD11F262145BD0003E4DF /* GoalStreakCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalStreakCell2.xib; sourceTree = "<group>"; };
+		F23CD123262145CC0003E4DF /* GoalStreakCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreakCell2.swift; sourceTree = "<group>"; };
 		F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataBuilder.swift; sourceTree = "<group>"; };
 		F23CF368258271750048BA74 /* YearBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxView.swift; sourceTree = "<group>"; };
 		F23CF36C258271BE0048BA74 /* YearBoxData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxData.swift; sourceTree = "<group>"; };
@@ -685,6 +691,7 @@
 				F27E708025D9E133004E49FB /* GradientView.swift */,
 				F27E709925DB2724004E49FB /* GoalChartView.swift */,
 				F28CC5AF261A746D00456E18 /* GoalStreakView.swift */,
+				F2338A89261EB5BF001F3C5D /* ECSegmentedControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -723,6 +730,19 @@
 				F2F449232430291B005AD6B9 /* MainViewController.swift */,
 			);
 			path = Implementation;
+			sourceTree = "<group>";
+		};
+		F23CD12B2622175D0003E4DF /* Not Used */ = {
+			isa = PBXGroup;
+			children = (
+				F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */,
+				F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */,
+				F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */,
+				F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */,
+				F23CF370258272E70048BA74 /* YearBoxCell.xib */,
+				F23CF371258272E70048BA74 /* YearBoxCell.swift */,
+			);
+			path = "Not Used";
 			sourceTree = "<group>";
 		};
 		F23CF38225829B500048BA74 /* Stickers-Goals */ = {
@@ -1099,16 +1119,13 @@
 		F2A93FA025812DEA006C88F8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F23CD12B2622175D0003E4DF /* Not Used */,
+				F23CD11F262145BD0003E4DF /* GoalStreakCell2.xib */,
+				F23CD123262145CC0003E4DF /* GoalStreakCell2.swift */,
 				F28CC5A8261A707000456E18 /* GoalStreakCell.xib */,
 				F28CC5A7261A707000456E18 /* GoalStreakCell.swift */,
-				F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */,
-				F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */,
-				F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */,
-				F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */,
 				F2A93FD0258164B2006C88F8 /* MonthBoxCell.xib */,
 				F2A93FCF258164B2006C88F8 /* MonthBoxCell.swift */,
-				F23CF370258272E70048BA74 /* YearBoxCell.xib */,
-				F23CF371258272E70048BA74 /* YearBoxCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1618,6 +1635,7 @@
 				F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */,
 				F23CF3FE2582EC8B0048BA74 /* NewStickerCell.xib in Resources */,
 				F2A93FD2258164B2006C88F8 /* MonthBoxCell.xib in Resources */,
+				F23CD120262145BD0003E4DF /* GoalStreakCell2.xib in Resources */,
 				F2B5F46C25CF58CF0051E8C9 /* GoalExampleCell.xib in Resources */,
 				F2EE4AC425C5CBC9004FB0F2 /* Developer.storyboard in Resources */,
 				F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */,
@@ -1732,6 +1750,7 @@
 				F27E708125D9E133004E49FB /* GradientView.swift in Sources */,
 				F27E554A25D0B06B00B78A95 /* GoalsLibraryCell.swift in Sources */,
 				F295337A25B6165C003CA002 /* GoalPresenter.swift in Sources */,
+				F23CD124262145CC0003E4DF /* GoalStreakCell2.swift in Sources */,
 				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
 				F23CF3CC2582A95F0048BA74 /* StickerCell.swift in Sources */,
@@ -1867,6 +1886,7 @@
 				F216BEA525F72B6B00CBF58B /* MainCoordinatorProtocol.swift in Sources */,
 				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,
 				F204475325EA092B003318C6 /* Goal+AwardIconData.swift in Sources */,
+				F2338A8A261EB5BF001F3C5D /* ECSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

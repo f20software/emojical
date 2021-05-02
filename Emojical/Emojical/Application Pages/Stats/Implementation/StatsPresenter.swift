@@ -120,41 +120,40 @@ class StatsPresenter: StatsPresenterProtocol {
 //                data: data)
 
         case .month:
-            view?.setHeader(to: selectedMonth.label)
+            // view?.setHeader(to: selectedMonth.label)
             view?.showNextPrevButtons(
                 showPrev: dataBuilder.canMoveBackward(selectedMonth),
                 showNext: dataBuilder.canMoveForward(selectedMonth)
             )
 
             let data = dataBuilder.emptyStatsData(for: selectedMonth, stamps: stamps)
-            view?.loadMonthData(data: data)
+            view?.loadMonthData(header: selectedMonth.label, data: data)
 
         case .goalStreak:
-            view?.setHeader(to: selectedMonth.label)
+            // view?.setHeader(to: selectedMonth.label)
             view?.showNextPrevButtons(
                 showPrev: false,
                 showNext: false
             )
 
-            let data: [GoalStreakData] = repository.allGoals().compactMap({
+            let data: [GoalStreakData2] = repository.allGoals().compactMap({
                 guard let goalId = $0.id else { return nil }
 
                 let stamp = self.repository.stampBy(id: $0.stamps.first)
                 let history = self.dataBuilder.historyFor(goal: goalId, limit: 12)
                 
-                return GoalStreakData(
+                return GoalStreakData2(
                     goalId: goalId,
-                    name: $0.name,
-                    details: Language.goalDescription($0),
+                    period: $0.period,
                     count: $0.count,
-                    history: history?.chart.points.map({ $0.reached }) ?? [],
+                    streak: history?.reached.streak ?? 0,
                     icon: GoalOrAwardIconData(
                         stamp: stamp,
                         goal: $0,
                         progress: self.awardManager.currentProgressFor($0)
                     )
                 )
-            })
+            }).sorted(by: { $0.streak > $1.streak })
             view?.loadGoalStreaksData(data: data)
 
 //        case .year:

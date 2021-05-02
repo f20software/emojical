@@ -59,6 +59,16 @@ extension Theme {
             font(ofSize: 15, weight: .bold, style: .body)
         }()
 
+        /// Section header title for stats screen
+        lazy var statsSectionHeaderTitle: UIFont = {
+            font(ofSize: 22, weight: .bold, style: .title1)
+        }()
+
+        /// Section header title for stats screen
+        lazy var statsNumbers: UIFont = {
+            font(ofSize: 18, weight: .bold, style: .body)
+        }()
+
         /// Returns a base font scaled according to current system font size.
         ///
         /// - parameters:

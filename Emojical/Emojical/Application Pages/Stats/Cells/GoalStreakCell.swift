@@ -31,28 +31,41 @@ class GoalStreakCell: UICollectionViewCell {
 
         switch data.icon {
         case .goal(let iconData):
-            goal.isHidden = false
-            award.isHidden = true
+//            goal.isHidden = false
+//            award.isHidden = true
             goal.labelText = nil // iconData.emoji
             goal.labelBackgroundColor = Theme.main.colors.secondaryBackground // iconData.backgroundColor
             goal.clockwise = (iconData.direction == .positive)
             goal.progress = CGFloat(iconData.progress)
             goal.progressColor = Theme.main.colors.tint // iconData.progressColor
-            
+
+            award.labelText = iconData.emoji
+            award.borderColor = iconData.progressColor
+            award.labelBackgroundColor = iconData.backgroundColor
+
         case .award(let awardData):
-            award.isHidden = false
-            goal.isHidden = true
+//            award.isHidden = false
+//            goal.isHidden = true
+            goal.labelText = awardData.emoji
+            goal.labelBackgroundColor = awardData.backgroundColor
+            goal.progressColor = awardData.borderColor
+            goal.progress = 1.0
+
             award.labelText = awardData.emoji
-            award.labelBackgroundColor = awardData.backgroundColor
             award.borderColor = awardData.borderColor
+            award.labelBackgroundColor = awardData.backgroundColor
         }
+        
+        
+        
 
         
         //        sticker.text = data.label
 //        sticker.color = data.color
         
-        dots.count = 12
+        dots.count = 5
         dots.data = data.history
+        // dots.dotRadius = 15
         // dots.setNeedsDisplay()
     }
     

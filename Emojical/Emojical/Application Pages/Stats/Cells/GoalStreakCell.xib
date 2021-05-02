@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wM8-QJ-w7J">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="56"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Le-QG-hdi" customClass="AwardIconView" customModule="Emojical" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Le-QG-hdi" customClass="AwardIconView" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="332" y="5" width="48" height="48"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>
@@ -50,22 +50,47 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juM-C8-sN0" customClass="GoalStreakView" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="20" y="16" width="312" height="24"/>
+                                <rect key="frame" x="73" y="16" width="259" height="24"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="FQB-ZI-lan"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPE-RD-639" customClass="AwardIconView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="15" y="4" width="48" height="48"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qPE-RD-639" secondAttribute="height" multiplier="1:1" id="8ZT-zQ-DEJ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="BTv-2L-H8k"/>
+                                    <constraint firstAttribute="height" constant="48" id="c2c-GF-B8W"/>
+                                    <constraint firstAttribute="width" constant="48" id="jjb-AQ-g0N"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zc8-JC-L0L" firstAttribute="top" secondItem="7Le-QG-hdi" secondAttribute="top" id="3cq-ES-K7r"/>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="height" secondItem="qPE-RD-639" secondAttribute="height" id="8At-C7-dDk"/>
+                            <constraint firstItem="qPE-RD-639" firstAttribute="centerY" secondItem="wM8-QJ-w7J" secondAttribute="centerY" id="DYJ-Wb-o1U"/>
                             <constraint firstItem="7Le-QG-hdi" firstAttribute="leading" secondItem="juM-C8-sN0" secondAttribute="trailing" id="GQY-e0-XS5"/>
                             <constraint firstItem="juM-C8-sN0" firstAttribute="centerY" secondItem="wM8-QJ-w7J" secondAttribute="centerY" id="Gfx-yV-PYz"/>
                             <constraint firstItem="zc8-JC-L0L" firstAttribute="top" secondItem="wM8-QJ-w7J" secondAttribute="top" constant="5" id="HSf-Hj-P9R"/>
                             <constraint firstItem="zc8-JC-L0L" firstAttribute="trailing" secondItem="7Le-QG-hdi" secondAttribute="trailing" id="Has-32-Mba"/>
-                            <constraint firstItem="juM-C8-sN0" firstAttribute="leading" secondItem="wM8-QJ-w7J" secondAttribute="leading" constant="20" id="ZGR-hz-UIo"/>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="width" secondItem="qPE-RD-639" secondAttribute="width" id="KQ1-R6-zqC"/>
+                            <constraint firstItem="qPE-RD-639" firstAttribute="leading" secondItem="wM8-QJ-w7J" secondAttribute="leading" constant="15" id="apa-BB-nCA"/>
                             <constraint firstItem="zc8-JC-L0L" firstAttribute="bottom" secondItem="7Le-QG-hdi" secondAttribute="bottom" id="gHr-Di-TaI"/>
+                            <constraint firstItem="juM-C8-sN0" firstAttribute="leading" secondItem="qPE-RD-639" secondAttribute="trailing" constant="10" id="qlO-ZL-jMs"/>
                             <constraint firstItem="zc8-JC-L0L" firstAttribute="leading" secondItem="7Le-QG-hdi" secondAttribute="leading" id="uRU-9C-yPT"/>
                             <constraint firstAttribute="trailing" secondItem="zc8-JC-L0L" secondAttribute="trailing" constant="20" id="vGM-Sz-hg5"/>
                         </constraints>
@@ -81,7 +106,7 @@
             </constraints>
             <size key="customSize" width="400" height="70"/>
             <connections>
-                <outlet property="award" destination="7Le-QG-hdi" id="QpP-FZ-D7a"/>
+                <outlet property="award" destination="qPE-RD-639" id="CLx-2M-yNp"/>
                 <outlet property="dots" destination="juM-C8-sN0" id="mDV-E2-2XB"/>
                 <outlet property="goal" destination="zc8-JC-L0L" id="Zro-X5-rHo"/>
             </connections>

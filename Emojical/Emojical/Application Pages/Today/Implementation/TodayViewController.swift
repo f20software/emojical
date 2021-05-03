@@ -25,13 +25,7 @@ class TodayViewController: UIViewController {
     @IBOutlet var prevWeek: UIBarButtonItem!
     @IBOutlet var nextWeek: UIBarButtonItem!
 
-    @IBOutlet weak var day0: DayColumnView!
-    @IBOutlet weak var day1: DayColumnView!
-    @IBOutlet weak var day2: DayColumnView!
-    @IBOutlet weak var day3: DayColumnView!
-    @IBOutlet weak var day4: DayColumnView!
-    @IBOutlet weak var day5: DayColumnView!
-    @IBOutlet weak var day6: DayColumnView!
+    @IBOutlet var dayCollectionViewsArray: [DayColumnView]!
     
     @IBOutlet weak var stampSelector: StampSelectorView!
     @IBOutlet weak var stampSelectorBottomContstraint: NSLayoutConstraint!
@@ -172,13 +166,18 @@ class TodayViewController: UIViewController {
     }
     
     private func configureViews() {
-        let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
+        
         // We want to pass exact same width to all daily columns. Otherwise,
         // if we just rely on the auto-layout, there will be some fraction difference
         // between them, and that would make vertical spacing between stickers
-        // not even and visible for the user. 
-        for day in dayViews {
-            day.stickerSize = floor(day0.bounds.width)
+        // not even and visible for the user.
+        
+        let width = dayCollectionViewsArray.first!.bounds.width
+        for (index, day) in dayCollectionViewsArray.enumerated() {
+            day.stickerSize = floor(width)
+            day.onDayTapped = { () in
+                self.onDayHeaderTapped?(index)
+            }
         }
 
         // Hide buttons initially
@@ -192,27 +191,6 @@ class TodayViewController: UIViewController {
         }
         daysHeader.onDayTapped = { (index) in
             self.onDayHeaderTapped?(index)
-        }
-        day0.onDayTapped = { () in
-            self.onDayHeaderTapped?(0)
-        }
-        day1.onDayTapped = { () in
-            self.onDayHeaderTapped?(1)
-        }
-        day2.onDayTapped = { () in
-            self.onDayHeaderTapped?(2)
-        }
-        day3.onDayTapped = { () in
-            self.onDayHeaderTapped?(3)
-        }
-        day4.onDayTapped = { () in
-            self.onDayHeaderTapped?(4)
-        }
-        day5.onDayTapped = { () in
-            self.onDayHeaderTapped?(5)
-        }
-        day6.onDayTapped = { () in
-            self.onDayHeaderTapped?(6)
         }
         stampSelector.onStampTapped = { (stampId) in
             self.onStampInSelectorTapped?(stampId)
@@ -254,9 +232,8 @@ extension TodayViewController: TodayView {
     func loadDays(data: [[StickerData]]) {
         guard data.count == 7 else { return }
         
-        let dayViews: [DayColumnView] = [day0, day1, day2, day3, day4, day5, day6]
         // Mapping 7 data objects to 7 day views
-        for (day, view) in zip(data, dayViews) {
+        for (day, view) in zip(data, dayCollectionViewsArray) {
             view.loadData(day)
         }
     }

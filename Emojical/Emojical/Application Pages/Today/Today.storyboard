@@ -377,13 +377,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="awards" destination="50g-Iv-28T" id="rJg-33-0R6"/>
-                        <outlet property="day0" destination="dJ0-of-a5u" id="KGk-pN-C4M"/>
-                        <outlet property="day1" destination="1lM-26-t9b" id="4Ap-si-crK"/>
-                        <outlet property="day2" destination="EOr-jo-VtK" id="p15-0A-47v"/>
-                        <outlet property="day3" destination="M3W-1S-Mqu" id="Snk-FM-nRH"/>
-                        <outlet property="day4" destination="Rbx-OB-6HF" id="vND-cb-n9Y"/>
-                        <outlet property="day5" destination="QaH-jB-lBK" id="Gb3-gk-prC"/>
-                        <outlet property="day6" destination="bby-Z3-Ggw" id="vsI-HB-IxC"/>
                         <outlet property="daysHeader" destination="FnJ-i2-3rh" id="9ye-5U-Bie"/>
                         <outlet property="nextWeek" destination="ep7-Zj-mBI" id="WYu-5Y-dOU"/>
                         <outlet property="plusButton" destination="xsj-3c-kfw" id="EFH-o9-Jia"/>
@@ -392,6 +385,13 @@
                         <outlet property="separatorTopConstraint" destination="8kH-5r-qKy" id="bhD-eH-rfJ"/>
                         <outlet property="stampSelector" destination="kD0-4R-gft" id="NT0-8X-QK3"/>
                         <outlet property="stampSelectorBottomContstraint" destination="be8-Zf-eJO" id="Qtl-Fj-ZqD"/>
+                        <outletCollection property="dayCollectionViewsArray" destination="dJ0-of-a5u" collectionClass="NSMutableArray" id="JpK-ow-9eY"/>
+                        <outletCollection property="dayCollectionViewsArray" destination="1lM-26-t9b" collectionClass="NSMutableArray" id="ues-KX-zAU"/>
+                        <outletCollection property="dayCollectionViewsArray" destination="EOr-jo-VtK" collectionClass="NSMutableArray" id="uZD-AB-zIY"/>
+                        <outletCollection property="dayCollectionViewsArray" destination="M3W-1S-Mqu" collectionClass="NSMutableArray" id="iSJ-LM-HW0"/>
+                        <outletCollection property="dayCollectionViewsArray" destination="Rbx-OB-6HF" collectionClass="NSMutableArray" id="32P-zM-JXe"/>
+                        <outletCollection property="dayCollectionViewsArray" destination="QaH-jB-lBK" collectionClass="NSMutableArray" id="6VF-FW-YJg"/>
+                        <outletCollection property="dayCollectionViewsArray" destination="bby-Z3-Ggw" collectionClass="NSMutableArray" id="cFP-Vx-YYo"/>
                         <segue destination="DIf-UA-VLm" kind="presentation" identifier="newSticker" id="TSB-6g-cKh"/>
                     </connections>
                 </viewController>

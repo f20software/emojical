@@ -96,8 +96,8 @@ class GoalViewController : UIViewController, GoalView {
         
         to.name = (details.name.text ?? to.name).trimmingCharacters(in: CharacterSet(charactersIn: " "))
         to.limit = Int.init(details.limit.text ?? "0") ?? 0
-        to.direction = Direction(rawValue: details.direction.selectedSegmentIndex) ?? .positive
-        to.period = Period(rawValue: details.period.selectedSegmentIndex) ?? .week
+        to.direction = Direction(rawValue: details.direction.selectedSegmentIndex ?? 0) ?? .positive
+        to.period = Period(rawValue: details.period.selectedSegmentIndex ?? 0) ?? .week
     }
 
     /// Dismisses view if it was presented modally

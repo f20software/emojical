@@ -29,11 +29,11 @@ class GoalDetailsEditCell: UICollectionViewCell {
     @IBOutlet weak var separator3: UIView!
 
     @IBOutlet weak var directionLabel: UILabel!
-    @IBOutlet weak var direction: UISegmentedControl!
+    @IBOutlet weak var direction: ECSegmentedControl!
     @IBOutlet weak var separator4: UIView!
 
     @IBOutlet weak var periodLabel: UILabel!
-    @IBOutlet weak var period: UISegmentedControl!
+    @IBOutlet weak var period: ECSegmentedControl!
     @IBOutlet weak var separator5: UIView!
 
     /// User changed any value
@@ -127,13 +127,25 @@ class GoalDetailsEditCell: UICollectionViewCell {
         separator3.backgroundColor = Theme.main.colors.separator
         
         periodLabel.text = "goal_period_label".localized
-        period.setTitle("week".localized.capitalizingFirstLetter(), forSegmentAt: 0)
-        period.setTitle("month".localized.capitalizingFirstLetter(), forSegmentAt: 1)
+        period.buttonTitleColor = Theme.main.colors.secondaryText
+        period.buttonSelectedTitleColor = Theme.main.colors.background
+        period.buttonFont = Theme.main.fonts.sectionHeaderTitle
+        period.buttonColors = [Theme.main.colors.tint]
+        period.setTitles(to: [
+            "week".localized.capitalizingFirstLetter(),
+            "month".localized.capitalizingFirstLetter()
+        ])
         separator4.backgroundColor = Theme.main.colors.separator
 
         directionLabel.text = "direction_label".localized
-        direction.setTitle("positive".localized.capitalizingFirstLetter(), forSegmentAt: 0)
-        direction.setTitle("negative".localized.capitalizingFirstLetter(), forSegmentAt: 1)
+        direction.buttonTitleColor = Theme.main.colors.secondaryText
+        direction.buttonSelectedTitleColor = Theme.main.colors.background
+        direction.buttonFont = Theme.main.fonts.sectionHeaderTitle
+        direction.buttonColors = [Theme.main.colors.tint]
+        direction.setTitles(to: [
+            "positive".localized.capitalizingFirstLetter(),
+            "negative".localized.capitalizingFirstLetter()
+        ])
         separator5.backgroundColor = Theme.main.colors.separator
     }
     

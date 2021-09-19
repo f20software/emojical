@@ -31,7 +31,7 @@ class MainViewController: UITabBarController {
 
         todayTab?.tabBarItem.title = "today_title".localized
         goalsTab?.tabBarItem.title = "goals_tab_title".localized
-        statsTab?.tabBarItem.title = "stats_title".localized
+        statsTab?.tabBarItem.title = "charts_title".localized
         optionsTab?.tabBarItem.title = "options_title".localized
 
         // Add handlers to app wide notifications

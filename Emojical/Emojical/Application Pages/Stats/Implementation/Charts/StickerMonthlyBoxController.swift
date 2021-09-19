@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MonthlyStickerBoxController: UIViewController, MonthlyStickerBoxView {
+class StickerMonthlyBoxController: UIViewController, StickerMonthlyBoxView {
     
     // MARK: - Outlets
     
@@ -40,7 +40,7 @@ class MonthlyStickerBoxController: UIViewController, MonthlyStickerBoxView {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = MonthlyStickerBoxPresenter(
+        presenter = StickerMonthlyBoxPresenter(
             repository: Storage.shared.repository,
             stampsListener: Storage.shared.stampsListener(),
             calendar: CalendarHelper.shared,
@@ -289,7 +289,7 @@ class MonthlyStickerBoxController: UIViewController, MonthlyStickerBoxView {
     }
 }
 
-extension MonthlyStickerBoxController: UICollectionViewDelegate {
+extension StickerMonthlyBoxController: UICollectionViewDelegate {
     
     private func cell(for path: IndexPath, model: StatsElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         

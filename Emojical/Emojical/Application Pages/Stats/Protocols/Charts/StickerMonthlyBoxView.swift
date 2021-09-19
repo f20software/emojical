@@ -1,5 +1,5 @@
 //
-//  MonthlyStickerBoxView.swift
+//  StickerMonthlyBoxView.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 6/20/21.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MonthlyStickerBoxView: AnyObject {
+protocol StickerMonthlyBoxView: AnyObject {
 
     // MARK: - Callbacks
     

@@ -14,8 +14,6 @@ class ChartsPresenter: ChartsPresenterProtocol {
     // MARK: - DI
 
     private let repository: DataRepository
-    private let awardManager: AwardManager
-    private let stampsListener: StampsListener
     private let calendar: CalendarHelper
     private let dataBuilder: CalendarDataBuilder
 
@@ -31,15 +29,11 @@ class ChartsPresenter: ChartsPresenterProtocol {
 
     init(
         repository: DataRepository,
-        awardManager: AwardManager,
-        stampsListener: StampsListener,
         calendar: CalendarHelper,
         view: ChartsView,
         coordinator: ChartsCoordinatorProtocol
     ) {
         self.repository = repository
-        self.awardManager = awardManager
-        self.stampsListener = stampsListener
         self.calendar = calendar
         self.view = view
         self.coordinator = coordinator

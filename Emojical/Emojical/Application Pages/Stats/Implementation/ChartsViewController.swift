@@ -23,8 +23,8 @@ class ChartsViewController: UIViewController, ChartsView {
     lazy var coordinator: ChartsCoordinatorProtocol = {
         ChartsCoordinator(
             parent: self.navigationController!,
-            repository: repository,
-            awardManager: AwardManager.shared)
+            repository: repository
+        )
     }()
 
     // MARK: - State
@@ -43,8 +43,6 @@ class ChartsViewController: UIViewController, ChartsView {
         repository = Storage.shared.repository
         presenter = ChartsPresenter(
             repository: Storage.shared.repository,
-            awardManager: AwardManager.shared,
-            stampsListener: Storage.shared.stampsListener(),
             calendar: CalendarHelper.shared,
             view: self,
             coordinator: coordinator)

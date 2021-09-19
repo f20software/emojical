@@ -13,28 +13,27 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
     // MARK: - DI
 
     private weak var parentController: UINavigationController?
-    private let repository: DataRepository
-    private let awardManager: AwardManager
+    private let repository: DataRepository!
+    private let awardManager: AwardManager!
 
     init(
         parent: UINavigationController,
-        repository: DataRepository,
-        awardManager: AwardManager)
+        repository: DataRepository)
     {
         self.parentController = parent
         self.repository = repository
-        self.awardManager = awardManager
+        self.awardManager = AwardManager.shared
     }
     
-    func monthlyStickersChart(with id: String) -> MonthlyStickerBoxController? {
-        // Instantiate MonthlyStickerBoxController from the storyboard file
-        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? MonthlyStickerBoxController else {
-            assertionFailure("Failed to initialize MonthlyStickerBoxController")
+    func monthlyStickersChart(with id: String) -> StickerMonthlyBoxController? {
+        // Instantiate StickerMonthlyBoxController from the storyboard file
+        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? StickerMonthlyBoxController else {
+            assertionFailure("Failed to initialize StickerMonthlyBoxController")
             return nil
         }
 
         // Hook up GoalPresenter and tie it together to a view controller
-        view.presenter = MonthlyStickerBoxPresenter(
+        view.presenter = StickerMonthlyBoxPresenter(
             repository: repository,
             stampsListener: Storage.shared.stampsListener(),
             calendar: CalendarHelper.shared,
@@ -47,7 +46,7 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
     func goalStreaksChart(with id: String) -> GoalStreaksController? {
         // Instantiate GoalStreaksController from the storyboard file
         guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? GoalStreaksController else {
-            assertionFailure("Failed to initialize MonthlyStickerBoxController")
+            assertionFailure("Failed to initialize GoalStreaksController")
             return nil
         }
 
@@ -63,7 +62,7 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         return view
     }
 
-    /// Push to show specific chart form
+    /// Push to show specific Chart form
     func showChart(_ chart: ChartType) {
         var chartView: UIViewController?
         
@@ -72,8 +71,6 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
             chartView = monthlyStickersChart(with: chart.viewControllerId)
         case .goalStreak:
             chartView = goalStreaksChart(with: chart.viewControllerId)
-        default:
-            break
         }
         
         guard let chartView = chartView else {

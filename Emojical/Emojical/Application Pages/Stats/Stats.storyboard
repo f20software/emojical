@@ -70,7 +70,7 @@
         <!--August 2021-->
         <scene sceneID="aH8-rg-P9K">
             <objects>
-                <viewController storyboardIdentifier="MonthlyStickers" id="uA4-BB-MTf" customClass="MonthlyStickerBoxController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MonthlyStickers" id="uA4-BB-MTf" customClass="StickerMonthlyBoxController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6mK-Qx-eja">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

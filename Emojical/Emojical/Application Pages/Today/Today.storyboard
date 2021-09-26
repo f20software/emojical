@@ -224,10 +224,10 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50g-Iv-28T" customClass="WeeklyAwardsView" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="16" y="100" width="398" height="55"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="55"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EhG-g1-xfW">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oJI-9R-0fg">
                                             <size key="itemSize" width="128" height="128"/>
@@ -343,7 +343,7 @@
                         <viewLayoutGuide key="safeArea" id="JNE-f6-5U0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="50g-Iv-28T" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="16" id="13r-Tt-ZEl"/>
+                            <constraint firstItem="50g-Iv-28T" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="13r-Tt-ZEl"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="BV3-tF-WFD" secondAttribute="bottom" constant="16" id="3zU-Jb-ITv"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="75" id="8kH-5r-qKy"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="BcA-0S-4bd"/>

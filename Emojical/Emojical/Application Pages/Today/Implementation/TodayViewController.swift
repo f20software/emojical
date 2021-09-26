@@ -175,6 +175,7 @@ class TodayViewController: UIViewController {
         let width = dayCollectionViewsArray.first!.bounds.width
         for (index, day) in dayCollectionViewsArray.enumerated() {
             day.stickerSize = floor(width)
+            
             day.onDayTapped = { () in
                 self.onDayHeaderTapped?(index)
             }

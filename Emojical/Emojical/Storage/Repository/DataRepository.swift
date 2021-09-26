@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol DataRepository: class {
+protocol DataRepository: AnyObject {
     
     // MARK: - Settings
     

@@ -9,7 +9,7 @@
 import Foundation
 
 /// Gives access to all data-related operational interfaces.
-protocol DataProvider: class {
+protocol DataProvider: AnyObject {
     
     /// Repository to query and save entities.
     var repository: DataRepository { get }

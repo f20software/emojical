@@ -18,7 +18,6 @@ class ChartsViewController: UIViewController, ChartsView {
 
     var presenter: ChartsPresenterProtocol!
     var repository: DataRepository!
-    private var dataBuilder: CalendarDataBuilder!
 
     lazy var coordinator: ChartsCoordinatorProtocol = {
         ChartsCoordinator(
@@ -42,15 +41,10 @@ class ChartsViewController: UIViewController, ChartsView {
 
         repository = Storage.shared.repository
         presenter = ChartsPresenter(
-            repository: Storage.shared.repository,
+            repository: repository,
             calendar: CalendarHelper.shared,
             view: self,
             coordinator: coordinator)
-        
-        dataBuilder = CalendarDataBuilder(
-            repository: Storage.shared.repository,
-            calendar: CalendarHelper.shared
-        )
 
         configureViews()
         presenter.onViewDidLoad()
@@ -126,6 +120,10 @@ class ChartsViewController: UIViewController, ChartsView {
         )
 
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 10.0, leading: 10.0,
+            bottom: 10.0, trailing: 10.0)
+
         return UICollectionViewCompositionalLayout(section: section)
     }
 }

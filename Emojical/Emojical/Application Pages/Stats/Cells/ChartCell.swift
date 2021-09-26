@@ -25,13 +25,14 @@ class ChartCell: ThemeObservingCollectionCell {
 
     func configure(for data: String) {
         title.text = data
-        subTitle.text = data
+        // subTitle.text = data
     }
 
     // MARK: - Private helpers
 
     private func configureViews() {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
+        plate.backgroundColor = Theme.main.colors.secondaryBackground
         plate.clipsToBounds = true
         
         title.textColor = Theme.main.colors.text

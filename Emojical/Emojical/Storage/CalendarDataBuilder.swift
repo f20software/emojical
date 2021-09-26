@@ -299,7 +299,6 @@ class CalendarDataBuilder {
                     }
                     streakRunning = false
                 }
-                print("streak \(streak)")
                 week = CalendarHelper.Week(week.firstDay.byAddingWeek(-1))
             }
             

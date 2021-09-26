@@ -15,7 +15,6 @@ class ChartsPresenter: ChartsPresenterProtocol {
 
     private let repository: DataRepository
     private let calendar: CalendarHelper
-    private let dataBuilder: CalendarDataBuilder
 
     private weak var view: ChartsView?
     private weak var coordinator: ChartsCoordinatorProtocol?
@@ -37,11 +36,6 @@ class ChartsPresenter: ChartsPresenterProtocol {
         self.calendar = calendar
         self.view = view
         self.coordinator = coordinator
-        
-        self.dataBuilder = CalendarDataBuilder(
-            repository: repository,
-            calendar: calendar
-        )
     }
 
     /// Called when view finished initial loading.
@@ -57,7 +51,6 @@ class ChartsPresenter: ChartsPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
-        
         view?.onChartTapped = { [weak self] chartIndex in
             guard let self = self else { return }
             self.coordinator?.showChart(self.data[chartIndex])
@@ -66,7 +59,6 @@ class ChartsPresenter: ChartsPresenterProtocol {
     
     private func loadViewData() {
         view?.updateTitle("charts_title".localized)
-        
         view?.loadChartsData(data: data.map {
             ChartTypeDetails(
                 type: $0,

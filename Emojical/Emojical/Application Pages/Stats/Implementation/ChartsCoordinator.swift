@@ -25,14 +25,34 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         self.awardManager = AwardManager.shared
     }
     
-    func monthlyStickersChart(with id: String) -> StickerMonthlyBoxController? {
+    /// Push to show specific Chart form
+    func showChart(_ chart: ChartType) {
+        var chartView: UIViewController?
+        
+        switch chart {
+        case .monthlyStickers:
+            chartView = stickersMonthlyBoxChart(with: chart.viewControllerId)
+        case .goalStreak:
+            chartView = goalStreaksChart(with: chart.viewControllerId)
+        }
+        
+        guard let chartView = chartView else {
+            return
+        }
+        
+        parentController?.pushViewController(chartView, animated: true)
+    }
+    
+    // MARK: - Private Helpers
+    
+    private func stickersMonthlyBoxChart(with id: String) -> StickerMonthlyBoxController? {
         // Instantiate StickerMonthlyBoxController from the storyboard file
         guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? StickerMonthlyBoxController else {
             assertionFailure("Failed to initialize StickerMonthlyBoxController")
             return nil
         }
 
-        // Hook up GoalPresenter and tie it together to a view controller
+        // Hook up a presenter and tie it together to a view controller
         view.presenter = StickerMonthlyBoxPresenter(
             repository: repository,
             stampsListener: Storage.shared.stampsListener(),
@@ -43,14 +63,14 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         return view
     }
 
-    func goalStreaksChart(with id: String) -> GoalStreaksController? {
+    private func goalStreaksChart(with id: String) -> GoalStreaksController? {
         // Instantiate GoalStreaksController from the storyboard file
         guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? GoalStreaksController else {
             assertionFailure("Failed to initialize GoalStreaksController")
             return nil
         }
 
-        // Hook up GoalPresenter and tie it together to a view controller
+        // Hook up a presenter and tie it together to a view controller
         view.presenter = GoalStreaksPresenter(
             repository: repository,
             awardManager: awardManager,
@@ -60,23 +80,5 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         )
         
         return view
-    }
-
-    /// Push to show specific Chart form
-    func showChart(_ chart: ChartType) {
-        var chartView: UIViewController?
-        
-        switch chart {
-        case .monthlyStickers:
-            chartView = monthlyStickersChart(with: chart.viewControllerId)
-        case .goalStreak:
-            chartView = goalStreaksChart(with: chart.viewControllerId)
-        }
-        
-        guard let chartView = chartView else {
-            return
-        }
-        
-        parentController?.pushViewController(chartView, animated: true)
     }
 }

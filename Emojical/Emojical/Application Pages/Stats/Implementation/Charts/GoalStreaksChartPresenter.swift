@@ -1,5 +1,5 @@
 //
-//  GoalStreaksPresenter.swift
+//  GoalStreaksChartPresenter.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 9/19/21.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GoalStreaksPresenter: ChartPresenterProtocol {
+class GoalStreaksChartPresenter: ChartPresenterProtocol {
 
     // MARK: - DI
 
@@ -17,7 +17,7 @@ class GoalStreaksPresenter: ChartPresenterProtocol {
     private let awardManager: AwardManager
     private let stampsListener: StampsListener
     private let calendar: CalendarHelper
-    private weak var view: GoalStreaksView?
+    private weak var view: GoalStreaksChartView?
     
     // Private instance of the data builder
     private let dataBuilder: CalendarDataBuilder
@@ -26,7 +26,10 @@ class GoalStreaksPresenter: ChartPresenterProtocol {
 
     /// Copy of all stamps - used to build data model for view to show
     private var stamps = [Stamp]()
-    
+
+    /// Sort order
+    private var sort: GoalStreakSortOrder = .totalCount
+
     /// Selected month
     private var selectedMonth = CalendarHelper.Month(Date().byAddingDays(-20))
 
@@ -37,7 +40,7 @@ class GoalStreaksPresenter: ChartPresenterProtocol {
         awardManager: AwardManager,
         stampsListener: StampsListener,
         calendar: CalendarHelper,
-        view: GoalStreaksView
+        view: GoalStreaksChartView
     ) {
         self.repository = repository
         self.awardManager = awardManager
@@ -65,7 +68,7 @@ class GoalStreaksPresenter: ChartPresenterProtocol {
         onChange: { [weak self] stamps in
             guard let self = self else { return }
             
-            self.stamps = self.repository.allStamps().sorted(by: { $0.count > $1.count })
+            self.stamps = self.repository.allStamps()
             self.loadViewData()
         })
     }
@@ -78,6 +81,14 @@ class GoalStreaksPresenter: ChartPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
+        view?.onCountersTapped = {
+            if self.sort == .totalCount {
+                self.sort = .streakLength
+            } else {
+                self.sort = .totalCount
+            }
+            self.loadViewData()
+        }
     }
     
     private func loadViewData() {
@@ -98,8 +109,8 @@ class GoalStreaksPresenter: ChartPresenterProtocol {
                     progress: self.awardManager.currentProgressFor($0)
                 )
             )
-        }).sorted(by: { $0.streak > $1.streak })
-        view?.loadGoalStreaksData(data: data)
+        })// .sorted(by: { $0.streak > $1.streak })
+        view?.loadGoalStreaksData(data: data, sortOrder: sort)
     }
     
     // Move today's date one week to the past or one week to the future

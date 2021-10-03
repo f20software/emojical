@@ -28,7 +28,7 @@ class ChartsViewController: UIViewController, ChartsView {
 
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, ChartTypeDetails>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, ChartType>!
 
     // MARK: - Lifecycle
     
@@ -66,10 +66,10 @@ class ChartsViewController: UIViewController, ChartsView {
     }
     
     /// Load list of charts
-    func loadChartsData(data: [ChartTypeDetails]) {
+    func loadChartsData(_ data: [ChartType]) {
         
         // Clear existing data to eliminate animation glitches
-        var snapshot = NSDiffableDataSourceSnapshot<Int, ChartTypeDetails>()
+        var snapshot = NSDiffableDataSourceSnapshot<Int, ChartType>()
         snapshot.appendSections([0])
         snapshot.appendItems(data)
         dataSource.apply(snapshot, animatingDifferences: false)
@@ -83,7 +83,7 @@ class ChartsViewController: UIViewController, ChartsView {
     }
     
     private func configureCollectionView() {
-        dataSource = UICollectionViewDiffableDataSource<Int, ChartTypeDetails>(
+        dataSource = UICollectionViewDiffableDataSource<Int, ChartType>(
             collectionView: charts,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -104,39 +104,21 @@ class ChartsViewController: UIViewController, ChartsView {
 
     // Creates layout for weekly stats - one line per stamp
     private func chartsLayout() -> UICollectionViewCompositionalLayout {
-        let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(50)
-            )
-        )
-
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(50)
-            ),
-            subitems: [item]
-        )
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(
-            top: 10.0, leading: 10.0,
-            bottom: 10.0, trailing: 10.0)
-
-        return UICollectionViewCompositionalLayout(section: section)
+        var config = UICollectionLayoutListConfiguration(appearance: .plain)
+        config.showsSeparators = false
+        return UICollectionViewCompositionalLayout.list(using: config)
     }
 }
 
 extension ChartsViewController: UICollectionViewDelegate {
     
-    private func cell(for path: IndexPath, model: ChartTypeDetails, collectionView: UICollectionView) -> UICollectionViewCell? {
+    private func cell(for path: IndexPath, model: ChartType, collectionView: UICollectionView) -> UICollectionViewCell? {
         
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: Specs.Cells.chart, for: path
         ) as? ChartCell else { return UICollectionViewCell() }
             
-        cell.configure(for: model.title)
+        cell.configure(for: model.toDetailModel())
         return cell
     }
     

@@ -1,5 +1,5 @@
 //
-//  StickerMonthlyBoxPresenter.swift
+//  StickerMonthlyChartPresenter.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 6/20/21.
@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class StickerMonthlyBoxPresenter: ChartPresenterProtocol {
+class StickerMonthlyChartPresenter: ChartPresenterProtocol {
 
     // MARK: - DI
 
     private let repository: DataRepository
     private let stampsListener: StampsListener
     private let calendar: CalendarHelper
-    private weak var view: StickerMonthlyBoxView?
+    private weak var view: StickerMonthlyChartView?
     
     // Private instance of the data builder
     private let dataBuilder: CalendarDataBuilder
@@ -35,7 +35,7 @@ class StickerMonthlyBoxPresenter: ChartPresenterProtocol {
         repository: DataRepository,
         stampsListener: StampsListener,
         calendar: CalendarHelper,
-        view: StickerMonthlyBoxView
+        view: StickerMonthlyChartView
     ) {
         self.repository = repository
         self.stampsListener = stampsListener

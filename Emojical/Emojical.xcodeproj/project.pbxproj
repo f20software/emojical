@@ -42,6 +42,7 @@
 		F2049C5225FEB20E00E432DB /* CoachListenerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C5125FEB20E00E432DB /* CoachListenerProtocol.swift */; };
 		F2049C5A25FEB4B800E432DB /* DiaryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C5925FEB4B800E432DB /* DiaryListener.swift */; };
 		F2049C5E25FEB4F700E432DB /* DiaryDataSourceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2049C5D25FEB4F700E432DB /* DiaryDataSourceListener.swift */; };
+		F20A1E0D270A2A3A0071C5B7 /* UILabelWithContentInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20A1E0C270A2A3A0071C5B7 /* UILabelWithContentInset.swift */; };
 		F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
 		F20D1F9624142A1700FB5000 /* StickerView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9424142A1700FB5000 /* StickerView_Old.swift */; };
 		F20E40392443E5B0008759D1 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20D1F9324142A1700FB5000 /* EmojiTextField.swift */; };
@@ -54,10 +55,6 @@
 		F23CD120262145BD0003E4DF /* GoalStreakCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23CD11F262145BD0003E4DF /* GoalStreakCell2.xib */; };
 		F23CD124262145CC0003E4DF /* GoalStreakCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CD123262145CC0003E4DF /* GoalStreakCell2.swift */; };
 		F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */; };
-		F23CF369258271750048BA74 /* YearBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF368258271750048BA74 /* YearBoxView.swift */; };
-		F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF36C258271BE0048BA74 /* YearBoxData.swift */; };
-		F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23CF370258272E70048BA74 /* YearBoxCell.xib */; };
-		F23CF373258272E80048BA74 /* YearBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF371258272E70048BA74 /* YearBoxCell.swift */; };
 		F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF39125829B500048BA74 /* StickersElement.swift */; };
 		F23CF3AC25829B500048BA74 /* StickersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF39425829B500048BA74 /* StickersViewController.swift */; };
 		F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF39525829B500048BA74 /* StickersPresenter.swift */; };
@@ -134,8 +131,6 @@
 		F284F998257EF1720016D1C6 /* TodayAwardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F284F996257EF1720016D1C6 /* TodayAwardCell.xib */; };
 		F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */; };
 		F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F9C22580620D0016D1C6 /* SelectorState.swift */; };
-		F28CC5A9261A707000456E18 /* GoalStreakCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28CC5A7261A707000456E18 /* GoalStreakCell.swift */; };
-		F28CC5AA261A707000456E18 /* GoalStreakCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28CC5A8261A707000456E18 /* GoalStreakCell.xib */; };
 		F28CC5B0261A746D00456E18 /* GoalStreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28CC5AF261A746D00456E18 /* GoalStreakView.swift */; };
 		F28CC5B4261A787700456E18 /* GoalStreakData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28CC5B3261A787700456E18 /* GoalStreakData.swift */; };
 		F291A62F25EDF50400E91D0C /* StickerStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F291A62E25EDF50400E91D0C /* StickerStyleCell.swift */; };
@@ -169,12 +164,11 @@
 		F2A09422267FF41C00980EF9 /* ChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A09420267FF41C00980EF9 /* ChartsPresenter.swift */; };
 		F2A09425267FF44C00980EF9 /* ChartsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A09423267FF44C00980EF9 /* ChartsPresenterProtocol.swift */; };
 		F2A09426267FF44C00980EF9 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A09424267FF44C00980EF9 /* ChartsView.swift */; };
-		F2A09428267FF83700980EF9 /* ChartTypeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A09427267FF83700980EF9 /* ChartTypeDetails.swift */; };
 		F2A0942B267FFEE300980EF9 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A09429267FFEE300980EF9 /* ChartCell.swift */; };
 		F2A0942C267FFEE300980EF9 /* ChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A0942A267FFEE300980EF9 /* ChartCell.xib */; };
 		F2A0942E268005ED00980EF9 /* ChartsCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0942D268005ED00980EF9 /* ChartsCoordinatorProtocol.swift */; };
 		F2A094302680063F00980EF9 /* ChartsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0942F2680063F00980EF9 /* ChartsCoordinator.swift */; };
-		F2A0943726800E9000980EF9 /* StickerMonthlyBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943526800E9000980EF9 /* StickerMonthlyBoxView.swift */; };
+		F2A0943726800E9000980EF9 /* StickerMonthlyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943526800E9000980EF9 /* StickerMonthlyChartView.swift */; };
 		F2A0943826800E9000980EF9 /* ChartPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943626800E9000980EF9 /* ChartPresenterProtocol.swift */; };
 		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
@@ -185,14 +179,8 @@
 		F2A829DF25EBF4F400B323FB /* WelcomePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A829D925EBF4F300B323FB /* WelcomePresenterProtocol.swift */; };
 		F2A829E025EBF4F400B323FB /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A829DA25EBF4F300B323FB /* WelcomeView.swift */; };
 		F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A93F8425812881006C88F8 /* Stats.storyboard */; };
-		F2A93FA325812DEA006C88F8 /* WeekLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */; };
-		F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */; };
-		F2A93FA8258130DB006C88F8 /* WeekHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */; };
 		F2A93FAF2581314C006C88F8 /* StatsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAC2581314C006C88F8 /* StatsElement.swift */; };
 		F2A93FB02581314C006C88F8 /* WeekHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */; };
-		F2A93FB12581314C006C88F8 /* WeekLineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FAE2581314C006C88F8 /* WeekLineData.swift */; };
-		F2A93FB625813668006C88F8 /* WeekLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FB525813668006C88F8 /* WeekLineView.swift */; };
-		F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */; };
 		F2A93FC825816180006C88F8 /* MonthBoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FC725816180006C88F8 /* MonthBoxData.swift */; };
 		F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FCB25816249006C88F8 /* MonthBoxView.swift */; };
 		F2A93FD1258164B2006C88F8 /* MonthBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FCF258164B2006C88F8 /* MonthBoxCell.swift */; };
@@ -223,11 +211,12 @@
 		F2C4944723D2CBCA00EAF9CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C4944523D2CBCA00EAF9CC /* LaunchScreen.storyboard */; };
 		F2C649D225FEC7580096D883 /* CoachMessageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C649D125FEC7580096D883 /* CoachMessageOperation.swift */; };
 		F2C847A125C727DB00A2C2F2 /* DataSource+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C847A025C727DB00A2C2F2 /* DataSource+Demo.swift */; };
-		F2EC68B326F7B42B0061AA9B /* StickerMonthlyBoxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943226800DE900980EF9 /* StickerMonthlyBoxController.swift */; };
-		F2EC68B526F7B4A80061AA9B /* StickerMonthlyBoxPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943126800DE900980EF9 /* StickerMonthlyBoxPresenter.swift */; };
-		F2EC68B726F7E93B0061AA9B /* GoalStreaksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC68B626F7E93B0061AA9B /* GoalStreaksView.swift */; };
-		F2EC68BA26F7E9980061AA9B /* GoalStreaksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC68B826F7E9980061AA9B /* GoalStreaksPresenter.swift */; };
-		F2EC68BB26F7E9980061AA9B /* GoalStreaksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC68B926F7E9980061AA9B /* GoalStreaksController.swift */; };
+		F2CA4EFD270A72F600FA1EA5 /* GoalStreakSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4EFC270A72F600FA1EA5 /* GoalStreakSortOrder.swift */; };
+		F2EC68B326F7B42B0061AA9B /* StickerMonthlyChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943226800DE900980EF9 /* StickerMonthlyChartController.swift */; };
+		F2EC68B526F7B4A80061AA9B /* StickerMonthlyChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943126800DE900980EF9 /* StickerMonthlyChartPresenter.swift */; };
+		F2EC68B726F7E93B0061AA9B /* GoalStreaksChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC68B626F7E93B0061AA9B /* GoalStreaksChartView.swift */; };
+		F2EC68BA26F7E9980061AA9B /* GoalStreaksChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC68B826F7E9980061AA9B /* GoalStreaksChartPresenter.swift */; };
+		F2EC68BB26F7E9980061AA9B /* GoalStreaksChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC68B926F7E9980061AA9B /* GoalStreaksChartController.swift */; };
 		F2EE4AA825C5AD64004FB0F2 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AA725C5AD64004FB0F2 /* ButtonCell.swift */; };
 		F2EE4AAD25C5AECC004FB0F2 /* NavigateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAB25C5AECC004FB0F2 /* NavigateCell.swift */; };
 		F2EE4AAE25C5AECC004FB0F2 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4AAC25C5AECC004FB0F2 /* TextCell.swift */; };
@@ -332,6 +321,7 @@
 		F2049C5125FEB20E00E432DB /* CoachListenerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachListenerProtocol.swift; sourceTree = "<group>"; };
 		F2049C5925FEB4B800E432DB /* DiaryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryListener.swift; sourceTree = "<group>"; };
 		F2049C5D25FEB4F700E432DB /* DiaryDataSourceListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryDataSourceListener.swift; sourceTree = "<group>"; };
+		F20A1E0C270A2A3A0071C5B7 /* UILabelWithContentInset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelWithContentInset.swift; sourceTree = "<group>"; };
 		F20D1F9324142A1700FB5000 /* EmojiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		F20D1F9424142A1700FB5000 /* StickerView_Old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerView_Old.swift; sourceTree = "<group>"; };
 		F21162C425C9FD6700E4D3AD /* GoalReachedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalReachedCell.swift; sourceTree = "<group>"; };
@@ -342,10 +332,6 @@
 		F23CD11F262145BD0003E4DF /* GoalStreakCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalStreakCell2.xib; sourceTree = "<group>"; };
 		F23CD123262145CC0003E4DF /* GoalStreakCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreakCell2.swift; sourceTree = "<group>"; };
 		F23CF3542581E1690048BA74 /* CalendarDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataBuilder.swift; sourceTree = "<group>"; };
-		F23CF368258271750048BA74 /* YearBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxView.swift; sourceTree = "<group>"; };
-		F23CF36C258271BE0048BA74 /* YearBoxData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxData.swift; sourceTree = "<group>"; };
-		F23CF370258272E70048BA74 /* YearBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearBoxCell.xib; sourceTree = "<group>"; };
-		F23CF371258272E70048BA74 /* YearBoxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearBoxCell.swift; sourceTree = "<group>"; };
 		F23CF39125829B500048BA74 /* StickersElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickersElement.swift; sourceTree = "<group>"; };
 		F23CF39425829B500048BA74 /* StickersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickersViewController.swift; sourceTree = "<group>"; };
 		F23CF39525829B500048BA74 /* StickersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickersPresenter.swift; sourceTree = "<group>"; };
@@ -421,8 +407,6 @@
 		F284F995257EF1720016D1C6 /* TodayAwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAwardCell.swift; sourceTree = "<group>"; };
 		F284F996257EF1720016D1C6 /* TodayAwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayAwardCell.xib; sourceTree = "<group>"; };
 		F284F9C22580620D0016D1C6 /* SelectorState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorState.swift; sourceTree = "<group>"; };
-		F28CC5A7261A707000456E18 /* GoalStreakCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreakCell.swift; sourceTree = "<group>"; };
-		F28CC5A8261A707000456E18 /* GoalStreakCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalStreakCell.xib; sourceTree = "<group>"; };
 		F28CC5AF261A746D00456E18 /* GoalStreakView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreakView.swift; sourceTree = "<group>"; };
 		F28CC5B3261A787700456E18 /* GoalStreakData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreakData.swift; sourceTree = "<group>"; };
 		F291A62E25EDF50400E91D0C /* StickerStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerStyleCell.swift; sourceTree = "<group>"; };
@@ -456,14 +440,13 @@
 		F2A09420267FF41C00980EF9 /* ChartsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsPresenter.swift; sourceTree = "<group>"; };
 		F2A09423267FF44C00980EF9 /* ChartsPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2A09424267FF44C00980EF9 /* ChartsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
-		F2A09427267FF83700980EF9 /* ChartTypeDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTypeDetails.swift; sourceTree = "<group>"; };
 		F2A09429267FFEE300980EF9 /* ChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		F2A0942A267FFEE300980EF9 /* ChartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartCell.xib; sourceTree = "<group>"; };
 		F2A0942D268005ED00980EF9 /* ChartsCoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F2A0942F2680063F00980EF9 /* ChartsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsCoordinator.swift; sourceTree = "<group>"; };
-		F2A0943126800DE900980EF9 /* StickerMonthlyBoxPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerMonthlyBoxPresenter.swift; sourceTree = "<group>"; };
-		F2A0943226800DE900980EF9 /* StickerMonthlyBoxController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerMonthlyBoxController.swift; sourceTree = "<group>"; };
-		F2A0943526800E9000980EF9 /* StickerMonthlyBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerMonthlyBoxView.swift; sourceTree = "<group>"; };
+		F2A0943126800DE900980EF9 /* StickerMonthlyChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerMonthlyChartPresenter.swift; sourceTree = "<group>"; };
+		F2A0943226800DE900980EF9 /* StickerMonthlyChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerMonthlyChartController.swift; sourceTree = "<group>"; };
+		F2A0943526800E9000980EF9 /* StickerMonthlyChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerMonthlyChartView.swift; sourceTree = "<group>"; };
 		F2A0943626800E9000980EF9 /* ChartPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
@@ -474,14 +457,8 @@
 		F2A829D925EBF4F300B323FB /* WelcomePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePresenterProtocol.swift; sourceTree = "<group>"; };
 		F2A829DA25EBF4F300B323FB /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		F2A93F8425812881006C88F8 /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
-		F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekLineCell.xib; sourceTree = "<group>"; };
-		F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekLineCell.swift; sourceTree = "<group>"; };
-		F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekHeaderCell.xib; sourceTree = "<group>"; };
 		F2A93FAC2581314C006C88F8 /* StatsElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsElement.swift; sourceTree = "<group>"; };
 		F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderData.swift; sourceTree = "<group>"; };
-		F2A93FAE2581314C006C88F8 /* WeekLineData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekLineData.swift; sourceTree = "<group>"; };
-		F2A93FB525813668006C88F8 /* WeekLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekLineView.swift; sourceTree = "<group>"; };
-		F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderCell.swift; sourceTree = "<group>"; };
 		F2A93FC725816180006C88F8 /* MonthBoxData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBoxData.swift; sourceTree = "<group>"; };
 		F2A93FCB25816249006C88F8 /* MonthBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBoxView.swift; sourceTree = "<group>"; };
 		F2A93FCF258164B2006C88F8 /* MonthBoxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBoxCell.swift; sourceTree = "<group>"; };
@@ -513,10 +490,11 @@
 		F2C4944823D2CBCA00EAF9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C649D125FEC7580096D883 /* CoachMessageOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachMessageOperation.swift; sourceTree = "<group>"; };
 		F2C847A025C727DB00A2C2F2 /* DataSource+Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Demo.swift"; sourceTree = "<group>"; };
+		F2CA4EFC270A72F600FA1EA5 /* GoalStreakSortOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreakSortOrder.swift; sourceTree = "<group>"; };
 		F2E906EC25C89B59007CE699 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F2EC68B626F7E93B0061AA9B /* GoalStreaksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreaksView.swift; sourceTree = "<group>"; };
-		F2EC68B826F7E9980061AA9B /* GoalStreaksPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreaksPresenter.swift; sourceTree = "<group>"; };
-		F2EC68B926F7E9980061AA9B /* GoalStreaksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreaksController.swift; sourceTree = "<group>"; };
+		F2EC68B626F7E93B0061AA9B /* GoalStreaksChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreaksChartView.swift; sourceTree = "<group>"; };
+		F2EC68B826F7E9980061AA9B /* GoalStreaksChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreaksChartPresenter.swift; sourceTree = "<group>"; };
+		F2EC68B926F7E9980061AA9B /* GoalStreaksChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStreaksChartController.swift; sourceTree = "<group>"; };
 		F2EE4AA725C5AD64004FB0F2 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		F2EE4AAB25C5AECC004FB0F2 /* NavigateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateCell.swift; sourceTree = "<group>"; };
 		F2EE4AAC25C5AECC004FB0F2 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
@@ -726,6 +704,7 @@
 				F20D1F9324142A1700FB5000 /* EmojiTextField.swift */,
 				F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */,
 				F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */,
+				F20A1E0C270A2A3A0071C5B7 /* UILabelWithContentInset.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -754,19 +733,6 @@
 				F2F449232430291B005AD6B9 /* MainViewController.swift */,
 			);
 			path = Implementation;
-			sourceTree = "<group>";
-		};
-		F23CD12B2622175D0003E4DF /* Not Used */ = {
-			isa = PBXGroup;
-			children = (
-				F2A93FA7258130DB006C88F8 /* WeekHeaderCell.xib */,
-				F2A93FBD25814BAC006C88F8 /* WeekHeaderCell.swift */,
-				F2A93FA125812DEA006C88F8 /* WeekLineCell.xib */,
-				F2A93FA225812DEA006C88F8 /* WeekLineCell.swift */,
-				F23CF370258272E70048BA74 /* YearBoxCell.xib */,
-				F23CF371258272E70048BA74 /* YearBoxCell.swift */,
-			);
-			path = "Not Used";
 			sourceTree = "<group>";
 		};
 		F23CF38225829B500048BA74 /* Stickers-Goals */ = {
@@ -1147,11 +1113,8 @@
 		F2A93FA025812DEA006C88F8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F23CD12B2622175D0003E4DF /* Not Used */,
 				F23CD11F262145BD0003E4DF /* GoalStreakCell2.xib */,
 				F23CD123262145CC0003E4DF /* GoalStreakCell2.swift */,
-				F28CC5A8261A707000456E18 /* GoalStreakCell.xib */,
-				F28CC5A7261A707000456E18 /* GoalStreakCell.swift */,
 				F2A93FD0258164B2006C88F8 /* MonthBoxCell.xib */,
 				F2A93FCF258164B2006C88F8 /* MonthBoxCell.swift */,
 				F2A0942A267FFEE300980EF9 /* ChartCell.xib */,
@@ -1164,12 +1127,10 @@
 			isa = PBXGroup;
 			children = (
 				F2A93FD725816709006C88F8 /* ChartType.swift */,
-				F2A09427267FF83700980EF9 /* ChartTypeDetails.swift */,
 				F2A93FAC2581314C006C88F8 /* StatsElement.swift */,
+				F2CA4EFC270A72F600FA1EA5 /* GoalStreakSortOrder.swift */,
 				F2A93FAD2581314C006C88F8 /* WeekHeaderData.swift */,
-				F2A93FAE2581314C006C88F8 /* WeekLineData.swift */,
 				F2A93FC725816180006C88F8 /* MonthBoxData.swift */,
-				F23CF36C258271BE0048BA74 /* YearBoxData.swift */,
 				F28CC5B3261A787700456E18 /* GoalStreakData.swift */,
 			);
 			path = Models;
@@ -1178,9 +1139,7 @@
 		F2A93FB425813668006C88F8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F2A93FB525813668006C88F8 /* WeekLineView.swift */,
 				F2A93FCB25816249006C88F8 /* MonthBoxView.swift */,
-				F23CF368258271750048BA74 /* YearBoxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1328,10 +1287,10 @@
 		F2EC68B226F7AF1B0061AA9B /* Charts */ = {
 			isa = PBXGroup;
 			children = (
-				F2A0943226800DE900980EF9 /* StickerMonthlyBoxController.swift */,
-				F2A0943126800DE900980EF9 /* StickerMonthlyBoxPresenter.swift */,
-				F2EC68B926F7E9980061AA9B /* GoalStreaksController.swift */,
-				F2EC68B826F7E9980061AA9B /* GoalStreaksPresenter.swift */,
+				F2A0943226800DE900980EF9 /* StickerMonthlyChartController.swift */,
+				F2A0943126800DE900980EF9 /* StickerMonthlyChartPresenter.swift */,
+				F2EC68B926F7E9980061AA9B /* GoalStreaksChartController.swift */,
+				F2EC68B826F7E9980061AA9B /* GoalStreaksChartPresenter.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -1340,8 +1299,8 @@
 			isa = PBXGroup;
 			children = (
 				F2A0943626800E9000980EF9 /* ChartPresenterProtocol.swift */,
-				F2EC68B626F7E93B0061AA9B /* GoalStreaksView.swift */,
-				F2A0943526800E9000980EF9 /* StickerMonthlyBoxView.swift */,
+				F2EC68B626F7E93B0061AA9B /* GoalStreaksChartView.swift */,
+				F2A0943526800E9000980EF9 /* StickerMonthlyChartView.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -1664,13 +1623,11 @@
 				F2FD4E1925BDCD42005819A0 /* StickerDetailsDeleteButtonCell.xib in Resources */,
 				F26596EE2596AF1300B10B76 /* Recap.storyboard in Resources */,
 				F2049C3A25FE8B5800E432DB /* RecapReady.storyboard in Resources */,
-				F23CF372258272E80048BA74 /* YearBoxCell.xib in Resources */,
 				F2A93F8525812881006C88F8 /* Stats.storyboard in Resources */,
 				F2C4944423D2CBCA00EAF9CC /* Assets.xcassets in Resources */,
 				F27E552825D0418700B78A95 /* StickerUsedCell.xib in Resources */,
 				F2B5F47225CF58CF0051E8C9 /* GoalsLibrary.storyboard in Resources */,
 				F21162C725C9FD6700E4D3AD /* GoalReachedCell.xib in Resources */,
-				F28CC5AA261A707000456E18 /* GoalStreakCell.xib in Resources */,
 				F295336625B60CEB003CA002 /* Sticker.storyboard in Resources */,
 				F2A0942C267FFEE300980EF9 /* ChartCell.xib in Resources */,
 				F29804D325C7B28500952AAF /* Localizable.strings in Resources */,
@@ -1681,7 +1638,6 @@
 				F23CF3D42582A9FB0048BA74 /* GoalCell.xib in Resources */,
 				F2FD4E1B25BDCD42005819A0 /* StickerDetailsCell.xib in Resources */,
 				F24B07C624C547B500FFD798 /* Today.storyboard in Resources */,
-				F2A93FA8258130DB006C88F8 /* WeekHeaderCell.xib in Resources */,
 				F295334525B4D87D003CA002 /* NoAwardsCell.xib in Resources */,
 				F2A21C12244271130030A117 /* Options.storyboard in Resources */,
 				F295339A25B64098003CA002 /* GoalDetailsCell.xib in Resources */,
@@ -1696,7 +1652,6 @@
 				F27E70A025DB2766004E49FB /* GoalChartCell.xib in Resources */,
 				F295333A25B3CA6A003CA002 /* AwardRecapCell.xib in Resources */,
 				F23CF3AE25829B510048BA74 /* Stickers.storyboard in Resources */,
-				F2A93FA325812DEA006C88F8 /* WeekLineCell.xib in Resources */,
 				F2F3BE20257C831000A926E9 /* DayHeaderCell.xib in Resources */,
 				F29533A125B6611B003CA002 /* GoalDetailsEditCell.xib in Resources */,
 				F27E703225D836E1004E49FB /* Congrats.storyboard in Resources */,
@@ -1740,7 +1695,6 @@
 				F29B43A025CEFFBF0005ADF5 /* Theme+Colors.swift in Sources */,
 				F26596F12596AF1300B10B76 /* AwardRecapData.swift in Sources */,
 				F2FD4DF425BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.swift in Sources */,
-				F28CC5A9261A707000456E18 /* GoalStreakCell.swift in Sources */,
 				F2C493242430172D00E997BD /* NotificationManager.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* StoredStamp.swift in Sources */,
 				F2049C4B25FE8D8D00E432DB /* RecapReadyPresenter.swift in Sources */,
@@ -1755,7 +1709,6 @@
 				F295334625B4D87D003CA002 /* NoAwardsCell.swift in Sources */,
 				F2FD4E1825BDCD42005819A0 /* StickerDetailsCell.swift in Sources */,
 				BC56440D246B309700942066 /* StampsListener.swift in Sources */,
-				F23CF373258272E80048BA74 /* YearBoxCell.swift in Sources */,
 				F2B4763023DCF9DE0076BFDC /* StoredDiary.swift in Sources */,
 				F295338925B62F3A003CA002 /* GoalDetailsElement.swift in Sources */,
 				F23CF3E42582D15E0048BA74 /* GoalData.swift in Sources */,
@@ -1779,14 +1732,13 @@
 				F2FD4E2425BDCD42005819A0 /* StickerPresenterProtocol.swift in Sources */,
 				F2A829DE25EBF4F400B323FB /* WelcomeData.swift in Sources */,
 				F27E552C25D041DB00B78A95 /* StickerUsedData.swift in Sources */,
-				F2EC68B326F7B42B0061AA9B /* StickerMonthlyBoxController.swift in Sources */,
+				F2EC68B326F7B42B0061AA9B /* StickerMonthlyChartController.swift in Sources */,
 				F27E70A625DC37A4004E49FB /* GoalChartData.swift in Sources */,
 				F295337B25B6165C003CA002 /* GoalViewController.swift in Sources */,
 				F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */,
 				F27E703425D836E1004E49FB /* CongratsViewController.swift in Sources */,
 				F27782FB25C501E300C68F7A /* OptionsPresenterProtocol.swift in Sources */,
 				F29804D925C7B2E600952AAF /* Localizer.swift in Sources */,
-				F2A93FB625813668006C88F8 /* WeekLineView.swift in Sources */,
 				F2FD4DD025BCB89C005819A0 /* GoalCoordinator.swift in Sources */,
 				F2FD4E2525BDCD42005819A0 /* StickerViewProtocol.swift in Sources */,
 				F2F3BE77257DD2F300A926E9 /* TodayPresenter.swift in Sources */,
@@ -1805,7 +1757,6 @@
 				F27E554A25D0B06B00B78A95 /* GoalsLibraryCell.swift in Sources */,
 				F295337A25B6165C003CA002 /* GoalPresenter.swift in Sources */,
 				F23CD124262145CC0003E4DF /* GoalStreakCell2.swift in Sources */,
-				F2A09428267FF83700980EF9 /* ChartTypeDetails.swift in Sources */,
 				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
 				F23CF3CC2582A95F0048BA74 /* StickerCell.swift in Sources */,
@@ -1815,7 +1766,7 @@
 				BC5643F1246B0F1900942066 /* Goal.swift in Sources */,
 				F2A09426267FF44C00980EF9 /* ChartsView.swift in Sources */,
 				F247542723E74C49006A13C3 /* StoredAward.swift in Sources */,
-				F2A93FB12581314C006C88F8 /* WeekLineData.swift in Sources */,
+				F20A1E0D270A2A3A0071C5B7 /* UILabelWithContentInset.swift in Sources */,
 				F2B5F46B25CF58CF0051E8C9 /* GoalExampleCell.swift in Sources */,
 				F2FD4E1F25BDCD42005819A0 /* StickerEditData.swift in Sources */,
 				F2BB6F4425FB20BB009C4259 /* CoachListener.swift in Sources */,
@@ -1824,11 +1775,12 @@
 				F26596EF2596AF1300B10B76 /* RecapPresenter.swift in Sources */,
 				BC56440B246B2F5D00942066 /* GoalsDataSourceListener.swift in Sources */,
 				F27E709F25DB2766004E49FB /* GoalChartCell.swift in Sources */,
-				F2EC68B526F7B4A80061AA9B /* StickerMonthlyBoxPresenter.swift in Sources */,
+				F2EC68B526F7B4A80061AA9B /* StickerMonthlyChartPresenter.swift in Sources */,
 				F2F3BE3E257D489D00A926E9 /* DayHeaderData.swift in Sources */,
 				F247541423DFC706006A13C3 /* StoredGoal.swift in Sources */,
 				F27BC99025B7DF3A00B58087 /* Theme+Fonts.swift in Sources */,
 				BC1E1EF8246C532300E05C8A /* DataProvider.swift in Sources */,
+				F2CA4EFD270A72F600FA1EA5 /* GoalStreakSortOrder.swift in Sources */,
 				F2FD4E1A25BDCD42005819A0 /* StickerDetailsEditCell.swift in Sources */,
 				F2EE4ACC25C5CC44004FB0F2 /* DeveloperView.swift in Sources */,
 				F2A09421267FF41C00980EF9 /* ChartsViewController.swift in Sources */,
@@ -1851,7 +1803,7 @@
 				F2FD4DBC25BC88C6005819A0 /* SelectStickersPresenter.swift in Sources */,
 				F282B4FA25928FB9000BC92B /* DaysHeaderView.swift in Sources */,
 				F2FD4DCC25BCB869005819A0 /* GoalCoordinatorProtocol.swift in Sources */,
-				F2EC68BA26F7E9980061AA9B /* GoalStreaksPresenter.swift in Sources */,
+				F2EC68BA26F7E9980061AA9B /* GoalStreaksChartPresenter.swift in Sources */,
 				F2F260EF2408BCCB00F5CCB9 /* DataSource+Goal.swift in Sources */,
 				F28CC5B0261A746D00456E18 /* GoalStreakView.swift in Sources */,
 				F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */,
@@ -1867,7 +1819,7 @@
 				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F2A09425267FF44C00980EF9 /* ChartsPresenterProtocol.swift in Sources */,
 				F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */,
-				F2EC68BB26F7E9980061AA9B /* GoalStreaksController.swift in Sources */,
+				F2EC68BB26F7E9980061AA9B /* GoalStreaksChartController.swift in Sources */,
 				F2B5F47525CF58CF0051E8C9 /* GoalsLibraryView.swift in Sources */,
 				F2049C5E25FEB4F700E432DB /* DiaryDataSourceListener.swift in Sources */,
 				F2EE4ADA25C5F84A004FB0F2 /* BaseTableViewController.swift in Sources */,
@@ -1904,24 +1856,20 @@
 				F2049C5225FEB20E00E432DB /* CoachListenerProtocol.swift in Sources */,
 				F20D1F9524142A1700FB5000 /* EmojiTextField.swift in Sources */,
 				F29804C725C79A5F00952AAF /* GoalHistoryData.swift in Sources */,
-				F2A93FA425812DEA006C88F8 /* WeekLineCell.swift in Sources */,
 				F2A829DC25EBF4F400B323FB /* WelcomeViewController.swift in Sources */,
-				F23CF369258271750048BA74 /* YearBoxView.swift in Sources */,
-				F2A0943726800E9000980EF9 /* StickerMonthlyBoxView.swift in Sources */,
+				F2A0943726800E9000980EF9 /* StickerMonthlyChartView.swift in Sources */,
 				F2A93FD825816709006C88F8 /* ChartType.swift in Sources */,
 				F2A93FAF2581314C006C88F8 /* StatsElement.swift in Sources */,
 				F291A62F25EDF50400E91D0C /* StickerStyleCell.swift in Sources */,
 				F29B438E25CD05F70005ADF5 /* UICollectionViewCell+ThemeObserving.swift in Sources */,
-				F2A93FBE25814BAC006C88F8 /* WeekHeaderCell.swift in Sources */,
 				F2F449242430291B005AD6B9 /* MainViewController.swift in Sources */,
 				F2049C5A25FEB4B800E432DB /* DiaryListener.swift in Sources */,
 				F2FD4E2025BDCD42005819A0 /* StickerCoordinator.swift in Sources */,
-				F23CF36D258271BE0048BA74 /* YearBoxData.swift in Sources */,
 				F2B5F46D25CF58CF0051E8C9 /* GoalExampleData.swift in Sources */,
 				F29804CC25C7A52500952AAF /* Language.swift in Sources */,
 				BC1E1EFA246C58F500E05C8A /* GRDBDataProvider.swift in Sources */,
 				F27E704725D842F0004E49FB /* CongratsData.swift in Sources */,
-				F2EC68B726F7E93B0061AA9B /* GoalStreaksView.swift in Sources */,
+				F2EC68B726F7E93B0061AA9B /* GoalStreaksChartView.swift in Sources */,
 				F2C847A125C727DB00A2C2F2 /* DataSource+Demo.swift in Sources */,
 				F2FD4DBD25BC88C6005819A0 /* SelectStickersView.swift in Sources */,
 				F23CF44F25851C150048BA74 /* GoalIconView.swift in Sources */,

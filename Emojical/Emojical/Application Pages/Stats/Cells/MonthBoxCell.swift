@@ -25,13 +25,14 @@ class MonthBoxCell: ThemeObservingCollectionCell {
     @IBOutlet weak var day4: UILabel!
     @IBOutlet weak var day5: UILabel!
     @IBOutlet weak var day6: UILabel!
-
-    @IBOutlet weak var dots4weeks: NSLayoutConstraint!
-    @IBOutlet weak var dots5weeks: NSLayoutConstraint!
-    @IBOutlet weak var dots6weeks: NSLayoutConstraint!
+    // Dots view could have different width/height ratio based on the number of weeks in a month
+    @IBOutlet weak var dotsHeight: NSLayoutConstraint!
 
     // Convinience array
     private var days: [UILabel] = []
+
+    // Height / width ratio based on number of weeks
+    private var weeksRatio: CGFloat = 5.0 / 7.0
     
     // We're loading data asynchroniously. To make sure that same cell is still used,
     // when data is retrieved - store asyncKey and check it when callback is returned
@@ -65,14 +66,9 @@ class MonthBoxCell: ThemeObservingCollectionCell {
 
         dots.data = data.bitsAsString
         dots.startOffset = data.firstDayOffset
-        // Hacky? Sure... - can't change ratio constant in run-time
-        // https://stackoverflow.com/questions/19593641/can-i-change-multiplier-property-for-nslayoutconstraint
-        dots4weeks.isActive = data.numberOfWeeks == 4
-        dots5weeks.isActive = data.numberOfWeeks == 5
-        dots6weeks.isActive = data.numberOfWeeks == 6
-
-        dots.setNeedsLayout()
-        dots.setNeedsDisplay()
+        print("[\(data.name)] configure: \(data.numberOfWeeks)")
+        weeksRatio = CGFloat(data.numberOfWeeks) / 7.0
+        setNeedsLayout()
 
         // asyncKey - to make sure when completion block is called, cell that asked for this data
         // is still a cell that's receiving it
@@ -80,7 +76,7 @@ class MonthBoxCell: ThemeObservingCollectionCell {
         // Load month data async
         getData { [weak self] (asyncKey, bits) in
             guard asyncKey == self?.asyncKey else { return }
-            
+
             self?.dots.data = bits
             DispatchQueue.main.async {
                 self?.dots.setNeedsDisplay()
@@ -89,6 +85,23 @@ class MonthBoxCell: ThemeObservingCollectionCell {
     }
     
     // MARK: - Private helpers
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        let autoLayoutAttributes = super.preferredLayoutAttributesFitting(layoutAttributes)
+        let targetSize = CGSize(width: layoutAttributes.frame.width, height: 0)
+        let autoLayoutSize = contentView.systemLayoutSizeFitting(
+            targetSize,
+            withHorizontalFittingPriority: UILayoutPriority.required,
+            verticalFittingPriority: UILayoutPriority.defaultLow
+        )
+        let autoLayoutFrame = CGRect(
+            origin: autoLayoutAttributes.frame.origin,
+            size: autoLayoutSize
+        )
+        autoLayoutAttributes.frame = autoLayoutFrame
+        print("[\(header.text!)] preferredLayoutAttributesFitting: \(autoLayoutSize)")
+        return autoLayoutAttributes
+    }
     
     func setupViews() {
         dots.lineWidth = Specs.lineWidth
@@ -112,6 +125,13 @@ class MonthBoxCell: ThemeObservingCollectionCell {
     
     override func updateColors() {
         border.layer.borderColor = Theme.main.colors.separator.cgColor
+    }
+    
+    override func layoutSubviews() {
+        print("[\(header.text!)] layoutSubviews: \(weeksRatio)")
+        dotsHeight.constant = dots.bounds.width * weeksRatio
+        super.layoutSubviews()
+        dots.setNeedsDisplay()
     }
 }
 

@@ -31,7 +31,7 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         
         switch chart {
         case .monthlyStickers:
-            chartView = stickersMonthlyBoxChart(with: chart.viewControllerId)
+            chartView = stickersMonthlyChart(with: chart.viewControllerId)
         case .goalStreak:
             chartView = goalStreaksChart(with: chart.viewControllerId)
         }
@@ -45,15 +45,15 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
     
     // MARK: - Private Helpers
     
-    private func stickersMonthlyBoxChart(with id: String) -> StickerMonthlyBoxController? {
-        // Instantiate StickerMonthlyBoxController from the storyboard file
-        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? StickerMonthlyBoxController else {
-            assertionFailure("Failed to initialize StickerMonthlyBoxController")
+    private func stickersMonthlyChart(with id: String) -> StickerMonthlyChartController? {
+        // Instantiate StickerMonthlyChartController from the storyboard file
+        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? StickerMonthlyChartController else {
+            assertionFailure("Failed to initialize StickerMonthlyChartController")
             return nil
         }
 
         // Hook up a presenter and tie it together to a view controller
-        view.presenter = StickerMonthlyBoxPresenter(
+        view.presenter = StickerMonthlyChartPresenter(
             repository: repository,
             stampsListener: Storage.shared.stampsListener(),
             calendar: CalendarHelper.shared,
@@ -63,15 +63,15 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         return view
     }
 
-    private func goalStreaksChart(with id: String) -> GoalStreaksController? {
-        // Instantiate GoalStreaksController from the storyboard file
-        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? GoalStreaksController else {
-            assertionFailure("Failed to initialize GoalStreaksController")
+    private func goalStreaksChart(with id: String) -> GoalStreaksChartController? {
+        // Instantiate GoalStreaksChartController from the storyboard file
+        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? GoalStreaksChartController else {
+            assertionFailure("Failed to initialize GoalStreaksChartController")
             return nil
         }
 
         // Hook up a presenter and tie it together to a view controller
-        view.presenter = GoalStreaksPresenter(
+        view.presenter = GoalStreaksChartPresenter(
             repository: repository,
             awardManager: awardManager,
             stampsListener: Storage.shared.stampsListener(),

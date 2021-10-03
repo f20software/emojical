@@ -15,6 +15,12 @@ class ChartCell: ThemeObservingCollectionCell {
     @IBOutlet weak var plate: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
+    
+    @IBOutlet weak var leadMargin: NSLayoutConstraint!
+    @IBOutlet weak var trailMargin: NSLayoutConstraint!
+    @IBOutlet weak var topMargin: NSLayoutConstraint!
+
+    @IBOutlet weak var icon: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,9 +29,10 @@ class ChartCell: ThemeObservingCollectionCell {
     
     // MARK: - Public view interface
 
-    func configure(for data: String) {
-        title.text = data
-        // subTitle.text = data
+    func configure(for chart: ChartTypeDetails) {
+        title.text = chart.title
+        subTitle.text = chart.subTitle
+        icon.image = chart.icon
     }
 
     // MARK: - Private helpers
@@ -34,6 +41,9 @@ class ChartCell: ThemeObservingCollectionCell {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.backgroundColor = Theme.main.colors.secondaryBackground
         plate.clipsToBounds = true
+        leadMargin.constant = Specs.margin
+        topMargin.constant = Specs.margin
+        trailMargin.constant = Specs.margin
         
         title.textColor = Theme.main.colors.text
         subTitle.textColor = Theme.main.colors.secondaryText
@@ -44,4 +54,10 @@ class ChartCell: ThemeObservingCollectionCell {
         title.font = Theme.main.fonts.listTitle
         subTitle.font = Theme.main.fonts.listBody
     }
+}
+
+fileprivate struct Specs {
+    
+    /// Left/right and bottom margin for the collection view cells
+    static let margin: CGFloat = 20.0
 }

@@ -19,5 +19,5 @@ protocol ChartsView: AnyObject {
     func updateTitle(_ text: String)
 
     /// Load list of charts
-    func loadChartsData(data: [ChartTypeDetails])
+    func loadChartsData(_ data: [ChartType])
 }

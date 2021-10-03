@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum ChartType: Int, Hashable {
     
@@ -17,19 +18,54 @@ enum ChartType: Int, Hashable {
     case goalStreak
 }
 
+/// View model for detail information about chart type
+struct ChartTypeDetails {
+    
+    /// Chart title
+    let title: String?
+    
+    /// Chart subtitle
+    let subTitle: String?
+    
+    /// Icon image
+    let icon: UIImage?
+}
+
+
 /// Convinience properties
 extension ChartType {
     
-    var title: String {
+    /// Returns ChartTypeDetail view model based on ChartType
+    func toDetailModel() -> ChartTypeDetails {
         switch self {
         case .monthlyStickers:
-            return "Monthly Stickers"
+            var imageName = "square.grid.3x3"
+            if #available(iOS 15.0, *) {
+                imageName = "square.grid.3x3.middleright.filled"
+            }
+            
+            return ChartTypeDetails(
+                title: "Monthly Stickers",
+                subTitle: "Sticker usage for a month",
+                icon: UIImage(systemName: imageName)
+            )
             
         case .goalStreak:
-            return "Goals Streaks"
+            var imageName = "waveform.path.ecg.rectangle"
+            if #available(iOS 15.0, *) {
+                imageName = "chart.xyaxis.line"
+            }
+
+            return ChartTypeDetails(
+                title: "Goals Streaks",
+                subTitle: "Goals stats and streaks",
+                icon: UIImage(systemName: imageName)
+            )
         }
+
     }
-    
+
+    /// ViewControllerId to be mapped to storyboard Id
     var viewControllerId: String {
         switch self {
         case .monthlyStickers:

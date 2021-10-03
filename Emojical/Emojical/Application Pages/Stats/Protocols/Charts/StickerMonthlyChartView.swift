@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol StickerMonthlyBoxView: AnyObject {
+protocol StickerMonthlyChartView: AnyObject {
 
     // MARK: - Callbacks
     

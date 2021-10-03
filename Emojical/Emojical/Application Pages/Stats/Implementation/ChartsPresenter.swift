@@ -59,11 +59,6 @@ class ChartsPresenter: ChartsPresenterProtocol {
     
     private func loadViewData() {
         view?.updateTitle("charts_title".localized)
-        view?.loadChartsData(data: data.map {
-            ChartTypeDetails(
-                type: $0,
-                title: $0.title
-            )
-        })
+        view?.loadChartsData(data)
     }
 }

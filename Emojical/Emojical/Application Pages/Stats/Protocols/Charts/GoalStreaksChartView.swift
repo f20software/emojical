@@ -8,10 +8,13 @@
 
 import Foundation
 
-protocol GoalStreaksView: AnyObject {
+protocol GoalStreaksChartView: AnyObject {
+
+    /// User tapped on total/streak counters
+    var onCountersTapped: (() -> Void)? { get set }
 
     // MARK: - Updates
 
     /// Load stats for the goal streaks
-    func loadGoalStreaksData(data: [GoalStreakData2])
+    func loadGoalStreaksData(data: [GoalStreakData2], sortOrder: GoalStreakSortOrder)
 }

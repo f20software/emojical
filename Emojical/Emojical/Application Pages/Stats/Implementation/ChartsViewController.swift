@@ -42,7 +42,6 @@ class ChartsViewController: UIViewController, ChartsView {
         repository = Storage.shared.repository
         presenter = ChartsPresenter(
             repository: repository,
-            calendar: CalendarHelper.shared,
             view: self,
             coordinator: coordinator)
 

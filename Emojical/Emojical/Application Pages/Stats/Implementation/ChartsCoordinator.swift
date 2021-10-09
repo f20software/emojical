@@ -63,7 +63,7 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
     }
 
     private func goalStatsChart(with id: String) -> GoalStatsChartController? {
-        // Instantiate GoalStreaksChartController from the storyboard file
+        // Instantiate GoalStatsChartController from the storyboard file
         guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? GoalStatsChartController else {
             assertionFailure("Failed to initialize GoalStatsChartController")
             return nil

@@ -51,17 +51,6 @@ class StickerMonthlyChartPresenter: ChartPresenterProtocol {
 
         // Load initial set of data
         stamps = repository.allStamps()
-        
-//        // Subscribe to stamp listner in case stamps array ever changes
-//        stampsListener.startListening(onError: { error in
-//            fatalError("Unexpected error: \(error)")
-//        },
-//        onChange: { [weak self] stamps in
-//            guard let self = self else { return }
-//            
-//            self.stamps = self.repository.allStamps().sorted(by: { $0.count > $1.count })
-//            self.loadViewData()
-//        })
     }
     
     /// Called when view about to appear on the screen

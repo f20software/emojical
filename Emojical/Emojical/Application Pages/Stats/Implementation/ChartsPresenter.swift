@@ -14,8 +14,6 @@ class ChartsPresenter: ChartsPresenterProtocol {
     // MARK: - DI
 
     private let repository: DataRepository
-    private let calendar: CalendarHelper
-
     private weak var view: ChartsView?
     private weak var coordinator: ChartsCoordinatorProtocol?
 
@@ -28,12 +26,10 @@ class ChartsPresenter: ChartsPresenterProtocol {
 
     init(
         repository: DataRepository,
-        calendar: CalendarHelper,
         view: ChartsView,
         coordinator: ChartsCoordinatorProtocol
     ) {
         self.repository = repository
-        self.calendar = calendar
         self.view = view
         self.coordinator = coordinator
     }

@@ -27,19 +27,9 @@ class StickerMonthlyChartController: UIViewController, StickerMonthlyChartView {
 
     // MARK: - Lifecycle
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = StickerMonthlyChartPresenter(
-            repository: Storage.shared.repository,
-            stampsListener: Storage.shared.stampsListener(),
-            calendar: CalendarHelper.shared,
-            view: self)
-        
         dataBuilder = CalendarDataBuilder(
             repository: Storage.shared.repository,
             calendar: CalendarHelper.shared
@@ -106,11 +96,6 @@ class StickerMonthlyChartController: UIViewController, StickerMonthlyChartView {
                 self?.cell(for: path, model: model, collectionView: collectionView)
             }
         )
-        
-//        dataSource.supplementaryViewProvider = { [weak self]
-//            (collectionView, kind, indexPath) -> UICollectionReusableView? in
-//            self?.header(for: indexPath, kind: kind, collectionView: collectionView)
-//        }
 
         chart.dataSource = dataSource
         chart.delegate = self
@@ -142,24 +127,12 @@ class StickerMonthlyChartController: UIViewController, StickerMonthlyChartView {
             subitems: [item]
         )
 
-//        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-//            layoutSize: NSCollectionLayoutSize(
-//                widthDimension: .fractionalWidth(1.0),
-//                heightDimension: .estimated(56)),
-//            elementKind: Specs.Cells.header,
-//            alignment: .top
-//        )
-
         let section = NSCollectionLayoutSection(group: group)
-//        section.boundarySupplementaryItems = [sectionHeader]
         section.contentInsets = NSDirectionalEdgeInsets(
             top: Specs.monthBoxesMargin, leading: Specs.monthBoxesMargin,
             bottom: Specs.monthBoxesMargin, trailing: Specs.monthBoxesMargin - 10)
 
-        var layout = UICollectionViewCompositionalLayout(section: section)
-        // var layout = UICollectionViewFlowLayout()
-        
-        return layout
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }
 

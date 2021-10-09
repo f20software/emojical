@@ -55,7 +55,6 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         // Hook up a presenter and tie it together to a view controller
         view.presenter = StickerMonthlyChartPresenter(
             repository: repository,
-            stampsListener: Storage.shared.stampsListener(),
             calendar: CalendarHelper.shared,
             view: view
         )

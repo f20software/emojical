@@ -77,19 +77,9 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
 
     // MARK: - Lifecycle
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = GoalStatsChartPresenter(
-            repository: Storage.shared.repository,
-            awardManager: AwardManager.shared,
-            calendar: CalendarHelper.shared,
-            view: self)
-        
         configureViews()
         presenter.onViewDidLoad()
     }
@@ -107,7 +97,6 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
     /// Load stats for the goal streaks
     func loadGoalsData(data: [GoalStats], sortOrder: GoalStatsSortOrder) {
         var snapshot = NSDiffableDataSourceSnapshot<String, GoalStats>()
-        // var firstTime = (sections.count == 0)
         sections = []
 
         var sorted: [GoalStats] = []

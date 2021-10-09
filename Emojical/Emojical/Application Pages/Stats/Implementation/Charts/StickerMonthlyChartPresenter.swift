@@ -14,7 +14,6 @@ class StickerMonthlyChartPresenter: ChartPresenterProtocol {
     // MARK: - DI
 
     private let repository: DataRepository
-    private let stampsListener: StampsListener
     private let calendar: CalendarHelper
     private weak var view: StickerMonthlyChartView?
     
@@ -33,12 +32,10 @@ class StickerMonthlyChartPresenter: ChartPresenterProtocol {
 
     init(
         repository: DataRepository,
-        stampsListener: StampsListener,
         calendar: CalendarHelper,
         view: StickerMonthlyChartView
     ) {
         self.repository = repository
-        self.stampsListener = stampsListener
         self.calendar = calendar
         self.view = view
         
@@ -55,16 +52,16 @@ class StickerMonthlyChartPresenter: ChartPresenterProtocol {
         // Load initial set of data
         stamps = repository.allStamps()
         
-        // Subscribe to stamp listner in case stamps array ever changes
-        stampsListener.startListening(onError: { error in
-            fatalError("Unexpected error: \(error)")
-        },
-        onChange: { [weak self] stamps in
-            guard let self = self else { return }
-            
-            self.stamps = self.repository.allStamps().sorted(by: { $0.count > $1.count })
-            self.loadViewData()
-        })
+//        // Subscribe to stamp listner in case stamps array ever changes
+//        stampsListener.startListening(onError: { error in
+//            fatalError("Unexpected error: \(error)")
+//        },
+//        onChange: { [weak self] stamps in
+//            guard let self = self else { return }
+//            
+//            self.stamps = self.repository.allStamps().sorted(by: { $0.count > $1.count })
+//            self.loadViewData()
+//        })
     }
     
     /// Called when view about to appear on the screen

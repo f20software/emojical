@@ -66,7 +66,6 @@ class MonthBoxCell: ThemeObservingCollectionCell {
 
         dots.data = data.bitsAsString
         dots.startOffset = data.firstDayOffset
-        print("[\(data.name)] configure: \(data.numberOfWeeks)")
         weeksRatio = CGFloat(data.numberOfWeeks) / 7.0
         setNeedsLayout()
 
@@ -99,7 +98,6 @@ class MonthBoxCell: ThemeObservingCollectionCell {
             size: autoLayoutSize
         )
         autoLayoutAttributes.frame = autoLayoutFrame
-        print("[\(header.text!)] preferredLayoutAttributesFitting: \(autoLayoutSize)")
         return autoLayoutAttributes
     }
     
@@ -128,7 +126,6 @@ class MonthBoxCell: ThemeObservingCollectionCell {
     }
     
     override func layoutSubviews() {
-        print("[\(header.text!)] layoutSubviews: \(weeksRatio)")
         dotsHeight.constant = dots.bounds.width * weeksRatio
         super.layoutSubviews()
         dots.setNeedsDisplay()

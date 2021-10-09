@@ -11,7 +11,7 @@ import Foundation
 protocol GoalStatsChartView: AnyObject {
 
     /// User tapped on total/streak counters
-    var onCountersToggleTapped: (() -> Void)? { get set }
+    var onToggleTapped: (() -> Void)? { get set }
 
     // MARK: - Updates
 

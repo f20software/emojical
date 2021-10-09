@@ -294,6 +294,14 @@
 
 // - Details
 
+"monthly_goal_section_title" = "Monthly Goals";
+
+"monthly_goal_chart_title" = "Last %@ months";
+
+"weekly_goal_section_title" = "Weekly Goals";
+
+"weekly_goal_chart_title" = "Last %@ weeks";
+
 "total_column" = "total";
 
 "streak_column" = "streak";

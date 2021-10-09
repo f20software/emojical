@@ -29,20 +29,19 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
     private var allSections: [Section] = [
         Section(
             period: .month,
-            title: "Monthly Goals".localized,
-            chartTitle: "Last %@ months".localized("\(chartLength)")
+            title: "monthly_goal_section_title".localized,
+            chartTitle: "monthly_goal_chart_title".localized("\(chartLength)")
         ),
         Section(
             period: .week,
-            title: "Weekly Goals".localized,
-            chartTitle: "Last %@ weeks".localized("\(chartLength)")
+            title: "weekly_goal_section_title".localized,
+            chartTitle: "weekly_goal_chart_title".localized("\(chartLength)")
         )
     ]
 
     // MARK: - Outlets
     
     @IBOutlet var stats: UICollectionView!
-    @IBOutlet var toggleButton: UIBarButtonItem!
 
     // MARK: - DI
 
@@ -88,7 +87,6 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
         presenter = GoalStatsChartPresenter(
             repository: Storage.shared.repository,
             awardManager: AwardManager.shared,
-            stampsListener: Storage.shared.stampsListener(),
             calendar: CalendarHelper.shared,
             view: self)
         
@@ -104,11 +102,12 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
     // MARK: - TodayView
     
     /// User tapped on total/streak counters
-    var onCountersToggleTapped: (() -> Void)?
+    var onToggleTapped: (() -> Void)?
 
     /// Load stats for the goal streaks
     func loadGoalsData(data: [GoalStats], sortOrder: GoalStatsSortOrder) {
         var snapshot = NSDiffableDataSourceSnapshot<String, GoalStats>()
+        // var firstTime = (sections.count == 0)
         sections = []
 
         var sorted: [GoalStats] = []
@@ -119,11 +118,11 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
             sorted = data.sorted(by: { $0.streak > $1.streak })
         }
             
-        for reportSetion in allSections {
-            let filteredData = sorted.filter({ $0.period == reportSetion.period })
+        for section in allSections {
+            let filteredData = sorted.filter({ $0.period == section.period })
             if filteredData.count > 0 {
-                snapshot.appendSections([reportSetion.title])
-                sections.append(reportSetion.title)
+                snapshot.appendSections([section.title])
+                sections.append(section.title)
                 snapshot.appendItems(filteredData)
             }
         }
@@ -137,7 +136,7 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
     // MARK: - Actions
     
     @IBAction func toggleButtonTapped(_ sender: Any) {
-        onCountersToggleTapped?()
+        onToggleTapped?()
     }
 
     // MARK: - Private helpers

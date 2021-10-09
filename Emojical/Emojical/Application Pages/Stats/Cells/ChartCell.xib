@@ -30,7 +30,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="5 time a week" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F74-qT-oTK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="5 time a week" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F74-qT-oTK">
                                         <rect key="frame" x="0.0" y="26.5" width="111" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -51,10 +51,10 @@
                             <constraint firstAttribute="trailing" secondItem="W68-us-YD7" secondAttribute="trailing" constant="20" id="2E9-DH-Lps"/>
                             <constraint firstItem="JUk-G8-Nse" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="61R-lT-idr"/>
                             <constraint firstItem="W68-us-YD7" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="8kw-Ak-m3k"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JUk-G8-Nse" secondAttribute="trailing" constant="20" id="CVE-B0-Omq"/>
                             <constraint firstItem="JUk-G8-Nse" firstAttribute="top" secondItem="ChH-rG-WsF" secondAttribute="top" constant="10" id="KyU-Z0-Ovz"/>
                             <constraint firstAttribute="bottom" secondItem="JUk-G8-Nse" secondAttribute="bottom" constant="10" id="NHH-u9-Ghc"/>
                             <constraint firstItem="JUk-G8-Nse" firstAttribute="leading" secondItem="ChH-rG-WsF" secondAttribute="leading" constant="20" id="NOh-aT-59u"/>
+                            <constraint firstItem="W68-us-YD7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JUk-G8-Nse" secondAttribute="trailing" constant="10" id="W2h-WK-JSM"/>
                             <constraint firstItem="W68-us-YD7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ChH-rG-WsF" secondAttribute="top" constant="10" id="kuy-cf-hs0"/>
                         </constraints>
                     </view>

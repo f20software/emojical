@@ -16,6 +16,16 @@ enum GoalStatsSortOrder: Hashable {
     
     /// Sort by streak length
     case streakLength
+    
+    /// Convinience method to iterate through values
+    func next() -> GoalStatsSortOrder {
+        switch self {
+        case .totalCount:
+            return .streakLength
+        case .streakLength:
+            return .totalCount
+        }
+    }
 }
 
 extension GoalStatsSortOrder {

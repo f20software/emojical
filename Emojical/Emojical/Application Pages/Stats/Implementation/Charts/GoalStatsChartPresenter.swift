@@ -15,7 +15,6 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
 
     private let repository: DataRepository
     private let awardManager: AwardManager
-    private let stampsListener: StampsListener
     private let calendar: CalendarHelper
     private weak var view: GoalStatsChartView?
     
@@ -23,9 +22,6 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
     private let dataBuilder: CalendarDataBuilder
 
     // MARK: - State
-
-    /// Copy of all stamps - used to build data model for view to show
-    private var stamps = [Stamp]()
 
     /// Sort order
     private var sort: GoalStatsSortOrder = .streakLength
@@ -35,13 +31,11 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
     init(
         repository: DataRepository,
         awardManager: AwardManager,
-        stampsListener: StampsListener,
         calendar: CalendarHelper,
         view: GoalStatsChartView
     ) {
         self.repository = repository
         self.awardManager = awardManager
-        self.stampsListener = stampsListener
         self.calendar = calendar
         self.view = view
         
@@ -54,20 +48,6 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
     /// Called when view finished initial loading.
     func onViewDidLoad() {
         setupView()
-
-        // Load initial set of data
-        stamps = repository.allStamps()
-        
-        // Subscribe to stamp listner in case stamps array ever changes
-        stampsListener.startListening(onError: { error in
-            fatalError("Unexpected error: \(error)")
-        },
-        onChange: { [weak self] stamps in
-            guard let self = self else { return }
-            
-            self.stamps = self.repository.allStamps()
-            self.loadViewData()
-        })
     }
     
     /// Called when view about to appear on the screen
@@ -78,12 +58,8 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
-        view?.onCountersToggleTapped = {
-            if self.sort == .totalCount {
-                self.sort = .streakLength
-            } else {
-                self.sort = .totalCount
-            }
+        view?.onToggleTapped = {
+            self.sort = self.sort.next()
             self.loadViewData()
         }
     }
@@ -107,7 +83,7 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
                 ),
                 chart: history?.chart
             )
-        })// .sorted(by: { $0.streak > $1.streak })
+        })
         view?.loadGoalsData(data: data, sortOrder: sort)
     }
 }

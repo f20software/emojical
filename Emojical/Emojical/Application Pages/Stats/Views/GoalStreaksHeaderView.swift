@@ -1,14 +1,15 @@
 //
-//  CollectionHeaderView.swift
+//  GoalStreaksHeaderView.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 2/6/21.
+//  Created by Vladimir Svidersky on 10/9/21.
 //  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import UIKit
 
-/// This view is used to display section header for Stickers/Goals, Recap and Examples collection views
+/// This view is used to display section header in Goal Stats chart - it includes three labels - the main section header,
+/// and two separate column headers
 class GoalStreaksHeaderView: UICollectionReusableView {
 
     //
@@ -38,6 +39,7 @@ class GoalStreaksHeaderView: UICollectionReusableView {
         col2Header.text = col2HeaderText
     }
 
+    /// Hacky way to update single column 1 header, since it's used to display chart mode
     func updateCol1(text: String) {
         col1Header.text = text
     }
@@ -51,7 +53,6 @@ class GoalStreaksHeaderView: UICollectionReusableView {
             l.font = Theme.main.fonts.sectionHeaderTitle
             l.textColor = Theme.main.colors.sectionHeaderText
         }
-        
 
         NSLayoutConstraint.activate([
             header.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
@@ -71,9 +72,18 @@ class GoalStreaksHeaderView: UICollectionReusableView {
 // MARK: - Specs
 fileprivate struct Specs {
 
-    /// Left/right and bottom margin for the collection view cells
+    //
+    // | - Header ------------------ |
+    // | - col1 Header - col2 Header |
+    //
+
+    /// Top margin from the header label
     static let topMargin: CGFloat = 15.0
+    
+    /// Bottom margin from the column headers label
     static let bottomMargin: CGFloat = 5.0
+    
+    /// Margin between header and column headers
     static let headersGap: CGFloat = 5.0
 }
 

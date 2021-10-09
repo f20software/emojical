@@ -116,7 +116,7 @@ class WeeklyAwardsView : UIView {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 0,
+            top: 0, leading: Specs.awardsLeadingMargin,
             bottom: 0, trailing: 0)
 
         return UICollectionViewCompositionalLayout(section: section)
@@ -168,6 +168,9 @@ fileprivate struct Specs {
     
     /// Margin around award icons
     static let awardMargin: CGFloat = 3.0
+    
+    /// Margin before first award icon
+    static let awardsLeadingMargin: CGFloat = 16.0
     
     /// Margin from the left/right of the award strip
     static let awardStripHorizontalMargin: CGFloat = 5.0

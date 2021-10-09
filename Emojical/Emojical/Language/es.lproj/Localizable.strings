@@ -136,7 +136,7 @@
 
 "goals_library_title" = "Ejemplos de metas";
 
-"stats_title" = "Estadísticas";
+"charts_title" = "Gráficos";
 
 "options_title" = "Opciones";
 
@@ -275,4 +275,35 @@
 "restart_button" = "Reiniciar";
 
 "sticker_style_restart" = "El estilo de las pegatinas se cambiará después de que vuelva a iniciar la aplicación.";
+
+// Statistics and Charts
+
+// - List of Chart
+
+"chart_title_goals" = "Metas";
+
+"chart_subtitle_goals" = "Total de metas, rachas e historial";
+
+"chart_title_monthly_stickers" = "Pegatinas mensuales";
+
+"chart_subtitle_monthly_stickers" = "Uso de pegatinas durante un mes";
+
+// - Details
+
+"monthly_goal_section_title" = "Metas mensuales";
+
+"monthly_goal_chart_title" = "Últimos %@ meses";
+
+"weekly_goal_section_title" = "Metas semanales";
+
+"weekly_goal_chart_title" = "Últimas %@ semanas";
+
+"total_column" = "total";
+
+"streak_column" = "racha";
+
+"goal_totals_title" = "Totales de metas";
+
+"goal_streaks_title" = "Rachas de metas";
+
 

@@ -1,14 +1,14 @@
 //
-//  StatsPresenterProtocol.swift
+//  ChartPresenterProtocol.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/09/20.
-//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//  Created by Vladimir Svidersky on 6/20/21.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import Foundation
 
-protocol StatsPresenterProtocol: AnyObject {
+protocol ChartPresenterProtocol: AnyObject {
     
     /// Called when view finished initial loading
     func onViewDidLoad()

@@ -81,6 +81,7 @@ class DayColumnView : UIView {
         column.delegate = self
         column.collectionViewLayout = dayColumnLayout()
         column.alwaysBounceVertical = false
+        column.isScrollEnabled = false
         column.backgroundColor = UIColor.clear
         
         tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))

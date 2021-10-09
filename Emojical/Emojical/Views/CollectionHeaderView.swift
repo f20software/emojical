@@ -27,7 +27,7 @@ class CollectionHeaderView: UICollectionReusableView {
     }
     
     func setupView() {
-        backgroundColor = .systemBackground
+        backgroundColor = Theme.main.colors.background
         addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
@@ -38,7 +38,7 @@ class CollectionHeaderView: UICollectionReusableView {
             label.topAnchor.constraint(equalTo: topAnchor, constant: Specs.margin),
             label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Specs.margin)
         ])
-        
+
         label.font = Theme.main.fonts.sectionHeaderTitle
         label.textColor = Theme.main.colors.sectionHeaderText
     }

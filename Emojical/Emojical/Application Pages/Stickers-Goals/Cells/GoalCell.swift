@@ -17,7 +17,7 @@ class GoalCell: ThemeObservingCollectionCell {
     @IBOutlet weak var subTitle: UILabel!
     @IBOutlet weak var goal: GoalIconView!
     @IBOutlet weak var award: AwardIconView!
-    @IBOutlet weak var count: UILabel!
+    @IBOutlet weak var count: UILabelWithContentInset!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,10 +51,9 @@ class GoalCell: ThemeObservingCollectionCell {
         
         
         if data.count > 0 {
-            count.text = "  \(data.count)  "
+            count.text = "\(data.count)"
             count.isHidden = false
         } else {
-            count.text = nil
             count.isHidden = true
         }
         
@@ -67,16 +66,18 @@ class GoalCell: ThemeObservingCollectionCell {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true
         
-        count.layer.cornerRadius = count.font.pointSize * 0.6
-        count.clipsToBounds = true
-
         goal.progressLineWidth = Theme.main.specs.progressWidthSmall
         goal.progressLineGap = Theme.main.specs.progressGapSmall
         award.borderWidth = Theme.main.specs.progressWidthSmall
 
         plate.backgroundColor = Theme.main.colors.secondaryBackground
+
         count.backgroundColor = Theme.main.colors.tint
         count.textColor = Theme.main.colors.background
+        count.contentInsets = Theme.main.specs.counterContentInsets
+        count.layer.cornerRadius = Theme.main.specs.platesCornerRadius
+        count.clipsToBounds = true
+
         title.textColor = Theme.main.colors.text
         subTitle.textColor = Theme.main.colors.secondaryText
         updateFonts()
@@ -85,5 +86,6 @@ class GoalCell: ThemeObservingCollectionCell {
     override func updateFonts() {
         title.font = Theme.main.fonts.listTitle
         subTitle.font = Theme.main.fonts.listBody
+        count.font = Theme.main.fonts.statsNumbers
     }
 }

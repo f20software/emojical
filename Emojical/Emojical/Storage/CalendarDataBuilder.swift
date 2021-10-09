@@ -100,25 +100,6 @@ class CalendarDataBuilder {
 
     // MARK: - Stats page data building
     
-    /// Retrieve weekly stats for specific week for list of stamps - synchroniously
-    func weeklyStats(for week: CalendarHelper.Week, allStamps: [Stamp]) -> [WeekLineData] {
-        let diary = repository.diaryForDateInterval(from: week.firstDay, to: week.lastDay)
-        return allStamps.compactMap({
-            guard let stampId = $0.id else { return nil }
-            let bits = (0..<7).map({
-                let date = week.firstDay.byAddingDays($0)
-                return diary.contains(where: {
-                    $0.date.databaseKey == date.databaseKey && $0.stampId == stampId }) ? "1" : "0"
-            }).joined(separator: "|")
-            
-            return WeekLineData(
-                stampId: stampId,
-                label: $0.label,
-                color: $0.color,
-                bitsAsString: bits)
-        })
-    }
-    
     /// Creates Monthly stats empty data - actual statistics will be loaded asynchrouniously 
     func emptyStatsData(for month: CalendarHelper.Month, stamps: [Stamp]) -> [MonthBoxData] {
         let weekdayHeaders = CalendarHelper.Week(Date()).weekdayLettersForWeek()
@@ -140,33 +121,6 @@ class CalendarDataBuilder {
                 firstDayKey: month.firstDay.databaseKey,
                 numberOfWeeks: month.numberOfWeeks,
                 firstDayOffset: month.firstIndex,
-                bitsAsString: bits
-            )
-        })
-    }
-    
-    /// Creates Year stats empty data - actual statistics will be loaded asynchrouniously
-    func emptyStatsData(for year: CalendarHelper.Year, stamps: [Stamp]) -> [YearBoxData] {
-        let weekdayHeaders = CalendarHelper.Week(Date()).weekdayLettersForWeek()
-        
-        return stamps.compactMap({
-            guard let stampId = $0.id else { return nil }
-
-            // Create empty bits array for number of days in the month. Actual data will
-            // be loaded asynchroniously using `monthlyStatsForStampAsync` call
-            let bits = String(repeating: "0|", count: year.numberOfDays-1) + "0"
-
-            return YearBoxData(
-                primaryKey: UUID(),
-                stampId: stampId,
-                label: $0.label,
-                name: $0.name,
-                color: $0.color,
-                weekdayHeaders: weekdayHeaders,
-                monthHeaders: [""],
-                year: year.year,
-                numberOfWeeks: year.numberOfWeeks,
-                firstDayOffset: year.firstIndex,
                 bitsAsString: bits
             )
         })
@@ -299,7 +253,6 @@ class CalendarDataBuilder {
                     }
                     streakRunning = false
                 }
-                print("streak \(streak)")
                 week = CalendarHelper.Week(week.firstDay.byAddingWeek(-1))
             }
             

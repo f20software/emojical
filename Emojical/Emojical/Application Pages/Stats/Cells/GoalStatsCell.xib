@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoalStatsCell" id="gTV-IL-0wX" customClass="GoalStatsCell" customModule="Emojical" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="68"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="68"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wM8-QJ-w7J">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="68"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zc8-JC-L0L" customClass="GoalIconView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="10" width="48" height="48"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="oKJ-Hp-Voz"/>
+                                    <constraint firstAttribute="width" constant="48" id="ruZ-4w-Cyu"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Le-QG-hdi" customClass="AwardIconView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="10" width="48" height="48"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fe-De-JQs" customClass="UILabelWithContentInset" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="36.5" y="5" width="23" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.1764705882" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDI-Xu-mfv">
+                                <rect key="frame" x="73" y="4" width="327" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yme-eZ-UDs" customClass="GoalChartView" customModule="Emojical" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="8" width="317" height="44"/>
+                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstItem="yme-eZ-UDs" firstAttribute="top" secondItem="WDI-Xu-mfv" secondAttribute="top" constant="8" id="Bdk-YT-tYv"/>
+                                    <constraint firstAttribute="bottom" secondItem="yme-eZ-UDs" secondAttribute="bottom" constant="8" id="BsG-Xv-zG6"/>
+                                    <constraint firstItem="yme-eZ-UDs" firstAttribute="leading" secondItem="WDI-Xu-mfv" secondAttribute="leading" constant="5" id="d8E-nS-Lfi"/>
+                                    <constraint firstAttribute="trailing" secondItem="yme-eZ-UDs" secondAttribute="trailing" constant="5" id="eT5-6f-s1E"/>
+                                    <constraint firstAttribute="height" constant="60" id="r90-Ka-xyo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="top" secondItem="7Le-QG-hdi" secondAttribute="top" id="3cq-ES-K7r"/>
+                            <constraint firstItem="WDI-Xu-mfv" firstAttribute="leading" secondItem="7Le-QG-hdi" secondAttribute="trailing" constant="25" id="4v1-sI-qO5"/>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="top" secondItem="wM8-QJ-w7J" secondAttribute="top" priority="999" constant="20" id="HSf-Hj-P9R"/>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="trailing" secondItem="7Le-QG-hdi" secondAttribute="trailing" id="Has-32-Mba"/>
+                            <constraint firstAttribute="trailing" secondItem="WDI-Xu-mfv" secondAttribute="trailing" id="Icg-Cs-IHD"/>
+                            <constraint firstItem="WDI-Xu-mfv" firstAttribute="centerY" secondItem="wM8-QJ-w7J" secondAttribute="centerY" id="L7O-vC-qQw"/>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="leading" secondItem="wM8-QJ-w7J" secondAttribute="leading" id="QhU-3P-hZz"/>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="centerY" secondItem="wM8-QJ-w7J" secondAttribute="centerY" id="VPv-xe-ZcC"/>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="top" secondItem="7Fe-De-JQs" secondAttribute="top" constant="5" id="YzD-9f-HJR"/>
+                            <constraint firstItem="7Le-QG-hdi" firstAttribute="trailing" secondItem="7Fe-De-JQs" secondAttribute="centerX" priority="999" id="b7f-ea-fZr"/>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="bottom" secondItem="7Le-QG-hdi" secondAttribute="bottom" id="gHr-Di-TaI"/>
+                            <constraint firstItem="zc8-JC-L0L" firstAttribute="leading" secondItem="7Le-QG-hdi" secondAttribute="leading" id="uRU-9C-yPT"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="wM8-QJ-w7J" secondAttribute="bottom" id="FOB-4X-PLv"/>
+                <constraint firstItem="wM8-QJ-w7J" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MHP-Zo-Ab8"/>
+                <constraint firstItem="wM8-QJ-w7J" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qXD-lQ-hSw"/>
+                <constraint firstAttribute="trailing" secondItem="wM8-QJ-w7J" secondAttribute="trailing" id="zjX-Cn-rWi"/>
+            </constraints>
+            <size key="customSize" width="400" height="82"/>
+            <connections>
+                <outlet property="award" destination="7Le-QG-hdi" id="6D3-55-6Ax"/>
+                <outlet property="chart" destination="yme-eZ-UDs" id="eC1-QY-FdC"/>
+                <outlet property="chartBackground" destination="WDI-Xu-mfv" id="blz-hq-9vc"/>
+                <outlet property="counter" destination="7Fe-De-JQs" id="oyE-4d-QTy"/>
+                <outlet property="goal" destination="zc8-JC-L0L" id="Zro-X5-rHo"/>
+            </connections>
+            <point key="canvasLocation" x="-59.420289855072468" y="-106.47321428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

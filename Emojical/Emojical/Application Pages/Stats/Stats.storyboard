@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,46 +15,30 @@
                 <navigationController id="WLj-Ww-rrq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Stats" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="EZq-nL-bxE"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9Zl-nN-HyQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Zl-nN-HyQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="tvO-pK-EYQ" kind="relationship" relationship="rootViewController" id="peq-Og-z1J"/>
+                        <segue destination="PQ8-58-VpG" kind="relationship" relationship="rootViewController" id="rhx-4K-dZ2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ukg-0g-ahK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="859" y="-333"/>
         </scene>
-        <!--Stats-->
-        <scene sceneID="GBJ-Bt-waW">
+        <!--Charts View Controller-->
+        <scene sceneID="OA4-Ic-QTU">
             <objects>
-                <viewController id="tvO-pK-EYQ" customClass="StatsViewController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kjo-hp-mne">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                <viewController id="PQ8-58-VpG" customClass="ChartsViewController" customModule="Emojical" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="buq-Fu-eYd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iza-3Z-HNb">
-                                <rect key="frame" x="80" y="16" width="254" height="32"/>
-                                <segments>
-                                    <segment title="Week"/>
-                                    <segment title="Month"/>
-                                </segments>
-                                <connections>
-                                    <action selector="modeChanged:" destination="tvO-pK-EYQ" eventType="valueChanged" id="fnW-2K-BJx"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 19 - 26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXJ-0G-7yc">
-                                <rect key="frame" x="20" y="63" width="131.5" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NcW-C8-Csq">
-                                <rect key="frame" x="0.0" y="100" width="414" height="625"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kzH-xz-h10" userLabel="Charts">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e25-Wg-mP0">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YoX-Ql-qy9">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -62,51 +47,134 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="JNE-f6-5U0"/>
+                        <viewLayoutGuide key="safeArea" id="CQa-dj-iiT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iza-3Z-HNb" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="80" id="J4m-e2-9Hh"/>
-                            <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="iza-3Z-HNb" secondAttribute="trailing" constant="80" id="PgC-zj-l3Y"/>
-                            <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="NcW-C8-Csq" secondAttribute="trailing" id="W2L-dB-PRn"/>
-                            <constraint firstItem="YXJ-0G-7yc" firstAttribute="top" secondItem="iza-3Z-HNb" secondAttribute="bottom" constant="16" id="X7Y-67-2zN"/>
-                            <constraint firstItem="iza-3Z-HNb" firstAttribute="top" secondItem="JNE-f6-5U0" secondAttribute="top" constant="16" id="XMX-4g-Noq"/>
-                            <constraint firstItem="NcW-C8-Csq" firstAttribute="top" secondItem="YXJ-0G-7yc" secondAttribute="bottom" constant="8" symbolic="YES" id="eQa-p3-8fh"/>
-                            <constraint firstItem="YXJ-0G-7yc" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="20" id="kOL-fe-afs"/>
-                            <constraint firstItem="NcW-C8-Csq" firstAttribute="bottom" secondItem="JNE-f6-5U0" secondAttribute="bottom" id="lbF-Dl-OsC"/>
-                            <constraint firstItem="NcW-C8-Csq" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" id="mGr-Eg-KBU"/>
+                            <constraint firstItem="kzH-xz-h10" firstAttribute="top" secondItem="CQa-dj-iiT" secondAttribute="top" id="48G-Si-vc3"/>
+                            <constraint firstItem="kzH-xz-h10" firstAttribute="leading" secondItem="CQa-dj-iiT" secondAttribute="leading" id="hAg-WG-qYb"/>
+                            <constraint firstItem="CQa-dj-iiT" firstAttribute="trailing" secondItem="kzH-xz-h10" secondAttribute="trailing" id="vbF-Vy-iHB"/>
+                            <constraint firstItem="kzH-xz-h10" firstAttribute="bottom" secondItem="CQa-dj-iiT" secondAttribute="bottom" id="zC5-Ub-X63"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stats" id="yvL-kP-cnY">
-                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="YEL-wK-uce">
-                            <connections>
-                                <action selector="prevButtonTapped:" destination="tvO-pK-EYQ" id="RZd-am-4s6"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.right" catalog="system" id="ep7-Zj-mBI">
-                            <connections>
-                                <action selector="nextButtonTapped:" destination="tvO-pK-EYQ" id="A46-Pv-ugR"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" id="s6B-g2-aUC">
+                        <nil key="title"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="header" destination="YXJ-0G-7yc" id="bb7-dp-8xH"/>
-                        <outlet property="modeSelector" destination="iza-3Z-HNb" id="Id6-or-fvv"/>
-                        <outlet property="nextButton" destination="ep7-Zj-mBI" id="WYu-5Y-dOU"/>
-                        <outlet property="prevButton" destination="YEL-wK-uce" id="cYf-Yr-qvn"/>
-                        <outlet property="stats" destination="NcW-C8-Csq" id="DXf-hy-FXM"/>
+                        <outlet property="charts" destination="kzH-xz-h10" id="fmN-Pt-sTp"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e2j-Q2-fD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kJ4-EW-yC0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1715.9420289855075" y="-333.48214285714283"/>
+            <point key="canvasLocation" x="1788" y="-333"/>
+        </scene>
+        <!--August 2021-->
+        <scene sceneID="aH8-rg-P9K">
+            <objects>
+                <viewController storyboardIdentifier="MonthlyStickers" id="uA4-BB-MTf" customClass="StickerMonthlyChartController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6mK-Qx-eja">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JFL-O5-p3b" userLabel="Charts">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6LM-Io-occ">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CtH-Mf-ny5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JFL-O5-p3b" firstAttribute="top" secondItem="CtH-Mf-ny5" secondAttribute="top" id="2SB-J7-Veg"/>
+                            <constraint firstItem="CtH-Mf-ny5" firstAttribute="trailing" secondItem="JFL-O5-p3b" secondAttribute="trailing" id="5N6-hR-O47"/>
+                            <constraint firstItem="JFL-O5-p3b" firstAttribute="leading" secondItem="CtH-Mf-ny5" secondAttribute="leading" id="Ko1-HA-c3W"/>
+                            <constraint firstItem="JFL-O5-p3b" firstAttribute="bottom" secondItem="CtH-Mf-ny5" secondAttribute="bottom" id="YPN-Eq-B0N"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="August 2021" id="ll8-zl-Zqj">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Next" id="ehW-kM-V4J">
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="uA4-BB-MTf" id="Ljl-a2-sOf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Prev" id="4sK-Nm-VlT">
+                                <connections>
+                                    <action selector="prevButtonTapped:" destination="uA4-BB-MTf" id="rak-Pu-Ylg"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="chart" destination="JFL-O5-p3b" id="JfD-Un-9Ij"/>
+                        <outlet property="nextButton" destination="ehW-kM-V4J" id="DmF-R3-xwq"/>
+                        <outlet property="prevButton" destination="4sK-Nm-VlT" id="A88-sO-uwF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wyF-lX-kru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2629" y="-609"/>
+        </scene>
+        <!--Goal Streaks-->
+        <scene sceneID="Jl0-rb-Kjp">
+            <objects>
+                <viewController storyboardIdentifier="GoalStreaks" id="TeE-Rx-vE7" customClass="GoalStatsChartController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ykr-8c-MSG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="29S-Sd-CX4" userLabel="Charts">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VrX-Se-jxA">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MlZ-kH-v9b"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="29S-Sd-CX4" firstAttribute="leading" secondItem="MlZ-kH-v9b" secondAttribute="leading" id="24m-OH-gvx"/>
+                            <constraint firstItem="MlZ-kH-v9b" firstAttribute="trailing" secondItem="29S-Sd-CX4" secondAttribute="trailing" id="2Xf-Cy-Ttb"/>
+                            <constraint firstItem="29S-Sd-CX4" firstAttribute="bottom" secondItem="MlZ-kH-v9b" secondAttribute="bottom" id="IrT-Iw-OhD"/>
+                            <constraint firstItem="29S-Sd-CX4" firstAttribute="top" secondItem="MlZ-kH-v9b" secondAttribute="top" id="ig8-Bd-rXe"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Goal Streaks" id="gNb-aU-QFd">
+                        <barButtonItem key="rightBarButtonItem" image="switch.2" catalog="system" id="nUZ-L7-dqf">
+                            <connections>
+                                <action selector="toggleButtonTapped:" destination="TeE-Rx-vE7" id="1Zp-R0-agj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="stats" destination="29S-Sd-CX4" id="IM4-1S-RcU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VKT-mA-H9D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2629" y="65"/>
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
+        <image name="switch.2" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

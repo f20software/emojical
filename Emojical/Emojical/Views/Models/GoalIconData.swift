@@ -11,6 +11,7 @@ import UIKit
 
 /// View model to show Goal in progress icon
 struct GoalIconData {
+    let goalId: Int64?
     let emoji: String?
     let backgroundColor: UIColor
     let direction: Direction
@@ -29,6 +30,7 @@ extension GoalIconData {
             if progress >= goal.limit {
                 // You got it - should match award render mode
                 self.init(
+                    goalId: goal.id,
                     emoji: stamp?.label,
                     backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: .positive,
@@ -39,6 +41,7 @@ extension GoalIconData {
             } else {
                 // Still have some work to do
                 self.init(
+                    goalId: goal.id,
                     emoji: stamp?.label,
                     backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: .positive,
@@ -53,6 +56,7 @@ extension GoalIconData {
             if progress > goal.limit {
                 // Busted
                 self.init(
+                    goalId: goal.id,
                     emoji: stamp?.label,
                     backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: .negative,
@@ -66,6 +70,7 @@ extension GoalIconData {
                     (1.0 - Specs.zeroNegativeProgressMock) :
                     (Float(goal.limit - progress) / Float(goal.limit) + Specs.zeroProgressMock)
                 self.init(
+                    goalId: goal.id,
                     emoji: stamp?.label,
                     backgroundColor: (stamp?.color ?? Theme.main.colors.tint).withAlphaComponent(0.3),
                     direction: .negative,

@@ -96,7 +96,7 @@ class GoalStatsCell: UICollectionViewCell {
         award.borderWidth = Theme.main.specs.progressWidthSmall
 
         counter.font = Theme.main.fonts.statsNumbers
-        counter.contentInsets = Specs.counterContentInsets
+        counter.contentInsets = Theme.main.specs.counterContentInsets
         counter.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         counter.clipsToBounds = true
 
@@ -121,9 +121,6 @@ class GoalStatsCell: UICollectionViewCell {
 
 // MARK: - Specs
 fileprivate struct Specs {
-    
-    /// Total and streak counters content insets
-    static let counterContentInsets = UIEdgeInsets.init(top: 3, left: 5, bottom: 3, right: 5)
     
     /// History chart line width
     static let chartLineWidth: CGFloat = 2.5

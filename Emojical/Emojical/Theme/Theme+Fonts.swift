@@ -60,11 +60,6 @@ extension Theme {
         }()
 
         /// Section header title for stats screen
-        lazy var statsSectionHeaderTitle: UIFont = {
-            font(ofSize: 22, weight: .bold, style: .title1)
-        }()
-
-        /// Section header title for stats screen
         lazy var statsNumbers: UIFont = {
             font(ofSize: 14, weight: .bold, style: .body)
         }()

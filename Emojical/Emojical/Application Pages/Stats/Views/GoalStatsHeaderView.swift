@@ -34,14 +34,14 @@ class GoalStatsHeaderView: UICollectionReusableView {
         col1HeaderText: String?,
         col2HeaderText: String?
     ) {
-        header.text = headerText
-        col1Header.text = col1HeaderText
-        col2Header.text = col2HeaderText
+        header.text = headerText?.uppercased()
+        col1Header.text = col1HeaderText?.uppercased()
+        col2Header.text = col2HeaderText?.uppercased()
     }
 
     /// Hacky way to update single column 1 header, since it's used to display chart mode
-    func updateCol1(text: String) {
-        col1Header.text = text
+    func updateCol1(text: String?) {
+        col1Header.text = text?.uppercased()
     }
     
     func setupView() {

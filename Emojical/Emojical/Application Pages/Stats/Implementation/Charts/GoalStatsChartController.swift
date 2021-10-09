@@ -201,9 +201,9 @@ extension GoalStatsChartController: UICollectionViewDelegate {
             for: path) as? GoalStatsHeaderView else { return UICollectionReusableView() }
 
         header.configure(
-            headerText: sections[path.section].uppercased(),
-            col1HeaderText: _sortOrder.columnTitle.uppercased(),
-            col2HeaderText: allSections.first(where: { $0.title == sections[path.section] })?.chartTitle.uppercased()
+            headerText: sections[path.section],
+            col1HeaderText: _sortOrder.columnTitle,
+            col2HeaderText: allSections.first(where: { $0.title == sections[path.section] })?.chartTitle
         )
         return header
     }

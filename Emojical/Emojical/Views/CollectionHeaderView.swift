@@ -22,13 +22,7 @@ class CollectionHeaderView: UICollectionReusableView {
         fatalError()
     }
     
-    func configure(
-        text: String,
-        font: UIFont = Theme.main.fonts.sectionHeaderTitle,
-        textColor: UIColor = Theme.main.colors.sectionHeaderText
-    ) {
-        label.font = font
-        label.textColor = textColor
+    func configure(text: String) {
         label.text = text
     }
     
@@ -44,6 +38,9 @@ class CollectionHeaderView: UICollectionReusableView {
             label.topAnchor.constraint(equalTo: topAnchor, constant: Specs.margin),
             label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Specs.margin)
         ])
+
+        label.font = Theme.main.fonts.sectionHeaderTitle
+        label.textColor = Theme.main.colors.sectionHeaderText
     }
 }
 

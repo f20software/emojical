@@ -32,7 +32,7 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         switch chart {
         case .monthlyStickers:
             chartView = stickersMonthlyChart(with: chart.viewControllerId)
-        case .goalStreak:
+        case .goals:
             chartView = goalStreaksChart(with: chart.viewControllerId)
         }
         
@@ -63,15 +63,15 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         return view
     }
 
-    private func goalStreaksChart(with id: String) -> GoalStreaksChartController? {
+    private func goalStreaksChart(with id: String) -> GoalStatsChartController? {
         // Instantiate GoalStreaksChartController from the storyboard file
-        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? GoalStreaksChartController else {
+        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? GoalStatsChartController else {
             assertionFailure("Failed to initialize GoalStreaksChartController")
             return nil
         }
 
         // Hook up a presenter and tie it together to a view controller
-        view.presenter = GoalStreaksChartPresenter(
+        view.presenter = GoalStatsChartPresenter(
             repository: repository,
             awardManager: awardManager,
             stampsListener: Storage.shared.stampsListener(),

@@ -1,5 +1,5 @@
 //
-//  GoalStreaksView.swift
+//  GoalStatsChartView.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 9/19/21.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol GoalStreaksChartView: AnyObject {
+protocol GoalStatsChartView: AnyObject {
 
     /// User tapped on total/streak counters
-    var onCountersTapped: (() -> Void)? { get set }
+    var onCountersToggleTapped: (() -> Void)? { get set }
 
     // MARK: - Updates
 
     /// Load stats for the goal streaks
-    func loadGoalStreaksData(data: [GoalStreakData2], sortOrder: GoalStreakSortOrder)
+    func loadGoalsData(data: [GoalStats], sortOrder: GoalStatsSortOrder)
 }

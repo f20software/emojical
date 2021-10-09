@@ -22,7 +22,7 @@ class ChartsPresenter: ChartsPresenterProtocol {
     // MARK: - State
     
     /// This list is baked in
-    private let data: [ChartType] = [.monthlyStickers, .goalStreak]
+    private let data: [ChartType] = [.monthlyStickers, .goals]
 
     // MARK: - Lifecycle
 

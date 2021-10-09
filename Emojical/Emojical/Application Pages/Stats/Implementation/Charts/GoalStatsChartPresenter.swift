@@ -1,5 +1,5 @@
 //
-//  GoalStreaksChartPresenter.swift
+//  GoalStatsChartPresenter.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 9/19/21.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GoalStreaksChartPresenter: ChartPresenterProtocol {
+class GoalStatsChartPresenter: ChartPresenterProtocol {
 
     // MARK: - DI
 
@@ -17,7 +17,7 @@ class GoalStreaksChartPresenter: ChartPresenterProtocol {
     private let awardManager: AwardManager
     private let stampsListener: StampsListener
     private let calendar: CalendarHelper
-    private weak var view: GoalStreaksChartView?
+    private weak var view: GoalStatsChartView?
     
     // Private instance of the data builder
     private let dataBuilder: CalendarDataBuilder
@@ -28,10 +28,7 @@ class GoalStreaksChartPresenter: ChartPresenterProtocol {
     private var stamps = [Stamp]()
 
     /// Sort order
-    private var sort: GoalStreakSortOrder = .totalCount
-
-    /// Selected month
-    private var selectedMonth = CalendarHelper.Month(Date().byAddingDays(-20))
+    private var sort: GoalStatsSortOrder = .streakLength
 
     // MARK: - Lifecycle
 
@@ -40,7 +37,7 @@ class GoalStreaksChartPresenter: ChartPresenterProtocol {
         awardManager: AwardManager,
         stampsListener: StampsListener,
         calendar: CalendarHelper,
-        view: GoalStreaksChartView
+        view: GoalStatsChartView
     ) {
         self.repository = repository
         self.awardManager = awardManager
@@ -81,7 +78,7 @@ class GoalStreaksChartPresenter: ChartPresenterProtocol {
     // MARK: - Private helpers
 
     private func setupView() {
-        view?.onCountersTapped = {
+        view?.onCountersToggleTapped = {
             if self.sort == .totalCount {
                 self.sort = .streakLength
             } else {
@@ -92,13 +89,13 @@ class GoalStreaksChartPresenter: ChartPresenterProtocol {
     }
     
     private func loadViewData() {
-        let data: [GoalStreakData2] = repository.allGoals().compactMap({
+        let data: [GoalStats] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }
 
             let stamp = self.repository.stampBy(id: $0.stamps.first)
             let history = self.dataBuilder.historyFor(goal: goalId, limit: 12)
             
-            return GoalStreakData2(
+            return GoalStats(
                 goalId: goalId,
                 period: $0.period,
                 count: $0.count,
@@ -107,16 +104,10 @@ class GoalStreaksChartPresenter: ChartPresenterProtocol {
                     stamp: stamp,
                     goal: $0,
                     progress: self.awardManager.currentProgressFor($0)
-                )
+                ),
+                chart: history?.chart
             )
         })// .sorted(by: { $0.streak > $1.streak })
-        view?.loadGoalStreaksData(data: data, sortOrder: sort)
-    }
-    
-    // Move today's date one week to the past or one week to the future
-    private func advancePeriod(by delta: Int) {
-        selectedMonth = CalendarHelper.Month(selectedMonth.firstDay.byAddingMonth(delta))
-        // Update view
-        loadViewData()
+        view?.loadGoalsData(data: data, sortOrder: sort)
     }
 }

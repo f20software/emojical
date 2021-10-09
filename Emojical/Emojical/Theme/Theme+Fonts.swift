@@ -66,7 +66,7 @@ extension Theme {
 
         /// Section header title for stats screen
         lazy var statsNumbers: UIFont = {
-            font(ofSize: 18, weight: .bold, style: .body)
+            font(ofSize: 14, weight: .bold, style: .body)
         }()
 
         /// Returns a base font scaled according to current system font size.

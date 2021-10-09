@@ -14,8 +14,8 @@ enum ChartType: Int, Hashable {
     /// Monthly stats by sticker
     case monthlyStickers
 
-    /// List of goals with their streaks
-    case goalStreak
+    /// List of goals with their total / streaks numbers
+    case goals
 }
 
 /// View model for detail information about chart type
@@ -45,20 +45,20 @@ extension ChartType {
             }
             
             return ChartTypeDetails(
-                title: "Monthly Stickers",
-                subTitle: "Sticker usage for a month",
+                title: "chart_title_monthly_stickers".localized,
+                subTitle: "chart_subtitle_monthly_stickers".localized,
                 icon: UIImage(systemName: imageName)
             )
             
-        case .goalStreak:
+        case .goals:
             var imageName = "waveform.path.ecg.rectangle"
             if #available(iOS 15.0, *) {
                 imageName = "chart.xyaxis.line"
             }
 
             return ChartTypeDetails(
-                title: "Goals Streaks",
-                subTitle: "Goals stats and streaks",
+                title: "chart_title_goals".localized,
+                subTitle: "chart_subtitle_goals".localized,
                 icon: UIImage(systemName: imageName)
             )
         }
@@ -70,7 +70,7 @@ extension ChartType {
         switch self {
         case .monthlyStickers:
             return "MonthlyStickers"
-        case .goalStreak:
+        case .goals:
             return "GoalStreaks"
         }
     }

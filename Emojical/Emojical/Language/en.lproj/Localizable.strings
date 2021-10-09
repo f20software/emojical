@@ -279,3 +279,27 @@
 "restart_button" = "Restart";
 
 "sticker_style_restart" = "Sticker style will be changed after you start application again.";
+
+// Statistics and Charts
+
+// - List of Chart
+
+"chart_title_goals" = "Goals";
+
+"chart_subtitle_goals" = "Goals total, streaks, and history";
+
+"chart_title_monthly_stickers" = "Monthly Stickers";
+
+"chart_subtitle_monthly_stickers" = "Sticker usage for a month";
+
+// - Details
+
+"total_column" = "total";
+
+"streak_column" = "streak";
+
+"goal_totals_title" = "Goal Totals";
+
+"goal_streaks_title" = "Goal Streaks";
+
+

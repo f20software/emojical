@@ -158,7 +158,7 @@ extension GoalsLibraryViewController: UICollectionViewDelegate {
             withReuseIdentifier: Specs.Cells.header,
             for: path) as? CollectionHeaderView else { return UICollectionReusableView() }
 
-        header.configure(text: sections[path.section].uppercased())
+        header.configure(sections[path.section])
         return header
     }
 }

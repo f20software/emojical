@@ -22,8 +22,8 @@ class CollectionHeaderView: UICollectionReusableView {
         fatalError()
     }
     
-    func configure(text: String) {
-        label.text = text
+    func configure(_ text: String) {
+        label.text = text.uppercased()
     }
     
     func setupView() {

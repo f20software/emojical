@@ -62,7 +62,7 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
             }
             
             for header in stats.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader) {
-                if let s = header as? GoalStreaksHeaderView {
+                if let s = header as? GoalStatsHeaderView {
                     s.updateCol1(text: _sortOrder.columnTitle.uppercased())
                 }
             }
@@ -150,7 +150,7 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
 
         stats.dataSource = dataSource
         stats.delegate = self
-        stats.collectionViewLayout = goalStreaksLayout()
+        stats.collectionViewLayout = goalsLayout()
         stats.backgroundColor = UIColor.clear
     }
     
@@ -160,14 +160,14 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
             forCellWithReuseIdentifier: Specs.Cells.goalCell
         )
         stats.register(
-            GoalStreaksHeaderView.self,
+            GoalStatsHeaderView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: Specs.Cells.header
         )
     }
 
     // Creates layout for goal streak stats - one line per goal
-    private func goalStreaksLayout() -> UICollectionViewCompositionalLayout {
+    private func goalsLayout() -> UICollectionViewCompositionalLayout {
         var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         config.showsSeparators = false
         config.headerMode = .supplementary
@@ -198,7 +198,7 @@ extension GoalStatsChartController: UICollectionViewDelegate {
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: Specs.Cells.header,
-            for: path) as? GoalStreaksHeaderView else { return UICollectionReusableView() }
+            for: path) as? GoalStatsHeaderView else { return UICollectionReusableView() }
 
         header.configure(
             headerText: sections[path.section].uppercased(),

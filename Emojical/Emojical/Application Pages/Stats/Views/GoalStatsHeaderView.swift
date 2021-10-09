@@ -1,5 +1,5 @@
 //
-//  GoalStreaksHeaderView.swift
+//  GoalStatsHeaderView.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 10/9/21.

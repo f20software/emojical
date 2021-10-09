@@ -3,7 +3,7 @@
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 8/29/20.
-//  Copyright © 2020 Feed Me LLC. All rights reserved.
+//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
 //
 
 import UIKit

@@ -57,7 +57,7 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
             
             for cell in stats.visibleCells {
                 if let c = cell as? GoalStatsCell {
-                    c.refreshCounters(primary: _sortOrder == .totalCount)
+                    c.updateCounter(primary: _sortOrder == .totalCount)
                 }
             }
             

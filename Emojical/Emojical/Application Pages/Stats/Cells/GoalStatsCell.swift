@@ -32,6 +32,8 @@ class GoalStatsCell: UICollectionViewCell {
     // MARK: - Public view interface
     
     func configure(for data: GoalStats, chartCount: Int, primary: Bool) {
+        
+        // Configure goal / award view
         switch data.icon {
         case .goal(let iconData):
             goal.isHidden = false
@@ -50,21 +52,24 @@ class GoalStatsCell: UICollectionViewCell {
             award.borderColor = awardData.borderColor
         }
 
+        // Save off text for primary / secondary counter
         counterText = [
             counterLabel(data.count),
             counterLabel(data.streak)
         ]
-        
-        refreshCounters(primary: primary)
+
+        // Draw chart if we have it
         if let chartData = data.chart {
             chart.data = chartData.points
             chart.dataMax = chartData.points.map({ $0.total }).max() ?? 0
             chart.dataThreshold = chartData.points.first?.limit ?? 0
             chart.count = chartCount
         }
+
+        updateCounter(primary: primary)
     }
 
-    func refreshCounters(primary: Bool) {
+    func updateCounter(primary: Bool) {
         // Sanity check to make sure we stored both values
         guard counterText.count == 2 else { return }
         
@@ -78,7 +83,7 @@ class GoalStatsCell: UICollectionViewCell {
             counter.backgroundColor = Theme.main.colors.background
             counter.textColor = Theme.main.colors.tint
             counter.layer.borderColor = Theme.main.colors.tint.cgColor
-            counter.layer.borderWidth = 2.0
+            counter.layer.borderWidth = Specs.counterBorderWidth
             counter.text = counterText[1]
         }
     }
@@ -130,4 +135,7 @@ fileprivate struct Specs {
 
     /// Stat squares corner radius
     static let chartCornerRadius: CGFloat = 5.0
+
+    /// Counter border width (when displaying secondary counter)
+    static let counterBorderWidth: CGFloat = 2.0
 }

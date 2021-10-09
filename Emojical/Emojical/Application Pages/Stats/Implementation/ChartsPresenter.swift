@@ -20,7 +20,7 @@ class ChartsPresenter: ChartsPresenterProtocol {
     // MARK: - State
     
     /// This list is baked in
-    private let data: [ChartType] = [.monthlyStickers, .goals]
+    private var data: [ChartType] = []
 
     // MARK: - Lifecycle
 
@@ -55,6 +55,12 @@ class ChartsPresenter: ChartsPresenterProtocol {
     
     private func loadViewData() {
         view?.updateTitle("charts_title".localized)
+        
+        data = [.monthlyStickers]
+        if repository.allGoals().count > 0 {
+            data.append(.goals)
+        }
+        
         view?.loadChartsData(data)
     }
 }

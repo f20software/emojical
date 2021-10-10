@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="246" height="265"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5F-C6-n5y">
-                                <rect key="frame" x="0.0" y="0.0" width="236" height="250.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="236" height="255"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drc-fa-Pdn">
                                         <rect key="frame" x="56" y="18.5" width="39.5" height="19.5"/>
@@ -31,11 +31,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juM-C8-sN0" customClass="MonthBoxView" customModule="Emojical" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="77" width="220" height="165.5"/>
+                                        <rect key="frame" x="8" y="77" width="220" height="170"/>
                                         <color key="backgroundColor" systemColor="systemPinkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="165.5" id="wJ9-SK-QSt"/>
-                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bhm-Ch-HlM" customClass="StickerView" customModule="Emojical" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="40" height="40"/>
@@ -140,7 +137,6 @@
                 <outlet property="day5" destination="z1W-p1-8Ip" id="Jk5-xd-bbT"/>
                 <outlet property="day6" destination="V1p-eo-1V2" id="Duq-mO-1F2"/>
                 <outlet property="dots" destination="juM-C8-sN0" id="mDV-E2-2XB"/>
-                <outlet property="dotsHeight" destination="wJ9-SK-QSt" id="J4k-oz-0tm"/>
                 <outlet property="header" destination="drc-fa-Pdn" id="UmL-KB-StR"/>
                 <outlet property="sticker" destination="Bhm-Ch-HlM" id="iag-5a-c7p"/>
             </connections>

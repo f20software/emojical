@@ -32,7 +32,7 @@ enum Storyboard: String {
         return self.instance.instantiateInitialViewController() as? T
     }
 
-    func viewController<T: UIViewController>(withIdentifier name: String) -> T? {
-        return self.instance.instantiateViewController(withIdentifier: name) as? T
+    func viewController<T: UIViewController>(with storyboardId: String) -> T? {
+        return self.instance.instantiateViewController(withIdentifier: storyboardId) as? T
     }
 }

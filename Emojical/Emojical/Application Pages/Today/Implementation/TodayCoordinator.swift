@@ -123,9 +123,9 @@ class TodayCoordinator: TodayCoordinatorProtocol {
         
         switch message {
         case .onboarding1:
-            welcomeView = Storyboard.Onboarding.viewController(withIdentifier: "Welcome1")
+            welcomeView = Storyboard.Onboarding.viewController(with: "Welcome1")
         case .onboarding2:
-            welcomeView = Storyboard.Onboarding.viewController(withIdentifier: "Welcome2")
+            welcomeView = Storyboard.Onboarding.viewController(with: "Welcome2")
         default:
             break
         }

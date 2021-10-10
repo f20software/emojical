@@ -27,7 +27,7 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
     
     /// Push to show specific Chart form
     func showChart(_ chart: ChartType) {
-        var chartView: UIViewController?
+        var chartView: UINavigationController?
         
         switch chart {
         case .monthlyStickers:
@@ -40,14 +40,15 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
             return
         }
         
-        parentController?.pushViewController(chartView, animated: true)
+        parentController?.present(chartView, animated: true)
     }
     
     // MARK: - Private Helpers
     
-    private func stickersMonthlyChart(with id: String) -> StickerMonthlyChartController? {
+    private func stickersMonthlyChart(with id: String) -> UINavigationController? {
         // Instantiate StickerMonthlyChartController from the storyboard file
-        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? StickerMonthlyChartController else {
+        guard let nav = Storyboard.Stats.viewController(with: id) as? UINavigationController,
+              let view = nav.viewControllers.first as? StickerMonthlyChartController else {
             assertionFailure("Failed to initialize StickerMonthlyChartController")
             return nil
         }
@@ -59,12 +60,14 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
             view: view
         )
         
-        return view
+        return nav
     }
 
-    private func goalStatsChart(with id: String) -> GoalStatsChartController? {
+    private func goalStatsChart(with id: String) -> UINavigationController? {
         // Instantiate GoalStatsChartController from the storyboard file
-        guard let view = Storyboard.Stats.viewController(withIdentifier: id) as? GoalStatsChartController else {
+        guard
+            let nav = Storyboard.Stats.viewController(with: id) as? UINavigationController,
+              let view = nav.viewControllers.first as? GoalStatsChartController else {
             assertionFailure("Failed to initialize GoalStatsChartController")
             return nil
         }
@@ -77,6 +80,6 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
             view: view
         )
         
-        return view
+        return nav
     }
 }

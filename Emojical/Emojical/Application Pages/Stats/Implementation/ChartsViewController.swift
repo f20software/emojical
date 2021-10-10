@@ -103,8 +103,10 @@ class ChartsViewController: UIViewController, ChartsView {
 
     // Creates layout for weekly stats - one line per stamp
     private func chartsLayout() -> UICollectionViewCompositionalLayout {
-        var config = UICollectionLayoutListConfiguration(appearance: .plain)
+        var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         config.showsSeparators = false
+        config.headerMode = .firstItemInSection
+        config.backgroundColor = Theme.main.colors.background
         return UICollectionViewCompositionalLayout.list(using: config)
     }
 }

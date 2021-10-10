@@ -25,18 +25,16 @@ class MonthBoxCell: ThemeObservingCollectionCell {
     @IBOutlet weak var day4: UILabel!
     @IBOutlet weak var day5: UILabel!
     @IBOutlet weak var day6: UILabel!
-    // Dots view could have different width/height ratio based on the number of weeks in a month
-    @IBOutlet weak var dotsHeight: NSLayoutConstraint!
 
     // Convinience array
     private var days: [UILabel] = []
 
-    // Height / width ratio based on number of weeks
-    private var weeksRatio: CGFloat = 5.0 / 7.0
-    
     // We're loading data asynchroniously. To make sure that same cell is still used,
     // when data is retrieved - store asyncKey and check it when callback is returned
     private var asyncKey: UUID?
+    
+    // Storing height constraint so we can remove it later
+    private var heightRatioConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +46,8 @@ class MonthBoxCell: ThemeObservingCollectionCell {
         sticker.text = nil
         sticker.color = UIColor.clear
         asyncKey = nil
+        // Remove height ratio constraint
+        NSLayoutConstraint.deactivate([heightRatioConstraint])
     }
     
     // MARK: - Public view interface
@@ -57,7 +57,6 @@ class MonthBoxCell: ThemeObservingCollectionCell {
     {
         sticker.text = data.label
         sticker.color = data.color
-        
         header.text = data.name
         
         for (text, label) in zip(data.weekdayHeaders, days) {
@@ -66,8 +65,12 @@ class MonthBoxCell: ThemeObservingCollectionCell {
 
         dots.data = data.bitsAsString
         dots.startOffset = data.firstDayOffset
-        weeksRatio = CGFloat(data.numberOfWeeks) / 7.0
-        setNeedsLayout()
+
+        // Adding dynamic constraint for height / weigth ratio based on the number of weeks
+        let ratio = CGFloat(data.numberOfWeeks) / 7.0
+        heightRatioConstraint = dots.heightAnchor.constraint(equalTo: dots.widthAnchor, multiplier: ratio)
+        NSLayoutConstraint.activate([heightRatioConstraint])
+        dots.setNeedsDisplay()
 
         // asyncKey - to make sure when completion block is called, cell that asked for this data
         // is still a cell that's receiving it
@@ -84,22 +87,6 @@ class MonthBoxCell: ThemeObservingCollectionCell {
     }
     
     // MARK: - Private helpers
-    
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        let autoLayoutAttributes = super.preferredLayoutAttributesFitting(layoutAttributes)
-        let targetSize = CGSize(width: layoutAttributes.frame.width, height: 0)
-        let autoLayoutSize = contentView.systemLayoutSizeFitting(
-            targetSize,
-            withHorizontalFittingPriority: UILayoutPriority.required,
-            verticalFittingPriority: UILayoutPriority.defaultLow
-        )
-        let autoLayoutFrame = CGRect(
-            origin: autoLayoutAttributes.frame.origin,
-            size: autoLayoutSize
-        )
-        autoLayoutAttributes.frame = autoLayoutFrame
-        return autoLayoutAttributes
-    }
     
     func setupViews() {
         dots.lineWidth = Specs.lineWidth
@@ -123,12 +110,6 @@ class MonthBoxCell: ThemeObservingCollectionCell {
     
     override func updateColors() {
         border.layer.borderColor = Theme.main.colors.separator.cgColor
-    }
-    
-    override func layoutSubviews() {
-        dotsHeight.constant = dots.bounds.width * weeksRatio
-        super.layoutSubviews()
-        dots.setNeedsDisplay()
     }
 }
 

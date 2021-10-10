@@ -16,9 +16,11 @@ class ChartCell: ThemeObservingCollectionCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
     
+    @IBOutlet weak var cellGapMargin: NSLayoutConstraint!
+    @IBOutlet weak var topMargin: NSLayoutConstraint!
+    @IBOutlet weak var bottomMargin: NSLayoutConstraint!
     @IBOutlet weak var leadMargin: NSLayoutConstraint!
     @IBOutlet weak var trailMargin: NSLayoutConstraint!
-    @IBOutlet weak var topMargin: NSLayoutConstraint!
 
     @IBOutlet weak var icon: UIImageView!
 
@@ -41,9 +43,11 @@ class ChartCell: ThemeObservingCollectionCell {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.backgroundColor = Theme.main.colors.secondaryBackground
         plate.clipsToBounds = true
-        leadMargin.constant = Specs.margin
-        topMargin.constant = Specs.margin
-        trailMargin.constant = Specs.margin
+        cellGapMargin.constant = Specs.cellGap
+        topMargin.constant = Specs.contentInsets.top
+        bottomMargin.constant = Specs.contentInsets.bottom
+        leadMargin.constant = Specs.contentInsets.left
+        trailMargin.constant = Specs.contentInsets.right
         
         title.textColor = Theme.main.colors.text
         subTitle.textColor = Theme.main.colors.secondaryText
@@ -58,6 +62,9 @@ class ChartCell: ThemeObservingCollectionCell {
 
 fileprivate struct Specs {
     
-    /// Left/right and bottom margin for the collection view cells
-    static let margin: CGFloat = 20.0
+    /// Vertical gap between cells
+    static let cellGap: CGFloat = 20.0
+    
+    /// Content insets inside cell background plate
+    static let contentInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 }

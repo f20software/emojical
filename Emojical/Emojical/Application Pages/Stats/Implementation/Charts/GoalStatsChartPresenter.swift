@@ -24,7 +24,7 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
     // MARK: - State
 
     /// Sort order
-    private var sort: GoalStatsSortOrder = .streakLength
+    private var sort: GoalStatsSortOrder = .totalCount
 
     // MARK: - Lifecycle
 

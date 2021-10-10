@@ -50,7 +50,7 @@ class StickerMonthlyChartPresenter: ChartPresenterProtocol {
         setupView()
 
         // Load initial set of data
-        stamps = repository.allStamps()
+        stamps = repository.allStamps().sorted(by: { $0.count > $1.count })
     }
     
     /// Called when view about to appear on the screen

@@ -56,7 +56,7 @@ class StickerMonthlyChartController: UIViewController, StickerMonthlyChartView {
     func showNextPrevButtons(showPrev: Bool, showNext: Bool) {
         nextButton.isEnabled = showNext
         prevButton.isEnabled = showPrev
-        navigationItem.rightBarButtonItems = [nextButton, prevButton]
+        //navigationItem.rightBarButtonItems = [nextButton, prevButton]
     }
     
     /// Load stats for the month

@@ -59,7 +59,6 @@ extension DataSource {
         }
     }
 
-    
     /// Create demo database entires
     func createDemoEntries(from date: Date) {
         // Stickers
@@ -186,4 +185,22 @@ extension DataSource {
         
         updateStatsForStamps(stickersIds)
     }
+    
+    /// Don't use - only when need to fix database on my device
+    func createAdHocEntries() {
+        do {
+            try ["2022-02-10", "2022-01-27", "2022-01-13"].forEach({ date in
+                try dbQueue.inDatabase { db in
+                    var stored = StoredDiary(
+                        date: date,
+                        count: 1,
+                        stampId: 43
+                    )
+                    try stored.save(db)
+                }
+            })
+        }
+        catch {}
+    }
+
 }

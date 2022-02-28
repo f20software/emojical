@@ -28,7 +28,10 @@ protocol DataRepository: AnyObject {
     func diaryForDateInterval(from: Date, to: Date) -> [Diary]
     
     /// Diary records filtered for specific date interval and  filtered by stampId
-    func diaryForDateInterval(from: Date, to: Date, stampId: Int64) -> [Diary]
+    func diaryForDateInterval(from: Date, to: Date, stampIds: [Int64]) -> [Diary]
+
+    /// Diary records filtered by specific stampIds
+    func diaryForStamp(ids: [Int64]) -> [Diary]
 
     /// Goals by period
     func goalsBy(period: Period) -> [Goal]
@@ -36,6 +39,9 @@ protocol DataRepository: AnyObject {
     /// Awards for date interval
     func awardsInInterval(from: Date, to: Date) -> [Award]
     
+    /// Awards by given Ids
+    func awardsByGoal(ids: [Int64]) -> [Award]
+
     /// Stamp Ids for a day from Diary table
     func stampsIdsFor(day: Date) -> [Int64]
     
@@ -110,6 +116,9 @@ protocol DataRepository: AnyObject {
     
     /// Create initial database entires
     func createInitialStickers()
+
+    /// Don't use - only when need to fix database on my device
+    func createAdHocEntries()
 
     /// Find stamp by its label (returns first matching or nil
     func stampByLabel(label: String) -> Stamp?

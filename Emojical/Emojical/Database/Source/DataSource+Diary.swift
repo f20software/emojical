@@ -75,15 +75,29 @@ extension DataSource {
     }
 
     // Diary records filtered for specific date interval
-    func diaryForDateInterval(from: Date, to: Date, stampId: Int64) -> [Diary] {
+    func diaryForDateInterval(from: Date, to: Date, stampIds: [Int64]) -> [Diary] {
         do {
             return try dbQueue.read { db -> [StoredDiary] in
                 let request = StoredDiary
                     .filter(
                         StoredDiary.Columns.date >= from.databaseKey &&
                         StoredDiary.Columns.date <= to.databaseKey &&
-                        StoredDiary.Columns.stampId == stampId
+                        stampIds.contains(StoredDiary.Columns.stampId)
                     )
+                    .order(StoredDiary.Columns.date)
+                return try request.fetchAll(db)
+            }.map { $0.toModel() }
+        }
+        catch { }
+        return []
+    }
+
+    /// Diary records filtered by specific stampIds
+    func diaryForStamp(ids: [Int64]) -> [Diary] {
+        do {
+            return try dbQueue.read { db -> [StoredDiary] in
+                let request = StoredDiary
+                    .filter(ids.contains(StoredDiary.Columns.stampId))
                     .order(StoredDiary.Columns.date)
                 return try request.fetchAll(db)
             }.map { $0.toModel() }

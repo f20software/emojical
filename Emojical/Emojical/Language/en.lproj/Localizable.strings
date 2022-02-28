@@ -46,6 +46,8 @@
 
 "monthly_goal" = "monthly goal";
 
+"total_goal" = "overall goal";
+
 "week_positive_x" = "Weekly, %d times or more.";
 
 "week_negative_x" = "Weekly, %d times or less.";
@@ -57,6 +59,14 @@
 "month_negative_x" = "Monthly, %d times or less.";
 
 "month_no_limit" = "Monthly, no limit.";
+
+"total_positive_x" = "Overall, %d times or more.";
+
+"total_negative_x" = "Overall, %d times or less.";
+
+"total_no_limit" = "Overall goal, no limit.";
+
+"week_no_limit" = "Weekly, no limit.";
 
 "last_x_weeks" = "Last %d weeks";
 
@@ -75,6 +85,12 @@
 "you_got_1_sticker_month" = "You got 1 sticker this month";
 
 "you_got_x_stickers_month" = "You got %d stickers this month";
+
+"you_got_0_stickers_total" = "You've got no stickers so far";
+
+"you_got_1_sticker_total" = "You got 1 sticker so far";
+
+"you_got_x_stickers_total" = "You got %d stickers so far";
 
 "positive_goal_not_reached" = "%@. %d more to go.";
 
@@ -183,6 +199,8 @@
 "week" = "week";
 
 "month" = "month";
+
+"total" = "total";
 
 "select_stickers_title" = "Select Stickers";
 

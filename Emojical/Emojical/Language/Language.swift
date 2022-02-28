@@ -58,6 +58,15 @@ class Language {
                 progressText = "you_got_x_stickers_month".localized(progress)
             }
 
+        case .total:
+            if progress == 0 {
+                progressText = "you_got_0_stickers_total".localized
+            } else if progress == 1 {
+                progressText = "you_got_1_sticker_total".localized
+            } else {
+                progressText = "you_got_x_stickers_total".localized(progress)
+            }
+
         default:
             assertionFailure("Not implemented")
             return ""
@@ -155,6 +164,20 @@ class Language {
             } else {
                 return "month_no_limit".localized
             }
+            
+            
+        case .total:
+            if goal.limit > 0 {
+                switch goal.direction {
+                case .positive:
+                    return "total_positive_x".localized(goal.limit)
+                case .negative:
+                    return "total_negative_x".localized(goal.limit)
+                }
+            } else {
+                return "total_no_limit".localized
+            }
+
 
         default:
             assertionFailure("Not implemented")
@@ -172,6 +195,9 @@ class Language {
         case .month:
             return "monthly_goal".localized
             
+        case .total:
+            return "total_goal".localized
+
         default:
             assertionFailure("Not implemented")
             return ""

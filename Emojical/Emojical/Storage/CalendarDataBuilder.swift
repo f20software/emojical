@@ -142,7 +142,7 @@ class CalendarDataBuilder {
         
         DispatchQueue.global().async {
             let diary = self.repository.diaryForDateInterval(
-                from: month.firstDay, to: month.lastDay, stampId: stampId)
+                from: month.firstDay, to: month.lastDay, stampIds: [stampId])
             
             let bits = (0..<month.numberOfDays).map({
                 let date = month.firstDay.byAddingDays($0)
@@ -168,7 +168,7 @@ class CalendarDataBuilder {
         
         DispatchQueue.global().async {
             let diary = self.repository.diaryForDateInterval(
-                from: year.firstDay, to: year.lastDay, stampId: stampId)
+                from: year.firstDay, to: year.lastDay, stampIds: [stampId])
             
             let bits = (0..<year.numberOfDays).map({
                 let date = year.firstDay.byAddingDays($0)

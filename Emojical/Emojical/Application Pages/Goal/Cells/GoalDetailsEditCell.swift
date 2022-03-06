@@ -132,9 +132,9 @@ class GoalDetailsEditCell: UICollectionViewCell {
         period.buttonFont = Theme.main.fonts.sectionHeaderTitle
         period.buttonColors = [Theme.main.colors.tint]
         period.setTitles(to: [
-            "week".localized.capitalizingFirstLetter(),
-            "month".localized.capitalizingFirstLetter(),
-            "total".localized.capitalizingFirstLetter()
+            "week_period".localized.capitalizingFirstLetter(),
+            "month_period".localized.capitalizingFirstLetter(),
+            "once_period".localized.capitalizingFirstLetter()
         ])
         separator4.backgroundColor = Theme.main.colors.separator
 

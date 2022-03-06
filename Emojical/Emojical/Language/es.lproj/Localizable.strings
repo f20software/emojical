@@ -46,6 +46,8 @@
 
 "monthly_goal" = "meta mensual";
 
+"once_goal" = "meta";
+
 "week_positive_x" = "Semanalmente, %d veces o más.";
 
 "week_negative_x" = "Semanalmente, %d veces o menos.";
@@ -57,6 +59,12 @@
 "month_negative_x" = "Mensualmente, %d veces o menos.";
 
 "month_no_limit" = "Mensualmente, sin límite.";
+
+"once_positive_x" = "Reach once, %d times or more.";
+
+"once_negative_x" = "Reach once, %d times or less.";
+
+"once_no_limit" = "Reach once, no limit."; // should not see this
 
 "last_x_weeks" = "Últimas %d semanas";
 
@@ -180,11 +188,11 @@
 
 "get_x_or_fewer" = "consigue|o menos";
 
-"week" = "semana";
+"week_period" = "semana";
 
-"month" = "mes";
+"month_period" = "mes";
 
-"total" = "total";
+"once_period" = "once";
 
 "select_stickers_title" = "Seleccionar pegatinas";
 

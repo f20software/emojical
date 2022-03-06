@@ -69,8 +69,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 //      Un-deleting specific stamp that I deleted accidentaly
         
-        let repo = Storage.shared.repository
-        repo.createAdHocEntries()
+//        let repo = Storage.shared.repository
+//        repo.createAdHocEntries()
 //      var sticker = repo.stampById(15)
 //      sticker?.deleted = false
 //      try! repo.save(stamp: sticker!)

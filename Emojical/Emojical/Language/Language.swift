@@ -58,7 +58,7 @@ class Language {
                 progressText = "you_got_x_stickers_month".localized(progress)
             }
 
-        case .total:
+        case .once:
             if progress == 0 {
                 progressText = "you_got_0_stickers_total".localized
             } else if progress == 1 {
@@ -166,16 +166,16 @@ class Language {
             }
             
             
-        case .total:
+        case .once:
             if goal.limit > 0 {
                 switch goal.direction {
                 case .positive:
-                    return "total_positive_x".localized(goal.limit)
+                    return "once_positive_x".localized(goal.limit)
                 case .negative:
-                    return "total_negative_x".localized(goal.limit)
+                    return "once_negative_x".localized(goal.limit)
                 }
             } else {
-                return "total_no_limit".localized
+                return "once_no_limit".localized
             }
 
 
@@ -195,8 +195,8 @@ class Language {
         case .month:
             return "monthly_goal".localized
             
-        case .total:
-            return "total_goal".localized
+        case .once:
+            return "once_goal".localized
 
         default:
             assertionFailure("Not implemented")

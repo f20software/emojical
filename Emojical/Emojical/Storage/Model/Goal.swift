@@ -42,7 +42,7 @@ extension Goal: Equatable, Hashable {
     
     static func < (lhs: Goal, rhs: Goal) -> Bool {
         
-        // Then compare period - weekly first
+        // First compare period - weekly first
         if lhs.period != rhs.period {
             return lhs.period.rawValue < rhs.period.rawValue
         }

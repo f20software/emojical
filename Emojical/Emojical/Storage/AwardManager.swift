@@ -152,7 +152,7 @@ class AwardManager {
     }
 
     func recalculateTotalAwardsForDate(_ date: Date) {
-        let goals = repository.goalsBy(period: .total)
+        let goals = repository.goalsBy(period: .once)
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
         
@@ -245,7 +245,7 @@ class AwardManager {
         guard (
             goal.period == .week ||
             goal.period == .month ||
-            goal.period == .total) else { return 0 }
+            goal.period == .once) else { return 0 }
 
         var start, end: Date!
         if goal.period == .week {

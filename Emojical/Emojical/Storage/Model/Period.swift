@@ -15,8 +15,8 @@ enum Period: Int {
     /// Monthly goals
     case month
     
-    /// Overall goals
-    case total
+    /// Overall goals - something to reach once
+    case once
 
     /// Annual goals - NOT IMPLEMENTED
     case year

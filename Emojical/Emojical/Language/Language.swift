@@ -84,6 +84,8 @@ class Language {
                     return "week_positive_goal_reached".localized(progress)
                 case .month:
                     return "month_positive_goal_reached".localized(progress)
+                case .once:
+                    return "once_positive_goal_reached".localized(progress)
                 default:
                     assertionFailure("Not implemented")
                     return ""
@@ -102,7 +104,9 @@ class Language {
                 case .week:
                     return "week_negative_goal_breached".localized(progress)
                 case .month:
-                    return "week_negative_goal_breached".localized(progress)
+                    return "month_negative_goal_breached".localized(progress)
+                case .once:
+                    return "once_negative_goal_breached".localized(progress)
                 default:
                     assertionFailure("Not implemented")
                     return ""

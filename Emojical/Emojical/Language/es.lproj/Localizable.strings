@@ -102,6 +102,10 @@
 
 "month_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas este mes.";
 
+"once_positive_goal_reached" = "Has alcanzado la meta al recibir %d pegatinas. ¡Gran trabajo!";
+
+"once_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas.";
+
 // Award reached / not reached state
 
 "award_earned_on" = "Obtenido el %@.";

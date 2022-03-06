@@ -110,6 +110,10 @@
 
 "month_negative_goal_breached" = "You've broken the goal by getting %d stickers this month.";
 
+"once_positive_goal_reached" = "You've reached the goal by getting %d stickers. Great job!";
+
+"once_negative_goal_breached" = "You've broken the goal by getting %d stickers.";
+
 // Award reached / not reached state
 
 "award_earned_on" = "Earned on %@.";
@@ -192,9 +196,9 @@
 
 "negative" = "negative";
 
-"get_x_or_more" = "get|or more";
+"get_x_or_more" = "to get|or more";
 
-"get_x_or_fewer" = "get|or less";
+"get_x_or_fewer" = "to get|or less";
 
 "week_period" = "weeky";
 

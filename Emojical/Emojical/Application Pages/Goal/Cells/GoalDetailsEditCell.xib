@@ -46,7 +46,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xUg-jF-mf5">
-                                <rect key="frame" x="88.5" y="311.5" width="55" height="36"/>
+                                <rect key="frame" x="83.5" y="311.5" width="55" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="4nA-CP-xhj"/>
                                     <constraint firstAttribute="height" constant="36" id="pkP-8u-3hZ"/>
@@ -103,13 +103,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="get" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qg-s1-Urg">
-                                <rect key="frame" x="55.5" y="319" width="25" height="21"/>
+                                <rect key="frame" x="50.5" y="319" width="25" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or more" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKh-YE-wsH">
-                                <rect key="frame" x="151.5" y="319" width="60" height="21"/>
+                                <rect key="frame" x="146.5" y="319" width="60" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -126,7 +126,7 @@
                                     <action selector="selectStickersButtonTapped:" destination="7y9-Gf-xbO" eventType="primaryActionTriggered" id="gz5-gk-Lro"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyW-MM-09a" customClass="ECSegmentedControl" customModule="Emojical" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyW-MM-09a" customClass="ECSegmentedControl" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="65.5" y="253" width="189" height="32"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -152,7 +152,7 @@
                                     <constraint firstAttribute="height" constant="1" id="1Ok-aG-ebQ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnu-vy-KWW" customClass="ECSegmentedControl" customModule="Emojical" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cnu-vy-KWW" customClass="ECSegmentedControl" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="20" y="163" width="280" height="32"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -169,7 +169,7 @@
                             <constraint firstItem="4Qg-s1-Urg" firstAttribute="centerY" secondItem="9S7-Z0-9ZT" secondAttribute="centerY" id="0Cp-y5-Ybl"/>
                             <constraint firstItem="9S7-Z0-9ZT" firstAttribute="top" secondItem="91X-AM-rHO" secondAttribute="bottom" constant="20" id="1zk-x5-0s8"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NTQ-yw-a5M" secondAttribute="bottom" priority="999" constant="10" id="2FT-4z-bzm"/>
-                            <constraint firstItem="4Qg-s1-Urg" firstAttribute="leading" secondItem="9S7-Z0-9ZT" secondAttribute="trailing" constant="15" id="4Ev-LF-cjy"/>
+                            <constraint firstItem="4Qg-s1-Urg" firstAttribute="leading" secondItem="9S7-Z0-9ZT" secondAttribute="trailing" constant="10" id="4Ev-LF-cjy"/>
                             <constraint firstItem="06O-IV-lhi" firstAttribute="top" secondItem="NWC-mM-L1H" secondAttribute="bottom" constant="15" id="5Ed-Gs-Qho"/>
                             <constraint firstItem="bPV-Bk-ngu" firstAttribute="top" secondItem="cnu-vy-KWW" secondAttribute="bottom" constant="15" id="7Qn-3z-MwA"/>
                             <constraint firstItem="bPV-Bk-ngu" firstAttribute="trailing" secondItem="Gz6-Ti-SPo" secondAttribute="trailing" id="7fl-Zx-Agf"/>

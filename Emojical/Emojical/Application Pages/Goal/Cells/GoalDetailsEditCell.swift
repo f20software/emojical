@@ -99,11 +99,11 @@ class GoalDetailsEditCell: UICollectionViewCell {
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
         
-        for label in [nameLabel, limitLabel, stickersLabel, directionLabel, periodLabel] {
+        for label in [nameLabel, limitLabel, stickersLabel] {
             label?.font = Theme.main.fonts.formFieldCaption
             label?.textColor = Theme.main.colors.secondaryText
         }
-        for label in [limitExplanation1, limitExplanation2] {
+        for label in [directionLabel, periodLabel, limitExplanation1, limitExplanation2] {
             label?.font = Theme.main.fonts.formFieldCaption
             label?.textColor = Theme.main.colors.text
         }

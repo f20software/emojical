@@ -52,19 +52,13 @@
 
 "week_negative_x" = "Semanalmente, %d veces o menos.";
 
-"week_no_limit" = "Semanalmente, sin límite.";
-
 "month_positive_x" = "Mensualmente, %d veces o más.";
 
 "month_negative_x" = "Mensualmente, %d veces o menos.";
 
-"month_no_limit" = "Mensualmente, sin límite.";
+"once_positive_x" = "Consigue %d pegatinas.";
 
-"once_positive_x" = "Reach once, %d times or more.";
-
-"once_negative_x" = "Reach once, %d times or less.";
-
-"once_no_limit" = "Reach once, no limit."; // should not see this
+"once_negative_x" = "No consigas %d pegatinas.";
 
 "last_x_weeks" = "Últimas %d semanas";
 

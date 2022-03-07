@@ -39,6 +39,7 @@ class AwardManager {
     // When stickers are updated manually for a certain date, we will recalculate
     // all awards that could be potentially affected
     func recalculateAwards(_ date: Date) {
+        recalculateTotalGoals()
         recalculateAwardsForWeek(date)
         recalculateAwardsForMonth(date)
     }

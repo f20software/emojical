@@ -52,21 +52,13 @@
 
 "week_negative_x" = "Weekly, %d times or less.";
 
-"week_no_limit" = "Weekly, no limit.";
-
 "month_positive_x" = "Monthly, %d times or more.";
 
 "month_negative_x" = "Monthly, %d times or less.";
 
-"month_no_limit" = "Monthly, no limit.";
+"once_positive_x" = "Get %d stickers.";
 
-"once_positive_x" = "Reach once, %d times or more.";
-
-"once_negative_x" = "Reach once, %d times or less.";
-
-"once_no_limit" = "Reach once, no limit."; // should not see this
-
-"week_no_limit" = "Weekly, no limit.";
+"once_negative_x" = "Don't get %d stickers.";
 
 "last_x_weeks" = "Last %d weeks";
 

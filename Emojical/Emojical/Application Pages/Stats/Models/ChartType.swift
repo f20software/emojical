@@ -39,27 +39,17 @@ extension ChartType {
     func toDetailModel() -> ChartTypeDetails {
         switch self {
         case .monthlyStickers:
-            var imageName = "square.grid.3x3"
-            if #available(iOS 15.0, *) {
-                imageName = "square.grid.3x3.middleright.filled"
-            }
-            
             return ChartTypeDetails(
                 title: "chart_title_monthly_stickers".localized,
                 subTitle: "chart_subtitle_monthly_stickers".localized,
-                icon: UIImage(systemName: imageName)
+                icon: UIImage(systemName: "square.grid.3x3.middleright.filled")
             )
             
         case .goals:
-            var imageName = "waveform.path.ecg.rectangle"
-            if #available(iOS 15.0, *) {
-                imageName = "chart.xyaxis.line"
-            }
-
             return ChartTypeDetails(
                 title: "chart_title_goals".localized,
                 subTitle: "chart_subtitle_goals".localized,
-                icon: UIImage(systemName: imageName)
+                icon: UIImage(systemName: "chart.xyaxis.line")
             )
         }
 

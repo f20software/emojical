@@ -34,16 +34,9 @@ class MainViewController: UITabBarController {
         statsTab?.tabBarItem.title = "charts_title".localized
         optionsTab?.tabBarItem.title = "options_title".localized
 
-        // To support different hexagongrid icons for iOS 15 and before
-        if #available(iOS 15.0, *) {
-            goalsTab?.tabBarItem.image = UIImage(systemName: "circle.hexagongrid")
-            goalsTab?.tabBarItem.selectedImage = UIImage(systemName: "circle.hexagongrid.fill")
-        } else {
-            goalsTab?.tabBarItem.image = UIImage(systemName: "circles.hexagongrid")
-            goalsTab?.tabBarItem.selectedImage = UIImage(systemName: "circles.hexagongrid.fill")
-        }
+        goalsTab?.tabBarItem.image = UIImage(systemName: "circle.hexagongrid")
+        goalsTab?.tabBarItem.selectedImage = UIImage(systemName: "circle.hexagongrid.fill")
 
-        
         // Add handlers to app wide notifications
         NotificationCenter.default.addObserver(
             self, selector: #selector(navigateToCalendar), name: .navigateToToday, object: nil)

@@ -183,6 +183,7 @@ class GoalPresenter: GoalPresenterProtocol {
 
         view.update(to: &goal)
         updateTitle()
+        view.updateGoalExplanation(goal: goal)
         view.enableDoneButton(goal.isValid)
     }
     
@@ -211,6 +212,7 @@ class GoalPresenter: GoalPresenterProtocol {
             } else {
                 view.loadData([.edit(data), .deleteButton])
             }
+            view.updateGoalExplanation(goal: goal)
             view.enableDoneButton(goal.isValid)
         } else {
             let data = GoalViewData(

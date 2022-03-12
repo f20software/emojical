@@ -29,6 +29,11 @@ extension Theme {
             font(ofSize: 18, weight: .regular, style: .body)
         }()
 
+        /// Caption for form fields (when editing Goal / Sticker)
+        lazy var formFieldBoldCaption: UIFont = {
+            font(ofSize: 18, weight: .bold, style: .body)
+        }()
+
         /// Footer for the form (when editing Goal / Sticker)
         lazy var footer: UIFont = {
             font(ofSize: 14, weight: .regular, style: .body)

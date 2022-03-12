@@ -78,6 +78,12 @@
 
 "you_got_x_stickers_month" = "Tienes %d pegatinas este mes";
 
+"you_got_0_stickers_total" = "No tienes pegatinas hasta ahora";
+
+"you_got_1_sticker_total" = "Tienes 1 pegatina hasta ahora";
+
+"you_got_x_stickers_total" = "Tienes %d pegatinas hasta ahora";
+
 "positive_goal_not_reached" = "%@. %d para ir.";
 
 "positive_goal_not_reached_0" = "%@. El meta es %d.";
@@ -168,11 +174,7 @@
 
 "stickers_label" = "Pegatinas:";
 
-"goal_label" = "Meta:";
-
 "goal_name_placeholder" = "Nombre de la meta";
-
-"limit_label" = "Límite:";
 
 "goal_period_label" = "Período meta:";
 
@@ -182,9 +184,13 @@
 
 "negative" = "negativo";
 
-"get_x_or_more" = "consigue|o más";
+"get_x_or_more" = "El meta es conseguir|o más";
 
-"get_x_or_fewer" = "consigue|o menos";
+"get_x_or_fewer" = "El meta es conseguir|o menos";
+
+"get_x_stickers" = "El meta es conseguir|pegatinas";
+
+"not_get_x_stickers" = "El meta no es conseguir|pegatinas";
 
 "week_period" = "semana";
 

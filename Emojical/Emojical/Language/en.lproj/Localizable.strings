@@ -176,10 +176,6 @@
 
 "stickers_label" = "Stickers";
 
-"goal_label" = "Goal";
-
-"limit_label" = "Limit";
-
 "goal_period_label" = "How often do you want to reach the goal?";
 
 "direction_label" = "Is that a positive or negative goal?";
@@ -188,9 +184,13 @@
 
 "negative" = "negative";
 
-"get_x_or_more" = "to get|or more";
+"get_x_or_more" = "The goal is to get|or more";
 
-"get_x_or_fewer" = "to get|or less";
+"get_x_or_fewer" = "The goal is to get|or less";
+
+"get_x_stickers" = "The goal is to get|stickers";
+
+"not_get_x_stickers" = "The goal is not to get|stickers";
 
 "week_period" = "weeky";
 

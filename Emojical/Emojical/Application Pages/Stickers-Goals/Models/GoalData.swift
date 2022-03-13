@@ -14,6 +14,7 @@ struct GoalData {
     let name: String
     let details: String
     let count: Int
+    let checkMark: Bool
     let icon: GoalOrAwardIconData
 }
 

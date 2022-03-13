@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,10 +22,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="395" height="78"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="JUk-G8-Nse">
-                                <rect key="frame" x="78" y="16.5" width="271.5" height="45.5"/>
+                                <rect key="frame" x="78" y="16.5" width="262" height="45.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Excersize, doing somehing hreally good" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-hg-Szf">
-                                        <rect key="frame" x="0.0" y="0.0" width="271.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="262" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -72,6 +72,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wvS-Ug-Qm7">
+                                <rect key="frame" x="355" y="23" width="30" height="31.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ITy-9I-Xh9"/>
+                                    <constraint firstAttribute="width" constant="30" id="MLN-Vl-TD1"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
@@ -80,11 +87,14 @@
                             <constraint firstItem="JUk-G8-Nse" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="61R-lT-idr"/>
                             <constraint firstItem="MN2-nT-Okg" firstAttribute="top" secondItem="ChH-rG-WsF" secondAttribute="top" constant="15" id="7qe-yx-rAE"/>
                             <constraint firstAttribute="bottom" secondItem="MN2-nT-Okg" secondAttribute="bottom" priority="999" constant="15" id="AEX-DY-ep1"/>
+                            <constraint firstAttribute="trailing" secondItem="wvS-Ug-Qm7" secondAttribute="trailing" constant="10" id="B4j-Go-b0Z"/>
                             <constraint firstItem="Tp0-7k-auf" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="MDQ-fe-sWK"/>
                             <constraint firstItem="MN2-nT-Okg" firstAttribute="leading" secondItem="ChH-rG-WsF" secondAttribute="leading" priority="999" constant="15" id="Q1o-n7-1F2"/>
                             <constraint firstItem="yec-v2-KqA" firstAttribute="trailing" secondItem="MN2-nT-Okg" secondAttribute="trailing" id="SBd-8x-WOy"/>
                             <constraint firstItem="yec-v2-KqA" firstAttribute="top" secondItem="MN2-nT-Okg" secondAttribute="top" id="UbM-Ih-Oc1"/>
                             <constraint firstItem="yec-v2-KqA" firstAttribute="bottom" secondItem="MN2-nT-Okg" secondAttribute="bottom" id="acM-Rh-gTG"/>
+                            <constraint firstItem="wvS-Ug-Qm7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JUk-G8-Nse" secondAttribute="trailing" constant="15" id="cen-oK-XQV"/>
+                            <constraint firstItem="wvS-Ug-Qm7" firstAttribute="centerY" secondItem="ChH-rG-WsF" secondAttribute="centerY" id="ncY-18-pIm"/>
                             <constraint firstItem="JUk-G8-Nse" firstAttribute="leading" secondItem="MN2-nT-Okg" secondAttribute="trailing" constant="15" id="t06-kf-TDk"/>
                             <constraint firstItem="yec-v2-KqA" firstAttribute="leading" secondItem="MN2-nT-Okg" secondAttribute="leading" id="tOR-GP-237"/>
                         </constraints>
@@ -101,16 +111,18 @@
             <size key="customSize" width="395" height="78"/>
             <connections>
                 <outlet property="award" destination="yec-v2-KqA" id="7YU-UO-tOi"/>
+                <outlet property="checkMark" destination="wvS-Ug-Qm7" id="XhC-aB-hDL"/>
                 <outlet property="count" destination="Tp0-7k-auf" id="7Hh-6q-Ivo"/>
                 <outlet property="goal" destination="MN2-nT-Okg" id="KEw-93-kCQ"/>
                 <outlet property="plate" destination="ChH-rG-WsF" id="a2m-f5-8am"/>
                 <outlet property="subTitle" destination="F74-qT-oTK" id="M00-cL-56U"/>
                 <outlet property="title" destination="lYa-hg-Szf" id="q7N-uS-jiZ"/>
             </connections>
-            <point key="canvasLocation" x="292.02898550724638" y="138.61607142857142"/>
+            <point key="canvasLocation" x="290.57971014492756" y="138.61607142857142"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="checkmark.seal.fill" catalog="system" width="128" height="128"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

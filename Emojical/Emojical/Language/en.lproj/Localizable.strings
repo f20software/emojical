@@ -28,9 +28,9 @@
 
 // Goal reaching
 
-"goal_reached_0_text" = "Goal reached|never";
+"goal_reached_0_text" = "The goal hasn't been reached yet."; // "Goal reached|never";
 
-"goal_reached_1_text" = "Goal reached|%d time|last time:\n%@";
+"goal_reached_1_text" = "The goal has been reached\non %@";
 
 "goal_reached_x_text" = "Goal reached|%d times|last time:\n%@";
 

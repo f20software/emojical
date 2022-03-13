@@ -125,11 +125,12 @@ class Language {
 
         let df = DateFormatter()
         df.dateStyle = .medium
+        df.locale = Locale(identifier: Bundle.main.preferredLocalizations.first!)
 
         if count > 1 {
             return "goal_reached_x_text".localized(count, df.string(from: lastDate))
         } else {
-            return "goal_reached_1_text".localized(count, df.string(from: lastDate))
+            return "goal_reached_1_text".localized(df.string(from: lastDate))
         }
     }
     

@@ -163,6 +163,10 @@ class GoalViewController : UIViewController, GoalView {
             forCellWithReuseIdentifier: Specs.Cells.reached
         )
         details.register(
+            UINib(nibName: "GoalReachedSimpleCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.reachedSimple
+        )
+        details.register(
             UINib(nibName: "GoalChartCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.chart
         )
@@ -253,6 +257,13 @@ extension GoalViewController: UICollectionViewDelegate {
             cell.configure(for: data)
             return cell
 
+        case .reachedNoStreak(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.reachedSimple, for: path
+            ) as? GoalReachedSimpleCell else { return UICollectionViewCell() }
+            cell.configure(for: data)
+            return cell
+
         case .chart(let data):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.chart, for: path
@@ -301,6 +312,9 @@ fileprivate struct Specs {
 
         /// Goal reached details cell
         static let reached = "GoalReachedCell"
+
+        /// Goal reached details cell without streak information
+        static let reachedSimple = "GoalReachedSimpleCell"
 
         /// Goal chart  cell
         static let chart = "GoalChartCell"

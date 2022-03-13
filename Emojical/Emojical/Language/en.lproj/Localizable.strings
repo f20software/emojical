@@ -28,9 +28,9 @@
 
 // Goal reaching
 
-"goal_reached_0_text" = "Goal reached|never";
+"goal_reached_0_text" = "The goal has not yet been reached."; 
 
-"goal_reached_1_text" = "Goal reached|%d time|last time:\n%@";
+"goal_reached_1_text" = "The goal has been reached\non %@";
 
 "goal_reached_x_text" = "Goal reached|%d times|last time:\n%@";
 
@@ -46,17 +46,19 @@
 
 "monthly_goal" = "monthly goal";
 
+"once_goal" = "goal";
+
 "week_positive_x" = "Weekly, %d times or more.";
 
 "week_negative_x" = "Weekly, %d times or less.";
-
-"week_no_limit" = "Weekly, no limit.";
 
 "month_positive_x" = "Monthly, %d times or more.";
 
 "month_negative_x" = "Monthly, %d times or less.";
 
-"month_no_limit" = "Monthly, no limit.";
+"once_positive_x" = "Get %d stickers.";
+
+"once_negative_x" = "Don't get %d stickers.";
 
 "last_x_weeks" = "Last %d weeks";
 
@@ -76,6 +78,12 @@
 
 "you_got_x_stickers_month" = "You got %d stickers this month";
 
+"you_got_0_stickers_total" = "You've got no stickers so far";
+
+"you_got_1_sticker_total" = "You got 1 sticker so far";
+
+"you_got_x_stickers_total" = "You got %d stickers so far";
+
 "positive_goal_not_reached" = "%@. %d more to go.";
 
 "positive_goal_not_reached_0" = "%@. The goal is %d.";
@@ -93,6 +101,10 @@
 "month_positive_goal_reached" = "You've reached the goal this month by getting %d stickers. Great job!";
 
 "month_negative_goal_breached" = "You've broken the goal by getting %d stickers this month.";
+
+"once_positive_goal_reached" = "You've reached the goal by getting %d stickers. Great job!";
+
+"once_negative_goal_breached" = "You've broken the goal by getting %d stickers.";
 
 // Award reached / not reached state
 
@@ -158,31 +170,33 @@
 
 "select_stickers_instructions" = "Select one or more";
 
-"name_label" = "Name:";
+"name_label" = "Name";
 
 "goal_name_placeholder" = "Goal Name";
 
-"stickers_label" = "Stickers:";
+"stickers_label" = "Stickers";
 
-"goal_label" = "Goal:";
+"goal_period_label" = "How often do you want to reach the goal?";
 
-"limit_label" = "Limit:";
-
-"goal_period_label" = "Goal Period:";
-
-"direction_label" = "Direction:";
+"direction_label" = "Is that a positive or negative goal?";
 
 "positive" = "positive";
 
 "negative" = "negative";
 
-"get_x_or_more" = "get|or more";
+"get_x_or_more" = "The goal is to get|or more";
 
-"get_x_or_fewer" = "get|or less";
+"get_x_or_fewer" = "The goal is to get|or less";
 
-"week" = "week";
+"get_x_stickers" = "The goal is to get|stickers";
 
-"month" = "month";
+"not_get_x_stickers" = "The goal is not to get|stickers";
+
+"week_period" = "weeky";
+
+"month_period" = "monthly";
+
+"once_period" = "once";
 
 "select_stickers_title" = "Select Stickers";
 

@@ -27,6 +27,7 @@ class AwardManager {
     // When app resumes we read that value and recalculate weeks for all weeks after that date until
     // we reach Sunday
     func recalculateOnAppResume() {
+        recalculateTotalGoals()
         recalculateMonthlyGoals()
         if recalculateWeeklyGoals() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
@@ -38,6 +39,7 @@ class AwardManager {
     // When stickers are updated manually for a certain date, we will recalculate
     // all awards that could be potentially affected
     func recalculateAwards(_ date: Date) {
+        recalculateTotalGoals()
         recalculateAwardsForWeek(date)
         recalculateAwardsForMonth(date)
     }
@@ -70,6 +72,12 @@ class AwardManager {
         // we will return it here
         return (closedWeeks > 1)
     }
+
+    // Recalculate total(overall) goals
+    private func recalculateTotalGoals() {
+        recalculateTotalAwardsForDate(Date())
+    }
+
     
     // Recalculate monthly goals and update last-month-update parameter in the database
     private func recalculateMonthlyGoals() {
@@ -144,6 +152,48 @@ class AwardManager {
         }
     }
 
+    func recalculateTotalAwardsForDate(_ date: Date) {
+        let goals = repository.goalsBy(period: .once)
+        // If we don't have goals - there is not point of recalculating anything
+        guard goals.count > 0 else { return }
+        
+        NSLog("Recalculating total awards for \(date.databaseKey)")
+
+        // Save off array of Ids so we can easily filter existing awards by only
+        // looking at ones that correspond to our goals
+        let goalIds = goals.compactMap({ $0.id })
+        var addAwards = [Award]()
+
+        for goal in goals {
+            let stampsLog = repository.diaryForStamp(ids: goal.stamps)
+
+            if goal.direction == .positive {
+                let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
+                addAwards.append(
+                    Award(with: goal,
+                        date: dateReached ?? date,
+                        reached: dateReached != nil,
+                        count: totalCount
+                    )
+                )
+            }
+            else if (goal.direction == .negative) {
+                let (reached, totalCount) = isNegativeGoalReached(goal, diary: stampsLog)
+                addAwards.append(
+                    Award(with: goal, date: date, reached: reached, count: totalCount)
+                )
+            }
+        }
+            
+        // Load existing awards from the database
+        let deleteAwards = repository.awardsByGoal(ids: goalIds)
+
+        // Update data source with new and/or deleted awards
+        if addAwards.count > 0 || deleteAwards.count > 0 {
+            repository.updateAwards(add: addAwards, remove: deleteAwards)
+        }
+    }
+
     func recalculateAwardsForWeek(_ date: Date) {
         let goals = repository.goalsBy(period: .week)
         // If we don't have goals - there is not point of recalculating anything
@@ -193,7 +243,10 @@ class AwardManager {
     }
     
     func currentProgressFor(_ goal: Goal) -> Int {
-        guard goal.period == .week || goal.period == .month else { return 0 }
+        guard (
+            goal.period == .week ||
+            goal.period == .month ||
+            goal.period == .once) else { return 0 }
 
         var start, end: Date!
         if goal.period == .week {
@@ -201,10 +254,12 @@ class AwardManager {
             end = today.lastOfWeek
             start = end.byAddingDays(-6)
         }
-        else { /* if goal.period == .month */
+        else if goal.period == .month {
             let today = Date()
             end = today.lastOfMonth
             start = today.firstOfMonth
+        } else /* if goal.period == .total */ {
+            return repository.diaryForStamp(ids: goal.stamps).count
         }
         
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)

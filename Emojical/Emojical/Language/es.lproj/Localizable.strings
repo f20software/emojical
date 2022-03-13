@@ -28,9 +28,9 @@
 
 // Goal reaching
 
-"goal_reached_0_text" = "Meta alcanzada|nunca";
+"goal_reached_0_text" = "El meta aún no se ha alcanzado.";
 
-"goal_reached_1_text" = "Meta alcanzada|%d vez|ultima vez:\n%@";
+"goal_reached_1_text" = "El meta se ha alcanzado\nel %@";
 
 "goal_reached_x_text" = "Meta alcanzada|%d veces|ultima vez:\n%@";
 
@@ -46,17 +46,19 @@
 
 "monthly_goal" = "meta mensual";
 
+"once_goal" = "meta";
+
 "week_positive_x" = "Semanalmente, %d veces o más.";
 
 "week_negative_x" = "Semanalmente, %d veces o menos.";
-
-"week_no_limit" = "Semanalmente, sin límite.";
 
 "month_positive_x" = "Mensualmente, %d veces o más.";
 
 "month_negative_x" = "Mensualmente, %d veces o menos.";
 
-"month_no_limit" = "Mensualmente, sin límite.";
+"once_positive_x" = "Consigue %d pegatinas.";
+
+"once_negative_x" = "No consigas %d pegatinas.";
 
 "last_x_weeks" = "Últimas %d semanas";
 
@@ -76,6 +78,12 @@
 
 "you_got_x_stickers_month" = "Tienes %d pegatinas este mes";
 
+"you_got_0_stickers_total" = "No tienes pegatinas hasta ahora";
+
+"you_got_1_sticker_total" = "Tienes 1 pegatina hasta ahora";
+
+"you_got_x_stickers_total" = "Tienes %d pegatinas hasta ahora";
+
 "positive_goal_not_reached" = "%@. %d para ir.";
 
 "positive_goal_not_reached_0" = "%@. El meta es %d.";
@@ -93,6 +101,10 @@
 "month_positive_goal_reached" = "Has alcanzado la meta este mes al recibir %d pegatinas. ¡Gran trabajo!";
 
 "month_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas este mes.";
+
+"once_positive_goal_reached" = "Has alcanzado la meta al recibir %d pegatinas. ¡Gran trabajo!";
+
+"once_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas.";
 
 // Award reached / not reached state
 
@@ -162,11 +174,7 @@
 
 "stickers_label" = "Pegatinas:";
 
-"goal_label" = "Meta:";
-
 "goal_name_placeholder" = "Nombre de la meta";
-
-"limit_label" = "Límite:";
 
 "goal_period_label" = "Período meta:";
 
@@ -176,13 +184,19 @@
 
 "negative" = "negativo";
 
-"get_x_or_more" = "consigue|o más";
+"get_x_or_more" = "El meta es conseguir|o más";
 
-"get_x_or_fewer" = "consigue|o menos";
+"get_x_or_fewer" = "El meta es conseguir|o menos";
 
-"week" = "semana";
+"get_x_stickers" = "El meta es conseguir|pegatinas";
 
-"month" = "mes";
+"not_get_x_stickers" = "El meta es no conseguir|pegatinas";
+
+"week_period" = "semana";
+
+"month_period" = "mes";
+
+"once_period" = "once";
 
 "select_stickers_title" = "Seleccionar pegatinas";
 

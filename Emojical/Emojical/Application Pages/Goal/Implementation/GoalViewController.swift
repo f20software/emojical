@@ -99,6 +99,24 @@ class GoalViewController : UIViewController, GoalView {
         to.direction = Direction(rawValue: details.direction.selectedSegmentIndex ?? 0) ?? .positive
         to.period = Period(rawValue: details.period.selectedSegmentIndex ?? 0) ?? .week
     }
+    
+    /// Update view text labels based on current goal model
+    func updateGoalExplanation(goal: Goal) {
+        guard let details = detailsEditView else { return }
+        
+        let positive = (goal.direction == .positive)
+        var text = "get_x_stickers".localized
+        
+        if goal.isPeriodic {
+            text = positive ? "get_x_or_more".localized : "get_x_or_fewer".localized
+        } else {
+            text = positive ? "get_x_stickers".localized : "not_get_x_stickers".localized
+        }
+ 
+        let labels = text.components(separatedBy: "|")
+        details.limitExplanation1.text = labels.first
+        details.limitExplanation2.text = labels.last
+    }
 
     /// Dismisses view if it was presented modally
     func dismiss(from mode: PresentationMode) {
@@ -143,6 +161,10 @@ class GoalViewController : UIViewController, GoalView {
         details.register(
             UINib(nibName: "GoalReachedCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.reached
+        )
+        details.register(
+            UINib(nibName: "GoalReachedSimpleCell", bundle: .main),
+            forCellWithReuseIdentifier: Specs.Cells.reachedSimple
         )
         details.register(
             UINib(nibName: "GoalChartCell", bundle: .main),
@@ -235,6 +257,13 @@ extension GoalViewController: UICollectionViewDelegate {
             cell.configure(for: data)
             return cell
 
+        case .reachedNoStreak(let data):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Specs.Cells.reachedSimple, for: path
+            ) as? GoalReachedSimpleCell else { return UICollectionViewCell() }
+            cell.configure(for: data)
+            return cell
+
         case .chart(let data):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.chart, for: path
@@ -283,6 +312,9 @@ fileprivate struct Specs {
 
         /// Goal reached details cell
         static let reached = "GoalReachedCell"
+
+        /// Goal reached details cell without streak information
+        static let reachedSimple = "GoalReachedSimpleCell"
 
         /// Goal chart  cell
         static let chart = "GoalChartCell"

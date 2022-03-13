@@ -68,7 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //      Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")
 
 //      Un-deleting specific stamp that I deleted accidentaly
-//      let repo = Storage.shared.repository
+        
+//        let repo = Storage.shared.repository
+//        repo.createAdHocEntries()
 //      var sticker = repo.stampById(15)
 //      sticker?.deleted = false
 //      try! repo.save(stamp: sticker!)

@@ -18,6 +18,7 @@ class GoalCell: ThemeObservingCollectionCell {
     @IBOutlet weak var goal: GoalIconView!
     @IBOutlet weak var award: AwardIconView!
     @IBOutlet weak var count: UILabelWithContentInset!
+    @IBOutlet weak var checkMark: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,12 +50,14 @@ class GoalCell: ThemeObservingCollectionCell {
             award.borderColor = awardData.borderColor
         }
         
+        checkMark.isHidden = true
+        count.isHidden = true
         
-        if data.count > 0 {
+        if data.checkMark {
+            checkMark.isHidden = false
+        } else if data.count > 0 {
             count.text = "\(data.count)"
             count.isHidden = false
-        } else {
-            count.isHidden = true
         }
         
         goal.setNeedsDisplay()
@@ -77,6 +80,7 @@ class GoalCell: ThemeObservingCollectionCell {
         count.contentInsets = Theme.main.specs.counterContentInsets
         count.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         count.clipsToBounds = true
+        checkMark.tintColor = Theme.main.colors.oneTimeGoalReachedCheckMark
 
         title.textColor = Theme.main.colors.text
         subTitle.textColor = Theme.main.colors.secondaryText

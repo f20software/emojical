@@ -17,7 +17,6 @@ class GoalDetailsEditCell: UICollectionViewCell {
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var separator1: UIView!
 
-    @IBOutlet weak var limitLabel: UILabel!
     @IBOutlet weak var limit: UITextField!
     @IBOutlet weak var limitExplanation1: UILabel!
     @IBOutlet weak var limitExplanation2: UILabel!
@@ -78,15 +77,6 @@ class GoalDetailsEditCell: UICollectionViewCell {
     }
 
     @IBAction func directionChanged(_ sender: Any) {
-        let positive = direction.selectedSegmentIndex == 0
-        limitLabel.text = positive ?
-            "goal_label".localized :
-            "limit_label".localized
-        
-        limitExplanation2.text = positive ?
-            "get_x_or_more".localized.components(separatedBy: "|").last :
-            "get_x_or_fewer".localized.components(separatedBy: "|").last
-        
         onValueChanged?()
     }
     
@@ -99,12 +89,16 @@ class GoalDetailsEditCell: UICollectionViewCell {
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
         
-        for label in [nameLabel, limitLabel, stickersLabel, directionLabel, periodLabel] {
+        for label in [nameLabel, stickersLabel] {
             label?.font = Theme.main.fonts.formFieldCaption
             label?.textColor = Theme.main.colors.secondaryText
         }
-        for label in [limitExplanation1, limitExplanation2] {
+        for label in [directionLabel, periodLabel] {
             label?.font = Theme.main.fonts.formFieldCaption
+            label?.textColor = Theme.main.colors.text
+        }
+        for label in [limitExplanation1, limitExplanation2] {
+            label?.font = Theme.main.fonts.formFieldBoldCaption
             label?.textColor = Theme.main.colors.text
         }
 
@@ -118,10 +112,6 @@ class GoalDetailsEditCell: UICollectionViewCell {
         stickers.font = Theme.main.fonts.listBody
         separator2.backgroundColor = Theme.main.colors.separator
         
-        limitLabel.text = "goal_label".localized
-        limitExplanation1.text = "get_x_or_more".localized.components(separatedBy: "|").first
-        limitExplanation2.text = "get_x_or_more".localized.components(separatedBy: "|").last
-        
         limit.backgroundColor = Theme.main.colors.secondaryBackground
         limit.font = Theme.main.fonts.listBody
         separator3.backgroundColor = Theme.main.colors.separator
@@ -132,8 +122,9 @@ class GoalDetailsEditCell: UICollectionViewCell {
         period.buttonFont = Theme.main.fonts.sectionHeaderTitle
         period.buttonColors = [Theme.main.colors.tint]
         period.setTitles(to: [
-            "week".localized.capitalizingFirstLetter(),
-            "month".localized.capitalizingFirstLetter()
+            "week_period".localized.capitalizingFirstLetter(),
+            "month_period".localized.capitalizingFirstLetter(),
+            "once_period".localized.capitalizingFirstLetter()
         ])
         separator4.backgroundColor = Theme.main.colors.separator
 

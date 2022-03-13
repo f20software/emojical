@@ -183,6 +183,7 @@ class GoalPresenter: GoalPresenterProtocol {
 
         view.update(to: &goal)
         updateTitle()
+        view.updateGoalExplanation(goal: goal)
         view.enableDoneButton(goal.isValid)
     }
     
@@ -211,6 +212,7 @@ class GoalPresenter: GoalPresenterProtocol {
             } else {
                 view.loadData([.edit(data), .deleteButton])
             }
+            view.updateGoalExplanation(goal: goal)
             view.enableDoneButton(goal.isValid)
         } else {
             let data = GoalViewData(
@@ -228,7 +230,12 @@ class GoalPresenter: GoalPresenterProtocol {
             
             var cells: [GoalDetailsElement] = [.view(data)]
             if let history = dataBuilder.historyFor(goal: goal.id, limit: 12) {
-                cells.append(.reached(history.reached))
+                if goal.isPeriodic {
+                    cells.append(.reached(history.reached))
+                } else {
+                    cells.append(.reachedNoStreak(history.reached))
+                }
+
                 if history.chart.points.count > 2 {
                     cells.append(.chart(history.chart))
                 }

@@ -64,6 +64,21 @@ extension DataSource {
         return []
     }
     
+    /// Awards by given Ids
+    func awardsByGoal(ids: [Int64]) -> [Award] {
+        do {
+            return try dbQueue.read { db -> [StoredAward] in
+                let request = StoredAward
+                    .filter(ids.contains(StoredAward.Columns.goalId))
+                    .order(StoredAward.Columns.date)
+                return try request.fetchAll(db)
+            }.map { $0.toModel() }
+        }
+        catch { }
+        return []
+    }
+
+    
     // Helper method to add and remove some awards when goal is reached
     // Will automatically recalculate count ans lastUsed for all goals affected
     func updateAwards(add: [Award], remove: [Award]) {

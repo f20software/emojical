@@ -49,4 +49,7 @@ protocol GoalView: AnyObject {
 
     /// Update Goal data from the UI
     func update(to: inout Goal)
+
+    /// Update view text labels based on current goal model
+    func updateGoalExplanation(goal: Goal)
 }

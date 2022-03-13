@@ -21,6 +21,11 @@ struct Goal {
     var count: Int = 0
     var lastUsed: Date?
     
+    /// Is it periodic goal? Can it have streaks?
+    var isPeriodic: Bool {
+        return period != .once
+    }
+
     func isReached(progress: Int) -> Bool {
         return direction == .positive && progress >= limit
     }
@@ -42,7 +47,7 @@ extension Goal: Equatable, Hashable {
     
     static func < (lhs: Goal, rhs: Goal) -> Bool {
         
-        // Then compare period - weekly first
+        // First compare period - weekly first
         if lhs.period != rhs.period {
             return lhs.period.rawValue < rhs.period.rawValue
         }

@@ -58,6 +58,15 @@ class Language {
                 progressText = "you_got_x_stickers_month".localized(progress)
             }
 
+        case .once:
+            if progress == 0 {
+                progressText = "you_got_0_stickers_total".localized
+            } else if progress == 1 {
+                progressText = "you_got_1_sticker_total".localized
+            } else {
+                progressText = "you_got_x_stickers_total".localized(progress)
+            }
+
         default:
             assertionFailure("Not implemented")
             return ""
@@ -75,6 +84,8 @@ class Language {
                     return "week_positive_goal_reached".localized(progress)
                 case .month:
                     return "month_positive_goal_reached".localized(progress)
+                case .once:
+                    return "once_positive_goal_reached".localized(progress)
                 default:
                     assertionFailure("Not implemented")
                     return ""
@@ -93,7 +104,9 @@ class Language {
                 case .week:
                     return "week_negative_goal_breached".localized(progress)
                 case .month:
-                    return "week_negative_goal_breached".localized(progress)
+                    return "month_negative_goal_breached".localized(progress)
+                case .once:
+                    return "once_negative_goal_breached".localized(progress)
                 default:
                     assertionFailure("Not implemented")
                     return ""
@@ -112,11 +125,12 @@ class Language {
 
         let df = DateFormatter()
         df.dateStyle = .medium
+        df.locale = Locale(identifier: Bundle.main.preferredLocalizations.first!)
 
         if count > 1 {
             return "goal_reached_x_text".localized(count, df.string(from: lastDate))
         } else {
-            return "goal_reached_1_text".localized(count, df.string(from: lastDate))
+            return "goal_reached_1_text".localized(df.string(from: lastDate))
         }
     }
     
@@ -131,29 +145,34 @@ class Language {
     /// Goal description
     /// For example - "Weekly goal. 5 times or more."
     static func goalDescription(_ goal: Goal) -> String {
+        // Goal always should have limit
+        guard goal.limit > 0 else {
+            return ""
+        }
+
         switch goal.period {
         case .week:
-            if goal.limit > 0 {
-                switch goal.direction {
-                case .positive:
-                    return "week_positive_x".localized(goal.limit)
-                case .negative:
-                    return "week_negative_x".localized(goal.limit)
-                }
-            } else {
-                return "week_no_limit".localized
+            switch goal.direction {
+            case .positive:
+                return "week_positive_x".localized(goal.limit)
+            case .negative:
+                return "week_negative_x".localized(goal.limit)
             }
             
         case .month:
-            if goal.limit > 0 {
-                switch goal.direction {
-                case .positive:
-                    return "month_positive_x".localized(goal.limit)
-                case .negative:
-                    return "month_negative_x".localized(goal.limit)
-                }
-            } else {
-                return "month_no_limit".localized
+            switch goal.direction {
+            case .positive:
+                return "month_positive_x".localized(goal.limit)
+            case .negative:
+                return "month_negative_x".localized(goal.limit)
+            }
+            
+        case .once:
+            switch goal.direction {
+            case .positive:
+                return "once_positive_x".localized(goal.limit)
+            case .negative:
+                return "once_negative_x".localized(goal.limit)
             }
 
         default:
@@ -172,6 +191,9 @@ class Language {
         case .month:
             return "monthly_goal".localized
             
+        case .once:
+            return "once_goal".localized
+
         default:
             assertionFailure("Not implemented")
             return ""

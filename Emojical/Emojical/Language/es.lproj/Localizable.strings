@@ -28,9 +28,9 @@
 
 // Goal reaching
 
-"goal_reached_0_text" = "Meta alcanzada|nunca";
+"goal_reached_0_text" = "El meta aún no se ha alcanzado.";
 
-"goal_reached_1_text" = "Meta alcanzada|%d vez|ultima vez:\n%@";
+"goal_reached_1_text" = "El meta se ha alcanzado\nel %@";
 
 "goal_reached_x_text" = "Meta alcanzada|%d veces|ultima vez:\n%@";
 
@@ -190,7 +190,7 @@
 
 "get_x_stickers" = "El meta es conseguir|pegatinas";
 
-"not_get_x_stickers" = "El meta no es conseguir|pegatinas";
+"not_get_x_stickers" = "El meta es no conseguir|pegatinas";
 
 "week_period" = "semana";
 

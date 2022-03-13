@@ -70,47 +70,47 @@
 
 "you_got_1_sticker_week" = "Вы атрымалі 1 налепку на гэтым тыдні";
 
-"you_got_x_stickers_week" = "You got %d stickers this week";
+"you_got_x_stickers_week" = "Вы атрымалі %d налепак на гэтым тыдні";
 
-"you_got_0_stickers_month" = "You've got no stickers so far this month";
+"you_got_0_stickers_month" = "У гэтым месяцы ў вас пакуль няма налепак";
 
-"you_got_1_sticker_month" = "You got 1 sticker this month";
+"you_got_1_sticker_month" = "Вы атрымалі 1 налепку ў гэтым месяцы";
 
-"you_got_x_stickers_month" = "You got %d stickers this month";
+"you_got_x_stickers_month" = "Вы атрымалі %d налепак ў гэтым месяцы";
 
-"you_got_0_stickers_total" = "You've got no stickers so far";
+"you_got_0_stickers_total" = "У вас пакуль няма налепак";
 
-"you_got_1_sticker_total" = "You got 1 sticker so far";
+"you_got_1_sticker_total" = "Вы атрымалі 1 налепку";
 
-"you_got_x_stickers_total" = "You got %d stickers so far";
+"you_got_x_stickers_total" = "Вы атрымалі %d налепак";
 
-"positive_goal_not_reached" = "%@. %d more to go.";
+"positive_goal_not_reached" = "%@. Засталося яшчэ %d.";
 
-"positive_goal_not_reached_0" = "%@. The goal is %d.";
+"positive_goal_not_reached_0" = "%@. Мэта - %d.";
 
-"negative_goal_not_reached" = "%@. You can still get %d more.";
+"negative_goal_not_reached" = "%@. Вы можаце атрымаць яшчэ %d.";
 
-"negative_goal_not_reached_0" = "%@. You can get up to %d.";
+"negative_goal_not_reached_0" = "%@. Вы можаце атрымаць да %d.";
 
-"negative_goal_reached" = "%@. You will break this goal if you get one more.";
+"negative_goal_reached" = "%@. Вы зламаеце гэтую мэту, калі атрымаеце яшчэ адну.";
 
-"week_positive_goal_reached" = "You've reached the goal this week by getting %d stickers. Great job!";
+"week_positive_goal_reached" = "Вы дасягнулі мэты на гэтым тыдні, атрымаўшы %d налепак. Выдатная праца!";
 
-"week_negative_goal_breached" = "You've broken the goal by getting %d stickers this week.";
+"week_negative_goal_breached" = "Вы не дасягнулі мэты, атрымаўшы %d налепак на гэтым тыдні.";
 
-"month_positive_goal_reached" = "You've reached the goal this month by getting %d stickers. Great job!";
+"month_positive_goal_reached" = "Вы дасягнулі мэты ў гэтым месяцы, атрымаўшы %d налепак. Выдатная праца!";
 
-"month_negative_goal_breached" = "You've broken the goal by getting %d stickers this month.";
+"month_negative_goal_breached" = "Вы не дасягнулі мэты, атрымаўшы %d налепак ў гэтым месяцы.";
 
-"once_positive_goal_reached" = "You've reached the goal by getting %d stickers. Great job!";
+"once_positive_goal_reached" = "Вы дасягнулі мэты, атрымаўшы %d налепак. Выдатная праца!";
 
-"once_negative_goal_breached" = "You've broken the goal by getting %d stickers.";
+"once_negative_goal_breached" = "Вы не дасягнулі мэты, атрымаўшы %d налепак.";
 
 // Award reached / not reached state
 
-"award_earned_on" = "Earned on %@.";
+"award_earned_on" = "Атрымана %@.";
 
-"award_positive_reached" = "Earned on %@, by getting %d stickers.";
+"award_positive_reached" = "Атрымана %@, by getting %d stickers.";
 
 "award_positive_not_reached" = "%@ not reached. You got %d stickers (needed %d).";
 
@@ -134,11 +134,11 @@
 
 "dismiss_button" = "Звольніць";
 
-"weekly_recap_title" = "Weekly Recap";
+"weekly_recap_title" = "Штотыднёвы агляд";
 
-"reached_goals_title" = "Reached Goals";
+"reached_goals_title" = "Дасягнутыя мэты";
 
-"not_reached_goals_title" = "Not Reached Goals";
+"not_reached_goals_title" = "Недасягнутыя мэты";
 
 "today_title" = "Сёння";
 
@@ -170,35 +170,35 @@
 
 "select_stickers_instructions" = "Select one or more";
 
-"name_label" = "Name";
+"name_label" = "Назва";
 
-"goal_name_placeholder" = "Goal Name";
+"goal_name_placeholder" = "Назва мэты";
 
-"stickers_label" = "Stickers";
+"stickers_label" = "Налепкі";
 
-"goal_period_label" = "How often do you want to reach the goal?";
+"goal_period_label" = "Як часта вы хочаце дасягнуць мэты?";
 
-"direction_label" = "Is that a positive or negative goal?";
+"direction_label" = "Гэта пазітыўная ці адмоўная мэта?";
 
-"positive" = "positive";
+"positive" = "пазітыўная";
 
-"negative" = "negative";
+"negative" = "адмоўная";
 
-"get_x_or_more" = "The goal is to get|or more";
+"get_x_or_more" = "Мэта - атрымаць|або больш";
 
-"get_x_or_fewer" = "The goal is to get|or less";
+"get_x_or_fewer" = "Мэта - атрымаць|або менш";
 
-"get_x_stickers" = "The goal is to get|stickers";
+"get_x_stickers" = "Мэта - атрымаць|налепак";
 
-"not_get_x_stickers" = "The goal is not to get|stickers";
+"not_get_x_stickers" = "Мэта - не атрымаць|налепак";
 
-"week_period" = "weeky";
+"week_period" = "тыднёва";
 
-"month_period" = "monthly";
+"month_period" = "штомесяц";
 
-"once_period" = "once";
+"once_period" = "раз";
 
-"select_stickers_title" = "Select Stickers";
+"select_stickers_title" = "Выберыце налепкі";
 
 // Sticker Editing
 

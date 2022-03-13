@@ -97,4 +97,10 @@ extension Date {
         let dayIndex = month.indexForDay(Calendar.current.component(.day, from: self))
         return self.byAddingDays(6-dayIndex)
     }
+
+    /// Helper function to recognize if two dates are in the same month (used in Week Label)
+    func isSameMonth(as date: Date) -> Bool {
+        let calendar: Calendar = .autoupdatingCurrent
+        return calendar.dateComponents([.month], from: self) == calendar.dateComponents([.month], from: date)
+    }
 }

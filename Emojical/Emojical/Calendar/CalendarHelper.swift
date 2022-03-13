@@ -218,22 +218,31 @@ extension CalendarHelper {
 
         /// Label for the week in a "December 21 - 28" or "December 28 - January 3" format
         var label: String {
-            let calendar: Calendar = .autoupdatingCurrent
-
-            // Week label formatting.
+            let dateTemplate = DateFormatter.dateFormat(
+                fromTemplate: "MMMM d",
+                options: 0,
+                locale: Locale(identifier: Bundle.main.preferredLocalizations.first ?? "en"))
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM d"
-            
-            let firstLabel = formatter.string(from: firstDay)
-            
+
             // If the week ends on the same month as it begins, we use short label format,
-            // like "Month X - Y". Otherwise we use long label format, like "Month1 X - Month2 Y".
-            if calendar.dateComponents([.month], from: firstDay) == calendar.dateComponents([.month], from: lastDay) {
+            // like "Month X - Y"
+            if firstDay.isSameMonth(as: lastDay) {
+                formatter.dateFormat = "MMMM"
+                let month = formatter.string(from: firstDay)
+                
                 formatter.dateFormat = "d"
+                let days = "\(formatter.string(from: firstDay)) - \(formatter.string(from: lastDay))"
+                
+                return dateTemplate?
+                    .replacingFirstOccurrence(of: "MMMM", with: month)
+                    .replacingFirstOccurrence(of: "d", with: days)
+                    .replacingOccurrences(of: "'", with: "") ?? ""
+                
+            } else {
+            // Otherwise we use long label format, like "Month1 X - Month2 Y".
+                formatter.dateFormat = dateTemplate
+                return "\(formatter.string(from: firstDay)) - \(formatter.string(from: lastDay))"
             }
-            let secondLabel = formatter.string(from: lastDay)
-            
-            return "\(firstLabel) - \(secondLabel)"
         }
 
         /// Returns array of days for all dates within the week

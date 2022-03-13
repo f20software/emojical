@@ -141,7 +141,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnu-vy-KWW" customClass="ECSegmentedControl" customModule="Emojical" customModuleProvider="target">
-                                <rect key="frame" x="20" y="163" width="280" height="32"/>
+                                <rect key="frame" x="15" y="163" width="290" height="32"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="HKD-ya-1PW"/>
@@ -184,10 +184,10 @@
                             <constraint firstItem="cnu-vy-KWW" firstAttribute="top" secondItem="06O-IV-lhi" secondAttribute="bottom" constant="10" id="KJw-7r-BQc"/>
                             <constraint firstItem="bPV-Bk-ngu" firstAttribute="leading" secondItem="Gz6-Ti-SPo" secondAttribute="leading" id="NYO-dG-Rjs"/>
                             <constraint firstItem="lKh-YE-wsH" firstAttribute="centerY" secondItem="xUg-jF-mf5" secondAttribute="centerY" id="P04-Sy-Cz8"/>
-                            <constraint firstItem="cnu-vy-KWW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bPV-Bk-ngu" secondAttribute="leading" constant="5" id="P6Z-Gx-wcJ"/>
+                            <constraint firstItem="cnu-vy-KWW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bPV-Bk-ngu" secondAttribute="leading" id="P6Z-Gx-wcJ"/>
                             <constraint firstItem="lJp-yZ-ULG" firstAttribute="leading" secondItem="bPV-Bk-ngu" secondAttribute="leading" id="R5Z-ih-uS2"/>
                             <constraint firstItem="Gz6-Ti-SPo" firstAttribute="top" secondItem="9A5-ln-Jli" secondAttribute="bottom" constant="20" id="SIP-bh-IJD"/>
-                            <constraint firstItem="bPV-Bk-ngu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cnu-vy-KWW" secondAttribute="trailing" constant="5" id="VO1-dx-RMs"/>
+                            <constraint firstItem="bPV-Bk-ngu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cnu-vy-KWW" secondAttribute="trailing" id="VO1-dx-RMs"/>
                             <constraint firstItem="NTQ-yw-a5M" firstAttribute="top" secondItem="xUg-jF-mf5" secondAttribute="bottom" constant="10" id="Vw6-xy-KoW"/>
                             <constraint firstItem="06O-IV-lhi" firstAttribute="leading" secondItem="NWC-mM-L1H" secondAttribute="leading" id="YKM-Xx-qQ3"/>
                             <constraint firstItem="nyW-MM-09a" firstAttribute="top" secondItem="lJp-yZ-ULG" secondAttribute="bottom" constant="10" id="aYR-0D-wJY"/>

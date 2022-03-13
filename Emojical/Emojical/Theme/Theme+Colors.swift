@@ -76,5 +76,8 @@ extension Theme {
         
         /// Unreached goal background (whether it's positive goal in progress or busted negative goal)
         let unreachedGoalBackground = UIColor(named: "unreachedGoalBackground")!
+
+        /// One time goal reached checkmark
+        let oneTimeGoalReachedCheckMark = UIColor(named: "goalReachedCheckmark")!
     }
 }

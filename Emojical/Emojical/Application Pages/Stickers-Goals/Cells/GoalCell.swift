@@ -80,8 +80,7 @@ class GoalCell: ThemeObservingCollectionCell {
         count.contentInsets = Theme.main.specs.counterContentInsets
         count.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         count.clipsToBounds = true
-        
-        checkMark.tintColor = UIColor(named: "emojiGreen") // Theme.main.colors.palette
+        checkMark.tintColor = Theme.main.colors.oneTimeGoalReachedCheckMark
 
         title.textColor = Theme.main.colors.text
         subTitle.textColor = Theme.main.colors.secondaryText

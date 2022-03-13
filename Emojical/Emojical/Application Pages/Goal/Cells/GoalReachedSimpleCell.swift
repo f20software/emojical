@@ -45,7 +45,6 @@ class GoalReachedSimpleCell: UICollectionViewCell {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true
         statistics.font = Theme.main.fonts.listBody
-        
-        checkMark.tintColor = UIColor(named: "emojiGreen") // Theme.main.colors.palette
+        checkMark.tintColor = Theme.main.colors.oneTimeGoalReachedCheckMark
     }
 }

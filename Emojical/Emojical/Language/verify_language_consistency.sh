@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/ksh
 
 EN=en.lproj/Localizable.strings
 SP=es.lproj/Localizable.strings
+retval=0
 
 echo "*** English language: $EN"
 grep '^\"' $EN | while read name value
@@ -9,6 +10,7 @@ do
    if ! grep -q "^$name" $SP
    then 
       echo "[ERROR!] Not found - $name"
+      retval=1
    fi
 done
 
@@ -18,6 +20,9 @@ do
    if ! grep -q "^$name" $EN
    then 
       echo "[ERROR!] Not found - $name"
+      retval=1
    fi
 done
+
+exit $retval
 

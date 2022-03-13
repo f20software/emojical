@@ -27,10 +27,5 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
-    
-    func replacingFirstOccurrence(of target: String, with replacement: String) -> String {
-            guard let range = self.range(of: target) else { return self }
-            return self.replacingCharacters(in: range, with: replacement)
-    }
 }
 

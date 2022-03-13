@@ -218,31 +218,12 @@ extension CalendarHelper {
 
         /// Label for the week in a "December 21 - 28" or "December 28 - January 3" format
         var label: String {
-            let dateTemplate = DateFormatter.dateFormat(
-                fromTemplate: "MMMM d",
-                options: 0,
-                locale: Locale(identifier: Bundle.main.preferredLocalizations.first ?? "en"))
-            let formatter = DateFormatter()
+            let formatter = DateIntervalFormatter()
 
-            // If the week ends on the same month as it begins, we use short label format,
-            // like "Month X - Y"
-            if firstDay.isSameMonth(as: lastDay) {
-                formatter.dateFormat = "MMMM"
-                let month = formatter.string(from: firstDay)
-                
-                formatter.dateFormat = "d"
-                let days = "\(formatter.string(from: firstDay)) - \(formatter.string(from: lastDay))"
-                
-                return dateTemplate?
-                    .replacingFirstOccurrence(of: "MMMM", with: month)
-                    .replacingFirstOccurrence(of: "d", with: days)
-                    .replacingOccurrences(of: "'", with: "") ?? ""
-                
-            } else {
-            // Otherwise we use long label format, like "Month1 X - Month2 Y".
-                formatter.dateFormat = dateTemplate
-                return "\(formatter.string(from: firstDay)) - \(formatter.string(from: lastDay))"
-            }
+            formatter.locale = Locale(identifier:
+                Bundle.main.preferredLocalizations.first ?? "en")
+            formatter.dateTemplate = "MMMMd"
+            return formatter.string(from: firstDay, to: lastDay)
         }
 
         /// Returns array of days for all dates within the week

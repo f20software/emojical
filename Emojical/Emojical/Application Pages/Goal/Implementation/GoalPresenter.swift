@@ -230,11 +230,12 @@ class GoalPresenter: GoalPresenterProtocol {
             
             var cells: [GoalDetailsElement] = [.view(data)]
             if let history = dataBuilder.historyFor(goal: goal.id, limit: 12) {
-                if goal.period != .once {
+                if goal.period.isPeriodic {
                     cells.append(.reached(history.reached))
                 } else {
                     cells.append(.reachedNoStreak(history.reached))
                 }
+
                 if history.chart.points.count > 2 {
                     cells.append(.chart(history.chart))
                 }

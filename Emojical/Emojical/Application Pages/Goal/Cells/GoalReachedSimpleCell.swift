@@ -1,5 +1,5 @@
 //
-//  GoalDetailsCell.swift
+//  GoalReachedSimpleCell.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/24/2020.

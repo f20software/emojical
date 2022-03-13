@@ -20,4 +20,9 @@ enum Period: Int {
 
     /// Annual goals - NOT IMPLEMENTED
     case year
+    
+    /// Is it periodic goal? Can it have streaks?
+    var isPeriodic: Bool {
+        return self != .once
+    }
 }

@@ -107,10 +107,10 @@ class GoalViewController : UIViewController, GoalView {
         let positive = (goal.direction == .positive)
         var text = "get_x_stickers".localized
         
-        if goal.period == .once {
-            text = positive ? "get_x_stickers".localized : "not_get_x_stickers".localized
-        } else {
+        if goal.period.isPeriodic {
             text = positive ? "get_x_or_more".localized : "get_x_or_fewer".localized
+        } else {
+            text = positive ? "get_x_stickers".localized : "not_get_x_stickers".localized
         }
  
         let labels = text.components(separatedBy: "|")

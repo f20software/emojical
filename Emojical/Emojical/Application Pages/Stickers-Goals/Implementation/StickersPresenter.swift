@@ -127,7 +127,7 @@ class StickersPresenter: StickersPresenterProtocol {
                 name: $0.name,
                 details: Language.goalDescription($0),
                 count: $0.count,
-                checkMark: $0.count > 0 && $0.period.isPeriodic == false,
+                checkMark: $0.count > 0 && $0.isPeriodic == false,
                 icon: GoalOrAwardIconData(
                     stamp: stamp,
                     goal: $0,

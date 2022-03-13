@@ -230,7 +230,7 @@ class GoalPresenter: GoalPresenterProtocol {
             
             var cells: [GoalDetailsElement] = [.view(data)]
             if let history = dataBuilder.historyFor(goal: goal.id, limit: 12) {
-                if goal.period.isPeriodic {
+                if goal.isPeriodic {
                     cells.append(.reached(history.reached))
                 } else {
                     cells.append(.reachedNoStreak(history.reached))

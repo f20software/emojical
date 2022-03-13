@@ -21,6 +21,11 @@ struct Goal {
     var count: Int = 0
     var lastUsed: Date?
     
+    /// Is it periodic goal? Can it have streaks?
+    var isPeriodic: Bool {
+        return period != .once
+    }
+
     func isReached(progress: Int) -> Bool {
         return direction == .positive && progress >= limit
     }

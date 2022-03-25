@@ -120,9 +120,9 @@
 
 // Titles / Tabs / Section Name
 
-"new_goal_title" = "Новая Мэта";
+"new_goal_title" = "Новая мэта";
 
-"new_sticker_title" = "Новая Налепка";
+"new_sticker_title" = "Новая налепка";
 
 "create_new_title" = "Ствараць";
 
@@ -156,19 +156,19 @@
 
 // Goal Editing
 
-"no_goals_description" = "You have no goals yet. Emojical can help you improve yourself, just create a new goal and track your progress.";
+"no_goals_description" = "У вас пакуль няма мэтаў. Emojical можа дапамагчы вам палепшыць сябе, проста пастаўце новую мэту і адсочвайце свой прагрэс.";
 
-"looking_for_examples" = "If you're not sure which goals you can create, take a look at a few examples we put together.";
+"looking_for_examples" = "Калі вы не ўпэўненыя, якія мэты можна стварыць, паглядзіце на некалькі прыкладаў, якія мы сабралі.";
 
-"delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
+"delete_goal_description" = "Калі вы абнавіце або выдаліце мэту, усе раней заробленыя ўзнагароды застануцца нязменнымі.";
 
-"create_goal_button" = "Create Goal";
+"create_goal_button" = "Стварыце мэту";
 
-"goals_examples_button" = "Goal Examples";
+"goals_examples_button" = "Прыклады мэт";
 
-"delete_goal_button" = "Delete Goal";
+"delete_goal_button" = "Выдаліць мэту";
 
-"select_stickers_instructions" = "Select one or more";
+"select_stickers_instructions" = "Выберыце адну або некалькі";
 
 "name_label" = "Назва";
 
@@ -202,122 +202,122 @@
 
 // Sticker Editing
 
-"emoji_label" = "Emoji:";
+"emoji_label" = "Emoji";
 
-"preview_label" = "Preview:";
+"preview_label" = "Прагляд";
 
-"sticker_name_placeholder" = "Sticker Name";
+"sticker_name_placeholder" = "Назва налепкі";
 
-"delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker will remain unchanged.";
+"delete_sticker_description" = "Калі вы выдаліце налепку, усё ранейшае выкарыстанне гэтай налепкі застанецца нязменным.";
 
-"delete_sticker_button" = "Delete Sticker";
+"delete_sticker_button" = "Выдаліць налепку";
 
 // Options Page
 
-"reminder_title" = "Reminder";
+"reminder_title" = "Напамін";
 
-"reminder_option" = "Daily Reminder";
+"reminder_option" = "Штодзённае напамін";
 
-"reminder_footer" = "Remind yourself every day around 9pm to fill your entry for that day if you haven't done so already.";
+"reminder_footer" = "Нагадвайце сабе кожны дзень каля 9 вечара, каб запоўніць запіс на гэты дзень, калі вы яшчэ гэтага не зрабілі.";
 
-"backup_title" = "Backup / Restore";
+"backup_title" = "Рэзервовае капіраванне";
 
-"backup_button" = "Export Your Data...";
+"backup_button" = "Экспарт вашых даных...";
 
-"backup_footer" = "Email yourself JSON file with all your data.";
+"backup_footer" = "Адпраўце сабе файл JSON па электроннай пошце з усімі вашымі данымі.";
 
-"feedback_button" = "Feedback...";
+"feedback_button" = "Водгук...";
 
 // Cheer messages when goal is reached
 
-"awesome_title" = "Awesome!";
+"awesome_title" = "Дзіўна!";
 
-"goal_reached_name" = "You've reached your \"%@\" goal.";
+"goal_reached_name" = "Вы дасягнулі \"%@\" мэты.";
 
-"goal_reached_no_name" = "You've reached your goal.";
+"goal_reached_no_name" = "Вы дасягнулі сваёй мэты.";
 
-"award_streak_count_description" = "You have now earned this award %d times total and %d times in a row! Keep that streak going!";
+"award_streak_count_description" = "Вы зарабілі гэтую ўзнагароду ўсяго %d разоў і %d разоў запар! Працягвайце гэты стрык!";
 
-"award_count_description" = "You have now earned this award %d times. Try to do this again and start a streak!";
+"award_count_description" = "Цяпер вы зарабілі гэтую ўзнагароду %d разоў. Паспрабуйце зрабіць гэта яшчэ раз і пачніце стрык!";
 
 // Confirmation / Alert / Messages
 
-"week_recap_title" = "Last Week Recap is Ready";
+"week_recap_title" = "Падвядзенне вынікаў";
 
-"week_recap_message_0_1" = "You haven't reached your goal. Let's hope this week will be better.";
+"week_recap_message_0_1" = "Вы не дасягнулі сваёй мэты. Будзем спадзявацца, што гэты тыдзень будзе лепшым.";
 
-"week_recap_message_0_x" = "You haven't reached any of your goals. Let's hope this week will be better.";
+"week_recap_message_0_x" = "Вы не дасягнулі ніводнай са сваіх мэтаў. Будзем спадзявацца, што гэты тыдзень будзе лепшым.";
 
-"week_recap_message_1_1" = "You have reached your goal. Great job!";
+"week_recap_message_1_1" = "Вы дасягнулі сваёй мэты. Выдатная праца!";
 
-"week_recap_message_1_x" = "You have reached one of your goals. Keep it up!";
+"week_recap_message_1_x" = "Вы дасягнулі адной са сваіх мэтаў. Працягвайце!";
 
-"week_recap_message_x_x" = "You have reached all your goals. That is incredible!";
+"week_recap_message_x_x" = "Вы дасягнулі ўсіх сваіх мэтаў. Гэта неверагодна!";
 
-"week_recap_message_x_y" = "You have reached %d of your goals. Great job!";
+"week_recap_message_x_y" = "Вы дасягнулі %d сваіх мэтаў. Выдатная праца!";
 
-"review_button" = "Review";
+"review_button" = "Агляд";
 
-"woah_title" = "Woah!";
+"woah_title" = "Вау!";
 
-"goal_delete_confirmation" = "This goal has been reached a few times. Are you sure you want to delete it?";
+"goal_delete_confirmation" = "Гэтая мэта дасягалася некалькі разоў. Вы ўпэўнены, што хочаце выдаліць яе?";
 
-"delete_button" = "Delete";
+"delete_button" = "Выдаліць";
 
-"cancel_button" = "Cancel";
+"cancel_button" = "Адмяніць";
 
-"sticker_delete_confirmation" = "This sticker has been used a few times. Are you sure you want to delete it?";
+"sticker_delete_confirmation" = "Гэтая налепка была выкарыстаная некалькі разоў. Вы ўпэўнены, што хочаце выдаліць яе?";
 
 // Onboarding
 
-"onboarding_1_1" = "Hello! Looks like you are new here. Let me show you around.";
+"onboarding_1_1" = "Добры дзень! Здаецца, вы тут новы. Дазвольце мне паказаць вам вакол.";
 
-"onboarding_1_2" = "These are stickers! You can create and customize however many you want. Use stickers to keep a diary, or record events and activities during the day. Tap the sticker in the bottom panel to add it to a day, tap on it again to remove it.";
+"onboarding_1_2" = "Гэта налепкі! Вы можаце ствараць і наладжваць колькі заўгодна. Выкарыстоўвайце налепкі, каб весці дзённік або запісваць падзеі і мерапрыемствы на працягу дня. Націсніце на налепку ў ніжняй панэлі, каб дадаць яе да дня, націсніце на яе яшчэ раз, каб выдаліць.";
 
-"onboarding_2" = "Wonderful! Once you figure out stickers, go to the \"Stickers & Goals\" tab and set up some goals for yourself!";
+"onboarding_2" = "Цудоўна! Пасля таго, як вы зразумелі налепкі, перайдзіце на ўкладку \"Налепкі і мэты\" і пастаўце для сябе некаторыя мэты!";
 
-"got_it_button" = "Got it";
+"got_it_button" = "Зразумела";
 
 // Sticker Style
 
-"appearance_title" = "Appearance";
+"appearance_title" = "Знешні выгляд";
 
-"application_restart_required" = "Application restart is required.";
+"application_restart_required" = "Патрабуецца перазапуск праграмы.";
 
-"sticker_style" = "Sticker Style";
+"sticker_style" = "Cтыль налепкі";
 
-"restart_button" = "Restart";
+"restart_button" = "Перазапуск";
 
-"sticker_style_restart" = "Sticker style will be changed after you start application again.";
+"sticker_style_restart" = "Стыль налепкі будзе зменены пасля таго, як вы зноў запусціце аппку.";
 
 // Statistics and Charts
 
 // - List of Chart
 
-"chart_title_goals" = "Goals";
+"chart_title_goals" = "Мэты";
 
-"chart_subtitle_goals" = "Goals totals, streaks, and history";
+"chart_subtitle_goals" = "Сумы мэт, стрыкі і гісторыя";
 
-"chart_title_monthly_stickers" = "Monthly Stickers";
+"chart_title_monthly_stickers" = "Штомесячныя налепкі";
 
-"chart_subtitle_monthly_stickers" = "Sticker usage for a month";
+"chart_subtitle_monthly_stickers" = "Выкарыстанне налепкі на працягу месяца";
 
 // - Details
 
-"monthly_goal_section_title" = "Monthly Goals";
+"monthly_goal_section_title" = "Штомесячныя мэты";
 
-"monthly_goal_chart_title" = "Last %@ months";
+"monthly_goal_chart_title" = "Апошнія %@ месяцаў";
 
-"weekly_goal_section_title" = "Weekly Goals";
+"weekly_goal_section_title" = "Штотыднёвыя мэты";
 
-"weekly_goal_chart_title" = "Last %@ weeks";
+"weekly_goal_chart_title" = "Апошнія %@ тыдняў";
 
-"total_column" = "total";
+"total_column" = "усяго";
 
-"streak_column" = "streak";
+"streak_column" = "стрык";
 
-"goal_totals_title" = "Goal Totals";
+"goal_totals_title" = "Усяго";
 
-"goal_streaks_title" = "Goal Streaks";
+"goal_streaks_title" = "Стрыкі";
 
 

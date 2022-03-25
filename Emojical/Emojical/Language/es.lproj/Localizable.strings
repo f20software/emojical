@@ -164,21 +164,21 @@
 
 "create_goal_button" = "Crear meta";
 
-"goals_examples_button" = "Goals Examples";
+"goals_examples_button" = "Goals examples";
 
 "delete_goal_button" = "Eliminar meta";
 
 "select_stickers_instructions" = "Seleccione uno o más";
 
-"name_label" = "Nombre:";
+"name_label" = "Nombre";
 
-"stickers_label" = "Pegatinas:";
+"stickers_label" = "Pegatinas";
 
 "goal_name_placeholder" = "Nombre de la meta";
 
-"goal_period_label" = "Período meta:";
+"goal_period_label" = "¿Con qué frecuencia desea alcanzar la meta?";
 
-"direction_label" = "Dirección:";
+"direction_label" = "¿Es ese un objetivo positivo o negativo?";
 
 "positive" = "positivo";
 
@@ -202,9 +202,9 @@
 
 // Sticker Editing
 
-"emoji_label" = "Emoji:";
+"emoji_label" = "Emoji";
 
-"preview_label" = "Avance:";
+"preview_label" = "Avance";
 
 "sticker_name_placeholder" = "Nombre de la pegatina";
 

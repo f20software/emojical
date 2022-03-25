@@ -142,8 +142,8 @@ extension CalendarHelper {
         /// Label for the month in a "January 2021" format
         var label: String {
             let df = DateFormatter()
-            df.dateFormat = "MMMM, YYYY"
-            return df.string(from: Date(year: year, month: month))
+            df.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMYYYY", options: 0, locale: Locale(identifier: Bundle.main.preferredLocalizations.first ?? "en"))
+            return df.string(from: Date(year: year, month: month)).capitalizingFirstLetter()
         }
 
         /// Returns index specific month days fall into (used in AwardManager to detect week that day falls into)

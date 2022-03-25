@@ -202,9 +202,9 @@
 
 // Sticker Editing
 
-"emoji_label" = "Emoji:";
+"emoji_label" = "Emoji";
 
-"preview_label" = "Preview:";
+"preview_label" = "Preview";
 
 "sticker_name_placeholder" = "Sticker Name";
 

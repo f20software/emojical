@@ -138,6 +138,11 @@ class GoalDetailsEditCell: UICollectionViewCell {
             "negative".localized.capitalizingFirstLetter()
         ])
         separator5.backgroundColor = Theme.main.colors.separator
+        
+        let labels = "get_x_or_more".localized.components(separatedBy: "|")
+        limitExplanation1.text = labels.first
+        limitExplanation2.text = labels.last
+
     }
     
     @IBAction func textChanged(_ sender: Any) {

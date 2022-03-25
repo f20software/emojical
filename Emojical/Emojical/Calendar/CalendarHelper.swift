@@ -142,8 +142,8 @@ extension CalendarHelper {
         /// Label for the month in a "January 2021" format
         var label: String {
             let df = DateFormatter()
-            df.dateFormat = "MMMM, YYYY"
-            return df.string(from: Date(year: year, month: month))
+            df.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMYYYY", options: 0, locale: Locale(identifier: Bundle.main.preferredLocalizations.first ?? "en"))
+            return df.string(from: Date(year: year, month: month)).capitalizingFirstLetter()
         }
 
         /// Returns index specific month days fall into (used in AwardManager to detect week that day falls into)
@@ -218,22 +218,12 @@ extension CalendarHelper {
 
         /// Label for the week in a "December 21 - 28" or "December 28 - January 3" format
         var label: String {
-            let calendar: Calendar = .autoupdatingCurrent
+            let formatter = DateIntervalFormatter()
 
-            // Week label formatting.
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM d"
-            
-            let firstLabel = formatter.string(from: firstDay)
-            
-            // If the week ends on the same month as it begins, we use short label format,
-            // like "Month X - Y". Otherwise we use long label format, like "Month1 X - Month2 Y".
-            if calendar.dateComponents([.month], from: firstDay) == calendar.dateComponents([.month], from: lastDay) {
-                formatter.dateFormat = "d"
-            }
-            let secondLabel = formatter.string(from: lastDay)
-            
-            return "\(firstLabel) - \(secondLabel)"
+            formatter.locale = Locale(identifier:
+                Bundle.main.preferredLocalizations.first ?? "en")
+            formatter.dateTemplate = "MMMMd"
+            return formatter.string(from: firstDay, to: lastDay)
         }
 
         /// Returns array of days for all dates within the week

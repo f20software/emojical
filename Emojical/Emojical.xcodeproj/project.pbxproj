@@ -362,6 +362,7 @@
 		F24EB3AD27DD82C600F325A9 /* GoalReachedSimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalReachedSimpleCell.xib; sourceTree = "<group>"; };
 		F251F8B825BFB8F20042B1DA /* SelectStickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectStickerCell.xib; sourceTree = "<group>"; };
 		F251F8BC25BFBBEC0042B1DA /* SelectStickerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickerElement.swift; sourceTree = "<group>"; };
+		F255593A27DDC16400957835 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F26596E22596AF1300B10B76 /* AwardRecapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardRecapCell.swift; sourceTree = "<group>"; };
 		F26596E32596AF1300B10B76 /* Recap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recap.storyboard; sourceTree = "<group>"; };
 		F26596E52596AF1300B10B76 /* RecapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapPresenter.swift; sourceTree = "<group>"; };
@@ -1550,6 +1551,7 @@
 				F2C4943123D2CBC800EAF9CC /* Sources */,
 				F2C4943223D2CBC800EAF9CC /* Frameworks */,
 				F2C4943323D2CBC800EAF9CC /* Resources */,
+				F255593927DDBCE400957835 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1590,6 +1592,7 @@
 				en,
 				Base,
 				es,
+				be,
 			);
 			mainGroup = F2C4942C23D2CBC700EAF9CC;
 			packageReferences = (
@@ -1664,6 +1667,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F255593927DDBCE400957835 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/ksh;
+			shellScript = "cd $PROJECT_DIR/Emojical/Language\n./verify_language_consistency.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F27B044A241EBD7A006E5175 /* Sources */ = {
@@ -1918,6 +1941,7 @@
 			children = (
 				F29804D425C7B28500952AAF /* en */,
 				F2E906EC25C89B59007CE699 /* es */,
+				F255593A27DDC16400957835 /* be */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2106,7 +2130,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5.0;
+				CURRENT_PROJECT_VERSION = 1.6.0;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2114,7 +2138,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
 				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;
@@ -2127,7 +2151,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5.0;
+				CURRENT_PROJECT_VERSION = 1.6.0;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2135,7 +2159,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
 				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;

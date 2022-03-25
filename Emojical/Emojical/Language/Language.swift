@@ -21,6 +21,7 @@ class Language {
 
         let df = DateFormatter()
         df.dateStyle = .medium
+        df.locale = Locale(identifier: Bundle.main.preferredLocalizations.first ?? "en")
 
         if count > 1 {
             return "sticker_used_x_text".localized(count, df.string(from: lastDate))
@@ -125,7 +126,7 @@ class Language {
 
         let df = DateFormatter()
         df.dateStyle = .medium
-        df.locale = Locale(identifier: Bundle.main.preferredLocalizations.first!)
+        df.locale = Locale(identifier: Bundle.main.preferredLocalizations.first ?? "en")
 
         if count > 1 {
             return "goal_reached_x_text".localized(count, df.string(from: lastDate))

@@ -1,0 +1,323 @@
+/* 
+  Localizable.strings
+  Stamps
+
+  Created by Vladimir Svidersky on 1/31/21.
+  Copyright © 2021 Vladimir Svidersky. All rights reserved.
+*/
+
+// Sticker usage
+
+"sticker_used_0_text" = "Выкарыстана|ніколі";
+
+"sticker_used_1_text" = "Выкарыстана|адзін раз|%@";
+
+"sticker_used_x_text" = "Выкарыстана|%d разоў|апошні раз:\n%@";
+
+"sticker_used_no_goal" = "Налепка не прызначана для мэты.";
+
+"sticker_used_1_goal" = "Налепка выкарыстоўваецца ў \'%@\' мэце.";
+
+"sticker_used_x_goals" = "Налепка выкарыстоўваецца ў %@ мэтах.";
+
+"sticker_average_too_early" = "У сярэднім|-";
+
+"sticker_average_per_week" = "У сярэднім|%@|у тыдзень";
+
+"sticker_average_per_month" = "У сярэднім|%@|у месяц";
+
+// Goal reaching
+
+"goal_reached_0_text" = "Мэта яшчэ не дасягнутая.";
+
+"goal_reached_1_text" = "Мэта дасягнута\n %@";
+
+"goal_reached_x_text" = "Мэта дасягнута|%d разоў|апошні раз:\n%@";
+
+"current_streak_0" = "Тякушчы стрык|-";
+
+"current_streak_x" = "Тякушчы стрык|%d";
+
+"no_goals_reahed_week" = "На гэтым тыдні не было дасягнута ніводнай мэты";
+
+// Goal description
+
+"weekly_goal" = "штотыднёвая мэта";
+
+"monthly_goal" = "месячная мэта";
+
+"once_goal" = "мэта";
+
+"week_positive_x" = "Штотыдзень, %d разоў і больш.";
+
+"week_negative_x" = "Штотыдзень, %d разоў ці менш.";
+
+"month_positive_x" = "Штомесяц, %d разоў і больш.";
+
+"month_negative_x" = "Штомесяц, %d разоў ці менш.";
+
+"once_positive_x" = "Дасягніце %d налепак.";
+
+"once_negative_x" = "Не атрымайце %d налепак.";
+
+"last_x_weeks" = "Апошнія %d тыдняў";
+
+"last_x_months" = "Апошнія %d месяцаў";
+
+// Current goal progress
+
+"you_got_0_stickers_week" = "На гэтым тыдні ў вас пакуль няма налепак";
+
+"you_got_1_sticker_week" = "Вы атрымалі 1 налепку на гэтым тыдні";
+
+"you_got_x_stickers_week" = "Вы атрымалі %d налепак на гэтым тыдні";
+
+"you_got_0_stickers_month" = "У гэтым месяцы ў вас пакуль няма налепак";
+
+"you_got_1_sticker_month" = "Вы атрымалі 1 налепку ў гэтым месяцы";
+
+"you_got_x_stickers_month" = "Вы атрымалі %d налепак ў гэтым месяцы";
+
+"you_got_0_stickers_total" = "У вас пакуль няма налепак";
+
+"you_got_1_sticker_total" = "Вы атрымалі 1 налепку";
+
+"you_got_x_stickers_total" = "Вы атрымалі %d налепак";
+
+"positive_goal_not_reached" = "%@. Засталося яшчэ %d.";
+
+"positive_goal_not_reached_0" = "%@. Мэта - %d.";
+
+"negative_goal_not_reached" = "%@. Вы можаце атрымаць яшчэ %d.";
+
+"negative_goal_not_reached_0" = "%@. Вы можаце атрымаць да %d.";
+
+"negative_goal_reached" = "%@. Вы зламаеце гэтую мэту, калі атрымаеце яшчэ адну.";
+
+"week_positive_goal_reached" = "Вы дасягнулі мэты на гэтым тыдні, атрымаўшы %d налепак. Выдатная праца!";
+
+"week_negative_goal_breached" = "Вы не дасягнулі мэты, атрымаўшы %d налепак на гэтым тыдні.";
+
+"month_positive_goal_reached" = "Вы дасягнулі мэты ў гэтым месяцы, атрымаўшы %d налепак. Выдатная праца!";
+
+"month_negative_goal_breached" = "Вы не дасягнулі мэты, атрымаўшы %d налепак ў гэтым месяцы.";
+
+"once_positive_goal_reached" = "Вы дасягнулі мэты, атрымаўшы %d налепак. Выдатная праца!";
+
+"once_negative_goal_breached" = "Вы не дасягнулі мэты, атрымаўшы %d налепак.";
+
+// Award reached / not reached state
+
+"award_earned_on" = "Атрымана %@.";
+
+"award_positive_reached" = "Атрымана %@, by getting %d stickers.";
+
+"award_positive_not_reached" = "%@ not reached. You got %d stickers (needed %d).";
+
+"award_negative_reached" = "Earned on %@. You had %d stickers (limit was %d).";
+
+"award_negative_not_reached" = "%@ not reached. You got %d stickers (limit was %d).";
+
+// Titles / Tabs / Section Name
+
+"new_goal_title" = "Новая мэта";
+
+"new_sticker_title" = "Новая налепка";
+
+"create_new_title" = "Ствараць";
+
+"sticker_title" = "Налепку...";
+
+"goal_title" = "Мэту...";
+
+"create_goal_from_examples_title" = "Мэту з прыкладаў...";
+
+"dismiss_button" = "Звольніць";
+
+"weekly_recap_title" = "Штотыднёвы агляд";
+
+"reached_goals_title" = "Дасягнутыя мэты";
+
+"not_reached_goals_title" = "Недасягнутыя мэты";
+
+"today_title" = "Сёння";
+
+"goals_tab_title" = "Налепкі і мэты";
+
+"goals_section_title" = "Мэты";
+
+"goals_library_title" = "Прыклады мэтаў";
+
+"charts_title" = "Дыяграмы";
+
+"options_title" = "Параметры";
+
+"stickers_title" = "Налепкі";
+
+// Goal Editing
+
+"no_goals_description" = "У вас пакуль няма мэтаў. Emojical можа дапамагчы вам палепшыць сябе, проста пастаўце новую мэту і адсочвайце свой прагрэс.";
+
+"looking_for_examples" = "Калі вы не ўпэўненыя, якія мэты можна стварыць, паглядзіце на некалькі прыкладаў, якія мы сабралі.";
+
+"delete_goal_description" = "Калі вы абнавіце або выдаліце мэту, усе раней заробленыя ўзнагароды застануцца нязменнымі.";
+
+"create_goal_button" = "Стварыце мэту";
+
+"goals_examples_button" = "Прыклады мэт";
+
+"delete_goal_button" = "Выдаліць мэту";
+
+"select_stickers_instructions" = "Выберыце адну або некалькі";
+
+"name_label" = "Назва";
+
+"goal_name_placeholder" = "Назва мэты";
+
+"stickers_label" = "Налепкі";
+
+"goal_period_label" = "Як часта вы хочаце дасягнуць мэты?";
+
+"direction_label" = "Гэта пазітыўная ці адмоўная мэта?";
+
+"positive" = "пазітыўная";
+
+"negative" = "адмоўная";
+
+"get_x_or_more" = "Мэта - атрымаць|або больш";
+
+"get_x_or_fewer" = "Мэта - атрымаць|або менш";
+
+"get_x_stickers" = "Мэта - атрымаць|налепак";
+
+"not_get_x_stickers" = "Мэта - не атрымаць|налепак";
+
+"week_period" = "тыднёва";
+
+"month_period" = "штомесяц";
+
+"once_period" = "раз";
+
+"select_stickers_title" = "Выберыце налепкі";
+
+// Sticker Editing
+
+"emoji_label" = "Emoji";
+
+"preview_label" = "Прагляд";
+
+"sticker_name_placeholder" = "Назва налепкі";
+
+"delete_sticker_description" = "Калі вы выдаліце налепку, усё ранейшае выкарыстанне гэтай налепкі застанецца нязменным.";
+
+"delete_sticker_button" = "Выдаліць налепку";
+
+// Options Page
+
+"reminder_title" = "Напамін";
+
+"reminder_option" = "Штодзённае напамін";
+
+"reminder_footer" = "Нагадвайце сабе кожны дзень каля 9 вечара, каб запоўніць запіс на гэты дзень, калі вы яшчэ гэтага не зрабілі.";
+
+"backup_title" = "Рэзервовае капіраванне";
+
+"backup_button" = "Экспарт вашых даных...";
+
+"backup_footer" = "Адпраўце сабе файл JSON па электроннай пошце з усімі вашымі данымі.";
+
+"feedback_button" = "Водгук...";
+
+// Cheer messages when goal is reached
+
+"awesome_title" = "Дзіўна!";
+
+"goal_reached_name" = "Вы дасягнулі \"%@\" мэты.";
+
+"goal_reached_no_name" = "Вы дасягнулі сваёй мэты.";
+
+"award_streak_count_description" = "Вы зарабілі гэтую ўзнагароду ўсяго %d разоў і %d разоў запар! Працягвайце гэты стрык!";
+
+"award_count_description" = "Цяпер вы зарабілі гэтую ўзнагароду %d разоў. Паспрабуйце зрабіць гэта яшчэ раз і пачніце стрык!";
+
+// Confirmation / Alert / Messages
+
+"week_recap_title" = "Падвядзенне вынікаў";
+
+"week_recap_message_0_1" = "Вы не дасягнулі сваёй мэты. Будзем спадзявацца, што гэты тыдзень будзе лепшым.";
+
+"week_recap_message_0_x" = "Вы не дасягнулі ніводнай са сваіх мэтаў. Будзем спадзявацца, што гэты тыдзень будзе лепшым.";
+
+"week_recap_message_1_1" = "Вы дасягнулі сваёй мэты. Выдатная праца!";
+
+"week_recap_message_1_x" = "Вы дасягнулі адной са сваіх мэтаў. Працягвайце!";
+
+"week_recap_message_x_x" = "Вы дасягнулі ўсіх сваіх мэтаў. Гэта неверагодна!";
+
+"week_recap_message_x_y" = "Вы дасягнулі %d сваіх мэтаў. Выдатная праца!";
+
+"review_button" = "Агляд";
+
+"woah_title" = "Вау!";
+
+"goal_delete_confirmation" = "Гэтая мэта дасягалася некалькі разоў. Вы ўпэўнены, што хочаце выдаліць яе?";
+
+"delete_button" = "Выдаліць";
+
+"cancel_button" = "Адмяніць";
+
+"sticker_delete_confirmation" = "Гэтая налепка была выкарыстаная некалькі разоў. Вы ўпэўнены, што хочаце выдаліць яе?";
+
+// Onboarding
+
+"onboarding_1_1" = "Добры дзень! Здаецца, вы тут новы. Дазвольце мне паказаць вам вакол.";
+
+"onboarding_1_2" = "Гэта налепкі! Вы можаце ствараць і наладжваць колькі заўгодна. Выкарыстоўвайце налепкі, каб весці дзённік або запісваць падзеі і мерапрыемствы на працягу дня. Націсніце на налепку ў ніжняй панэлі, каб дадаць яе да дня, націсніце на яе яшчэ раз, каб выдаліць.";
+
+"onboarding_2" = "Цудоўна! Пасля таго, як вы зразумелі налепкі, перайдзіце на ўкладку \"Налепкі і мэты\" і пастаўце для сябе некаторыя мэты!";
+
+"got_it_button" = "Зразумела";
+
+// Sticker Style
+
+"appearance_title" = "Знешні выгляд";
+
+"application_restart_required" = "Патрабуецца перазапуск праграмы.";
+
+"sticker_style" = "Cтыль налепкі";
+
+"restart_button" = "Перазапуск";
+
+"sticker_style_restart" = "Стыль налепкі будзе зменены пасля таго, як вы зноў запусціце аппку.";
+
+// Statistics and Charts
+
+// - List of Chart
+
+"chart_title_goals" = "Мэты";
+
+"chart_subtitle_goals" = "Сумы мэт, стрыкі і гісторыя";
+
+"chart_title_monthly_stickers" = "Штомесячныя налепкі";
+
+"chart_subtitle_monthly_stickers" = "Выкарыстанне налепкі на працягу месяца";
+
+// - Details
+
+"monthly_goal_section_title" = "Штомесячныя мэты";
+
+"monthly_goal_chart_title" = "Апошнія %@ месяцаў";
+
+"weekly_goal_section_title" = "Штотыднёвыя мэты";
+
+"weekly_goal_chart_title" = "Апошнія %@ тыдняў";
+
+"total_column" = "усяго";
+
+"streak_column" = "стрык";
+
+"goal_totals_title" = "Усяго";
+
+"goal_streaks_title" = "Стрыкі";
+
+

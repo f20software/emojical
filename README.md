@@ -2,7 +2,7 @@
 
 Emojical is an iOS application for fun and simple diary and goal tracking.
 
-![Weekly View"](Emojical/Screenshots/iphone-12-max/today-light-200.png)
+![Weekly View"](Emojical/Screenshots/iphone-13-pro-max/welcome-light-frame.png)
 
 ## Installation
 

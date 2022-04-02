@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,6 +24,11 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="height" multiplier="1:1" id="lDM-39-pup"/>
                         </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUh-J9-r5B" userLabel="Badge View 2">
+                        <rect key="frame" x="6" y="6" width="38" height="38"/>
+                        <viewLayoutGuide key="safeArea" id="DjK-gJ-utD"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ma3-8W-bGA">
                         <rect key="frame" x="35" y="3" width="12" height="12"/>
@@ -46,7 +52,11 @@
                 <constraint firstItem="Zrd-LK-ZF1" firstAttribute="centerY" secondItem="glV-Hm-xGi" secondAttribute="centerY" id="97d-QF-sT7"/>
                 <constraint firstItem="Zrd-LK-ZF1" firstAttribute="centerX" secondItem="glV-Hm-xGi" secondAttribute="centerX" id="IOq-kE-ER1"/>
                 <constraint firstItem="Zrd-LK-ZF1" firstAttribute="trailing" secondItem="Ma3-8W-bGA" secondAttribute="centerX" constant="3" id="Kch-bI-nud"/>
+                <constraint firstItem="QUh-J9-r5B" firstAttribute="centerY" secondItem="Zrd-LK-ZF1" secondAttribute="centerY" id="KpW-da-vaX"/>
+                <constraint firstItem="QUh-J9-r5B" firstAttribute="centerX" secondItem="Zrd-LK-ZF1" secondAttribute="centerX" id="Osh-Um-W7o"/>
+                <constraint firstItem="QUh-J9-r5B" firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="width" id="YSh-Gl-MVa"/>
                 <constraint firstItem="glV-Hm-xGi" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="fu7-9B-jdH"/>
+                <constraint firstItem="QUh-J9-r5B" firstAttribute="height" secondItem="Zrd-LK-ZF1" secondAttribute="height" id="m7n-xF-k9V"/>
                 <constraint firstAttribute="width" secondItem="glV-Hm-xGi" secondAttribute="width" constant="2" id="oU0-MK-Ve3"/>
                 <constraint firstItem="Ma3-8W-bGA" firstAttribute="centerY" secondItem="Zrd-LK-ZF1" secondAttribute="top" constant="3" id="q0W-hU-yeX"/>
                 <constraint firstItem="glV-Hm-xGi" firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="width" constant="10" id="s05-Yv-32B"/>
@@ -55,6 +65,7 @@
             <size key="customSize" width="50" height="50"/>
             <connections>
                 <outlet property="badgeView" destination="Ma3-8W-bGA" id="C8c-6T-TZY"/>
+                <outlet property="badgeView2" destination="QUh-J9-r5B" id="AbQ-VL-MRj"/>
                 <outlet property="sticker" destination="Zrd-LK-ZF1" id="HQ8-Ki-gYR"/>
                 <outlet property="stickerAndSelectionSizeDelta" destination="s05-Yv-32B" id="9DV-q6-UHj"/>
             </connections>

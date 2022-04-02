@@ -364,7 +364,7 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     private func loadStampSelectorData() {
-        var data: [StampSelectorElement] = allStamps.compactMap({
+        let data: [StampSelectorElement] = allStamps.compactMap({
             guard let id = $0.id else { return nil }
             return StampSelectorElement.stamp(
                 StickerData(
@@ -375,11 +375,6 @@ class TodayPresenter: TodayPresenterProtocol {
                 )
             )
         })
-        
-        if data.count < 10 {
-            data.append(.newStamp)
-        }
-        
         view?.loadStampSelector(data: data)
     }
     

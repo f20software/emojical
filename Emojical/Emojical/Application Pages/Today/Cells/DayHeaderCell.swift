@@ -52,5 +52,8 @@ class DayHeaderCell: ThemeObservingCollectionCell {
     private func configureViews() {
         dayPlate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         dayPlate.clipsToBounds = true
+        
+        dayNum.font = Theme.main.fonts.dayNumber
+        dayName.font = Theme.main.fonts.dayName
     }
 }

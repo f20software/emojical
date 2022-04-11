@@ -333,7 +333,13 @@ class TodayPresenter: TodayPresenterProtocol {
                         self.coordinator?.showGoal(goal)
                     }
                 }
-            } else {
+            }
+        }
+        view?.onRecapTapped = { [weak self] in
+            guard let self = self else { return }
+            
+            // We should show recap window only for the past weeks
+            if self.week.isPast {
                 self.coordinator?.showAwardsRecap(data: self.recapData())
             }
         }
@@ -348,14 +354,39 @@ class TodayPresenter: TodayPresenterProtocol {
         )
 
         // Awards strip on the top
-        loadAwardsData()
+        if week.isCurrentWeek {
+            loadAwardsData()
+        } else {
+            view?.showAwards(false)
+        }
         
         // Week header data
         view?.loadWeekHeader(data: weekHeader)
 
         // Column data
         view?.loadDays(data: dailyStickers)
-        
+
+        // Recap button - shown for past weeks
+        let awards = dataBuilder.awards(for: week)
+        let totalCount = awards.count
+
+        if week.isPast && totalCount > 0 {
+            let reachedCount = awards.filter({ $0.reached }).count
+            let message = Language.weekRecapForGoals(total: totalCount, reached: reachedCount)
+
+
+            let icons: [AwardIconData] = awards.compactMap {
+                guard $0.reached else { return nil }
+                guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
+                let stamp = repository.stampBy(id: goal.stamps.first)
+                return AwardIconData(stamp: stamp, goalId: $0.goalId)
+            }
+            
+            view?.showRecapBubble(true, data: icons, message: message)
+        } else {
+            view?.showRecapBubble(false, data: nil, message: nil)
+        }
+
         // Stamp selector data
         loadStampSelectorData()
         
@@ -406,8 +437,8 @@ class TodayPresenter: TodayPresenterProtocol {
     private func loadAwardsData() {
         // Awards will be shown only when we have goals or awards already
         let showAwards = week.isCurrentWeek ?
-            (goals.count > 0) :
-            (awards.count > 0 && week.isFuture == false)
+            (goals.count > 0) : false
+
         guard showAwards else {
             view?.showAwards(false)
             return
@@ -503,8 +534,8 @@ class TodayPresenter: TodayPresenterProtocol {
 fileprivate struct Specs {
     
     /// Editing days back from today (when it's further in the past - entries will become read-only)
-    static let editingBackDays = 3
+    static let editingBackDays = 2
 
     /// Editing days forward from today (when it's further in the future - entries will become read-only)
-    static let editingForwardDays = 3
+    static let editingForwardDays = 2
 }

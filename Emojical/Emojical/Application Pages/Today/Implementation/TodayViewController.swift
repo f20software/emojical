@@ -33,6 +33,8 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var recapBubbleView: RecapBubbleView!
+
     // MARK: - DI
 
     lazy var coordinator: TodayCoordinatorProtocol = {
@@ -111,6 +113,9 @@ class TodayViewController: UIViewController {
     /// User tapped on the award icon on the top
     var onAwardTapped: ((Int) -> Void)?
 
+    /// User tapped on the recap button
+    var onRecapTapped: (() -> Void)?
+
     /// User wants to dismiss Awards Recap view (by dragging it down)
     var onAwardsRecapDismiss: (() -> Void)?
     
@@ -133,6 +138,10 @@ class TodayViewController: UIViewController {
         onPlusButtonTapped?()
     }
     
+    @IBAction func recapButtonTapped(_ sender: Any) {
+        onRecapTapped?()
+    }
+
     // Handling panning gesture inside StampSelector view
     @IBAction func handleStampSelectorPanning(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
@@ -199,6 +208,9 @@ class TodayViewController: UIViewController {
         stampSelector.onNewStickerTapped = { () in
             self.onNewStickerTapped?()
         }
+        recapBubbleView.onTapped = { () in
+            self.onRecapTapped?()
+        }
     }
     
     private func updateColors() {
@@ -216,6 +228,12 @@ extension TodayViewController: TodayView {
     /// Show/hide top awards strip
     func showAwards(_ show: Bool) {
         separatorTopConstraint.constant = show ? 70 : -1
+    }
+
+    /// Show/hide recap button
+    func showRecapBubble(_ show: Bool, data: [AwardIconData]?, message: String?) {
+        recapBubbleView.isHidden = !show
+        recapBubbleView.loadData(data, message: message)
     }
 
     /// Update page title

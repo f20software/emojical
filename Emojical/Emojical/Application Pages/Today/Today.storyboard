@@ -339,6 +339,47 @@
                                     <outletCollection property="gestureRecognizers" destination="o8m-Np-zqb" appends="YES" id="c7b-Zv-CuV"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gag-Gl-rFd" customClass="RecapBubbleView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="20" y="672" width="290" height="121"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have reached 7 of your goals! Great job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQB-Um-x4l">
+                                        <rect key="frame" x="15" y="10" width="250" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jVr-JQ-rts">
+                                        <rect key="frame" x="15" y="61" width="250" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="aI5-u5-qw3"/>
+                                        </constraints>
+                                    </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.compact.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Cvk-4J-8th">
+                                        <rect key="frame" x="270" y="52" width="15" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="15" id="f9Q-hc-DQo"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Cvk-4J-8th" firstAttribute="centerY" secondItem="gag-Gl-rFd" secondAttribute="centerY" id="2vg-Xv-8aI"/>
+                                    <constraint firstItem="jVr-JQ-rts" firstAttribute="top" secondItem="lQB-Um-x4l" secondAttribute="bottom" constant="10" id="8WC-pZ-FLo"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cvk-4J-8th" secondAttribute="trailing" constant="5" id="LDK-cS-fw4"/>
+                                    <constraint firstItem="Cvk-4J-8th" firstAttribute="leading" secondItem="jVr-JQ-rts" secondAttribute="trailing" constant="5" id="OHX-KN-Ibs"/>
+                                    <constraint firstItem="jVr-JQ-rts" firstAttribute="leading" secondItem="lQB-Um-x4l" secondAttribute="leading" id="TAe-Rf-U7q"/>
+                                    <constraint firstItem="lQB-Um-x4l" firstAttribute="leading" secondItem="gag-Gl-rFd" secondAttribute="leading" constant="15" id="bJG-cc-WdB"/>
+                                    <constraint firstAttribute="bottom" secondItem="jVr-JQ-rts" secondAttribute="bottom" constant="20" id="f5X-qX-1et"/>
+                                    <constraint firstItem="Cvk-4J-8th" firstAttribute="leading" secondItem="lQB-Um-x4l" secondAttribute="trailing" constant="5" id="s63-c5-fTo"/>
+                                    <constraint firstItem="lQB-Um-x4l" firstAttribute="top" secondItem="gag-Gl-rFd" secondAttribute="top" constant="10" id="y40-51-YMM"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="awards" destination="jVr-JQ-rts" id="o67-6t-Cbr"/>
+                                    <outlet property="chevron" destination="Cvk-4J-8th" id="17b-fR-hWD"/>
+                                    <outlet property="text" destination="lQB-Um-x4l" id="2QZ-15-hL6"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JNE-f6-5U0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -351,6 +392,8 @@
                             <constraint firstItem="FnJ-i2-3rh" firstAttribute="top" secondItem="2Tb-hZ-tEu" secondAttribute="bottom" constant="10" id="Hkx-We-4fl"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="top" secondItem="FnJ-i2-3rh" secondAttribute="bottom" id="JgR-KG-XES"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="2Tb-hZ-tEu" secondAttribute="trailing" id="LO6-hf-Prm"/>
+                            <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="gag-Gl-rFd" secondAttribute="bottom" constant="20" id="OB8-pr-tlJ"/>
+                            <constraint firstItem="gag-Gl-rFd" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="20" id="VJw-jA-JBk"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" id="XJd-Zd-x36"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="trailing" secondItem="FnJ-i2-3rh" secondAttribute="trailing" id="YBd-yf-rnZ"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="50g-Iv-28T" secondAttribute="trailing" id="Yny-XS-tFX"/>
@@ -360,6 +403,7 @@
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="bottom" secondItem="xsj-3c-kfw" secondAttribute="bottom" constant="16" id="fdi-Q1-OZF"/>
                             <constraint firstItem="2Tb-hZ-tEu" firstAttribute="top" secondItem="EhG-g1-xfW" secondAttribute="bottom" constant="8" id="fjO-gA-xYU"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="leading" secondItem="JNE-f6-5U0" secondAttribute="leading" constant="16" id="mkI-ZR-9mP"/>
+                            <constraint firstItem="gag-Gl-rFd" firstAttribute="width" secondItem="kjo-hp-mne" secondAttribute="width" multiplier="0.7" id="nBP-Ai-6Ya"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" constant="16" id="yRc-Oy-2D7"/>
                         </constraints>
                     </view>
@@ -383,6 +427,7 @@
                         <outlet property="plusButton" destination="xsj-3c-kfw" id="EFH-o9-Jia"/>
                         <outlet property="plusButtonBottomContstraint" destination="fdi-Q1-OZF" id="gU0-1V-Owl"/>
                         <outlet property="prevWeek" destination="YEL-wK-uce" id="cYf-Yr-qvn"/>
+                        <outlet property="recapBubbleView" destination="gag-Gl-rFd" id="UIW-Xb-v0h"/>
                         <outlet property="separatorTopConstraint" destination="8kH-5r-qKy" id="bhD-eH-rfJ"/>
                         <outlet property="stampSelector" destination="kD0-4R-gft" id="NT0-8X-QK3"/>
                         <outlet property="stampSelectorBottomContstraint" destination="be8-Zf-eJO" id="Qtl-Fj-ZqD"/>
@@ -419,6 +464,7 @@
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="calendar.circle" catalog="system" width="128" height="121"/>
         <image name="calendar.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="chevron.compact.right" catalog="system" width="64" height="128"/>
         <image name="square.grid.3x3.fill" catalog="system" width="128" height="112"/>
         <systemColor name="separatorColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

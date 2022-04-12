@@ -14,8 +14,8 @@ class DayStampCell: UICollectionViewCell {
 
     @IBOutlet weak var sticker: StickerView!
     @IBOutlet weak var stickerAndSelectionSizeDelta: NSLayoutConstraint!
-    @IBOutlet weak var badgeView: UIView!
-    @IBOutlet weak var badgeView2: UIView!
+    @IBOutlet weak var badgeViewDot: UIView!
+    @IBOutlet weak var badgeViewOutline: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,11 +36,8 @@ class DayStampCell: UICollectionViewCell {
         sticker.color = data.color
         tag = Int(data.stampId ?? 0)
         
-        if LocalSettings.shared.stickerStyle == .borderless {
-            badgeView2.isHidden = !data.isUsed
-        } else {
-            badgeView.isHidden = !data.isUsed
-        }
+        (LocalSettings.shared.stickerStyle == .borderless ?
+            badgeViewOutline : badgeViewDot)?.isHidden = data.isUsed == false
         
         // Sticker size delta constraint
         stickerAndSelectionSizeDelta.constant = sizeDelta
@@ -49,14 +46,14 @@ class DayStampCell: UICollectionViewCell {
     // MARK: - Private helpers
     
     func setupViews() {
-        badgeView.layer.cornerRadius = badgeView.bounds.width / 2.0
-        badgeView.isHidden = true
-        badgeView.backgroundColor = Theme.main.colors.tint
+        badgeViewDot.layer.cornerRadius = badgeViewDot.bounds.width / 2.0
+        badgeViewDot.isHidden = true
+        badgeViewDot.backgroundColor = Theme.main.colors.tint
 
-        badgeView2.layer.cornerRadius = Theme.main.specs.platesCornerRadius
-        badgeView2.isHidden = true
-        badgeView2.backgroundColor = UIColor.clear
-        badgeView2.layer.borderColor = Theme.main.colors.tint.cgColor
-        badgeView2.layer.borderWidth = 3.0
+        badgeViewOutline.layer.cornerRadius = Theme.main.specs.platesCornerRadius
+        badgeViewOutline.isHidden = true
+        badgeViewOutline.backgroundColor = UIColor.clear
+        badgeViewOutline.layer.borderColor = Theme.main.colors.tint.cgColor
+        badgeViewOutline.layer.borderWidth = 3.0
     }
 }

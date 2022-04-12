@@ -25,7 +25,7 @@
                             <constraint firstAttribute="width" secondItem="Zrd-LK-ZF1" secondAttribute="height" multiplier="1:1" id="lDM-39-pup"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUh-J9-r5B" userLabel="Badge View 2">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUh-J9-r5B" userLabel="Badge View Outline">
                         <rect key="frame" x="6" y="6" width="38" height="38"/>
                         <viewLayoutGuide key="safeArea" id="DjK-gJ-utD"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,8 +64,8 @@
             </constraints>
             <size key="customSize" width="50" height="50"/>
             <connections>
-                <outlet property="badgeView" destination="Ma3-8W-bGA" id="C8c-6T-TZY"/>
-                <outlet property="badgeView2" destination="QUh-J9-r5B" id="AbQ-VL-MRj"/>
+                <outlet property="badgeViewDot" destination="Ma3-8W-bGA" id="C8c-6T-TZY"/>
+                <outlet property="badgeViewOutline" destination="QUh-J9-r5B" id="AbQ-VL-MRj"/>
                 <outlet property="sticker" destination="Zrd-LK-ZF1" id="HQ8-Ki-gYR"/>
                 <outlet property="stickerAndSelectionSizeDelta" destination="s05-Yv-32B" id="9DV-q6-UHj"/>
             </connections>

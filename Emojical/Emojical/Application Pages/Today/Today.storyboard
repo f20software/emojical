@@ -427,6 +427,7 @@
                         <outlet property="plusButton" destination="xsj-3c-kfw" id="EFH-o9-Jia"/>
                         <outlet property="plusButtonBottomContstraint" destination="fdi-Q1-OZF" id="gU0-1V-Owl"/>
                         <outlet property="prevWeek" destination="YEL-wK-uce" id="cYf-Yr-qvn"/>
+                        <outlet property="recapBubbleBottomContstraint" destination="OB8-pr-tlJ" id="AZS-gT-dTy"/>
                         <outlet property="recapBubbleView" destination="gag-Gl-rFd" id="UIW-Xb-v0h"/>
                         <outlet property="separatorTopConstraint" destination="8kH-5r-qKy" id="bhD-eH-rfJ"/>
                         <outlet property="stampSelector" destination="kD0-4R-gft" id="NT0-8X-QK3"/>

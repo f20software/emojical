@@ -47,6 +47,9 @@ class TodayPresenter: TodayPresenterProtocol {
     
     // Current goals
     private var goals = [Goal]()
+    
+    // Data to display in recap bubble
+    private var recapBubbleData: RecapBubbleData?
 
     // Queue of messages that needs to be displayed
     private var messageQueue = OperationQueue()
@@ -104,6 +107,10 @@ class TodayPresenter: TodayPresenterProtocol {
     private var selectorState: SelectorState = .hidden {
         didSet {
             view?.showStampSelector(selectorState)
+            
+            // Update recap bubble visibility
+            // - show only when selector or minibutton is not shown
+            view?.showRecapBubble(selectorState == .hidden, data: recapBubbleData)
         }
     }
     
@@ -338,7 +345,7 @@ class TodayPresenter: TodayPresenterProtocol {
         view?.onRecapTapped = { [weak self] in
             guard let self = self else { return }
             
-            // We should show recap window only for the past weeks
+            // Sanity check - we should show recap window only for the past weeks
             if self.week.isPast {
                 self.coordinator?.showAwardsRecap(data: self.recapData())
             }
@@ -353,7 +360,7 @@ class TodayPresenter: TodayPresenterProtocol {
             showNext: dataBuilder.canMoveForward(week)
         )
 
-        // Awards strip on the top
+        // Awards strip on the top - only for the current week
         if week.isCurrentWeek {
             loadAwardsData()
         } else {
@@ -367,31 +374,14 @@ class TodayPresenter: TodayPresenterProtocol {
         view?.loadDays(data: dailyStickers)
 
         // Recap button - shown for past weeks
-        let awards = dataBuilder.awards(for: week)
-        let totalCount = awards.count
-
-        if week.isPast && totalCount > 0 {
-            let reachedCount = awards.filter({ $0.reached }).count
-            let message = Language.weekRecapForGoals(total: totalCount, reached: reachedCount)
-
-
-            let icons: [AwardIconData] = awards.compactMap {
-                guard $0.reached else { return nil }
-                guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
-                let stamp = repository.stampBy(id: goal.stamps.first)
-                return AwardIconData(stamp: stamp, goalId: $0.goalId)
-            }
-            
-            view?.showRecapBubble(true, data: icons, message: message)
-        } else {
-            view?.showRecapBubble(false, data: nil, message: nil)
-        }
+        recapBubbleData = buildRecapBubbleData()
 
         // Stamp selector data
         loadStampSelectorData()
-        
+
         // Update selectors state based on the lock status
         view?.showStampSelector(selectorState)
+        view?.showRecapBubble(selectorState == .hidden, data: recapBubbleData)
     }
     
     private func loadStampSelectorData() {
@@ -423,6 +413,25 @@ class TodayPresenter: TodayPresenterProtocol {
                 )
             )
         })
+    }
+    
+    // Build data required to display recap bubble
+    private func buildRecapBubbleData() -> RecapBubbleData? {
+        guard week.isPast else { return nil }
+
+        let awards = dataBuilder.awards(for: week)
+        let totalCount = awards.count
+        let reachedCount = awards.filter({ $0.reached }).count
+
+        return RecapBubbleData(
+            message: Language.weekRecapForGoals(total: totalCount, reached: reachedCount),
+            icons: awards.compactMap {
+                guard $0.reached else { return nil }
+                guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
+                let stamp = repository.stampBy(id: goal.stamps.first)
+                return AwardIconData(stamp: stamp, goalId: $0.goalId)
+            }
+        )
     }
     
     private func loadAndSortGoals() {

@@ -104,7 +104,7 @@ class RecapBubbleView : UIView {
         backgroundColor = Theme.main.colors.tint.withAlphaComponent(0.2)
         layer.cornerRadius = Specs.textBubbleRadius
 
-        chevron.image = UIImage(systemName: "chevron.compact.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
+        chevron.image = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
         chevron.tintColor = Theme.main.colors.tint
         
         // Collection view for awards

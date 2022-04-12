@@ -45,7 +45,7 @@ protocol TodayView: AnyObject {
     func showAwards(_ show: Bool)
     
     /// Show/hide recap button
-    func showRecapBubble(_ show: Bool, data: [AwardIconData]?, message: String?)
+    func showRecapBubble(_ show: Bool, data: RecapBubbleData?)
 
     /// Update page title
     func setTitle(to title: String)

@@ -34,6 +34,7 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
     @IBOutlet weak var recapBubbleView: RecapBubbleView!
+    @IBOutlet weak var recapBubbleBottomContstraint: NSLayoutConstraint!
 
     // MARK: - DI
 
@@ -41,6 +42,11 @@ class TodayViewController: UIViewController {
         TodayCoordinator(parent: self.navigationController)
     }()
 
+    // MARK: - State
+    
+    // Recap bubble data model - so we know when it is's changed
+    private var recapBubbleData: RecapBubbleData?
+    
     var presenter: TodayPresenterProtocol!
 
     // MARK: - Lifecycle
@@ -163,7 +169,8 @@ class TodayViewController: UIViewController {
     
     // MARK: - Private helpers
 
-    private func adjustButtonConstraintsForState(_ state: SelectorState) {
+    // Move stamp selector and mini button according to the state
+    private func adjustStampSelectorButtonConstraintsForState(_ state: SelectorState) {
         stampSelectorBottomContstraint.constant = (state == .fullSelector) ?
             Specs.bottomButtonsMargin :
             -(stampSelector.bounds.height + Specs.bottomButtonsMargin + 50)
@@ -173,7 +180,15 @@ class TodayViewController: UIViewController {
             -(plusButton.bounds.height + Specs.bottomButtonsMargin + 50)
         view.layoutIfNeeded()
     }
-    
+
+    // Move stamp selector and mini button according to the state
+    private func adjustRecapBubbleButtonConstraints(hidden: Bool) {
+        recapBubbleBottomContstraint.constant = hidden ?
+            -(recapBubbleView.bounds.height + Specs.bottomButtonsMargin + 50) :
+            Specs.bottomButtonsMargin
+        view.layoutIfNeeded()
+    }
+
     private func configureViews() {
         
         // We want to pass exact same width to all daily columns. Otherwise,
@@ -191,7 +206,8 @@ class TodayViewController: UIViewController {
         }
 
         // Hide buttons initially
-        adjustButtonConstraintsForState(.hidden)
+        adjustStampSelectorButtonConstraintsForState(.hidden)
+        adjustRecapBubbleButtonConstraints(hidden: true)
 
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
@@ -231,9 +247,25 @@ extension TodayViewController: TodayView {
     }
 
     /// Show/hide recap button
-    func showRecapBubble(_ show: Bool, data: [AwardIconData]?, message: String?) {
-        recapBubbleView.isHidden = !show
-        recapBubbleView.loadData(data, message: message)
+    func showRecapBubble(_ show: Bool, data: RecapBubbleData?) {
+        // Bail our early if we need to hide recap bubble
+        guard show,
+            let data = data else
+        {
+            adjustRecapBubbleButtonConstraints(hidden: true)
+            return
+        }
+
+        if recapBubbleData != data {
+            recapBubbleData = data
+            recapBubbleView.loadData(data.icons, message: data.message)
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
+            options: [.curveEaseInOut], animations:
+        {
+            self.adjustRecapBubbleButtonConstraints(hidden: false)
+        })
     }
 
     /// Update page title
@@ -278,7 +310,7 @@ extension TodayViewController: TodayView {
         UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
             options: [.curveEaseInOut], animations:
         {
-            self.adjustButtonConstraintsForState(state)
+            self.adjustStampSelectorButtonConstraintsForState(state)
         })
     }
 }
@@ -290,7 +322,7 @@ fileprivate struct Specs {
     static let miniButtonCornerRadius: CGFloat = 8.0
     
     /// Bottom buttons (both full and small) margin from the edge
-    static let bottomButtonsMargin: CGFloat = 16.0
+    static let bottomButtonsMargin: CGFloat = 20.0
 
     /// Shadow radius
     static let shadowRadius: CGFloat = 8.0

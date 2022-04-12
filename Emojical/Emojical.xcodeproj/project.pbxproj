@@ -86,6 +86,7 @@
 		F251F8B925BFB8F20042B1DA /* SelectStickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F251F8B825BFB8F20042B1DA /* SelectStickerCell.xib */; };
 		F251F8BD25BFBBEC0042B1DA /* SelectStickerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F251F8BC25BFBBEC0042B1DA /* SelectStickerElement.swift */; };
 		F260BF552803497C00B94B96 /* RecapBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260BF542803497C00B94B96 /* RecapBubbleView.swift */; };
+		F264049E28051F5000812CF3 /* RecapBubbleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264049D28051F5000812CF3 /* RecapBubbleData.swift */; };
 		F26596ED2596AF1300B10B76 /* AwardRecapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E22596AF1300B10B76 /* AwardRecapCell.swift */; };
 		F26596EE2596AF1300B10B76 /* Recap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26596E32596AF1300B10B76 /* Recap.storyboard */; };
 		F26596EF2596AF1300B10B76 /* RecapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E52596AF1300B10B76 /* RecapPresenter.swift */; };
@@ -365,6 +366,7 @@
 		F251F8BC25BFBBEC0042B1DA /* SelectStickerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickerElement.swift; sourceTree = "<group>"; };
 		F255593A27DDC16400957835 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F260BF542803497C00B94B96 /* RecapBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapBubbleView.swift; sourceTree = "<group>"; };
+		F264049D28051F5000812CF3 /* RecapBubbleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapBubbleData.swift; sourceTree = "<group>"; };
 		F26596E22596AF1300B10B76 /* AwardRecapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardRecapCell.swift; sourceTree = "<group>"; };
 		F26596E32596AF1300B10B76 /* Recap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recap.storyboard; sourceTree = "<group>"; };
 		F26596E52596AF1300B10B76 /* RecapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapPresenter.swift; sourceTree = "<group>"; };
@@ -1355,6 +1357,7 @@
 				F284F9C22580620D0016D1C6 /* SelectorState.swift */,
 				F2C649D125FEC7580096D883 /* CoachMessageOperation.swift */,
 				F2F3BE60257D8C9800A926E9 /* StickerData.swift */,
+				F264049D28051F5000812CF3 /* RecapBubbleData.swift */,
 				F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */,
 			);
 			path = Models;
@@ -1920,6 +1923,7 @@
 				BC1E1EFF246C5B5000E05C8A /* DataSource+Repository.swift in Sources */,
 				F2EE4AC825C5CC17004FB0F2 /* DeveloperViewController.swift in Sources */,
 				F2EE4AAE25C5AECC004FB0F2 /* TextCell.swift in Sources */,
+				F264049E28051F5000812CF3 /* RecapBubbleData.swift in Sources */,
 				F295339325B63DB1003CA002 /* GoalDetailsCell.swift in Sources */,
 				F216BEA525F72B6B00CBF58B /* MainCoordinatorProtocol.swift in Sources */,
 				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,

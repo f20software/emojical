@@ -444,33 +444,17 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     private func loadAwardsData() {
-        // Awards will be shown only when we have goals or awards already
-        let showAwards = week.isCurrentWeek ?
-            (goals.count > 0) : false
-
-        guard showAwards else {
-            view?.showAwards(false)
-            return
-        }
+        guard week.isCurrentWeek else { return }
 
         var data = [GoalOrAwardIconData]()
-        if week.isCurrentWeek {
-            data = goals.compactMap({
-                let stamp = repository.stampBy(id: $0.stamps.first)
-                return GoalOrAwardIconData(
-                    stamp: stamp,
-                    goal: $0,
-                    progress: awardManager.currentProgressFor($0)
-                )
-            })
-        } else {
-            data = awards.compactMap({
-                guard $0.reached == true else { return nil }
-                guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
-                let stamp = repository.stampBy(id: goal.stamps.first)
-                return .award(data: AwardIconData(stamp: stamp, goalId: goal.id))
-            })
-        }
+        data = goals.compactMap({
+            let stamp = repository.stampBy(id: $0.stamps.first)
+            return GoalOrAwardIconData(
+                stamp: stamp,
+                goal: $0,
+                progress: awardManager.currentProgressFor($0)
+            )
+        })
 
         view?.showAwards(true)
         view?.loadAwards(data: data)

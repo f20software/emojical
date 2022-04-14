@@ -34,7 +34,6 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
     @IBOutlet weak var recapBubbleView: RecapBubbleView!
-    @IBOutlet weak var recapBubbleBottomContstraint: NSLayoutConstraint!
 
     // MARK: - DI
 
@@ -182,11 +181,40 @@ class TodayViewController: UIViewController {
     }
 
     // Move stamp selector and mini button according to the state
-    private func adjustRecapBubbleButtonConstraints(hidden: Bool) {
-        recapBubbleBottomContstraint.constant = hidden ?
-            -(recapBubbleView.bounds.height + Specs.bottomButtonsMargin + 50) :
-            Specs.bottomButtonsMargin
+    private func adjustRecapBubbleButtonConstraints(hidden: Bool, animated: Bool) {
+        guard hidden != recapBubbleView.isHidden else { return }
+        
+        guard animated else {
+            recapBubbleView.alpha = 1.0
+            recapBubbleView.isHidden = hidden
+            return
+        }
+
+        if hidden == true {
+            UIView.animate(withDuration: 0.3, animations:
+            {
+                self.recapBubbleView.alpha = 0
+            }, completion: { (_) in
+                self.recapBubbleView.isHidden = true
+            })
+        } else {
+            recapBubbleView.alpha = 0
+            recapBubbleView.isHidden = false
+            UIView.animate(withDuration: 0.3, animations:
+//            UIView.animate(withDuration: 1.0, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
+//            options: [.curveEaseInOut], animations:
+            {
+                self.recapBubbleView.alpha = 1.0
+            })
+        }
+
+
+        recapBubbleView.layer.opacity = hidden ? 0.0 : 1.0
+//        recapBubbleBottomContstraint.constant = hidden ?
+//            -(recapBubbleView.bounds.height + Specs.bottomButtonsMargin + 50) :
+//            Specs.bottomButtonsMargin
         view.layoutIfNeeded()
+        // recapBubbleView.isHidden = hidden
     }
 
     private func configureViews() {
@@ -207,7 +235,7 @@ class TodayViewController: UIViewController {
 
         // Hide buttons initially
         adjustStampSelectorButtonConstraintsForState(.hidden)
-        adjustRecapBubbleButtonConstraints(hidden: true)
+        adjustRecapBubbleButtonConstraints(hidden: true, animated: false)
 
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
@@ -252,20 +280,21 @@ extension TodayViewController: TodayView {
         guard show,
             let data = data else
         {
-            adjustRecapBubbleButtonConstraints(hidden: true)
+            adjustRecapBubbleButtonConstraints(hidden: true, animated: true)
             return
         }
 
         if recapBubbleData != data {
             recapBubbleData = data
-            recapBubbleView.loadData(data.icons, message: data.message)
+            recapBubbleView.loadData(data)
         }
-        
-        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
-            options: [.curveEaseInOut], animations:
-        {
-            self.adjustRecapBubbleButtonConstraints(hidden: false)
-        })
+
+        adjustRecapBubbleButtonConstraints(hidden: false, animated: true)
+
+//        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
+//            options: [.curveEaseInOut], animations:
+//        {
+//        })
     }
 
     /// Update page title

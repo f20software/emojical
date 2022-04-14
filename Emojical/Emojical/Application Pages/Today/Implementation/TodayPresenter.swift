@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreGraphics
 
 class TodayPresenter: TodayPresenterProtocol {
 
@@ -415,6 +416,17 @@ class TodayPresenter: TodayPresenterProtocol {
         })
     }
     
+    // Emoji to be shown depend on how well user reached their goals
+    private func emojiImageForReachedGoals(total: Int, reached: Int) -> UIImage {
+        if reached == 0 {
+            return Specs.emojiFailed
+        } else if reached == total {
+            return Specs.emojiGreat
+        }
+        
+        return Specs.emojiOk
+    }
+    
     // Build data required to display recap bubble
     private func buildRecapBubbleData() -> RecapBubbleData? {
         guard week.isPast else { return nil }
@@ -422,7 +434,7 @@ class TodayPresenter: TodayPresenterProtocol {
         let awards = dataBuilder.awards(for: week)
         let totalCount = awards.count
         let reachedCount = awards.filter({ $0.reached }).count
-
+        
         return RecapBubbleData(
             message: Language.weekRecapForGoals(total: totalCount, reached: reachedCount),
             icons: awards.compactMap {
@@ -430,7 +442,8 @@ class TodayPresenter: TodayPresenterProtocol {
                 guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
                 let stamp = repository.stampBy(id: goal.stamps.first)
                 return AwardIconData(stamp: stamp, goalId: $0.goalId)
-            }
+            },
+            faceImage: emojiImageForReachedGoals(total: totalCount, reached: reachedCount)
         )
     }
     
@@ -531,4 +544,16 @@ fileprivate struct Specs {
 
     /// Editing days forward from today (when it's further in the future - entries will become read-only)
     static let editingForwardDays = 2
+
+    /// Emoji size to be cached
+    static let emojiSize = CGSize(width: 100, height: 100)
+    
+    /// Image to be dsiplayed on recap bubble when user did good job
+    static let emojiOk = UIImage(named: "emojical-ok")!.resized(to: emojiSize)
+    
+    /// Image to be dsiplayed on recap bubble when user failed to reach any goals
+    static let emojiFailed = UIImage(named: "emojical-point")!.resized(to: emojiSize)
+    
+    /// Image to be dsiplayed on recap bubble when user reached all goals
+    static let emojiGreat = UIImage(named: "emojical-two-thumbs")!.resized(to: emojiSize)
 }

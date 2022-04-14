@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 extension UIView {
 
     /// Adds constraints to this `UIView` instances `superview` object to make sure this always has the same size as the superview.
@@ -27,18 +28,23 @@ extension UIView {
     }
 }
 
-class RecapBubbleView : UIView {
+class RecapBubbleView : ThemeObservingView {
 
     // MARK: - UI Outlets
     
+    @IBOutlet weak var face: UIImageView!
+    @IBOutlet weak var bubble: UIView!
     @IBOutlet weak var text: UILabel!
     @IBOutlet weak var awards: UIStackView!
     @IBOutlet weak var chevron: UIImageView!
 
-
     // MARK: - Private references
     
     private var tapRecognizer: UITapGestureRecognizer?
+    
+    // Storing original image, so we can create stroked version dynamically if
+    // dark/light mode is changed
+    private var faceImage: UIImage!
 
     // MARK: - Callbacks
     
@@ -54,13 +60,18 @@ class RecapBubbleView : UIView {
     
     // MARK: - Public view interface
 
-    func loadData(_ data: [AwardIconData]?, message: String?) {
-        text.text = message
+    func loadData(_ data: RecapBubbleData) {
+        text.text = data.message
+        faceImage = data.faceImage.resized(to: face.bounds.size)
+        
+        face.image = faceImage
+            .stroked(with: Theme.main.colors.background,
+                     width: Specs.emojiStrokeThickness)
+        
         awards.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        guard data.icons.count > 0 else { return }
         
-        guard let icons = data, icons.count > 0 else { return }
-        
-        icons.forEach { award in
+        data.icons.forEach { award in
             guard award.reached else { return }
             
             let b = UIView(frame: .zero)
@@ -87,7 +98,7 @@ class RecapBubbleView : UIView {
         a4.backgroundColor = UIColor.clear
         awards.addArrangedSubview(a4)
         
-        let spacing = ((awards.frame.width - 5) / CGFloat(icons.count)) - 40
+        let spacing = ((awards.frame.width - 5) / CGFloat(data.icons.count)) - 40
         if spacing > 5 {
             awards.spacing = 5
         } else {
@@ -101,21 +112,26 @@ class RecapBubbleView : UIView {
     
     private func setupViews() {
         text.font = Theme.main.fonts.listBody
-        backgroundColor = Theme.main.colors.tint.withAlphaComponent(0.2)
-        layer.cornerRadius = Specs.textBubbleRadius
+        bubble.backgroundColor = Theme.main.colors.tint.withAlphaComponent(0.2)
+        bubble.layer.cornerRadius = Specs.textBubbleRadius
+        backgroundColor = UIColor.clear
 
-        chevron.image = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
+        chevron.image = Specs.chevronImage
         chevron.tintColor = Theme.main.colors.tint
         
-        // Collection view for awards
-        // configureCollectionView()
-        // registerCells()
         tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         self.addGestureRecognizer(tapRecognizer!)
     }
     
     @objc private func handleTap(recognizer: UITapGestureRecognizer) {
         onTapped?()
+    }
+    
+    override func updateColors() {
+        face.image = faceImage.stroked(
+            with: Theme.main.colors.background,
+            width: Specs.emojiStrokeThickness
+        )
     }
 }
 
@@ -136,4 +152,10 @@ fileprivate struct Specs {
 
     /// Bubble corner radius
     static let textBubbleRadius: CGFloat = 15.0
+    
+    /// Stroke around face emoji thickness
+    static let emojiStrokeThickness: CGFloat = 10.0
+    
+    /// Image for > chevron - so we have build-time validation
+    static let chevronImage = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
 }

@@ -190,6 +190,7 @@
 		F2A93FD825816709006C88F8 /* ChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FD725816709006C88F8 /* ChartType.swift */; };
 		F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A99D282439346900D3CF1D /* OptionsViewController.swift */; };
 		F2B3949225AE9BAE005F1EF7 /* ObserverList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */; };
+		F2B3C6AF2807C66D00B1544A /* UIImage+Stroked.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B3C6AE2807C66D00B1544A /* UIImage+Stroked.swift */; };
 		F2B4762B23DBDFEF0076BFDC /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F2B4762A23DBDFEF0076BFDC /* GRDB */; };
 		F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762C23DC1B440076BFDC /* AppDatabase.swift */; };
 		F2B4763023DCF9DE0076BFDC /* StoredDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */; };
@@ -471,6 +472,7 @@
 		F2A93FD725816709006C88F8 /* ChartType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartType.swift; sourceTree = "<group>"; };
 		F2A99D282439346900D3CF1D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverList.swift; sourceTree = "<group>"; };
+		F2B3C6AE2807C66D00B1544A /* UIImage+Stroked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Stroked.swift"; sourceTree = "<group>"; };
 		F2B4762C23DC1B440076BFDC /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredDiary.swift; sourceTree = "<group>"; };
 		F2B5F45725CF58CF0051E8C9 /* GoalExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalExampleCell.swift; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 				F20D1F9324142A1700FB5000 /* EmojiTextField.swift */,
 				F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */,
 				F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */,
+				F2B3C6AE2807C66D00B1544A /* UIImage+Stroked.swift */,
 				F20A1E0C270A2A3A0071C5B7 /* UILabelWithContentInset.swift */,
 			);
 			path = Extensions;
@@ -1765,6 +1768,7 @@
 				F2A829DE25EBF4F400B323FB /* WelcomeData.swift in Sources */,
 				F27E552C25D041DB00B78A95 /* StickerUsedData.swift in Sources */,
 				F2EC68B326F7B42B0061AA9B /* StickerMonthlyChartController.swift in Sources */,
+				F2B3C6AF2807C66D00B1544A /* UIImage+Stroked.swift in Sources */,
 				F27E70A625DC37A4004E49FB /* GoalChartData.swift in Sources */,
 				F295337B25B6165C003CA002 /* GoalViewController.swift in Sources */,
 				F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */,

@@ -62,7 +62,7 @@ class RecapBubbleView : ThemeObservingView {
             .stroked(with: Theme.main.colors.background,
                      width: Specs.emojiStrokeThickness)
 
-        // Let the height of the awards view be diameter of the award icon
+        // Let the height of the awards view be the diameter of the award icon
         let awardSize = awards.frame.height
 
         // Adjust constraint from the text to the bottom
@@ -89,7 +89,7 @@ class RecapBubbleView : ThemeObservingView {
         data.icons.forEach { award in
 
             // Create white circle behind the award icon, so we can do overlap
-            // Note that award icon is semi-transparent
+            // Note that award icon itself is semi-transparent
             let abv = createAwardBackgroundView(size: awardSize)
             let aiv = createAwardIconView(award: award)
             awards.addSubview(abv)
@@ -150,6 +150,8 @@ class RecapBubbleView : ThemeObservingView {
     // Since stroked image is generated in run-time - we need to refresh it
     // if dark/light theme is changed
     override func updateColors() {
+        guard faceImage != nil else { return }
+        
         face.image = faceImage.stroked(
             with: Theme.main.colors.background,
             width: Specs.emojiStrokeThickness

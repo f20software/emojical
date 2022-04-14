@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DayStampCell: UICollectionViewCell {
+class DayStampCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
@@ -55,5 +55,9 @@ class DayStampCell: UICollectionViewCell {
         badgeViewOutline.backgroundColor = UIColor.clear
         badgeViewOutline.layer.borderColor = Theme.main.colors.tint.cgColor
         badgeViewOutline.layer.borderWidth = 3.0
+    }
+    
+    override func updateColors() {
+        badgeViewOutline.layer.borderColor = Theme.main.colors.tint.cgColor
     }
 }

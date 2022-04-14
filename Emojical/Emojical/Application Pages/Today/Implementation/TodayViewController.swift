@@ -290,11 +290,6 @@ extension TodayViewController: TodayView {
         }
 
         adjustRecapBubbleButtonConstraints(hidden: false, animated: true)
-
-//        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
-//            options: [.curveEaseInOut], animations:
-//        {
-//        })
     }
 
     /// Update page title

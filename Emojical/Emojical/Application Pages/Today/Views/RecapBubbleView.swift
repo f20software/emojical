@@ -8,35 +8,27 @@
 
 import UIKit
 
-
-extension UIView {
-
-    /// Adds constraints to this `UIView` instances `superview` object to make sure this always has the same size as the superview.
-    /// Please note that this has no effect if its `superview` is `nil` – add this `UIView` instance as a subview before calling this.
-    func bindFrameToSuperviewBounds() {
-        guard let superview = self.superview else {
-            print("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `bindFrameToSuperviewBounds()` to fix this.")
-            return
-        }
-
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.topAnchor.constraint(equalTo: superview.topAnchor, constant: 0).isActive = true
-        self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0).isActive = true
-        self.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 0).isActive = true
-        self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0).isActive = true
-
-    }
-}
-
 class RecapBubbleView : ThemeObservingView {
 
     // MARK: - UI Outlets
     
+    /// Smiley face on top of the RecapBubble (exact artwork will depend on how good recap is)
     @IBOutlet weak var face: UIImageView!
+
+    /// Speach bubble background view
     @IBOutlet weak var bubble: UIView!
+    
+    /// Text label to display recap text
     @IBOutlet weak var text: UILabel!
-    @IBOutlet weak var awards: UIStackView!
+    
+    /// Disclosure chevron indicating tappability
     @IBOutlet weak var chevron: UIImageView!
+    
+    /// Background view to hold all award icons - icons will be created dynamically
+    @IBOutlet weak var awards: UIView!
+    
+    /// Text label to bottom constraint. Used to hide awards strip when there are none
+    @IBOutlet weak var textBottomConstraint: NSLayoutConstraint!
 
     // MARK: - Private references
     
@@ -63,62 +55,90 @@ class RecapBubbleView : ThemeObservingView {
     func loadData(_ data: RecapBubbleData) {
         text.text = data.message
         faceImage = data.faceImage.resized(to: face.bounds.size)
-        
+        // Remove all previously created award icons
+        awards.subviews.forEach { $0.removeFromSuperview() }
+
         face.image = faceImage
             .stroked(with: Theme.main.colors.background,
                      width: Specs.emojiStrokeThickness)
-        
-        awards.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        guard data.icons.count > 0 else { return }
-        
-        data.icons.forEach { award in
-            guard award.reached else { return }
-            
-            let b = UIView(frame: .zero)
-            b.heightAnchor.constraint(equalToConstant: 40).isActive = true
-            b.widthAnchor.constraint(equalToConstant: 40).isActive = true
-            b.backgroundColor = Theme.main.colors.background
-            b.layer.cornerRadius = 20
 
-            let a = AwardIconView(frame: CGRect.zero)
-            a.labelText = award.emoji
-            a.emojiFontSize = 14
-            a.labelBackgroundColor = award.backgroundColor
-            a.borderColor = award.borderColor
-            a.borderWidth = Theme.main.specs.progressWidthSmall
-            
-            b.addSubview(a)
-            a.bindFrameToSuperviewBounds()
-            awards.addArrangedSubview(b)
+        // Let the height of the awards view be diameter of the award icon
+        let awardSize = awards.frame.height
+
+        // Adjust constraint from the text to the bottom
+        // It will hide awards line if there are none
+        textBottomConstraint.constant = awardSize + Specs.awardMargin * 2
+        guard data.icons.count > 0 else {
+            textBottomConstraint.constant = Specs.awardMargin
+            return
         }
-
-        let a4 = UIView(frame: CGRect.zero)
-        a4.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        a4.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        a4.backgroundColor = UIColor.clear
-        awards.addArrangedSubview(a4)
         
-        let spacing = ((awards.frame.width - 5) / CGFloat(data.icons.count)) - 40
-        if spacing > 5 {
-            awards.spacing = 5
+        var spacing = (awards.frame.width / CGFloat(data.icons.count)) - awardSize
+        if spacing > Specs.awardDefaultSpacing {
+            // We have enough room to fill them all
+            spacing = Specs.awardDefaultSpacing
+        } else if spacing >= Specs.awardOverlapSpacing {
+            // We don't have enough room and they might overlap a little - make it standard
+            spacing = Specs.awardOverlapSpacing
         } else {
-            awards.spacing = -10
+            // Calculated spacing < Specs.awardOverlapSpacing - too many icons
+            // Just go with calculated
         }
-        awards.translatesAutoresizingMaskIntoConstraints = false
-        awards.backgroundColor = UIColor.clear
+
+        var offset: CGFloat = 0.0
+        data.icons.forEach { award in
+
+            // Create white circle behind the award icon, so we can do overlap
+            // Note that award icon is semi-transparent
+            let abv = createAwardBackgroundView(size: awardSize)
+            let aiv = createAwardIconView(award: award)
+            awards.addSubview(abv)
+            awards.addSubview(aiv)
+
+            // Both views would have same contraint - size and alignment to the superview
+            [abv, aiv].forEach { view in
+                view.widthAnchor.constraint(equalTo: awards.heightAnchor).isActive = true
+                view.heightAnchor.constraint(equalTo: awards.heightAnchor).isActive = true
+                view.topAnchor.constraint(equalTo: awards.topAnchor).isActive = true
+                view.leadingAnchor.constraint(equalTo: awards.leadingAnchor, constant: offset).isActive = true
+            }
+            
+            offset = offset + awardSize + spacing
+        }
     }
     
     // MARK: - Private helpers
     
+    // Wrapper to create circle background view for award icon
+    private func createAwardBackgroundView(size: CGFloat) -> UIView {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = Theme.main.colors.background
+        view.layer.cornerRadius = size / 2.0
+        return view
+    }
+    
+    // Wrapper to create award icon view
+    private func createAwardIconView(award: AwardIconData) -> AwardIconView {
+        let view = AwardIconView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.labelText = award.emoji
+        view.emojiFontSize = Specs.awardEmojiFontSize
+        view.labelBackgroundColor = award.backgroundColor
+        view.borderColor = award.borderColor
+        view.borderWidth = Theme.main.specs.progressWidthSmall
+        return view
+    }
+    
     private func setupViews() {
+        backgroundColor = UIColor.clear
+        awards.backgroundColor = UIColor.clear
         text.font = Theme.main.fonts.listBody
         bubble.backgroundColor = Theme.main.colors.tint.withAlphaComponent(0.2)
         bubble.layer.cornerRadius = Specs.textBubbleRadius
-        backgroundColor = UIColor.clear
-
         chevron.image = Specs.chevronImage
         chevron.tintColor = Theme.main.colors.tint
-        
+
         tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         self.addGestureRecognizer(tapRecognizer!)
     }
@@ -127,6 +147,8 @@ class RecapBubbleView : ThemeObservingView {
         onTapped?()
     }
     
+    // Since stroked image is generated in run-time - we need to refresh it
+    // if dark/light theme is changed
     override func updateColors() {
         face.image = faceImage.stroked(
             with: Theme.main.colors.background,
@@ -138,23 +160,23 @@ class RecapBubbleView : ThemeObservingView {
 // MARK: - Specs
 fileprivate struct Specs {
     
-    /// Award cell size
-    static let awardSize: CGFloat = 55.0
-    
-    /// Margin around award icons
-    static let awardMargin: CGFloat = 3.0
-    
-    /// Margin before first award icon
-    static let awardsLeadingMargin: CGFloat = 16.0
-    
-    /// Margin from the left/right of the award strip
-    static let awardStripHorizontalMargin: CGFloat = 5.0
+    /// Default spacing between award icons (if we have room)
+    static let awardDefaultSpacing: CGFloat = 5.0
 
+    /// Default overlap between award icons (if we don't have enough room to fit them all)
+    static let awardOverlapSpacing: CGFloat = -10.0
+
+    /// Margin from top and bottom to list of awards
+    static let awardMargin: CGFloat = 15.0
+    
     /// Bubble corner radius
     static let textBubbleRadius: CGFloat = 15.0
     
     /// Stroke around face emoji thickness
-    static let emojiStrokeThickness: CGFloat = 10.0
+    static let emojiStrokeThickness: CGFloat = 5.0
+    
+    /// Size of the font for the award emoji
+    static let awardEmojiFontSize: CGFloat = 14.0
     
     /// Image for > chevron - so we have build-time validation
     static let chevronImage = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))

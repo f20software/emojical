@@ -101,7 +101,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                 footer: "Emojical, \(version), © 2022",
                 cells: [
                     .button("please_rate".localized, { [weak self] in
-                        self?.sendFeedback()
+                        self?.rateApp()
                     }),
                     .button("feedback_button".localized, { [weak self] in
                         self?.sendFeedback()
@@ -149,6 +149,12 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
         // We use same notification as when stickers are added to the current date
         // because when that happens we also re-create reminder with a new text
         NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
+    }
+    
+    private func rateApp() {
+        guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id1496301176?action=write-review")
+            else { fatalError("Expected a valid URL") }
+        UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
     }
     
     private func sendFeedback() {

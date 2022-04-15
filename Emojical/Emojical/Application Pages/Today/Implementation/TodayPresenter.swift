@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import CoreGraphics
 
 class TodayPresenter: TodayPresenterProtocol {
 
@@ -75,7 +74,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private var selectedDay = Date() {
         didSet {
             // Calculate distance from today and lock/unlock stamp selector
-            let untilToday = Int(selectedDay.timeIntervalSince(Date()) / (60*60*24))
+            let untilToday = Int(selectedDay.timeIntervalSince(calendar.today) / (60*60*24))
             locked = (untilToday > 0) ?
                 // Selected day is in the future
                 ((untilToday+1) > Specs.editingForwardDays) :
@@ -156,7 +155,7 @@ class TodayPresenter: TodayPresenterProtocol {
         setupListeners()
 
         // Initial data configuration for the current date
-        initializeDataFor(date: Date())
+        initializeDataFor(date: calendar.today)
         
         // Configuring view according to the data
         setupView()
@@ -224,8 +223,9 @@ class TodayPresenter: TodayPresenterProtocol {
 
             case .weekReady(let message):
                 self.coordinator?.showRecapReady(message: message) { [weak self] showRecap in
+                    guard let self = self else { return }
                     if showRecap {
-                        self?.showWeekRecapFor(Date().byAddingWeek(-1))
+                        self.showWeekRecapFor(self.calendar.today.byAddingWeek(-1))
                     }
                     completion?()
                 }
@@ -240,7 +240,7 @@ class TodayPresenter: TodayPresenterProtocol {
         NSLog("Significant Time Change")
         
         // Initial data configuration for the current date
-        initializeDataFor(date: Date())
+        initializeDataFor(date: calendar.today)
         
         // Configuring view according to the data
         setupView()
@@ -491,7 +491,7 @@ class TodayPresenter: TodayPresenterProtocol {
         awardManager.recalculateAwards(selectedDay)
         
         // TODO: Optimize to use listener approach
-        if selectedDay.isToday {
+        if calendar.isDateToday(selectedDay) {
             NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
         }
         
@@ -526,7 +526,7 @@ class TodayPresenter: TodayPresenterProtocol {
         // Special logic of we're coming back to the current week
         // Select today's date
         if week.isCurrentWeek {
-            selectedDay = Date()
+            selectedDay = calendar.today
             let key = selectedDay.databaseKey
             selectedDayIndex = weekHeader.firstIndex(where: { $0.date.databaseKey == key }) ?? 0
         }

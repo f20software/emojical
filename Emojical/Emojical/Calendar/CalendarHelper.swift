@@ -29,6 +29,15 @@ class CalendarHelper {
         }
     }
 
+    // For better testability so we can override current day
+    var today: Date {
+        return Date()
+    }
+    
+    func isDateToday(_ date: Date) -> Bool {
+        return date.databaseKey == self.today.databaseKey
+    }
+    
     init() {
         // Update current calendar with a proper firstWeekday property
         var calendar = Calendar.current

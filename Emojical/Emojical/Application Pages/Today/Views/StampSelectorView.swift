@@ -40,7 +40,6 @@ class StampSelectorView : ThemeObservingView {
     // MARK: - Public view interface
 
     func loadData(_ data: [StampSelectorElement]) {
-        print("loadData \(data.count)")
         var snapshot = NSDiffableDataSourceSnapshot<Int, StampSelectorElement>()
         snapshot.appendSections([0])
         snapshot.appendItems(data)
@@ -91,7 +90,6 @@ class StampSelectorView : ThemeObservingView {
     // MARK: - Private helpers
     
     private func setupViews() {
-        print("setupView")
         // Background view
         backgroundColor = Theme.main.colors.secondaryBackground
         layer.cornerRadius = Theme.main.specs.platesCornerRadius
@@ -125,7 +123,6 @@ class StampSelectorView : ThemeObservingView {
     }
 
     private func configureCollectionView() {
-        print("configureCollectionView")
         self.dataSource = UICollectionViewDiffableDataSource<Int, StampSelectorElement>(
             collectionView: stamps,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
@@ -145,7 +142,6 @@ class StampSelectorView : ThemeObservingView {
     }
     
     private func updateCollectionViewLayout() {
-        print("updateCollectionViewLayout")
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: Specs.stickerSize, height: Specs.stickerSize)
         layout.minimumInteritemSpacing = Specs.stickerMargin

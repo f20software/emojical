@@ -110,7 +110,7 @@ class TodayPresenter: TodayPresenterProtocol {
             
             // Update recap bubble visibility
             // - show only when selector or minibutton is not shown
-            view?.showRecapBubble(selectorState == .hidden, data: recapBubbleData)
+            view?.loadRecapBubbleData(recapBubbleData, show: (selectorState == .hidden))
         }
     }
     
@@ -374,7 +374,7 @@ class TodayPresenter: TodayPresenterProtocol {
         // Column data
         view?.loadDays(data: dailyStickers)
 
-        // Recap button - shown for past weeks
+        // Recap bubble data will be built only for the past weeks
         recapBubbleData = buildRecapBubbleData()
 
         // Stamp selector data
@@ -382,7 +382,7 @@ class TodayPresenter: TodayPresenterProtocol {
 
         // Update selectors state based on the lock status
         view?.showStampSelector(selectorState)
-        view?.showRecapBubble(selectorState == .hidden, data: recapBubbleData)
+        view?.loadRecapBubbleData(recapBubbleData, show: selectorState == .hidden)
     }
     
     private func loadStampSelectorData() {

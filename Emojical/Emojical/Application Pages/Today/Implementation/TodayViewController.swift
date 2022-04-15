@@ -196,6 +196,7 @@ class TodayViewController: UIViewController {
                 self.recapBubbleView.alpha = 0
             }, completion: { (_) in
                 self.recapBubbleView.isHidden = true
+                self.recapBubbleView.alpha = 1.0
             })
         } else {
             recapBubbleView.alpha = 0
@@ -205,14 +206,6 @@ class TodayViewController: UIViewController {
                 self.recapBubbleView.alpha = 1.0
             })
         }
-
-
-        // recapBubbleView.layer.opacity = hidden ? 0.0 : 1.0
-//        recapBubbleBottomContstraint.constant = hidden ?
-//            -(recapBubbleView.bounds.height + Specs.bottomButtonsMargin + 50) :
-//            Specs.bottomButtonsMargin
-        // view.layoutIfNeeded()
-        // recapBubbleView.isHidden = hidden
     }
 
     private func configureViews() {
@@ -272,8 +265,8 @@ extension TodayViewController: TodayView {
         separatorTopConstraint.constant = show ? 70 : -1
     }
 
-    /// Show/hide recap button
-    func showRecapBubble(_ show: Bool, data: RecapBubbleData?) {
+    /// Load recap bubble data and update recap bubble visibility
+    func loadRecapBubbleData(_ data: RecapBubbleData?, show: Bool) {
         // Bail our early if we need to hide recap bubble
         guard show,
             let data = data else

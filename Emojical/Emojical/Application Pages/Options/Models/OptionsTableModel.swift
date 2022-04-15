@@ -18,6 +18,7 @@ struct Section {
 enum Cell {
     case text(String?, String? = nil)
     case `switch`(String, Bool, ((Bool) -> Void)?)
+    case time(String, Date, ((Date) -> Void)?)
     case navigate(String, (() -> Void)?)
     case button(String, (() -> Void)?)
     case stickerStyle(String, Stamp, StickerStyle, ((StickerStyle) -> Void)?)
@@ -31,6 +32,8 @@ extension Cell: Equatable, Hashable {
             return "\(name ?? "")\(value ?? "")".hash(into: &hasher)
         case .`switch`(let value, _, _):
             return value.hash(into: &hasher)
+        case .time(let value1, _, _):
+            return value1.hash(into: &hasher)
         case .navigate(let value, _):
             return value.hash(into: &hasher)
         case .button(let value, _):
@@ -45,6 +48,8 @@ extension Cell: Equatable, Hashable {
         case (.text(let lhsValue1, let lhsValue2), .text(let rhsValue1, let rhsValue2)):
             return (lhsValue1 == rhsValue1) && (lhsValue2 == rhsValue2)
         case (.`switch`(let lhsValue, _, _), .`switch`(let rhsValue, _, _)):
+            return lhsValue == rhsValue
+        case (.time(let lhsValue, _, _), .time(let rhsValue, _, _)):
             return lhsValue == rhsValue
         case (.navigate(let lhsValue, _), .navigate(let rhsValue, _)):
             return lhsValue == rhsValue

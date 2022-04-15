@@ -29,13 +29,23 @@ class CalendarHelper {
         }
     }
 
-    // For better testability so we can override current day
+    /// Return today's date. Could be used for mocking current date
     var today: Date {
         return Date()
     }
     
+    /// Validate that specific date is today using CalendarHelper.today variable
     func isDateToday(_ date: Date) -> Bool {
         return date.databaseKey == self.today.databaseKey
+    }
+    
+    /// Create Date instance for specific time of today
+    func todayAtTime(hour: Int, minute: Int) -> Date {
+        return Calendar.current.date(
+            bySettingHour: hour,
+            minute: minute,
+            second: 0,
+            of: today) ?? Date()
     }
     
     init() {

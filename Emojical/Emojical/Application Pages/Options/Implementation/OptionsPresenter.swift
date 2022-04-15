@@ -18,6 +18,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     private weak var settings: LocalSettings!
     private weak var repository: DataRepository!
     private weak var coordinator: OptionsCoordinatorProtocol?
+    private weak var calender: CalendarHelper!
     
     // MARK: - State
     
@@ -29,12 +30,14 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
         view: OptionsView,
         repository: DataRepository,
         settings: LocalSettings,
-        coordinator: OptionsCoordinatorProtocol
+        coordinator: OptionsCoordinatorProtocol,
+        calendar: CalendarHelper
     ) {
         self.view = view
         self.repository = repository
         self.settings = settings
         self.coordinator = coordinator
+        self.calender = calendar
     }
 
     /// Called when view finished initial loading.
@@ -66,9 +69,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
                 footer: "reminder_footer".localized,
                 cells: [
                     .switch("reminder_option".localized, settings.reminderEnabled, { [weak self] newValue in
-                        self?.settings.reminderEnabled = newValue
-                        // Force notification manager to update reminder
-                        NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
+                        self?.updateReminder(to: newValue)
                     })
                 ]
             ),
@@ -97,26 +98,59 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
             ),
             Section(
                 header: nil,
-                footer: "Emojical, \(version), © 2021",
+                footer: "Emojical, \(version), © 2022",
                 cells: [
-                    .button("feedback_button".localized, { [weak self] in
+                    .button("please_rate".localized, { [weak self] in
                         self?.sendFeedback()
                     }),
+                    .button("feedback_button".localized, { [weak self] in
+                        self?.sendFeedback()
+                    })
                 ]
             ),
         ]
 
+        if settings.reminderEnabled {
+            let currentTime = calender.todayAtTime(hour: settings.reminderTime.hour, minute: settings.reminderTime.minute)
+            data[0].cells.append(
+                .time("reminde_me_at_time".localized, currentTime, { [weak self] newValue in
+                    self?.updateReminderTime(to: newValue)
+                })
+            )
+        }
+        
         if showDeveloperMenu {
             data[2].cells.append(
                 .navigate("Developer Options", { [weak self] in
                     self?.coordinator?.developerOptions()
-                }))
+                })
+            )
         }
         
         view?.updateTitle("options_title".localized)
         view?.loadData(data)
     }
 
+    private func updateReminderTime(to newValue: Date) {
+        let comps = Calendar.current.dateComponents([.hour, .minute], from: newValue)
+        settings.reminderTime = (comps.hour ?? 21, comps.minute ?? 0)
+
+        // Force notification manager to update reminder -
+        // We use same notification as when stickers are added to the current date
+        // because when that happens we also re-create reminder with a new text
+        NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
+    }
+
+    private func updateReminder(to newValue: Bool) {
+        settings.reminderEnabled = newValue
+        loadViewData()
+        
+        // Force notification manager to update reminder -
+        // We use same notification as when stickers are added to the current date
+        // because when that happens we also re-create reminder with a new text
+        NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
+    }
+    
     private func sendFeedback() {
         sendFeedbackEmail(
             to: "feedback@emojical.app",

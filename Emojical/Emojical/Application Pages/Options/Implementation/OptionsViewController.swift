@@ -33,7 +33,8 @@ class OptionsViewController: BaseTableViewController, OptionsView {
             view: self,
             repository: Storage.shared.repository,
             settings: LocalSettings.shared,
-            coordinator: coordinator
+            coordinator: coordinator,
+            calendar: CalendarHelper.shared
         )
         
         configureViews()

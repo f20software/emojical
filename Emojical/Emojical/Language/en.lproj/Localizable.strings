@@ -218,13 +218,17 @@
 
 "reminder_option" = "Daily Reminder";
 
-"reminder_footer" = "Remind yourself every day around 9pm to fill your entry for that day if you haven't done so already.";
+"reminde_me_at_time" = "Remind Me At";
+
+"reminder_footer" = "Remind yourself every day to fill your entry for that day if you haven't done so already.";
 
 "backup_title" = "Backup / Restore";
 
 "backup_button" = "Export Your Data...";
 
 "backup_footer" = "Email yourself JSON file with all your data.";
+
+"please_rate" = "Please Rate Emojical";
 
 "feedback_button" = "Feedback...";
 

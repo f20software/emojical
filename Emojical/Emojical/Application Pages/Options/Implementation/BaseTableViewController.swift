@@ -79,6 +79,13 @@ extension BaseTableViewController {
             cell.configure(for: text, value: value)
             cell.onValueChanged = callback
             return cell
+
+        case .time(let text, let time, let callback):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Specs.Cells.timeCell)
+                as? TimeCell else { return UITableViewCell() }
+            cell.configure(for: text, time: time)
+            cell.onValueChanged = callback
+            return cell
         }
     }
 }
@@ -103,5 +110,8 @@ fileprivate struct Specs {
 
         /// Navigation cell identifier
         static let navigationCell = "navigationCell"
+
+        /// Time picker cell identifier
+        static let timeCell = "timeCell"
     }
 }

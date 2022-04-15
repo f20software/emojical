@@ -10,31 +10,37 @@ import UIKit
 
 class NotificationManager {
 
+    // MARK: - DI
+    
+    /// LocalSettings instance
     let settings: LocalSettings
     
-    let reminderHour: Int = 21
-    let reminderMinute: Int = 5
+    /// CalenderHelper instance
+    let calendar: CalendarHelper
     
-    // If application is running withing 120 minutes from reminder time, we will not show reminder
-    // today but will schedule it for tomorrow
+    // MARK: - Singleton
+    static let shared = NotificationManager(
+        settings: LocalSettings.shared,
+        calendar: CalendarHelper.shared
+    )
+
+    /// If application is running withing 120 minutes from reminder time,
+    /// we will not show reminder today but will schedule it for tomorrow
     private let reminderGap: Int = 120
     
     var userNotificationCenter: UNUserNotificationCenter {
         return UNUserNotificationCenter.current()
     }
 
-    // Singleton instance
-    static let shared = NotificationManager(settings: LocalSettings.shared)
-    
-    private init(settings: LocalSettings) {
+    private init(
+        settings: LocalSettings,
+        calendar: CalendarHelper
+    ) {
         self.settings = settings
+        self.calendar = calendar
 
         // Add a handler to react to updating today's stickers, so we can recalculate notifications
         NotificationCenter.default.addObserver(self, selector: #selector(refreshNotifications), name: .todayStickersUpdated, object: nil)
-    }
-    
-    private var todayReminderTime: Date {
-        return Calendar.current.date(bySettingHour: reminderHour, minute: reminderMinute, second: 0, of: Date())!
     }
     
     private var defaultReminderContent: UNNotificationContent {
@@ -109,7 +115,11 @@ class NotificationManager {
     }
     
     private func createNextNotification() -> UNNotificationRequest {
-        var nextNotificationDate = todayReminderTime
+        let reminderTime = settings.reminderTime
+        var nextNotificationDate = calendar.todayAtTime(
+            hour: reminderTime.hour,
+            minute: reminderTime.minute
+        )
         var content = defaultReminderContent
 
         // If we're doing it within 30 minutes from the todays notification time (or if we passed that time already)

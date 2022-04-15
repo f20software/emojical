@@ -36,11 +36,17 @@ protocol TodayView: AnyObject {
     /// User tapped on the award icon on the top
     var onAwardTapped: ((Int) -> Void)? { get set }
 
+    /// User tapped on the recap button
+    var onRecapTapped: (() -> Void)? { get set }
+
     // MARK: - Updates
 
     /// Show/hide top awards strip
     func showAwards(_ show: Bool)
     
+    /// Show/hide recap button
+    func loadRecapBubbleData(_ data: RecapBubbleData?, show: Bool)
+
     /// Update page title
     func setTitle(to title: String)
     

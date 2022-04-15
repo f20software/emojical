@@ -50,7 +50,7 @@ class CalendarDataBuilder {
         let nextWeekFirstDay = week.firstDay.byAddingWeek(1)
         
         let distance = Int(nextWeekFirstDay.timeIntervalSince(lastEntryDate))
-        return !(distance > (7 * CalendarDataBuilder.secondsInDay))
+        return !(distance > (8 * CalendarDataBuilder.secondsInDay))
     }
 
     // We allow to move one week back from the week with last entry (i.e. showing one empty week)

@@ -20,6 +20,7 @@ class StampSelectorView : ThemeObservingView {
     // MARK: - State
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StampSelectorElement>!
+    private var stickerCount = 0
     
     // MARK: - Callbacks
     
@@ -41,25 +42,48 @@ class StampSelectorView : ThemeObservingView {
     func loadData(_ data: [StampSelectorElement]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StampSelectorElement>()
         snapshot.appendSections([0])
-        
         snapshot.appendItems(data)
+
+        let oldStickerCount = stickerCount
+        stickerCount = data.count
+        // Add [+] icon if we have less then full one row of stickers
+        if data.count < Specs.stickersPerRow {
+            snapshot.appendItems([.newStamp])
+            stickerCount += 1
+        }
+        
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         
         // Arrange stamps in row by [stampsPerRow]. If we have fewer than [stampsPerRow],
         // center them inside selector view.
-        // Otherwise make width to [stampsPerRow] elements, and number of row to 2
-        // Will have to improve when more then 10 stamps are supported
-        let rows = ((data.count - 1) / Specs.stickersPerRow) + 1
+        // Otherwise make
+        // width = [stampsPerRow] elements
+        // number of row = maxStickerRow
+        // and allow for horizontal scrolling
+
+        var numberOfRows = (stickerCount - 1) / Specs.stickersPerRow + 1
+        let numberOfColumns = min(stickerCount, Specs.stickersPerRow)
+        var needHorizontalScroll = false
+        if numberOfRows > Specs.maxStickerRows {
+            numberOfRows = Specs.maxStickerRows
+            needHorizontalScroll = true
+        }
         
-        let cellSize = Specs.stickerSize
-        let gap = Specs.stickerMargin
+        widthConstraint.constant =
+            ((Specs.stickerSize + Specs.stickerMargin) * CGFloat(numberOfColumns)) - Specs.stickerMargin
+        heightConstraint.constant =
+            ((Specs.stickerSize + Specs.stickerMargin) * CGFloat(numberOfRows)) - Specs.stickerMargin
         
-        heightConstraint.constant = (cellSize + gap) * CGFloat(rows) - gap
-        
-        if rows == 1 {
-            widthConstraint.constant = (cellSize + gap) * CGFloat(data.count)
+        if needHorizontalScroll == false {
+            // alignScrollViewCenterConstraint.constant = 0
         } else {
-            widthConstraint.constant = (cellSize + gap) * CGFloat(Specs.stickersPerRow)
+            // alignScrollViewCenterConstraint.constant = Specs.stickerSize / 4
+            widthConstraint.constant += Specs.stickerSize / 2
+        }
+        
+        updateCollectionViewLayout()
+        if oldStickerCount != stickerCount {
+            stamps.setContentOffset(.zero, animated: false)
         }
     }
     
@@ -108,34 +132,22 @@ class StampSelectorView : ThemeObservingView {
 
         stamps.dataSource = dataSource
         stamps.delegate = self
-        stamps.collectionViewLayout = stampsSelectorLayout()
+        updateCollectionViewLayout()
+
         stamps.backgroundColor = UIColor.clear
+        stamps.showsHorizontalScrollIndicator = false
+        stamps.showsVerticalScrollIndicator = false
         stamps.alwaysBounceHorizontal = false
         stamps.alwaysBounceVertical = false
     }
     
-    // Creates layout for the day column - vertical list of cells
-    private func stampsSelectorLayout() -> UICollectionViewCompositionalLayout {
-        let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .absolute(Specs.stickerSize),
-                heightDimension: .absolute(Specs.stickerSize)
-            )
-        )
-
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(Specs.stickerSize)
-            ),
-            subitems: [item]
-        )
-        group.interItemSpacing = .fixed(Specs.stickerMargin)
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = Specs.stickerMargin
-        
-        return UICollectionViewCompositionalLayout(section: section)
+    private func updateCollectionViewLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: Specs.stickerSize, height: Specs.stickerSize)
+        layout.minimumInteritemSpacing = Specs.stickerMargin
+        layout.minimumLineSpacing = Specs.stickerMargin
+        layout.scrollDirection = stickerCount > (Specs.stickersPerRow * Specs.maxStickerRows) ? .horizontal : .vertical
+        stamps.collectionViewLayout = layout
     }
 }
 
@@ -192,6 +204,9 @@ fileprivate struct Specs {
     /// Stickers row size
     static let stickersPerRow = 5
     
+    /// Stickers row size
+    static let maxStickerRows = 2
+
     /// Margins between stickers
     static let stickerMargin: CGFloat = 3.0
 

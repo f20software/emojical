@@ -9,30 +9,6 @@
 import Foundation
 import UIKit
 
-struct DiffAward {
-    let goalId: Int64
-    let date: String
-    let reached: Bool
-    let count: Int
-    var period: Period
-    var direction: Direction
-    var limit: Int
-    var goalName: String?
-    
-    init(from: Award) {
-        self.goalId = from.goalId
-        self.date = from.date.databaseKey
-        self.reached = from.reached
-        self.count = from.count
-        self.period = from.period
-        self.direction = from.direction
-        self.limit = from.limit
-        self.goalName = from.goalName
-    }
-}
-
-extension DiffAward: Equatable, Hashable {}
-
 struct Award {
     // Prefer Int64 for auto-incremented database ids
     var id: Int64?

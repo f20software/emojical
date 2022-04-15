@@ -69,11 +69,6 @@ extension Date {
         return self.byAddingDays(weeks * 7)
     }
     
-    /// Property to recognize that date is today
-    var isToday: Bool {
-        return self.databaseKey == Date().databaseKey
-    }
-    
     /// Property to recognize whether day is a weekend (Saturday/Sunday) or not
     var isWeekend: Bool {
         let weekday = Calendar.current.component(.weekday, from: self)

@@ -85,6 +85,8 @@
 		F24EB3AF27DD82C600F325A9 /* GoalReachedSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F24EB3AD27DD82C600F325A9 /* GoalReachedSimpleCell.xib */; };
 		F251F8B925BFB8F20042B1DA /* SelectStickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F251F8B825BFB8F20042B1DA /* SelectStickerCell.xib */; };
 		F251F8BD25BFBBEC0042B1DA /* SelectStickerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F251F8BC25BFBBEC0042B1DA /* SelectStickerElement.swift */; };
+		F260BF552803497C00B94B96 /* RecapBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260BF542803497C00B94B96 /* RecapBubbleView.swift */; };
+		F264049E28051F5000812CF3 /* RecapBubbleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264049D28051F5000812CF3 /* RecapBubbleData.swift */; };
 		F26596ED2596AF1300B10B76 /* AwardRecapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E22596AF1300B10B76 /* AwardRecapCell.swift */; };
 		F26596EE2596AF1300B10B76 /* Recap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26596E32596AF1300B10B76 /* Recap.storyboard */; };
 		F26596EF2596AF1300B10B76 /* RecapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26596E52596AF1300B10B76 /* RecapPresenter.swift */; };
@@ -188,6 +190,7 @@
 		F2A93FD825816709006C88F8 /* ChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A93FD725816709006C88F8 /* ChartType.swift */; };
 		F2A99D292439346900D3CF1D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A99D282439346900D3CF1D /* OptionsViewController.swift */; };
 		F2B3949225AE9BAE005F1EF7 /* ObserverList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */; };
+		F2B3C6AF2807C66D00B1544A /* UIImage+Stroked.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B3C6AE2807C66D00B1544A /* UIImage+Stroked.swift */; };
 		F2B4762B23DBDFEF0076BFDC /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F2B4762A23DBDFEF0076BFDC /* GRDB */; };
 		F2B4762D23DC1B440076BFDC /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762C23DC1B440076BFDC /* AppDatabase.swift */; };
 		F2B4763023DCF9DE0076BFDC /* StoredDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */; };
@@ -363,6 +366,8 @@
 		F251F8B825BFB8F20042B1DA /* SelectStickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectStickerCell.xib; sourceTree = "<group>"; };
 		F251F8BC25BFBBEC0042B1DA /* SelectStickerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickerElement.swift; sourceTree = "<group>"; };
 		F255593A27DDC16400957835 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F260BF542803497C00B94B96 /* RecapBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapBubbleView.swift; sourceTree = "<group>"; };
+		F264049D28051F5000812CF3 /* RecapBubbleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapBubbleData.swift; sourceTree = "<group>"; };
 		F26596E22596AF1300B10B76 /* AwardRecapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardRecapCell.swift; sourceTree = "<group>"; };
 		F26596E32596AF1300B10B76 /* Recap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recap.storyboard; sourceTree = "<group>"; };
 		F26596E52596AF1300B10B76 /* RecapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapPresenter.swift; sourceTree = "<group>"; };
@@ -467,6 +472,7 @@
 		F2A93FD725816709006C88F8 /* ChartType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartType.swift; sourceTree = "<group>"; };
 		F2A99D282439346900D3CF1D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		F2B3949125AE9BAE005F1EF7 /* ObserverList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverList.swift; sourceTree = "<group>"; };
+		F2B3C6AE2807C66D00B1544A /* UIImage+Stroked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Stroked.swift"; sourceTree = "<group>"; };
 		F2B4762C23DC1B440076BFDC /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		F2B4762F23DCF9DE0076BFDC /* StoredDiary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredDiary.swift; sourceTree = "<group>"; };
 		F2B5F45725CF58CF0051E8C9 /* GoalExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalExampleCell.swift; sourceTree = "<group>"; };
@@ -704,6 +710,7 @@
 				F20D1F9324142A1700FB5000 /* EmojiTextField.swift */,
 				F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */,
 				F26B273623D6772400B8D0F9 /* UIColorExtensions.swift */,
+				F2B3C6AE2807C66D00B1544A /* UIImage+Stroked.swift */,
 				F20A1E0C270A2A3A0071C5B7 /* UILabelWithContentInset.swift */,
 			);
 			path = Extensions;
@@ -1353,6 +1360,7 @@
 				F284F9C22580620D0016D1C6 /* SelectorState.swift */,
 				F2C649D125FEC7580096D883 /* CoachMessageOperation.swift */,
 				F2F3BE60257D8C9800A926E9 /* StickerData.swift */,
+				F264049D28051F5000812CF3 /* RecapBubbleData.swift */,
 				F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */,
 			);
 			path = Models;
@@ -1364,6 +1372,7 @@
 				F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */,
 				F282B4F925928FB9000BC92B /* DaysHeaderView.swift */,
 				F2F3BE17257C267900A926E9 /* DayColumnView.swift */,
+				F260BF542803497C00B94B96 /* RecapBubbleView.swift */,
 				F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */,
 			);
 			path = Views;
@@ -1759,6 +1768,7 @@
 				F2A829DE25EBF4F400B323FB /* WelcomeData.swift in Sources */,
 				F27E552C25D041DB00B78A95 /* StickerUsedData.swift in Sources */,
 				F2EC68B326F7B42B0061AA9B /* StickerMonthlyChartController.swift in Sources */,
+				F2B3C6AF2807C66D00B1544A /* UIImage+Stroked.swift in Sources */,
 				F27E70A625DC37A4004E49FB /* GoalChartData.swift in Sources */,
 				F295337B25B6165C003CA002 /* GoalViewController.swift in Sources */,
 				F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */,
@@ -1797,6 +1807,7 @@
 				F2FD4E1F25BDCD42005819A0 /* StickerEditData.swift in Sources */,
 				F2BB6F4425FB20BB009C4259 /* CoachListener.swift in Sources */,
 				BC5643FF246B1E1F00942066 /* StoredDirection.swift in Sources */,
+				F260BF552803497C00B94B96 /* RecapBubbleView.swift in Sources */,
 				F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */,
 				F26596EF2596AF1300B10B76 /* RecapPresenter.swift in Sources */,
 				BC56440B246B2F5D00942066 /* GoalsDataSourceListener.swift in Sources */,
@@ -1916,6 +1927,7 @@
 				BC1E1EFF246C5B5000E05C8A /* DataSource+Repository.swift in Sources */,
 				F2EE4AC825C5CC17004FB0F2 /* DeveloperViewController.swift in Sources */,
 				F2EE4AAE25C5AECC004FB0F2 /* TextCell.swift in Sources */,
+				F264049E28051F5000812CF3 /* RecapBubbleData.swift in Sources */,
 				F295339325B63DB1003CA002 /* GoalDetailsCell.swift in Sources */,
 				F216BEA525F72B6B00CBF58B /* MainCoordinatorProtocol.swift in Sources */,
 				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,

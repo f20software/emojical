@@ -8,13 +8,14 @@
 
 import UIKit
 
-class DayStampCell: UICollectionViewCell {
+class DayStampCell: ThemeObservingCollectionCell {
 
     // MARK: - Outlets
 
     @IBOutlet weak var sticker: StickerView!
     @IBOutlet weak var stickerAndSelectionSizeDelta: NSLayoutConstraint!
-    @IBOutlet weak var badgeView: UIView!
+    @IBOutlet weak var badgeViewDot: UIView!
+    @IBOutlet weak var badgeViewOutline: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,11 +36,8 @@ class DayStampCell: UICollectionViewCell {
         sticker.color = data.color
         tag = Int(data.stampId ?? 0)
         
-        if data.isUsed {
-            badgeView.isHidden = false
-        } else {
-            badgeView.isHidden = true
-        }
+        (LocalSettings.shared.stickerStyle == .borderless ?
+            badgeViewOutline : badgeViewDot)?.isHidden = data.isUsed == false
         
         // Sticker size delta constraint
         stickerAndSelectionSizeDelta.constant = sizeDelta
@@ -48,8 +46,18 @@ class DayStampCell: UICollectionViewCell {
     // MARK: - Private helpers
     
     func setupViews() {
-        badgeView.layer.cornerRadius = badgeView.bounds.width / 2.0
-        badgeView.isHidden = true
-        badgeView.backgroundColor = Theme.main.colors.tint
+        badgeViewDot.layer.cornerRadius = badgeViewDot.bounds.width / 2.0
+        badgeViewDot.isHidden = true
+        badgeViewDot.backgroundColor = Theme.main.colors.tint
+
+        badgeViewOutline.layer.cornerRadius = Theme.main.specs.platesCornerRadius
+        badgeViewOutline.isHidden = true
+        badgeViewOutline.backgroundColor = UIColor.clear
+        badgeViewOutline.layer.borderColor = Theme.main.colors.tint.cgColor
+        badgeViewOutline.layer.borderWidth = 3.0
+    }
+    
+    override func updateColors() {
+        badgeViewOutline.layer.borderColor = Theme.main.colors.tint.cgColor
     }
 }

@@ -47,6 +47,9 @@ class TodayPresenter: TodayPresenterProtocol {
     
     // Current goals
     private var goals = [Goal]()
+    
+    // Data to display in recap bubble
+    private var recapBubbleData: RecapBubbleData?
 
     // Queue of messages that needs to be displayed
     private var messageQueue = OperationQueue()
@@ -71,7 +74,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private var selectedDay = Date() {
         didSet {
             // Calculate distance from today and lock/unlock stamp selector
-            let untilToday = Int(selectedDay.timeIntervalSince(Date()) / (60*60*24))
+            let untilToday = Int(selectedDay.timeIntervalSince(calendar.today) / (60*60*24))
             locked = (untilToday > 0) ?
                 // Selected day is in the future
                 ((untilToday+1) > Specs.editingForwardDays) :
@@ -104,6 +107,10 @@ class TodayPresenter: TodayPresenterProtocol {
     private var selectorState: SelectorState = .hidden {
         didSet {
             view?.showStampSelector(selectorState)
+            
+            // Update recap bubble visibility
+            // - show only when selector or minibutton is not shown
+            view?.loadRecapBubbleData(recapBubbleData, show: (selectorState == .hidden))
         }
     }
     
@@ -148,7 +155,7 @@ class TodayPresenter: TodayPresenterProtocol {
         setupListeners()
 
         // Initial data configuration for the current date
-        initializeDataFor(date: Date())
+        initializeDataFor(date: calendar.today)
         
         // Configuring view according to the data
         setupView()
@@ -216,8 +223,9 @@ class TodayPresenter: TodayPresenterProtocol {
 
             case .weekReady(let message):
                 self.coordinator?.showRecapReady(message: message) { [weak self] showRecap in
+                    guard let self = self else { return }
                     if showRecap {
-                        self?.showWeekRecapFor(Date().byAddingWeek(-1))
+                        self.showWeekRecapFor(self.calendar.today.byAddingWeek(-1))
                     }
                     completion?()
                 }
@@ -232,7 +240,7 @@ class TodayPresenter: TodayPresenterProtocol {
         NSLog("Significant Time Change")
         
         // Initial data configuration for the current date
-        initializeDataFor(date: Date())
+        initializeDataFor(date: calendar.today)
         
         // Configuring view according to the data
         setupView()
@@ -333,7 +341,13 @@ class TodayPresenter: TodayPresenterProtocol {
                         self.coordinator?.showGoal(goal)
                     }
                 }
-            } else {
+            }
+        }
+        view?.onRecapTapped = { [weak self] in
+            guard let self = self else { return }
+            
+            // Sanity check - we should show recap window only for the past weeks
+            if self.week.isPast {
                 self.coordinator?.showAwardsRecap(data: self.recapData())
             }
         }
@@ -347,24 +361,32 @@ class TodayPresenter: TodayPresenterProtocol {
             showNext: dataBuilder.canMoveForward(week)
         )
 
-        // Awards strip on the top
-        loadAwardsData()
+        // Awards strip on the top - only for the current week
+        if week.isCurrentWeek {
+            loadAwardsData()
+        } else {
+            view?.showAwards(false)
+        }
         
         // Week header data
         view?.loadWeekHeader(data: weekHeader)
 
         // Column data
         view?.loadDays(data: dailyStickers)
-        
+
+        // Recap bubble data will be built only for the past weeks
+        recapBubbleData = buildRecapBubbleData()
+
         // Stamp selector data
         loadStampSelectorData()
-        
+
         // Update selectors state based on the lock status
         view?.showStampSelector(selectorState)
+        view?.loadRecapBubbleData(recapBubbleData, show: selectorState == .hidden)
     }
     
     private func loadStampSelectorData() {
-        var data: [StampSelectorElement] = allStamps.compactMap({
+        let data: [StampSelectorElement] = allStamps.compactMap({
             guard let id = $0.id else { return nil }
             return StampSelectorElement.stamp(
                 StickerData(
@@ -375,11 +397,6 @@ class TodayPresenter: TodayPresenterProtocol {
                 )
             )
         })
-        
-        if data.count < 10 {
-            data.append(.newStamp)
-        }
-        
         view?.loadStampSelector(data: data)
     }
     
@@ -399,6 +416,37 @@ class TodayPresenter: TodayPresenterProtocol {
         })
     }
     
+    // Emoji to be shown depend on how well user reached their goals
+    private func emojiImageForReachedGoals(total: Int, reached: Int) -> UIImage {
+        if reached == 0 {
+            return Specs.emojiFailed
+        } else if reached == total {
+            return Specs.emojiGreat
+        }
+        
+        return Specs.emojiOk
+    }
+    
+    // Build data required to display recap bubble
+    private func buildRecapBubbleData() -> RecapBubbleData? {
+        guard week.isPast else { return nil }
+
+        let awards = dataBuilder.awards(for: week)
+        let totalCount = awards.count
+        let reachedCount = awards.filter({ $0.reached }).count
+        
+        return RecapBubbleData(
+            message: Language.weekRecapForGoals(total: totalCount, reached: reachedCount),
+            icons: awards.compactMap {
+                guard $0.reached else { return nil }
+                guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
+                let stamp = repository.stampBy(id: goal.stamps.first)
+                return AwardIconData(stamp: stamp, goalId: $0.goalId)
+            },
+            faceImage: emojiImageForReachedGoals(total: totalCount, reached: reachedCount)
+        )
+    }
+    
     private func loadAndSortGoals() {
         let allGoals = repository.allGoals().sorted(by: { $0 < $1 })
         goals =
@@ -409,33 +457,17 @@ class TodayPresenter: TodayPresenterProtocol {
     }
     
     private func loadAwardsData() {
-        // Awards will be shown only when we have goals or awards already
-        let showAwards = week.isCurrentWeek ?
-            (goals.count > 0) :
-            (awards.count > 0 && week.isFuture == false)
-        guard showAwards else {
-            view?.showAwards(false)
-            return
-        }
+        guard week.isCurrentWeek else { return }
 
         var data = [GoalOrAwardIconData]()
-        if week.isCurrentWeek {
-            data = goals.compactMap({
-                let stamp = repository.stampBy(id: $0.stamps.first)
-                return GoalOrAwardIconData(
-                    stamp: stamp,
-                    goal: $0,
-                    progress: awardManager.currentProgressFor($0)
-                )
-            })
-        } else {
-            data = awards.compactMap({
-                guard $0.reached == true else { return nil }
-                guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
-                let stamp = repository.stampBy(id: goal.stamps.first)
-                return .award(data: AwardIconData(stamp: stamp, goalId: goal.id))
-            })
-        }
+        data = goals.compactMap({
+            let stamp = repository.stampBy(id: $0.stamps.first)
+            return GoalOrAwardIconData(
+                stamp: stamp,
+                goal: $0,
+                progress: awardManager.currentProgressFor($0)
+            )
+        })
 
         view?.showAwards(true)
         view?.loadAwards(data: data)
@@ -459,7 +491,7 @@ class TodayPresenter: TodayPresenterProtocol {
         awardManager.recalculateAwards(selectedDay)
         
         // TODO: Optimize to use listener approach
-        if selectedDay.isToday {
+        if calendar.isDateToday(selectedDay) {
             NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
         }
         
@@ -494,7 +526,7 @@ class TodayPresenter: TodayPresenterProtocol {
         // Special logic of we're coming back to the current week
         // Select today's date
         if week.isCurrentWeek {
-            selectedDay = Date()
+            selectedDay = calendar.today
             let key = selectedDay.databaseKey
             selectedDayIndex = weekHeader.firstIndex(where: { $0.date.databaseKey == key }) ?? 0
         }
@@ -508,8 +540,20 @@ class TodayPresenter: TodayPresenterProtocol {
 fileprivate struct Specs {
     
     /// Editing days back from today (when it's further in the past - entries will become read-only)
-    static let editingBackDays = 3
+    static let editingBackDays = 2
 
     /// Editing days forward from today (when it's further in the future - entries will become read-only)
-    static let editingForwardDays = 3
+    static let editingForwardDays = 2
+
+    /// Emoji size to be cached
+    static let emojiSize = CGSize(width: 100, height: 100)
+    
+    /// Image to be dsiplayed on recap bubble when user did good job
+    static let emojiOk = UIImage(named: "emojical-ok")!.resized(to: emojiSize)
+    
+    /// Image to be dsiplayed on recap bubble when user failed to reach any goals
+    static let emojiFailed = UIImage(named: "emojical-point")!.resized(to: emojiSize)
+    
+    /// Image to be dsiplayed on recap bubble when user reached all goals
+    static let emojiGreat = UIImage(named: "emojical-two-thumbs")!.resized(to: emojiSize)
 }

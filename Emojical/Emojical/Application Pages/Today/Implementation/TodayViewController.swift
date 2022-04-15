@@ -33,6 +33,8 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var recapBubbleView: RecapBubbleView!
+
     // MARK: - DI
 
     lazy var coordinator: TodayCoordinatorProtocol = {
@@ -40,6 +42,11 @@ class TodayViewController: UIViewController {
     }()
 
     var presenter: TodayPresenterProtocol!
+
+    // MARK: - State
+    
+    // Recap bubble data model - so we know when it is's changed
+    private var recapBubbleData: RecapBubbleData?
 
     // MARK: - Lifecycle
     
@@ -111,6 +118,9 @@ class TodayViewController: UIViewController {
     /// User tapped on the award icon on the top
     var onAwardTapped: ((Int) -> Void)?
 
+    /// User tapped on the recap button
+    var onRecapTapped: (() -> Void)?
+
     /// User wants to dismiss Awards Recap view (by dragging it down)
     var onAwardsRecapDismiss: (() -> Void)?
     
@@ -133,6 +143,10 @@ class TodayViewController: UIViewController {
         onPlusButtonTapped?()
     }
     
+    @IBAction func recapButtonTapped(_ sender: Any) {
+        onRecapTapped?()
+    }
+
     // Handling panning gesture inside StampSelector view
     @IBAction func handleStampSelectorPanning(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
@@ -154,7 +168,8 @@ class TodayViewController: UIViewController {
     
     // MARK: - Private helpers
 
-    private func adjustButtonConstraintsForState(_ state: SelectorState) {
+    // Move stamp selector and mini button according to the state
+    private func adjustStampSelectorButtonConstraintsForState(_ state: SelectorState) {
         stampSelectorBottomContstraint.constant = (state == .fullSelector) ?
             Specs.bottomButtonsMargin :
             -(stampSelector.bounds.height + Specs.bottomButtonsMargin + 50)
@@ -164,7 +179,35 @@ class TodayViewController: UIViewController {
             -(plusButton.bounds.height + Specs.bottomButtonsMargin + 50)
         view.layoutIfNeeded()
     }
-    
+
+    // Update recap bubble visiblity
+    private func hideRecapBubble(_ hidden: Bool, animated: Bool) {
+        guard hidden != recapBubbleView.isHidden else { return }
+        
+        guard animated else {
+            recapBubbleView.alpha = 1.0
+            recapBubbleView.isHidden = hidden
+            return
+        }
+
+        if hidden {
+            UIView.animate(withDuration: 0.3, animations:
+            {
+                self.recapBubbleView.alpha = 0
+            }, completion: { (_) in
+                self.recapBubbleView.isHidden = true
+                self.recapBubbleView.alpha = 1.0
+            })
+        } else {
+            recapBubbleView.alpha = 0
+            recapBubbleView.isHidden = false
+            UIView.animate(withDuration: 0.3, animations:
+            {
+                self.recapBubbleView.alpha = 1.0
+            })
+        }
+    }
+
     private func configureViews() {
         
         // We want to pass exact same width to all daily columns. Otherwise,
@@ -182,7 +225,8 @@ class TodayViewController: UIViewController {
         }
 
         // Hide buttons initially
-        adjustButtonConstraintsForState(.hidden)
+        adjustStampSelectorButtonConstraintsForState(.hidden)
+        hideRecapBubble(true, animated: false)
 
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
@@ -198,6 +242,9 @@ class TodayViewController: UIViewController {
         }
         stampSelector.onNewStickerTapped = { () in
             self.onNewStickerTapped?()
+        }
+        recapBubbleView.onTapped = { () in
+            self.onRecapTapped?()
         }
     }
     
@@ -216,6 +263,24 @@ extension TodayViewController: TodayView {
     /// Show/hide top awards strip
     func showAwards(_ show: Bool) {
         separatorTopConstraint.constant = show ? 70 : -1
+    }
+
+    /// Load recap bubble data and update recap bubble visibility
+    func loadRecapBubbleData(_ data: RecapBubbleData?, show: Bool) {
+        // Bail our early if we need to hide recap bubble
+        guard show,
+            let data = data else
+        {
+            hideRecapBubble(true, animated: true)
+            return
+        }
+
+        if recapBubbleData != data {
+            recapBubbleData = data
+            recapBubbleView.loadData(data)
+        }
+
+        hideRecapBubble(false, animated: true)
     }
 
     /// Update page title
@@ -260,7 +325,7 @@ extension TodayViewController: TodayView {
         UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
             options: [.curveEaseInOut], animations:
         {
-            self.adjustButtonConstraintsForState(state)
+            self.adjustStampSelectorButtonConstraintsForState(state)
         })
     }
 }
@@ -272,7 +337,7 @@ fileprivate struct Specs {
     static let miniButtonCornerRadius: CGFloat = 8.0
     
     /// Bottom buttons (both full and small) margin from the edge
-    static let bottomButtonsMargin: CGFloat = 16.0
+    static let bottomButtonsMargin: CGFloat = 20.0
 
     /// Shadow radius
     static let shadowRadius: CGFloat = 8.0

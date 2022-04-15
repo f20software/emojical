@@ -69,6 +69,17 @@ extension Theme {
             font(ofSize: 14, weight: .bold, style: .body)
         }()
 
+        /// Day number in the Today screen header
+        lazy var dayNumber: UIFont = {
+            // return largeStats
+            font(ofSize: 26, weight: .bold)
+        }()
+
+        /// Day number in the Today screen header
+        lazy var dayName: UIFont = {
+            return cellDescription
+        }()
+
         /// Returns a base font scaled according to current system font size.
         ///
         /// - parameters:
@@ -78,8 +89,23 @@ extension Theme {
         ///
         /// - returns: Font with specified weight, scaled according to system
         ///            font size based on given system font style.
-        private func font(ofSize size: CGFloat, weight: UIFont.Weight, style: UIFont.TextStyle) -> UIFont {
-            let font = UIFont.systemFont(ofSize: size, weight: weight)
+        private func font(
+            ofSize size: CGFloat,
+            weight: UIFont.Weight,
+            style: UIFont.TextStyle? = nil
+        ) -> UIFont {
+            let systemFont = UIFont.systemFont(ofSize: size, weight: weight)
+            let font: UIFont
+            if let descriptor = systemFont.fontDescriptor.withDesign(.rounded) {
+                font = UIFont(descriptor: descriptor, size: size)
+            } else {
+                font = systemFont
+            }
+            
+            guard let style = style else {
+                return font
+            }
+            
             return UIFontMetrics(forTextStyle: style).scaledFont(for: font)
         }
     }

@@ -21,4 +21,18 @@ enum CoachMessage {
     
     /// Cheers when positive goal is reached
     case cheerGoalReached(Award)
+
+    /// String value of the message
+    var stringValue: String? {
+        switch self {
+        case .onboarding1:
+            return "onboarding-1"
+            
+        case .onboarding2:
+            return "onboarding-2"
+
+        default:
+            return nil
+        }
+    }
 }

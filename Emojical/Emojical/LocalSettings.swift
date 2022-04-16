@@ -26,13 +26,15 @@ class LocalSettings {
     // MARK: - Public properties
 
     /// Whether specific onboarding message has been shown or not
-    func isOnboardingSeen(_ message: String) -> Bool {
-        return boolDefault("\(onboardingSeenKey)-\(message)") ?? false
+    func isOnboardingSeen(_ message: CoachMessage) -> Bool {
+        guard let str = message.stringValue else { return false }
+        return boolDefault("\(onboardingSeenKey)-\(str)") ?? false
     }
     
     /// Record the fact that onboarding has been shown
-    func seenOnboarding(_ message: String) {
-        setBoolDefault(true, key: "\(onboardingSeenKey)-\(message)")
+    func seenOnboarding(_ message: CoachMessage) {
+        guard let str = message.stringValue else { return }
+        setBoolDefault(true, key: "\(onboardingSeenKey)-\(str)")
     }
 
     /// Today notification Id - to ensure we only schedule one reminder notification

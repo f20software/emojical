@@ -20,6 +20,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private let calendar: CalendarHelper
     private let awardManager: AwardManager
     private let coach: CoachListenerProtocol
+    private let settings: LocalSettings
     private let main: MainCoordinatorProtocol?
 
     private weak var view: TodayView?
@@ -38,6 +39,9 @@ class TodayPresenter: TodayPresenterProtocol {
     
     // Days stickers data for the week
     private var dailyStickers: [[StickerData]] = []
+    private var dailyStickersCount: Int {
+        return dailyStickers.reduce(0, { $0 + $1.count })
+    }
 
     // Current stamps selected for the day
     private var selectedDayStickers = [Int64]()
@@ -48,8 +52,19 @@ class TodayPresenter: TodayPresenterProtocol {
     // Current goals
     private var goals = [Goal]()
     
-    // Data to display in recap bubble
+    /// On the past weeks and on the weeks that don't have any stickers
+    /// we will display speech bubble with ecouraging message, emoji face
+    /// and on the past weeks list of received awards.
+    ///
+    /// For that we're adding two view and some data models to support them.
+    /// See `recapBubbleView` and `emptyWeekBubbleView` and
+    /// two data models - `recapBubbleData` and `emptyWeekBubbleData`
+
+    // Data model to display recap bubble
     private var recapBubbleData: RecapBubbleData?
+
+    // Data to display in empty week bubble
+    private var emptyWeekBubbleData: EmptyWeekBubbleData?
 
     // Queue of messages that needs to be displayed
     private var messageQueue = OperationQueue()
@@ -124,6 +139,7 @@ class TodayPresenter: TodayPresenterProtocol {
         awardManager: AwardManager,
         coach: CoachListenerProtocol,
         calendar: CalendarHelper,
+        settings: LocalSettings,
         view: TodayView,
         coordinator: TodayCoordinatorProtocol,
         main: MainCoordinatorProtocol?
@@ -135,6 +151,7 @@ class TodayPresenter: TodayPresenterProtocol {
         self.goalsListener = goalsListener
         self.awardManager = awardManager
         self.calendar = calendar
+        self.settings = settings
         self.view = view
         self.coordinator = coordinator
         self.main = main
@@ -197,8 +214,8 @@ class TodayPresenter: TodayPresenterProtocol {
         NSLog("TodayPresenter: processMessage \(message)")
         guard let view = view else { return }
 
-        // All message handling will require some kind of navigation. Make sure we execute it
-        // in the main thread
+        // All message handling will require some kind of navigation.
+        // Make sure we execute it in the main thread
         DispatchQueue.main.async {
             switch message {
             case .cheerGoalReached(let award):
@@ -209,7 +226,8 @@ class TodayPresenter: TodayPresenterProtocol {
             case .onboarding1:
                 self.coordinator?.showOnboardingWindow(
                     message: message,
-                    bottomMargin: view.stickerSelectorSize) {
+                    bottomMargin: view.stickerSelectorSize)
+                {
                     completion?()
                 }
                 
@@ -270,6 +288,7 @@ class TodayPresenter: TodayPresenterProtocol {
         },
         onChange: { [weak self] stamps in
             self?.initializeDataFor(date: self!.selectedDay)
+            self?.loadStampSelectorData()
         })
         
         // When awards are updated
@@ -362,7 +381,7 @@ class TodayPresenter: TodayPresenterProtocol {
         )
 
         // Awards strip on the top - only for the current week
-        if week.isCurrentWeek {
+        if week.isCurrentWeek && goals.count > 0 {
             loadAwardsData()
         } else {
             view?.showAwards(false)
@@ -377,12 +396,20 @@ class TodayPresenter: TodayPresenterProtocol {
         // Recap bubble data will be built only for the past weeks
         recapBubbleData = buildRecapBubbleData()
 
+        // Empty week bubble data will be built only for the weeks
+        // where we don't have any stickers and don't already show Recap Bubble
+        emptyWeekBubbleData = nil
+        if recapBubbleData == nil {
+            emptyWeekBubbleData = buildEmptyWeekBubbleData()
+        }
+
         // Stamp selector data
         loadStampSelectorData()
 
         // Update selectors state based on the lock status
         view?.showStampSelector(selectorState)
         view?.loadRecapBubbleData(recapBubbleData, show: selectorState == .hidden)
+        view?.loadEmptyWeekBubbleData(emptyWeekBubbleData)
     }
     
     private func loadStampSelectorData() {
@@ -419,17 +446,22 @@ class TodayPresenter: TodayPresenterProtocol {
     // Emoji to be shown depend on how well user reached their goals
     private func emojiImageForReachedGoals(total: Int, reached: Int) -> UIImage {
         if reached == 0 {
-            return Specs.emojiFailed
+            return Specs.emojicalPointFinger
         } else if reached == total {
-            return Specs.emojiGreat
+            return Specs.emojicalTwoThumbsUp
         }
         
-        return Specs.emojiOk
+        return Specs.emojicalOk
     }
     
     // Build data required to display recap bubble
     private func buildRecapBubbleData() -> RecapBubbleData? {
+        
+        // No need to show recap bubble if it's not the past
         guard week.isPast else { return nil }
+        
+        // No need to show recap bubble if we didn't have any stickers that week
+        guard dailyStickersCount > 0 else { return nil }
 
         let awards = dataBuilder.awards(for: week)
         let totalCount = awards.count
@@ -447,6 +479,35 @@ class TodayPresenter: TodayPresenterProtocol {
         )
     }
     
+    // Build data required to display recap bubble
+    private func buildEmptyWeekBubbleData() -> EmptyWeekBubbleData? {
+
+        // First off - we have some stickers - don't show anything, return nil
+        guard dailyStickersCount == 0 else { return nil }
+
+        // If user hasn't seen onboarding screen - it will be shown, don't show bubble
+        guard settings.isOnboardingSeen(.onboarding1) else { return nil }
+        
+        if week.isCurrentWeek {
+            return EmptyWeekBubbleData(
+                message: "empty_current_week".localized,
+                faceImage: Specs.emojicalTwoThumbsUp
+            )
+        } else if week.isPast {
+            return EmptyWeekBubbleData(
+                message: "empty_past_week".localized,
+                faceImage: Specs.emojicalSad
+            )
+        } else if week.isFuture {
+            return EmptyWeekBubbleData(
+                message: "empty_future_week".localized,
+                faceImage: Specs.emojicalSmile
+            )
+        }
+        
+        return nil
+    }
+
     private func loadAndSortGoals() {
         let allGoals = repository.allGoals().sorted(by: { $0 < $1 })
         goals =
@@ -549,11 +610,17 @@ fileprivate struct Specs {
     static let emojiSize = CGSize(width: 100, height: 100)
     
     /// Image to be dsiplayed on recap bubble when user did good job
-    static let emojiOk = UIImage(named: "emojical-ok")!.resized(to: emojiSize)
+    static let emojicalOk = UIImage(named: "emojical-ok")!.resized(to: emojiSize)
     
     /// Image to be dsiplayed on recap bubble when user failed to reach any goals
-    static let emojiFailed = UIImage(named: "emojical-point")!.resized(to: emojiSize)
+    static let emojicalPointFinger = UIImage(named: "emojical-point")!.resized(to: emojiSize)
     
     /// Image to be dsiplayed on recap bubble when user reached all goals
-    static let emojiGreat = UIImage(named: "emojical-two-thumbs")!.resized(to: emojiSize)
+    static let emojicalTwoThumbsUp = UIImage(named: "emojical-two-thumbs")!.resized(to: emojiSize)
+
+    /// Image to be dsiplayed on recap bubble there was no activity
+    static let emojicalSad = UIImage(named: "emojical-sad")!.resized(to: emojiSize)
+
+    /// Image to be dsiplayed on recap bubble for the future
+    static let emojicalSmile = UIImage(named: "emojical-smiley")!.resized(to: emojiSize)
 }

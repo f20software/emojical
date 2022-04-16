@@ -65,11 +65,14 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
 
         let data: [Section] = [
             Section(
-                header: nil,
+                header: "Settings",
                 footer: nil,
                 cells: [
-                    .text("Reminder", settings.reminderEnabled ? "On" : "Off"),
-                    .text("Id", settings.todayNotificationId ?? "-"),
+                    .text(CoachMessage.onboarding1.stringValue, settings.isOnboardingSeen(.onboarding1).description),
+                    .text(CoachMessage.onboarding2.stringValue, settings.isOnboardingSeen(.onboarding2).description),
+                    .text("reminderEnalbed", settings.reminderEnabled.description),
+                    .text("reminderTime", "\(settings.reminderTime.hour):\(settings.reminderTime.minute)"),
+                    .text("notificationId", settings.todayNotificationId),
                 ]
             ),
             Section(

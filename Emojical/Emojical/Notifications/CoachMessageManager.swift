@@ -10,12 +10,6 @@ import Foundation
 
 class CoachMessageManager {
     
-    /// Key to record that first onboarding message was shown in the LocalSettings
-    let messageWelcome = "onboarding-1"
-
-    /// Key to record that second onboarding message was shown in the LocalSettings
-    let messageGoals = "onboarding-2"
-
     /// Singleton instance
     static var shared: CoachProtocol! {
         willSet {
@@ -143,19 +137,19 @@ class CoachMessageManager {
         let total = repository.allDiaryCount()
         
         if total == 0 {
-            if !settings.isOnboardingSeen(messageWelcome) {
+            if !settings.isOnboardingSeen(.onboarding1) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.notifyObservers(message: .onboarding1)
-                    self.settings.seenOnboarding(self.messageWelcome)
+                    self.settings.seenOnboarding(.onboarding1)
                 }
             }
             return
         }
         
         if total == 2 {
-            if !settings.isOnboardingSeen(messageGoals) {
+            if !settings.isOnboardingSeen(.onboarding2) {
                 notifyObservers(message: .onboarding2)
-                settings.seenOnboarding(messageGoals)
+                settings.seenOnboarding(.onboarding2)
             }
             return
         }
@@ -186,5 +180,6 @@ extension CoachMessageManager: CoachProtocol {
     /// Testing various messages sent by CoachMessageManager
     func mockMessage(_ message: CoachMessage) {
         notifyObservers(message: message)
+        settings.seenOnboarding(message)
     }
 }

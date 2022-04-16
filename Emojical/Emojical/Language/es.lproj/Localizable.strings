@@ -282,6 +282,14 @@
 
 "got_it_button" = "Lo tengo";
 
+// Empty week messages
+
+"empty_current_week" = "Nueva era, ¡vamos con esto!";
+
+"empty_past_week" = "Notting sucedió, notching luego se gere ...";
+
+"empty_future_week" = "¡Future locks bright vhen yov de algunas pegatinas y luego!";
+
 // Notifications
 
 "empty_day_title" = "¿No te estás olvidando de algo?";

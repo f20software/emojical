@@ -404,6 +404,50 @@
                                     <outlet property="textBottomConstraint" destination="HDG-sg-Cgz" id="se1-SR-FHX"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4c4-Bb-kW9" customClass="EmptyWeekBubbleView" customModule="Emojical" customModuleProvider="target">
+                                <rect key="frame" x="108.5" y="398" width="197" height="100.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDB-CB-NBV" userLabel="Bubble">
+                                        <rect key="frame" x="0.0" y="50" width="197" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New week, let do this!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTK-AC-bY3">
+                                                <rect key="frame" x="15" y="15" width="167" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                        <constraints>
+                                            <constraint firstItem="zTK-AC-bY3" firstAttribute="top" secondItem="xDB-CB-NBV" secondAttribute="top" constant="15" id="84A-0i-m7h"/>
+                                            <constraint firstAttribute="trailing" secondItem="zTK-AC-bY3" secondAttribute="trailing" constant="15" id="Nzr-8V-RZy"/>
+                                            <constraint firstItem="zTK-AC-bY3" firstAttribute="leading" secondItem="xDB-CB-NBV" secondAttribute="leading" constant="15" id="ckc-Vl-ib1"/>
+                                            <constraint firstAttribute="bottom" secondItem="zTK-AC-bY3" secondAttribute="bottom" constant="15" id="fkb-s6-QB1"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emojical-two-thumbs" translatesAutoresizingMaskIntoConstraints="NO" id="dTO-Ov-BuT" userLabel="Face">
+                                        <rect key="frame" x="63.5" y="0.0" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="dTO-Ov-BuT" secondAttribute="height" id="4T4-4h-2Tz"/>
+                                            <constraint firstAttribute="height" constant="70" id="YCW-0A-rm0"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="xDB-CB-NBV" firstAttribute="top" secondItem="dTO-Ov-BuT" secondAttribute="bottom" constant="-20" id="1ZK-Jq-RFb"/>
+                                    <constraint firstAttribute="bottom" secondItem="xDB-CB-NBV" secondAttribute="bottom" id="3YC-2a-eQ3"/>
+                                    <constraint firstAttribute="trailing" secondItem="xDB-CB-NBV" secondAttribute="trailing" id="5ze-Bq-oAz"/>
+                                    <constraint firstItem="dTO-Ov-BuT" firstAttribute="top" secondItem="4c4-Bb-kW9" secondAttribute="top" id="PY9-GB-CMO"/>
+                                    <constraint firstItem="xDB-CB-NBV" firstAttribute="leading" secondItem="4c4-Bb-kW9" secondAttribute="leading" id="iWV-Cw-xSI"/>
+                                    <constraint firstItem="dTO-Ov-BuT" firstAttribute="centerX" secondItem="4c4-Bb-kW9" secondAttribute="centerX" id="s9W-gW-bDA"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="bubble" destination="xDB-CB-NBV" id="HSv-n1-hYe"/>
+                                    <outlet property="face" destination="dTO-Ov-BuT" id="AHp-pT-abl"/>
+                                    <outlet property="text" destination="zTK-AC-bY3" id="EPe-dH-8rz"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JNE-f6-5U0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -418,7 +462,10 @@
                             <constraint firstItem="FnJ-i2-3rh" firstAttribute="top" secondItem="2Tb-hZ-tEu" secondAttribute="bottom" constant="10" id="Hkx-We-4fl"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="top" secondItem="FnJ-i2-3rh" secondAttribute="bottom" id="JgR-KG-XES"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="2Tb-hZ-tEu" secondAttribute="trailing" id="LO6-hf-Prm"/>
+                            <constraint firstItem="4c4-Bb-kW9" firstAttribute="centerY" secondItem="kjo-hp-mne" secondAttribute="centerY" id="NGy-A1-95g"/>
+                            <constraint firstItem="4c4-Bb-kW9" firstAttribute="width" relation="lessThanOrEqual" secondItem="kjo-hp-mne" secondAttribute="width" multiplier="0.6" id="Wcj-AB-7ak"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="BV3-tF-WFD" secondAttribute="trailing" id="XJd-Zd-x36"/>
+                            <constraint firstItem="4c4-Bb-kW9" firstAttribute="centerX" secondItem="kjo-hp-mne" secondAttribute="centerX" id="XLs-aB-Yv7"/>
                             <constraint firstItem="BV3-tF-WFD" firstAttribute="trailing" secondItem="FnJ-i2-3rh" secondAttribute="trailing" id="YBd-yf-rnZ"/>
                             <constraint firstItem="JNE-f6-5U0" firstAttribute="trailing" secondItem="50g-Iv-28T" secondAttribute="trailing" id="Yny-XS-tFX"/>
                             <constraint firstItem="kD0-4R-gft" firstAttribute="trailing" secondItem="xsj-3c-kfw" secondAttribute="trailing" id="Zvh-CQ-5vn"/>
@@ -447,6 +494,7 @@
                     <connections>
                         <outlet property="awards" destination="50g-Iv-28T" id="rJg-33-0R6"/>
                         <outlet property="daysHeader" destination="FnJ-i2-3rh" id="9ye-5U-Bie"/>
+                        <outlet property="emptyWeekBubbleView" destination="4c4-Bb-kW9" id="3n9-rw-1km"/>
                         <outlet property="nextWeek" destination="ep7-Zj-mBI" id="WYu-5Y-dOU"/>
                         <outlet property="plusButton" destination="xsj-3c-kfw" id="EFH-o9-Jia"/>
                         <outlet property="plusButtonBottomContstraint" destination="fdi-Q1-OZF" id="gU0-1V-Owl"/>

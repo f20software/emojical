@@ -52,7 +52,15 @@ class TodayPresenter: TodayPresenterProtocol {
     // Current goals
     private var goals = [Goal]()
     
-    // Data to display in recap bubble
+    /// On the past weeks and on the weeks that don't have any stickers
+    /// we will display speech bubble with ecouraging message, emoji face
+    /// and on the past weeks list of received awards.
+    ///
+    /// For that we're adding two view and some data models to support them.
+    /// See `recapBubbleView` and `emptyWeekBubbleView` and
+    /// two data models - `recapBubbleData` and `emptyWeekBubbleData`
+
+    // Data model to display recap bubble
     private var recapBubbleData: RecapBubbleData?
 
     // Data to display in empty week bubble
@@ -280,6 +288,7 @@ class TodayPresenter: TodayPresenterProtocol {
         },
         onChange: { [weak self] stamps in
             self?.initializeDataFor(date: self!.selectedDay)
+            self?.loadStampSelectorData()
         })
         
         // When awards are updated

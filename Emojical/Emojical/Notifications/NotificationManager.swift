@@ -12,10 +12,7 @@ class NotificationManager {
 
     // MARK: - DI
     
-    /// LocalSettings instance
     let settings: LocalSettings
-    
-    /// CalenderHelper instance
     let calendar: CalendarHelper
     
     // MARK: - Singleton
@@ -43,30 +40,31 @@ class NotificationManager {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshNotifications), name: .todayStickersUpdated, object: nil)
     }
     
-    private var defaultReminderContent: UNNotificationContent {
+    /// Reminder for day when no stickers are recorded
+    private var emptyDayReminderContent: UNNotificationContent {
         let content = UNMutableNotificationContent()
-        content.title = "Aren't you forgetting something?"
-        content.body = "Do you want to put some stickers for today?"
+        content.title = "empty_day_title".localized
+        content.body = "empty_day_body".localized
         content.sound = .default
         
         return content
     }
     
     private func todayReminderContent(todayStamps: [String]) -> UNNotificationContent {
+        guard todayStamps.count > 0 else {
+            return emptyDayReminderContent
+        }
+
         let content = UNMutableNotificationContent()
-        content.title = "Review today entry?"
+        content.title = "filled_day_title".localized
+
+        var stickers = todayStamps[0]
+        if todayStamps.count > 1 {
+            stickers = todayStamps.map({ "'\($0)'" }).sentence
+        }
+        content.body = "filled_day_body".localized(stickers)
         content.sound = .default
-        if todayStamps.count == 0 {
-            return defaultReminderContent
-        }
-        else if todayStamps.count == 1 {
-            content.body = "You've recorded '\(todayStamps[0])' today. Do you want to add anything else?"
-        }
-        else {
-            let stampsText = todayStamps.map({ "'\($0)'" }).sentence
-            content.body = "You've recorded \(stampsText) today. Do you want to add anything else?"
-        }
-        
+
         return content
     }
     
@@ -120,7 +118,7 @@ class NotificationManager {
             hour: reminderTime.hour,
             minute: reminderTime.minute
         )
-        var content = defaultReminderContent
+        var content = emptyDayReminderContent
 
         // If we're doing it within 30 minutes from the todays notification time (or if we passed that time already)
         // next reminder will be set for tomorrow

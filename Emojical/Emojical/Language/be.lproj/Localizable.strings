@@ -282,6 +282,16 @@
 
 "got_it_button" = "Зразумела";
 
+// Notifications
+
+"empty_day_title" = "Вы штосьці не забываеце?";
+
+"empty_day_body" =  "Хочаце паставіць некалькі налепак на сёння?";
+
+"filled_day_title" = "Прагледзець запіс за сёння?";
+
+"filled_day_body" = "Вы запісалі %@ сёння. Хочаце яшчэ што-небудзь дадаць?";
+
 // Sticker Style
 
 "appearance_title" = "Знешні выгляд";

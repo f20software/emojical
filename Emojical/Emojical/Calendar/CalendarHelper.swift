@@ -31,6 +31,7 @@ class CalendarHelper {
 
     /// Return today's date. Could be used for mocking current date
     var today: Date {
+        // return Date(yyyyMmDd: "2022-05-10")
         return Date()
     }
     

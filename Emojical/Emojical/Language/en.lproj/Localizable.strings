@@ -282,6 +282,16 @@
 
 "got_it_button" = "Got it";
 
+// Notifications
+
+"empty_day_title" = "Aren't you forgetting something?";
+
+"empty_day_body" =  "Do you want to put some stickers for today?";
+
+"filled_day_title" = "Review today entry?";
+
+"filled_day_body" = "You have recorded %@ today. Do you want to add anything else?";
+
 // Sticker Style
 
 "appearance_title" = "Appearance";

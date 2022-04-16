@@ -282,6 +282,14 @@
 
 "got_it_button" = "Зразумела";
 
+// Empty week messages
+
+"empty_current_week" = "Новы тыдзень, давайце зробім гэта!";
+
+"empty_past_week" = "Нічога не адбылося, нічога тут не паглядзець...";
+
+"empty_future_week" = "Будучыня выглядае яркай, калі дадаць да яе налепкі!";
+
 // Notifications
 
 "empty_day_title" = "Вы штосьці не забываеце?";

@@ -39,6 +39,9 @@ class TodayPresenter: TodayPresenterProtocol {
     
     // Days stickers data for the week
     private var dailyStickers: [[StickerData]] = []
+    private var dailyStickersCount: Int {
+        return dailyStickers.reduce(0, { $0 + $1.count })
+    }
 
     // Current stamps selected for the day
     private var selectedDayStickers = [Int64]()
@@ -434,17 +437,22 @@ class TodayPresenter: TodayPresenterProtocol {
     // Emoji to be shown depend on how well user reached their goals
     private func emojiImageForReachedGoals(total: Int, reached: Int) -> UIImage {
         if reached == 0 {
-            return Specs.emojiFailed
+            return Specs.emojicalPointFinger
         } else if reached == total {
-            return Specs.emojiGreat
+            return Specs.emojicalTwoThumbsUp
         }
         
-        return Specs.emojiOk
+        return Specs.emojicalOk
     }
     
     // Build data required to display recap bubble
     private func buildRecapBubbleData() -> RecapBubbleData? {
+        
+        // No need to show recap bubble if it's not the past
         guard week.isPast else { return nil }
+        
+        // No need to show recap bubble if we didn't have any stickers that week
+        guard dailyStickersCount > 0 else { return nil }
 
         let awards = dataBuilder.awards(for: week)
         let totalCount = awards.count
@@ -464,28 +472,27 @@ class TodayPresenter: TodayPresenterProtocol {
     
     // Build data required to display recap bubble
     private func buildEmptyWeekBubbleData() -> EmptyWeekBubbleData? {
+
         // First off - we have some stickers - don't show anything, return nil
-        var stickersCount = 0
-        dailyStickers.forEach {
-            stickersCount += $0.count
-        }
-        guard stickersCount == 0 else { return nil }
+        guard dailyStickersCount == 0 else { return nil }
+
+        // If user hasn't seen onboarding screen - it will be shown, don't show bubble
         guard settings.isOnboardingSeen(.onboarding1) else { return nil }
         
         if week.isCurrentWeek {
             return EmptyWeekBubbleData(
-                message: "Brand new week, let's do this!",
-                faceImage: Specs.emojiGreat
+                message: "empty_current_week".localized,
+                faceImage: Specs.emojicalTwoThumbsUp
             )
         } else if week.isPast {
             return EmptyWeekBubbleData(
-                message: "Nothing happened, nothing to see here...",
-                faceImage: Specs.emojiFailed
+                message: "empty_past_week".localized,
+                faceImage: Specs.emojicalSad
             )
         } else if week.isFuture {
             return EmptyWeekBubbleData(
-                message: "Future looks bright when you add some stickers to it!",
-                faceImage: Specs.emojiOk
+                message: "empty_future_week".localized,
+                faceImage: Specs.emojicalSmile
             )
         }
         
@@ -594,11 +601,17 @@ fileprivate struct Specs {
     static let emojiSize = CGSize(width: 100, height: 100)
     
     /// Image to be dsiplayed on recap bubble when user did good job
-    static let emojiOk = UIImage(named: "emojical-ok")!.resized(to: emojiSize)
+    static let emojicalOk = UIImage(named: "emojical-ok")!.resized(to: emojiSize)
     
     /// Image to be dsiplayed on recap bubble when user failed to reach any goals
-    static let emojiFailed = UIImage(named: "emojical-point")!.resized(to: emojiSize)
+    static let emojicalPointFinger = UIImage(named: "emojical-point")!.resized(to: emojiSize)
     
     /// Image to be dsiplayed on recap bubble when user reached all goals
-    static let emojiGreat = UIImage(named: "emojical-two-thumbs")!.resized(to: emojiSize)
+    static let emojicalTwoThumbsUp = UIImage(named: "emojical-two-thumbs")!.resized(to: emojiSize)
+
+    /// Image to be dsiplayed on recap bubble there was no activity
+    static let emojicalSad = UIImage(named: "emojical-sad")!.resized(to: emojiSize)
+
+    /// Image to be dsiplayed on recap bubble for the future
+    static let emojicalSmile = UIImage(named: "emojical-smiley")!.resized(to: emojiSize)
 }

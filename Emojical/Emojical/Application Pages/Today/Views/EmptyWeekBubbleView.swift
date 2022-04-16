@@ -8,7 +8,8 @@
 
 import UIKit
 
-class EmptyBubbleView : ThemeObservingView {
+/// This view is shown on empty weeks (could be in the past or in the future).
+class EmptyWeekBubbleView : ThemeObservingView {
 
     // MARK: - UI Outlets
     

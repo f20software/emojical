@@ -404,7 +404,7 @@
                                     <outlet property="textBottomConstraint" destination="HDG-sg-Cgz" id="se1-SR-FHX"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4c4-Bb-kW9" customClass="EmptyBubbleView" customModule="Emojical" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4c4-Bb-kW9" customClass="EmptyWeekBubbleView" customModule="Emojical" customModuleProvider="target">
                                 <rect key="frame" x="108.5" y="398" width="197" height="100.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDB-CB-NBV" userLabel="Bubble">

@@ -34,7 +34,7 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
     @IBOutlet weak var recapBubbleView: RecapBubbleView!
-    @IBOutlet weak var emptyWeekBubbleView: EmptyBubbleView!
+    @IBOutlet weak var emptyWeekBubbleView: EmptyWeekBubbleView!
 
     // MARK: - DI
 

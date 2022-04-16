@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// This view is shown on the past weeks as speech bubble and emoji face.
+/// View has a text describing last week and optionally list of awards icons.
 class RecapBubbleView : ThemeObservingView {
 
     // MARK: - UI Outlets

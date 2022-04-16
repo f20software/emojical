@@ -20,6 +20,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private let calendar: CalendarHelper
     private let awardManager: AwardManager
     private let coach: CoachListenerProtocol
+    private let settings: LocalSettings
     private let main: MainCoordinatorProtocol?
 
     private weak var view: TodayView?
@@ -50,6 +51,9 @@ class TodayPresenter: TodayPresenterProtocol {
     
     // Data to display in recap bubble
     private var recapBubbleData: RecapBubbleData?
+
+    // Data to display in empty week bubble
+    private var emptyWeekBubbleData: EmptyWeekBubbleData?
 
     // Queue of messages that needs to be displayed
     private var messageQueue = OperationQueue()
@@ -124,6 +128,7 @@ class TodayPresenter: TodayPresenterProtocol {
         awardManager: AwardManager,
         coach: CoachListenerProtocol,
         calendar: CalendarHelper,
+        settings: LocalSettings,
         view: TodayView,
         coordinator: TodayCoordinatorProtocol,
         main: MainCoordinatorProtocol?
@@ -135,6 +140,7 @@ class TodayPresenter: TodayPresenterProtocol {
         self.goalsListener = goalsListener
         self.awardManager = awardManager
         self.calendar = calendar
+        self.settings = settings
         self.view = view
         self.coordinator = coordinator
         self.main = main
@@ -197,8 +203,8 @@ class TodayPresenter: TodayPresenterProtocol {
         NSLog("TodayPresenter: processMessage \(message)")
         guard let view = view else { return }
 
-        // All message handling will require some kind of navigation. Make sure we execute it
-        // in the main thread
+        // All message handling will require some kind of navigation.
+        // Make sure we execute it in the main thread
         DispatchQueue.main.async {
             switch message {
             case .cheerGoalReached(let award):
@@ -209,7 +215,8 @@ class TodayPresenter: TodayPresenterProtocol {
             case .onboarding1:
                 self.coordinator?.showOnboardingWindow(
                     message: message,
-                    bottomMargin: view.stickerSelectorSize) {
+                    bottomMargin: view.stickerSelectorSize)
+                {
                     completion?()
                 }
                 
@@ -362,7 +369,7 @@ class TodayPresenter: TodayPresenterProtocol {
         )
 
         // Awards strip on the top - only for the current week
-        if week.isCurrentWeek {
+        if week.isCurrentWeek && goals.count > 0 {
             loadAwardsData()
         } else {
             view?.showAwards(false)
@@ -377,12 +384,20 @@ class TodayPresenter: TodayPresenterProtocol {
         // Recap bubble data will be built only for the past weeks
         recapBubbleData = buildRecapBubbleData()
 
+        // Empty week bubble data will be built only for the weeks
+        // where we don't have any stickers and don't already show Recap Bubble
+        emptyWeekBubbleData = nil
+        if recapBubbleData == nil {
+            emptyWeekBubbleData = buildEmptyWeekBubbleData()
+        }
+
         // Stamp selector data
         loadStampSelectorData()
 
         // Update selectors state based on the lock status
         view?.showStampSelector(selectorState)
         view?.loadRecapBubbleData(recapBubbleData, show: selectorState == .hidden)
+        view?.loadEmptyWeekBubbleData(emptyWeekBubbleData)
     }
     
     private func loadStampSelectorData() {
@@ -447,6 +462,36 @@ class TodayPresenter: TodayPresenterProtocol {
         )
     }
     
+    // Build data required to display recap bubble
+    private func buildEmptyWeekBubbleData() -> EmptyWeekBubbleData? {
+        // First off - we have some stickers - don't show anything, return nil
+        var stickersCount = 0
+        dailyStickers.forEach {
+            stickersCount += $0.count
+        }
+        guard stickersCount == 0 else { return nil }
+        guard settings.isOnboardingSeen(.onboarding1) else { return nil }
+        
+        if week.isCurrentWeek {
+            return EmptyWeekBubbleData(
+                message: "Brand new week, let's do this!",
+                faceImage: Specs.emojiGreat
+            )
+        } else if week.isPast {
+            return EmptyWeekBubbleData(
+                message: "Nothing happened, nothing to see here...",
+                faceImage: Specs.emojiFailed
+            )
+        } else if week.isFuture {
+            return EmptyWeekBubbleData(
+                message: "Future looks bright when you add some stickers to it!",
+                faceImage: Specs.emojiOk
+            )
+        }
+        
+        return nil
+    }
+
     private func loadAndSortGoals() {
         let allGoals = repository.allGoals().sorted(by: { $0 < $1 })
         goals =

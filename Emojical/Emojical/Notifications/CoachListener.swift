@@ -9,7 +9,7 @@
 import Foundation
 
 class CoachListener: CoachListenerProtocol {
-    
+
     // MARK: - Private properties.
     
     private var source: CoachProtocol

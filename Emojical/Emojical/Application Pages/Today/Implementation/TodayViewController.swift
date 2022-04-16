@@ -34,6 +34,7 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var plusButtonBottomContstraint: NSLayoutConstraint!
 
     @IBOutlet weak var recapBubbleView: RecapBubbleView!
+    @IBOutlet weak var emptyWeekBubbleView: EmptyBubbleView!
 
     // MARK: - DI
 
@@ -47,6 +48,9 @@ class TodayViewController: UIViewController {
     
     // Recap bubble data model - so we know when it is's changed
     private var recapBubbleData: RecapBubbleData?
+
+    // Empty week bubble data model - so we know when it is's changed
+    private var emptyWeekBubbleData: EmptyWeekBubbleData?
 
     // MARK: - Lifecycle
     
@@ -65,6 +69,7 @@ class TodayViewController: UIViewController {
             awardManager: AwardManager.shared,
             coach: CoachMessageManager.shared.coachListener(),
             calendar: CalendarHelper.shared,
+            settings: LocalSettings.shared,
             view: self,
             coordinator: coordinator,
             main: tabBarController as? MainCoordinatorProtocol
@@ -182,28 +187,38 @@ class TodayViewController: UIViewController {
 
     // Update recap bubble visiblity
     private func hideRecapBubble(_ hidden: Bool, animated: Bool) {
-        guard hidden != recapBubbleView.isHidden else { return }
+        hideBubbleView(recapBubbleView, hide: hidden, animated: animated)
+    }
+
+    // Update recap bubble visiblity
+    private func hideEmptyWeekBubble(_ hidden: Bool, animated: Bool) {
+        hideBubbleView(emptyWeekBubbleView, hide: hidden, animated: animated)
+    }
+
+    // Update recap/empty bubble view visiblity
+    private func hideBubbleView(_ targetView: UIView, hide: Bool, animated: Bool) {
+        guard hide != targetView.isHidden else { return }
         
         guard animated else {
-            recapBubbleView.alpha = 1.0
-            recapBubbleView.isHidden = hidden
+            targetView.alpha = 1.0
+            targetView.isHidden = hide
             return
         }
 
-        if hidden {
+        if hide {
             UIView.animate(withDuration: 0.3, animations:
             {
-                self.recapBubbleView.alpha = 0
+                targetView.alpha = 0
             }, completion: { (_) in
-                self.recapBubbleView.isHidden = true
-                self.recapBubbleView.alpha = 1.0
+                targetView.isHidden = true
+                targetView.alpha = 1.0
             })
         } else {
-            recapBubbleView.alpha = 0
-            recapBubbleView.isHidden = false
+            targetView.alpha = 0
+            targetView.isHidden = false
             UIView.animate(withDuration: 0.3, animations:
             {
-                self.recapBubbleView.alpha = 1.0
+                targetView.alpha = 1.0
             })
         }
     }
@@ -227,6 +242,7 @@ class TodayViewController: UIViewController {
         // Hide buttons initially
         adjustStampSelectorButtonConstraintsForState(.hidden)
         hideRecapBubble(true, animated: false)
+        hideEmptyWeekBubble(true, animated: false)
 
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
@@ -281,6 +297,23 @@ extension TodayViewController: TodayView {
         }
 
         hideRecapBubble(false, animated: true)
+    }
+
+    /// Load empty week bubble data and update empty week bubble visibility
+    func loadEmptyWeekBubbleData(_ data: EmptyWeekBubbleData?) {
+        // Bail our early if we need to hide recap bubble
+        guard let data = data else
+        {
+            hideEmptyWeekBubble(true, animated: true)
+            return
+        }
+
+        if emptyWeekBubbleData != data {
+            emptyWeekBubbleData = data
+            emptyWeekBubbleView.loadData(data)
+        }
+
+        hideEmptyWeekBubble(false, animated: true)
     }
 
     /// Update page title

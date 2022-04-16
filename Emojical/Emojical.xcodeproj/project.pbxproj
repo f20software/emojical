@@ -175,6 +175,8 @@
 		F2A0943726800E9000980EF9 /* StickerMonthlyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943526800E9000980EF9 /* StickerMonthlyChartView.swift */; };
 		F2A0943826800E9000980EF9 /* ChartPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943626800E9000980EF9 /* ChartPresenterProtocol.swift */; };
 		F2A21C12244271130030A117 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A21C11244271130030A117 /* Options.storyboard */; };
+		F2A22A0C280B143300DDF94F /* EmptyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A22A0B280B143300DDF94F /* EmptyBubbleView.swift */; };
+		F2A22A0E280B157300DDF94F /* EmptyWeekBubbleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A22A0D280B157300DDF94F /* EmptyWeekBubbleData.swift */; };
 		F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */; };
 		F2A5255D23D3DCE200C3E0F3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */; };
 		F2A829DC25EBF4F400B323FB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A829D425EBF4F300B323FB /* WelcomeViewController.swift */; };
@@ -458,6 +460,8 @@
 		F2A0943526800E9000980EF9 /* StickerMonthlyChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerMonthlyChartView.swift; sourceTree = "<group>"; };
 		F2A0943626800E9000980EF9 /* ChartPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2A21C11244271130030A117 /* Options.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
+		F2A22A0B280B143300DDF94F /* EmptyBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyBubbleView.swift; sourceTree = "<group>"; };
+		F2A22A0D280B157300DDF94F /* EmptyWeekBubbleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyWeekBubbleData.swift; sourceTree = "<group>"; };
 		F2A5255A23D3D67E00C3E0F3 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F2A5255C23D3DCE200C3E0F3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		F2A829D425EBF4F300B323FB /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -1363,6 +1367,7 @@
 				F284F9C22580620D0016D1C6 /* SelectorState.swift */,
 				F2C649D125FEC7580096D883 /* CoachMessageOperation.swift */,
 				F2F3BE60257D8C9800A926E9 /* StickerData.swift */,
+				F2A22A0D280B157300DDF94F /* EmptyWeekBubbleData.swift */,
 				F264049D28051F5000812CF3 /* RecapBubbleData.swift */,
 				F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */,
 			);
@@ -1375,6 +1380,7 @@
 				F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */,
 				F282B4F925928FB9000BC92B /* DaysHeaderView.swift */,
 				F2F3BE17257C267900A926E9 /* DayColumnView.swift */,
+				F2A22A0B280B143300DDF94F /* EmptyBubbleView.swift */,
 				F260BF542803497C00B94B96 /* RecapBubbleView.swift */,
 				F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */,
 			);
@@ -1837,6 +1843,7 @@
 				BC5643F7246B10B500942066 /* Diary.swift in Sources */,
 				F273E2A125969BF50037BEDA /* Storyboard.swift in Sources */,
 				F295334C25B4DA03003CA002 /* TodayAwardElement.swift in Sources */,
+				F2A22A0C280B143300DDF94F /* EmptyBubbleView.swift in Sources */,
 				F2049C4225FE8CF300E432DB /* RecapReadyPresenterProtocol.swift in Sources */,
 				F204473F25E8C7E9003318C6 /* AwardIconView.swift in Sources */,
 				F26596ED2596AF1300B10B76 /* AwardRecapCell.swift in Sources */,
@@ -1903,6 +1910,7 @@
 				F2049C5A25FEB4B800E432DB /* DiaryListener.swift in Sources */,
 				F2FD4E2025BDCD42005819A0 /* StickerCoordinator.swift in Sources */,
 				F2B5F46D25CF58CF0051E8C9 /* GoalExampleData.swift in Sources */,
+				F2A22A0E280B157300DDF94F /* EmptyWeekBubbleData.swift in Sources */,
 				F29804CC25C7A52500952AAF /* Language.swift in Sources */,
 				BC1E1EFA246C58F500E05C8A /* GRDBDataProvider.swift in Sources */,
 				F27E704725D842F0004E49FB /* CongratsData.swift in Sources */,

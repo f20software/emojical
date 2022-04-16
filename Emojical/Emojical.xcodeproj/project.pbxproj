@@ -215,6 +215,7 @@
 		F2C649D225FEC7580096D883 /* CoachMessageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C649D125FEC7580096D883 /* CoachMessageOperation.swift */; };
 		F2C847A125C727DB00A2C2F2 /* DataSource+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C847A025C727DB00A2C2F2 /* DataSource+Demo.swift */; };
 		F2CA4EFD270A72F600FA1EA5 /* GoalStatsSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4EFC270A72F600FA1EA5 /* GoalStatsSortOrder.swift */; };
+		F2CFB2852809402E00D0BB60 /* TimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CFB2842809402E00D0BB60 /* TimeCell.swift */; };
 		F2EC68B326F7B42B0061AA9B /* StickerMonthlyChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943226800DE900980EF9 /* StickerMonthlyChartController.swift */; };
 		F2EC68B526F7B4A80061AA9B /* StickerMonthlyChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0943126800DE900980EF9 /* StickerMonthlyChartPresenter.swift */; };
 		F2EC68B726F7E93B0061AA9B /* GoalStatsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC68B626F7E93B0061AA9B /* GoalStatsChartView.swift */; };
@@ -498,6 +499,7 @@
 		F2C649D125FEC7580096D883 /* CoachMessageOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachMessageOperation.swift; sourceTree = "<group>"; };
 		F2C847A025C727DB00A2C2F2 /* DataSource+Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Demo.swift"; sourceTree = "<group>"; };
 		F2CA4EFC270A72F600FA1EA5 /* GoalStatsSortOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStatsSortOrder.swift; sourceTree = "<group>"; };
+		F2CFB2842809402E00D0BB60 /* TimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCell.swift; sourceTree = "<group>"; };
 		F2E906EC25C89B59007CE699 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F2EC68B626F7E93B0061AA9B /* GoalStatsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStatsChartView.swift; sourceTree = "<group>"; };
 		F2EC68B826F7E9980061AA9B /* GoalStatsChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStatsChartPresenter.swift; sourceTree = "<group>"; };
@@ -1320,6 +1322,7 @@
 				F2EE4AA725C5AD64004FB0F2 /* ButtonCell.swift */,
 				F2EE4AAB25C5AECC004FB0F2 /* NavigateCell.swift */,
 				F291A62E25EDF50400E91D0C /* StickerStyleCell.swift */,
+				F2CFB2842809402E00D0BB60 /* TimeCell.swift */,
 				F2EE4AB725C5B3B9004FB0F2 /* SwitchCell.swift */,
 			);
 			path = Cells;
@@ -1908,6 +1911,7 @@
 				F2FD4DBD25BC88C6005819A0 /* SelectStickersView.swift in Sources */,
 				F23CF44F25851C150048BA74 /* GoalIconView.swift in Sources */,
 				F295337525B61522003CA002 /* GoalView.swift in Sources */,
+				F2CFB2852809402E00D0BB60 /* TimeCell.swift in Sources */,
 				F2A09422267FF41C00980EF9 /* ChartsPresenter.swift in Sources */,
 				F2A829DD25EBF4F400B323FB /* WelcomePresenter.swift in Sources */,
 				F27782FA25C501E300C68F7A /* OptionsView.swift in Sources */,
@@ -2142,7 +2146,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.6.0;
+				CURRENT_PROJECT_VERSION = 1.7.0;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2150,7 +2154,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
 				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;
@@ -2163,7 +2167,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.6.0;
+				CURRENT_PROJECT_VERSION = 1.7.0;
 				DEVELOPMENT_TEAM = HUNH9BLHXT;
 				INFOPLIST_FILE = Emojical/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2171,7 +2175,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = net.svidersky.stamps;
 				PRODUCT_NAME = Emojical;
 				SWIFT_VERSION = 5.0;

@@ -218,13 +218,17 @@
 
 "reminder_option" = "Recordatorio diario";
 
-"reminder_footer" = "Recuerde todos los días alrededor de las 9 p.m. para completar su entrada para ese día si aún no lo ha hecho.";
+"reminde_me_at_time" = "Recuérdame a las";
+
+"reminder_footer" = "Recuerde todos los días para completar su entrada para ese día si aún no lo ha hecho.";
 
 "backup_title" = "Copia de seguridad";
 
 "backup_button" = "Exporta tus datos...";
 
 "backup_footer" = "Envíe un correo electrónico a sí mismo con un archivo JSON con todos sus datos.";
+
+"please_rate" = "Por favor califique Emojical";
 
 "feedback_button" = "Realimentación...";
 
@@ -277,6 +281,16 @@
 "onboarding_2" = "¡Maravilloso! Una vez que descubra las pegatinas, vaya a la pestaña \"Pegatinas y metas \" y configure algunas metas para usted.";
 
 "got_it_button" = "Lo tengo";
+
+// Notifications
+
+"empty_day_title" = "¿No te estás olvidando de algo?";
+
+"empty_day_body" =  "¿Quieres poner unas pegatinas para hoy?";
+
+"filled_day_title" = "¿Revisar la entrada de hoy?";
+
+"filled_day_body" = "Has grabado %@ hoy. ¿Quieres agregar algo más?";
 
 // Sticker Style
 

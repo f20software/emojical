@@ -12,6 +12,8 @@ class LocalSettings {
     
     private let todayNotificationIdKey = "todayNotificationId"
     private let reminderEnabledKey = "reminderEnabled"
+    private let reminderTimeHourKey = "reminderTimeHour"
+    private let reminderTimeMinuteKey = "reminderTimeMinute"
     private let stickerStyleKey = "stickerStyle"
     private let onboardingSeenKey = "onboardingSeen"
 
@@ -50,6 +52,20 @@ class LocalSettings {
         }
         set {
             setBoolDefault(newValue, key: reminderEnabledKey)
+        }
+    }
+    
+    /// Reminder time 
+    var reminderTime: (hour: Int, minute: Int) {
+        get {
+            return (
+                integerDefault(reminderTimeHourKey) ?? 21,
+                integerDefault(reminderTimeMinuteKey) ?? 5
+            )
+        }
+        set {
+            setIntegerDefault(newValue.hour, key: reminderTimeHourKey)
+            setIntegerDefault(newValue.minute, key: reminderTimeMinuteKey)
         }
     }
 

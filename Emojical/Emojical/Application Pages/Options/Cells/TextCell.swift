@@ -28,5 +28,6 @@ class TextCell: UITableViewCell {
         textLabel?.font = Theme.main.fonts.listBody
         detailTextLabel?.font = Theme.main.fonts.listBody
         backgroundColor = Theme.main.colors.secondaryBackground
+        selectionStyle = .none
     }
 }

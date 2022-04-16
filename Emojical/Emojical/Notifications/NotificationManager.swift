@@ -10,57 +10,61 @@ import UIKit
 
 class NotificationManager {
 
+    // MARK: - DI
+    
     let settings: LocalSettings
+    let calendar: CalendarHelper
     
-    let reminderHour: Int = 21
-    let reminderMinute: Int = 5
-    
-    // If application is running withing 120 minutes from reminder time, we will not show reminder
-    // today but will schedule it for tomorrow
+    // MARK: - Singleton
+    static let shared = NotificationManager(
+        settings: LocalSettings.shared,
+        calendar: CalendarHelper.shared
+    )
+
+    /// If application is running withing 120 minutes from reminder time,
+    /// we will not show reminder today but will schedule it for tomorrow
     private let reminderGap: Int = 120
     
     var userNotificationCenter: UNUserNotificationCenter {
         return UNUserNotificationCenter.current()
     }
 
-    // Singleton instance
-    static let shared = NotificationManager(settings: LocalSettings.shared)
-    
-    private init(settings: LocalSettings) {
+    private init(
+        settings: LocalSettings,
+        calendar: CalendarHelper
+    ) {
         self.settings = settings
+        self.calendar = calendar
 
         // Add a handler to react to updating today's stickers, so we can recalculate notifications
         NotificationCenter.default.addObserver(self, selector: #selector(refreshNotifications), name: .todayStickersUpdated, object: nil)
     }
     
-    private var todayReminderTime: Date {
-        return Calendar.current.date(bySettingHour: reminderHour, minute: reminderMinute, second: 0, of: Date())!
-    }
-    
-    private var defaultReminderContent: UNNotificationContent {
+    /// Reminder for day when no stickers are recorded
+    private var emptyDayReminderContent: UNNotificationContent {
         let content = UNMutableNotificationContent()
-        content.title = "Aren't you forgetting something?"
-        content.body = "Do you want to put some stickers for today?"
+        content.title = "empty_day_title".localized
+        content.body = "empty_day_body".localized
         content.sound = .default
         
         return content
     }
     
     private func todayReminderContent(todayStamps: [String]) -> UNNotificationContent {
+        guard todayStamps.count > 0 else {
+            return emptyDayReminderContent
+        }
+
         let content = UNMutableNotificationContent()
-        content.title = "Review today entry?"
+        content.title = "filled_day_title".localized
+
+        var stickers = todayStamps[0]
+        if todayStamps.count > 1 {
+            stickers = todayStamps.map({ "'\($0)'" }).sentence
+        }
+        content.body = "filled_day_body".localized(stickers)
         content.sound = .default
-        if todayStamps.count == 0 {
-            return defaultReminderContent
-        }
-        else if todayStamps.count == 1 {
-            content.body = "You've recorded '\(todayStamps[0])' today. Do you want to add anything else?"
-        }
-        else {
-            let stampsText = todayStamps.map({ "'\($0)'" }).sentence
-            content.body = "You've recorded \(stampsText) today. Do you want to add anything else?"
-        }
-        
+
         return content
     }
     
@@ -109,8 +113,12 @@ class NotificationManager {
     }
     
     private func createNextNotification() -> UNNotificationRequest {
-        var nextNotificationDate = todayReminderTime
-        var content = defaultReminderContent
+        let reminderTime = settings.reminderTime
+        var nextNotificationDate = calendar.todayAtTime(
+            hour: reminderTime.hour,
+            minute: reminderTime.minute
+        )
+        var content = emptyDayReminderContent
 
         // If we're doing it within 30 minutes from the todays notification time (or if we passed that time already)
         // next reminder will be set for tomorrow

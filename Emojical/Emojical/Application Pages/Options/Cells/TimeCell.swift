@@ -8,15 +8,15 @@
 
 import UIKit
 
-class SwitchCell: UITableViewCell {
+class TimeCell: UITableViewCell {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var switchText: UILabel!
-    @IBOutlet weak var switchControl: UISwitch!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timePicker: UIDatePicker!
 
-    /// Called after switch value changed
-    var onValueChanged: ((Bool) -> Void)?
+    /// Called after time picker value changed
+    var onValueChanged: ((Date) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,22 +25,22 @@ class SwitchCell: UITableViewCell {
     
     // MARK: - Public view interface
 
-    func configure(for text: String, value: Bool) {
-        switchText.text = text
-        switchControl.isOn = value
+    func configure(for text: String, time: Date) {
+        timeLabel.text = text
+        timePicker.date = time
     }
 
     // MARK: - Actions
     
     @IBAction func valueChanged(_ sender: Any) {
-        onValueChanged?(switchControl.isOn)
+        onValueChanged?(timePicker.date)
     }
 
     // MARK: - Private helpers
 
     private func configureViews() {
-        switchText.font = Theme.main.fonts.listBody
-        switchControl.onTintColor = Theme.main.colors.tint
+        timeLabel.font = Theme.main.fonts.listBody
+        timePicker.tintColor = Theme.main.colors.tint
         backgroundColor = Theme.main.colors.secondaryBackground
         selectionStyle = .none
     }

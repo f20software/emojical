@@ -218,13 +218,17 @@
 
 "reminder_option" = "Daily Reminder";
 
-"reminder_footer" = "Remind yourself every day around 9pm to fill your entry for that day if you haven't done so already.";
+"reminde_me_at_time" = "Remind Me At";
+
+"reminder_footer" = "Remind yourself every day to fill your entry for that day if you haven't done so already.";
 
 "backup_title" = "Backup / Restore";
 
 "backup_button" = "Export Your Data...";
 
 "backup_footer" = "Email yourself JSON file with all your data.";
+
+"please_rate" = "Please Rate Emojical";
 
 "feedback_button" = "Feedback...";
 
@@ -277,6 +281,16 @@
 "onboarding_2" = "Wonderful! Once you figure out stickers, go to the \"Stickers & Goals\" tab and set up some goals for yourself!";
 
 "got_it_button" = "Got it";
+
+// Notifications
+
+"empty_day_title" = "Aren't you forgetting something?";
+
+"empty_day_body" =  "Do you want to put some stickers for today?";
+
+"filled_day_title" = "Review today entry?";
+
+"filled_day_body" = "You have recorded %@ today. Do you want to add anything else?";
 
 // Sticker Style
 

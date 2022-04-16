@@ -13,7 +13,7 @@ class EmptyWeekBubbleView : ThemeObservingView {
 
     // MARK: - UI Outlets
     
-    /// Smiley face on top of the RecapBubble (exact artwork will depend on how good recap is)
+    /// Smiley face on top of the EmptyWeekBuuble (exact artwork will depend on whether this week is in the past/future)
     @IBOutlet weak var face: UIImageView!
 
     /// Speach bubble background view

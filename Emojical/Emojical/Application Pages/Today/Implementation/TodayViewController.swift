@@ -186,13 +186,13 @@ class TodayViewController: UIViewController {
     }
 
     // Update recap bubble visiblity
-    private func hideRecapBubble(_ hidden: Bool, animated: Bool) {
-        hideBubbleView(recapBubbleView, hide: hidden, animated: animated)
+    private func hideRecapBubble(_ hide: Bool, animated: Bool = false) {
+        hideBubbleView(recapBubbleView, hide: hide, animated: animated)
     }
 
-    // Update recap bubble visiblity
-    private func hideEmptyWeekBubble(_ hidden: Bool, animated: Bool) {
-        hideBubbleView(emptyWeekBubbleView, hide: hidden, animated: animated)
+    // Update empty week bubble visiblity
+    private func hideEmptyWeekBubble(_ hide: Bool, animated: Bool = false) {
+        hideBubbleView(emptyWeekBubbleView, hide: hide, animated: animated)
     }
 
     // Update recap/empty bubble view visiblity
@@ -239,10 +239,10 @@ class TodayViewController: UIViewController {
             }
         }
 
-        // Hide buttons initially
+        // Hide stamp selector and any bubble views we have initially
         adjustStampSelectorButtonConstraintsForState(.hidden)
-        hideRecapBubble(true, animated: false)
-        hideEmptyWeekBubble(true, animated: false)
+        hideRecapBubble(true)
+        hideEmptyWeekBubble(true)
 
         prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
@@ -285,8 +285,7 @@ extension TodayViewController: TodayView {
     func loadRecapBubbleData(_ data: RecapBubbleData?, show: Bool) {
         // Bail our early if we need to hide recap bubble
         guard show,
-            let data = data else
-        {
+            let data = data else {
             hideRecapBubble(true, animated: true)
             return
         }
@@ -302,8 +301,7 @@ extension TodayViewController: TodayView {
     /// Load empty week bubble data and update empty week bubble visibility
     func loadEmptyWeekBubbleData(_ data: EmptyWeekBubbleData?) {
         // Bail our early if we need to hide recap bubble
-        guard let data = data else
-        {
+        guard let data = data else {
             hideEmptyWeekBubble(true, animated: true)
             return
         }

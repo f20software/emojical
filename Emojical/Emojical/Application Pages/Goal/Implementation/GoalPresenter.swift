@@ -21,14 +21,6 @@ extension Goal {
         // Should have some positive limit
         guard limit > 0 else { return false }
         
-        // Is goal reachable / or realistic
-        if period == .week && limit > 7 {
-            return false
-        }
-        if period == .month && limit > 31 {
-            return false
-        }
-        
         return true
     }
 }

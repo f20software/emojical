@@ -574,15 +574,11 @@ class TodayPresenter: TodayPresenterProtocol {
     // Move today's date one week to the past or one week to the future
     private func advanceWeek(by delta: Int) {
         guard delta == 1 || delta == -1 else { return }
-        let next = (delta == 1)
 
-        // When navigating week forward - select first day (Monday)
-        // When navigating week back - select last day (Sunday)
-        let dayDelta = next ? (7 - selectedDayIndex) : (-1 - selectedDayIndex)
-        selectedDayIndex = next ? 0 : 6
-
-        selectedDay = selectedDay.byAddingDays(dayDelta)
+        // Always select Monday
+        selectedDayIndex = 0
         week = CalendarHelper.Week(week.firstDay.byAddingWeek(delta))
+        selectedDay = week.firstDay
 
         // Special logic of we're coming back to the current week
         // Select today's date

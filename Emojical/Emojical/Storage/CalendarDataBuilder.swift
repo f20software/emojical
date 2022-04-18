@@ -46,6 +46,8 @@ class CalendarDataBuilder {
     
     // We allow to move one week forward from the week with last entry (i.e. showing next empty week)
     func canMoveForward(_ week: CalendarHelper.Week) -> Bool {
+        // Only do this check for the future week - for the past or current - gotta allow to move forward
+        guard week.isFuture else { return true }
         let lastEntryDate = repository.getLastDiaryDate() ?? Date()
         let nextWeekFirstDay = week.firstDay.byAddingWeek(1)
         
@@ -55,6 +57,8 @@ class CalendarDataBuilder {
 
     // We allow to move one week back from the week with last entry (i.e. showing one empty week)
     func canMoveBackward(_ week: CalendarHelper.Week) -> Bool {
+        // Only do this check for the past week - for the future or current - gotta allow to move back
+        guard week.isPast else { return true }
         let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
         let prevWeekLastDay = week.lastDay.byAddingWeek(-1)
         

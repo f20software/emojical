@@ -110,13 +110,13 @@
 
 "award_earned_on" = "Атрымана %@.";
 
-"award_positive_reached" = "Атрымана %@, by getting %d stickers.";
+"award_positive_reached" = "Атрымана %@, атрымаўшы %d налепак.";
 
-"award_positive_not_reached" = "%@ not reached. You got %d stickers (needed %d).";
+"award_positive_not_reached" = "%@ не дасягнута. Вы атрымалі %d налепак (трэба %d).";
 
-"award_negative_reached" = "Earned on %@. You had %d stickers (limit was %d).";
+"award_negative_reached" = "Атрымана %@. Вы атрымалі %d налепак (ліміт быў %d).";
 
-"award_negative_not_reached" = "%@ not reached. You got %d stickers (limit was %d).";
+"award_negative_not_reached" = "%@ не дасягнута. Вы атрымалі %d stickers (ліміт быў %d).";
 
 // Titles / Tabs / Section Name
 

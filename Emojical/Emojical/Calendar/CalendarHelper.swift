@@ -1,6 +1,6 @@
 //
 //  CalendarHelper.swift
-//  Stamps
+//  Emojical
 //
 //  Created by Vladimir Svidersky on 2/8/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.

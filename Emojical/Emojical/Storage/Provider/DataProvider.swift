@@ -1,6 +1,6 @@
 //
 //  DataProvider.swift
-//  Stamps
+//  Emojical
 //
 //  Created by Alexander on 13.05.2020.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.

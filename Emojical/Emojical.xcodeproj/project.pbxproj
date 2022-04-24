@@ -74,7 +74,7 @@
 		F23CF3FF2582EC8B0048BA74 /* NewStickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */; };
 		F23CF4242583E8720048BA74 /* NoGoalsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23CF4222583E8720048BA74 /* NoGoalsCell.xib */; };
 		F23CF4252583E8720048BA74 /* NoGoalsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF4232583E8720048BA74 /* NoGoalsCell.swift */; };
-		F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF43C25840EBF0048BA74 /* StampSelectorElement.swift */; };
+		F23CF43D25840EBF0048BA74 /* StickerSelectorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF43C25840EBF0048BA74 /* StickerSelectorData.swift */; };
 		F23CF441258417A60048BA74 /* TodayCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF440258417A60048BA74 /* TodayCoordinatorProtocol.swift */; };
 		F23CF44F25851C150048BA74 /* GoalIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23CF44E25851C140048BA74 /* GoalIconView.swift */; };
 		F247541423DFC706006A13C3 /* StoredGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247541323DFC706006A13C3 /* StoredGoal.swift */; };
@@ -357,7 +357,7 @@
 		F23CF3FD2582EC8B0048BA74 /* NewStickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewStickerCell.swift; sourceTree = "<group>"; };
 		F23CF4222583E8720048BA74 /* NoGoalsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoGoalsCell.xib; sourceTree = "<group>"; };
 		F23CF4232583E8720048BA74 /* NoGoalsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoGoalsCell.swift; sourceTree = "<group>"; };
-		F23CF43C25840EBF0048BA74 /* StampSelectorElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSelectorElement.swift; sourceTree = "<group>"; };
+		F23CF43C25840EBF0048BA74 /* StickerSelectorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerSelectorData.swift; sourceTree = "<group>"; };
 		F23CF440258417A60048BA74 /* TodayCoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F23CF44E25851C140048BA74 /* GoalIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalIconView.swift; sourceTree = "<group>"; };
 		F247541323DFC706006A13C3 /* StoredGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredGoal.swift; sourceTree = "<group>"; };
@@ -1362,7 +1362,7 @@
 		F2F3BE44257D48F900A926E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F23CF43C25840EBF0048BA74 /* StampSelectorElement.swift */,
+				F23CF43C25840EBF0048BA74 /* StickerSelectorData.swift */,
 				F295334B25B4DA03003CA002 /* TodayAwardElement.swift */,
 				F284F9C22580620D0016D1C6 /* SelectorState.swift */,
 				F2C649D125FEC7580096D883 /* CoachMessageOperation.swift */,
@@ -1864,7 +1864,7 @@
 				F2A0942B267FFEE300980EF9 /* ChartCell.swift in Sources */,
 				F23CF3AA25829B500048BA74 /* StickersElement.swift in Sources */,
 				F2A09425267FF44C00980EF9 /* ChartsPresenterProtocol.swift in Sources */,
-				F23CF43D25840EBF0048BA74 /* StampSelectorElement.swift in Sources */,
+				F23CF43D25840EBF0048BA74 /* StickerSelectorData.swift in Sources */,
 				F2EC68BB26F7E9980061AA9B /* GoalStatsChartController.swift in Sources */,
 				F2B5F47525CF58CF0051E8C9 /* GoalsLibraryView.swift in Sources */,
 				F2049C5E25FEB4F700E432DB /* DiaryDataSourceListener.swift in Sources */,

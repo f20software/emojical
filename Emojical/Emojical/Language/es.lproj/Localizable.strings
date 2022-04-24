@@ -6,6 +6,10 @@
   Copyright © 2021 Vladimir Svidersky. All rights reserved.
 */
 
+// Today Screen
+
+"select_stickers_for_day" = "Seleccionar pegatinas para el %@";
+
 // Sticker usage
 
 "sticker_used_0_text" = "La pegatina usada|nunca";
@@ -220,7 +224,7 @@
 
 "reminde_me_at_time" = "Recuérdame a las";
 
-"reminder_footer" = "Recuerde todos los días para completar su entrada para ese día si aún no lo ha hecho.";
+"reminder_footer" = "Recuérdate a ti mismo todos los días que revises tus metas.";
 
 "backup_title" = "Copia de seguridad";
 
@@ -291,6 +295,10 @@
 "empty_future_week" = "¡Future locks bright vhen yov de algunas pegatinas y luego!";
 
 // Notifications
+
+"new_reminder_title" = "Recordatorio diario amistoso";
+
+"new_reminder_body" =  "☝️ ¡Oye! ¡Es momento de revisar tus metas!";
 
 "empty_day_title" = "¿No te estás olvidando de algo?";
 

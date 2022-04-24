@@ -13,9 +13,9 @@ enum SelectorState: Hashable {
     /// Nothing is visible - user cannot add stamps
     case hidden
     
-    /// Small button is shown to expand the big stamp selector
+    /// Small button is shown to expand the big sticker selector
     case miniButton
     
-    /// Full stamp selector is shown
+    /// Full sticker selector is shown
     case fullSelector
 }

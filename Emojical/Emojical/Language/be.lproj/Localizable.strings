@@ -6,6 +6,10 @@
   Copyright © 2021 Vladimir Svidersky. All rights reserved.
 */
 
+// Today Screen
+
+"select_stickers_for_day" = "Выберыце налепкі (%@)";
+
 // Sticker usage
 
 "sticker_used_0_text" = "Выкарыстана|ніколі";
@@ -220,7 +224,7 @@
 
 "reminde_me_at_time" = "Нагадай мне ў";
 
-"reminder_footer" = "Нагадвайце сабе кожны дзень каб запоўніць запіс на гэты дзень, калі вы яшчэ гэтага не зрабілі.";
+"reminder_footer" = "Нагадвайце сабе кожны дзень, каб праверыць свае мэты.";
 
 "backup_title" = "Рэзервовае капіраванне";
 
@@ -291,6 +295,10 @@
 "empty_future_week" = "Будучыня выглядае яркай, калі дадаць да яе налепкі!";
 
 // Notifications
+
+"new_reminder_title" = "Штодзённы напамін";
+
+"new_reminder_body" =  "☝️ Гэй! Прыйшоў час праверыць свае мэты!";
 
 "empty_day_title" = "Вы штосьці не забываеце?";
 

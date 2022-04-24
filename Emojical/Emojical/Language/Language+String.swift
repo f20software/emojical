@@ -1,6 +1,6 @@
 //
 //  Language+String.swift
-//  Stamps
+//  Emojical
 //
 //  Created by Vladimir Svidersky on 1/20/20.
 //  Copyright © 2020 Vladimir Svidersky. All rights reserved.

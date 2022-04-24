@@ -27,7 +27,7 @@ class TodayViewController: UIViewController {
 
     @IBOutlet var dayCollectionViewsArray: [DayColumnView]!
     
-    @IBOutlet weak var stampSelector: StampSelectorView!
+    @IBOutlet weak var stickerSelector: StickerSelectorView!
     @IBOutlet weak var stampSelectorBottomContstraint: NSLayoutConstraint!
 
     @IBOutlet weak var plusButton: UIButton!
@@ -99,10 +99,10 @@ class TodayViewController: UIViewController {
     
     // MARK: - TodayView callback properties
     
-    /// Is called when user tapped on the stamp in the bottom stamp selector
-    var onStampInSelectorTapped: ((Int64) -> Void)?
+    /// Is called when user tapped on the sticker in the bottom sticker selector
+    var onStickerInSelectorTapped: ((Int64) -> Void)?
 
-    /// User tapped on create new stamp in the bottom stamp selector
+    /// User tapped on create new stamp in the bottom sticker selector
     var onNewStickerTapped: (() -> Void)?
 
     /// Is called when user tapped on the day header, day index 0...6 is passed
@@ -117,8 +117,8 @@ class TodayViewController: UIViewController {
     /// User tapped on the plus button
     var onPlusButtonTapped: (() -> Void)?
 
-    /// User wants to dismiss Stamp Selector (by dragging it down)
-    var onCloseStampSelector: (() -> Void)?
+    /// User wants to dismiss StickerSelector (by dragging it down)
+    var onCloseStickerSelector: (() -> Void)?
 
     /// User tapped on the award icon on the top
     var onAwardTapped: ((Int) -> Void)?
@@ -131,7 +131,7 @@ class TodayViewController: UIViewController {
     
     /// Distance from the bottom of the screen to the top edge of Sticker Selector
     var stickerSelectorSize: Float {
-        return Float(stampSelector.frame.height + Specs.bottomButtonsMargin)
+        return Float(stickerSelector.frame.height + Specs.bottomButtonsMargin)
     }
     
     // MARK: - Actions
@@ -156,28 +156,28 @@ class TodayViewController: UIViewController {
     @IBAction func handleStampSelectorPanning(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
 
-        // Move stamp selector down / up if necessary - x coordinate is ignored
+        // Move sticker selector down / up if necessary - x coordinate is ignored
         stampSelectorBottomContstraint.constant = Specs.bottomButtonsMargin - translation.y
         
         // When gesture ended - see if passed threshold - dismiss the view otherwise
         // roll back to the full state
         if gesture.state == .ended {
-            if translation.y > stampSelector.bounds.height / 2 {
-                onCloseStampSelector?()
+            if translation.y > stickerSelector.bounds.height / 2 {
+                onCloseStickerSelector?()
             } else {
-                // Rollback and show full stamp selector 
-                showStampSelector(.fullSelector)
+                // Rollback and show full sticker selector
+                showStickerSelector(.fullSelector)
             }
         }
     }
     
     // MARK: - Private helpers
 
-    // Move stamp selector and mini button according to the state
-    private func adjustStampSelectorButtonConstraintsForState(_ state: SelectorState) {
+    // Move sticker selector and mini button according to the state
+    private func adjustStickerSelectorButtonConstraintsForState(_ state: SelectorState) {
         stampSelectorBottomContstraint.constant = (state == .fullSelector) ?
             Specs.bottomButtonsMargin :
-            -(stampSelector.bounds.height + Specs.bottomButtonsMargin + 50)
+            -(stickerSelector.bounds.height + Specs.bottomButtonsMargin + 50)
         
         plusButtonBottomContstraint.constant = (state == .miniButton) ?
             Specs.bottomButtonsMargin :
@@ -239,8 +239,8 @@ class TodayViewController: UIViewController {
             }
         }
 
-        // Hide stamp selector and any bubble views we have initially
-        adjustStampSelectorButtonConstraintsForState(.hidden)
+        // Hide sticker selector and any bubble views we have initially
+        adjustStickerSelectorButtonConstraintsForState(.hidden)
         hideRecapBubble(true)
         hideEmptyWeekBubble(true)
 
@@ -253,10 +253,10 @@ class TodayViewController: UIViewController {
         daysHeader.onDayTapped = { (index) in
             self.onDayHeaderTapped?(index)
         }
-        stampSelector.onStampTapped = { (stampId) in
-            self.onStampInSelectorTapped?(stampId)
+        stickerSelector.onStampTapped = { (stampId) in
+            self.onStickerInSelectorTapped?(stampId)
         }
-        stampSelector.onNewStickerTapped = { () in
+        stickerSelector.onNewStickerTapped = { () in
             self.onNewStickerTapped?()
         }
         recapBubbleView.onTapped = { () in
@@ -340,9 +340,9 @@ extension TodayViewController: TodayView {
         awards.loadData(data)
     }
 
-    /// Loads stamps into stamp selector
-    func loadStampSelector(data: [StampSelectorElement]) {
-        stampSelector.loadData(data)
+    /// Loads StickerSelector view model data
+    func loadStickerSelector(data: StickerSelectorData) {
+        stickerSelector.loadData(data)
     }
     
     /// Show/hide next/prev button
@@ -351,12 +351,12 @@ extension TodayViewController: TodayView {
         navigationItem.rightBarButtonItem = showNext ? nextWeek : nil
     }
 
-    /// Show/hide stamp selector and plus button
-    func showStampSelector(_ state: SelectorState) {
+    /// Show/hide sticker selector and plus button
+    func showStickerSelector(_ state: SelectorState) {
         UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0,
             options: [.curveEaseInOut], animations:
         {
-            self.adjustStampSelectorButtonConstraintsForState(state)
+            self.adjustStickerSelectorButtonConstraintsForState(state)
         })
     }
 }
@@ -364,7 +364,7 @@ extension TodayViewController: TodayView {
 // MARK: - Specs
 fileprivate struct Specs {
     
-    /// Stamp selector mini button corner radius
+    /// Sticker selector mini button corner radius
     static let miniButtonCornerRadius: CGFloat = 8.0
     
     /// Bottom buttons (both full and small) margin from the edge

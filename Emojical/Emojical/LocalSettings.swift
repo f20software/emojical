@@ -11,6 +11,7 @@ import Foundation
 class LocalSettings {
     
     private let todayNotificationIdKey = "todayNotificationId"
+    private let scheduledReminderIdsKey = "scheduledReminderNotificationIds"
     private let reminderEnabledKey = "reminderEnabled"
     private let reminderTimeHourKey = "reminderTimeHour"
     private let reminderTimeMinuteKey = "reminderTimeMinute"
@@ -44,6 +45,15 @@ class LocalSettings {
         }
         set {
             setStringDefault(newValue, key: todayNotificationIdKey)
+        }
+    }
+    
+    var reminderIds: [String] {
+        get {
+            return arrayDefault(scheduledReminderIdsKey)
+        }
+        set {
+            setArrayDefault(newValue, key: scheduledReminderIdsKey)
         }
     }
 
@@ -89,6 +99,16 @@ class LocalSettings {
     }
     
     private func setStringDefault(_ value: String?, key: String) {
+        let defaults = UserDefaults.standard
+        defaults.set(value, forKey: key)
+    }
+
+    private func arrayDefault(_ key: String) -> [String] {
+        let defaults = UserDefaults.standard
+        return (defaults.array(forKey: key) as? [String]) ?? []
+    }
+    
+    private func setArrayDefault(_ value: [String], key: String) {
         let defaults = UserDefaults.standard
         defaults.set(value, forKey: key)
     }

@@ -124,6 +124,9 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                 header: "Log File",
                 footer: nil,
                 cells: [
+                    .button("Delete Log File (\(logFileSize))...", {
+                        self.deleteLogFile()
+                    }),
                     .button("Email Log File...", {
                         self.emailLogFile()
                     }),
@@ -134,6 +137,32 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
         view?.loadData(data)
     }
 
+    private func deleteLogFile() {
+        guard let file = AppDelegate.applicationLogFile else { return }
+        do {
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: file))
+        } catch let error as NSError {
+            NSLog("Failed to delete log file \(error.domain)")
+        }
+        loadViewData()
+    }
+
+    private var logFileSize: String {
+        let unknown = "???"
+        
+        guard
+            let file = AppDelegate.applicationLogFile,
+            let attrs = try? FileManager.default.attributesOfItem(atPath: file),
+            let size = attrs[.size] as? Int64 else {
+            return unknown
+        }
+        
+        let bcf = ByteCountFormatter()
+        bcf.allowedUnits = [.useMB]
+        bcf.countStyle = .file
+        return bcf.string(fromByteCount: size)
+    }
+    
     private func emailLogFile() {
         guard let file = AppDelegate.applicationLogFile else { return }
         emailFile(

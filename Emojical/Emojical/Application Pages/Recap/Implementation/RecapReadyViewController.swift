@@ -70,7 +70,7 @@ class RecapReadyViewController : UIViewController, RecapReadyView {
             if translation.y > Specs.dismissThreshold {
                 onDismiss?(false)
             } else {
-                // Rollback and show full stamp selector
+                // Rollback and show full sticker selector
                 bounceToInitialState()
             }
         }

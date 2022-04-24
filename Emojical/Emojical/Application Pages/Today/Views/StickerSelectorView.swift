@@ -1,5 +1,5 @@
 //
-//  StampSelectorView.swift
+//  StickerSelectorView.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/06/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StampSelectorView : ThemeObservingView {
+class StickerSelectorView : ThemeObservingView {
 
     // MARK: - UI Outlets
     
@@ -16,10 +16,11 @@ class StampSelectorView : ThemeObservingView {
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var dragIndicator: UIView!
+    @IBOutlet weak var instructionsLabel: UILabel!
 
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, StampSelectorElement>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, StickerSelectorElement>!
     private var stickerCount = 0
     
     // MARK: - Callbacks
@@ -39,15 +40,15 @@ class StampSelectorView : ThemeObservingView {
     
     // MARK: - Public view interface
 
-    func loadData(_ data: [StampSelectorElement]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, StampSelectorElement>()
+    func loadData(_ data: StickerSelectorData) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, StickerSelectorElement>()
         snapshot.appendSections([0])
-        snapshot.appendItems(data)
+        snapshot.appendItems(data.stickers)
 
         let oldStickerCount = stickerCount
-        stickerCount = data.count
+        stickerCount = data.stickers.count
         // Add [+] icon if we have less then full one row of stickers
-        if data.count < Specs.stickersPerRow {
+        if stickerCount < Specs.stickersPerRow {
             snapshot.appendItems([.newStamp])
             stickerCount += 1
         }
@@ -85,6 +86,8 @@ class StampSelectorView : ThemeObservingView {
         if oldStickerCount != stickerCount {
             stamps.setContentOffset(.zero, animated: false)
         }
+        
+        instructionsLabel.text = "select_stickers_for_day".localized(data.selectedDay)
     }
     
     // MARK: - Private helpers
@@ -102,6 +105,10 @@ class StampSelectorView : ThemeObservingView {
         dragIndicator.clipsToBounds = true
         dragIndicator.backgroundColor = Theme.main.colors.tint
 
+        instructionsLabel.text = "select_stickers_for_day".localized("")
+        instructionsLabel.font = Theme.main.fonts.cellDescription
+        instructionsLabel.textColor = Theme.main.colors.secondaryText
+        
         // Collection view for stamps
         configureCollectionView()
         registerCells()
@@ -123,7 +130,7 @@ class StampSelectorView : ThemeObservingView {
     }
 
     private func configureCollectionView() {
-        self.dataSource = UICollectionViewDiffableDataSource<Int, StampSelectorElement>(
+        self.dataSource = UICollectionViewDiffableDataSource<Int, StickerSelectorElement>(
             collectionView: stamps,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -151,7 +158,7 @@ class StampSelectorView : ThemeObservingView {
     }
 }
 
-extension StampSelectorView: UICollectionViewDelegate {
+extension StickerSelectorView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else {
@@ -165,7 +172,7 @@ extension StampSelectorView: UICollectionViewDelegate {
         }
     }
     
-    private func cell(for path: IndexPath, model: StampSelectorElement, collectionView: UICollectionView) -> UICollectionViewCell? {
+    private func cell(for path: IndexPath, model: StickerSelectorElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         switch model {
         case .stamp(let data):
             guard let cell = collectionView.dequeueReusableCell(

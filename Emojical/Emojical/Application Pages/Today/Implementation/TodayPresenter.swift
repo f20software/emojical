@@ -31,8 +31,8 @@ class TodayPresenter: TodayPresenterProtocol {
 
     // MARK: - State
 
-    // All available stamps (to be shown in stamp selector)
-    private var allStamps: [Stamp] = []
+    // All available stamps (to be shown in sticker selector)
+    private var allStickers: [Stamp] = []
     
     // Date header data for the week
     private var weekHeader: [DayHeaderData] = []
@@ -88,7 +88,7 @@ class TodayPresenter: TodayPresenterProtocol {
     // Current date
     private var selectedDay = Date() {
         didSet {
-            // Calculate distance from today and lock/unlock stamp selector
+            // Calculate distance from today and lock/unlock sticker selector
             let untilToday = Int(selectedDay.timeIntervalSince(calendar.today) / (60*60*24))
             locked = (untilToday > 0) ?
                 // Selected day is in the future
@@ -118,10 +118,10 @@ class TodayPresenter: TodayPresenterProtocol {
         }
     }
     
-    // Stamp selector state
+    /// StickerSelector state
     private var selectorState: SelectorState = .hidden {
         didSet {
-            view?.showStampSelector(selectorState)
+            view?.showStickerSelector(selectorState)
             
             // Update recap bubble visibility
             // - show only when selector or minibutton is not shown
@@ -268,7 +268,7 @@ class TodayPresenter: TodayPresenterProtocol {
     /// Initialize data objects based on the current date
     private func initializeDataFor(date: Date) {
         // Load set of all stamps
-        allStamps = repository.allStamps().sorted(by: { $0.count > $1.count })
+        allStickers = repository.allStamps().sorted(by: { $0.count > $1.count })
 
         // Set date and week objects
         selectedDay = date
@@ -288,7 +288,7 @@ class TodayPresenter: TodayPresenterProtocol {
         },
         onChange: { [weak self] stamps in
             self?.initializeDataFor(date: self!.selectedDay)
-            self?.loadStampSelectorData()
+            self?.loadStickerSelectorData()
         })
         
         // When awards are updated
@@ -323,7 +323,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private func setupView() {
         
         // Subscribe to view callbacks
-        view?.onStampInSelectorTapped = { [weak self] stampId in
+        view?.onStickerInSelectorTapped = { [weak self] stampId in
             self?.stampToggled(stampId: stampId)
         }
         view?.onNewStickerTapped = { [weak self] in
@@ -343,7 +343,7 @@ class TodayPresenter: TodayPresenterProtocol {
                 self?.selectorState = .fullSelector
             }
         }
-        view?.onCloseStampSelector = { [weak self] in
+        view?.onCloseStickerSelector = { [weak self] in
             self?.selectorState = .miniButton
         }
         view?.onAwardTapped = { [weak self] index in
@@ -403,19 +403,20 @@ class TodayPresenter: TodayPresenterProtocol {
             emptyWeekBubbleData = buildEmptyWeekBubbleData()
         }
 
-        // Stamp selector data
-        loadStampSelectorData()
+        // Sticker selector data
+        loadStickerSelectorData()
 
         // Update selectors state based on the lock status
-        view?.showStampSelector(selectorState)
+        view?.showStickerSelector(selectorState)
         view?.loadRecapBubbleData(recapBubbleData, show: selectorState == .hidden)
         view?.loadEmptyWeekBubbleData(emptyWeekBubbleData)
     }
     
-    private func loadStampSelectorData() {
-        let data: [StampSelectorElement] = allStamps.compactMap({
+    /// Load view data model for the StickerSelector view
+    private func loadStickerSelectorData() {
+        let stickers: [StickerSelectorElement] = allStickers.compactMap({
             guard let id = $0.id else { return nil }
-            return StampSelectorElement.stamp(
+            return StickerSelectorElement.stamp(
                 StickerData(
                     stampId: id,
                     label: $0.label,
@@ -424,7 +425,16 @@ class TodayPresenter: TodayPresenterProtocol {
                 )
             )
         })
-        view?.loadStampSelector(data: data)
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier:
+            Bundle.main.preferredLocalizations.first ?? "en")
+        formatter.dateFormat = "EEEE"
+        
+        view?.loadStickerSelector(data: StickerSelectorData(
+            selectedDay: formatter.string(from: selectedDay),
+            stickers: stickers)
+        )
     }
     
     private func recapData() -> [AwardRecapData] {
@@ -568,7 +578,7 @@ class TodayPresenter: TodayPresenterProtocol {
 
         // Update view
         view?.loadWeekHeader(data: weekHeader)
-        loadStampSelectorData()
+        loadStickerSelectorData()
     }
     
     // Move today's date one week to the past or one week to the future

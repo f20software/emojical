@@ -12,10 +12,10 @@ protocol TodayView: AnyObject {
 
     // MARK: - Callbacks
     
-    /// User tapped on the stamp in the bottom stamp selector
-    var onStampInSelectorTapped: ((Int64) -> Void)? { get set }
+    /// User tapped on the sticker in the bottom sticker selector
+    var onStickerInSelectorTapped: ((Int64) -> Void)? { get set }
 
-    /// User tapped on create new stamp in the bottom stamp selector
+    /// User tapped on create new sticker in the bottom sticker selector
     var onNewStickerTapped: (() -> Void)? { get set }
 
     /// User tapped on the day header, day index 0...6 is passed
@@ -30,8 +30,8 @@ protocol TodayView: AnyObject {
     /// User tapped on the plus button
     var onPlusButtonTapped: (() -> Void)? { get set }
 
-    /// User wants to dismiss Stamp Selector (by dragging it down)
-    var onCloseStampSelector: (() -> Void)? { get set }
+    /// User wants to dismiss Sticker Selector (by dragging it down)
+    var onCloseStickerSelector: (() -> Void)? { get set }
 
     /// User tapped on the award icon on the top
     var onAwardTapped: ((Int) -> Void)? { get set }
@@ -62,14 +62,14 @@ protocol TodayView: AnyObject {
     /// Loads stamps data into day columns
     func loadDays(data: [[StickerData]])
     
-    /// Loads stamps into stamp selector
-    func loadStampSelector(data: [StampSelectorElement])
+    /// Loads StickerSelector view model data
+    func loadStickerSelector(data: StickerSelectorData)
     
     /// Loads awards data
     func loadAwards(data: [GoalOrAwardIconData])
     
-    /// Show/hide stamp selector and plus button
-    func showStampSelector(_ state: SelectorState)
+    /// Show/hide sticker selector and plus button
+    func showStickerSelector(_ state: SelectorState)
     
     // MARK: - Layout
     

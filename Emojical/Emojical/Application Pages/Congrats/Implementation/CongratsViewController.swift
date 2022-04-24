@@ -90,7 +90,7 @@ class CongratsViewController : UIViewController, CongratsView {
             if translation.y > Specs.dismissThreshold {
                 onDismiss?()
             } else {
-                // Rollback and show full stamp selector
+                // Rollback and show full sticker selector
                 bounceToInitialState()
             }
         }

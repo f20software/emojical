@@ -1,10 +1,14 @@
 /* 
   Localizable.strings
-  Stamps
+  Emojical
 
   Created by Vladimir Svidersky on 1/31/21.
   Copyright © 2021 Vladimir Svidersky. All rights reserved.
 */
+
+// Today Screen
+
+"select_stickers_for_day" = "Select stickers for %@";
 
 // Sticker usage
 
@@ -220,7 +224,7 @@
 
 "reminde_me_at_time" = "Remind Me At";
 
-"reminder_footer" = "Remind yourself every day to fill your entry for that day if you haven't done so already.";
+"reminder_footer" = "Remind yourself every day to check out your goals.";
 
 "backup_title" = "Backup / Restore";
 
@@ -291,6 +295,10 @@
 "empty_future_week" = "Future looks bright when you add some stickers to it!";
 
 // Notifications
+
+"new_reminder_title" = "Friendly daily reminder";
+
+"new_reminder_body" =  "☝️ Hey! It's time to check out your goals!";
 
 "empty_day_title" = "Aren't you forgetting something?";
 

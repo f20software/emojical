@@ -15,6 +15,8 @@ class NotificationManager {
     let settings: LocalSettings
     let calendar: CalendarHelper
     
+    private let newStyleNotifications = true
+    
     // MARK: - Singleton
     static let shared = NotificationManager(
         settings: LocalSettings.shared,
@@ -38,13 +40,23 @@ class NotificationManager {
 
         // Add a handler to react to updating today's stickers, so we can recalculate notifications
         NotificationCenter.default.addObserver(self, selector: #selector(refreshNotifications), name: .todayStickersUpdated, object: nil)
+
+        // Subscribe to significant time change notification
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshNotifications),
+            name: UIApplication.significantTimeChangeNotification, object: nil)
+
     }
     
     /// Reminder for day when no stickers are recorded
     private var emptyDayReminderContent: UNNotificationContent {
         let content = UNMutableNotificationContent()
-        content.title = "empty_day_title".localized
-        content.body = "empty_day_body".localized
+        if newStyleNotifications {
+            content.title = "new_reminder_title".localized
+            content.body = "new_reminder_body".localized
+        } else {
+            content.title = "empty_day_title".localized
+            content.body = "empty_day_body".localized
+        }
         content.sound = .default
         
         return content
@@ -73,7 +85,7 @@ class NotificationManager {
             options: [.alert, .sound, .badge, .provisional]) { granted, error in
             
             if error != nil {
-                // Handle the error here.
+                NSLog("Failed to request notification authorization [\(error!.localizedDescription)]")
             }
             
             self.refreshNotifications()
@@ -98,20 +110,73 @@ class NotificationManager {
             userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [existingId])
             settings.todayNotificationId = nil
         }
+        let existingIds = settings.reminderIds
+        if existingIds.isEmpty == false {
+            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: existingIds)
+            settings.reminderIds = []
+        }
         
         // Don't schedule anything if user opted out
         if !settings.reminderEnabled {
             return
         }
 
-        let notification = createNextNotification()
-        settings.todayNotificationId = notification.identifier
-        userNotificationCenter.add(notification) { (error) in
-            // TODO: - add error handling
-            //
+        if newStyleNotifications {
+            let notifications = createNextNotifications()
+            settings.reminderIds = notifications.map { $0.identifier }
+            notifications.forEach {
+                userNotificationCenter.add($0) { (error) in
+                    if error != nil {
+                        NSLog("Failed to add notification [\(error!.localizedDescription)]")
+                    }
+                }
+            }
+        } else {
+            let notification = createNextNotification()
+            settings.todayNotificationId = notification.identifier
+            userNotificationCenter.add(notification) { (error) in
+                if error != nil {
+                    NSLog("Failed to add notification [\(error!.localizedDescription)]")
+                }
+            }
         }
     }
     
+    private func createNextNotifications() -> [UNNotificationRequest] {
+        var result: [UNNotificationRequest] = []
+        let reminderTime = settings.reminderTime
+        var nextNotificationDate = calendar.todayAtTime(
+            hour: reminderTime.hour,
+            minute: reminderTime.minute
+        )
+        let content = emptyDayReminderContent
+        
+        if nextNotificationDate.timeIntervalSinceNow < 0 {
+            nextNotificationDate = nextNotificationDate.byAddingDays(1)
+        }
+
+        NSLog("Creating reminder [\"\(content.body)\"] for the next week")
+
+        for _ in 0...7 {
+
+            let comps = Calendar.current.dateComponents([.day, .year, .month, .hour, .minute], from: nextNotificationDate)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
+
+            NSLog("\(nextNotificationDate.databaseKeyWithTime)")
+            
+            // Create the request
+            result.append(UNNotificationRequest(
+                identifier: UUID().uuidString,
+                content: content,
+                trigger: trigger
+            ))
+            
+            nextNotificationDate = nextNotificationDate.byAddingDays(1)
+        }
+        
+        return result
+    }
+
     private func createNextNotification() -> UNNotificationRequest {
         let reminderTime = settings.reminderTime
         var nextNotificationDate = calendar.todayAtTime(

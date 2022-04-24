@@ -1,5 +1,5 @@
 //
-//  StampSelectorView.swift
+//  StickerSelectorView.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 12/06/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StampSelectorView : ThemeObservingView {
+class StickerSelectorView : ThemeObservingView {
 
     // MARK: - UI Outlets
     
@@ -158,7 +158,7 @@ class StampSelectorView : ThemeObservingView {
     }
 }
 
-extension StampSelectorView: UICollectionViewDelegate {
+extension StickerSelectorView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let stampId = collectionView.cellForItem(at: indexPath)?.tag else {

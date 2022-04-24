@@ -27,7 +27,7 @@ class TodayViewController: UIViewController {
 
     @IBOutlet var dayCollectionViewsArray: [DayColumnView]!
     
-    @IBOutlet weak var stickerSelector: StampSelectorView!
+    @IBOutlet weak var stickerSelector: StickerSelectorView!
     @IBOutlet weak var stampSelectorBottomContstraint: NSLayoutConstraint!
 
     @IBOutlet weak var plusButton: UIButton!

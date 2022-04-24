@@ -244,7 +244,7 @@
 		F2F3BE25257D353D00A926E9 /* DayStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE23257D353D00A926E9 /* DayStampCell.swift */; };
 		F2F3BE26257D353D00A926E9 /* DayStampCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F3BE24257D353D00A926E9 /* DayStampCell.xib */; };
 		F2F3BE3E257D489D00A926E9 /* DayHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */; };
-		F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */; };
+		F2F3BE56257D65AA00A926E9 /* StickerSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE55257D65AA00A926E9 /* StickerSelectorView.swift */; };
 		F2F3BE61257D8C9800A926E9 /* StickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE60257D8C9800A926E9 /* StickerData.swift */; };
 		F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE64257DD25800A926E9 /* TodayView.swift */; };
 		F2F3BE67257DD25800A926E9 /* TodayPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F3BE65257DD25800A926E9 /* TodayPresenterProtocol.swift */; };
@@ -529,7 +529,7 @@
 		F2F3BE23257D353D00A926E9 /* DayStampCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStampCell.swift; sourceTree = "<group>"; };
 		F2F3BE24257D353D00A926E9 /* DayStampCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayStampCell.xib; sourceTree = "<group>"; };
 		F2F3BE3C257D489D00A926E9 /* DayHeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHeaderData.swift; sourceTree = "<group>"; };
-		F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSelectorView.swift; sourceTree = "<group>"; };
+		F2F3BE55257D65AA00A926E9 /* StickerSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerSelectorView.swift; sourceTree = "<group>"; };
 		F2F3BE60257D8C9800A926E9 /* StickerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerData.swift; sourceTree = "<group>"; };
 		F2F3BE64257DD25800A926E9 /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		F2F3BE65257DD25800A926E9 /* TodayPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPresenterProtocol.swift; sourceTree = "<group>"; };
@@ -1382,7 +1382,7 @@
 				F2F3BE17257C267900A926E9 /* DayColumnView.swift */,
 				F2A22A0B280B143300DDF94F /* EmptyWeekBubbleView.swift */,
 				F260BF542803497C00B94B96 /* RecapBubbleView.swift */,
-				F2F3BE55257D65AA00A926E9 /* StampSelectorView.swift */,
+				F2F3BE55257D65AA00A926E9 /* StickerSelectorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1802,7 +1802,7 @@
 				F27E554A25D0B06B00B78A95 /* GoalsLibraryCell.swift in Sources */,
 				F295337A25B6165C003CA002 /* GoalPresenter.swift in Sources */,
 				F23CD124262145CC0003E4DF /* GoalStatsCell.swift in Sources */,
-				F2F3BE56257D65AA00A926E9 /* StampSelectorView.swift in Sources */,
+				F2F3BE56257D65AA00A926E9 /* StickerSelectorView.swift in Sources */,
 				BC564401246B2BEE00942066 /* AwardsListener.swift in Sources */,
 				F23CF3CC2582A95F0048BA74 /* StickerCell.swift in Sources */,
 				F2049C4125FE8CF300E432DB /* RecapReadyView.swift in Sources */,

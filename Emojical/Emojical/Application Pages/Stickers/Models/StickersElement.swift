@@ -12,8 +12,4 @@ import Foundation
 enum StickersElement: Hashable {
     case sticker(StickerData)
     case newSticker
-    case goal(GoalData)
-    case newGoal
-    case noGoals(String)
-    case fromLibrary
 }

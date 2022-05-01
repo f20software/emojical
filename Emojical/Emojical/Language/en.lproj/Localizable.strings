@@ -146,7 +146,9 @@
 
 "today_title" = "Today";
 
-"goals_tab_title" = "Stickers & Goals";
+"goals_tab_title" = "Goals";
+
+"stickers_tab_title" = "Stickers";
 
 "goals_section_title" = "Goals";
 

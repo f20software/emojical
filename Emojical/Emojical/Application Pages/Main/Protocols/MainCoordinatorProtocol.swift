@@ -9,8 +9,9 @@
 import Foundation
 
 enum Page {
-    case today
     case goals
+    case stickers
+    case today
     case stats
     case options
 }

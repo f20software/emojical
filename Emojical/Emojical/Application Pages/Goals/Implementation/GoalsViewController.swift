@@ -1,18 +1,17 @@
 //
-//  StickersViewController.swift
+//  GoalsViewController.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/10/2020.
-//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//  Created by Vladimir Svidersky on 5/1/2022.
+//  Copyright © 2022 Vladimir Svidersky. All rights reserved.
 //
 
 import UIKit
 
-class StickersViewController: UIViewController, StickersView {
+class GoalsViewController: UIViewController, GoalsView {
 
     // List of sections
     enum Section: String, CaseIterable {
-        case stickers = "stickers_title"
         case goals = "goals_section_title"
     }
 
@@ -23,19 +22,19 @@ class StickersViewController: UIViewController, StickersView {
 
     // MARK: - DI
 
-    lazy var coordinator: StickersCoordinatorProtocol = {
-        StickersCoordinator(
+    lazy var coordinator: GoalsCoordinatorProtocol = {
+        GoalsCoordinator(
             parent: self.navigationController!,
             repository: repository,
             awardManager: AwardManager.shared)
     }()
 
     var repository: DataRepository!
-    var presenter: StickersPresenterProtocol!
+    var presenter: GoalsPresenterProtocol!
     
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, StickersElement>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, GoalsElement>!
 
     // MARK: - Lifecycle
     
@@ -47,7 +46,7 @@ class StickersViewController: UIViewController, StickersView {
         super.viewDidLoad()
 
         repository = Storage.shared.repository
-        presenter = StickersPresenter(
+        presenter = GoalsPresenter(
             repository: repository,
             stampsListener: Storage.shared.stampsListener(),
             goalsListener: Storage.shared.goalsListener(),
@@ -72,17 +71,11 @@ class StickersViewController: UIViewController, StickersView {
         return self
     }
 
-    /// User tapped on the sticker
-    var onStickerTapped: ((Int64) -> Void)?
-
     /// User tapped on the goal
     var onGoalTapped: ((Int64) -> Void)?
 
     /// User tapped on create new goal button
     var onNewGoalTapped: (() -> Void)?
-
-    /// User tapped on create new sticker button
-    var onNewStickerTapped: (() -> Void)?
 
     /// User tapped on Add button
     var onAddButtonTapped: (() -> Void)?
@@ -96,13 +89,10 @@ class StickersViewController: UIViewController, StickersView {
     }
 
     /// Load data
-    func loadData(stickers: [StickerData], goals: [GoalData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
+    func loadData(goals: [GoalData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, GoalsElement>()
         snapshot.appendSections([0])
-        snapshot.appendItems(stickers.map({ StickersElement.sticker($0) }))
-        snapshot.appendItems([.newSticker])
-        snapshot.appendSections([1])
-        snapshot.appendItems(goals.map({ StickersElement.goal($0) }))
+        snapshot.appendItems(goals.map({ GoalsElement.goal($0) }))
         if goals.count == 0 {
             snapshot.appendItems([.noGoals("no_goals_description".localized)])
         }
@@ -130,7 +120,7 @@ class StickersViewController: UIViewController, StickersView {
     }
     
     private func configureCollectionView() {
-        dataSource = UICollectionViewDiffableDataSource<Int, StickersElement>(
+        dataSource = UICollectionViewDiffableDataSource<Int, GoalsElement>(
             collectionView: collectionView,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -149,20 +139,12 @@ class StickersViewController: UIViewController, StickersView {
     
     private func registerCells() {
         collectionView.register(
-            UINib(nibName: "StickerCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.stickerCell
-        )
-        collectionView.register(
             UINib(nibName: "GoalCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.goalCell
         )
         collectionView.register(
             UINib(nibName: "NewGoalCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.newGoalCell
-        )
-        collectionView.register(
-            UINib(nibName: "NewStickerCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.newStickerCell
         )
         collectionView.register(
             UINib(nibName: "NoGoalsCell", bundle: .main),
@@ -180,15 +162,11 @@ class StickersViewController: UIViewController, StickersView {
     }
 }
 
-extension StickersViewController: UICollectionViewDelegate {
+extension GoalsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        if let cell = collectionView.cellForItem(at: indexPath) as? StickerCell {
-            onStickerTapped?(Int64(cell.tag))
-        } else if (collectionView.cellForItem(at: indexPath) as? NewStickerCell) != nil {
-            onNewStickerTapped?()
-        } else if let cell = collectionView.cellForItem(at: indexPath) as? GoalCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? GoalCell {
             onGoalTapped?(Int64(cell.tag))
         } else if (collectionView.cellForItem(at: indexPath) as? NewGoalCell) != nil {
             onNewGoalTapped?()
@@ -197,16 +175,9 @@ extension StickersViewController: UICollectionViewDelegate {
         }
     }
 
-    private func cell(for path: IndexPath, model: StickersElement, collectionView: UICollectionView) -> UICollectionViewCell? {
+    private func cell(for path: IndexPath, model: GoalsElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         
         switch model {
-        case .sticker(let data):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.stickerCell, for: path
-            ) as? StickerCell else { return UICollectionViewCell() }
-            
-            cell.configure(for: data)
-            return cell
 
         case .goal(let data):
             guard let cell = collectionView.dequeueReusableCell(
@@ -222,12 +193,6 @@ extension StickersViewController: UICollectionViewDelegate {
             ) as? NoGoalsCell else { return UICollectionViewCell() }
             
             cell.configure(for: data)
-            return cell
-
-        case .newSticker:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.newStickerCell, for: path
-            ) as? NewStickerCell else { return UICollectionViewCell() }
             return cell
 
         case .newGoal:
@@ -259,7 +224,7 @@ extension StickersViewController: UICollectionViewDelegate {
 
 // MARK: - Collection view layout generation
 
-extension StickersViewController {
+extension GoalsViewController {
 
     // Creates collection layout based on the section required
     private func generateLayout() -> UICollectionViewLayout {
@@ -268,52 +233,11 @@ extension StickersViewController {
         
             let section = Section.allCases[sectionIndex]
             switch (section) {
-            case .stickers:
-                return self.generateStampsLayout()
             case .goals:
                 return self.generateGoalsLayout()
             }
         }
         return layout
-    }
-    
-    // Generates layout for stickers section - each sticker is fixed width square cell
-    private func generateStampsLayout() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.165), // .absolute(64),
-                heightDimension: .fractionalWidth(0.165) // .absolute(64)
-            )
-        )
-        item.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 0,
-            bottom:  Specs.cellMargin, trailing: Specs.cellMargin
-        )
-
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(100)
-            ),
-            subitems: [item]
-        )
-
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(44)),
-            elementKind: Specs.Cells.header,
-            alignment: .top
-        )
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [sectionHeader]
-        section.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: Specs.margin,
-            bottom: 0, trailing: Specs.margin
-        )
-        
-        return section
     }
     
     // Generates layout for goals section - each line is 100% width
@@ -362,17 +286,11 @@ fileprivate struct Specs {
     /// Cell identifiers
     struct Cells {
         
-        /// Sticker cell identifier
-        static let stickerCell = "StickerCell"
-
         /// Goal cell identifier
         static let goalCell = "GoalCell"
         
         /// New goal cell identifier
         static let newGoalCell = "NewGoalCell"
-
-        /// New sticker cell identifier
-        static let newStickerCell = "NewStickerCell"
 
         /// No goals cell identifier
         static let noGoalsCell = "NoGoalsCell"

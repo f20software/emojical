@@ -1,28 +1,14 @@
 //
-//  StickersCoordinator.swift
+//  GoalsCoordinator.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 1/18/21.
-//  Copyright © 2021 Vladimir Svidersky. All rights reserved.
+//  Created by Vladimir Svidersky on 5/1/22.
+//  Copyright © 2022 Vladimir Svidersky. All rights reserved.
 //
 
 import UIKit
 
-enum PresentationMode {
-    /// Modal presentation - editing new goal initially
-    case modal
-    /// Push presentation - viewing goal initially, can switch to edit mode
-    case push
-}
-
-enum ViewMode {
-    /// Form is in view mode
-    case view
-    /// Form is in edit mode
-    case edit
-}
-
-class StickersCoordinator: StickersCoordinatorProtocol {
+class GoalsCoordinator: GoalsCoordinatorProtocol {
     
     // MARK: - DI
 
@@ -48,16 +34,6 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     /// Shows modal form to create new goal
     func newGoal() {
         navigateToGoal(mode: .modal, goal: nil)
-    }
-    
-    /// Push to edit sticker form
-    func editSticker(_ sticker: Stamp) {
-        navigateToSticker(mode: .push, sticker: sticker)
-    }
-
-    /// Shows modal form to create new sticker
-    func newSticker() {
-        navigateToSticker(mode: .modal, sticker: nil)
     }
     
     /// Shows modal form to select a goal from example library
@@ -100,37 +76,6 @@ class StickersCoordinator: StickersCoordinatorProtocol {
         }
     }
 
-    // Navigate to Sticker edit / create screen - if `goal` object is passed will
-    // push StickerViewController, otherwise - present as modal
-    private func navigateToSticker(mode: PresentationMode, sticker: Stamp?) {
-
-        // Instantiate StickerViewController from the storyboard file
-        guard let nav: UINavigationController = Storyboard.Sticker.initialViewController(),
-              let view = nav.viewControllers.first as? StickerViewController else {
-            assertionFailure("Failed to initialize StickerViewController")
-            return
-        }
-
-        let coordinator = StickerCoordinator(parent: mode == .modal ? nav : parentController)
-        
-        // Hook up GoalPresenter and tie it together to a view controller
-        view.presenter = StickerPresenter(
-            view: view,
-            coordinator: coordinator,
-            awardManager: awardManager,
-            repository: repository,
-            sticker: sticker,
-            presentation: mode
-        )
-
-        switch mode {
-        case .modal:
-            parentController?.present(nav, animated: true)
-        case .push:
-            parentController?.pushViewController(view, animated: true)
-        }
-    }
-    
     // Navigate to Select Goal from Examples screen
     private func navigateToGoalsLibrary() {
 

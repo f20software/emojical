@@ -146,7 +146,9 @@
 
 "today_title" = "Hoy";
 
-"goals_tab_title" = "Pegatinas y metas";
+"goals_tab_title" = "Metas";
+
+"stickers_tab_title" = "Pegatinas";
 
 "goals_section_title" = "Metas";
 

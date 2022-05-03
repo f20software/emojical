@@ -75,6 +75,9 @@ protocol DataRepository: AnyObject {
     /// All created stamps
     func allStamps(includeDeleted: Bool) -> [Stamp]
     
+    /// All gallery stickers
+    func allGalleryStickers() -> [GallerySticker]
+
     /// All awards
     func allAwards() -> [Award]
     

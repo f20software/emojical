@@ -29,5 +29,5 @@ protocol StickersView: AnyObject {
     func updateTitle(_ text: String)
 
     /// Load stats for the month
-    func loadData(stickers: [StickerData])
+    func loadData(stickers: [StickerData], gallery: [StickerData])
 }

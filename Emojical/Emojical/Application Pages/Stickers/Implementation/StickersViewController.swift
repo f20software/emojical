@@ -12,7 +12,8 @@ class StickersViewController: UIViewController, StickersView {
 
     // List of sections
     enum Section: String, CaseIterable {
-        case stickers = "stickers_title"
+        case stickers = "My Stickers"
+        case gallery = "Stickers Examples"
     }
 
     // MARK: - Outlets
@@ -86,11 +87,15 @@ class StickersViewController: UIViewController, StickersView {
     }
 
     /// Load data
-    func loadData(stickers: [StickerData]) {
+    func loadData(stickers: [StickerData], gallery: [StickerData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
         snapshot.appendSections([0])
         snapshot.appendItems(stickers.map({ StickersElement.sticker($0) }))
         snapshot.appendItems([.newSticker])
+
+        snapshot.appendSections([1])
+        snapshot.appendItems(gallery.map({ StickersElement.sticker($0) }))
+
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -199,6 +204,8 @@ extension StickersViewController {
             let section = Section.allCases[sectionIndex]
             switch (section) {
             case .stickers:
+                return self.generateStampsLayout()
+            case .gallery:
                 return self.generateStampsLayout()
             }
         }

@@ -109,6 +109,26 @@ struct AppDatabase {
             }
         }
         
+        migrator.registerMigration("db-state-4") { db in
+            // Create a table for stamps
+            try db.create(table: "stickers_gallery") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("name", .text).collate(.localizedCaseInsensitiveCompare)
+                t.column("label", .text).notNull().collate(.localizedCaseInsensitiveCompare)
+                t.column("color", .text).notNull().collate(.nocase)
+            }
+        }
+
+        migrator.registerMigration("db-content1") { db in
+            // Fill in default stamps
+            for stamp in [
+                StoredGallerySticker(id: nil, name: "Yoga", label: "🧘", color: "78D3F8"),
+            ] {
+                var s = stamp
+                try s.insert(db)
+            }
+        }
+
         return migrator
     }
 }

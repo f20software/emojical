@@ -207,25 +207,6 @@ class Language {
         }
     }
     
-    /// Goal with period
-    /// For example - "weekly goal"
-    static func goalWithPeriod(_ period: Period) -> String {
-        switch period {
-        case .week:
-            return "weekly_goal".localized
-            
-        case .month:
-            return "monthly_goal".localized
-            
-        case .once:
-            return "once_goal".localized
-
-        default:
-            assertionFailure("Not implemented")
-            return ""
-        }
-    }
-    
     /// Award reached state description
     /// For example: "Earned on Jan 1, 2021, by getting 5 stickers."
     static func awardDescription(
@@ -236,7 +217,7 @@ class Language {
         limit: Int,
         period: Period
     ) -> String {
-        let goal = goalWithPeriod(period).capitalizingFirstLetter()
+        let goal = period.goal.capitalizingFirstLetter()
         switch direction {
         case .positive:
             if reached {

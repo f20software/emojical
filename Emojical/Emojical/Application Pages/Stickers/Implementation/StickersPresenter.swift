@@ -24,9 +24,12 @@ class StickersPresenter: StickersPresenterProtocol {
     
     // MARK: - State
 
-    // View model data for all stamps
-    private var stampsData: [StickerData] = []
+    // View model data for all user stickers
+    private var myStickersData: [StickerData] = []
     
+    // View model data for all gallery stickers
+    private var galleryStickersData: [StickerData] = []
+
     // MARK: - Lifecycle
 
     init(
@@ -96,23 +99,39 @@ class StickersPresenter: StickersPresenterProtocol {
     
     private func loadViewData() {
         view?.updateTitle("stickers_tab_title".localized)
-        let newStampsData = repository.allStamps().sorted(by: { $0.count > $1.count }).map({
-            StickerData(
-                stampId: $0.id,
-                label: $0.label,
-                color: $0.color,
-                isUsed: false
-            )
-        })
-        
+
+        let newMyStickersData =
+            repository.allStamps().sorted(by: { $0.count > $1.count }).map({
+                StickerData(
+                    stampId: $0.id,
+                    label: $0.label,
+                    color: $0.color,
+                    isUsed: false
+                )
+            })
+
+        let newGalleryStickersData =
+            repository.allGalleryStickers().map({
+                StickerData(
+                    stampId: $0.id,
+                    label: $0.label,
+                    color: $0.color,
+                    isUsed: false
+                )
+            })
+
         var updated = false
-        if stampsData != newStampsData {
-            stampsData = newStampsData
+        if myStickersData != newMyStickersData {
+            myStickersData = newMyStickersData
+            updated = true
+        }
+        if galleryStickersData != newGalleryStickersData {
+            galleryStickersData = newGalleryStickersData
             updated = true
         }
 
         if updated {
-            view?.loadData(stickers: stampsData)
+            view?.loadData(stickers: myStickersData, gallery: galleryStickersData)
         }
     }
 }

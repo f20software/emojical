@@ -22,6 +22,7 @@ enum Period: Int {
     case year
 }
 
+/// Language extension
 extension Period {
 
     /// Returns section title for the goal period type
@@ -30,9 +31,24 @@ extension Period {
         case .week: return "weekly_goal_section_title".localized
         case .month: return "monthly_goal_section_title".localized
         case .once: return "once_goal_section_title".localized
-        case .year: return ""
+        default:
+            assertionFailure("Not implemented")
+            return ""
+        }
+    }
+    
+    /// Goal from period. For example - "weekly goal"
+    var goal: String {
+        switch self {
+        case .week: return "weekly_goal".localized
+        case .month: return "monthly_goal".localized
+        case .once: return "once_goal".localized
+        default:
+            assertionFailure("Not implemented")
+            return ""
         }
     }
 }
  
 extension Period: CaseIterable {}
+

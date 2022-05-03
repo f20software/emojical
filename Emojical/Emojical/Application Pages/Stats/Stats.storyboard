@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WLj-Ww-rrq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
         <scene sceneID="Nhp-AX-zr1">
             <objects>
                 <navigationController id="WLj-Ww-rrq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stats" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="EZq-nL-bxE"/>
+                    <tabBarItem key="tabBarItem" title="Stats" id="EZq-nL-bxE"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Zl-nN-HyQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -169,7 +169,6 @@
         <!--Navigation Controller-->
         <scene sceneID="kbx-Hq-fNV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TUj-xP-ihJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="GoalStreaks" id="Qvs-u2-FAw" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hdZ-Fb-H2f">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -179,6 +178,7 @@
                         <segue destination="TeE-Rx-vE7" kind="relationship" relationship="rootViewController" id="foh-8l-IDe"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TUj-xP-ihJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2558" y="68"/>
         </scene>
@@ -200,8 +200,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chart.bar" catalog="system" width="128" height="90"/>
-        <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="switch.2" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

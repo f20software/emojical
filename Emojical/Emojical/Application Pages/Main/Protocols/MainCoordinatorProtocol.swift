@@ -8,12 +8,14 @@
 
 import Foundation
 
-enum Page {
-    case goals
-    case stickers
-    case today
-    case stats
-    case options
+// If you re-arragned pages in the Main storyboard - make sure to update this enum
+// with proper indecies 
+enum Page: Int {
+    case today = 0
+    case goals = 1
+    case stickers = 2
+    case stats = 3
+    case options = 4
 }
 
 protocol MainCoordinatorProtocol: AnyObject {

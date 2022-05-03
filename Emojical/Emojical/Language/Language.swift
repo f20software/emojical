@@ -145,40 +145,65 @@ class Language {
 
     /// Goal description
     /// For example - "Weekly goal. 5 times or more."
-    static func goalDescription(_ goal: Goal) -> String {
+    static func goalDescription(_ goal: Goal, includePeriod: Bool) -> String {
         // Goal always should have limit
         guard goal.limit > 0 else {
             return ""
         }
 
-        switch goal.period {
-        case .week:
-            switch goal.direction {
-            case .positive:
-                return "week_positive_x".localized(goal.limit)
-            case .negative:
-                return "week_negative_x".localized(goal.limit)
+        if includePeriod {
+            switch goal.period {
+            case .week:
+                switch goal.direction {
+                case .positive:
+                    return "week_positive_x".localized(goal.limit)
+                case .negative:
+                    return "week_negative_x".localized(goal.limit)
+                }
+                
+            case .month:
+                switch goal.direction {
+                case .positive:
+                    return "month_positive_x".localized(goal.limit)
+                case .negative:
+                    return "month_negative_x".localized(goal.limit)
+                }
+                
+            case .once:
+                switch goal.direction {
+                case .positive:
+                    return "once_positive_x".localized(goal.limit)
+                case .negative:
+                    return "once_negative_x".localized(goal.limit)
+                }
+
+            default:
+                assertionFailure("Not implemented")
+                return ""
             }
-            
-        case .month:
-            switch goal.direction {
-            case .positive:
-                return "month_positive_x".localized(goal.limit)
-            case .negative:
-                return "month_negative_x".localized(goal.limit)
-            }
-            
-        case .once:
-            switch goal.direction {
-            case .positive:
-                return "once_positive_x".localized(goal.limit)
-            case .negative:
-                return "once_negative_x".localized(goal.limit)
+        } else {
+            switch goal.period {
+            case .week, .month:
+                switch goal.direction {
+                case .positive:
+                    return "positive_x".localized(goal.limit)
+                case .negative:
+                    return "negative_x".localized(goal.limit)
+                }
+                
+            case .once:
+                switch goal.direction {
+                case .positive:
+                    return "once_positive_x".localized(goal.limit)
+                case .negative:
+                    return "once_negative_x".localized(goal.limit)
+                }
+
+            default:
+                assertionFailure("Not implemented")
+                return ""
             }
 
-        default:
-            assertionFailure("Not implemented")
-            return ""
         }
     }
     

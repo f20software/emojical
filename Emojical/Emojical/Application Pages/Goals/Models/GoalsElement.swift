@@ -12,6 +12,6 @@ import Foundation
 enum GoalsElement: Hashable {
     case goal(GoalData)
     case newGoal
-    case noGoals(String)
+    case text(String)
     case fromLibrary
 }

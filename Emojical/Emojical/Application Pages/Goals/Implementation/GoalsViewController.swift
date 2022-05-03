@@ -10,11 +10,6 @@ import UIKit
 
 class GoalsViewController: UIViewController, GoalsView {
 
-    // List of sections
-    enum Section: String, CaseIterable {
-        case goals = "goals_section_title"
-    }
-
     // MARK: - Outlets
     
     @IBOutlet var addButton: UIBarButtonItem!
@@ -34,7 +29,9 @@ class GoalsViewController: UIViewController, GoalsView {
     
     // MARK: - State
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, GoalsElement>!
+    private var sectionTitles: [String] = []
+    
+    private var dataSource: UICollectionViewDiffableDataSource<String, GoalsElement>!
 
     // MARK: - Lifecycle
     
@@ -90,18 +87,39 @@ class GoalsViewController: UIViewController, GoalsView {
 
     /// Load data
     func loadData(goals: [GoalData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, GoalsElement>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(goals.map({ GoalsElement.goal($0) }))
-        if goals.count == 0 {
-            snapshot.appendItems([.noGoals("no_goals_description".localized)])
+        var snapshot = NSDiffableDataSourceSnapshot<String, GoalsElement>()
+        sectionTitles.removeAll()
+        
+        defer {
+            dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         }
+        
+        // No goals? Some special buttons and description
+        if goals.count == 0 {
+            snapshot.appendSections([""])
+            sectionTitles.append("")
+
+            snapshot.appendItems([
+                .text("no_goals_description".localized),
+                .newGoal,
+                .text("looking_for_examples".localized),
+                .fromLibrary
+            ])
+            return
+        }
+
+        // Go through all periods and include them if there are goals
+        let allPeriods = Period.allCases
+        allPeriods.forEach({ period in
+            let filtered = goals.filter({ $0.period == period })
+            if filtered.count > 0 {
+                snapshot.appendSections([period.sectionTitle])
+                sectionTitles.append(period.sectionTitle)
+                snapshot.appendItems(filtered.map({ GoalsElement.goal($0) }))
+            }
+        })
+        
         snapshot.appendItems([.newGoal])
-        if goals.count == 0 {
-            snapshot.appendItems([.noGoals("looking_for_examples".localized)])
-            snapshot.appendItems([.fromLibrary])
-        }
-        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
     // MARK: - Actions
@@ -120,7 +138,7 @@ class GoalsViewController: UIViewController, GoalsView {
     }
     
     private func configureCollectionView() {
-        dataSource = UICollectionViewDiffableDataSource<Int, GoalsElement>(
+        dataSource = UICollectionViewDiffableDataSource<String, GoalsElement>(
             collectionView: collectionView,
             cellProvider: { [weak self] (collectionView, path, model) -> UICollectionViewCell? in
                 self?.cell(for: path, model: model, collectionView: collectionView)
@@ -187,7 +205,7 @@ extension GoalsViewController: UICollectionViewDelegate {
             cell.configure(for: data)
             return cell
 
-        case .noGoals(let data):
+        case .text(let data):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.noGoalsCell, for: path
             ) as? NoGoalsCell else { return UICollectionViewCell() }
@@ -217,7 +235,7 @@ extension GoalsViewController: UICollectionViewDelegate {
             withReuseIdentifier: Specs.Cells.header,
             for: path) as? CollectionHeaderView else { return UICollectionReusableView() }
 
-        header.configure(Section.allCases[path.section].rawValue.localized)
+        header.configure(sectionTitles[path.section].localized)
         return header
     }
 }
@@ -231,11 +249,7 @@ extension GoalsViewController {
         let layout = UICollectionViewCompositionalLayout {
             (sectionIndex, _) -> NSCollectionLayoutSection? in
         
-            let section = Section.allCases[sectionIndex]
-            switch (section) {
-            case .goals:
-                return self.generateGoalsLayout()
-            }
+            return self.generateGoalsLayout()
         }
         return layout
     }

@@ -52,6 +52,10 @@
 
 "once_goal" = "мэта";
 
+"positive_x" = "%d times or more.";
+
+"negative_x" = "%d times or less.";
+
 "week_positive_x" = "Штотыдзень, %d разоў і больш.";
 
 "week_negative_x" = "Штотыдзень, %d разоў ці менш.";
@@ -352,4 +356,5 @@
 
 "goal_streaks_title" = "Стрыкі";
 
+"once_goal_section_title" = "One Time Goals";
 

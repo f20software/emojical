@@ -255,7 +255,7 @@ class TodayPresenter: TodayPresenterProtocol {
 
     /// Reacting to significate time change event - updating data to current date and refreshing view
     @objc func significantTimeChange() {
-        NSLog("Significant Time Change")
+        NSLog("TodayPresenter: Significant Time Change")
         
         // Initial data configuration for the current date
         initializeDataFor(date: calendar.today)
@@ -281,7 +281,8 @@ class TodayPresenter: TodayPresenterProtocol {
     
     /// Configure listeners to the data source changes
     private func setupListeners() {
-        
+        NSLog("TodayPresenter: setupListeners")
+
         // When stamps are updated
         stampsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")

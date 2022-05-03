@@ -25,7 +25,7 @@ class GoalsPresenter: GoalsPresenterProtocol {
     // MARK: - State
 
     // View model data for all goals
-    private var goalsData: [GoalData] = []
+    private var goalsData: [GoalData]?
     
     // MARK: - Lifecycle
 
@@ -106,7 +106,8 @@ class GoalsPresenter: GoalsPresenterProtocol {
             return GoalData(
                 goalId: goalId,
                 name: $0.name,
-                details: Language.goalDescription($0),
+                period: $0.period,
+                details: Language.goalDescription($0, includePeriod: false),
                 count: $0.count,
                 checkMark: $0.count > 0 && $0.isPeriodic == false,
                 icon: GoalOrAwardIconData(
@@ -123,8 +124,8 @@ class GoalsPresenter: GoalsPresenterProtocol {
             updated = true
         }
 
-        if updated {
-            view?.loadData(goals: goalsData)
+        if updated && goalsData != nil {
+            view?.loadData(goals: goalsData!)
         }
     }
     

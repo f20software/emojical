@@ -52,6 +52,10 @@
 
 "once_goal" = "goal";
 
+"positive_x" = "%d times or more.";
+
+"negative_x" = "%d times or less.";
+
 "week_positive_x" = "Weekly, %d times or more.";
 
 "week_negative_x" = "Weekly, %d times or less.";
@@ -352,4 +356,5 @@
 
 "goal_streaks_title" = "Goal Streaks";
 
+"once_goal_section_title" = "One Time Goals";
 

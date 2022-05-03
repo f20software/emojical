@@ -21,3 +21,18 @@ enum Period: Int {
     /// Annual goals - NOT IMPLEMENTED
     case year
 }
+
+extension Period {
+
+    /// Returns section title for the goal period type
+    var sectionTitle: String {
+        switch self {
+        case .week: return "weekly_goal_section_title".localized
+        case .month: return "monthly_goal_section_title".localized
+        case .once: return "once_goal_section_title".localized
+        case .year: return ""
+        }
+    }
+}
+ 
+extension Period: CaseIterable {}

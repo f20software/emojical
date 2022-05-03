@@ -52,6 +52,10 @@
 
 "once_goal" = "meta";
 
+"positive_x" = "%d times or more.";
+
+"negative_x" = "%d times or less.";
+
 "week_positive_x" = "Semanalmente, %d veces o más.";
 
 "week_negative_x" = "Semanalmente, %d veces o menos.";
@@ -351,5 +355,7 @@
 "goal_totals_title" = "Totales de metas";
 
 "goal_streaks_title" = "Rachas de metas";
+
+"once_goal_section_title" = "One Time Goals";
 
 

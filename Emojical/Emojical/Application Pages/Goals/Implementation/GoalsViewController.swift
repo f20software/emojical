@@ -29,8 +29,10 @@ class GoalsViewController: UIViewController, GoalsView {
     
     // MARK: - State
     
+    // Store section titles (weekly / monthly / etc)
     private var sectionTitles: [String] = []
     
+    // Data source for all goals
     private var dataSource: UICollectionViewDiffableDataSource<String, GoalsElement>!
 
     // MARK: - Lifecycle
@@ -94,7 +96,7 @@ class GoalsViewController: UIViewController, GoalsView {
             dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         }
         
-        // No goals? Some special buttons and description
+        // No goals? Special empty cell with buttons and description
         if goals.count == 0 {
             snapshot.appendSections([""])
             sectionTitles.append("")

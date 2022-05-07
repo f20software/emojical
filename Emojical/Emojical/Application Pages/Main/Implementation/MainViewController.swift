@@ -8,11 +8,35 @@
 
 import UIKit
 
-struct BarItemConfiguration {
-    let title: String
-    let imageName: String
-    let selectedImageName: String
-}
+/// BarItem configuration - titles and icons
+private let config: [Page: BarItemConfiguration] = [
+    .today: BarItemConfiguration(
+        title: "today_title".localized,
+        imageName: "calendar",
+        selectedImageName: "calendar"
+    ),
+    .goals: BarItemConfiguration(
+        title: "goals_title".localized,
+        imageName: "crown",
+        selectedImageName: "crown.fill"
+    ),
+    .stickers: BarItemConfiguration(
+        title: "stickers_title".localized,
+        imageName: "circle.hexagongrid",
+        selectedImageName: "circle.hexagongrid.fill"
+    ),
+    .stats: BarItemConfiguration(
+        title: "charts_title".localized,
+        imageName: "chart.bar",
+        selectedImageName: "chart.bar.fill"
+    ),
+    .options: BarItemConfiguration(
+        title: "options_title".localized,
+        imageName: "gearshape",
+        selectedImageName: "gearshape.fill"
+    ),
+]
+
 
 class MainViewController: UITabBarController {
 
@@ -48,37 +72,8 @@ class MainViewController: UITabBarController {
         navigateToCalendar()
     }
     
-    private let config: [Page: BarItemConfiguration] = [
-        .today: BarItemConfiguration(
-            title: "today_title".localized,
-            imageName: "calendar",
-            selectedImageName: "calendar"
-        ),
-        .goals: BarItemConfiguration(
-            title: "goals_title".localized,
-            imageName: "crown",
-            selectedImageName: "crown.fill"
-        ),
-        .stickers: BarItemConfiguration(
-            title: "stickers_title".localized,
-            imageName: "circle.hexagongrid",
-            selectedImageName: "circle.hexagongrid.fill"
-        ),
-        .stats: BarItemConfiguration(
-            title: "charts_title".localized,
-            imageName: "chart.bar",
-            selectedImageName: "chart.bar.fill"
-        ),
-        .options: BarItemConfiguration(
-            title: "options_title".localized,
-            imageName: "gearshape",
-            selectedImageName: "gearshape.fill"
-        ),
-    ]
-
     private func configureBarItems() {
         let iconConfiguration = UIImage.SymbolConfiguration(weight: .bold)
-
         config.forEach { page, config in
             guard let vc = viewControllers?[page.rawValue] else { return }
             vc.tabBarItem.title = config.title

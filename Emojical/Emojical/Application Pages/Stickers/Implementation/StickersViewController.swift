@@ -50,10 +50,8 @@ class StickersViewController: UIViewController, StickersView {
         presenter = StickersPresenter(
             repository: repository,
             stampsListener: Storage.shared.stampsListener(),
-            awardManager: AwardManager.shared,
             view: self,
-            coordinator: coordinator,
-            settings: LocalSettings.shared
+            coordinator: coordinator
         )
         
         configureViews()

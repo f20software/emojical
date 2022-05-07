@@ -15,8 +15,6 @@ class StickersPresenter: StickersPresenterProtocol {
 
     private let repository: DataRepository
     private let stampsListener: StampsListener
-    private let awardManager: AwardManager
-    private let settings: LocalSettings
 
     private weak var view: StickersView?
     private weak var coordinator: StickersCoordinatorProtocol?
@@ -26,17 +24,13 @@ class StickersPresenter: StickersPresenterProtocol {
     init(
         repository: DataRepository,
         stampsListener: StampsListener,
-        awardManager: AwardManager,
         view: StickersView,
-        coordinator: StickersCoordinatorProtocol,
-        settings: LocalSettings
+        coordinator: StickersCoordinatorProtocol
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
-        self.awardManager = awardManager
         self.view = view
         self.coordinator = coordinator
-        self.settings = settings
     }
 
     /// Called when view finished initial loading.

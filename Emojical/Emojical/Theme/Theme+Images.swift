@@ -17,11 +17,21 @@ extension Theme {
         /// Plus button used to create new stuff
         let plusButton = UIImage(
             systemName: "plus",
-            withConfiguration: UIImage.SymbolConfiguration(weight: .bold))!
+            withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
         
         /// Crown image to be shown on the empty Goals screen
         let crown = UIImage(
             systemName: "crown",
             withConfiguration: UIImage.SymbolConfiguration(weight: .bold))!
+        
+        /// Left arrow to navigate to the previous period
+        let leftArrow = UIImage(
+            systemName: "arrow.left",
+            withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+
+        /// Left arrow to navigate to the previous period
+        let rightArrow = UIImage(
+            systemName: "arrow.right",
+            withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
     }
 }

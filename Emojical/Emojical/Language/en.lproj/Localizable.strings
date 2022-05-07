@@ -150,11 +150,9 @@
 
 "today_title" = "Today";
 
-"goals_tab_title" = "Goals";
+"goals_title" = "Goals";
 
-"stickers_tab_title" = "Stickers";
-
-"goals_section_title" = "Goals";
+"stickers_title" = "Stickers";
 
 "goals_library_title" = "Goal Examples";
 
@@ -164,7 +162,7 @@
 
 "stickers_title" = "Stickers";
 
-// MARK: - Goal Editing
+// MARK: - Goals Page
 
 "no_goals_description" = "You have no goals yet. Emojical can help you improve yourself, just create a new goal and track your progress.\n\nIf you're not sure which goals you can create, take a look at a few examples we put together.";
 

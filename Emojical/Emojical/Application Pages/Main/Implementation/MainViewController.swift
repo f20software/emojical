@@ -55,12 +55,12 @@ class MainViewController: UITabBarController {
             selectedImageName: "calendar"
         ),
         .goals: BarItemConfiguration(
-            title: "goals_tab_title".localized,
+            title: "goals_title".localized,
             imageName: "crown",
             selectedImageName: "crown.fill"
         ),
         .stickers: BarItemConfiguration(
-            title: "stickers_tab_title".localized,
+            title: "stickers_title".localized,
             imageName: "circle.hexagongrid",
             selectedImageName: "circle.hexagongrid.fill"
         ),

@@ -150,11 +150,9 @@
 
 "today_title" = "Hoy";
 
-"goals_tab_title" = "Metas";
+"goals_title" = "Metas";
 
-"stickers_tab_title" = "Pegatinas";
-
-"goals_section_title" = "Metas";
+"stickers_itle" = "Pegatinas";
 
 "goals_library_title" = "Ejemplos de metas";
 
@@ -164,7 +162,7 @@
 
 "stickers_title" = "Pegatinas";
 
-// MARK: - Goal Editing
+// MARK: - Goals Page
 
 "no_goals_description" = "Aún no hay metas. Podemos ayudarlo a mejorar, simplemente cree un nuevo objetivo y realice un seguimiento de su progreso.\n\nSi no está seguro de qué objetivos puede crear, eche un vistazo a algunos ejemplos que reunimos.";
 

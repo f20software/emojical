@@ -98,7 +98,7 @@ class GoalsPresenter: GoalsPresenterProtocol {
     }
     
     private func loadViewData() {
-        view?.updateTitle("goals_tab_title".localized)
+        view?.updateTitle("goals_title".localized)
         let newGoalsData: [GoalData] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }
 
@@ -118,14 +118,9 @@ class GoalsPresenter: GoalsPresenterProtocol {
             )
         })
         
-        var updated = false
-        if goalsData != newGoalsData {
+        if newGoalsData != goalsData {
             goalsData = newGoalsData
-            updated = true
-        }
-
-        if updated && goalsData != nil {
-            view?.loadData(goals: goalsData!)
+            view?.loadData(goals: newGoalsData)
         }
     }
     

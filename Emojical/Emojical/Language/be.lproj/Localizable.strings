@@ -150,11 +150,9 @@
 
 "today_title" = "Сёння";
 
-"goals_tab_title" = "Мэты";
+"goals_title" = "Мэты";
 
-"stickers_tab_title" = "Налепкі";
-
-"goals_section_title" = "Мэты";
+"stickers_title" = "Налепкі";
 
 "goals_library_title" = "Прыклады мэтаў";
 
@@ -164,7 +162,7 @@
 
 "stickers_title" = "Налепкі";
 
-// MARK: - Goal Editing
+// MARK: - Goals Page
 
 "no_goals_description" = "У вас пакуль няма мэтаў. Emojical можа дапамагчы вам палепшыць сябе, проста пастаўце новую мэту і адсочвайце свой прагрэс.\n\nКалі вы не ўпэўненыя, якія мэты можна стварыць, паглядзіце на некалькі прыкладаў, якія мы сабралі.";
 

@@ -151,30 +151,32 @@ class Language {
             return ""
         }
 
+        // This is called from goal detail page, so let's add "." at the end
+        // to make it proper sentence.
         if includePeriod {
             switch goal.period {
             case .week:
                 switch goal.direction {
                 case .positive:
-                    return "week_positive_x".localized(goal.limit)
+                    return "week_positive_x".localized(goal.limit).appending(".")
                 case .negative:
-                    return "week_negative_x".localized(goal.limit)
+                    return "week_negative_x".localized(goal.limit).appending(".")
                 }
                 
             case .month:
                 switch goal.direction {
                 case .positive:
-                    return "month_positive_x".localized(goal.limit)
+                    return "month_positive_x".localized(goal.limit).appending(".")
                 case .negative:
-                    return "month_negative_x".localized(goal.limit)
+                    return "month_negative_x".localized(goal.limit).appending(".")
                 }
                 
             case .once:
                 switch goal.direction {
                 case .positive:
-                    return "once_positive_x".localized(goal.limit)
+                    return "once_positive_x".localized(goal.limit).appending(".")
                 case .negative:
-                    return "once_negative_x".localized(goal.limit)
+                    return "once_negative_x".localized(goal.limit).appending(".")
                 }
 
             default:

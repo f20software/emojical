@@ -75,7 +75,7 @@ class TodayViewController: UIViewController {
             main: tabBarController as? MainCoordinatorProtocol
         )
         
-        configureViews()
+        // configureViews()
         updateColors()
         presenter.onViewDidLoad()
     }
@@ -88,6 +88,7 @@ class TodayViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        configureViews()
         super.viewWillAppear(animated)
         presenter.onViewWillAppear()
     }
@@ -224,7 +225,7 @@ class TodayViewController: UIViewController {
     }
 
     private func configureViews() {
-        
+
         // We want to pass exact same width to all daily columns. Otherwise,
         // if we just rely on the auto-layout, there will be some fraction difference
         // between them, and that would make vertical spacing between stickers

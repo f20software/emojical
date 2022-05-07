@@ -16,6 +16,12 @@ extension DataSource {
         allStoredGalleryStickers().map { $0.toModel() }
     }
     
+    /// Gallery sticker by a given Id
+    func galleryStickerBy(id: Int64?) -> GallerySticker? {
+        guard let id = id else { return nil }
+        return storedGallerySticker(withId: id)?.toModel()
+    }
+    
     // MARK: - Private helpers
     
     func allStoredGalleryStickers() -> [StoredGallerySticker] {
@@ -27,5 +33,16 @@ extension DataSource {
         }
         catch { }
         return []
+    }
+    
+    func storedGallerySticker(withId id: Int64) -> StoredGallerySticker? {
+        do {
+            return try dbQueue.read { db -> StoredGallerySticker? in
+                let request = StoredGallerySticker.filter(StoredGallerySticker.Columns.id == id)
+                return try request.fetchOne(db)
+            }
+        }
+        catch { }
+        return nil
     }
 }

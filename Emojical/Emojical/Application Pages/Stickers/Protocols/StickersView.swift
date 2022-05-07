@@ -17,6 +17,12 @@ protocol StickersView: AnyObject {
     /// User tapped on the sticker
     var onStickerTapped: ((Int64) -> Void)? { get set }
 
+    /// User tapped on the gallery sticker
+    var onGalleryStickerTapped: ((Int64) -> Void)? { get set }
+
+    /// User tapped to hide Gallery
+    var onGalleryHideTapped: (() -> Void)? { get set }
+
     /// User tapped on the create new sticker
     var onNewStickerTapped: (() -> Void)? { get set }
 

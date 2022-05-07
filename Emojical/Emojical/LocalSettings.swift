@@ -17,6 +17,7 @@ class LocalSettings {
     private let reminderTimeMinuteKey = "reminderTimeMinute"
     private let stickerStyleKey = "stickerStyle"
     private let onboardingSeenKey = "onboardingSeen"
+    private let stickersGalleryHidden = "stickersGalleryHidden"
 
     // Singleton instance
     static let shared = LocalSettings()
@@ -50,9 +51,11 @@ class LocalSettings {
     
     var reminderIds: [String] {
         get {
+            NSLog("LocalSettings: get remiderIds \(arrayDefault(scheduledReminderIdsKey))")
             return arrayDefault(scheduledReminderIdsKey)
         }
         set {
+            NSLog("LocalSettings: set remiderIds \(newValue))")
             setArrayDefault(newValue, key: scheduledReminderIdsKey)
         }
     }

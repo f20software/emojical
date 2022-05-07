@@ -42,14 +42,17 @@ protocol DataRepository: AnyObject {
     /// Awards by given Ids
     func awardsByGoal(ids: [Int64]) -> [Award]
 
-    /// Stamp Ids for a day from Diary table
+    /// Sticker Ids for a day from Diary table
     func stampsIdsFor(day: Date) -> [Int64]
     
-    /// Stamps for a day
+    /// Sticker for a day
     func stampsFor(day: Date) -> [Stamp]
 
-    /// Stamp by a given Id
+    /// Sticker by a given Id
     func stampBy(id: Int64?) -> Stamp?
+    
+    /// Gallery sticker by a given Id
+    func galleryStickerBy(id: Int64?) -> GallerySticker?
     
     /// Collect all stamp labels by iterating through Ids stored in the goal object
     func stampLabelsFor(goal: Goal) -> [String]

@@ -39,7 +39,6 @@ class GoalDetailsDeleteButtonCell: ThemeObservingCollectionCell {
     private func configureViews() {
         plate.backgroundColor = UIColor.clear
         footer.textColor = Theme.main.colors.secondaryText
-        
         footer.text = "delete_goal_description".localized
         deleteButton.setTitle("delete_goal_button".localized, for: .normal)
 

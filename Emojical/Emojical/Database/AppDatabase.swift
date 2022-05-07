@@ -7,6 +7,7 @@
 //
 
 import GRDB
+import Foundation
 
 // A type responsible for initializing the application database.
 //
@@ -100,9 +101,6 @@ struct AppDatabase {
             // Fill in default stamps
             for stamp in [
                 StoredStamp(id: nil, name: "Star", label: "⭐️", color: "B8B09B"),
-                StoredStamp(id: nil, name: "Exercise", label: "🏐", color: "57D3A3"),
-                StoredStamp(id: nil, name: "Read Book", label: "📖", color: "6AB1D8"),
-                StoredStamp(id: nil, name: "Good Day", label: "🤩", color: "F9BE00"),
             ] {
                 var s = stamp
                 try s.insert(db)
@@ -119,14 +117,22 @@ struct AppDatabase {
             }
         }
 
-        migrator.registerMigration("db-content1") { db in
-            // Fill in default stamps
-            for stamp in [
-                StoredGallerySticker(id: nil, name: "Yoga", label: "🧘", color: "78D3F8"),
-            ] {
-                var s = stamp
-                try s.insert(db)
-            }
+        migrator.registerMigration("db-content-gallery-4") { db in
+            // Clear out any gallery stickers we might have already
+            try StoredGallerySticker.deleteAll(db)
+
+            // Create new ones
+            stickerGalleryData.forEach({ data in
+                var sticker = StoredGallerySticker(
+                    id: nil,
+                    name: data[1],
+                    label: data[0],
+                    color: data[2]
+                )
+                do { try sticker.insert(db) }
+                catch { NSLog("Failed to insert gallery sticker") }
+                
+            })
         }
 
         return migrator

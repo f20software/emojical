@@ -6,11 +6,11 @@
   Copyright © 2021 Vladimir Svidersky. All rights reserved.
 */
 
-// Today Screen
+// MARK: - Today Screen
 
 "select_stickers_for_day" = "Select stickers for %@";
 
-// Sticker usage
+// MARK: - Sticker usage
 
 "sticker_used_0_text" = "Sticker used|never";
 
@@ -30,7 +30,7 @@
 
 "sticker_average_per_month" = "On average|%@|per month";
 
-// Goal reaching
+// MARK: - Goal reaching
 
 "goal_reached_0_text" = "The goal has not yet been reached."; 
 
@@ -44,7 +44,7 @@
 
 "no_goals_reahed_week" = "No goals were reached this week";
 
-// Goal description
+// MARK: - Goal description
 
 "weekly_goal" = "weekly goal";
 
@@ -52,27 +52,27 @@
 
 "once_goal" = "goal";
 
-"positive_x" = "%d times or more.";
+"positive_x" = "%d times or more";
 
-"negative_x" = "%d times or less.";
+"negative_x" = "%d times or less";
 
-"week_positive_x" = "Weekly, %d times or more.";
+"week_positive_x" = "Weekly, %d times or more";
 
-"week_negative_x" = "Weekly, %d times or less.";
+"week_negative_x" = "Weekly, %d times or less";
 
-"month_positive_x" = "Monthly, %d times or more.";
+"month_positive_x" = "Monthly, %d times or more";
 
-"month_negative_x" = "Monthly, %d times or less.";
+"month_negative_x" = "Monthly, %d times or less";
 
-"once_positive_x" = "Get %d stickers.";
+"once_positive_x" = "Get %d stickers";
 
-"once_negative_x" = "Don't get %d stickers.";
+"once_negative_x" = "Don't get %d stickers";
 
 "last_x_weeks" = "Last %d weeks";
 
 "last_x_months" = "Last %d months";
 
-// Current goal progress
+// MARK: - Current goal progress
 
 "you_got_0_stickers_week" = "You've got no stickers so far this week";
 
@@ -114,7 +114,7 @@
 
 "once_negative_goal_breached" = "You've broken the goal by getting %d stickers.";
 
-// Award reached / not reached state
+// MARK: - Award reached / not reached state
 
 "award_earned_on" = "Earned on %@.";
 
@@ -126,7 +126,7 @@
 
 "award_negative_not_reached" = "%@ not reached. You got %d stickers (limit was %d).";
 
-// Titles / Tabs / Section Name
+// MARK: - Titles / Tabs / Section Name
 
 "new_goal_title" = "New Goal";
 
@@ -164,9 +164,9 @@
 
 "stickers_title" = "Stickers";
 
-// Goal Editing
+// MARK: - Goal Editing
 
-"no_goals_description" = "You have no goals yet. Emojical can help you improve yourself, just create a new goal and track your progress.";
+"no_goals_description" = "You have no goals yet. Emojical can help you improve yourself, just create a new goal and track your progress.\n\nIf you're not sure which goals you can create, take a look at a few examples we put together.";
 
 "looking_for_examples" = "If you're not sure which goals you can create, take a look at a few examples we put together.";
 
@@ -210,7 +210,15 @@
 
 "select_stickers_title" = "Select Stickers";
 
-// Sticker Editing
+// MARK: - Stickers Page
+
+"my_stickers_section" = "My Stickers";
+
+"gallery_section" = "Stickers Gallery";
+
+"stickers_instructions" = "You can create and customize as many stickers as you want. If you need an aspiration - take a look at few examples we prepared. Just tap on any sticker from the gallery to add it your stickers.";
+
+// MARK: - Sticker Editing Page
 
 "emoji_label" = "Emoji";
 
@@ -222,7 +230,7 @@
 
 "delete_sticker_button" = "Delete Sticker";
 
-// Options Page
+// MARK: - Options Page
 
 "reminder_title" = "Reminder";
 
@@ -242,7 +250,7 @@
 
 "feedback_button" = "Feedback...";
 
-// Cheer messages when goal is reached
+// MARK: - Cheer messages when goal is reached
 
 "awesome_title" = "Awesome!";
 
@@ -254,7 +262,7 @@
 
 "award_count_description" = "You have now earned this award %d times. Try to do this again and start a streak!";
 
-// Confirmation / Alert / Messages
+// MARK: - Confirmation / Alert / Messages
 
 "week_recap_title" = "Last Week Recap is Ready";
 
@@ -282,7 +290,7 @@
 
 "sticker_delete_confirmation" = "This sticker has been used a few times. Are you sure you want to delete it?";
 
-// Onboarding
+// MARK: - Onboarding
 
 "onboarding_1_1" = "Hello! Looks like you are new here. Let me show you around.";
 
@@ -292,7 +300,7 @@
 
 "got_it_button" = "Got it";
 
-// Empty week messages
+// MARK: - Empty week messages
 
 "empty_current_week" = "Brand new week, let's do this!";
 
@@ -300,7 +308,7 @@
 
 "empty_future_week" = "Future looks bright when you add some stickers to it!";
 
-// Notifications
+// MARK: - Notifications
 
 "new_reminder_title" = "Friendly daily reminder";
 
@@ -314,7 +322,7 @@
 
 "filled_day_body" = "You have recorded %@ today. Do you want to add anything else?";
 
-// Sticker Style
+// MARK: - Sticker Style
 
 "appearance_title" = "Appearance";
 
@@ -326,7 +334,7 @@
 
 "sticker_style_restart" = "Sticker style will be changed after you start application again.";
 
-// Statistics and Charts
+// MARK: - Statistics and Charts
 
 // - List of Chart
 
@@ -358,3 +366,71 @@
 
 "once_goal_section_title" = "One Time Goals";
 
+// MARK: - Stickers Gallery
+
+"sticker-Super Star" = "Super Star";
+
+"sticker-That Was a Good Day" = "That Was a Good Day";
+
+"sticker-That Was a Bad Day" = "That Was a Bad Day";
+
+"sticker-Thumbs Up" = "Thumbs Up";
+
+"sticker-Thumbs Down" = "Thumbs Down";
+
+"sticker-Loved It" = "Love";
+
+"sticker-Soccer" = "Soccer";
+
+"sticker-Hike" = "Hike";
+
+"sticker-Yoga" = "Yoga";
+
+"sticker-Swim" = "Swim";
+
+"sticker-Ice Cream" = "Ice Cream";
+
+"sticker-Cake" = "Cake";
+
+"sticker-Vegetables" = "Vegetables";
+
+"sticker-Meat" = "Meat";
+
+"sticker-Drink" = "Drink";
+
+"sticker-Fruits" = "Fruits";
+
+"sticker-Cherry On Top" = "Cherry On Top";
+
+"sticker-Walked The Dog" = "Walked The Dog";
+
+"sticker-Read Book" = "Read Book";
+
+"sticker-Did Chores" = "Chores";
+
+"sticker-Smoked" = "Smoked";
+
+"sticker-Toys" = "Toys";
+
+"sticker-Too Much TV" = "Too Much TV";
+
+"sticker-Too Much Video Games" = "Too Much Video Games";
+
+// MARK: - Goal Examples
+
+"category-Health" = "Health";
+
+"category-Food" = "Food";
+
+"goal-name-Play Soccer" = "Play Soccer";
+
+"goal-name-Be Active" = "Be Active";
+
+"goal-name-Eat Less Red Meat" = "Eat Less Red Meat";
+
+"goal-description-Record your soccer practices" = "Record your soccer practices and try to get to 3 times per week.";
+
+"goal-description-Record your activities" =
+    "Record your activities - 🧘,⚽️. Try to do this 5 times per week.";
+
+"goal-description-Record food you eat" = "Record food you eat - 🥩,🐣,🐟,🥦. And try to have 3 of fewer red meats per week.";

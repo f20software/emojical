@@ -18,7 +18,8 @@ class StickersPresenter: StickersPresenterProtocol {
     private let goalsListener: GoalsListener
     private let awardsListener: AwardsListener
     private let awardManager: AwardManager
-    
+    private let settings: LocalSettings
+
     private weak var view: StickersView?
     private weak var coordinator: StickersCoordinatorProtocol?
     
@@ -39,7 +40,8 @@ class StickersPresenter: StickersPresenterProtocol {
         awardsListener: AwardsListener,
         awardManager: AwardManager,
         view: StickersView,
-        coordinator: StickersCoordinatorProtocol
+        coordinator: StickersCoordinatorProtocol,
+        settings: LocalSettings
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
@@ -48,6 +50,7 @@ class StickersPresenter: StickersPresenterProtocol {
         self.awardManager = awardManager
         self.view = view
         self.coordinator = coordinator
+        self.settings = settings
     }
 
     /// Called when view finished initial loading.
@@ -89,12 +92,27 @@ class StickersPresenter: StickersPresenterProtocol {
             guard let sticker = self?.repository.stampBy(id: stickerId) else { return }
             self?.coordinator?.editSticker(sticker)
         }
+        view?.onGalleryStickerTapped = { [weak self] stickerId in
+            guard let gallerySticker = self?.repository.galleryStickerBy(id: stickerId) else { return }
+            self?.copyFromGallery(gallerySticker)
+        }
         view?.onNewStickerTapped = { [weak self] in
             self?.coordinator?.newSticker()
         }
         view?.onAddButtonTapped = { [weak self] in
             self?.coordinator?.newSticker()
         }
+    }
+   
+    // Create sticker from the gallery one
+    private func copyFromGallery(_ gallerySticker: GallerySticker) {
+        let sticker = Stamp(
+            name: gallerySticker.name.localized,
+            label: gallerySticker.label,
+            color: gallerySticker.color)
+        
+        do { try repository.save(stamp: sticker) }
+        catch {}
     }
     
     private func loadViewData() {
@@ -125,13 +143,16 @@ class StickersPresenter: StickersPresenterProtocol {
             myStickersData = newMyStickersData
             updated = true
         }
+        
         if galleryStickersData != newGalleryStickersData {
             galleryStickersData = newGalleryStickersData
             updated = true
         }
 
         if updated {
-            view?.loadData(stickers: myStickersData, gallery: galleryStickersData)
+            view?.loadData(
+                stickers: myStickersData,
+                gallery: galleryStickersData)
         }
     }
 }

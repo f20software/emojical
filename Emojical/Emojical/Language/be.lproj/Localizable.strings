@@ -44,7 +44,7 @@
 
 "no_goals_reahed_week" = "На гэтым тыдні не было дасягнута ніводнай мэты";
 
-// Goal description
+// MARK: - Goal description
 
 "weekly_goal" = "штотыднёвая мэта";
 
@@ -52,21 +52,21 @@
 
 "once_goal" = "мэта";
 
-"positive_x" = "%d times or more.";
+"positive_x" = "%d разоў і больш";
 
-"negative_x" = "%d times or less.";
+"negative_x" = "%d разоў ці менш";
 
-"week_positive_x" = "Штотыдзень, %d разоў і больш.";
+"week_positive_x" = "Штотыдзень, %d разоў і больш";
 
-"week_negative_x" = "Штотыдзень, %d разоў ці менш.";
+"week_negative_x" = "Штотыдзень, %d разоў ці менш";
 
-"month_positive_x" = "Штомесяц, %d разоў і больш.";
+"month_positive_x" = "Штомесяц, %d разоў і больш";
 
-"month_negative_x" = "Штомесяц, %d разоў ці менш.";
+"month_negative_x" = "Штомесяц, %d разоў ці менш";
 
-"once_positive_x" = "Дасягніце %d налепак.";
+"once_positive_x" = "Дасягніце %d налепак";
 
-"once_negative_x" = "Не атрымайце %d налепак.";
+"once_negative_x" = "Не атрымайце %d налепак";
 
 "last_x_weeks" = "Апошнія %d тыдняў";
 
@@ -210,7 +210,15 @@
 
 "select_stickers_title" = "Выберыце налепкі";
 
-// Sticker Editing
+// MARK: - Stickers Page
+
+"my_stickers_section" = "Мае налепкі";
+
+"gallery_section" = "Галерэя налепак";
+
+"stickers_instructions" = "Вы можаце ствараць і наладжваць столькі налепак, колькі хочаце. Калі вам патрэбна імкненне - паглядзіце некалькі прыкладаў, якія мы падрыхтавалі. Проста націсніце на любую налепку з галерэі, каб дадаць да яе свае налепкі.";
+
+// MARK: - Sticker Editing Page
 
 "emoji_label" = "Emoji";
 
@@ -222,7 +230,7 @@
 
 "delete_sticker_button" = "Выдаліць налепку";
 
-// Options Page
+// MARK: - Options Page
 
 "reminder_title" = "Напамін";
 
@@ -358,3 +366,71 @@
 
 "once_goal_section_title" = "One Time Goals";
 
+// MARK: - Stickers Gallery
+
+"sticker-Super Star" = "Super Star";
+
+"sticker-That Was a Good Day" = "That Was a Good Day";
+
+"sticker-That Was a Bad Day" = "That Was a Bad Day";
+
+"sticker-Thumbs Up" = "Thumbs Up";
+
+"sticker-Thumbs Down" = "Thumbs Down";
+
+"sticker-Loved It" = "Love";
+
+"sticker-Soccer" = "Soccer";
+
+"sticker-Hike" = "Hike";
+
+"sticker-Yoga" = "Yoga";
+
+"sticker-Swim" = "Swim";
+
+"sticker-Ice Cream" = "Ice Cream";
+
+"sticker-Cake" = "Cake";
+
+"sticker-Vegetables" = "Vegetables";
+
+"sticker-Meat" = "Meat";
+
+"sticker-Drink" = "Drink";
+
+"sticker-Fruits" = "Fruits";
+
+"sticker-Cherry On Top" = "Cherry On Top";
+
+"sticker-Walked The Dog" = "Walked The Dog";
+
+"sticker-Read Book" = "Read Book";
+
+"sticker-Did Chores" = "Chores";
+
+"sticker-Smoked" = "Smoked";
+
+"sticker-Toys" = "Toys";
+
+"sticker-Too Much TV" = "Too Much TV";
+
+"sticker-Too Much Video Games" = "Too Much Video Games";
+
+// MARK: - Goal Examples
+
+"category-Health" = "Health";
+
+"category-Food" = "Food";
+
+"goal-name-Play Soccer" = "Play Soccer";
+
+"goal-name-Be Active" = "Be Active";
+
+"goal-name-Eat Less Red Meat" = "Eat Less Red Meat";
+
+"goal-description-Record your soccer practices" = "Record your soccer practices and try to get to 3 times per week.";
+
+"goal-description-Record your activities" =
+    "Record your activities - 🧘,⚽️. Try to do this 5 times per week.";
+
+"goal-description-Record food you eat" = "Record food you eat - 🥩,🐣,🐟,🥦. And try to have 3 of fewer red meats per week.";

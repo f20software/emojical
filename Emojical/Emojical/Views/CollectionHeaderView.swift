@@ -22,7 +22,7 @@ class CollectionHeaderView: UICollectionReusableView {
         fatalError()
     }
     
-    func configure(_ text: String) {
+    func configure(_ text: String, buttonText: String? = nil) {
         label.text = text.uppercased()
     }
     
@@ -36,7 +36,7 @@ class CollectionHeaderView: UICollectionReusableView {
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             label.topAnchor.constraint(equalTo: topAnchor, constant: Specs.margin),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Specs.margin)
+            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Specs.margin),
         ])
 
         label.font = Theme.main.fonts.sectionHeaderTitle

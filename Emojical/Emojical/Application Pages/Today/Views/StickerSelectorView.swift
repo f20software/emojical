@@ -106,7 +106,7 @@ class StickerSelectorView : ThemeObservingView {
         dragIndicator.backgroundColor = Theme.main.colors.tint
 
         instructionsLabel.text = "select_stickers_for_day".localized("")
-        instructionsLabel.font = Theme.main.fonts.cellDescription
+        instructionsLabel.font = Theme.main.fonts.footer
         instructionsLabel.textColor = Theme.main.colors.secondaryText
         
         // Collection view for stamps

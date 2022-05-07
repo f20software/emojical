@@ -12,8 +12,8 @@ class StickersViewController: UIViewController, StickersView {
 
     // List of sections
     enum Section: String, CaseIterable {
-        case stickers = "My Stickers"
-        case gallery = "Stickers Examples"
+        case stickers = "my_stickers_section"
+        case gallery = "gallery_section"
     }
 
     // MARK: - Outlets
@@ -36,7 +36,7 @@ class StickersViewController: UIViewController, StickersView {
     // MARK: - State
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StickersElement>!
-
+    
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
@@ -54,7 +54,9 @@ class StickersViewController: UIViewController, StickersView {
             awardsListener: Storage.shared.awardsListener(),
             awardManager: AwardManager.shared,
             view: self,
-            coordinator: coordinator)
+            coordinator: coordinator,
+            settings: LocalSettings.shared
+        )
         
         configureViews()
         presenter.onViewDidLoad()
@@ -75,6 +77,12 @@ class StickersViewController: UIViewController, StickersView {
     /// User tapped on the sticker
     var onStickerTapped: ((Int64) -> Void)?
 
+    /// User tapped on the gallery sticker
+    var onGalleryStickerTapped: ((Int64) -> Void)?
+
+    /// User tapped to hide Gallery
+    var onGalleryHideTapped: (() -> Void)?
+
     /// User tapped on create new sticker button
     var onNewStickerTapped: (() -> Void)?
 
@@ -92,10 +100,9 @@ class StickersViewController: UIViewController, StickersView {
         snapshot.appendSections([0])
         snapshot.appendItems(stickers.map({ StickersElement.sticker($0) }))
         snapshot.appendItems([.newSticker])
-
         snapshot.appendSections([1])
         snapshot.appendItems(gallery.map({ StickersElement.sticker($0) }))
-
+        
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -111,7 +118,7 @@ class StickersViewController: UIViewController, StickersView {
         configureCollectionView()
         registerCells()
 
-        addButton.image = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))!
+        addButton.image = Theme.main.images.plusButton
     }
     
     private func configureCollectionView() {
@@ -123,7 +130,7 @@ class StickersViewController: UIViewController, StickersView {
         )
         dataSource.supplementaryViewProvider = { [weak self]
             (collectionView, kind, indexPath) -> UICollectionReusableView? in
-            self?.header(for: indexPath, kind: kind, collectionView: collectionView)
+            self?.supplementaryView(for: indexPath, kind: kind, collectionView: collectionView)
         }
         
         collectionView.dataSource = dataSource
@@ -142,24 +149,31 @@ class StickersViewController: UIViewController, StickersView {
             forCellWithReuseIdentifier: Specs.Cells.newStickerCell
         )
         collectionView.register(
-            CollectionHeaderView.self,
+            StickersHeaderView.self,
             forSupplementaryViewOfKind: Specs.Cells.header,
             withReuseIdentifier: Specs.Cells.header
         )
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension StickersViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
+        let gallerySection = indexPath.section == 1
         if let cell = collectionView.cellForItem(at: indexPath) as? StickerCell {
-            onStickerTapped?(Int64(cell.tag))
+            if gallerySection {
+                onGalleryStickerTapped?(Int64(cell.tag))
+            } else {
+                onStickerTapped?(Int64(cell.tag))
+            }
         } else if (collectionView.cellForItem(at: indexPath) as? NewStickerCell) != nil {
             onNewStickerTapped?()
         }
     }
-
+    
     private func cell(for path: IndexPath, model: StickersElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         
         switch model {
@@ -179,15 +193,21 @@ extension StickersViewController: UICollectionViewDelegate {
         }
     }
     
-    private func header(for path: IndexPath, kind: String, collectionView: UICollectionView) ->
-        UICollectionReusableView? {
-        
+    private func supplementaryView(for path: IndexPath, kind: String, collectionView: UICollectionView) ->
+        UICollectionReusableView?
+    {
+        let gallerySection = (path.section == 1)
+            
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: Specs.Cells.header,
-            for: path) as? CollectionHeaderView else { return UICollectionReusableView() }
+            for: path) as? StickersHeaderView else { return UICollectionReusableView() }
 
-        header.configure(Section.allCases[path.section].rawValue.localized)
+        header.configure(
+            Section.allCases[path.section].rawValue.localized,
+            headerText: gallerySection ? "stickers_instructions".localized : nil,
+            buttonText: nil) // Not using button view at the moment
+
         return header
     }
 }
@@ -200,14 +220,7 @@ extension StickersViewController {
     private func generateLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout {
             (sectionIndex, _) -> NSCollectionLayoutSection? in
-        
-            let section = Section.allCases[sectionIndex]
-            switch (section) {
-            case .stickers:
-                return self.generateStampsLayout()
-            case .gallery:
-                return self.generateStampsLayout()
-            }
+            return self.generateStampsLayout()
         }
         return layout
     }

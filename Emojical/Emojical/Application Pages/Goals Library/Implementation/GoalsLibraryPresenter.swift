@@ -16,54 +16,9 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
     private let repository: DataRepository
     private weak var view: GoalsLibraryView?
     
-    // MARK: - Built-in data
+    // MARK: - Data
     
-    private let data: [GoalExampleData] = [
-        GoalExampleData(
-            category: "Health",
-            name: "Play Soccer",
-            description: "Record your soccer practices and try to get to 3 times per week.",
-            direction: .positive,
-            period: .week,
-            limit: 3,
-            stickers: [
-                StickerExampleData(emoji: "⚽️", name: "Soccer", color: UIColor(named: "emojiGreen")!)
-            ],
-            extra: []
-        ),
-        GoalExampleData(
-            category: "Health",
-            name: "Be Active",
-            description: "Record your activities - 🧘,⚽️,⛹🏻‍♀️,🚴🏻,🏓. Try to do this 5 times per week.",
-            direction: .positive,
-            period: .week,
-            limit: 5,
-            stickers: [
-                StickerExampleData(emoji: "🧘", name: "Yoga", color: UIColor(named: "emojiYellow")!),
-                StickerExampleData(emoji: "⚽️", name: "Soccer", color: UIColor(named: "emojiGreen")!),
-                StickerExampleData(emoji: "⛹🏻‍♀️", name: "Basketball", color: UIColor(named: "emojiLightGreen")!),
-                StickerExampleData(emoji: "🚴🏻", name: "Bike", color: UIColor(named: "emojiLightGreen")!),
-                StickerExampleData(emoji: "🏓", name: "Ping-pong", color: UIColor(named: "emojiGreen")!),
-            ],
-            extra: []
-        ),
-        GoalExampleData(
-            category: "Food",
-            name: "Eat Less Red Meat",
-            description: "Record food you eat - 🥩,🐣,🐟,🥦. And try to have 3 of fewer red meats per week.",
-            direction: .negative,
-            period: .week,
-            limit: 3,
-            stickers: [
-                StickerExampleData(emoji: "🥩", name: "Steak", color: UIColor(named: "emojiRed")!),
-            ],
-            extra: [
-                StickerExampleData(emoji: "🐣", name: "Chicken", color: UIColor(named: "emojiGreen")!),
-                StickerExampleData(emoji: "🐟", name: "Fish", color: UIColor(named: "emojiGreen")!),
-                StickerExampleData(emoji: "🥦", name: "Veggies", color: UIColor(named: "emojiLightGreen")!),
-            ]
-        )
-    ]
+    private var data: [GoalExampleData] = []
     
     // MARK: - Lifecycle
 
@@ -99,7 +54,17 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
     
     private func loadViewData() {
         view?.updateTitle("goals_library_title".localized)
-        let sections = Array(Set(data.map({ $0.category })))
+        let sections = Array(Set(goalExamplesData.map({ $0.category.localized })))
+        data = goalExamplesData.map({ GoalExampleData(
+            category: $0.category.localized,
+            name: $0.name.localized,
+            description: $0.description.localized,
+            direction: $0.direction,
+            period: $0.period,
+            limit: $0.limit,
+            stickers: $0.stickers,
+            extra: $0.extra
+        )})
         view?.loadData(sections: sections, goals: data)
     }
     
@@ -110,7 +75,7 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
 
         do {
             let new = Stamp(
-                name: data.name,
+                name: data.name.localized,
                 label: data.emoji,
                 color: data.color
             )
@@ -130,7 +95,7 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
         
         do {
             let new = Goal(
-                name: goal.name,
+                name: goal.name.localized,
                 period: goal.period,
                 direction: goal.direction,
                 limit: goal.limit,

@@ -100,10 +100,12 @@ class GoalsViewController: UIViewController, GoalsView {
             sectionTitles.append("")
 
             snapshot.appendItems([
-                .text("no_goals_description".localized),
-                .newGoal,
-                .text("looking_for_examples".localized),
-                .fromLibrary
+                .noGoals(NoGoalsData(
+                    icon: Theme.main.images.crown,
+                    instructions: "no_goals_description".localized,
+                    buttonA: "create_goal_button".localized,
+                    buttonB: "goals_examples_button".localized)
+                )
             ])
             return
         }
@@ -134,7 +136,7 @@ class GoalsViewController: UIViewController, GoalsView {
         configureCollectionView()
         registerCells()
 
-        addButton.image = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))!
+        addButton.image = Theme.main.images.plusButton
     }
     
     private func configureCollectionView() {
@@ -169,10 +171,6 @@ class GoalsViewController: UIViewController, GoalsView {
             forCellWithReuseIdentifier: Specs.Cells.noGoalsCell
         )
         collectionView.register(
-            UINib(nibName: "GoalsLibraryCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.goalsExamplesCell
-        )
-        collectionView.register(
             CollectionHeaderView.self,
             forSupplementaryViewOfKind: Specs.Cells.header,
             withReuseIdentifier: Specs.Cells.header
@@ -188,8 +186,6 @@ extension GoalsViewController: UICollectionViewDelegate {
             onGoalTapped?(Int64(cell.tag))
         } else if (collectionView.cellForItem(at: indexPath) as? NewGoalCell) != nil {
             onNewGoalTapped?()
-        } else if (collectionView.cellForItem(at: indexPath) as? GoalsLibraryCell) != nil {
-            onGoalsExamplesTapped?()
         }
     }
 
@@ -205,24 +201,24 @@ extension GoalsViewController: UICollectionViewDelegate {
             cell.configure(for: data)
             return cell
 
-        case .text(let data):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.noGoalsCell, for: path
-            ) as? NoGoalsCell else { return UICollectionViewCell() }
-            
-            cell.configure(for: data)
-            return cell
-
         case .newGoal:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.newGoalCell, for: path
             ) as? NewGoalCell else { return UICollectionViewCell() }
             return cell
 
-        case .fromLibrary:
+        case .noGoals(let data):
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.goalsExamplesCell, for: path
-            ) as? GoalsLibraryCell else { return UICollectionViewCell() }
+                withReuseIdentifier: Specs.Cells.noGoalsCell, for: path
+            ) as? NoGoalsCell else { return UICollectionViewCell() }
+            
+            cell.configure(for: data)
+            cell.onButtonATapped = {
+                self.onNewGoalTapped?()
+            }
+            cell.onButtonBTapped = {
+                self.onGoalsExamplesTapped?()
+            }
             return cell
         }
     }
@@ -308,9 +304,6 @@ fileprivate struct Specs {
 
         /// No goals cell identifier
         static let noGoalsCell = "NoGoalsCell"
-
-        /// Goals examples cell identifier
-        static let goalsExamplesCell = "GoalsLibraryCell"
 
         /// Custom supplementary header identifier and kind
         static let header = "stickers-header-element"

@@ -44,7 +44,7 @@
 
 "no_goals_reahed_week" = "No se alcanzaron metas esta semana";
 
-// Goal description
+// MARK: - Goal description
 
 "weekly_goal" = "meta semanal";
 
@@ -52,21 +52,21 @@
 
 "once_goal" = "meta";
 
-"positive_x" = "%d times or more.";
+"positive_x" = "%d veces o más";
 
-"negative_x" = "%d times or less.";
+"negative_x" = "%d veces o menos";
 
-"week_positive_x" = "Semanalmente, %d veces o más.";
+"week_positive_x" = "Semanalmente, %d veces o más";
 
-"week_negative_x" = "Semanalmente, %d veces o menos.";
+"week_negative_x" = "Semanalmente, %d veces o menos";
 
-"month_positive_x" = "Mensualmente, %d veces o más.";
+"month_positive_x" = "Mensualmente, %d veces o más";
 
-"month_negative_x" = "Mensualmente, %d veces o menos.";
+"month_negative_x" = "Mensualmente, %d veces o menos";
 
-"once_positive_x" = "Consigue %d pegatinas.";
+"once_positive_x" = "Consigue %d pegatinas";
 
-"once_negative_x" = "No consigas %d pegatinas.";
+"once_negative_x" = "No consigas %d pegatinas";
 
 "last_x_weeks" = "Últimas %d semanas";
 
@@ -210,7 +210,15 @@
 
 "select_stickers_title" = "Seleccionar pegatinas";
 
-// Sticker Editing
+// MARK: - Stickers Page
+
+"my_stickers_section" = "Mis pegatinas";
+
+"gallery_section" = "Galería de pegatinas";
+
+"stickers_instructions" = "Puedes crear y personalizar tantos stickers como quiera. Si necesita una aspiración, eche un vistazo a algunos ejemplos que preparamos. Simplemente toque cualquier pegatina de la galería para agregarla a sus pegatinas.";
+
+// MARK: - Sticker Editing Page
 
 "emoji_label" = "Emoji";
 
@@ -222,7 +230,7 @@
 
 "delete_sticker_button" = "Eliminar pegatina";
 
-// Options Page
+// MARK: - Options Page
 
 "reminder_title" = "Recordatorio";
 
@@ -358,4 +366,71 @@
 
 "once_goal_section_title" = "One Time Goals";
 
+// MARK: - Stickers Gallery
 
+"sticker-Super Star" = "Super Star";
+
+"sticker-That Was a Good Day" = "That Was a Good Day";
+
+"sticker-That Was a Bad Day" = "That Was a Bad Day";
+
+"sticker-Thumbs Up" = "Thumbs Up";
+
+"sticker-Thumbs Down" = "Thumbs Down";
+
+"sticker-Loved It" = "Love";
+
+"sticker-Soccer" = "Soccer";
+
+"sticker-Hike" = "Hike";
+
+"sticker-Yoga" = "Yoga";
+
+"sticker-Swim" = "Swim";
+
+"sticker-Ice Cream" = "Ice Cream";
+
+"sticker-Cake" = "Cake";
+
+"sticker-Vegetables" = "Vegetables";
+
+"sticker-Meat" = "Meat";
+
+"sticker-Drink" = "Drink";
+
+"sticker-Fruits" = "Fruits";
+
+"sticker-Cherry On Top" = "Cherry On Top";
+
+"sticker-Walked The Dog" = "Walked The Dog";
+
+"sticker-Read Book" = "Read Book";
+
+"sticker-Did Chores" = "Chores";
+
+"sticker-Smoked" = "Smoked";
+
+"sticker-Toys" = "Toys";
+
+"sticker-Too Much TV" = "Too Much TV";
+
+"sticker-Too Much Video Games" = "Too Much Video Games";
+
+// MARK: - Goal Examples
+
+"category-Health" = "Salud";
+
+"category-Food" = "Alimento";
+
+"goal-name-Play Soccer" = "Jugar fútbol";
+
+"goal-name-Be Active" = "Mantente activo";
+
+"goal-name-Eat Less Red Meat" = "Coma menos carne roja";
+
+"goal-description-Record your soccer practices" = "Graba tus prácticas de fútbol y trata de llegar a 3 veces por semana.";
+
+"goal-description-Record your activities" =
+    "Registre sus actividades - 🧘,⚽️. Trate de hacer esto 5 veces por semana.";
+
+"goal-description-Record food you eat" = "Registre los alimentos que come: 🥩,🐣,🐟,🥦. Y trate de comer 3 o menos carnes rojas por semana.";

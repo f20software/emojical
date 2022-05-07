@@ -50,8 +50,6 @@ class StickersViewController: UIViewController, StickersView {
         presenter = StickersPresenter(
             repository: repository,
             stampsListener: Storage.shared.stampsListener(),
-            goalsListener: Storage.shared.goalsListener(),
-            awardsListener: Storage.shared.awardsListener(),
             awardManager: AwardManager.shared,
             view: self,
             coordinator: coordinator,
@@ -94,6 +92,7 @@ class StickersViewController: UIViewController, StickersView {
     /// Load data
     func loadData(stickers: [StickerData], gallery: [StickerData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
+
         snapshot.appendSections([0])
         snapshot.appendItems(stickers.map({ StickersElement.sticker($0) }))
         snapshot.appendItems([.newSticker])

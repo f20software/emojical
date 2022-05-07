@@ -25,7 +25,7 @@ enum Period: Int {
 /// Language extension
 extension Period {
 
-    /// Returns section title for the goal period type
+    /// Returns section title for the goal period type. For example - "Monthly Goals"
     var sectionTitle: String {
         switch self {
         case .week: return "weekly_goal_section_title".localized

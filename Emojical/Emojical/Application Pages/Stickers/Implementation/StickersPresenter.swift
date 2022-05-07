@@ -15,29 +15,17 @@ class StickersPresenter: StickersPresenterProtocol {
 
     private let repository: DataRepository
     private let stampsListener: StampsListener
-    private let goalsListener: GoalsListener
-    private let awardsListener: AwardsListener
     private let awardManager: AwardManager
     private let settings: LocalSettings
 
     private weak var view: StickersView?
     private weak var coordinator: StickersCoordinatorProtocol?
     
-    // MARK: - State
-
-    // View model data for all user stickers
-    private var myStickersData: [StickerData] = []
-    
-    // View model data for all gallery stickers
-    private var galleryStickersData: [StickerData] = []
-
     // MARK: - Lifecycle
 
     init(
         repository: DataRepository,
         stampsListener: StampsListener,
-        goalsListener: GoalsListener,
-        awardsListener: AwardsListener,
         awardManager: AwardManager,
         view: StickersView,
         coordinator: StickersCoordinatorProtocol,
@@ -45,8 +33,6 @@ class StickersPresenter: StickersPresenterProtocol {
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
-        self.goalsListener = goalsListener
-        self.awardsListener = awardsListener
         self.awardManager = awardManager
         self.view = view
         self.coordinator = coordinator
@@ -64,25 +50,11 @@ class StickersPresenter: StickersPresenterProtocol {
         onChange: { [weak self] stamps in
             self?.loadViewData()
         })
-
-        // Subscribe to goals listener in case stamps array ever changes
-        goalsListener.startListening(onError: { error in
-            fatalError("Unexpected error: \(error)")
-        },
-        onChange: { [weak self] stamps in
-            self?.loadViewData()
-        })
-
-        // Subscribe to awards listener for when new award is given
-        // (to update list of goals including badges)
-        awardsListener.startListening(onChange: { [weak self] in
-            self?.loadViewData()
-        })
     }
     
     /// Called when view about to appear on the screen
     func onViewWillAppear() {
-        loadViewData()
+         // loadViewData()
     }
     
     // MARK: - Private helpers
@@ -116,9 +88,9 @@ class StickersPresenter: StickersPresenterProtocol {
     }
     
     private func loadViewData() {
-        view?.updateTitle("stickers_tab_title".localized)
+        view?.updateTitle("stickers_title".localized)
 
-        let newMyStickersData =
+        let myStickersData =
             repository.allStamps().sorted(by: { $0.count > $1.count }).map({
                 StickerData(
                     stampId: $0.id,
@@ -128,7 +100,7 @@ class StickersPresenter: StickersPresenterProtocol {
                 )
             })
 
-        let newGalleryStickersData =
+        let galleryStickersData =
             repository.allGalleryStickers().map({
                 StickerData(
                     stampId: $0.id,
@@ -138,21 +110,9 @@ class StickersPresenter: StickersPresenterProtocol {
                 )
             })
 
-        var updated = false
-        if myStickersData != newMyStickersData {
-            myStickersData = newMyStickersData
-            updated = true
-        }
-        
-        if galleryStickersData != newGalleryStickersData {
-            galleryStickersData = newGalleryStickersData
-            updated = true
-        }
-
-        if updated {
-            view?.loadData(
-                stickers: myStickersData,
-                gallery: galleryStickersData)
-        }
+        view?.loadData(
+            stickers: myStickersData,
+            gallery: galleryStickersData
+        )
     }
 }

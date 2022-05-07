@@ -112,6 +112,7 @@ class StickerPresenter: StickerPresenterProtocol {
     private func confirmStickerDelete() {
         if sticker.count <= 0 {
             deleteAndDismiss()
+            return
         }
         
         let confirm = UIAlertController(

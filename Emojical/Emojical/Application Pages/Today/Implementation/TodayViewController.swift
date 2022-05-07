@@ -75,7 +75,7 @@ class TodayViewController: UIViewController {
             main: tabBarController as? MainCoordinatorProtocol
         )
         
-        // configureViews()
+        configureViews()
         updateColors()
         presenter.onViewDidLoad()
     }
@@ -88,7 +88,6 @@ class TodayViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        configureViews()
         super.viewWillAppear(animated)
         presenter.onViewWillAppear()
     }

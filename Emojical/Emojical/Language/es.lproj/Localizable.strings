@@ -6,11 +6,11 @@
   Copyright © 2021 Vladimir Svidersky. All rights reserved.
 */
 
-// Today Screen
+// MARK: - Today Screen
 
 "select_stickers_for_day" = "Seleccionar pegatinas para el %@";
 
-// Sticker usage
+// MARK: - Sticker usage
 
 "sticker_used_0_text" = "La pegatina usada|nunca";
 
@@ -30,7 +30,7 @@
 
 "sticker_average_per_month" = "En promedio|%@|por mes";
 
-// Goal reaching
+// MARK: - Goal reaching
 
 "goal_reached_0_text" = "El meta aún no se ha alcanzado.";
 
@@ -72,7 +72,7 @@
 
 "last_x_months" = "Últimos %d meses";
 
-// Current goal progress
+// MARK: - Current goal progress
 
 "you_got_0_stickers_week" = "No tienes pegatinas hasta ahora esta semana";
 
@@ -114,7 +114,7 @@
 
 "once_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas.";
 
-// Award reached / not reached state
+// MARK: - Award reached / not reached state
 
 "award_earned_on" = "Obtenido el %@.";
 
@@ -126,7 +126,7 @@
 
 "award_negative_not_reached" = "No se alcanzó la %@. Tengo %d pegatinas (el límite era %d).";
 
-// Titles / Tabs / Section Name
+// MARK: - Titles / Tabs / Section Name
 
 "new_goal_title" = "Nuevo meta";
 
@@ -164,11 +164,9 @@
 
 "stickers_title" = "Pegatinas";
 
-// Goal Editing
+// MARK: - Goal Editing
 
-"no_goals_description" = "Aún no hay metas. Podemos ayudarlo a mejorar, simplemente cree un nuevo objetivo y realice un seguimiento de su progreso.";
-
-"looking_for_examples" = "Si no está seguro de qué objetivos puede crear, eche un vistazo a algunos ejemplos que reunimos.";
+"no_goals_description" = "Aún no hay metas. Podemos ayudarlo a mejorar, simplemente cree un nuevo objetivo y realice un seguimiento de su progreso.\n\nSi no está seguro de qué objetivos puede crear, eche un vistazo a algunos ejemplos que reunimos.";
 
 "delete_goal_description" = "Si actualiza o elimina la meta, todos los premios obtenidos anteriormente se mantendrán sin cambios.";
 

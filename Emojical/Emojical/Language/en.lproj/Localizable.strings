@@ -168,8 +168,6 @@
 
 "no_goals_description" = "You have no goals yet. Emojical can help you improve yourself, just create a new goal and track your progress.\n\nIf you're not sure which goals you can create, take a look at a few examples we put together.";
 
-"looking_for_examples" = "If you're not sure which goals you can create, take a look at a few examples we put together.";
-
 "delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
 
 "create_goal_button" = "Create Goal";

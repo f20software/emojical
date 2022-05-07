@@ -80,9 +80,6 @@ class StickersViewController: UIViewController, StickersView {
     /// User tapped on the gallery sticker
     var onGalleryStickerTapped: ((Int64) -> Void)?
 
-    /// User tapped to hide Gallery
-    var onGalleryHideTapped: (() -> Void)?
-
     /// User tapped on create new sticker button
     var onNewStickerTapped: (() -> Void)?
 
@@ -130,7 +127,7 @@ class StickersViewController: UIViewController, StickersView {
         )
         dataSource.supplementaryViewProvider = { [weak self]
             (collectionView, kind, indexPath) -> UICollectionReusableView? in
-            self?.supplementaryView(for: indexPath, kind: kind, collectionView: collectionView)
+            self?.header(for: indexPath, kind: kind, collectionView: collectionView)
         }
         
         collectionView.dataSource = dataSource
@@ -193,7 +190,7 @@ extension StickersViewController: UICollectionViewDelegate {
         }
     }
     
-    private func supplementaryView(for path: IndexPath, kind: String, collectionView: UICollectionView) ->
+    private func header(for path: IndexPath, kind: String, collectionView: UICollectionView) ->
         UICollectionReusableView?
     {
         let gallerySection = (path.section == 1)

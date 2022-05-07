@@ -6,11 +6,11 @@
   Copyright © 2021 Vladimir Svidersky. All rights reserved.
 */
 
-// Today Screen
+// MARK: - Today Screen
 
 "select_stickers_for_day" = "Выберыце налепкі (%@)";
 
-// Sticker usage
+// MARK: - Sticker usage
 
 "sticker_used_0_text" = "Выкарыстана|ніколі";
 
@@ -30,7 +30,7 @@
 
 "sticker_average_per_month" = "У сярэднім|%@|у месяц";
 
-// Goal reaching
+// MARK: - Goal reaching
 
 "goal_reached_0_text" = "Мэта яшчэ не дасягнутая.";
 
@@ -72,7 +72,7 @@
 
 "last_x_months" = "Апошнія %d месяцаў";
 
-// Current goal progress
+// MARK: - Current goal progress
 
 "you_got_0_stickers_week" = "На гэтым тыдні ў вас пакуль няма налепак";
 
@@ -114,7 +114,7 @@
 
 "once_negative_goal_breached" = "Вы не дасягнулі мэты, атрымаўшы %d налепак.";
 
-// Award reached / not reached state
+// MARK: - Award reached / not reached state
 
 "award_earned_on" = "Атрымана %@.";
 
@@ -126,7 +126,7 @@
 
 "award_negative_not_reached" = "%@ не дасягнута. Вы атрымалі %d stickers (ліміт быў %d).";
 
-// Titles / Tabs / Section Name
+// MARK: - Titles / Tabs / Section Name
 
 "new_goal_title" = "Новая мэта";
 
@@ -164,11 +164,9 @@
 
 "stickers_title" = "Налепкі";
 
-// Goal Editing
+// MARK: - Goal Editing
 
-"no_goals_description" = "У вас пакуль няма мэтаў. Emojical можа дапамагчы вам палепшыць сябе, проста пастаўце новую мэту і адсочвайце свой прагрэс.";
-
-"looking_for_examples" = "Калі вы не ўпэўненыя, якія мэты можна стварыць, паглядзіце на некалькі прыкладаў, якія мы сабралі.";
+"no_goals_description" = "У вас пакуль няма мэтаў. Emojical можа дапамагчы вам палепшыць сябе, проста пастаўце новую мэту і адсочвайце свой прагрэс.\n\nКалі вы не ўпэўненыя, якія мэты можна стварыць, паглядзіце на некалькі прыкладаў, якія мы сабралі.";
 
 "delete_goal_description" = "Калі вы абнавіце або выдаліце мэту, усе раней заробленыя ўзнагароды застануцца нязменнымі.";
 

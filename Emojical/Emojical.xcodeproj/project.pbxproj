@@ -268,6 +268,7 @@
 		F2FD3E0F2826C48000EBDB14 /* NoGoalsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E0E2826C47F00EBDB14 /* NoGoalsData.swift */; };
 		F2FD3E112826C9DB00EBDB14 /* Theme+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E102826C9DB00EBDB14 /* Theme+Images.swift */; };
 		F2FD3E142826FBF900EBDB14 /* BarItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E132826FBF900EBDB14 /* BarItemConfiguration.swift */; };
+		F2FD3E162826FCDE00EBDB14 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E152826FCDE00EBDB14 /* Page.swift */; };
 		F2FD4DB925BC88C6005819A0 /* SelectStickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD4DB025BC88C6005819A0 /* SelectStickerCell.swift */; };
 		F2FD4DBA25BC88C6005819A0 /* SelectStickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FD4DB125BC88C6005819A0 /* SelectStickers.storyboard */; };
 		F2FD4DBB25BC88C6005819A0 /* SelectStickersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD4DB425BC88C6005819A0 /* SelectStickersViewController.swift */; };
@@ -570,6 +571,7 @@
 		F2FD3E0E2826C47F00EBDB14 /* NoGoalsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoGoalsData.swift; sourceTree = "<group>"; };
 		F2FD3E102826C9DB00EBDB14 /* Theme+Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Images.swift"; sourceTree = "<group>"; };
 		F2FD3E132826FBF900EBDB14 /* BarItemConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarItemConfiguration.swift; sourceTree = "<group>"; };
+		F2FD3E152826FCDE00EBDB14 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		F2FD4DB025BC88C6005819A0 /* SelectStickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickerCell.swift; sourceTree = "<group>"; };
 		F2FD4DB125BC88C6005819A0 /* SelectStickers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectStickers.storyboard; sourceTree = "<group>"; };
 		F2FD4DB425BC88C6005819A0 /* SelectStickersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickersViewController.swift; sourceTree = "<group>"; };
@@ -1500,6 +1502,7 @@
 		F2FD3E122826FBF900EBDB14 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F2FD3E152826FCDE00EBDB14 /* Page.swift */,
 				F2FD3E132826FBF900EBDB14 /* BarItemConfiguration.swift */,
 			);
 			path = Model;
@@ -1878,6 +1881,7 @@
 				F2A0942E268005ED00980EF9 /* ChartsCoordinatorProtocol.swift in Sources */,
 				F2FD4E2425BDCD42005819A0 /* StickerPresenterProtocol.swift in Sources */,
 				F2A829DE25EBF4F400B323FB /* WelcomeData.swift in Sources */,
+				F2FD3E162826FCDE00EBDB14 /* Page.swift in Sources */,
 				F27E552C25D041DB00B78A95 /* StickerUsedData.swift in Sources */,
 				F2EC68B326F7B42B0061AA9B /* StickerMonthlyChartController.swift in Sources */,
 				F2B3C6AF2807C66D00B1544A /* UIImage+Stroked.swift in Sources */,

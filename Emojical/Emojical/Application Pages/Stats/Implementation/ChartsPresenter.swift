@@ -58,7 +58,7 @@ class ChartsPresenter: ChartsPresenterProtocol {
         
         data = [.monthlyStickers]
         if repository.allGoals().count > 0 {
-            data.append(.goals)
+            data.append(contentsOf: [.goalsTotals, .goalsStreaks])
         }
         
         view?.loadChartsData(data)

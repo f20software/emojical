@@ -326,13 +326,17 @@
 
 // - List of Chart
 
-"chart_title_goals" = "Мэты";
-
-"chart_subtitle_goals" = "Сумы мэт, стрыкі і гісторыя";
-
 "chart_title_monthly_stickers" = "Штомесячныя налепкі";
 
 "chart_subtitle_monthly_stickers" = "Выкарыстанне налепкі на працягу месяца";
+
+"chart_title_goals_totals" = "Мэты Totals";
+
+"chart_subtitle_goals_totals" = "Сумы мэт і гісторыя";
+
+"chart_title_goals_streaks" = "Мэты Streaks";
+
+"chart_subtitle_goals_streaks" = "Сумы мэт стрык і гісторыя";
 
 // - Details
 

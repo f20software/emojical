@@ -32,8 +32,10 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         switch chart {
         case .monthlyStickers:
             chartView = stickersMonthlyChart(with: chart.viewControllerId)
-        case .goals:
-            chartView = goalStatsChart(with: chart.viewControllerId)
+        case .goalsTotals:
+            chartView = goalStatsChart(with: chart.viewControllerId, type: chart)
+        case .goalsStreaks:
+            chartView = goalStatsChart(with: chart.viewControllerId, type: chart)
         }
         
         guard let chartView = chartView else {
@@ -63,7 +65,7 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
         return nav
     }
 
-    private func goalStatsChart(with id: String) -> UINavigationController? {
+    private func goalStatsChart(with id: String, type: ChartType) -> UINavigationController? {
         // Instantiate GoalStatsChartController from the storyboard file
         guard
             let nav = Storyboard.Stats.viewController(with: id) as? UINavigationController,
@@ -77,7 +79,8 @@ class ChartsCoordinator: ChartsCoordinatorProtocol {
             repository: repository,
             awardManager: awardManager,
             calendar: CalendarHelper.shared,
-            view: view
+            view: view,
+            chartType: type
         )
         
         return nav

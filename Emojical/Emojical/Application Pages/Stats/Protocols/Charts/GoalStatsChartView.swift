@@ -10,11 +10,6 @@ import Foundation
 
 protocol GoalStatsChartView: AnyObject {
 
-    /// User tapped on total/streak counters
-    var onToggleTapped: (() -> Void)? { get set }
-
-    // MARK: - Updates
-
     /// Load stats for the goal streaks
     func loadGoalsData(data: [GoalStats], sortOrder: GoalStatsSortOrder)
 }

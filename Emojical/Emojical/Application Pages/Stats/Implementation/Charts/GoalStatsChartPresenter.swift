@@ -32,12 +32,22 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
         repository: DataRepository,
         awardManager: AwardManager,
         calendar: CalendarHelper,
-        view: GoalStatsChartView
+        view: GoalStatsChartView,
+        chartType: ChartType
     ) {
         self.repository = repository
         self.awardManager = awardManager
         self.calendar = calendar
         self.view = view
+        
+        switch chartType {
+        case .goalsTotals:
+            sort = .totalCount
+        case .goalsStreaks:
+            sort = .streakLength
+        default:
+            assertionFailure("Not implemented")
+        }
         
         self.dataBuilder = CalendarDataBuilder(
             repository: repository,
@@ -47,7 +57,6 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
 
     /// Called when view finished initial loading.
     func onViewDidLoad() {
-        setupView()
     }
     
     /// Called when view about to appear on the screen
@@ -57,13 +66,6 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
     
     // MARK: - Private helpers
 
-    private func setupView() {
-        view?.onToggleTapped = {
-            self.sort = self.sort.next()
-            self.loadViewData()
-        }
-    }
-    
     private func loadViewData() {
         let data: [GoalStats] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }

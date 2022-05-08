@@ -62,7 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         AwardManager.shared.recalculateOnAppResume()
 
         // Initiate notification engine
-        NotificationManager.shared.requestAuthorization()
+        let notificaionManager: NotificationManagerProtocol = NotificationManager.shared
+        notificaionManager.requestAuthorization()
         UNUserNotificationCenter.current().delegate = self
         
 //      Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")

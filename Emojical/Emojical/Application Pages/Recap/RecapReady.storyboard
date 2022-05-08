@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j3j-M2-yeB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j3j-M2-yeB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNN-La-7ca">
-                                <rect key="frame" x="30" y="416" width="354" height="237"/>
+                                <rect key="frame" x="30" y="469" width="354" height="184"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckC-kz-3sP">
-                                        <rect key="frame" x="10" y="197" width="167" height="30"/>
+                                        <rect key="frame" x="10" y="144" width="167" height="30"/>
                                         <state key="normal" title="Dismiss">
                                             <color key="titleColor" red="1" green="0.1764705882" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -42,27 +43,27 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your weekly recap is ready. Review?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMV-Bz-EPp">
-                                        <rect key="frame" x="104" y="83.5" width="230" height="41"/>
+                                        <rect key="frame" x="104" y="72" width="230" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7U-G8-aCQ">
-                                        <rect key="frame" x="0.0" y="186" width="354" height="1"/>
+                                        <rect key="frame" x="0.0" y="133" width="354" height="1"/>
                                         <color key="backgroundColor" systemColor="separatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="i4L-T2-PDU"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emojical-two-thumbs" translatesAutoresizingMaskIntoConstraints="NO" id="Qis-QQ-LvU">
-                                        <rect key="frame" x="20" y="72" width="64" height="64"/>
+                                        <rect key="frame" x="20" y="60.5" width="64" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="GYW-kW-IgN"/>
                                             <constraint firstAttribute="width" secondItem="Qis-QQ-LvU" secondAttribute="height" id="LUo-Ta-Cxw"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKh-6N-ex6">
-                                        <rect key="frame" x="177" y="197" width="167" height="30"/>
+                                        <rect key="frame" x="177" y="144" width="167" height="30"/>
                                         <state key="normal" title="Review Last Week">
                                             <color key="titleColor" red="1" green="0.1764705882" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -75,7 +76,6 @@
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="Qis-QQ-LvU" firstAttribute="leading" secondItem="FNN-La-7ca" secondAttribute="leading" constant="20" id="4hC-Lu-81R"/>
-                                    <constraint firstItem="y7U-G8-aCQ" firstAttribute="top" secondItem="Qis-QQ-LvU" secondAttribute="bottom" constant="50" id="8gP-UV-3QK"/>
                                     <constraint firstAttribute="trailing" secondItem="etm-gE-9qH" secondAttribute="trailing" constant="20" id="9ig-5I-NO6"/>
                                     <constraint firstAttribute="trailing" secondItem="4M4-Pq-hxM" secondAttribute="trailing" id="AC4-Sh-h68"/>
                                     <constraint firstItem="y7U-G8-aCQ" firstAttribute="leading" secondItem="FNN-La-7ca" secondAttribute="leading" id="DRt-2c-7Ur"/>
@@ -93,7 +93,8 @@
                                     <constraint firstItem="4M4-Pq-hxM" firstAttribute="top" secondItem="etm-gE-9qH" secondAttribute="bottom" constant="15" id="npz-Da-Zyb"/>
                                     <constraint firstItem="ckC-kz-3sP" firstAttribute="top" secondItem="y7U-G8-aCQ" secondAttribute="bottom" constant="10" id="nup-iD-QD3"/>
                                     <constraint firstAttribute="trailing" secondItem="vKh-6N-ex6" secondAttribute="trailing" constant="10" id="oCo-bx-7y3"/>
-                                    <constraint firstItem="Qis-QQ-LvU" firstAttribute="top" secondItem="4M4-Pq-hxM" secondAttribute="bottom" constant="20" id="qHp-QI-MNm"/>
+                                    <constraint firstItem="QMV-Bz-EPp" firstAttribute="top" secondItem="4M4-Pq-hxM" secondAttribute="bottom" constant="20" id="p2t-qP-aPq"/>
+                                    <constraint firstItem="y7U-G8-aCQ" firstAttribute="top" secondItem="QMV-Bz-EPp" secondAttribute="bottom" constant="20" id="slv-Pp-UwA"/>
                                     <constraint firstItem="4M4-Pq-hxM" firstAttribute="leading" secondItem="FNN-La-7ca" secondAttribute="leading" id="ycD-NH-xGX"/>
                                 </constraints>
                                 <connections>

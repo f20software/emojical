@@ -1,5 +1,5 @@
 //
-//  StickersGallery.swift
+//  GoalExamples.swift
 //  Stamps
 //
 //  Created by Vladimir Svidersky on 5/6/22.

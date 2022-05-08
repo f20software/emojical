@@ -33,8 +33,8 @@ class NotificationManager: NotificationManagerProtocol {
     /// Reminder for day when no stickers are recorded
     private var emptyDayReminderContent: UNNotificationContent {
         let content = UNMutableNotificationContent()
-        content.title = "new_reminder_title".localized
-        content.body = "new_reminder_body".localized
+        content.title = "daily_reminder_title".localized
+        content.body = "daily_reminder_body".localized
         content.sound = .default
         
         return content

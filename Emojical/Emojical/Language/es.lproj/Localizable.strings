@@ -290,9 +290,9 @@
 
 "onboarding_1_1" = "¡Hola! Parece que eres nuevo aquí. Déjame mostrarte el lugar.";
 
-"onboarding_1_2" = "Son pegatinas. Puede crear y personalizar muchos de ellos. Utilice pegatinas para escribir su diario, registrar eventos y actividades durante el día. Toque la pegatina en el panel inferior para agregarla a un día, vuelva a tocarla para quitarla.";
+"onboarding_1_2" = "Este es tu calendario semanal. Registrarás tu diario aquí usando pegatinas. Creamos una pegatina para ti, pero puedes crear muchas más y personalizarlas como quieras. Déjame enseñarte como.";
 
-"onboarding_2" = "¡Maravilloso! Una vez que descubra las pegatinas, vaya a la pestaña \"Pegatinas y metas \" y configure algunas metas para usted.";
+"onboarding_2" = "¡Maravilloso! Una vez que descubra las pegatinas, vaya a la pestaña \"Metas \" y configure algunas metas para usted.";
 
 "got_it_button" = "Lo tengo";
 
@@ -306,17 +306,9 @@
 
 // MARK: - Notifications
 
-"new_reminder_title" = "Recordatorio diario amistoso";
+"daily_reminder_title" = "Recordatorio diario amistoso";
 
-"new_reminder_body" =  "☝️ ¡Oye! ¡Es momento de revisar tus metas!";
-
-"empty_day_title" = "¿No te estás olvidando de algo?";
-
-"empty_day_body" =  "¿Quieres poner unas pegatinas para hoy?";
-
-"filled_day_title" = "¿Revisar la entrada de hoy?";
-
-"filled_day_body" = "Has grabado %@ hoy. ¿Quieres agregar algo más?";
+"daily_reminder_body" =  "☝️ ¡Oye! ¡Es momento de revisar tus metas!";
 
 // MARK: - Sticker Style
 

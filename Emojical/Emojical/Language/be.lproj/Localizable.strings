@@ -246,7 +246,7 @@
 
 "feedback_button" = "Водгук...";
 
-// Cheer messages when goal is reached
+// MARK: - Cheer messages when goal is reached
 
 "awesome_title" = "Дзіўна!";
 
@@ -258,7 +258,7 @@
 
 "award_count_description" = "Цяпер вы зарабілі гэтую ўзнагароду %d разоў. Паспрабуйце зрабіць гэта яшчэ раз і пачніце стрык!";
 
-// Confirmation / Alert / Messages
+// MARK: - Confirmation / Alert / Messages
 
 "week_recap_title" = "Падвядзенне вынікаў";
 
@@ -286,7 +286,7 @@
 
 "sticker_delete_confirmation" = "Гэтая налепка была выкарыстаная некалькі разоў. Вы ўпэўнены, што хочаце выдаліць яе?";
 
-// Onboarding
+// MARK: - Onboarding
 
 "onboarding_1_1" = "Добры дзень! Здаецца, вы тут новы. Дазвольце мне паказаць вам вакол.";
 
@@ -296,7 +296,7 @@
 
 "got_it_button" = "Зразумела";
 
-// Empty week messages
+// MARK: - Empty week messages
 
 "empty_current_week" = "Новы тыдзень, давайце зробім гэта!";
 
@@ -304,7 +304,7 @@
 
 "empty_future_week" = "Будучыня выглядае яркай, калі дадаць да яе налепкі!";
 
-// Notifications
+// MARK: - Notifications
 
 "new_reminder_title" = "Штодзённы напамін";
 
@@ -318,7 +318,7 @@
 
 "filled_day_body" = "Вы запісалі %@ сёння. Хочаце яшчэ што-небудзь дадаць?";
 
-// Sticker Style
+// MARK: - Sticker Style
 
 "appearance_title" = "Знешні выгляд";
 
@@ -330,7 +330,7 @@
 
 "sticker_style_restart" = "Стыль налепкі будзе зменены пасля таго, як вы зноў запусціце аппку.";
 
-// Statistics and Charts
+// MARK: - Statistics and Charts
 
 // - List of Chart
 
@@ -364,69 +364,69 @@
 
 // MARK: - Stickers Gallery
 
-"sticker-Super Star" = "Super Star";
+"sticker-Super Star" = "Супер Зорка";
 
-"sticker-That Was a Good Day" = "That Was a Good Day";
+"sticker-That Was a Good Day" = "Гэта быў добры дзень";
 
-"sticker-That Was a Bad Day" = "That Was a Bad Day";
+"sticker-That Was a Bad Day" = "Гэта быў дрэнны дзень";
 
-"sticker-Thumbs Up" = "Thumbs Up";
+"sticker-Thumbs Up" = "Палeц ўверх";
 
-"sticker-Thumbs Down" = "Thumbs Down";
+"sticker-Thumbs Down" = "Палец уніз";
 
-"sticker-Loved It" = "Love";
+"sticker-Loved It" = "Люба";
 
-"sticker-Soccer" = "Soccer";
+"sticker-Soccer" = "Футбол";
 
-"sticker-Hike" = "Hike";
+"sticker-Hike" = "Паход";
 
-"sticker-Yoga" = "Yoga";
+"sticker-Yoga" = "Ёга";
 
-"sticker-Swim" = "Swim";
+"sticker-Swim" = "Плаваць";
 
-"sticker-Ice Cream" = "Ice Cream";
+"sticker-Ice Cream" = "Марожанае";
 
-"sticker-Cake" = "Cake";
+"sticker-Cake" = "Торт";
 
-"sticker-Vegetables" = "Vegetables";
+"sticker-Vegetables" = "Гародніна";
 
-"sticker-Meat" = "Meat";
+"sticker-Meat" = "Мяса";
 
-"sticker-Drink" = "Drink";
+"sticker-Drink" = "Піць";
 
-"sticker-Fruits" = "Fruits";
+"sticker-Fruits" = "Садавіна";
 
-"sticker-Cherry On Top" = "Cherry On Top";
+"sticker-Cherry On Top" = "Вішня зверху";
 
-"sticker-Walked The Dog" = "Walked The Dog";
+"sticker-Walked The Dog" = "Выгуляў сабаку";
 
-"sticker-Read Book" = "Read Book";
+"sticker-Read Book" = "Чытаў кнігу";
 
-"sticker-Did Chores" = "Chores";
+"sticker-Did Chores" = "Рабіў хатнія справы";
 
-"sticker-Smoked" = "Smoked";
+"sticker-Smoked" = "Вэнджаны";
 
-"sticker-Toys" = "Toys";
+"sticker-Toys" = "Цацкі";
 
-"sticker-Too Much TV" = "Too Much TV";
+"sticker-Too Much TV" = "Занадта шмат тэлевізара";
 
-"sticker-Too Much Video Games" = "Too Much Video Games";
+"sticker-Too Much Video Games" = "Занадта шмат відэагульняў";
 
 // MARK: - Goal Examples
 
-"category-Health" = "Health";
+"category-Health" = "Здароўе";
 
-"category-Food" = "Food";
+"category-Food" = "Харчаванне";
 
-"goal-name-Play Soccer" = "Play Soccer";
+"goal-name-Play Soccer" = "Гуляць у футбол";
 
-"goal-name-Be Active" = "Be Active";
+"goal-name-Be Active" = "Будзьце актыўнымі";
 
-"goal-name-Eat Less Red Meat" = "Eat Less Red Meat";
+"goal-name-Eat Less Red Meat" = "Ешце менш чырвонага мяса";
 
-"goal-description-Record your soccer practices" = "Record your soccer practices and try to get to 3 times per week.";
+"goal-description-Record your soccer practices" = "Запісвайце свае трэніроўкі ў футболе і паспрабуйце займацца 3 разы на тыдзень.";
 
 "goal-description-Record your activities" =
-    "Record your activities - 🧘,⚽️. Try to do this 5 times per week.";
+    "Запісвайце сваю дзейнасць - 🧘,⚽️. Старайцеся рабіць гэта 5 разоў на тыдзень.";
 
-"goal-description-Record food you eat" = "Record food you eat - 🥩,🐣,🐟,🥦. And try to have 3 of fewer red meats per week.";
+"goal-description-Record food you eat" = "Запісвайце ежу, якую вы ясце - 🥩,🐣,🐟,🥦. І паспрабуйце ёсць на 3 разы менш чырвонага мяса ў тыдзень.";

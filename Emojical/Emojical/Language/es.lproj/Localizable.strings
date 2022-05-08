@@ -246,7 +246,7 @@
 
 "feedback_button" = "Realimentación...";
 
-// Cheer messages when goal is reached
+// MARK: - Cheer messages when goal is reached
 
 "awesome_title" = "¡Increíble!";
 
@@ -258,7 +258,7 @@
 
 "award_count_description" = "Ahora ha ganado este premio %d veces. ¡Intenta hacer esto de nuevo y comienza una racha!";
 
-// Confirmation / Alert / Messages
+// MARK: - Confirmation / Alert / Messages
 
 "week_recap_title" = "El resumen de la semana está listo";
 
@@ -286,7 +286,7 @@
 
 "sticker_delete_confirmation" = "Esta pegatina se ha utilizado varias veces. ¿Estás seguro de que quieres eliminarlo?";
 
-// Onboarding
+// MARK: - Onboarding
 
 "onboarding_1_1" = "¡Hola! Parece que eres nuevo aquí. Déjame mostrarte el lugar.";
 
@@ -296,7 +296,7 @@
 
 "got_it_button" = "Lo tengo";
 
-// Empty week messages
+// MARK: - Empty week messages
 
 "empty_current_week" = "Nueva era, ¡vamos con esto!";
 
@@ -304,7 +304,7 @@
 
 "empty_future_week" = "¡Future locks bright vhen yov de algunas pegatinas y luego!";
 
-// Notifications
+// MARK: - Notifications
 
 "new_reminder_title" = "Recordatorio diario amistoso";
 
@@ -318,7 +318,7 @@
 
 "filled_day_body" = "Has grabado %@ hoy. ¿Quieres agregar algo más?";
 
-// Sticker Style
+// MARK: - Sticker Style
 
 "appearance_title" = "Apariencia";
 
@@ -330,7 +330,7 @@
 
 "sticker_style_restart" = "El estilo de las pegatinas se cambiará después de que vuelva a iniciar la aplicación.";
 
-// Statistics and Charts
+// MARK: - Statistics and Charts
 
 // - List of Chart
 
@@ -364,53 +364,53 @@
 
 // MARK: - Stickers Gallery
 
-"sticker-Super Star" = "Super Star";
+"sticker-Super Star" = "Súper Estrella";
 
-"sticker-That Was a Good Day" = "That Was a Good Day";
+"sticker-That Was a Good Day" = "Ese fue un buen día";
 
-"sticker-That Was a Bad Day" = "That Was a Bad Day";
+"sticker-That Was a Bad Day" = "Ese fue un mal dia";
 
-"sticker-Thumbs Up" = "Thumbs Up";
+"sticker-Thumbs Up" = "Pulgares arriba";
 
-"sticker-Thumbs Down" = "Thumbs Down";
+"sticker-Thumbs Down" = "Pulgares abajo";
 
-"sticker-Loved It" = "Love";
+"sticker-Loved It" = "Me encantó";
 
-"sticker-Soccer" = "Soccer";
+"sticker-Soccer" = "Fútbol";
 
-"sticker-Hike" = "Hike";
+"sticker-Hike" = "Caminata";
 
 "sticker-Yoga" = "Yoga";
 
-"sticker-Swim" = "Swim";
+"sticker-Swim" = "Nadar";
 
-"sticker-Ice Cream" = "Ice Cream";
+"sticker-Ice Cream" = "Helado";
 
-"sticker-Cake" = "Cake";
+"sticker-Cake" = "Torta";
 
-"sticker-Vegetables" = "Vegetables";
+"sticker-Vegetables" = "Verduras";
 
-"sticker-Meat" = "Meat";
+"sticker-Meat" = "Carne";
 
-"sticker-Drink" = "Drink";
+"sticker-Drink" = "Beber";
 
-"sticker-Fruits" = "Fruits";
+"sticker-Fruits" = "Frutas";
 
-"sticker-Cherry On Top" = "Cherry On Top";
+"sticker-Cherry On Top" = "Cereza en la punta";
 
-"sticker-Walked The Dog" = "Walked The Dog";
+"sticker-Walked The Dog" = "Paseó el perro";
 
-"sticker-Read Book" = "Read Book";
+"sticker-Read Book" = "Leer el libro";
 
-"sticker-Did Chores" = "Chores";
+"sticker-Did Chores" = "Hizo tareas";
 
-"sticker-Smoked" = "Smoked";
+"sticker-Smoked" = "Ahumada";
 
-"sticker-Toys" = "Toys";
+"sticker-Toys" = "Juguetes";
 
-"sticker-Too Much TV" = "Too Much TV";
+"sticker-Too Much TV" = "Demasiada televisión";
 
-"sticker-Too Much Video Games" = "Too Much Video Games";
+"sticker-Too Much Video Games" = "Demasiados videojuegos";
 
 // MARK: - Goal Examples
 

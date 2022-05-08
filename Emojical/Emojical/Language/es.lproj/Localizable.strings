@@ -6,11 +6,11 @@
   Copyright © 2021 Vladimir Svidersky. All rights reserved.
 */
 
-// Today Screen
+// MARK: - Today Screen
 
 "select_stickers_for_day" = "Seleccionar pegatinas para el %@";
 
-// Sticker usage
+// MARK: - Sticker usage
 
 "sticker_used_0_text" = "La pegatina usada|nunca";
 
@@ -30,7 +30,7 @@
 
 "sticker_average_per_month" = "En promedio|%@|por mes";
 
-// Goal reaching
+// MARK: - Goal reaching
 
 "goal_reached_0_text" = "El meta aún no se ha alcanzado.";
 
@@ -44,7 +44,7 @@
 
 "no_goals_reahed_week" = "No se alcanzaron metas esta semana";
 
-// Goal description
+// MARK: - Goal description
 
 "weekly_goal" = "meta semanal";
 
@@ -52,23 +52,27 @@
 
 "once_goal" = "meta";
 
-"week_positive_x" = "Semanalmente, %d veces o más.";
+"positive_x" = "%d veces o más";
 
-"week_negative_x" = "Semanalmente, %d veces o menos.";
+"negative_x" = "%d veces o menos";
 
-"month_positive_x" = "Mensualmente, %d veces o más.";
+"week_positive_x" = "Semanalmente, %d veces o más";
 
-"month_negative_x" = "Mensualmente, %d veces o menos.";
+"week_negative_x" = "Semanalmente, %d veces o menos";
 
-"once_positive_x" = "Consigue %d pegatinas.";
+"month_positive_x" = "Mensualmente, %d veces o más";
 
-"once_negative_x" = "No consigas %d pegatinas.";
+"month_negative_x" = "Mensualmente, %d veces o menos";
+
+"once_positive_x" = "Consigue %d pegatinas";
+
+"once_negative_x" = "No consigas %d pegatinas";
 
 "last_x_weeks" = "Últimas %d semanas";
 
 "last_x_months" = "Últimos %d meses";
 
-// Current goal progress
+// MARK: - Current goal progress
 
 "you_got_0_stickers_week" = "No tienes pegatinas hasta ahora esta semana";
 
@@ -110,7 +114,7 @@
 
 "once_negative_goal_breached" = "Has roto la meta al conseguir %d pegatinas.";
 
-// Award reached / not reached state
+// MARK: - Award reached / not reached state
 
 "award_earned_on" = "Obtenido el %@.";
 
@@ -122,7 +126,7 @@
 
 "award_negative_not_reached" = "No se alcanzó la %@. Tengo %d pegatinas (el límite era %d).";
 
-// Titles / Tabs / Section Name
+// MARK: - Titles / Tabs / Section Name
 
 "new_goal_title" = "Nuevo meta";
 
@@ -146,9 +150,9 @@
 
 "today_title" = "Hoy";
 
-"goals_tab_title" = "Pegatinas y metas";
+"goals_title" = "Metas";
 
-"goals_section_title" = "Metas";
+"stickers_title" = "Pegatinas";
 
 "goals_library_title" = "Ejemplos de metas";
 
@@ -158,11 +162,9 @@
 
 "stickers_title" = "Pegatinas";
 
-// Goal Editing
+// MARK: - Goals Page
 
-"no_goals_description" = "Aún no hay metas. Podemos ayudarlo a mejorar, simplemente cree un nuevo objetivo y realice un seguimiento de su progreso.";
-
-"looking_for_examples" = "Si no está seguro de qué objetivos puede crear, eche un vistazo a algunos ejemplos que reunimos.";
+"no_goals_description" = "Aún no hay metas. Podemos ayudarlo a mejorar, simplemente cree un nuevo objetivo y realice un seguimiento de su progreso.\n\nSi no está seguro de qué objetivos puede crear, eche un vistazo a algunos ejemplos que reunimos.";
 
 "delete_goal_description" = "Si actualiza o elimina la meta, todos los premios obtenidos anteriormente se mantendrán sin cambios.";
 
@@ -204,7 +206,15 @@
 
 "select_stickers_title" = "Seleccionar pegatinas";
 
-// Sticker Editing
+// MARK: - Stickers Page
+
+"my_stickers_section" = "Mis pegatinas";
+
+"gallery_section" = "Galería de pegatinas";
+
+"stickers_instructions" = "Puedes crear y personalizar tantos stickers como quiera. Si necesita una aspiración, eche un vistazo a algunos ejemplos que preparamos. Simplemente toque cualquier pegatina de la galería para agregarla a sus pegatinas.";
+
+// MARK: - Sticker Editing Page
 
 "emoji_label" = "Emoji";
 
@@ -216,7 +226,7 @@
 
 "delete_sticker_button" = "Eliminar pegatina";
 
-// Options Page
+// MARK: - Options Page
 
 "reminder_title" = "Recordatorio";
 
@@ -236,7 +246,7 @@
 
 "feedback_button" = "Realimentación...";
 
-// Cheer messages when goal is reached
+// MARK: - Cheer messages when goal is reached
 
 "awesome_title" = "¡Increíble!";
 
@@ -248,7 +258,7 @@
 
 "award_count_description" = "Ahora ha ganado este premio %d veces. ¡Intenta hacer esto de nuevo y comienza una racha!";
 
-// Confirmation / Alert / Messages
+// MARK: - Confirmation / Alert / Messages
 
 "week_recap_title" = "El resumen de la semana está listo";
 
@@ -276,7 +286,7 @@
 
 "sticker_delete_confirmation" = "Esta pegatina se ha utilizado varias veces. ¿Estás seguro de que quieres eliminarlo?";
 
-// Onboarding
+// MARK: - Onboarding
 
 "onboarding_1_1" = "¡Hola! Parece que eres nuevo aquí. Déjame mostrarte el lugar.";
 
@@ -286,7 +296,7 @@
 
 "got_it_button" = "Lo tengo";
 
-// Empty week messages
+// MARK: - Empty week messages
 
 "empty_current_week" = "Nueva era, ¡vamos con esto!";
 
@@ -294,7 +304,7 @@
 
 "empty_future_week" = "¡Future locks bright vhen yov de algunas pegatinas y luego!";
 
-// Notifications
+// MARK: - Notifications
 
 "new_reminder_title" = "Recordatorio diario amistoso";
 
@@ -308,7 +318,7 @@
 
 "filled_day_body" = "Has grabado %@ hoy. ¿Quieres agregar algo más?";
 
-// Sticker Style
+// MARK: - Sticker Style
 
 "appearance_title" = "Apariencia";
 
@@ -320,7 +330,7 @@
 
 "sticker_style_restart" = "El estilo de las pegatinas se cambiará después de que vuelva a iniciar la aplicación.";
 
-// Statistics and Charts
+// MARK: - Statistics and Charts
 
 // - List of Chart
 
@@ -350,4 +360,73 @@
 
 "goal_streaks_title" = "Rachas de metas";
 
+"once_goal_section_title" = "Metas únicas";
 
+// MARK: - Stickers Gallery
+
+"sticker-Super Star" = "Súper Estrella";
+
+"sticker-That Was a Good Day" = "Ese fue un buen día";
+
+"sticker-That Was a Bad Day" = "Ese fue un mal dia";
+
+"sticker-Thumbs Up" = "Pulgares arriba";
+
+"sticker-Thumbs Down" = "Pulgares abajo";
+
+"sticker-Loved It" = "Me encantó";
+
+"sticker-Soccer" = "Fútbol";
+
+"sticker-Hike" = "Caminata";
+
+"sticker-Yoga" = "Yoga";
+
+"sticker-Swim" = "Nadar";
+
+"sticker-Ice Cream" = "Helado";
+
+"sticker-Cake" = "Torta";
+
+"sticker-Vegetables" = "Verduras";
+
+"sticker-Meat" = "Carne";
+
+"sticker-Drink" = "Beber";
+
+"sticker-Fruits" = "Frutas";
+
+"sticker-Cherry On Top" = "Cereza en la punta";
+
+"sticker-Walked The Dog" = "Paseó el perro";
+
+"sticker-Read Book" = "Leer el libro";
+
+"sticker-Did Chores" = "Hizo tareas";
+
+"sticker-Smoked" = "Ahumada";
+
+"sticker-Toys" = "Juguetes";
+
+"sticker-Too Much TV" = "Demasiada televisión";
+
+"sticker-Too Much Video Games" = "Demasiados videojuegos";
+
+// MARK: - Goal Examples
+
+"category-Health" = "Salud";
+
+"category-Food" = "Alimento";
+
+"goal-name-Play Soccer" = "Jugar fútbol";
+
+"goal-name-Be Active" = "Mantente activo";
+
+"goal-name-Eat Less Red Meat" = "Coma menos carne roja";
+
+"goal-description-Record your soccer practices" = "Graba tus prácticas de fútbol y trata de llegar a 3 veces por semana.";
+
+"goal-description-Record your activities" =
+    "Registre sus actividades - 🧘,⚽️. Trate de hacer esto 5 veces por semana.";
+
+"goal-description-Record food you eat" = "Registre los alimentos que come: 🥩,🐣,🐟,🥦. Y trate de comer 3 o menos carnes rojas por semana.";

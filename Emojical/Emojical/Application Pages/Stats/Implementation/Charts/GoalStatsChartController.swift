@@ -29,12 +29,12 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
     private var allSections: [Section] = [
         Section(
             period: .month,
-            title: "monthly_goal_section_title".localized,
+            title: Period.month.sectionTitle,
             chartTitle: "monthly_goal_chart_title".localized("\(chartLength)")
         ),
         Section(
             period: .week,
-            title: "weekly_goal_section_title".localized,
+            title: Period.week.sectionTitle,
             chartTitle: "weekly_goal_chart_title".localized("\(chartLength)")
         )
     ]

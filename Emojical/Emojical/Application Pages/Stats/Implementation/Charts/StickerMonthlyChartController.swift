@@ -84,8 +84,8 @@ class StickerMonthlyChartController: UIViewController, StickerMonthlyChartView {
         configureCollectionView()
         registerCells()
         
-        prevButton.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
-        nextButton.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        prevButton.image = Theme.main.images.leftArrow
+        nextButton.image = Theme.main.images.rightArrow
     }
     
     private func configureCollectionView() {

@@ -12,6 +12,7 @@ import UIKit
 struct GoalData {
     let goalId: Int64
     let name: String
+    let period: Period
     let details: String
     let count: Int
     let checkMark: Bool

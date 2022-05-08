@@ -208,7 +208,7 @@ class GoalPresenter: GoalPresenterProtocol {
             view.enableDoneButton(goal.isValid)
         } else {
             let data = GoalViewData(
-                details: Language.goalDescription(goal),
+                details: Language.goalDescription(goal, includePeriod: true),
                 stickers: repository.stampLabelsFor(goal: goal),
                 progressText: Language.goalCurrentProgress(
                     period: goal.period,

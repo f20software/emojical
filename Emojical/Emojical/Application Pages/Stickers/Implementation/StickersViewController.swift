@@ -12,8 +12,8 @@ class StickersViewController: UIViewController, StickersView {
 
     // List of sections
     enum Section: String, CaseIterable {
-        case stickers = "stickers_title"
-        case goals = "goals_section_title"
+        case stickers = "my_stickers_section"
+        case gallery = "gallery_section"
     }
 
     // MARK: - Outlets
@@ -36,7 +36,7 @@ class StickersViewController: UIViewController, StickersView {
     // MARK: - State
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, StickersElement>!
-
+    
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
@@ -50,11 +50,9 @@ class StickersViewController: UIViewController, StickersView {
         presenter = StickersPresenter(
             repository: repository,
             stampsListener: Storage.shared.stampsListener(),
-            goalsListener: Storage.shared.goalsListener(),
-            awardsListener: Storage.shared.awardsListener(),
-            awardManager: AwardManager.shared,
             view: self,
-            coordinator: coordinator)
+            coordinator: coordinator
+        )
         
         configureViews()
         presenter.onViewDidLoad()
@@ -75,11 +73,8 @@ class StickersViewController: UIViewController, StickersView {
     /// User tapped on the sticker
     var onStickerTapped: ((Int64) -> Void)?
 
-    /// User tapped on the goal
-    var onGoalTapped: ((Int64) -> Void)?
-
-    /// User tapped on create new goal button
-    var onNewGoalTapped: (() -> Void)?
+    /// User tapped on the gallery sticker
+    var onGalleryStickerTapped: ((Int64) -> Void)?
 
     /// User tapped on create new sticker button
     var onNewStickerTapped: (() -> Void)?
@@ -87,30 +82,21 @@ class StickersViewController: UIViewController, StickersView {
     /// User tapped on Add button
     var onAddButtonTapped: (() -> Void)?
 
-    /// User tapped on Goals Examples button
-    var onGoalsExamplesTapped: (() -> Void)?
-
     /// Update page title
     func updateTitle(_ text: String) {
         title = text
     }
 
     /// Load data
-    func loadData(stickers: [StickerData], goals: [GoalData]) {
+    func loadData(stickers: [StickerData], gallery: [StickerData]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, StickersElement>()
+
         snapshot.appendSections([0])
         snapshot.appendItems(stickers.map({ StickersElement.sticker($0) }))
         snapshot.appendItems([.newSticker])
         snapshot.appendSections([1])
-        snapshot.appendItems(goals.map({ StickersElement.goal($0) }))
-        if goals.count == 0 {
-            snapshot.appendItems([.noGoals("no_goals_description".localized)])
-        }
-        snapshot.appendItems([.newGoal])
-        if goals.count == 0 {
-            snapshot.appendItems([.noGoals("looking_for_examples".localized)])
-            snapshot.appendItems([.fromLibrary])
-        }
+        snapshot.appendItems(gallery.map({ StickersElement.sticker($0) }))
+        
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -126,7 +112,7 @@ class StickersViewController: UIViewController, StickersView {
         configureCollectionView()
         registerCells()
 
-        addButton.image = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))!
+        addButton.image = Theme.main.images.plusButton
     }
     
     private func configureCollectionView() {
@@ -153,50 +139,35 @@ class StickersViewController: UIViewController, StickersView {
             forCellWithReuseIdentifier: Specs.Cells.stickerCell
         )
         collectionView.register(
-            UINib(nibName: "GoalCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.goalCell
-        )
-        collectionView.register(
-            UINib(nibName: "NewGoalCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.newGoalCell
-        )
-        collectionView.register(
             UINib(nibName: "NewStickerCell", bundle: .main),
             forCellWithReuseIdentifier: Specs.Cells.newStickerCell
         )
         collectionView.register(
-            UINib(nibName: "NoGoalsCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.noGoalsCell
-        )
-        collectionView.register(
-            UINib(nibName: "GoalsLibraryCell", bundle: .main),
-            forCellWithReuseIdentifier: Specs.Cells.goalsExamplesCell
-        )
-        collectionView.register(
-            CollectionHeaderView.self,
+            StickersHeaderView.self,
             forSupplementaryViewOfKind: Specs.Cells.header,
             withReuseIdentifier: Specs.Cells.header
         )
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension StickersViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
+        let gallerySection = indexPath.section == 1
         if let cell = collectionView.cellForItem(at: indexPath) as? StickerCell {
-            onStickerTapped?(Int64(cell.tag))
+            if gallerySection {
+                onGalleryStickerTapped?(Int64(cell.tag))
+            } else {
+                onStickerTapped?(Int64(cell.tag))
+            }
         } else if (collectionView.cellForItem(at: indexPath) as? NewStickerCell) != nil {
             onNewStickerTapped?()
-        } else if let cell = collectionView.cellForItem(at: indexPath) as? GoalCell {
-            onGoalTapped?(Int64(cell.tag))
-        } else if (collectionView.cellForItem(at: indexPath) as? NewGoalCell) != nil {
-            onNewGoalTapped?()
-        } else if (collectionView.cellForItem(at: indexPath) as? GoalsLibraryCell) != nil {
-            onGoalsExamplesTapped?()
         }
     }
-
+    
     private func cell(for path: IndexPath, model: StickersElement, collectionView: UICollectionView) -> UICollectionViewCell? {
         
         switch model {
@@ -208,51 +179,29 @@ extension StickersViewController: UICollectionViewDelegate {
             cell.configure(for: data)
             return cell
 
-        case .goal(let data):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.goalCell, for: path
-            ) as? GoalCell else { return UICollectionViewCell() }
-            
-            cell.configure(for: data)
-            return cell
-
-        case .noGoals(let data):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.noGoalsCell, for: path
-            ) as? NoGoalsCell else { return UICollectionViewCell() }
-            
-            cell.configure(for: data)
-            return cell
-
         case .newSticker:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Specs.Cells.newStickerCell, for: path
             ) as? NewStickerCell else { return UICollectionViewCell() }
             return cell
-
-        case .newGoal:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.newGoalCell, for: path
-            ) as? NewGoalCell else { return UICollectionViewCell() }
-            return cell
-
-        case .fromLibrary:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Specs.Cells.goalsExamplesCell, for: path
-            ) as? GoalsLibraryCell else { return UICollectionViewCell() }
-            return cell
         }
     }
     
     private func header(for path: IndexPath, kind: String, collectionView: UICollectionView) ->
-        UICollectionReusableView? {
-        
+        UICollectionReusableView?
+    {
+        let gallerySection = (path.section == 1)
+            
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: Specs.Cells.header,
-            for: path) as? CollectionHeaderView else { return UICollectionReusableView() }
+            for: path) as? StickersHeaderView else { return UICollectionReusableView() }
 
-        header.configure(Section.allCases[path.section].rawValue.localized)
+        header.configure(
+            Section.allCases[path.section].rawValue.localized,
+            headerText: gallerySection ? "stickers_instructions".localized : nil,
+            buttonText: nil) // Not using button view at the moment
+
         return header
     }
 }
@@ -265,14 +214,7 @@ extension StickersViewController {
     private func generateLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout {
             (sectionIndex, _) -> NSCollectionLayoutSection? in
-        
-            let section = Section.allCases[sectionIndex]
-            switch (section) {
-            case .stickers:
-                return self.generateStampsLayout()
-            case .goals:
-                return self.generateGoalsLayout()
-            }
+            return self.generateStampsLayout()
         }
         return layout
     }
@@ -315,45 +257,6 @@ extension StickersViewController {
         
         return section
     }
-    
-    // Generates layout for goals section - each line is 100% width
-    private func generateGoalsLayout() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(100)
-            )
-        )
-        item.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: 0, bottom: 0, trailing: 0
-        )
-
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(100)
-            ),
-            subitems: [item]
-        )
-
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(44)),
-            elementKind: Specs.Cells.header,
-            alignment: .top
-        )
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [sectionHeader]
-        section.interGroupSpacing = Specs.cellMargin
-        section.contentInsets = NSDirectionalEdgeInsets(
-            top: 0, leading: Specs.margin,
-            bottom: Specs.margin, trailing: Specs.margin
-        )
-        
-        return section
-    }
 }
 
 // MARK: - Specs
@@ -365,20 +268,8 @@ fileprivate struct Specs {
         /// Sticker cell identifier
         static let stickerCell = "StickerCell"
 
-        /// Goal cell identifier
-        static let goalCell = "GoalCell"
-        
-        /// New goal cell identifier
-        static let newGoalCell = "NewGoalCell"
-
         /// New sticker cell identifier
         static let newStickerCell = "NewStickerCell"
-
-        /// No goals cell identifier
-        static let noGoalsCell = "NoGoalsCell"
-
-        /// Goals examples cell identifier
-        static let goalsExamplesCell = "GoalsLibraryCell"
 
         /// Custom supplementary header identifier and kind
         static let header = "stickers-header-element"

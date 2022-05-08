@@ -224,7 +224,6 @@ class TodayViewController: UIViewController {
     }
 
     private func configureViews() {
-        
         // We want to pass exact same width to all daily columns. Otherwise,
         // if we just rely on the auto-layout, there will be some fraction difference
         // between them, and that would make vertical spacing between stickers
@@ -244,8 +243,8 @@ class TodayViewController: UIViewController {
         hideRecapBubble(true)
         hideEmptyWeekBubble(true)
 
-        prevWeek.image = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
-        nextWeek.image = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))!
+        prevWeek.image = Theme.main.images.leftArrow
+        nextWeek.image = Theme.main.images.rightArrow
 
         awards.onAwardTapped = { (goalId) in
             self.onAwardTapped?(goalId)

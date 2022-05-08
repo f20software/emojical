@@ -1,15 +1,15 @@
 //
-//  StickersPresenter.swift
+//  GoalsPresenter.swift
 //  Emojical
 //
-//  Created by Vladimir Svidersky on 12/10/20.
-//  Copyright © 2020 Vladimir Svidersky. All rights reserved.
+//  Created by Vladimir Svidersky on 5/1/22.
+//  Copyright © 2022 Vladimir Svidersky. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class StickersPresenter: StickersPresenterProtocol {
+class GoalsPresenter: GoalsPresenterProtocol {
 
     // MARK: - DI
 
@@ -19,16 +19,13 @@ class StickersPresenter: StickersPresenterProtocol {
     private let awardsListener: AwardsListener
     private let awardManager: AwardManager
     
-    private weak var view: StickersView?
-    private weak var coordinator: StickersCoordinatorProtocol?
+    private weak var view: GoalsView?
+    private weak var coordinator: GoalsCoordinatorProtocol?
     
     // MARK: - State
 
-    // View model data for all stamps
-    private var stampsData: [StickerData] = []
-    
     // View model data for all goals
-    private var goalsData: [GoalData] = []
+    private var goalsData: [GoalData]?
     
     // MARK: - Lifecycle
 
@@ -38,8 +35,8 @@ class StickersPresenter: StickersPresenterProtocol {
         goalsListener: GoalsListener,
         awardsListener: AwardsListener,
         awardManager: AwardManager,
-        view: StickersView,
-        coordinator: StickersCoordinatorProtocol
+        view: GoalsView,
+        coordinator: GoalsCoordinatorProtocol
     ) {
         self.repository = repository
         self.stampsListener = stampsListener
@@ -92,13 +89,6 @@ class StickersPresenter: StickersPresenterProtocol {
         view?.onNewGoalTapped = { [weak self] in
             self?.coordinator?.newGoal()
         }
-        view?.onStickerTapped = { [weak self] stickerId in
-            guard let sticker = self?.repository.stampBy(id: stickerId) else { return }
-            self?.coordinator?.editSticker(sticker)
-        }
-        view?.onNewStickerTapped = { [weak self] in
-            self?.coordinator?.newSticker()
-        }
         view?.onAddButtonTapped = { [weak self] in
             self?.confirmAddAction()
         }
@@ -108,16 +98,7 @@ class StickersPresenter: StickersPresenterProtocol {
     }
     
     private func loadViewData() {
-        view?.updateTitle("goals_tab_title".localized)
-        let newStampsData = repository.allStamps().sorted(by: { $0.count > $1.count }).map({
-            StickerData(
-                stampId: $0.id,
-                label: $0.label,
-                color: $0.color,
-                isUsed: false
-            )
-        })
-        
+        view?.updateTitle("goals_title".localized)
         let newGoalsData: [GoalData] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }
 
@@ -125,7 +106,8 @@ class StickersPresenter: StickersPresenterProtocol {
             return GoalData(
                 goalId: goalId,
                 name: $0.name,
-                details: Language.goalDescription($0),
+                period: $0.period,
+                details: Language.goalDescription($0, includePeriod: false),
                 count: $0.count,
                 checkMark: $0.count > 0 && $0.isPeriodic == false,
                 icon: GoalOrAwardIconData(
@@ -136,18 +118,9 @@ class StickersPresenter: StickersPresenterProtocol {
             )
         })
         
-        var updated = false
-        if stampsData != newStampsData {
-            stampsData = newStampsData
-            updated = true
-        }
-        if goalsData != newGoalsData {
+        if newGoalsData != goalsData {
             goalsData = newGoalsData
-            updated = true
-        }
-
-        if updated {
-            view?.loadData(stickers: stampsData, goals: goalsData)
+            view?.loadData(goals: newGoalsData)
         }
     }
     
@@ -156,11 +129,6 @@ class StickersPresenter: StickersPresenterProtocol {
             title: "create_new_title".localized, message: nil, preferredStyle: .actionSheet
         )
         
-        confirm.addAction(
-            UIAlertAction(title: "sticker_title".localized, style: .default, handler: { (_) in
-                self.coordinator?.newSticker()
-            })
-        )
         confirm.addAction(
             UIAlertAction(title: "goal_title".localized, style: .default, handler: { (_) in
                 self.coordinator?.newGoal()

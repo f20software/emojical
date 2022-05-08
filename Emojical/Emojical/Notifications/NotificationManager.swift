@@ -39,7 +39,7 @@ class NotificationManager {
         self.calendar = calendar
 
         // Add a handler to react to updating today's stickers, so we can recalculate notifications
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshNotifications), name: .todayStickersUpdated, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(refreshNotifications), name: .todayStickersUpdated, object: nil)
 
         // Subscribe to significant time change notification
         NotificationCenter.default.addObserver(self, selector: #selector(refreshNotifications),

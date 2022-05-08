@@ -17,11 +17,8 @@ protocol StickersView: AnyObject {
     /// User tapped on the sticker
     var onStickerTapped: ((Int64) -> Void)? { get set }
 
-    /// User tapped on the goal
-    var onGoalTapped: ((Int64) -> Void)? { get set }
-
-    /// User tapped on the create new goal
-    var onNewGoalTapped: (() -> Void)? { get set }
+    /// User tapped on the gallery sticker
+    var onGalleryStickerTapped: ((Int64) -> Void)? { get set }
 
     /// User tapped on the create new sticker
     var onNewStickerTapped: (() -> Void)? { get set }
@@ -29,14 +26,11 @@ protocol StickersView: AnyObject {
     /// User tapped on Add button
     var onAddButtonTapped: (() -> Void)? { get set }
 
-    /// User tapped on Goals Examples button
-    var onGoalsExamplesTapped: (() -> Void)? { get set }
-
     // MARK: - Updates
 
     /// Update page title
     func updateTitle(_ text: String)
 
     /// Load stats for the month
-    func loadData(stickers: [StickerData], goals: [GoalData])
+    func loadData(stickers: [StickerData], gallery: [StickerData])
 }

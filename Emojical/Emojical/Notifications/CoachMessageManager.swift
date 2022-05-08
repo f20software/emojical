@@ -160,6 +160,7 @@ extension CoachMessageManager: CoachProtocol {
     
     /// Add observer for Coach messages
     func addObserver(_ disposable: AnyObject, onShow: @escaping (CoachMessage) -> Void) {
+        NSLog("CoachMessageManager: addObserver \(onShow)")
         queue.async { [weak self] in
             self?.onShowObservers.addObserver(disposable, onShow)
         }

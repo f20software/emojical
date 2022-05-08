@@ -8,6 +8,36 @@
 
 import UIKit
 
+/// BarItem configuration - titles and icons
+private let config: [Page: BarItemConfiguration] = [
+    .today: BarItemConfiguration(
+        title: "today_title".localized,
+        imageName: "calendar",
+        selectedImageName: "calendar"
+    ),
+    .goals: BarItemConfiguration(
+        title: "goals_title".localized,
+        imageName: "crown",
+        selectedImageName: "crown.fill"
+    ),
+    .stickers: BarItemConfiguration(
+        title: "stickers_title".localized,
+        imageName: "circle.hexagongrid",
+        selectedImageName: "circle.hexagongrid.fill"
+    ),
+    .stats: BarItemConfiguration(
+        title: "charts_title".localized,
+        imageName: "chart.bar",
+        selectedImageName: "chart.bar.fill"
+    ),
+    .options: BarItemConfiguration(
+        title: "options_title".localized,
+        imageName: "gearshape",
+        selectedImageName: "gearshape.fill"
+    ),
+]
+
+
 class MainViewController: UITabBarController {
 
     var todayTab: UINavigationController?
@@ -16,6 +46,7 @@ class MainViewController: UITabBarController {
     }
     
     var goalsTab: UINavigationController?
+    var stickersTab: UINavigationController?
     var statsTab: UINavigationController?
     var optionsTab: UINavigationController?
 
@@ -24,24 +55,50 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        todayTab = viewControllers?[0] as? UINavigationController
-        goalsTab = viewControllers?[1] as? UINavigationController
-        statsTab = viewControllers?[2] as? UINavigationController
-        optionsTab = viewControllers?[3] as? UINavigationController
+        todayTab = viewControllers?[Page.today.rawValue] as? UINavigationController
+        goalsTab = viewControllers?[Page.goals.rawValue] as? UINavigationController
+        stickersTab = viewControllers?[Page.stickers.rawValue] as? UINavigationController
+        statsTab = viewControllers?[Page.stats.rawValue] as? UINavigationController
+        optionsTab = viewControllers?[Page.options.rawValue] as? UINavigationController
 
-        todayTab?.tabBarItem.title = "today_title".localized
-        goalsTab?.tabBarItem.title = "goals_tab_title".localized
-        statsTab?.tabBarItem.title = "charts_title".localized
-        optionsTab?.tabBarItem.title = "options_title".localized
-
-        goalsTab?.tabBarItem.image = UIImage(systemName: "circle.hexagongrid")
-        goalsTab?.tabBarItem.selectedImage = UIImage(systemName: "circle.hexagongrid.fill")
+        configureBarItems()
 
         // Add handlers to app wide notifications
         NotificationCenter.default.addObserver(
             self, selector: #selector(navigateToCalendar), name: .navigateToToday, object: nil)
         
+        delegate = self
         updateColors()
+        navigateToCalendar()
+    }
+    
+    private func configureBarItems() {
+        let iconConfiguration = UIImage.SymbolConfiguration(weight: .bold)
+        config.forEach { page, config in
+            guard let vc = viewControllers?[page.rawValue] else { return }
+            vc.tabBarItem.title = config.title
+            vc.tabBarItem.image = UIImage(
+                systemName: config.imageName,
+                withConfiguration: iconConfiguration
+            )!
+            vc.tabBarItem.selectedImage = UIImage(
+                systemName: config.selectedImageName,
+                withConfiguration: iconConfiguration
+            )!
+        }
+    }
+}
+
+// MARK: - UITabBarControllerDelegate handling
+extension MainViewController : UITabBarControllerDelegate {
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        // If we're navigating to TodayViewController - select today's date
+        if ((viewController as? UINavigationController)?
+            .visibleViewController as? TodayViewController) != nil {
+            todayPresenter?.navigateTo(Date())
+        }
     }
 }
 
@@ -65,18 +122,6 @@ extension MainViewController {
 extension MainViewController: MainCoordinatorProtocol {
  
     func navigateTo(_ page: Page) {
-        switch page {
-        case .today:
-            selectedIndex = 0
-
-        case .goals:
-            selectedIndex = 1
-            
-        case .stats:
-            selectedIndex = 2
-            
-        case .options:
-            selectedIndex = 3
-        }
+        selectedIndex = page.rawValue
     }
 }

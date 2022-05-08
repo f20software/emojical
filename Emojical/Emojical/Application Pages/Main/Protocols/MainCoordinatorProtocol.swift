@@ -8,13 +8,6 @@
 
 import Foundation
 
-enum Page {
-    case today
-    case goals
-    case stats
-    case options
-}
-
 protocol MainCoordinatorProtocol: AnyObject {
 
     /// Navigate to specific page

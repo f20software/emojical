@@ -145,59 +145,67 @@ class Language {
 
     /// Goal description
     /// For example - "Weekly goal. 5 times or more."
-    static func goalDescription(_ goal: Goal) -> String {
+    static func goalDescription(_ goal: Goal, includePeriod: Bool) -> String {
         // Goal always should have limit
         guard goal.limit > 0 else {
             return ""
         }
 
-        switch goal.period {
-        case .week:
-            switch goal.direction {
-            case .positive:
-                return "week_positive_x".localized(goal.limit)
-            case .negative:
-                return "week_negative_x".localized(goal.limit)
+        // This is called from goal detail page, so let's add "." at the end
+        // to make it proper sentence.
+        if includePeriod {
+            switch goal.period {
+            case .week:
+                switch goal.direction {
+                case .positive:
+                    return "week_positive_x".localized(goal.limit).appending(".")
+                case .negative:
+                    return "week_negative_x".localized(goal.limit).appending(".")
+                }
+                
+            case .month:
+                switch goal.direction {
+                case .positive:
+                    return "month_positive_x".localized(goal.limit).appending(".")
+                case .negative:
+                    return "month_negative_x".localized(goal.limit).appending(".")
+                }
+                
+            case .once:
+                switch goal.direction {
+                case .positive:
+                    return "once_positive_x".localized(goal.limit).appending(".")
+                case .negative:
+                    return "once_negative_x".localized(goal.limit).appending(".")
+                }
+
+            default:
+                assertionFailure("Not implemented")
+                return ""
             }
-            
-        case .month:
-            switch goal.direction {
-            case .positive:
-                return "month_positive_x".localized(goal.limit)
-            case .negative:
-                return "month_negative_x".localized(goal.limit)
-            }
-            
-        case .once:
-            switch goal.direction {
-            case .positive:
-                return "once_positive_x".localized(goal.limit)
-            case .negative:
-                return "once_negative_x".localized(goal.limit)
+        } else {
+            switch goal.period {
+            case .week, .month:
+                switch goal.direction {
+                case .positive:
+                    return "positive_x".localized(goal.limit)
+                case .negative:
+                    return "negative_x".localized(goal.limit)
+                }
+                
+            case .once:
+                switch goal.direction {
+                case .positive:
+                    return "once_positive_x".localized(goal.limit)
+                case .negative:
+                    return "once_negative_x".localized(goal.limit)
+                }
+
+            default:
+                assertionFailure("Not implemented")
+                return ""
             }
 
-        default:
-            assertionFailure("Not implemented")
-            return ""
-        }
-    }
-    
-    /// Goal with period
-    /// For example - "weekly goal"
-    static func goalWithPeriod(_ period: Period) -> String {
-        switch period {
-        case .week:
-            return "weekly_goal".localized
-            
-        case .month:
-            return "monthly_goal".localized
-            
-        case .once:
-            return "once_goal".localized
-
-        default:
-            assertionFailure("Not implemented")
-            return ""
         }
     }
     
@@ -211,7 +219,7 @@ class Language {
         limit: Int,
         period: Period
     ) -> String {
-        let goal = goalWithPeriod(period).capitalizingFirstLetter()
+        let goal = period.goal.capitalizingFirstLetter()
         switch direction {
         case .positive:
             if reached {

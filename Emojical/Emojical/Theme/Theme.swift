@@ -24,6 +24,7 @@ final class Theme {
         self.specs = Specs()
         self.fonts = Fonts()
         self.colors = Colors()
+        self.images = Images()
 
         NotificationCenter.default.addObserver(
             self,
@@ -54,6 +55,10 @@ final class Theme {
 
     /// List of theme colors.
     private(set) var colors: Colors
+    
+    /// List of theme images.
+    private(set) var images: Images
+
 
     // MARK: - Private
 

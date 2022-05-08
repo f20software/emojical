@@ -239,7 +239,7 @@
         <scene sceneID="yvk-80-mnz">
             <objects>
                 <navigationController id="WFy-OT-yXN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Options" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="Zjf-zI-32P"/>
+                    <tabBarItem key="tabBarItem" title="Options" id="Zjf-zI-32P"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vx6-Fe-HE0">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -256,8 +256,6 @@
     </scenes>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -63,7 +63,7 @@ class ChartCell: ThemeObservingCollectionCell {
 fileprivate struct Specs {
     
     /// Vertical gap between cells
-    static let cellGap: CGFloat = 20.0
+    static let cellGap: CGFloat = 15.0
     
     /// Content insets inside cell background plate
     static let contentInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)

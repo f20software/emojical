@@ -290,9 +290,9 @@
 
 "onboarding_1_1" = "Hello! Looks like you are new here. Let me show you around.";
 
-"onboarding_1_2" = "These are stickers! You can create and customize however many you want. Use stickers to keep a diary, or record events and activities during the day. Tap the sticker in the bottom panel to add it to a day, tap on it again to remove it.";
+"onboarding_1_2" = "This is your weekly calendar. You will record your diary here using stickers. We created one sticker for you, but you can create many more and customize them any way you want. Let me show you how.";
 
-"onboarding_2" = "Wonderful! Once you figure out stickers, go to the \"Stickers & Goals\" tab and set up some goals for yourself!";
+"onboarding_2" = "Wonderful! Once you figure out stickers, go to the \"Goals\" tab and set up some goals for yourself!";
 
 "got_it_button" = "Got it";
 
@@ -306,17 +306,9 @@
 
 // MARK: - Notifications
 
-"new_reminder_title" = "Friendly daily reminder";
+"daily_reminder_title" = "Friendly daily reminder";
 
-"new_reminder_body" =  "☝️ Hey! It's time to check out your goals!";
-
-"empty_day_title" = "Aren't you forgetting something?";
-
-"empty_day_body" =  "Do you want to put some stickers for today?";
-
-"filled_day_title" = "Review today entry?";
-
-"filled_day_body" = "You have recorded %@ today. Do you want to add anything else?";
+"daily_reminder_body" =  "☝️ Hey! It's time to check out your goals!";
 
 // MARK: - Sticker Style
 

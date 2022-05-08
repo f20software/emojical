@@ -95,6 +95,7 @@ class StickersPresenter: StickersPresenterProtocol {
             })
 
         let galleryStickersData =
+            myStickersData.count >= Specs.maxStickersToHideGallery ? [] :
             repository.allGalleryStickers().map({
                 StickerData(
                     stampId: $0.id,
@@ -109,4 +110,11 @@ class StickersPresenter: StickersPresenterProtocol {
             gallery: galleryStickersData
         )
     }
+}
+
+// MARK: - Specs
+fileprivate struct Specs {
+
+    /// Once user created `maxStickersToHideGallery` stickers we will hide Stickers Gallery
+    static let maxStickersToHideGallery = 10
 }

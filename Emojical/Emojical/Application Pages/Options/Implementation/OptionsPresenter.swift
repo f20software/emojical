@@ -19,6 +19,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     private weak var repository: DataRepository!
     private weak var coordinator: OptionsCoordinatorProtocol?
     private weak var calender: CalendarHelper!
+    private weak var notificationManager: NotificationManagerProtocol!
     
     // MARK: - State
     
@@ -31,13 +32,15 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
         repository: DataRepository,
         settings: LocalSettings,
         coordinator: OptionsCoordinatorProtocol,
-        calendar: CalendarHelper
+        calendar: CalendarHelper,
+        notificationManager: NotificationManagerProtocol
     ) {
         self.view = view
         self.repository = repository
         self.settings = settings
         self.coordinator = coordinator
         self.calender = calendar
+        self.notificationManager = notificationManager
     }
 
     /// Called when view finished initial loading.
@@ -135,10 +138,8 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
         let comps = Calendar.current.dateComponents([.hour, .minute], from: newValue)
         settings.reminderTime = (comps.hour ?? 21, comps.minute ?? 0)
 
-        // Force notification manager to update reminder -
-        // We use same notification as when stickers are added to the current date
-        // because when that happens we also re-create reminder with a new text
-        NotificationCenter.default.post(name: .todayStickersUpdated, object: nil)
+        // Update notifications
+        notificationManager.refreshNotifications()
     }
 
     private func updateReminder(to newValue: Bool) {

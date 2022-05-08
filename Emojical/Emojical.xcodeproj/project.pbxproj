@@ -216,9 +216,6 @@
 		F2B5F47525CF58CF0051E8C9 /* GoalsLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */; };
 		F2B5F47625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */; };
 		F2B7D35F244C9B3A00C94E63 /* Language+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7D35E244C9B3A00C94E63 /* Language+String.swift */; };
-		F2BB6F3E25F9D990009C4259 /* CoachMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB6F3D25F9D990009C4259 /* CoachMessageManager.swift */; };
-		F2BB6F4425FB20BB009C4259 /* CoachListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB6F4325FB20BB009C4259 /* CoachListener.swift */; };
-		F2C493242430172D00E997BD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493232430172D00E997BD /* NotificationManager.swift */; };
 		F2C493262430179500E997BD /* LocalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C493252430179500E997BD /* LocalSettings.swift */; };
 		F2C4943923D2CBC800EAF9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */; };
 		F2C4943B23D2CBC800EAF9CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4943A23D2CBC800EAF9CC /* SceneDelegate.swift */; };
@@ -269,6 +266,10 @@
 		F2FD3E112826C9DB00EBDB14 /* Theme+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E102826C9DB00EBDB14 /* Theme+Images.swift */; };
 		F2FD3E142826FBF900EBDB14 /* BarItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E132826FBF900EBDB14 /* BarItemConfiguration.swift */; };
 		F2FD3E162826FCDE00EBDB14 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E152826FCDE00EBDB14 /* Page.swift */; };
+		F2FD3E1828282D5600EBDB14 /* NotificationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E1728282D5600EBDB14 /* NotificationManagerProtocol.swift */; };
+		F2FD3E1D28282E6100EBDB14 /* CoachMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E1A28282E6100EBDB14 /* CoachMessageManager.swift */; };
+		F2FD3E1E28282E6100EBDB14 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E1B28282E6100EBDB14 /* NotificationManager.swift */; };
+		F2FD3E1F28282E6100EBDB14 /* CoachListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E1C28282E6100EBDB14 /* CoachListener.swift */; };
 		F2FD4DB925BC88C6005819A0 /* SelectStickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD4DB025BC88C6005819A0 /* SelectStickerCell.swift */; };
 		F2FD4DBA25BC88C6005819A0 /* SelectStickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FD4DB125BC88C6005819A0 /* SelectStickers.storyboard */; };
 		F2FD4DBB25BC88C6005819A0 /* SelectStickersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD4DB425BC88C6005819A0 /* SelectStickersViewController.swift */; };
@@ -518,9 +519,6 @@
 		F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryView.swift; sourceTree = "<group>"; };
 		F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryPresenterProtocol.swift; sourceTree = "<group>"; };
 		F2B7D35E244C9B3A00C94E63 /* Language+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Language+String.swift"; sourceTree = "<group>"; };
-		F2BB6F3D25F9D990009C4259 /* CoachMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachMessageManager.swift; sourceTree = "<group>"; };
-		F2BB6F4325FB20BB009C4259 /* CoachListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachListener.swift; sourceTree = "<group>"; };
-		F2C493232430172D00E997BD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		F2C493252430179500E997BD /* LocalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
 		F2C4943523D2CBC800EAF9CC /* Emojical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C4943823D2CBC800EAF9CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -572,6 +570,10 @@
 		F2FD3E102826C9DB00EBDB14 /* Theme+Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Images.swift"; sourceTree = "<group>"; };
 		F2FD3E132826FBF900EBDB14 /* BarItemConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarItemConfiguration.swift; sourceTree = "<group>"; };
 		F2FD3E152826FCDE00EBDB14 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		F2FD3E1728282D5600EBDB14 /* NotificationManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManagerProtocol.swift; sourceTree = "<group>"; };
+		F2FD3E1A28282E6100EBDB14 /* CoachMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachMessageManager.swift; sourceTree = "<group>"; };
+		F2FD3E1B28282E6100EBDB14 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		F2FD3E1C28282E6100EBDB14 /* CoachListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachListener.swift; sourceTree = "<group>"; };
 		F2FD4DB025BC88C6005819A0 /* SelectStickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickerCell.swift; sourceTree = "<group>"; };
 		F2FD4DB125BC88C6005819A0 /* SelectStickers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectStickers.storyboard; sourceTree = "<group>"; };
 		F2FD4DB425BC88C6005819A0 /* SelectStickersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStickersViewController.swift; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 		F2049C2725FE804300E432DB /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				F2FD3E1728282D5600EBDB14 /* NotificationManagerProtocol.swift */,
 				F2049C5125FEB20E00E432DB /* CoachListenerProtocol.swift */,
 				F2049C2825FE804300E432DB /* CoachProtocol.swift */,
 			);
@@ -1342,9 +1345,7 @@
 			children = (
 				F2049C2925FE804300E432DB /* Model */,
 				F2049C2725FE804300E432DB /* Protocol */,
-				F2C493232430172D00E997BD /* NotificationManager.swift */,
-				F2BB6F4325FB20BB009C4259 /* CoachListener.swift */,
-				F2BB6F3D25F9D990009C4259 /* CoachMessageManager.swift */,
+				F2FD3E1928282E6100EBDB14 /* Implementation */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1506,6 +1507,16 @@
 				F2FD3E132826FBF900EBDB14 /* BarItemConfiguration.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F2FD3E1928282E6100EBDB14 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				F2FD3E1B28282E6100EBDB14 /* NotificationManager.swift */,
+				F2FD3E1C28282E6100EBDB14 /* CoachListener.swift */,
+				F2FD3E1A28282E6100EBDB14 /* CoachMessageManager.swift */,
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 		F2FD4DAE25BC88C6005819A0 /* Select Stickers */ = {
@@ -1829,6 +1840,7 @@
 			files = (
 				F2A5255B23D3D67E00C3E0F3 /* CalendarHelper.swift in Sources */,
 				F2F3BE25257D353D00A926E9 /* DayStampCell.swift in Sources */,
+				F2FD3E1F28282E6100EBDB14 /* CoachListener.swift in Sources */,
 				F27E703625D836E1004E49FB /* CongratsView.swift in Sources */,
 				F236A824281F33F000478203 /* GoalData.swift in Sources */,
 				F26596F02596AF1300B10B76 /* RecapViewController.swift in Sources */,
@@ -1843,7 +1855,6 @@
 				F236A822281F33F000478203 /* GoalCell.swift in Sources */,
 				F26596F12596AF1300B10B76 /* AwardRecapData.swift in Sources */,
 				F2FD4DF425BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.swift in Sources */,
-				F2C493242430172D00E997BD /* NotificationManager.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* StoredStamp.swift in Sources */,
 				F2049C4B25FE8D8D00E432DB /* RecapReadyPresenter.swift in Sources */,
 				F2F3BE67257DD25800A926E9 /* TodayPresenterProtocol.swift in Sources */,
@@ -1922,7 +1933,7 @@
 				F20A1E0D270A2A3A0071C5B7 /* UILabelWithContentInset.swift in Sources */,
 				F2B5F46B25CF58CF0051E8C9 /* GoalExampleCell.swift in Sources */,
 				F2FD4E1F25BDCD42005819A0 /* StickerEditData.swift in Sources */,
-				F2BB6F4425FB20BB009C4259 /* CoachListener.swift in Sources */,
+				F2FD3E1D28282E6100EBDB14 /* CoachMessageManager.swift in Sources */,
 				BC5643FF246B1E1F00942066 /* StoredDirection.swift in Sources */,
 				F260BF552803497C00B94B96 /* RecapBubbleView.swift in Sources */,
 				F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */,
@@ -1955,6 +1966,7 @@
 				F297764B2820FD93006C2642 /* DataSource+GallerySticker.swift in Sources */,
 				F273E2A125969BF50037BEDA /* Storyboard.swift in Sources */,
 				F295334C25B4DA03003CA002 /* TodayAwardElement.swift in Sources */,
+				F2FD3E1828282D5600EBDB14 /* NotificationManagerProtocol.swift in Sources */,
 				F2A22A0C280B143300DDF94F /* EmptyWeekBubbleView.swift in Sources */,
 				F2049C4225FE8CF300E432DB /* RecapReadyPresenterProtocol.swift in Sources */,
 				F204473F25E8C7E9003318C6 /* AwardIconView.swift in Sources */,
@@ -1990,6 +2002,7 @@
 				F27E552725D0418700B78A95 /* StickerUsedCell.swift in Sources */,
 				F2FD4E2325BDCD42005819A0 /* StickerCoordinatorProtocol.swift in Sources */,
 				F27E709A25DB2724004E49FB /* GoalChartView.swift in Sources */,
+				F2FD3E1E28282E6100EBDB14 /* NotificationManager.swift in Sources */,
 				F2EE4ABE25C5BABF004FB0F2 /* OptionsDataSource.swift in Sources */,
 				F2F260F32408D90200F5CCB9 /* DataSource+Award.swift in Sources */,
 				F27E703725D836E1004E49FB /* CongratsPresenterProtocol.swift in Sources */,
@@ -2011,7 +2024,6 @@
 				F29B439625CEECBD0005ADF5 /* Theme+Specs.swift in Sources */,
 				F23CF3552581E16A0048BA74 /* CalendarDataBuilder.swift in Sources */,
 				F23CF3AD25829B500048BA74 /* StickersPresenter.swift in Sources */,
-				F2BB6F3E25F9D990009C4259 /* CoachMessageManager.swift in Sources */,
 				F2F3BE66257DD25800A926E9 /* TodayView.swift in Sources */,
 				F2EE4AB825C5B3B9004FB0F2 /* SwitchCell.swift in Sources */,
 				F2A93FCC25816249006C88F8 /* MonthBoxView.swift in Sources */,

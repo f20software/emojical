@@ -34,7 +34,8 @@ class OptionsViewController: BaseTableViewController, OptionsView {
             repository: Storage.shared.repository,
             settings: LocalSettings.shared,
             coordinator: coordinator,
-            calendar: CalendarHelper.shared
+            calendar: CalendarHelper.shared,
+            notificationManager: NotificationManager.shared
         )
         
         configureViews()

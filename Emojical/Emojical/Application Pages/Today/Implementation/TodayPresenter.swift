@@ -229,6 +229,7 @@ class TodayPresenter: TodayPresenterProtocol {
                     bottomMargin: view.stickerSelectorSize)
                 {
                     completion?()
+                    self.main?.navigateTo(.stickers)
                 }
                 
             case .onboarding2:

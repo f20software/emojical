@@ -72,7 +72,6 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
                     .text(CoachMessage.onboarding2.stringValue, settings.isOnboardingSeen(.onboarding2).description),
                     .text("reminderEnalbed", settings.reminderEnabled.description),
                     .text("reminderTime", "\(settings.reminderTime.hour):\(settings.reminderTime.minute)"),
-                    .text("notificationId", settings.todayNotificationId),
                 ]
             ),
             Section(

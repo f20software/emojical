@@ -94,8 +94,11 @@ class StickersViewController: UIViewController, StickersView {
         snapshot.appendSections([0])
         snapshot.appendItems(stickers.map({ StickersElement.sticker($0) }))
         snapshot.appendItems([.newSticker])
-        snapshot.appendSections([1])
-        snapshot.appendItems(gallery.map({ StickersElement.sticker($0) }))
+        
+        if gallery.isEmpty == false {
+            snapshot.appendSections([1])
+            snapshot.appendItems(gallery.map({ StickersElement.sticker($0) }))
+        }
         
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }

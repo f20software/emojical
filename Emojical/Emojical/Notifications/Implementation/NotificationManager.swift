@@ -31,7 +31,7 @@ class NotificationManager: NotificationManagerProtocol {
     }
 
     /// Reminder for day when no stickers are recorded
-    private var emptyDayReminderContent: UNNotificationContent {
+    private var dailyDayReminderContent: UNNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = "daily_reminder_title".localized
         content.body = "daily_reminder_body".localized
@@ -95,7 +95,7 @@ class NotificationManager: NotificationManagerProtocol {
             hour: reminderTime.hour,
             minute: reminderTime.minute
         )
-        let content = emptyDayReminderContent
+        let content = dailyDayReminderContent
         
         // If notifiction time is in the past - bump it one day
         while nextNotificationDate.timeIntervalSinceNow < 0 {

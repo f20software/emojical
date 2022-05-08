@@ -10,14 +10,11 @@ import Foundation
 
 class LocalSettings {
     
-    private let todayNotificationIdKey = "todayNotificationId"
-    private let scheduledReminderIdsKey = "scheduledReminderNotificationIds"
     private let reminderEnabledKey = "reminderEnabled"
     private let reminderTimeHourKey = "reminderTimeHour"
     private let reminderTimeMinuteKey = "reminderTimeMinute"
     private let stickerStyleKey = "stickerStyle"
     private let onboardingSeenKey = "onboardingSeen"
-    private let stickersGalleryHidden = "stickersGalleryHidden"
 
     // Singleton instance
     static let shared = LocalSettings()
@@ -37,27 +34,6 @@ class LocalSettings {
     func seenOnboarding(_ message: CoachMessage) {
         guard let str = message.stringValue else { return }
         setBoolDefault(true, key: "\(onboardingSeenKey)-\(str)")
-    }
-
-    /// Today notification Id - to ensure we only schedule one reminder notification
-    var todayNotificationId: String? {
-        get {
-            return stringDefault(todayNotificationIdKey)
-        }
-        set {
-            setStringDefault(newValue, key: todayNotificationIdKey)
-        }
-    }
-    
-    var reminderIds: [String] {
-        get {
-            NSLog("LocalSettings: get remiderIds \(arrayDefault(scheduledReminderIdsKey))")
-            return arrayDefault(scheduledReminderIdsKey)
-        }
-        set {
-            NSLog("LocalSettings: set remiderIds \(newValue))")
-            setArrayDefault(newValue, key: scheduledReminderIdsKey)
-        }
     }
 
     /// Is today entry reminder enabled?

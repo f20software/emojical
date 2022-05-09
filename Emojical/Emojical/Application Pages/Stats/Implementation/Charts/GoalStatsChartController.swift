@@ -91,9 +91,6 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
     
     // MARK: - TodayView
     
-    /// User tapped on total/streak counters
-    var onToggleTapped: (() -> Void)?
-
     /// Load stats for the goal streaks
     func loadGoalsData(data: [GoalStats], sortOrder: GoalStatsSortOrder) {
         var snapshot = NSDiffableDataSourceSnapshot<String, GoalStats>()
@@ -120,12 +117,6 @@ class GoalStatsChartController: UIViewController, GoalStatsChartView {
             // Update internal sort order and trigger updating visible UI reflecting new value
             self._sortOrder = sortOrder
         })
-    }
-
-    // MARK: - Actions
-    
-    @IBAction func toggleButtonTapped(_ sender: Any) {
-        onToggleTapped?()
     }
 
     // MARK: - Private helpers

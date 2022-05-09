@@ -35,7 +35,7 @@ extension Theme {
         /// Gap between progress line and icon background (for large borders)
         let progressGapLarge: CGFloat = 2.0
 
-        /// Counters content insets (to add margin from label text sizes) - used in goals total and streak counters
+        /// Counters content insets (to add margin from label text sizes) - used in goal total and streak counters
         let counterContentInsets = UIEdgeInsets.init(top: 3, left: 5, bottom: 3, right: 5)
     }
 }

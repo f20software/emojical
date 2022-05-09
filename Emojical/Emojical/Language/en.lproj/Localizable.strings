@@ -326,13 +326,17 @@
 
 // - List of Chart
 
-"chart_title_goals" = "Goals";
-
-"chart_subtitle_goals" = "Goals totals, streaks, and history";
-
 "chart_title_monthly_stickers" = "Monthly Stickers";
 
 "chart_subtitle_monthly_stickers" = "Sticker usage for a month";
+
+"chart_title_goals_totals" = "Goal Totals";
+
+"chart_subtitle_goals_totals" = "Goal totals and history";
+
+"chart_title_goals_streaks" = "Goal Streaks";
+
+"chart_subtitle_goals_streaks" = "Goal streaks and history";
 
 // - Details
 

@@ -326,13 +326,17 @@
 
 // - List of Chart
 
-"chart_title_goals" = "Metas";
-
-"chart_subtitle_goals" = "Total de metas, rachas e historial";
-
 "chart_title_monthly_stickers" = "Pegatinas mensuales";
 
 "chart_subtitle_monthly_stickers" = "Uso de pegatinas durante un mes";
+
+"chart_title_goals_totals" = "Metas por total";
+
+"chart_subtitle_goals_totals" = "Metas por total e historial";
+
+"chart_title_goals_streaks" = "Metas por rachas";
+
+"chart_subtitle_goals_streaks" = "Metas por rachas e historial";
 
 // - Details
 

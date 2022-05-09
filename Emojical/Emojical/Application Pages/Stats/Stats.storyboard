@@ -120,7 +120,7 @@
             </objects>
             <point key="canvasLocation" x="3448" y="-627"/>
         </scene>
-        <!--Goals Totals-->
+        <!--Goal Totals-->
         <scene sceneID="Jl0-rb-Kjp">
             <objects>
                 <viewController id="TeE-Rx-vE7" customClass="GoalStatsChartController" customModule="Emojical" customModuleProvider="target" sceneMemberID="viewController">
@@ -150,7 +150,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Goals Totals" id="gNb-aU-QFd"/>
+                    <navigationItem key="navigationItem" title="Goal Totals" id="gNb-aU-QFd"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="stats" destination="29S-Sd-CX4" id="IM4-1S-RcU"/>

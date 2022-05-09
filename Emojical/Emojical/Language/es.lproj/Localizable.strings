@@ -330,13 +330,13 @@
 
 "chart_subtitle_monthly_stickers" = "Uso de pegatinas durante un mes";
 
-"chart_title_goals_totals" = "Metas Totals";
+"chart_title_goals_totals" = "Metas por total";
 
-"chart_subtitle_goals_totals" = "Total de metas e historial";
+"chart_subtitle_goals_totals" = "Metas por total e historial";
 
-"chart_title_goals_streaks" = "Metas Streaks";
+"chart_title_goals_streaks" = "Metas por rachas";
 
-"chart_subtitle_goals_streaks" = "Total de rachas e historial";
+"chart_subtitle_goals_streaks" = "Metas por rachas e historial";
 
 // - Details
 

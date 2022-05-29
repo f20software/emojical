@@ -242,9 +242,11 @@
 
 "backup_footer" = "Email yourself JSON file with all your data.";
 
-"please_rate" = "Please Rate Emojical";
+"please_rate" = "Please Rate Emojical...";
 
 "feedback_button" = "Feedback...";
+
+"feedback_subject" = "Emojical Feedback";
 
 // MARK: - Cheer messages when goal is reached
 

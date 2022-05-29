@@ -242,9 +242,11 @@
 
 "backup_footer" = "Адпраўце сабе файл JSON па электроннай пошце з усімі вашымі данымі.";
 
-"please_rate" = "Калі ласка, ацаніце Emojical";
+"please_rate" = "Калі ласка, ацаніце Emojical...";
 
 "feedback_button" = "Водгук...";
+
+"feedback_subject" = "Водгук на Emojical";
 
 // MARK: - Cheer messages when goal is reached
 

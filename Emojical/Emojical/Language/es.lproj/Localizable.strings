@@ -242,9 +242,11 @@
 
 "backup_footer" = "Envíe un correo electrónico a sí mismo con un archivo JSON con todos sus datos.";
 
-"please_rate" = "Por favor califique Emojical";
+"please_rate" = "Por favor califique Emojical...";
 
 "feedback_button" = "Realimentación...";
+
+"feedback_subject" = "Comentarios para Emojical";
 
 // MARK: - Cheer messages when goal is reached
 

@@ -161,7 +161,7 @@ class OptionsPresenter: NSObject, OptionsPresenterProtocol {
     private func sendFeedback() {
         sendFeedbackEmail(
             to: "feedback@emojical.app",
-            subject: "Emojical Feedback"
+            subject: "feedback_subject".localized
         )
     }
 
@@ -221,13 +221,11 @@ extension OptionsPresenter: MFMailComposeViewControllerDelegate {
     }
 
     private func sendFeedbackEmail(to: String, subject: String) {
-        guard let mail = mailComposer else {
-            return
-        }
-
-        mail.setSubject(subject)
-        mail.setToRecipients([to])
-        view?.viewController?.present(mail, animated: true)
+        let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? ""
+        
+        guard let feedbackEmailURL = URL(string: "mailto:\(to)?subject=\(subjectEncoded)")
+            else { fatalError("Expected a valid URL") }
+        UIApplication.shared.open(feedbackEmailURL, options: [:], completionHandler: nil)
     }
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

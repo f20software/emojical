@@ -8,69 +8,69 @@
 
 // MARK: - Today Screen
 
-"select_stickers_for_day" = "Select stickers for %@";
+"select_stickers_for_day" = "Вибері наклейку (%@)";
 
 // MARK: - Sticker usage
 
-"sticker_used_0_text" = "Sticker used|never";
+"sticker_used_0_text" = "Використана|ніколи";
 
-"sticker_used_1_text" = "Sticker used|once|on %@";
+"sticker_used_1_text" = "Використана|один раз|%@";
 
-"sticker_used_x_text" = "Sticker used|%d times|last time:\n%@";
+"sticker_used_x_text" = "Використана|%d разів|останній раз:\n%@";
 
-"sticker_used_no_goal" = "This sticker has not been assigned to a goal.";
+"sticker_used_no_goal" = "Наклейка не призначена для цілі.";
 
-"sticker_used_1_goal" = "Sticker is used in the \'%@\' goal.";
+"sticker_used_1_goal" = "Наклейка використовується в цілі \'%@\'.";
 
-"sticker_used_x_goals" = "Sticker is used in the %@ goals.";
+"sticker_used_x_goals" = "Наклейка використовується в %@ цілях.";
 
-"sticker_average_too_early" = "On average|-";
+"sticker_average_too_early" = "У середньому|-";
 
-"sticker_average_per_week" = "On average|%@|per week";
+"sticker_average_per_week" = "У середньому|%@|в тиждень";
 
-"sticker_average_per_month" = "On average|%@|per month";
+"sticker_average_per_month" = "У середньому|%@|в місяць";
 
 // MARK: - Goal reaching
 
-"goal_reached_0_text" = "The goal has not yet been reached."; 
+"goal_reached_0_text" = "Ціль ще не досягнута.";
 
-"goal_reached_1_text" = "The goal has been reached\non %@";
+"goal_reached_1_text" = "Ціль досягнута\n%@";
 
-"goal_reached_x_text" = "Goal reached|%d times|last time:\n%@";
+"goal_reached_x_text" = "Ціль досягнута|%d разів|останній раз:\n%@";
 
-"current_streak_0" = "Current streak|-";
+"current_streak_0" = "Нинішня серія|-";
 
-"current_streak_x" = "Current streak|%d";
+"current_streak_x" = "Нинішня серія|%d";
 
-"no_goals_reahed_week" = "No goals were reached this week";
+"no_goals_reahed_week" = "На цьому тижні не було досягнуто жодних цілей";
 
 // MARK: - Goal description
 
-"weekly_goal" = "weekly goal";
+"weekly_goal" = "тижнева ціль";
 
-"monthly_goal" = "monthly goal";
+"monthly_goal" = "місячна ціль";
 
-"once_goal" = "goal";
+"once_goal" = "ціль";
 
-"positive_x" = "%d times or more";
+"positive_x" = "%d разів і більше";
 
-"negative_x" = "%d times or less";
+"negative_x" = "%d разів або менше";
 
-"week_positive_x" = "Weekly, %d times or more";
+"week_positive_x" = "Тижнева, %d разів і більше";
 
-"week_negative_x" = "Weekly, %d times or less";
+"week_negative_x" = "Тижнева, %d разів або менше";
 
-"month_positive_x" = "Monthly, %d times or more";
+"month_positive_x" = "Місячна, %d разів і більше";
 
-"month_negative_x" = "Monthly, %d times or less";
+"month_negative_x" = "Місячна, %d разів або менше";
 
-"once_positive_x" = "Get %d stickers";
+"once_positive_x" = "Зберіте %d наклейок";
 
-"once_negative_x" = "Don't get %d stickers";
+"once_negative_x" = "Не зберіте %d наклейок";
 
-"last_x_weeks" = "Last %d weeks";
+"last_x_weeks" = "Останні %d тижнів";
 
-"last_x_months" = "Last %d months";
+"last_x_months" = "Останні %d місяців";
 
 // MARK: - Current goal progress
 
@@ -128,35 +128,35 @@
 
 // MARK: - Titles / Tabs / Section Name
 
-"new_goal_title" = "New Goal";
+"new_goal_title" = "Нова ціль";
 
-"new_sticker_title" = "New Sticker";
+"new_sticker_title" = "Нова наклейка";
 
-"create_new_title" = "Create New";
+"create_new_title" = "Створити нову";
 
-"goal_title" = "Goal...";
+"goal_title" = "Ціль...";
 
-"create_goal_from_examples_title" = "Create Goal from Examples...";
+"create_goal_from_examples_title" = "Створіть ціль на прикладах...";
 
-"dismiss_button" = "Dismiss";
+"dismiss_button" = "Закрити";
 
-"weekly_recap_title" = "Weekly Recap";
+"weekly_recap_title" = "Щотижневий підсумок";
 
-"reached_goals_title" = "Reached Goals";
+"reached_goals_title" = "Досягнуты цілі";
 
-"not_reached_goals_title" = "Not Reached Goals";
+"not_reached_goals_title" = "Не досягнуті цілі";
 
-"today_title" = "Today";
+"today_title" = "Сьогодні";
 
-"goals_title" = "Goals";
+"goals_title" = "Цілі";
 
-"stickers_title" = "Stickers";
+"stickers_title" = "Наклейки";
 
 "goals_library_title" = "Goal Examples";
 
-"charts_title" = "Charts";
+"charts_title" = "Діаграми";
 
-"options_title" = "Options";
+"options_title" = "Параметри";
 
 // MARK: - Goals Page
 

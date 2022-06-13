@@ -518,6 +518,7 @@
 		F2B5F46025CF58CF0051E8C9 /* GoalsLibrary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoalsLibrary.storyboard; sourceTree = "<group>"; };
 		F2B5F46525CF58CF0051E8C9 /* GoalsLibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryView.swift; sourceTree = "<group>"; };
 		F2B5F46625CF58CF0051E8C9 /* GoalsLibraryPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsLibraryPresenterProtocol.swift; sourceTree = "<group>"; };
+		F2B6F5942856A2FD00BD2B41 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F2B7D35E244C9B3A00C94E63 /* Language+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Language+String.swift"; sourceTree = "<group>"; };
 		F2C493252430179500E997BD /* LocalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
 		F2C4943523D2CBC800EAF9CC /* Emojical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojical.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1724,6 +1725,7 @@
 				Base,
 				es,
 				be,
+				uk,
 			);
 			mainGroup = F2C4942C23D2CBC700EAF9CC;
 			packageReferences = (
@@ -2098,6 +2100,7 @@
 				F29804D425C7B28500952AAF /* en */,
 				F2E906EC25C89B59007CE699 /* es */,
 				F255593A27DDC16400957835 /* be */,
+				F2B6F5942856A2FD00BD2B41 /* uk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

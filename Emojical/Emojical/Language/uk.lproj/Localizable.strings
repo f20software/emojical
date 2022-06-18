@@ -74,57 +74,57 @@
 
 // MARK: - Current goal progress
 
-"you_got_0_stickers_week" = "You've got no stickers so far this week";
+"you_got_0_stickers_week" = "На цьому тижні у вас немає наклейок";
 
-"you_got_1_sticker_week" = "You got 1 sticker this week";
+"you_got_1_sticker_week" = "Ви отримали 1 наклейку цього тижня";
 
-"you_got_x_stickers_week" = "You got %d stickers this week";
+"you_got_x_stickers_week" = "Ви отримали %d наклейок цього тижня";
 
-"you_got_0_stickers_month" = "You've got no stickers so far this month";
+"you_got_0_stickers_month" = "Цього місяця у вас немає наклейок";
 
-"you_got_1_sticker_month" = "You got 1 sticker this month";
+"you_got_1_sticker_month" = "Ви отримали 1 наклейку цього місяця";
 
-"you_got_x_stickers_month" = "You got %d stickers this month";
+"you_got_x_stickers_month" = "Ви отримали %d наклейок цього місяця";
 
-"you_got_0_stickers_total" = "You've got no stickers so far";
+"you_got_0_stickers_total" = "У вас поки немає наклейок";
 
-"you_got_1_sticker_total" = "You got 1 sticker so far";
+"you_got_1_sticker_total" = "Наразі у вас є 1 наклейка";
 
-"you_got_x_stickers_total" = "You got %d stickers so far";
+"you_got_x_stickers_total" = "Наразі у вас є %d наклейок";
 
-"positive_goal_not_reached" = "%@. %d more to go.";
+"positive_goal_not_reached" = "%@. Попереду ще %d.";
 
-"positive_goal_not_reached_0" = "%@. The goal is %d.";
+"positive_goal_not_reached_0" = "%@. Ціль %d.";
 
-"negative_goal_not_reached" = "%@. You can still get %d more.";
+"negative_goal_not_reached" = "%@. Ви все ще можете отримати ще %d.";
 
-"negative_goal_not_reached_0" = "%@. You can get up to %d.";
+"negative_goal_not_reached_0" = "%@. Ви можете отримати до %d.";
 
-"negative_goal_reached" = "%@. You will break this goal if you get one more.";
+"negative_goal_reached" = "%@. Ви порушите цю ціль, якщо отримаєте ще одну.";
 
-"week_positive_goal_reached" = "You've reached the goal this week by getting %d stickers. Great job!";
+"week_positive_goal_reached" = "Цього тижня ви досягли ціль, отримавши %d наклейок. Чудова робота!";
 
-"week_negative_goal_breached" = "You've broken the goal by getting %d stickers this week.";
+"week_negative_goal_breached" = "Ви порушили ціль, отримавши %d наклейок цього тижня.";
 
-"month_positive_goal_reached" = "You've reached the goal this month by getting %d stickers. Great job!";
+"month_positive_goal_reached" = "Цього місяця ви досягли ціль, отримавши %d наклейок. Чудова робота!";
 
-"month_negative_goal_breached" = "You've broken the goal by getting %d stickers this month.";
+"month_negative_goal_breached" = "Ви порушили ціль, отримавши %d наклейок цього місяця.";
 
-"once_positive_goal_reached" = "You've reached the goal by getting %d stickers. Great job!";
+"once_positive_goal_reached" = "Ви досягли ціль, отримавши %d наклейок. Чудова робота!";
 
-"once_negative_goal_breached" = "You've broken the goal by getting %d stickers.";
+"once_negative_goal_breached" = "Ви порушили ціль, отримавши %d наклейок.";
 
 // MARK: - Award reached / not reached state
 
-"award_earned_on" = "Earned on %@.";
+"award_earned_on" = "Зароблено %@.";
 
-"award_positive_reached" = "Earned on %@, by getting %d stickers.";
+"award_positive_reached" = "Зароблено %@, отримавши %d наклейок.";
 
-"award_positive_not_reached" = "%@ not reached. You got %d stickers (needed %d).";
+"award_positive_not_reached" = "%@ не досягнуто. Ви отримали %d наклейок (потрібно %d).";
 
-"award_negative_reached" = "Earned on %@. You had %d stickers (limit was %d).";
+"award_negative_reached" = "Зароблено %@. У вас було %d наклейок (ліміт становив %d).";
 
-"award_negative_not_reached" = "%@ not reached. You got %d stickers (limit was %d).";
+"award_negative_not_reached" = "%@ не досягнуто. Ви отримали %d наклейок (ліміт становив %d).";
 
 // MARK: - Titles / Tabs / Section Name
 
@@ -152,7 +152,7 @@
 
 "stickers_title" = "Наклейки";
 
-"goals_library_title" = "Goal Examples";
+"goals_library_title" = "Приклади цілей";
 
 "charts_title" = "Діаграми";
 
@@ -160,201 +160,199 @@
 
 // MARK: - Goals Page
 
-"no_goals_description" = "You have no goals yet. Emojical can help you improve yourself, just create a new goal and track your progress.\n\nIf you're not sure which goals you can create, take a look at a few examples we put together.";
+"no_goals_description" = "У вас ще немає цілей. Emojical може допомогти вам покращити себе, просто створіть нову ціль і відстежуйте свій прогрес.\n\nЯкщо ви не впевнені, які цілі можна створити, перегляньте кілька прикладів, які ми зібрали.";
 
-"delete_goal_description" = "If you update or delete the goal, all previously earned awards will remain unchanged.";
+"delete_goal_description" = "Якщо ви оновите або видалите ціль, усі раніше зароблені нагороди залишаться незмінними.";
 
-"create_goal_button" = "Create Goal";
+"create_goal_button" = "Створити ціль";
 
-"goals_examples_button" = "Goal Examples";
+"goals_examples_button" = "Приклади цілей";
 
-"delete_goal_button" = "Delete Goal";
+"delete_goal_button" = "Видалити ціль";
 
-"select_stickers_instructions" = "Select one or more";
+"select_stickers_instructions" = "Виберіть один або кілька";
 
-"name_label" = "Name";
+"name_label" = "Назва";
 
-"goal_name_placeholder" = "Goal Name";
+"goal_name_placeholder" = "Назва цілі";
 
-"stickers_label" = "Stickers";
+"stickers_label" = "Наклейки";
 
-"goal_period_label" = "How often do you want to reach the goal?";
+"goal_period_label" = "Як часто ви хочете досягти цілі?";
 
-"direction_label" = "Is that a positive or negative goal?";
+"direction_label" = "Позитивна це ціль чи негативна?";
 
-"positive" = "positive";
+"positive" = "позитивні";
 
-"negative" = "negative";
+"negative" = "негативні";
 
-"get_x_or_more" = "The goal is to get|or more";
+"get_x_or_more" = "Ціль – отримати|або більше";
 
-"get_x_or_fewer" = "The goal is to get|or less";
+"get_x_or_fewer" = "Ціль – отримати|або менше";
 
-"get_x_stickers" = "The goal is to get|stickers";
+"get_x_stickers" = "Ціль – отримати|наклейки";
 
-"not_get_x_stickers" = "The goal is not to get|stickers";
+"not_get_x_stickers" = "Ціль – не отримати|наклейки";
 
-"week_period" = "weeky";
+"week_period" = "тижневий";
 
-"month_period" = "monthly";
+"month_period" = "щомісячно";
 
-"once_period" = "once";
+"once_period" = "раз";
 
-"select_stickers_title" = "Select Stickers";
+"select_stickers_title" = "Виберіть наклейки";
 
 // MARK: - Stickers Page
 
-"my_stickers_section" = "My Stickers";
+"my_stickers_section" = "Мої наклейки";
 
-"gallery_section" = "Stickers Gallery";
+"gallery_section" = "Приклади наклейок";
 
-"stickers_instructions" = "You can create and customize as many stickers as you want. If you need an aspiration - take a look at few examples we prepared. Just tap on any sticker from the gallery to add it your stickers.";
+"stickers_instructions" = "Ви можете створювати та налаштовувати скільки завгодно наклейок. Якщо вам потрібно прагнення - подивіться кілька прикладів, які ми підготували. Просто торкніться будь-якої наклейки з галереї, щоб додати до неї свої наклейки.";
 
 // MARK: - Sticker Editing Page
 
-"emoji_label" = "Emoji";
+"emoji_label" = "Емодзі";
 
-"preview_label" = "Preview";
+"preview_label" = "Перегляд";
 
-"sticker_name_placeholder" = "Sticker Name";
+"sticker_name_placeholder" = "Назва наклейки";
 
-"delete_sticker_description" = "If you delete the sticker, all previous usage of that sticker will remain unchanged.";
+"delete_sticker_description" = "Якщо ви видалите наклейку, усі попередні використання цієї наклейки залишаться незмінними.";
 
-"delete_sticker_button" = "Delete Sticker";
+"delete_sticker_button" = "Видалити наклейку";
 
 // MARK: - Options Page
 
-"reminder_title" = "Reminder";
+"reminder_title" = "Нагадування";
 
-"reminder_option" = "Daily Reminder";
+"reminder_option" = "Щоденне нагадування";
 
-"reminde_me_at_time" = "Remind Me At";
+"reminde_me_at_time" = "Нагадати мені в";
 
-"reminder_footer" = "Remind yourself every day to check out your goals.";
+"reminder_footer" = "Нагадуйте собі щодня, щоб перевірити свої цілі.";
 
-"backup_title" = "Backup / Restore";
+"appearance_title" = "Зовнішній вигляд";
 
-"backup_button" = "Export Your Data...";
+"application_restart_required" = "Потрібний перезапуск програми.";
 
-"backup_footer" = "Email yourself JSON file with all your data.";
+"sticker_style" = "Стиль наклейки";
 
-"please_rate" = "Please Rate Emojical...";
+"restart_button" = "Перезапустіть";
 
-"feedback_button" = "Feedback...";
+"sticker_style_restart" = "Стиль наклейки буде змінено після повторного запуску програми.";
 
-"feedback_subject" = "Emojical Feedback";
+"backup_title" = "Резервне копіювання / відновлення";
+
+"backup_button" = "Експортувати свої дані...";
+
+"backup_footer" = "Надішліть собі файл JSON з усіма своїми даними електронною поштою.";
+
+"please_rate" = "Будь ласка, оцініть Emojical...";
+
+"feedback_button" = "Відгук...";
+
+"feedback_subject" = "Відгук на Emojical";
 
 // MARK: - Cheer messages when goal is reached
 
-"awesome_title" = "Awesome!";
+"awesome_title" = "Чудово!";
 
-"goal_reached_name" = "You've reached your \"%@\" goal.";
+"goal_reached_name" = "Ви досягли своєї цілі \"%@\".";
 
-"goal_reached_no_name" = "You've reached your goal.";
+"goal_reached_no_name" = "Ви досягли своєї цілі.";
 
-"award_streak_count_description" = "You have now earned this award %d times total and %d times in a row! Keep that streak going!";
+"award_streak_count_description" = "Тепер ви отримали цю нагороду %d разом і %d разів поспіль! Продовжуйте цю серію!";
 
-"award_count_description" = "You have now earned this award %d times. Try to do this again and start a streak!";
+"award_count_description" = "Зараз ви отримали цю нагороду %d разів. Спробуйте зробити це ще раз і почніть серію!";
 
 // MARK: - Confirmation / Alert / Messages
 
-"week_recap_title" = "Last Week Recap is Ready";
+"week_recap_title" = "Підсумок минулого тижня готовий";
 
-"week_recap_message_0_1" = "You haven't reached your goal. Let's hope this week will be better.";
+"week_recap_message_0_1" = "Ви не досягли своєї цілі. Будемо сподіватися, що цей тиждень буде кращим.";
 
-"week_recap_message_0_x" = "You haven't reached any of your goals. Let's hope this week will be better.";
+"week_recap_message_0_x" = "Ви не досягли жодної зі своїх цілей. Будемо сподіватися, що цей тиждень буде кращим.";
 
-"week_recap_message_1_1" = "You have reached your goal. Great job!";
+"week_recap_message_1_1" = "Ви досягли своєї цілі. Чудова робота!";
 
-"week_recap_message_1_x" = "You have reached one of your goals. Keep it up!";
+"week_recap_message_1_x" = "Ви досягли однієї зі своїх цілей. Так тримати!";
 
-"week_recap_message_x_x" = "You have reached all your goals. That is incredible!";
+"week_recap_message_x_x" = "Ви досягли всіх своїх цілей. Це неймовірно!";
 
-"week_recap_message_x_y" = "You have reached %d of your goals. Great job!";
+"week_recap_message_x_y" = "Ви досягли %d своїх цілей. Чудова робота!";
 
-"review_button" = "Review";
+"review_button" = "Огляд";
 
-"woah_title" = "Woah!";
+"woah_title" = "Вау!";
 
-"goal_delete_confirmation" = "This goal has been reached a few times. Are you sure you want to delete it?";
+"goal_delete_confirmation" = "Цієї ціль було досягнуто кілька разів. Ви впевнені, що хочете видалити їй?";
 
-"delete_button" = "Delete";
+"delete_button" = "Видалити";
 
-"cancel_button" = "Cancel";
+"cancel_button" = "Відмінити";
 
-"sticker_delete_confirmation" = "This sticker has been used a few times. Are you sure you want to delete it?";
+"sticker_delete_confirmation" = "Цю наклейку використовували кілька разів. Ви впевнені, що хочете видалити їй?";
 
 // MARK: - Onboarding
 
-"onboarding_1_1" = "Hello! Looks like you are new here. Let me show you around.";
+"onboarding_1_1" = "Привіт! Схоже, ви тут новенький. Дозвольте мені показати вам навколо.";
 
-"onboarding_1_2" = "This is your weekly calendar. You will record your diary here using stickers. We created one sticker for you, but you can create many more and customize them any way you want. Let me show you how.";
+"onboarding_1_2" = "Це ваш тижневий календар. Тут ви будете записувати свій щоденник за допомогою наклейок. Ми створили для вас одну наклейку, але ви можете створити багато інших та налаштувати їх як завгодно. Дозвольте мені показати вам, як.";
 
-"onboarding_2" = "Wonderful! Once you figure out stickers, go to the \"Goals\" tab and set up some goals for yourself!";
+"onboarding_2" = "Чудово! Коли ви зрозумієте наклейки, перейдіть на вкладку \"Цілі\" і встановіть для себе кілька цілей!";
 
-"got_it_button" = "Got it";
+"got_it_button" = "Зрозумів";
 
 // MARK: - Empty week messages
 
-"empty_current_week" = "Brand new week, let's do this!";
+"empty_current_week" = "Новий тиждень, давайте це зробимо!";
 
-"empty_past_week" = "Nothing happened, nothing to see here...";
+"empty_past_week" = "Нічого не сталося, тут нічого не видно...";
 
-"empty_future_week" = "Future looks bright when you add some stickers to it!";
+"empty_future_week" = "Майбутнє виглядає яскравим, якщо ви додасте до нього наклейки!";
 
 // MARK: - Notifications
 
-"daily_reminder_title" = "Friendly daily reminder";
+"daily_reminder_title" = "Дружнє щоденне нагадування";
 
-"daily_reminder_body" =  "☝️ Hey! It's time to check out your goals!";
-
-// MARK: - Sticker Style
-
-"appearance_title" = "Appearance";
-
-"application_restart_required" = "Application restart is required.";
-
-"sticker_style" = "Sticker Style";
-
-"restart_button" = "Restart";
-
-"sticker_style_restart" = "Sticker style will be changed after you start application again.";
+"daily_reminder_body" =  "☝️ Гей! Настав час перевірити свої цілі!";
 
 // MARK: - Statistics and Charts
 
 // - List of Chart
 
-"chart_title_monthly_stickers" = "Monthly Stickers";
+"chart_title_monthly_stickers" = "Щомісячні наклейки";
 
-"chart_subtitle_monthly_stickers" = "Sticker usage for a month";
+"chart_subtitle_monthly_stickers" = "Використання наклейки протягом місяця";
 
-"chart_title_goals_totals" = "Goal Totals";
+"chart_title_goals_totals" = "Підсумки цілей";
 
-"chart_subtitle_goals_totals" = "Goal totals and history";
+"chart_subtitle_goals_totals" = "Підсумки цілей і історія";
 
-"chart_title_goals_streaks" = "Goal Streaks";
+"chart_title_goals_streaks" = "Cерії цілей";
 
-"chart_subtitle_goals_streaks" = "Goal streaks and history";
+"chart_subtitle_goals_streaks" = "Cерії цілей і історія";
 
 // - Details
 
-"monthly_goal_section_title" = "Monthly Goals";
+"monthly_goal_section_title" = "Щомісячні цілі";
 
-"monthly_goal_chart_title" = "Last %@ months";
+"monthly_goal_chart_title" = "Останні %@ місяців";
 
-"weekly_goal_section_title" = "Weekly Goals";
+"weekly_goal_section_title" = "Тижневі цілі";
 
-"weekly_goal_chart_title" = "Last %@ weeks";
+"weekly_goal_chart_title" = "Останні %@ тижнів";
 
-"total_column" = "total";
+"total_column" = "всього";
 
-"streak_column" = "streak";
+"streak_column" = "серія";
 
-"goal_totals_title" = "Goal Totals";
+"goal_totals_title" = "Підсумки голів";
 
-"goal_streaks_title" = "Goal Streaks";
+"goal_streaks_title" = "Cерії цілей";
 
-"once_goal_section_title" = "One Time Goals";
+"once_goal_section_title" = "Одноразові цілі";
 
 // MARK: - Stickers Gallery
 

@@ -206,7 +206,7 @@
 
 "my_stickers_section" = "Mis pegatinas";
 
-"gallery_section" = "Galería de pegatinas";
+"gallery_section" = "Ejemplos de pegatinas";
 
 "stickers_instructions" = "Puedes crear y personalizar tantos stickers como quiera. Si necesita una aspiración, eche un vistazo a algunos ejemplos que preparamos. Simplemente toque cualquier pegatina de la galería para agregarla a sus pegatinas.";
 
@@ -231,6 +231,16 @@
 "reminde_me_at_time" = "Recuérdame a las";
 
 "reminder_footer" = "Recuérdate a ti mismo todos los días que revises tus metas.";
+
+"appearance_title" = "Apariencia";
+
+"application_restart_required" = "Es necesario reiniciar la aplicación.";
+
+"sticker_style" = "Estilo de pegatinas";
+
+"restart_button" = "Reiniciar";
+
+"sticker_style_restart" = "El estilo de las pegatinas se cambiará después de que vuelva a iniciar la aplicación.";
 
 "backup_title" = "Copia de seguridad";
 
@@ -307,18 +317,6 @@
 "daily_reminder_title" = "Recordatorio diario amistoso";
 
 "daily_reminder_body" =  "☝️ ¡Oye! ¡Es momento de revisar tus metas!";
-
-// MARK: - Sticker Style
-
-"appearance_title" = "Apariencia";
-
-"application_restart_required" = "Es necesario reiniciar la aplicación.";
-
-"sticker_style" = "Estilo de pegatinas";
-
-"restart_button" = "Reiniciar";
-
-"sticker_style_restart" = "El estilo de las pegatinas se cambiará después de que vuelva a iniciar la aplicación.";
 
 // MARK: - Statistics and Charts
 

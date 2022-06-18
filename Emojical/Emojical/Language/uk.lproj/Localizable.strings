@@ -6,6 +6,8 @@
   Copyright © 2021 Vladimir Svidersky. All rights reserved.
 */
 
+// https://slovnyk.ua/
+
 // MARK: - Today Screen
 
 "select_stickers_for_day" = "Вибері наклейку (%@)";
@@ -356,69 +358,69 @@
 
 // MARK: - Stickers Gallery
 
-"sticker-Super Star" = "Super Star";
+"sticker-Super Star" = "Супер зірка";
 
-"sticker-That Was a Good Day" = "That Was a Good Day";
+"sticker-That Was a Good Day" = "Це був хороший день";
 
-"sticker-That Was a Bad Day" = "That Was a Bad Day";
+"sticker-That Was a Bad Day" = "Це був поганий день";
 
-"sticker-Thumbs Up" = "Thumbs Up";
+"sticker-Thumbs Up" = "Пальці вгору";
 
-"sticker-Thumbs Down" = "Thumbs Down";
+"sticker-Thumbs Down" = "Пальці вниз";
 
-"sticker-Loved It" = "Love";
+"sticker-Loved It" = "Любов";
 
-"sticker-Soccer" = "Soccer";
+"sticker-Soccer" = "Футбол";
 
-"sticker-Hike" = "Hike";
+"sticker-Hike" = "Похід";
 
-"sticker-Yoga" = "Yoga";
+"sticker-Yoga" = "Йога";
 
-"sticker-Swim" = "Swim";
+"sticker-Swim" = "Плавати";
 
-"sticker-Ice Cream" = "Ice Cream";
+"sticker-Ice Cream" = "Морозиво";
 
-"sticker-Cake" = "Cake";
+"sticker-Cake" = "Торт";
 
-"sticker-Vegetables" = "Vegetables";
+"sticker-Vegetables" = "Овочі";
 
-"sticker-Meat" = "Meat";
+"sticker-Meat" = "М'ясо";
 
-"sticker-Drink" = "Drink";
+"sticker-Drink" = "Випити";
 
-"sticker-Fruits" = "Fruits";
+"sticker-Fruits" = "Фрукти";
 
-"sticker-Cherry On Top" = "Cherry On Top";
+"sticker-Cherry On Top" = "Вишня зверху";
 
-"sticker-Walked The Dog" = "Walked The Dog";
+"sticker-Walked The Dog" = "Вигулював собаку";
 
-"sticker-Read Book" = "Read Book";
+"sticker-Read Book" = "Читати книгу";
 
-"sticker-Did Chores" = "Chores";
+"sticker-Did Chores" = "Домашні справи";
 
-"sticker-Smoked" = "Smoked";
+"sticker-Smoked" = "Куріння";
 
-"sticker-Toys" = "Toys";
+"sticker-Toys" = "Іграшки";
 
-"sticker-Too Much TV" = "Too Much TV";
+"sticker-Too Much TV" = "Забагато телевізора";
 
-"sticker-Too Much Video Games" = "Too Much Video Games";
+"sticker-Too Much Video Games" = "Забагато відеоігор";
 
 // MARK: - Goal Examples
 
-"category-Health" = "Health";
+"category-Health" = "Здоров'я";
 
-"category-Food" = "Food";
+"category-Food" = "Їжа";
 
-"goal-name-Play Soccer" = "Play Soccer";
+"goal-name-Play Soccer" = "Грати в футбол";
 
-"goal-name-Be Active" = "Be Active";
+"goal-name-Be Active" = "Будь активним";
 
-"goal-name-Eat Less Red Meat" = "Eat Less Red Meat";
+"goal-name-Eat Less Red Meat" = "Їжте менше червоного м’яса";
 
-"goal-description-Record your soccer practices" = "Record your soccer practices and try to get to 3 times per week.";
+"goal-description-Record your soccer practices" = "Записуйте свої футбольні тренування і намагайтеся займатися 3 рази на тиждень.";
 
 "goal-description-Record your activities" =
-    "Record your activities - 🧘,⚽️. Try to do this 5 times per week.";
+    "Записуйте свою діяльність - 🧘,⚽️. Намагайтеся робити це 5 разів на тиждень.";
 
-"goal-description-Record food you eat" = "Record food you eat - 🥩,🐣,🐟,🥦. And try to have 3 of fewer red meats per week.";
+"goal-description-Record food you eat" = "Записуйте їжу, яку ви їсте - 🥩,🐣,🐟,🥦. Намагайтеся їсти червоне м’ясо 3 або менше разів на тиждень.";

@@ -134,8 +134,6 @@
 
 "create_new_title" = "Create New";
 
-"sticker_title" = "Sticker...";
-
 "goal_title" = "Goal...";
 
 "create_goal_from_examples_title" = "Create Goal from Examples...";
@@ -159,8 +157,6 @@
 "charts_title" = "Charts";
 
 "options_title" = "Options";
-
-"stickers_title" = "Stickers";
 
 // MARK: - Goals Page
 
@@ -210,9 +206,9 @@
 
 "my_stickers_section" = "My Stickers";
 
-"gallery_section" = "Stickers Gallery";
+"gallery_section" = "Stickers Examples";
 
-"stickers_instructions" = "You can create and customize as many stickers as you want. If you need an aspiration - take a look at few examples we prepared. Just tap on any sticker from the gallery to add it your stickers.";
+"stickers_instructions" = "You can create and customize as many stickers as you want. If you need an aspiration - take a look at few examples we prepared. Just tap on any sticker below to add it your stickers.";
 
 // MARK: - Sticker Editing Page
 
@@ -235,6 +231,16 @@
 "reminde_me_at_time" = "Remind Me At";
 
 "reminder_footer" = "Remind yourself every day to check out your goals.";
+
+"appearance_title" = "Appearance";
+
+"application_restart_required" = "Application restart is required.";
+
+"sticker_style" = "Sticker Style";
+
+"restart_button" = "Restart";
+
+"sticker_style_restart" = "Sticker style will be changed after you start application again.";
 
 "backup_title" = "Backup / Restore";
 
@@ -311,18 +317,6 @@
 "daily_reminder_title" = "Friendly daily reminder";
 
 "daily_reminder_body" =  "☝️ Hey! It's time to check out your goals!";
-
-// MARK: - Sticker Style
-
-"appearance_title" = "Appearance";
-
-"application_restart_required" = "Application restart is required.";
-
-"sticker_style" = "Sticker Style";
-
-"restart_button" = "Restart";
-
-"sticker_style_restart" = "Sticker style will be changed after you start application again.";
 
 // MARK: - Statistics and Charts
 

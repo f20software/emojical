@@ -46,7 +46,7 @@ let goalExamplesData: [GoalExampleData] = [
         period: .week,
         limit: 3,
         stickers: [
-            StickerExampleData(emoji: "🥩", name: "sticker-Steak", color: UIColor(named: "emojiRed")!),
+            StickerExampleData(emoji: "🥩", name: "sticker-Meat", color: UIColor(named: "emojiRed")!),
         ],
         extra: [
             StickerExampleData(emoji: "🐣", name: "sticker-Chicken", color: UIColor(named: "emojiGreen")!),

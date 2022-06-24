@@ -9,7 +9,7 @@
 import XCTest
 @testable import Emojical
 
-class EmojicalTests: XCTestCase {
+class CalendarTests: XCTestCase {
 
     override func setUp() {
         // Default setting is for week from Monday to Sunday

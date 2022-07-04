@@ -12,11 +12,9 @@ import XCTest
 class LocalizationTests: XCTestCase {
 
     override func setUp() {
-        // Default setting is for week from Monday to Sunday
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testStickerExampleTranslation() {

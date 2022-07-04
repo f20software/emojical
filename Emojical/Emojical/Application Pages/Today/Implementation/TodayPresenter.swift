@@ -568,7 +568,7 @@ class TodayPresenter: TodayPresenterProtocol {
         }
         
         // TODO: Refactor sound support
-        AudioServicesPlaySystemSound(1105)
+        // AudioServicesPlaySystemSound(1105)
             
         if selectedDayStickers.contains(stampId) {
             selectedDayStickers.removeAll { $0 == stampId }

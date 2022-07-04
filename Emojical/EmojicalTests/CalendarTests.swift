@@ -9,7 +9,7 @@
 import XCTest
 @testable import Emojical
 
-class EmojicalTests: XCTestCase {
+class CalendarTests: XCTestCase {
 
     override func setUp() {
         // Default setting is for week from Monday to Sunday
@@ -20,7 +20,6 @@ class EmojicalTests: XCTestCase {
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testLastMonthDay() {

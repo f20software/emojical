@@ -72,10 +72,16 @@ class StickersPresenter: StickersPresenterProtocol {
    
     // Create sticker from the gallery one
     private func copyFromGallery(_ gallerySticker: GallerySticker) {
+        guard repository.stickerByLabel(gallerySticker.label) == nil else {
+            return
+        }
+
         let sticker = Stamp(
             name: gallerySticker.name.localized,
             label: gallerySticker.label,
             color: gallerySticker.color)
+        
+        
         
         do { try repository.save(stamp: sticker) }
         catch {}
@@ -116,5 +122,5 @@ class StickersPresenter: StickersPresenterProtocol {
 fileprivate struct Specs {
 
     /// Once user created `maxStickersToHideGallery` stickers we will hide Stickers Gallery
-    static let maxStickersToHideGallery = 10
+    static let maxStickersToHideGallery = 20
 }

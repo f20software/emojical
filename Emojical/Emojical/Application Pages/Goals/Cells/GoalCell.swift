@@ -64,7 +64,14 @@ class GoalCell: ThemeObservingCollectionCell {
     }
 
     // MARK: - Private helpers
-
+    
+    func updateHighlightedState() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.plate.backgroundColor = self.isHighlighted ? Theme.main.colors.highlightedSecondaryBackground :
+                Theme.main.colors.secondaryBackground
+        })
+    }
+    
     private func configureViews() {
         plate.layer.cornerRadius = Theme.main.specs.platesCornerRadius
         plate.clipsToBounds = true

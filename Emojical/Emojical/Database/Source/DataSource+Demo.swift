@@ -24,7 +24,7 @@ import GRDB
 extension DataSource {
 
     /// Find stamp by its label (returns first matching or nil
-    func stampByLabel(label: String) -> Stamp? {
+    func stickerByLabel(_ label: String) -> Stamp? {
         do {
             return try dbQueue.read { db -> StoredStamp? in
                 let request = StoredStamp.filter(StoredStamp.Columns.label == label && StoredStamp.Columns.deleted == false)
@@ -138,7 +138,7 @@ extension DataSource {
             do {
                 let emojies = emoji.split(separator: ",")
                 let stickersIds = emojies.compactMap({
-                    let id = stampByLabel(label: String($0))?.id
+                    let id = stickerByLabel(String($0))?.id
                     return id != nil ? "\(id!)" : nil
                 }).joined(separator: ",")
                 try dbQueue.inDatabase { db in
@@ -160,7 +160,7 @@ extension DataSource {
             do {
                 let emojies = emoji.split(separator: ",")
                 let stickersIds = emojies.compactMap({
-                    stampByLabel(label: String($0))?.id
+                    stickerByLabel(String($0))?.id
                 })
 
                 day = day.byAddingDays(-1)
@@ -180,7 +180,7 @@ extension DataSource {
 
         // Update statistics for each sticker
         let stickersIds: [Int64] = stickers.compactMap({
-            return stampByLabel(label: String($0.0))?.id
+            return stickerByLabel(String($0.0))?.id
         })
         
         updateStatsForStamps(stickersIds)

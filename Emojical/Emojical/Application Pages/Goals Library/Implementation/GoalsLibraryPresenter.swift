@@ -69,7 +69,7 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
     }
     
     private func createSticker(_ data: StickerExampleData) -> Int64? {
-        if let found = repository.stampByLabel(label: data.emoji) {
+        if let found = repository.stickerByLabel(data.emoji) {
             return found.id
         }
 

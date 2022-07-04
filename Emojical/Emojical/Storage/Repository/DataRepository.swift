@@ -127,7 +127,7 @@ protocol DataRepository: AnyObject {
     func createAdHocEntries()
 
     /// Find stamp by its label (returns first matching or nil
-    func stampByLabel(label: String) -> Stamp?
+    func stickerByLabel(_ label: String) -> Stamp?
 }
 
 extension DataRepository {

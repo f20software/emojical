@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
 
 class TodayPresenter: TodayPresenterProtocol {
 
@@ -527,6 +528,20 @@ class TodayPresenter: TodayPresenterProtocol {
                 $0.isReached(progress: awardManager.currentProgressFor($0)) == true }) +
             allGoals.filter({
                 $0.isReached(progress: awardManager.currentProgressFor($0)) == false })
+        
+        // Need to filter out non-periodic goals that were already reached in the past
+        goals = goals.compactMap({
+            if $0.isPeriodic == false {
+                let history = dataBuilder.historyFor(goal: $0.id, limit: 12)
+                if history != nil &&
+                    history!.reached.count > 0 &&
+                    history!.reached.lastUsed ?? week.lastDay < week.firstDay {
+                    return nil
+                }
+            }
+            
+            return $0
+        })
     }
     
     private func loadAwardsData() {
@@ -535,6 +550,7 @@ class TodayPresenter: TodayPresenterProtocol {
         var data = [GoalOrAwardIconData]()
         data = goals.compactMap({
             let stamp = repository.stampBy(id: $0.stamps.first)
+            
             return GoalOrAwardIconData(
                 stamp: stamp,
                 goal: $0,
@@ -551,6 +567,9 @@ class TodayPresenter: TodayPresenterProtocol {
             return
         }
         
+        // TODO: Refactor sound support
+        AudioServicesPlaySystemSound(1105)
+            
         if selectedDayStickers.contains(stampId) {
             selectedDayStickers.removeAll { $0 == stampId }
         } else {

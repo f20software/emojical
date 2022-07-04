@@ -181,14 +181,26 @@ class GoalsViewController: UIViewController, GoalsView {
 }
 
 extension GoalsViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? GoalCell {
+            cell.updateHighlightedState()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? GoalCell {
+            cell.updateHighlightedState()
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        if let cell = collectionView.cellForItem(at: indexPath) as? GoalCell {
-            onGoalTapped?(Int64(cell.tag))
+        if let cell = collectionView.cellForItem(at: indexPath) as? GoalCell {       onGoalTapped?(Int64(cell.tag))
         } else if (collectionView.cellForItem(at: indexPath) as? NewGoalCell) != nil {
             onNewGoalTapped?()
         }
+        
     }
 
     private func cell(for path: IndexPath, model: GoalsElement, collectionView: UICollectionView) -> UICollectionViewCell? {

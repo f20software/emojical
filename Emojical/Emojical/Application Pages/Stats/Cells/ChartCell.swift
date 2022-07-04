@@ -37,6 +37,13 @@ class ChartCell: ThemeObservingCollectionCell {
         icon.image = chart.icon
     }
 
+    func updateHighlightedState() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.plate.backgroundColor = self.isHighlighted ? Theme.main.colors.highlightedSecondaryBackground :
+                Theme.main.colors.secondaryBackground
+        })
+    }
+
     // MARK: - Private helpers
 
     private func configureViews() {

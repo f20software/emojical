@@ -24,6 +24,9 @@ extension Theme {
         /// Second background (used for cell plates, dates etc)
         let secondaryBackground = UIColor.systemGray6
 
+        /// Secondary background when highlighted
+        let highlightedSecondaryBackground = UIColor.systemGray3
+
         /// Highlighted day background
         let calendarHighlightedBackground = UIColor.darkGray
         

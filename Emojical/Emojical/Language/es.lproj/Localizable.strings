@@ -42,7 +42,7 @@
 
 "current_streak_x" = "Racha actual|%d";
 
-"no_goals_reahed_week" = "No se alcanzaron metas esta semana";
+"no_goals_reached_week" = "No se alcanzaron metas esta semana";
 
 // MARK: - Goal description
 

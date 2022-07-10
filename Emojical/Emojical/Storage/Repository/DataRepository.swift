@@ -42,6 +42,9 @@ protocol DataRepository: AnyObject {
     /// Awards by given Ids
     func awardsByGoal(ids: [Int64]) -> [Award]
 
+    /// Awards with empty label - used when upgrading database
+    func awardsWithEmptyLabels() -> [Award]
+
     /// Sticker Ids for a day from Diary table
     func stampsIdsFor(day: Date) -> [Int64]
     
@@ -105,7 +108,7 @@ protocol DataRepository: AnyObject {
     func setStampsForDay(_ day: Date, stamps: [Int64])
     
     /// Remove sticker from list of goals
-    func removeSticker(_ stampId: Int64, from goalIds: [Int64])
+    func removeSticker(withId: Int64, from goalIds: [Int64])
 
     /// Deletes awards for a given goal and given time internal
     func deleteAwards(from: Date, to: Date, goalId: Int64)
@@ -131,6 +134,11 @@ protocol DataRepository: AnyObject {
 
     /// Find stamp by its label (returns first matching or nil
     func stickerByLabel(_ label: String) -> Sticker?
+    
+    // MARK: - Upgrade
+    
+    /// Go through all awards that have no label/background information and retreive it
+    func fillAwardLabels() -> Void
 }
 
 extension DataRepository {

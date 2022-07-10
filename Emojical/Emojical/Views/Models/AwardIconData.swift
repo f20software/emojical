@@ -18,28 +18,41 @@ struct AwardIconData {
     let reached: Bool
 }
 
-extension AwardIconData {
-    
-    // Convinience constructor from Stamp object
-    init(goal: Goal, busted: Bool = false) {
-        
-        if busted {
-            self.init(
-                goalId: goal.id,
-                emoji: goal.stickers.first?.label,
-                backgroundColor: Theme.main.colors.unreachedGoalBackground,
-                borderColor: UIColor.clear,
-                reached: false
+extension Award {
+
+    /// Conviniece method to create Icon data based on award status
+    func toIconData() -> AwardIconData {
+        if reached {
+            return AwardIconData(
+                goalId: goalId,
+                emoji: label,
+                backgroundColor: (backgroundColor ?? Theme.main.colors.tint).withAlphaComponent(0.5),
+                borderColor: Theme.main.colors.reachedGoalBorder,
+                reached: reached
             )
         } else {
-            self.init(
-                goalId: goal.id,
-                emoji: goal.stickers.first?.label,
-                backgroundColor: (goal.stickers.first?.color ?? Theme.main.colors.tint).withAlphaComponent(0.5),
-                borderColor: Theme.main.colors.reachedGoalBorder,
-                reached: true
+            return AwardIconData(
+                goalId: goalId,
+                emoji: label,
+                backgroundColor: Theme.main.colors.unreachedGoalBackground,
+                borderColor: UIColor.clear,
+                reached: reached
             )
         }
+    }
+}
+
+extension Goal {
+
+    /// Conviniece method to create Icon data based on when goal will be reached
+    func toAwardIconData() -> AwardIconData {
+        return AwardIconData(
+            goalId: id,
+            emoji: stickers.first?.label,
+            backgroundColor: (stickers.first?.color ?? Theme.main.colors.tint).withAlphaComponent(0.5),
+            borderColor: Theme.main.colors.reachedGoalBorder,
+            reached: true
+        )
     }
 }
 

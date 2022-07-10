@@ -164,11 +164,17 @@ class AwardManager {
     }
 
     func recalculateTotalAwardsForDate(_ date: Date) {
-        let goals = repository.goalsBy(period: .once)
+        NSLog("Recalculating total awards for \(date.databaseKey)")
+
+        let end = date.lastOfWeek
+        let start = end.byAddingDays(-6)
+        // Filter out .once goals to only those that haven't been reached
+        // or have been reached this week - otherwise don't touch them
+        let goals = repository.goalsBy(period: .once).filter({
+            $0.count == 0 || ($0.lastUsed ?? calendar.today) > start
+        })
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
-        
-        NSLog("Recalculating total awards for \(date.databaseKey)")
 
         // Save off array of Ids so we can easily filter existing awards by only
         // looking at ones that correspond to our goals
@@ -196,8 +202,13 @@ class AwardManager {
             }
         }
             
-        // Load existing awards from the database
+        // Load existing awards from the database - olny delete awards that were
+        // awarded this week - don't touch anything in the past
         let deleteAwards = repository.awardsByGoal(ids: goalIds)
+//        let deleteAwards =
+//            repository.awardsInInterval(from: start, to: end).filter { (a) -> Bool in
+//            return goalIds.contains(a.goalId)
+//        }
 
         // Update data source with new and/or deleted awards
         if addAwards.count > 0 || deleteAwards.count > 0 {

@@ -143,7 +143,7 @@ class StickerPresenter: StickerPresenterProtocol {
             let goalIds = repository.goalsUsedStamp(id).compactMap({ $0.id })
             try repository.save(stamp: sticker)
             // Remove this sticker from all goals that it was assigned to
-            repository.removeSticker(id, from: goalIds)
+            repository.removeSticker(withId: id, from: goalIds)
         }
         catch {}
 

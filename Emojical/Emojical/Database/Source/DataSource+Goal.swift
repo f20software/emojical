@@ -137,11 +137,11 @@ extension DataSource {
     }
     
     /// Remove sticker from list of goals
-    func removeSticker(_ stampId: Int64, from goalIds: [Int64]) {
+    func removeSticker(withId: Int64, from goalIds: [Int64]) {
         goalIds.forEach({
             var goal = goalBy(id: $0)
             if goal != nil {
-                goal!.stickers.removeAll(where: { $0.id == stampId })
+                goal!.stickers.removeAll(where: { $0.id == withId })
                 do {
                     try save(goal: goal!)
                 }

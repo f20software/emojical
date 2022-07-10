@@ -66,7 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         notificaionManager.requestAuthorization()
         UNUserNotificationCenter.current().delegate = self
         
-//      Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")
+        let repo = Storage.shared.repository
+        //      Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")
 
 //      Un-deleting specific stamp that I deleted accidentaly
         
@@ -79,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        var goal = repo.goalBy(id: 40)
 //        goal?.deleted = false
 //        try! repo.save(goal: goal!)
+        repo.fillAwardLabels()
 
         UIView.appearance().tintColor = Theme.main.colors.tint
         return true

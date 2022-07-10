@@ -143,6 +143,7 @@
 		F284F9A7257EF4200016D1C6 /* WeeklyAwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F991257EEE840016D1C6 /* WeeklyAwardsView.swift */; };
 		F284F9C32580620D0016D1C6 /* SelectorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284F9C22580620D0016D1C6 /* SelectorState.swift */; };
 		F28C712027120B530009791F /* GoalStatsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28C711F27120B530009791F /* GoalStatsHeaderView.swift */; };
+		F28CB014287B35FE00C35D15 /* DataSource+Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28CB013287B35FE00C35D15 /* DataSource+Upgrade.swift */; };
 		F28CC5B4261A787700456E18 /* GoalStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28CC5B3261A787700456E18 /* GoalStats.swift */; };
 		F291A62F25EDF50400E91D0C /* StickerStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F291A62E25EDF50400E91D0C /* StickerStyleCell.swift */; };
 		F2921BDF28654F1B00732901 /* StickerGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD3E0A2826154400EBDB14 /* StickerGallery.swift */; };
@@ -447,6 +448,7 @@
 		F284F996257EF1720016D1C6 /* TodayAwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayAwardCell.xib; sourceTree = "<group>"; };
 		F284F9C22580620D0016D1C6 /* SelectorState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorState.swift; sourceTree = "<group>"; };
 		F28C711F27120B530009791F /* GoalStatsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStatsHeaderView.swift; sourceTree = "<group>"; };
+		F28CB013287B35FE00C35D15 /* DataSource+Upgrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource+Upgrade.swift"; sourceTree = "<group>"; };
 		F28CC5B3261A787700456E18 /* GoalStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalStats.swift; sourceTree = "<group>"; };
 		F291A62E25EDF50400E91D0C /* StickerStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerStyleCell.swift; sourceTree = "<group>"; };
 		F2921BE028654F7000732901 /* LocalizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
@@ -695,6 +697,7 @@
 				F297764A2820FD93006C2642 /* DataSource+GallerySticker.swift */,
 				F2F260EC2408BB4400F5CCB9 /* DataSource+Stamp.swift */,
 				BC1E1EFE246C5B5000E05C8A /* DataSource+Repository.swift */,
+				F28CB013287B35FE00C35D15 /* DataSource+Upgrade.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -1860,6 +1863,7 @@
 				F28C712027120B530009791F /* GoalStatsHeaderView.swift in Sources */,
 				F236A822281F33F000478203 /* GoalCell.swift in Sources */,
 				F26596F12596AF1300B10B76 /* AwardRecapData.swift in Sources */,
+				F28CB014287B35FE00C35D15 /* DataSource+Upgrade.swift in Sources */,
 				F2FD4DF425BCE9CF005819A0 /* GoalDetailsDeleteButtonCell.swift in Sources */,
 				F2FF7EA623D66F3A0033D9DC /* StoredStamp.swift in Sources */,
 				F2049C4B25FE8D8D00E432DB /* RecapReadyPresenter.swift in Sources */,

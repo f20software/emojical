@@ -447,8 +447,7 @@ class TodayPresenter: TodayPresenterProtocol {
                 title: $0.descriptionText,
                 progress: GoalOrAwardIconData(
                     award: $0,
-                    goal: goal,
-                    stamp: goal.stickers.first
+                    goal: goal
                 )
             )
         })
@@ -480,11 +479,7 @@ class TodayPresenter: TodayPresenterProtocol {
         
         return RecapBubbleData(
             message: Language.weekRecapForGoals(total: totalCount, reached: reachedCount),
-            icons: awards.compactMap {
-                guard $0.reached else { return nil }
-                guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
-                return AwardIconData(goal: goal)
-            },
+            icons: awards.filter({ $0.reached } ).map({ return $0.toIconData() }),
             faceImage: emojiImageForReachedGoals(total: totalCount, reached: reachedCount)
         )
     }

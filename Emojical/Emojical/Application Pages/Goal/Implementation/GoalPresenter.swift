@@ -215,7 +215,7 @@ class GoalPresenter: GoalPresenterProtocol {
                     progress: progress,
                     limit: goal.limit
                 ),
-                awardIcon: AwardIconData(goal: goal),
+                awardIcon: goal.toAwardIconData(),
                 goalIcon: GoalIconData(goal: goal, progress: progress)
             )
             

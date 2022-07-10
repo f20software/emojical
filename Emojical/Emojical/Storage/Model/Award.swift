@@ -24,8 +24,8 @@ struct Award {
     var goalName: String?
     
     // De-normalization - these values are copied from the Sticker record
-    let label: String?
-    let backgroundColor: UIColor?
+    var label: String?
+    var backgroundColor: UIColor?
 
     var oldStyleDescription: String {
         let df = DateFormatter()

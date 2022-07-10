@@ -39,7 +39,7 @@ extension DataSource {
         allStoredAwards().map { $0.toModel() }
     }
 
-    // Delete all awards from the database
+    /// Delete all awards from the database
     func deleteAllAwards() {
         do {
             _ = try dbQueue.write { db in
@@ -50,7 +50,7 @@ extension DataSource {
         notifyAwardsOnChangeObservers()
     }
 
-    // Awards for date interval
+    /// Awards for date interval
     func awardsInInterval(from: Date, to: Date) -> [Award] {
         do {
             return try dbQueue.read { db -> [StoredAward] in
@@ -78,6 +78,18 @@ extension DataSource {
         return []
     }
 
+    /// Awards with empty label - used when upgrading database
+    func awardsWithEmptyLabels() -> [Award] {
+        do {
+            return try dbQueue.read { db -> [StoredAward] in
+                let request = StoredAward
+                    .filter(StoredAward.Columns.label == nil)
+                return try request.fetchAll(db)
+            }.map { $0.toModel() }
+        }
+        catch { }
+        return []
+    }
     
     // Helper method to add and remove some awards when goal is reached
     // Will automatically recalculate count ans lastUsed for all goals affected

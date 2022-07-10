@@ -1,5 +1,5 @@
 //
-//  CongratsData.swift
+//  GoalOrAwardIconData.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 2/13/21.
@@ -18,7 +18,7 @@ enum GoalOrAwardIconData {
             self = .award(data: goal.toAwardIconData())
         }
         else {
-            self = .goal(data: GoalIconData(goal: goal, progress: progress))
+            self = .goal(data: goal.toIconData(progress: progress))
         }
     }
     
@@ -29,7 +29,7 @@ enum GoalOrAwardIconData {
         } else {
             switch award.direction {
             case .positive:
-                self = .goal(data: GoalIconData(goal: goal, progress: award.count))
+                self = .goal(data: goal.toIconData(progress: award.count))
             case .negative:
                 self = .award(data: award.toIconData())
             }

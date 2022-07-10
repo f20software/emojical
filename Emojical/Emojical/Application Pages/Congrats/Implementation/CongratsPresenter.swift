@@ -66,7 +66,7 @@ class CongratsPresenter: CongratsPresenterProtocol {
         view?.loadData(data: CongratsData(
             title: "awesome_title".localized,
             text: text,
-            goalIcon: GoalIconData(goal: goal, progress: 0 /* don't really care*/),
+            goalIcon: goal.toIconData(progress: 0/* need to show full animation cycle - start from 0 */),
             awardIcon: award.toIconData()
         ))
     }

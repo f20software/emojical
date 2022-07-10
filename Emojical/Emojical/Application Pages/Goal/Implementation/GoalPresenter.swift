@@ -216,7 +216,7 @@ class GoalPresenter: GoalPresenterProtocol {
                     limit: goal.limit
                 ),
                 awardIcon: goal.toAwardIconData(),
-                goalIcon: GoalIconData(goal: goal, progress: progress)
+                goalIcon: goal.toIconData(progress: progress)
             )
             
             var cells: [GoalDetailsElement] = [.view(data)]

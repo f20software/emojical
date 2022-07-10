@@ -214,9 +214,9 @@ class CalendarDataBuilder {
     /// Builds history for a given goal (including how many time it's been reached and what is the current streak
     func historyFor(goal id: Int64?, limit: Int) -> GoalHistoryData? {
         guard let goal = repository.goalBy(id: id),
-              let first = goal.stickers.compactMap({
-                  return repository.getFirstDateFor(sticker: $0.id ?? 0) })
-            .min() else { return nil }
+              let first = goal.stickersIds.compactMap({
+                  return repository.getFirstDateFor(sticker: $0)
+              }).min() else { return nil }
         
         var points = [GoalChartPoint]()
         var streak = 0

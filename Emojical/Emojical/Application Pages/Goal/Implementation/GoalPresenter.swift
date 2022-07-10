@@ -238,7 +238,7 @@ class GoalPresenter: GoalPresenterProtocol {
     
     // Navigate to select stickers view and configure callback
     private func selectStickers() {
-        coordinator.selectStickers(goal.stickers.compactMap { $0.id }) {
+        coordinator.selectStickers(goal.stickersIds) {
             [weak self] (updateIds) in
             guard let strongSelf = self else { return }
             strongSelf.goal.stickers = strongSelf.repository.stickersBy(ids: updateIds)

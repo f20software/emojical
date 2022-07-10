@@ -111,7 +111,7 @@ extension DataSource {
     /// List of goals particular stamp is used in
     func goalsUsedStamp(_ stampId: Int64?) -> [Goal] {
         guard let id = stampId else { return [] }
-        return self.allGoals().filter { $0.stickers.compactMap({ $0.id }).contains(id) }
+        return self.allGoals().filter { $0.stickersIds.contains(id) }
     }
     
     // MARK: - Saving

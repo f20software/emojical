@@ -16,7 +16,7 @@ struct Goal {
     var period: Period
     var direction: Direction
     var limit: Int
-    var stamps: [Int64]
+    var stickers: [Sticker]
     var deleted: Bool = false
     var count: Int = 0
     var lastUsed: Date?
@@ -30,6 +30,11 @@ struct Goal {
         return direction == .positive && progress >= limit
     }
 
+    /// Convient property to return list of all sticker Ids
+    var stickersIds: [Int64] {
+        return stickers.compactMap({ $0.id })
+    }
+    
     /// Default new empty goal
     static var new: Goal {
         return Goal(
@@ -38,7 +43,7 @@ struct Goal {
             period: .week,
             direction: .positive,
             limit: 5,
-            stamps: []
+            stickers: []
         )
     }
 }

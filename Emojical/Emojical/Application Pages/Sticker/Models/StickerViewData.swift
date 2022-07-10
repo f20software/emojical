@@ -9,7 +9,7 @@
 import Foundation
 
 struct StickerViewData {
-    let sticker: Stamp
+    let sticker: Sticker
     let usage: String
 }
 

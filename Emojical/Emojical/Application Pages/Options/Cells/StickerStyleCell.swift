@@ -37,7 +37,7 @@ class StickerStyleCell: UITableViewCell {
     
     // MARK: - Public view interface
 
-    func configure(for text: String, sticker: Stamp, style: StickerStyle) {
+    func configure(for text: String, sticker: Sticker, style: StickerStyle) {
         labelText.text = text
         sticker1.text = sticker.label
         sticker1.color = sticker.color

@@ -21,6 +21,9 @@ struct Award {
     var direction: Direction
     var limit: Int
     var goalName: String?
+    // De-normalization - these values are copied from the Sticker record
+    let label: String?
+    let backgroundColor: UIColor?
 
     var oldStyleDescription: String {
         let df = DateFormatter()
@@ -69,7 +72,9 @@ extension Award {
             period: goal.period,
             direction: goal.direction,
             limit: goal.limit,
-            goalName: goal.name
+            goalName: goal.name,
+            label: goal.stickers.first?.label,
+            backgroundColor: goal.stickers.first?.color
         )
     }
 }

@@ -55,7 +55,7 @@ class StickersPresenter: StickersPresenterProtocol {
 
     private func setupView() {
         view?.onStickerTapped = { [weak self] stickerId in
-            guard let sticker = self?.repository.stampBy(id: stickerId) else { return }
+            guard let sticker = self?.repository.stickerBy(id: stickerId) else { return }
             self?.coordinator?.editSticker(sticker)
         }
         view?.onGalleryStickerTapped = { [weak self] stickerId in
@@ -76,7 +76,7 @@ class StickersPresenter: StickersPresenterProtocol {
             return
         }
 
-        let sticker = Stamp(
+        let sticker = Sticker(
             name: gallerySticker.name.localized,
             label: gallerySticker.label,
             color: gallerySticker.color)

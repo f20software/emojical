@@ -9,7 +9,7 @@
 import Foundation
 
 struct SelectStickerData {
-    let sticker: Stamp
+    let sticker: Sticker
     let selected: Bool
 }
 

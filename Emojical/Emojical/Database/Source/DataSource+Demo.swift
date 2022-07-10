@@ -24,7 +24,7 @@ import GRDB
 extension DataSource {
 
     /// Find stamp by its label (returns first matching or nil
-    func stickerByLabel(_ label: String) -> Stamp? {
+    func stickerByLabel(_ label: String) -> Sticker? {
         do {
             return try dbQueue.read { db -> StoredStamp? in
                 let request = StoredStamp.filter(StoredStamp.Columns.label == label && StoredStamp.Columns.deleted == false)

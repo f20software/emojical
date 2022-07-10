@@ -68,19 +68,19 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
         view?.loadData(sections: sections, goals: data)
     }
     
-    private func createSticker(_ data: StickerExampleData) -> Int64? {
+    private func createSticker(_ data: StickerExampleData) -> Sticker? {
         if let found = repository.stickerByLabel(data.emoji) {
-            return found.id
+            return found
         }
 
         do {
-            let new = Stamp(
+            let new = Sticker(
                 name: data.name.localized,
                 label: data.emoji,
                 color: data.color
             )
             let saved = try repository.save(stamp: new)
-            return saved.id
+            return repository.stickerBy(id: saved)
         }
         catch {}
         
@@ -90,7 +90,7 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
     private func createGoal(_ name: String) {
         guard let goal = data.first(where: { $0.name == name }) else { return }
 
-        let stickerIds = goal.stickers.compactMap({ createSticker($0) })
+        let stickers = goal.stickers.compactMap({ createSticker($0) })
         _ = goal.extra.map({ createSticker($0) })
         
         do {
@@ -99,7 +99,7 @@ class GoalsLibraryPresenter: GoalsLibraryPresenterProtocol {
                 period: goal.period,
                 direction: goal.direction,
                 limit: goal.limit,
-                stamps: stickerIds
+                stickers: stickers
             )
             try repository.save(goal: new)
         }

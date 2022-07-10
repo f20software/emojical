@@ -105,7 +105,7 @@ class CalendarDataBuilder {
     // MARK: - Stats page data building
     
     /// Creates Monthly stats empty data - actual statistics will be loaded asynchrouniously 
-    func emptyStatsData(for month: CalendarHelper.Month, stamps: [Stamp]) -> [MonthBoxData] {
+    func emptyStatsData(for month: CalendarHelper.Month, stamps: [Sticker]) -> [MonthBoxData] {
         let weekdayHeaders = CalendarHelper.Week(Date()).weekdayLettersForWeek()
         
         return stamps.compactMap({
@@ -188,7 +188,7 @@ class CalendarDataBuilder {
     /// Builds history for a given sticker (including how many time it's been reached and what is the average
     func historyFor(sticker id: Int64?) -> StickerUsedData? {
         guard let id = id,
-              let sticker = repository.stampBy(id: id),
+              let sticker = repository.stickerBy(id: id),
               let first = repository.getFirstDateFor(sticker: id) else { return nil }
         
         let weeksFromToday = abs(Date().distance(to: first) / (7 * 24 * 60 * 60))
@@ -211,12 +211,12 @@ class CalendarDataBuilder {
         )
     }
 
-    /// Builds history for a give goal (including how many time it's been reached and what is the current streak
+    /// Builds history for a given goal (including how many time it's been reached and what is the current streak
     func historyFor(goal id: Int64?, limit: Int) -> GoalHistoryData? {
         guard let goal = repository.goalBy(id: id),
-              let first = goal.stamps
-                .compactMap({ return repository.getFirstDateFor(sticker: $0) })
-                .min() else { return nil }
+              let first = goal.stickers.compactMap({
+                  return repository.getFirstDateFor(sticker: $0.id ?? 0) })
+            .min() else { return nil }
         
         var points = [GoalChartPoint]()
         var streak = 0
@@ -328,11 +328,11 @@ class CalendarDataBuilder {
     // MARK: - Helpers
     
     // Returns a list of Stamps grouped by day for a given week.
-    func weekStickers(week: CalendarHelper.Week) -> [[Stamp]] {
+    func weekStickers(week: CalendarHelper.Week) -> [[Sticker]] {
         return (0...6)
         .map({
             let date = week.firstDay.byAddingDays($0)
-            return repository.stampsFor(day: date)
+            return repository.stickersFor(day: date)
         })
     }
 }

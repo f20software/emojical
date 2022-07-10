@@ -23,7 +23,7 @@ class StickerMonthlyChartPresenter: ChartPresenterProtocol {
     // MARK: - State
 
     /// Copy of all stamps - used to build data model for view to show
-    private var stamps = [Stamp]()
+    private var stamps = [Sticker]()
     
     /// Selected month
     private var selectedMonth = CalendarHelper.Month(Date().byAddingDays(-20))

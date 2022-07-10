@@ -23,7 +23,7 @@ struct GoalIconData {
 extension GoalIconData {
 
     // Convinience constructor from Stamp, Goal and current progress object
-    init(stamp: Stamp?, goal: Goal, progress: Int) {
+    init(goal: Goal, progress: Int) {
         
         switch goal.direction {
         case .positive:
@@ -31,7 +31,7 @@ extension GoalIconData {
                 // You got it - should match award render mode
                 self.init(
                     goalId: goal.id,
-                    emoji: stamp?.label,
+                    emoji: goal.stickers.first?.label,
                     backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: .positive,
                     period: goal.period,
@@ -42,7 +42,7 @@ extension GoalIconData {
                 // Still have some work to do
                 self.init(
                     goalId: goal.id,
-                    emoji: stamp?.label,
+                    emoji: goal.stickers.first?.label,
                     backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: .positive,
                     period: goal.period,
@@ -57,7 +57,7 @@ extension GoalIconData {
                 // Busted
                 self.init(
                     goalId: goal.id,
-                    emoji: stamp?.label,
+                    emoji: goal.stickers.first?.label,
                     backgroundColor: Theme.main.colors.unreachedGoalBackground,
                     direction: .negative,
                     period: goal.period,
@@ -71,8 +71,8 @@ extension GoalIconData {
                     (Float(goal.limit - progress) / Float(goal.limit) + Specs.zeroProgressMock)
                 self.init(
                     goalId: goal.id,
-                    emoji: stamp?.label,
-                    backgroundColor: (stamp?.color ?? Theme.main.colors.tint).withAlphaComponent(0.3),
+                    emoji: goal.stickers.first?.label,
+                    backgroundColor: (goal.stickers.first?.color ?? Theme.main.colors.tint).withAlphaComponent(0.3),
                     direction: .negative,
                     period: goal.period,
                     progress: percent,

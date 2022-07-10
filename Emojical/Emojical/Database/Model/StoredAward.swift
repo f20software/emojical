@@ -23,6 +23,9 @@ struct StoredAward {
     let direction: Direction
     let limit: Int
     let goalName: String?
+    // De-normalization - these values are copied from the Sticker record
+    let label: String?
+    let backgroundColor: String?
 }
 
 extension StoredAward : Hashable { }
@@ -46,6 +49,8 @@ extension StoredAward: Codable, FetchableRecord, MutablePersistableRecord {
         case direction
         case limit
         case goalName
+        case label
+        case backgroundColor
     }
 
     // Update an award id after it has been inserted in the database.
@@ -75,7 +80,10 @@ extension StoredAward {
             period: period,
             direction: direction,
             limit: limit,
-            goalName: goalName
+            goalName: goalName,
+            label: label,
+            backgroundColor: backgroundColor != nil ?
+                UIColor(hex: backgroundColor!) : Theme.main.colors.tint
         )
     }
     
@@ -89,5 +97,7 @@ extension StoredAward {
         self.direction = award.direction
         self.limit = award.limit
         self.goalName = award.goalName
+        self.label = award.label
+        self.backgroundColor = award.backgroundColor?.hex
     }
 }

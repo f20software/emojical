@@ -12,7 +12,7 @@
 		BC1E1EFD246C59B000E05C8A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E1EFC246C59B000E05C8A /* Storage.swift */; };
 		BC1E1EFF246C5B5000E05C8A /* DataSource+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E1EFE246C5B5000E05C8A /* DataSource+Repository.swift */; };
 		BC5643EC246B0E2900942066 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5643EB246B0E2900942066 /* DataRepository.swift */; };
-		BC5643EF246B0E9000942066 /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5643EE246B0E9000942066 /* Stamp.swift */; };
+		BC5643EF246B0E9000942066 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5643EE246B0E9000942066 /* Sticker.swift */; };
 		BC5643F1246B0F1900942066 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5643F0246B0F1900942066 /* Goal.swift */; };
 		BC5643F3246B0FCE00942066 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5643F2246B0FCE00942066 /* Award.swift */; };
 		BC5643F7246B10B500942066 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5643F6246B10B500942066 /* Diary.swift */; };
@@ -318,7 +318,7 @@
 		BC1E1EFC246C59B000E05C8A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		BC1E1EFE246C5B5000E05C8A /* DataSource+Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Repository.swift"; sourceTree = "<group>"; };
 		BC5643EB246B0E2900942066 /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
-		BC5643EE246B0E9000942066 /* Stamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
+		BC5643EE246B0E9000942066 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
 		BC5643F0246B0F1900942066 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		BC5643F2246B0FCE00942066 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		BC5643F6246B10B500942066 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
@@ -653,7 +653,7 @@
 			isa = PBXGroup;
 			children = (
 				F29776482820FCAD006C2642 /* GallerySticker.swift */,
-				BC5643EE246B0E9000942066 /* Stamp.swift */,
+				BC5643EE246B0E9000942066 /* Sticker.swift */,
 				BC5643F0246B0F1900942066 /* Goal.swift */,
 				BC5643F2246B0FCE00942066 /* Award.swift */,
 				BC5643F6246B10B500942066 /* Diary.swift */,
@@ -2080,7 +2080,7 @@
 				F295339325B63DB1003CA002 /* GoalDetailsCell.swift in Sources */,
 				F236A828281F33F000478203 /* GoalsCoordinator.swift in Sources */,
 				F216BEA525F72B6B00CBF58B /* MainCoordinatorProtocol.swift in Sources */,
-				BC5643EF246B0E9000942066 /* Stamp.swift in Sources */,
+				BC5643EF246B0E9000942066 /* Sticker.swift in Sources */,
 				F204475325EA092B003318C6 /* Goal+AwardIconData.swift in Sources */,
 				F2338A8A261EB5BF001F3C5D /* ECSegmentedControl.swift in Sources */,
 				F2A094302680063F00980EF9 /* ChartsCoordinator.swift in Sources */,

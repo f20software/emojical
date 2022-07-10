@@ -22,7 +22,7 @@ class GoalsDataSourceListener: GoalsListener {
         self.source = source
     }
     
-    func startListening(onError: @escaping (Error) -> Void, onChange: @escaping ([Goal]) -> Void) {
+    func startListening(onError: @escaping (Error) -> Void, onChange: @escaping () -> Void) {
         let request = StoredGoal.orderedByPeriodName()
         let observation = ValueObservation.tracking { db in
             try request.fetchAll(db)
@@ -30,8 +30,8 @@ class GoalsDataSourceListener: GoalsListener {
         observer = observation.start(
             in: source.dbQueue,
             onError: onError,
-            onChange: { goals in
-                onChange(goals.map { $0.toModel() })
+            onChange: { _ in
+                onChange()
             }
         )
     }

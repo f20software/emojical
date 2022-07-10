@@ -19,7 +19,7 @@ class StickerCoordinator: StickerCoordinatorProtocol {
     }
 
     /// Shows modal form to create new goal
-    func newGoal(with stickerId: Int64) {
+    func newGoal(with sticker: Sticker) {
         // Instantiate GoalViewController from the storyboard file
         guard let nav: UINavigationController = Storyboard.Goal.initialViewController(),
               let view = nav.viewControllers.first as? GoalViewController else {
@@ -28,7 +28,7 @@ class StickerCoordinator: StickerCoordinatorProtocol {
         }
 
         var goal = Goal.new
-        goal.stamps = [stickerId]
+        goal.stickers = [sticker]
         
         let coordinator = GoalCoordinator(parent: nav)
         

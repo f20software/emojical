@@ -21,21 +21,21 @@ struct AwardIconData {
 extension AwardIconData {
     
     // Convinience constructor from Stamp object
-    init(stamp: Stamp?, goalId: Int64?, busted: Bool = false) {
+    init(goal: Goal, busted: Bool = false) {
         
         if busted {
             self.init(
-                goalId: goalId,
-                emoji: stamp?.label,
+                goalId: goal.id,
+                emoji: goal.stickers.first?.label,
                 backgroundColor: Theme.main.colors.unreachedGoalBackground,
                 borderColor: UIColor.clear,
                 reached: false
             )
         } else {
             self.init(
-                goalId: goalId,
-                emoji: stamp?.label,
-                backgroundColor: (stamp?.color ?? Theme.main.colors.tint).withAlphaComponent(0.5),
+                goalId: goal.id,
+                emoji: goal.stickers.first?.label,
+                backgroundColor: (goal.stickers.first?.color ?? Theme.main.colors.tint).withAlphaComponent(0.5),
                 borderColor: Theme.main.colors.reachedGoalBorder,
                 reached: true
             )

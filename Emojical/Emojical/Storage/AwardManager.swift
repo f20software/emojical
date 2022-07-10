@@ -165,7 +165,7 @@ class AwardManager {
         var addAwards = [Award]()
 
         for goal in goals {
-            let stampsLog = repository.diaryForStamp(ids: goal.stamps)
+            let stampsLog = repository.diaryForStamp(ids: goal.stickersIds)
 
             if goal.direction == .positive {
                 let (dateReached, totalCount) = positiveGoalReached(goal, diary: stampsLog)
@@ -259,14 +259,14 @@ class AwardManager {
             end = today.lastOfMonth
             start = today.firstOfMonth
         } else /* if goal.period == .total */ {
-            return repository.diaryForStamp(ids: goal.stamps).count
+            return repository.diaryForStamp(ids: goal.stickersIds).count
         }
         
         let stampsLog = repository.diaryForDateInterval(from: start, to: end)
         var count = 0
 
         for stamp in stampsLog {
-            if goal.stamps.contains(stamp.stampId) {
+            if goal.stickersIds.contains(stamp.stampId) {
                 count += 1
             }
         }
@@ -279,7 +279,7 @@ class AwardManager {
         var count = 0
         var dateReached: Date?
         for stamp in diary {
-            if goal.stamps.contains(stamp.stampId) {
+            if goal.stickersIds.contains(stamp.stampId) {
                 count += 1
                 if count == goal.limit {
                     dateReached = stamp.date
@@ -296,7 +296,7 @@ class AwardManager {
         var reached: Bool = true
         
         for stamp in diary {
-            if goal.stamps.contains(stamp.stampId) {
+            if goal.stickersIds.contains(stamp.stampId) {
                 count += 1
                 if count > goal.limit {
                     reached = false

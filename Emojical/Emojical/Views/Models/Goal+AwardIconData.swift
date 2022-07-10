@@ -13,29 +13,25 @@ enum GoalOrAwardIconData {
     case award(data: AwardIconData)
     
     /// Constructor from the in-progress Goal - used in Today's current week awards and in the list of Goals
-    init(stamp: Stamp?, goal: Goal, progress: Int) {
+    init(goal: Goal, progress: Int) {
         if goal.direction == .positive && progress >= goal.limit {
-            self = .award(data: AwardIconData(stamp: stamp, goalId: goal.id))
+            self = .award(data: AwardIconData(goal: goal))
         }
         else {
-            self = .goal(data: GoalIconData(stamp: stamp, goal: goal, progress: progress))
+            self = .goal(data: GoalIconData(goal: goal, progress: progress))
         }
     }
     
     /// Constructor from received or failed Award - used to generate Recap data
-    init(award: Award, goal: Goal, stamp: Stamp?) {
+    init(award: Award, goal: Goal, stamp: Sticker?) {
         if award.reached {
-            self = .award(data: AwardIconData(stamp: stamp, goalId: goal.id))
+            self = .award(data: AwardIconData(goal: goal))
         } else {
             switch award.direction {
             case .positive:
-                self = .goal(data: GoalIconData(
-                    stamp: stamp,
-                    goal: goal,
-                    progress: award.count)
-                )
+                self = .goal(data: GoalIconData(goal: goal, progress: award.count))
             case .negative:
-                self = .award(data: AwardIconData(stamp: stamp, goalId: goal.id, busted: true))
+                self = .award(data: AwardIconData(goal: goal, busted: true))
             }
         }
         

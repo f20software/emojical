@@ -9,7 +9,7 @@
 import Foundation
 
 struct StickerEditData {
-    let sticker: Stamp
+    let sticker: Sticker
 }
 
 extension StickerEditData: Equatable, Hashable {}

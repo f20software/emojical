@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension Stamp {
+extension Sticker {
     
     // Sticker editing validation
     var isValid: Bool {
@@ -36,7 +36,7 @@ class StickerPresenter: StickerPresenterProtocol {
         coordinator: StickerCoordinatorProtocol,
         awardManager: AwardManager,
         repository: DataRepository,
-        sticker: Stamp?,
+        sticker: Sticker?,
         presentation: PresentationMode
     ) {
         self.view = view
@@ -48,7 +48,7 @@ class StickerPresenter: StickerPresenterProtocol {
             calendar: CalendarHelper.shared
         )
 
-        self.sticker = sticker ?? Stamp.new
+        self.sticker = sticker ?? Sticker.new
         self.presentationMode = presentation
         self.isEditing = (sticker == nil)
     }
@@ -56,7 +56,7 @@ class StickerPresenter: StickerPresenterProtocol {
     // MARK: - State
 
     // Sticker object
-    private var sticker: Stamp!
+    private var sticker: Sticker!
     
     // Presentation mode (pushed or popped as modal)
     private var presentationMode: PresentationMode!
@@ -101,8 +101,8 @@ class StickerPresenter: StickerPresenterProtocol {
             self?.confirmStickerDelete()
         }
         view?.onNewGoalTapped = { [weak self] in
-            guard let id = self?.sticker.id else { return }
-            self?.coordinator.newGoal(with: id)
+            guard let sticker = self?.sticker else { return }
+            self?.coordinator.newGoal(with: sticker)
         }
         view?.onStickerChanged = { [weak self] in
             self?.validateInputAndUpdateView()

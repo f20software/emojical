@@ -20,7 +20,7 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
     // MARK: - State
     
     private var selectedStickers: [Int64]
-    private var allStickers: [Stamp]
+    private var allStickers: [Sticker]
 
     // MARK: - Lifecycle
 
@@ -36,7 +36,7 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
         self.stampsListener = stampsListener
         self.coordinator = coordinator
         self.selectedStickers = selectedStickers
-        self.allStickers = [Stamp]()
+        self.allStickers = [Sticker]()
     }
 
     // MARK: - SelectStickersPresenterProtocol

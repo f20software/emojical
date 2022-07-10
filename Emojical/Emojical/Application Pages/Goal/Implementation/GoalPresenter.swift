@@ -16,7 +16,7 @@ extension Goal {
         guard name.lengthOfBytes(using: .utf8) > 0 else { return false }
         
         // Should have some stickers selected
-        guard stamps.count > 0 else { return false }
+        guard stickers.count > 0 else { return false }
         
         // Should have some positive limit
         guard limit > 0 else { return false }
@@ -190,14 +190,13 @@ class GoalPresenter: GoalPresenterProtocol {
         guard let view = view else { return }
         
         let progress = awardManager.currentProgressFor(goal)
-        let stamp = repository.stampBy(id: goal.stamps.first)
 
         updateTitle()
 
         if isEditing {
             let data = GoalEditData(
                 goal: goal,
-                stickers: repository.stampLabelsFor(goal: goal)
+                stickers: repository.stickerLabelsFor(goal: goal)
             )
             if presentationMode == .modal {
                 view.loadData([.edit(data)])
@@ -209,15 +208,15 @@ class GoalPresenter: GoalPresenterProtocol {
         } else {
             let data = GoalViewData(
                 details: Language.goalDescription(goal, includePeriod: true),
-                stickers: repository.stampLabelsFor(goal: goal),
+                stickers: repository.stickerLabelsFor(goal: goal),
                 progressText: Language.goalCurrentProgress(
                     period: goal.period,
                     direction: goal.direction,
                     progress: progress,
                     limit: goal.limit
                 ),
-                awardIcon: AwardIconData(stamp: stamp, goalId: goal.id),
-                goalIcon: GoalIconData(stamp: stamp, goal: goal, progress: progress)
+                awardIcon: AwardIconData(goal: goal),
+                goalIcon: GoalIconData(goal: goal, progress: progress)
             )
             
             var cells: [GoalDetailsElement] = [.view(data)]
@@ -239,9 +238,11 @@ class GoalPresenter: GoalPresenterProtocol {
     
     // Navigate to select stickers view and configure callback
     private func selectStickers() {
-        coordinator.selectStickers(goal.stamps) { [weak self] (updateIds) in
-            self?.goal.stamps = updateIds
-            self?.loadViewData()
+        coordinator.selectStickers(goal.stickers.compactMap { $0.id }) {
+            [weak self] (updateIds) in
+            guard let strongSelf = self else { return }
+            strongSelf.goal.stickers = strongSelf.repository.stickersBy(ids: updateIds)
+            strongSelf.loadViewData()
         }
     }
 }

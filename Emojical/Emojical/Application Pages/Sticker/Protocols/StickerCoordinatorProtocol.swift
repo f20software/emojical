@@ -11,5 +11,5 @@ import Foundation
 protocol StickerCoordinatorProtocol: AnyObject {
 
     /// Shows modal form to create new goal
-    func newGoal(with stickerId: Int64)
+    func newGoal(with sticker: Sticker)
 }

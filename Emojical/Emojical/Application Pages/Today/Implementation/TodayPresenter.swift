@@ -71,7 +71,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private var messageQueue = OperationQueue()
 
     // Current week index
-    private var week = CalendarHelper.Week(Date()) {
+    private var week = CalendarHelper.Week() {
         didSet {
             // Load data model from the repository
             weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)

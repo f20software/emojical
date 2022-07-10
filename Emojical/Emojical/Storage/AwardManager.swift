@@ -14,12 +14,20 @@ class AwardManager {
     // MARK: - Internal state
 
     private let repository: DataRepository
+    private let calendar: CalendarHelper
     
     // Singleton instance
-    static let shared = AwardManager(repository: Storage.shared.repository)
+    static let shared = AwardManager(
+        repository: Storage.shared.repository,
+        calendar: CalendarHelper.shared
+    )
 
-    private init(repository: DataRepository) {
+    private init(
+        repository: DataRepository,
+        calendar: CalendarHelper
+    ) {
         self.repository = repository
+        self.calendar = calendar
     }
 
     // For weekly goals we will do the following:
@@ -49,18 +57,19 @@ class AwardManager {
     private func recalculateWeeklyGoals() -> Bool {
         // Count weeks we just closed
         var closedWeeks = 0
+        let today = calendar.today
         
         // When was the last weekly goals recalculated?
         var lastUpdated = repository.lastWeekUpdate
         if lastUpdated == nil {
-            let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
+            let firstEntryDate = repository.getFirstDiaryDate() ?? today
 
             // This wil be either last Sunday before first entry or last Sunday before today
             lastUpdated = firstEntryDate.lastOfWeek.byAddingWeek(-1)
         }
         
         guard var last = lastUpdated else { return false }
-        while (last.databaseKey < Date().databaseKey) {
+        while (last.databaseKey < today.databaseKey) {
             NSLog("Last week update set \(last.databaseKey)")
             repository.lastWeekUpdate = last
             last = last.byAddingWeek(1)
@@ -75,7 +84,7 @@ class AwardManager {
 
     // Recalculate total(overall) goals
     private func recalculateTotalGoals() {
-        recalculateTotalAwardsForDate(Date())
+        recalculateTotalAwardsForDate(calendar.today)
     }
 
     
@@ -83,8 +92,10 @@ class AwardManager {
     private func recalculateMonthlyGoals() {
         // When was the last weekly goals recalculated?
         var lastUpdated = repository.lastMonthUpdate
+        let today = calendar.today
+
         if lastUpdated == nil {
-            let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
+            let firstEntryDate = repository.getFirstDiaryDate() ?? today
 
             // This wil be last day of the previous month or last day of month
             // just before first diary entry
@@ -92,7 +103,7 @@ class AwardManager {
         }
 
         guard var last = lastUpdated else { return }
-        while (last.databaseKey < Date().databaseKey) {
+        while (last.databaseKey < today.databaseKey) {
             NSLog("Last month update set \(last.databaseKey)")
             repository.lastMonthUpdate = last
             if last.databaseKey == last.lastOfMonth.databaseKey {
@@ -108,12 +119,12 @@ class AwardManager {
         let goals = repository.goalsBy(period: .month)
         // If we don't have goals - there is not point of recalculating anything
         guard goals.count > 0 else { return }
-        
+
         NSLog("Recalculating monthly awards for \(date.databaseKey)")
 
         let end = date.lastOfMonth
         let start = date.firstOfMonth
-        let past = end.databaseKey < Date().databaseKey
+        let past = end.databaseKey < calendar.today.databaseKey
 
         // Save off array of Ids so we can easily filter existing awards by only
         // looking at ones that correspond to our goals
@@ -203,7 +214,7 @@ class AwardManager {
 
         let end = date.lastOfWeek
         let start = end.byAddingDays(-6)
-        let past = end.databaseKey < Date().databaseKey
+        let past = end.databaseKey < calendar.today.databaseKey
 
         // Save off array of Ids so we can easily filter existing awards by only looking at ones that
         // correspond to our goals
@@ -250,12 +261,12 @@ class AwardManager {
 
         var start, end: Date!
         if goal.period == .week {
-            let today = Date()
+            let today = calendar.today
             end = today.lastOfWeek
             start = end.byAddingDays(-6)
         }
         else if goal.period == .month {
-            let today = Date()
+            let today = calendar.today
             end = today.lastOfMonth
             start = today.firstOfMonth
         } else /* if goal.period == .total */ {

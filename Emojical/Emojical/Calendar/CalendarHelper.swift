@@ -31,7 +31,7 @@ class CalendarHelper {
 
     /// Return today's date. Could be used for mocking current date
     var today: Date {
-        // return Date(yyyyMmDd: "2022-05-10")
+        // return Date(yyyyMmDd: "2022-07-11")
         return Date()
     }
     
@@ -46,7 +46,7 @@ class CalendarHelper {
             bySettingHour: hour,
             minute: minute,
             second: 0,
-            of: today) ?? Date()
+            of: today) ?? today
     }
     
     init() {
@@ -149,7 +149,7 @@ extension CalendarHelper {
         /// when Sunday is first day if the week: 0 - Sunday, 1 - Monday ... 6 - Saturday
         private (set) var firstIndex: Int!
 
-        init(_ date: Date) {
+        init(_ date: Date = CalendarHelper.shared.today) {
             self.month = Calendar.current.component(.month, from: date)
             self.year = Calendar.current.component(.year, from: date)
             
@@ -216,14 +216,14 @@ extension CalendarHelper {
         /// Convinience shortcut for the last day of week
         let lastDay: Date
 
-        init(_ date: Date) {
+        init(_ date: Date = CalendarHelper.shared.today) {
             self.lastDay = date.lastOfWeek
             self.firstDay = lastDay.byAddingDays(-6)
         }
 
         /// Returns `true` when today date falls into this week range
         var isCurrentWeek: Bool {
-            let todayKey = Date().databaseKey
+            let todayKey = CalendarHelper.shared.today.databaseKey
             
             return (firstDay.databaseKey <= todayKey &&
                 lastDay.databaseKey >= todayKey)
@@ -231,14 +231,14 @@ extension CalendarHelper {
         
         /// Returns `true` when week start is in a future
         var isFuture: Bool {
-            let todayKey = Date().databaseKey
+            let todayKey = CalendarHelper.shared.today.databaseKey
             
             return (firstDay.databaseKey > todayKey)
         }
 
         /// Returns `true` when week ends is in a past
         var isPast: Bool {
-            let todayKey = Date().databaseKey
+            let todayKey = CalendarHelper.shared.today.databaseKey
             
             return (lastDay.databaseKey < todayKey)
         }
@@ -260,7 +260,7 @@ extension CalendarHelper {
         
         func dayHeadersForWeek(highlightedIndex: Int) -> [DayHeaderData] {
             let formatter = DateFormatter()
-            let today = Date().databaseKey
+            let today = CalendarHelper.shared.today.databaseKey
 
             var result: [DayHeaderData] = self.days.map {
                 formatter.dateFormat = "d"

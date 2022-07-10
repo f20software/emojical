@@ -16,11 +16,13 @@ struct Award {
     let date: Date
     let reached: Bool
     let count: Int
+    
     // De-normalization - these values are copied from the Goal record
     var period: Period
     var direction: Direction
     var limit: Int
     var goalName: String?
+    
     // De-normalization - these values are copied from the Sticker record
     let label: String?
     let backgroundColor: UIColor?

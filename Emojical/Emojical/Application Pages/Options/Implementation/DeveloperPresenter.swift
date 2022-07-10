@@ -18,6 +18,7 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
     private weak var settings: LocalSettings!
     private weak var repository: DataRepository!
     private weak var awards: AwardManager!
+    private weak var calendar: CalendarHelper!
 
     // MARK: - State
 
@@ -27,12 +28,14 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
         view: DeveloperView,
         repository: DataRepository,
         awards: AwardManager,
-        settings: LocalSettings
+        settings: LocalSettings,
+        calendar: CalendarHelper
     ) {
         self.view = view
         self.repository = repository
         self.awards = awards
         self.settings = settings
+        self.calendar = calendar
     }
 
     /// Called when view finished initial loading.
@@ -57,8 +60,8 @@ class DeveloperPresenter: NSObject, DeveloperPresenterProtocol {
         let goalsCount = repository.allGoals().count
         let goalsDeletedCount = repository.allGoals(includeDeleted: true).count - goalsCount
         let diaryCount = repository.diaryForDateInterval(
-            from: repository.getFirstDiaryDate() ?? Date(),
-            to: repository.getLastDiaryDate() ?? Date()).count
+            from: repository.getFirstDiaryDate() ?? calendar.today,
+            to: repository.getLastDiaryDate() ?? calendar.today).count
         let awardsCount = repository.allAwards().count
         let lastWeek = repository.lastWeekUpdate != nil ? repository.lastWeekUpdate!.databaseKey : "-"
         let lastMonth = repository.lastMonthUpdate != nil ? repository.lastMonthUpdate!.databaseKey : "-"

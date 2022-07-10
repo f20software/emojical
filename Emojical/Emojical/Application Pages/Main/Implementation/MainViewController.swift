@@ -97,7 +97,7 @@ extension MainViewController : UITabBarControllerDelegate {
         // If we're navigating to TodayViewController - select today's date
         if ((viewController as? UINavigationController)?
             .visibleViewController as? TodayViewController) != nil {
-            todayPresenter?.navigateTo(Date())
+            todayPresenter?.navigateTo(CalendarHelper.shared.today)
         }
     }
 }
@@ -110,7 +110,7 @@ extension MainViewController {
         navigateTo(.today)
 
         // And navigate to current day
-        todayPresenter?.navigateTo(Date())
+        todayPresenter?.navigateTo(CalendarHelper.shared.today)
     }
     
     private func updateColors() {

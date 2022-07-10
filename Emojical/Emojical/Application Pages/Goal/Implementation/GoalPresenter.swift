@@ -151,7 +151,7 @@ class GoalPresenter: GoalPresenterProtocol {
             
             // Remove any awards that were given for this goal in the current week,
             // since week is not closed yet
-            let week = CalendarHelper.Week(Date())
+            let week = CalendarHelper.Week()
             repository.deleteAwards(from: week.firstDay, to: week.lastDay, goalId: id)
         }
         catch {}

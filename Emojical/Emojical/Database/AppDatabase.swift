@@ -134,6 +134,14 @@ struct AppDatabase {
                 
             })
         }
+        
+        migrator.registerMigration("db-state-5") { db in
+            // Updating Awards table with new fields
+            try db.alter(table: "award", body: { t in
+                t.add(column: "label", .text)
+                t.add(column: "backgroundColor", .text)
+            })
+        }
 
         return migrator
     }

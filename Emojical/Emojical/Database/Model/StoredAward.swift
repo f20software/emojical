@@ -18,11 +18,13 @@ struct StoredAward {
 
     let reached: Bool
     let count: Int
+    
     // De-normalization - these values are copied from the Goal record
     let period: Period
     let direction: Direction
     let limit: Int
     let goalName: String?
+    
     // De-normalization - these values are copied from the Sticker record
     let label: String?
     let backgroundColor: String?

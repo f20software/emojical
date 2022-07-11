@@ -19,16 +19,16 @@ extension DataSource {
         fillAwardLabels()
         
         // Un-deleting specific stamp that I deleted accidentaly
-        var sticker = stickerBy(id: 43)
-        sticker?.deleted = false
-        try! save(stamp: sticker!)
-
-        var goal = goalBy(id: 40)
-        goal?.deleted = false
-        try! save(goal: goal!)
+//        var sticker = stickerBy(id: 43)
+//        sticker?.deleted = false
+//        try! save(stamp: sticker!)
+//
+//        var goal = goalBy(id: 40)
+//        goal?.deleted = false
+//        try! save(goal: goal!)
 
         // Ad-hoc entries if necesssary
-        createAdHocEntries()
+//        createAdHocEntries()
     }
 
     /// Go through all awards that have no label/background information and retreive it

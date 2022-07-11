@@ -44,7 +44,7 @@
 
 "current_streak_x" = "Нинішня серія|%d";
 
-"no_goals_reahed_week" = "На цьому тижні не було досягнуто жодних цілей";
+"no_goals_reached_week" = "На цьому тижні не було досягнуто жодних цілей";
 
 // MARK: - Goal description
 

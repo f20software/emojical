@@ -42,7 +42,7 @@
 
 "current_streak_x" = "Current streak|%d";
 
-"no_goals_reahed_week" = "No goals were reached this week";
+"no_goals_reached_week" = "No goals were reached this week";
 
 // MARK: - Goal description
 

@@ -19,7 +19,7 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
 
     // MARK: - State
     
-    private var selectedStickers: [Int64]
+    private var selectedStickersIds: [Int64]
     private var allStickers: [Sticker]
 
     // MARK: - Lifecycle
@@ -29,13 +29,13 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
         repository: DataRepository,
         stampsListener: StampsListener,
         coordinator: GoalCoordinatorProtocol,
-        selectedStickers: [Int64]
+        selectedStickersIds: [Int64]
     ) {
         self.view = view
         self.repository = repository
         self.stampsListener = stampsListener
         self.coordinator = coordinator
-        self.selectedStickers = selectedStickers
+        self.selectedStickersIds = selectedStickersIds
         self.allStickers = [Sticker]()
     }
 
@@ -82,7 +82,7 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
         if diff.count == 1 {
             switch diff.first {
             case .insert(_, let stamp, _):
-                selectedStickers.append(stamp.id ?? 0)
+                selectedStickersIds.append(stamp.id ?? 0)
             default:
                 break
             }
@@ -93,7 +93,7 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
             return SelectStickerElement.sticker(
                 SelectStickerData(
                     sticker: $0,
-                    selected: selectedStickers.contains($0.id ?? -1)
+                    selected: selectedStickersIds.contains($0.id ?? -1)
                 )
             )
         }
@@ -101,14 +101,14 @@ class SelectStickersPresenter: SelectStickersPresenterProtocol {
         data.append(.newSticker)
         view?.updateTitle("select_stickers_title".localized)
         view?.loadData(data)
-        onChange?(selectedStickers)
+        onChange?(selectedStickersIds)
     }
     
     private func toggleSelectedSticker(with id: Int64) {
-        if selectedStickers.contains(id) {
-            selectedStickers.removeAll { $0 == id }
+        if selectedStickersIds.contains(id) {
+            selectedStickersIds.removeAll { $0 == id }
         } else {
-            selectedStickers.append(id)
+            selectedStickersIds.append(id)
         }
         loadViewData()
     }

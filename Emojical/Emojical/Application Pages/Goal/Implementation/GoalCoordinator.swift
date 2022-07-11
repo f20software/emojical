@@ -31,7 +31,7 @@ class GoalCoordinator: GoalCoordinatorProtocol {
             repository: Storage.shared.repository,
             stampsListener: Storage.shared.stampsListener(),
             coordinator: self,
-            selectedStickers: selectedStickersIds
+            selectedStickersIds: selectedStickersIds
         )
         // Whenever selected stickers changed, notify caller via callback
         stickers.presenter.onChange = { updatedIds in

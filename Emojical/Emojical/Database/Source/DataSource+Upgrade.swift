@@ -9,10 +9,27 @@
 import Foundation
 import GRDB
 
-//
-//
-
+// Some upgrade and ad-hoc initialization methods
 extension DataSource {
+
+    /// Database startup sequence
+    func startupSequence() -> Void {
+        
+        // Check Awards table for records with empty labels and background
+        fillAwardLabels()
+        
+        // Un-deleting specific stamp that I deleted accidentaly
+        var sticker = stickerBy(id: 43)
+        sticker?.deleted = false
+        try! save(stamp: sticker!)
+
+        var goal = goalBy(id: 40)
+        goal?.deleted = false
+        try! save(goal: goal!)
+
+        // Ad-hoc entries if necesssary
+        createAdHocEntries()
+    }
 
     /// Go through all awards that have no label/background information and retreive it
     func fillAwardLabels() -> Void {

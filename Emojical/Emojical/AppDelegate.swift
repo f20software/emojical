@@ -66,21 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         notificaionManager.requestAuthorization()
         UNUserNotificationCenter.current().delegate = self
         
+        // Perform database upgrade or anything else that is required on the startup
         let repo = Storage.shared.repository
-        //      Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")
-
-//      Un-deleting specific stamp that I deleted accidentaly
-        
-//        let repo = Storage.shared.repository
-        // repo.createAdHocEntries()
-//        var sticker = repo.stickerBy(id: 43)
-//        sticker?.deleted = false
-//        try! repo.save(stamp: sticker!)
-//
-//        var goal = repo.goalBy(id: 40)
-//        goal?.deleted = false
-//        try! repo.save(goal: goal!)
-        repo.fillAwardLabels()
+        repo.startupSequence()
 
         UIView.appearance().tintColor = Theme.main.colors.tint
         return true

@@ -202,13 +202,8 @@ class AwardManager {
             }
         }
             
-        // Load existing awards from the database - olny delete awards that were
-        // awarded this week - don't touch anything in the past
+        // Load existing awards from the database
         let deleteAwards = repository.awardsByGoal(ids: goalIds)
-//        let deleteAwards =
-//            repository.awardsInInterval(from: start, to: end).filter { (a) -> Bool in
-//            return goalIds.contains(a.goalId)
-//        }
 
         // Update data source with new and/or deleted awards
         if addAwards.count > 0 || deleteAwards.count > 0 {

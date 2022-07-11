@@ -137,6 +137,9 @@ protocol DataRepository: AnyObject {
     
     // MARK: - Upgrade
     
+    /// Database startup sequence
+    func startupSequence() -> Void
+
     /// Go through all awards that have no label/background information and retreive it
     func fillAwardLabels() -> Void
 }

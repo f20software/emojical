@@ -33,7 +33,8 @@ class OptionsCoordinator: OptionsCoordinatorProtocol {
             view: dev,
             repository: Storage.shared.repository,
             awards: AwardManager.shared,
-            settings: LocalSettings.shared
+            settings: LocalSettings.shared,
+            calendar: CalendarHelper.shared
         )
         dev.presenter = presenter
         parentController?.pushViewController(dev, animated: true)

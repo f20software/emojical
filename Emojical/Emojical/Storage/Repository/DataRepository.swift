@@ -42,20 +42,26 @@ protocol DataRepository: AnyObject {
     /// Awards by given Ids
     func awardsByGoal(ids: [Int64]) -> [Award]
 
+    /// Awards with empty label - used when upgrading database
+    func awardsWithEmptyLabels() -> [Award]
+
     /// Sticker Ids for a day from Diary table
     func stampsIdsFor(day: Date) -> [Int64]
     
     /// Sticker for a day
-    func stampsFor(day: Date) -> [Stamp]
+    func stickersFor(day: Date) -> [Sticker]
 
     /// Sticker by a given Id
-    func stampBy(id: Int64?) -> Stamp?
+    func stickerBy(id: Int64?) -> Sticker?
+    
+    /// Bulk sticker retrieval method
+    func stickersBy(ids: [Int64]) -> [Sticker]
     
     /// Gallery sticker by a given Id
     func galleryStickerBy(id: Int64?) -> GallerySticker?
     
     /// Collect all stamp labels by iterating through Ids stored in the goal object
-    func stampLabelsFor(goal: Goal) -> [String]
+    func stickerLabelsFor(goal: Goal) -> [String]
     
     /// Date of the first diary entry
     func getFirstDiaryDate() -> Date?
@@ -76,7 +82,7 @@ protocol DataRepository: AnyObject {
     func allGoals(includeDeleted: Bool) -> [Goal]
     
     /// All created stamps
-    func allStamps(includeDeleted: Bool) -> [Stamp]
+    func allStamps(includeDeleted: Bool) -> [Sticker]
     
     /// All gallery stickers
     func allGalleryStickers() -> [GallerySticker]
@@ -90,10 +96,10 @@ protocol DataRepository: AnyObject {
     // MARK: - Saving
     
     /// Save (update or create) a stamp
-    @discardableResult func save(stamp: Stamp) throws -> Stamp
+    @discardableResult func save(stamp: Sticker) throws -> Int64?
     
     /// Save (update or create) a goal
-    @discardableResult func save(goal: Goal) throws -> Goal
+    @discardableResult func save(goal: Goal) throws -> Int64?
     
     /// Add and remove awards
     func updateAwards(add: [Award], remove: [Award])
@@ -102,7 +108,7 @@ protocol DataRepository: AnyObject {
     func setStampsForDay(_ day: Date, stamps: [Int64])
     
     /// Remove sticker from list of goals
-    func removeSticker(_ stampId: Int64, from goalIds: [Int64])
+    func removeSticker(withId: Int64, from goalIds: [Int64])
 
     /// Deletes awards for a given goal and given time internal
     func deleteAwards(from: Date, to: Date, goalId: Int64)
@@ -127,12 +133,20 @@ protocol DataRepository: AnyObject {
     func createAdHocEntries()
 
     /// Find stamp by its label (returns first matching or nil
-    func stickerByLabel(_ label: String) -> Stamp?
+    func stickerByLabel(_ label: String) -> Sticker?
+    
+    // MARK: - Upgrade
+    
+    /// Database startup sequence
+    func startupSequence() -> Void
+
+    /// Go through all awards that have no label/background information and retreive it
+    func fillAwardLabels() -> Void
 }
 
 extension DataRepository {
     
-    func allStamps() -> [Stamp] {
+    func allStamps() -> [Sticker] {
         allStamps(includeDeleted: false)
     }
     

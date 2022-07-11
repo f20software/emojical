@@ -59,11 +59,11 @@ class GoalsPresenter: GoalsPresenterProtocol {
             self?.loadViewData()
         })
 
-        // Subscribe to goals listener in case stamps array ever changes
+        // Subscribe to goals listener in case goals array ever changes
         goalsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
-        onChange: { [weak self] stamps in
+        onChange: { [weak self] in
             self?.loadViewData()
         })
 
@@ -102,7 +102,6 @@ class GoalsPresenter: GoalsPresenterProtocol {
         let newGoalsData: [GoalData] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }
 
-            let stamp = self.repository.stampBy(id: $0.stamps.first)
             return GoalData(
                 goalId: goalId,
                 name: $0.name,
@@ -111,7 +110,6 @@ class GoalsPresenter: GoalsPresenterProtocol {
                 count: $0.count,
                 checkMark: $0.count > 0 && $0.isPeriodic == false,
                 icon: GoalOrAwardIconData(
-                    stamp: stamp,
                     goal: $0,
                     progress: self.awardManager.currentProgressFor($0)
                 )

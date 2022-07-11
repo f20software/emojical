@@ -74,17 +74,22 @@ extension StoredGoal {
 // MARK: - Model conersion
 
 extension StoredGoal {
-    func toModel() -> Goal {
-        Goal(
+    
+    func toModel(repository: DataRepository) -> Goal {
+        let stickers = repository.stickersBy(ids:
+            stamps.split(separator: ",").map{ Int64($0)! })
+        
+        return Goal(
             id: id,
             name: name,
             period: period,
             direction: direction,
             limit: limit,
-            stamps: stamps.split(separator: ",").map{ Int64($0)! },
+            stickers: stickers,
             deleted: deleted,
             count: count,
-            lastUsed: lastUsed.count > 0 ? Date(yyyyMmDd: lastUsed) : nil)
+            lastUsed: lastUsed.count > 0 ? Date(yyyyMmDd: lastUsed) : nil
+        )
     }
     
     init(goal: Goal) {
@@ -93,7 +98,7 @@ extension StoredGoal {
         self.period = goal.period
         self.direction = goal.direction
         self.limit = goal.limit
-        self.stamps = goal.stamps.map({ "\($0)" }).joined(separator: ",")
+        self.stamps = goal.stickersIds.map({ "\($0)" }).joined(separator: ",")
         self.deleted = goal.deleted
         self.count = goal.count
         self.lastUsed = goal.lastUsed?.databaseKey ?? ""

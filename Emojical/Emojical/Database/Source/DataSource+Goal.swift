@@ -16,7 +16,7 @@ extension DataSource {
     /// Goal by specified Id
     func goalBy(id: Int64?) -> Goal? {
         guard let id = id else { return nil }
-        return storedGoal(withId: id)?.toModel()
+        return storedGoal(withId: id)?.toModel(repository: self)
     }
 
     // Last used stamp date from Diary
@@ -36,7 +36,9 @@ extension DataSource {
 
     // All goals
     func allGoals(includeDeleted: Bool) -> [Goal] {
-        allStoredGoals(includeDeleted: includeDeleted).map { $0.toModel() }
+        allStoredGoals(includeDeleted: includeDeleted).map {
+            $0.toModel(repository: self)
+        }
     }
 
     // Delete all goals from the database
@@ -55,24 +57,24 @@ extension DataSource {
             return try dbQueue.read { db -> [StoredGoal] in
                 let request = StoredGoal.filter(StoredGoal.Columns.deleted == false && StoredGoal.Columns.period == period)
                 return try request.fetchAll(db)
-            }.map { $0.toModel() }
+            }.map { $0.toModel(repository: self) }
         }
         catch { }
         return []
     }
     
     /// Collect all stamp labels by iterating through Ids stored in the goal object
-    func stampLabelsFor(goal: Goal) -> [String] {
-        return goal.stamps.compactMap({ return stampBy(id: $0 )?.label })
+    func stickerLabelsFor(goal: Goal) -> [String] {
+        return goal.stickers.compactMap({ return $0.label })
     }
     
     // MARK: - Saving
     
-    @discardableResult func save(goal: Goal) throws -> Goal {
+    @discardableResult func save(goal: Goal) throws -> Int64? {
         try dbQueue.inDatabase { db in
             var stored = StoredGoal(goal: goal)
             try stored.save(db)
-            return stored.toModel()
+            return stored.id
         }
     }
     
@@ -135,11 +137,11 @@ extension DataSource {
     }
     
     /// Remove sticker from list of goals
-    func removeSticker(_ stampId: Int64, from goalIds: [Int64]) {
+    func removeSticker(withId: Int64, from goalIds: [Int64]) {
         goalIds.forEach({
             var goal = goalBy(id: $0)
             if goal != nil {
-                goal!.stamps.removeAll(where: { $0 == stampId })
+                goal!.stickers.removeAll(where: { $0.id == withId })
                 do {
                     try save(goal: goal!)
                 }

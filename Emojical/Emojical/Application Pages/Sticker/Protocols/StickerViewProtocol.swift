@@ -48,7 +48,7 @@ protocol StickerViewProtocol: AnyObject {
     func updateTitle(_ text: String)
 
     /// Set form title
-    func updateIcon(_ sticker: Stamp)
+    func updateIcon(_ sticker: Sticker)
 
     /// Enable / disable Done button data
     func enableDoneButton(_ enabled: Bool)
@@ -57,5 +57,5 @@ protocol StickerViewProtocol: AnyObject {
     func loadData(_ data: [StickerDetailsElement])
 
     /// Update Sticker data from the UI
-    func update(to: inout Stamp)
+    func update(to: inout Sticker)
 }

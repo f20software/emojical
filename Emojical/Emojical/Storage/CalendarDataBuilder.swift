@@ -48,7 +48,7 @@ class CalendarDataBuilder {
     func canMoveForward(_ week: CalendarHelper.Week) -> Bool {
         // Only do this check for the future week - for the past or current - gotta allow to move forward
         guard week.isFuture else { return true }
-        let lastEntryDate = repository.getLastDiaryDate() ?? Date()
+        let lastEntryDate = repository.getLastDiaryDate() ?? calendar.today
         let nextWeekFirstDay = week.firstDay.byAddingWeek(1)
         
         let distance = Int(nextWeekFirstDay.timeIntervalSince(lastEntryDate))
@@ -59,7 +59,7 @@ class CalendarDataBuilder {
     func canMoveBackward(_ week: CalendarHelper.Week) -> Bool {
         // Only do this check for the past week - for the future or current - gotta allow to move back
         guard week.isPast else { return true }
-        let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
+        let firstEntryDate = repository.getFirstDiaryDate() ?? calendar.today
         let prevWeekLastDay = week.lastDay.byAddingWeek(-1)
         
         let distance = Int(firstEntryDate.timeIntervalSince(prevWeekLastDay))
@@ -68,7 +68,7 @@ class CalendarDataBuilder {
 
     // Don't allow to move to the next month if there is no data for the next month
     func canMoveForward(_ month: CalendarHelper.Month) -> Bool {
-        let lastEntryDate = repository.getLastDiaryDate() ?? Date()
+        let lastEntryDate = repository.getLastDiaryDate() ?? calendar.today
         let nextMonthFirstDay = month.firstDay.byAddingMonth(1)
         
         let distance = Int(nextMonthFirstDay.timeIntervalSince(lastEntryDate))
@@ -77,7 +77,7 @@ class CalendarDataBuilder {
 
     // Don't allow to move to the previous month if there is no data for the next month
     func canMoveBackward(_ month: CalendarHelper.Month) -> Bool {
-        let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
+        let firstEntryDate = repository.getFirstDiaryDate() ?? calendar.today
         let nextMonthLastDay = month.lastDay.byAddingMonth(-1)
         
         let distance = Int(firstEntryDate.timeIntervalSince(nextMonthLastDay))
@@ -86,7 +86,7 @@ class CalendarDataBuilder {
 
     // Don't allow to move to the next year if there is no data for the next month
     func canMoveForward(_ year: CalendarHelper.Year) -> Bool {
-        let lastEntryDate = repository.getLastDiaryDate() ?? Date()
+        let lastEntryDate = repository.getLastDiaryDate() ?? calendar.today
         let nextYearFirstDay = year.firstDay.byAddingMonth(12)
         
         let distance = Int(nextYearFirstDay.timeIntervalSince(lastEntryDate))
@@ -95,7 +95,7 @@ class CalendarDataBuilder {
 
     // Don't allow to move to the previous year if there is no data for the next month
     func canMoveBackward(_ year: CalendarHelper.Year) -> Bool {
-        let firstEntryDate = repository.getFirstDiaryDate() ?? Date()
+        let firstEntryDate = repository.getFirstDiaryDate() ?? calendar.today
         let nextYearLastDay = year.lastDay.byAddingMonth(-12)
         
         let distance = Int(firstEntryDate.timeIntervalSince(nextYearLastDay))
@@ -105,8 +105,8 @@ class CalendarDataBuilder {
     // MARK: - Stats page data building
     
     /// Creates Monthly stats empty data - actual statistics will be loaded asynchrouniously 
-    func emptyStatsData(for month: CalendarHelper.Month, stamps: [Stamp]) -> [MonthBoxData] {
-        let weekdayHeaders = CalendarHelper.Week(Date()).weekdayLettersForWeek()
+    func emptyStatsData(for month: CalendarHelper.Month, stamps: [Sticker]) -> [MonthBoxData] {
+        let weekdayHeaders = CalendarHelper.Week().weekdayLettersForWeek()
         
         return stamps.compactMap({
             guard let stampId = $0.id else { return nil }
@@ -188,10 +188,10 @@ class CalendarDataBuilder {
     /// Builds history for a given sticker (including how many time it's been reached and what is the average
     func historyFor(sticker id: Int64?) -> StickerUsedData? {
         guard let id = id,
-              let sticker = repository.stampBy(id: id),
+              let sticker = repository.stickerBy(id: id),
               let first = repository.getFirstDateFor(sticker: id) else { return nil }
         
-        let weeksFromToday = abs(Date().distance(to: first) / (7 * 24 * 60 * 60))
+        let weeksFromToday = abs(calendar.today.distance(to: first) / (7 * 24 * 60 * 60))
 
         var average = Double(sticker.count) / weeksFromToday
         var averageText = "sticker_average_per_week".localized(String(format: "%.1f", average))
@@ -211,12 +211,12 @@ class CalendarDataBuilder {
         )
     }
 
-    /// Builds history for a give goal (including how many time it's been reached and what is the current streak
+    /// Builds history for a given goal (including how many time it's been reached and what is the current streak
     func historyFor(goal id: Int64?, limit: Int) -> GoalHistoryData? {
         guard let goal = repository.goalBy(id: id),
-              let first = goal.stamps
-                .compactMap({ return repository.getFirstDateFor(sticker: $0) })
-                .min() else { return nil }
+              let first = goal.stickersIds.compactMap({
+                  return repository.getFirstDateFor(sticker: $0)
+              }).min() else { return nil }
         
         var points = [GoalChartPoint]()
         var streak = 0
@@ -226,7 +226,7 @@ class CalendarDataBuilder {
         switch goal.period {
         case .week:
             headerText = "last_x_weeks".localized(limit)
-            var week = CalendarHelper.Week(Date().byAddingWeek(-1))
+            var week = CalendarHelper.Week(calendar.today.byAddingWeek(-1))
             while (week.lastDay > first) {
                 if let award = repository.awardsInInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id }) {
                     if points.count < limit {
@@ -261,14 +261,14 @@ class CalendarDataBuilder {
             }
             
             // Check current week to see if we need to increase the streak
-            week = CalendarHelper.Week(Date())
+            week = CalendarHelper.Week()
             if (repository.awardsInInterval(from: week.firstDay, to: week.lastDay).first(where: { $0.goalId == goal.id && $0.reached == true }) != nil) {
                 streak += 1
             }
             
         case .month:
             headerText = "last_x_months".localized(limit)
-            var month = CalendarHelper.Month(Date().byAddingMonth(-1))
+            var month = CalendarHelper.Month(calendar.today.byAddingMonth(-1))
             while (month.lastDay > first) {
                 if let award = repository.awardsInInterval(from: month.firstDay, to: month.lastDay).first(where: { $0.goalId == goal.id }) {
                     if points.count < limit {
@@ -303,7 +303,7 @@ class CalendarDataBuilder {
             }
             
             // Check current week to see if we need to increase the streak
-            month = CalendarHelper.Month(Date())
+            month = CalendarHelper.Month(calendar.today)
             if (repository.awardsInInterval(from: month.firstDay, to: month.lastDay).first(where: { $0.goalId == goal.id && $0.reached == true }) != nil) {
                 streak += 1
             }
@@ -328,11 +328,11 @@ class CalendarDataBuilder {
     // MARK: - Helpers
     
     // Returns a list of Stamps grouped by day for a given week.
-    func weekStickers(week: CalendarHelper.Week) -> [[Stamp]] {
+    func weekStickers(week: CalendarHelper.Week) -> [[Sticker]] {
         return (0...6)
         .map({
             let date = week.firstDay.byAddingDays($0)
-            return repository.stampsFor(day: date)
+            return repository.stickersFor(day: date)
         })
     }
 }

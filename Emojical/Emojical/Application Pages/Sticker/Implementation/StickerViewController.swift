@@ -87,7 +87,7 @@ class StickerViewController : UIViewController, StickerViewProtocol {
     }
 
     /// Update preview icon
-    func updateIcon(_ sticker: Stamp) {
+    func updateIcon(_ sticker: Sticker) {
         editView?.updatePreview(label: sticker.label, color: sticker.color)
     }
 
@@ -104,7 +104,7 @@ class StickerViewController : UIViewController, StickerViewProtocol {
     }
     
     /// Update Goal data from the UI
-    func update(to: inout Stamp) {
+    func update(to: inout Sticker) {
         guard let details = editView else { return }
         to.name = (details.name ?? to.name).trimmingCharacters(in: CharacterSet(charactersIn: " "))
         to.label = details.emoji ?? ""

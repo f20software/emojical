@@ -21,7 +21,7 @@ enum Cell {
     case time(String, Date, ((Date) -> Void)?)
     case navigate(String, (() -> Void)?)
     case button(String, (() -> Void)?)
-    case stickerStyle(String, Stamp, StickerStyle, ((StickerStyle) -> Void)?)
+    case stickerStyle(String, Sticker, StickerStyle, ((StickerStyle) -> Void)?)
 }
 
 extension Cell: Equatable, Hashable {

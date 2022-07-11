@@ -20,65 +20,44 @@ struct GoalIconData {
     let progressColor: UIColor
 }
 
-extension GoalIconData {
+extension Goal {
 
-    // Convinience constructor from Stamp, Goal and current progress object
-    init(stamp: Stamp?, goal: Goal, progress: Int) {
+    /// Convinience constructor from Goal and current progress object
+    func toIconData(progress: Int) -> GoalIconData {
         
-        switch goal.direction {
+        switch direction {
         case .positive:
-            if progress >= goal.limit {
-                // You got it - should match award render mode
-                self.init(
-                    goalId: goal.id,
-                    emoji: stamp?.label,
-                    backgroundColor: Theme.main.colors.unreachedGoalBackground,
-                    direction: .positive,
-                    period: goal.period,
-                    progress: 1.0,
-                    progressColor: Theme.main.colors.positiveGoalProgress
-                )
-            } else {
-                // Still have some work to do
-                self.init(
-                    goalId: goal.id,
-                    emoji: stamp?.label,
-                    backgroundColor: Theme.main.colors.unreachedGoalBackground,
-                    direction: .positive,
-                    period: goal.period,
-                    progress: Float(progress) / Float(goal.limit) +
-                        (progress == 0 ? Specs.zeroProgressMock : 0),
-                    progressColor: Theme.main.colors.positiveGoalProgress
-                )
-            }
+            let iconProgress = progress >= limit ?
+                1.0 : (Float(progress) / Float(limit) + (progress == 0 ? Specs.zeroProgressMock : 0))
+
+            return GoalIconData(
+                goalId: id,
+                emoji: stickers.first?.label,
+                backgroundColor: Theme.main.colors.unreachedGoalBackground,
+                direction: direction,
+                period: period,
+                progress: iconProgress,
+                progressColor: Theme.main.colors.positiveGoalProgress
+            )
             
         case .negative:
-            if progress > goal.limit {
-                // Busted
-                self.init(
-                    goalId: goal.id,
-                    emoji: stamp?.label,
-                    backgroundColor: Theme.main.colors.unreachedGoalBackground,
-                    direction: .negative,
-                    period: goal.period,
-                    progress: 0.0,
-                    progressColor: Theme.main.colors.negativeGoalProgress
-                )
-            } else {
-                // Still have some room to go
-                let percent = progress == 0 ?
-                    (1.0 - Specs.zeroNegativeProgressMock) :
-                    (Float(goal.limit - progress) / Float(goal.limit) + Specs.zeroProgressMock)
-                self.init(
-                    goalId: goal.id,
-                    emoji: stamp?.label,
-                    backgroundColor: (stamp?.color ?? Theme.main.colors.tint).withAlphaComponent(0.3),
-                    direction: .negative,
-                    period: goal.period,
-                    progress: percent,
-                    progressColor: Theme.main.colors.negativeGoalProgress
-                )
+            var iconProgress: Float = 0.0
+            var iconBackground = Theme.main.colors.unreachedGoalBackground
+            if progress <= limit {
+                iconProgress = (progress == 0 ? (1.0 - Specs.zeroNegativeProgressMock) :
+                    (Float(limit - progress) / Float(limit) + Specs.zeroProgressMock))
+                iconBackground = (stickers.first?.color ?? Theme.main.colors.tint).withAlphaComponent(0.3)
             }
+
+            return GoalIconData(
+                goalId: id,
+                emoji: stickers.first?.label,
+                backgroundColor: iconBackground,
+                direction: direction,
+                period: period,
+                progress: iconProgress,
+                progressColor: Theme.main.colors.negativeGoalProgress
+            )
         }
     }
 }

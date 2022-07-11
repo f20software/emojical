@@ -12,12 +12,19 @@ import GRDB
 extension DataSource {
 
     /// Stamp by a given Id
-    func stampBy(id: Int64?) -> Stamp? {
+    func stickerBy(id: Int64?) -> Sticker? {
         guard let id = id else { return nil }
         return storedStamp(withId: id)?.toModel()
     }
     
-    // Count for specific stamp in Diary table
+    /// Bulk sticker retrieval method
+    func stickersBy(ids: [Int64]) -> [Sticker] {
+        return ids.compactMap {
+            stickerBy(id: $0)
+        }
+    }
+    
+    /// Count for specific stamp in Diary table
     func stampCountById(_ identifier: Int64) -> Int {
         do {
             return try dbQueue.read { db -> Int in
@@ -44,7 +51,7 @@ extension DataSource {
     }
 
     // All stamps
-    func allStamps(includeDeleted: Bool = false) -> [Stamp] {
+    func allStamps(includeDeleted: Bool = false) -> [Sticker] {
         allStoredStamps(includeDeleted: includeDeleted).map { $0.toModel() }
     }
     
@@ -74,9 +81,9 @@ extension DataSource {
     }
 
     /// Stamps for a day
-    func stampsFor(day: Date) -> [Stamp] {
+    func stickersFor(day: Date) -> [Sticker] {
         return stampsIdsFor(day: day)
-            .compactMap({ stampBy(id: $0) })
+            .compactMap({ stickerBy(id: $0) })
     }
 
     // Recalculate count and lastUsed in Stamp object
@@ -104,16 +111,16 @@ extension DataSource {
     /// List of goals particular stamp is used in
     func goalsUsedStamp(_ stampId: Int64?) -> [Goal] {
         guard let id = stampId else { return [] }
-        return self.allGoals().filter { $0.stamps.contains(id) }
+        return self.allGoals().filter { $0.stickersIds.contains(id) }
     }
     
     // MARK: - Saving
     
-    @discardableResult func save(stamp: Stamp) throws -> Stamp {
+    @discardableResult func save(stamp: Sticker) throws -> Int64? {
         try dbQueue.inDatabase { db in
             var stored = StoredStamp(stamp: stamp)
             try stored.save(db)
-            return stored.toModel()
+            return stored.id
         }
     }
     

@@ -35,6 +35,9 @@ class CoachMessageManager {
     
     /// Private reference to the LocalSettings object
     private let settings: LocalSettings
+    
+    /// Private reference to CalendarHelper
+    private let calendar: CalendarHelper!
 
     // MARK: - Internal state
     
@@ -45,7 +48,7 @@ class CoachMessageManager {
     private var queue: DispatchQueue!
     
     /// Hold to current week to understand when new award for current week is created
-    private var currentWeek = CalendarHelper.Week(Date())
+    private var currentWeek = CalendarHelper.Week()
     
     /// List of awards for the current week
     private var awards = [Award]()
@@ -63,6 +66,7 @@ class CoachMessageManager {
         )
         self.diaryListener = Storage.shared.diaryListener()
         self.settings = LocalSettings.shared
+        self.calendar = CalendarHelper.shared
 
         queue = DispatchQueue(label: "com.svidersky.Emojical.coach")
         awards = dataBuilder.awards(for: currentWeek)
@@ -97,7 +101,7 @@ class CoachMessageManager {
     @objc private func weekReady() {
         NSLog("CoachMessageManager: weekReady")
 
-        let awards = dataBuilder.awards(for: CalendarHelper.Week(Date().byAddingWeek(-1)))
+        let awards = dataBuilder.awards(for: CalendarHelper.Week(calendar.today.byAddingWeek(-1)))
         let totalCount = awards.count
         if totalCount == 0 {
             return

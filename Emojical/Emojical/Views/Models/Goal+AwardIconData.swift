@@ -1,5 +1,5 @@
 //
-//  CongratsData.swift
+//  GoalOrAwardIconData.swift
 //  Emojical
 //
 //  Created by Vladimir Svidersky on 2/13/21.
@@ -13,29 +13,25 @@ enum GoalOrAwardIconData {
     case award(data: AwardIconData)
     
     /// Constructor from the in-progress Goal - used in Today's current week awards and in the list of Goals
-    init(stamp: Stamp?, goal: Goal, progress: Int) {
+    init(goal: Goal, progress: Int) {
         if goal.direction == .positive && progress >= goal.limit {
-            self = .award(data: AwardIconData(stamp: stamp, goalId: goal.id))
+            self = .award(data: goal.toAwardIconData())
         }
         else {
-            self = .goal(data: GoalIconData(stamp: stamp, goal: goal, progress: progress))
+            self = .goal(data: goal.toIconData(progress: progress))
         }
     }
     
     /// Constructor from received or failed Award - used to generate Recap data
-    init(award: Award, goal: Goal, stamp: Stamp?) {
+    init(award: Award, goal: Goal) {
         if award.reached {
-            self = .award(data: AwardIconData(stamp: stamp, goalId: goal.id))
+            self = .award(data: award.toIconData())
         } else {
             switch award.direction {
             case .positive:
-                self = .goal(data: GoalIconData(
-                    stamp: stamp,
-                    goal: goal,
-                    progress: award.count)
-                )
+                self = .goal(data: goal.toIconData(progress: award.count))
             case .negative:
-                self = .award(data: AwardIconData(stamp: stamp, goalId: goal.id, busted: true))
+                self = .award(data: award.toIconData())
             }
         }
         

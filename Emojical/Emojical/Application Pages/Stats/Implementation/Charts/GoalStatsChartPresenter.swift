@@ -70,16 +70,13 @@ class GoalStatsChartPresenter: ChartPresenterProtocol {
         let data: [GoalStats] = repository.allGoals().compactMap({
             guard let goalId = $0.id else { return nil }
 
-            let stamp = self.repository.stampBy(id: $0.stamps.first)
             let history = self.dataBuilder.historyFor(goal: goalId, limit: 12)
-            
             return GoalStats(
                 goalId: goalId,
                 period: $0.period,
                 count: $0.count,
                 streak: history?.reached.streak ?? 0,
                 icon: GoalOrAwardIconData(
-                    stamp: stamp,
                     goal: $0,
                     progress: self.awardManager.currentProgressFor($0)
                 ),

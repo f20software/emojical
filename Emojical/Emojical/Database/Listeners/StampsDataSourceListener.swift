@@ -22,7 +22,7 @@ class StampsDataSourceListener: StampsListener {
         self.source = source
     }
     
-    func startListening(onError: @escaping (Error) -> Void, onChange: @escaping ([Stamp]) -> Void) {
+    func startListening(onError: @escaping (Error) -> Void, onChange: @escaping ([Sticker]) -> Void) {
         let request = StoredStamp.orderedByName()
         let observation = ValueObservation.tracking { db in
             try request.fetchAll(db)

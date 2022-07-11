@@ -27,7 +27,7 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     }
 
     /// Push to edit sticker form
-    func editSticker(_ sticker: Stamp) {
+    func editSticker(_ sticker: Sticker) {
         navigateToSticker(mode: .push, sticker: sticker)
     }
 
@@ -41,7 +41,7 @@ class StickersCoordinator: StickersCoordinatorProtocol {
     
     // Navigate to Sticker edit / create screen - if `goal` object is passed will
     // push StickerViewController, otherwise - present as modal
-    private func navigateToSticker(mode: PresentationMode, sticker: Stamp?) {
+    private func navigateToSticker(mode: PresentationMode, sticker: Sticker?) {
 
         // Instantiate StickerViewController from the storyboard file
         guard let nav: UINavigationController = Storyboard.Sticker.initialViewController(),

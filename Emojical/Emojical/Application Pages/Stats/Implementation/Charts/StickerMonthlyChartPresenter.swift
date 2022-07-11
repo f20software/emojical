@@ -23,7 +23,7 @@ class StickerMonthlyChartPresenter: ChartPresenterProtocol {
     // MARK: - State
 
     /// Copy of all stamps - used to build data model for view to show
-    private var stamps = [Stamp]()
+    private var stickers = [Sticker]()
     
     /// Selected month
     private var selectedMonth = CalendarHelper.Month(Date().byAddingDays(-20))
@@ -50,7 +50,7 @@ class StickerMonthlyChartPresenter: ChartPresenterProtocol {
         setupView()
 
         // Load initial set of data
-        stamps = repository.allStamps().sorted(by: { $0.count > $1.count })
+        stickers = repository.allStamps().sorted(by: { $0.count > $1.count })
     }
     
     /// Called when view about to appear on the screen
@@ -75,7 +75,7 @@ class StickerMonthlyChartPresenter: ChartPresenterProtocol {
             showNext: dataBuilder.canMoveForward(selectedMonth)
         )
 
-        let data = dataBuilder.emptyStatsData(for: selectedMonth, stamps: stamps)
+        let data = dataBuilder.emptyStatsData(for: selectedMonth, stamps: stickers)
         view?.loadMonthData(header: selectedMonth.label, data: data)
     }
     

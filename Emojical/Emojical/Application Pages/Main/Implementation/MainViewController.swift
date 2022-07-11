@@ -51,6 +51,7 @@ class MainViewController: UITabBarController {
     var optionsTab: UINavigationController?
 
     private var newAwardCounter = 0
+    private let calendar = CalendarHelper.shared!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +98,7 @@ extension MainViewController : UITabBarControllerDelegate {
         // If we're navigating to TodayViewController - select today's date
         if ((viewController as? UINavigationController)?
             .visibleViewController as? TodayViewController) != nil {
-            todayPresenter?.navigateTo(Date())
+            todayPresenter?.navigateTo(calendar.today)
         }
     }
 }
@@ -110,7 +111,7 @@ extension MainViewController {
         navigateTo(.today)
 
         // And navigate to current day
-        todayPresenter?.navigateTo(Date())
+        todayPresenter?.navigateTo(calendar.today)
     }
     
     private func updateColors() {

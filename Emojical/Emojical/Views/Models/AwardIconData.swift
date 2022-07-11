@@ -18,28 +18,41 @@ struct AwardIconData {
     let reached: Bool
 }
 
-extension AwardIconData {
-    
-    // Convinience constructor from Stamp object
-    init(stamp: Stamp?, goalId: Int64?, busted: Bool = false) {
-        
-        if busted {
-            self.init(
+extension Award {
+
+    /// Conviniece method to create Icon data based on award status
+    func toIconData() -> AwardIconData {
+        if reached {
+            return AwardIconData(
                 goalId: goalId,
-                emoji: stamp?.label,
-                backgroundColor: Theme.main.colors.unreachedGoalBackground,
-                borderColor: UIColor.clear,
-                reached: false
+                emoji: label,
+                backgroundColor: (backgroundColor ?? Theme.main.colors.tint).withAlphaComponent(0.5),
+                borderColor: Theme.main.colors.reachedGoalBorder,
+                reached: reached
             )
         } else {
-            self.init(
+            return AwardIconData(
                 goalId: goalId,
-                emoji: stamp?.label,
-                backgroundColor: (stamp?.color ?? Theme.main.colors.tint).withAlphaComponent(0.5),
-                borderColor: Theme.main.colors.reachedGoalBorder,
-                reached: true
+                emoji: label,
+                backgroundColor: Theme.main.colors.unreachedGoalBackground,
+                borderColor: UIColor.clear,
+                reached: reached
             )
         }
+    }
+}
+
+extension Goal {
+
+    /// Conviniece method to create Icon data based on when goal will be reached
+    func toAwardIconData() -> AwardIconData {
+        return AwardIconData(
+            goalId: id,
+            emoji: stickers.first?.label,
+            backgroundColor: (stickers.first?.color ?? Theme.main.colors.tint).withAlphaComponent(0.5),
+            borderColor: Theme.main.colors.reachedGoalBorder,
+            reached: true
+        )
     }
 }
 

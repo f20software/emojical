@@ -63,8 +63,8 @@ extension StoredStamp {
 // MARK: - Model conversion
 
 extension StoredStamp {
-    func toModel() -> Stamp {
-        return Stamp(
+    func toModel() -> Sticker {
+        return Sticker(
             id: id,
             name: name,
             label: label,
@@ -76,7 +76,7 @@ extension StoredStamp {
         )
     }
     
-    init(stamp: Stamp) {
+    init(stamp: Sticker) {
         self.id = stamp.id
         self.name = stamp.name
         self.label = stamp.label

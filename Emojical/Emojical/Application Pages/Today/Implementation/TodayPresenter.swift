@@ -33,7 +33,7 @@ class TodayPresenter: TodayPresenterProtocol {
     // MARK: - State
 
     // All available stamps (to be shown in sticker selector)
-    private var allStickers: [Stamp] = []
+    private var allStickers: [Sticker] = []
     
     // Date header data for the week
     private var weekHeader: [DayHeaderData] = []
@@ -71,7 +71,7 @@ class TodayPresenter: TodayPresenterProtocol {
     private var messageQueue = OperationQueue()
 
     // Current week index
-    private var week = CalendarHelper.Week(Date()) {
+    private var week = CalendarHelper.Week() {
         didSet {
             // Load data model from the repository
             weekHeader = week.dayHeadersForWeek(highlightedIndex: selectedDayIndex)
@@ -312,10 +312,9 @@ class TodayPresenter: TodayPresenterProtocol {
         goalsListener.startListening(onError: { error in
             fatalError("Unexpected error: \(error)")
         },
-        onChange: { [weak self] awards in
-            guard let self = self else { return }
-            self.loadAndSortGoals()
-            self.loadAwardsData()
+        onChange: { [weak self] in
+            self?.loadAndSortGoals()
+            self?.loadAwardsData()
         })
 
         // Subscribe to significant time change notification
@@ -444,13 +443,11 @@ class TodayPresenter: TodayPresenterProtocol {
         return awards.compactMap({
             guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
 
-            let stamp = repository.stampBy(id: goal.stamps.first)
             return AwardRecapData(
                 title: $0.descriptionText,
                 progress: GoalOrAwardIconData(
                     award: $0,
-                    goal: goal,
-                    stamp: stamp
+                    goal: goal
                 )
             )
         })
@@ -482,12 +479,7 @@ class TodayPresenter: TodayPresenterProtocol {
         
         return RecapBubbleData(
             message: Language.weekRecapForGoals(total: totalCount, reached: reachedCount),
-            icons: awards.compactMap {
-                guard $0.reached else { return nil }
-                guard let goal = repository.goalBy(id: $0.goalId) else { return nil }
-                let stamp = repository.stampBy(id: goal.stamps.first)
-                return AwardIconData(stamp: stamp, goalId: $0.goalId)
-            },
+            icons: awards.filter({ $0.reached } ).map({ return $0.toIconData() }),
             faceImage: emojiImageForReachedGoals(total: totalCount, reached: reachedCount)
         )
     }
@@ -549,10 +541,7 @@ class TodayPresenter: TodayPresenterProtocol {
 
         var data = [GoalOrAwardIconData]()
         data = goals.compactMap({
-            let stamp = repository.stampBy(id: $0.stamps.first)
-            
             return GoalOrAwardIconData(
-                stamp: stamp,
                 goal: $0,
                 progress: awardManager.currentProgressFor($0)
             )

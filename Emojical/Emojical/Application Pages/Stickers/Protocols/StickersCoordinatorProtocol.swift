@@ -11,7 +11,7 @@ import Foundation
 protocol StickersCoordinatorProtocol: AnyObject {
 
     /// Push to edit sticker form
-    func editSticker(_ sticker: Stamp)
+    func editSticker(_ sticker: Sticker)
 
     /// Shows modal form to create new sticker
     func newSticker()

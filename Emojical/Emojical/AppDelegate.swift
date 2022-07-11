@@ -66,16 +66,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         notificaionManager.requestAuthorization()
         UNUserNotificationCenter.current().delegate = self
         
-//      Storage.shared.repository.lastWeekUpdate = Date(yyyyMmDd: "2021-01-16")
+        // Perform database upgrade or anything else that is required on the startup
+        let repo = Storage.shared.repository
+        repo.startupSequence()
 
-//      Un-deleting specific stamp that I deleted accidentaly
-        
-//        let repo = Storage.shared.repository
-//        repo.createAdHocEntries()
-//      var sticker = repo.stampById(15)
-//      sticker?.deleted = false
-//      try! repo.save(stamp: sticker!)
-        
         UIView.appearance().tintColor = Theme.main.colors.tint
         return true
     }

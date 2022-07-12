@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import AudioToolbox
 
 class TodayPresenter: TodayPresenterProtocol {
 
@@ -556,7 +555,7 @@ class TodayPresenter: TodayPresenterProtocol {
             return
         }
         
-        // TODO: Refactor sound support
+        // TODO: Sound support
         // AudioServicesPlaySystemSound(1105)
             
         if selectedDayStickers.contains(stampId) {
